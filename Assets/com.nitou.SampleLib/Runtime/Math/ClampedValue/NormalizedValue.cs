@@ -11,7 +11,7 @@ namespace nitou {
     [System.Serializable]
     public struct NormalizedValue {
 
-        private float _value;
+        [SerializeField] float _value;
 
         public float Value {
             get => _value;
