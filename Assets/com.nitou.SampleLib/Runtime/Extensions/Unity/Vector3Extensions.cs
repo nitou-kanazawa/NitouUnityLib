@@ -79,8 +79,6 @@ namespace nitou {
         public static void AddZ(ref this Vector3 self, float z) => self.z += z;
 
 
-
-
         /// ----------------------------------------------------------------------------
         // Clamp
 
