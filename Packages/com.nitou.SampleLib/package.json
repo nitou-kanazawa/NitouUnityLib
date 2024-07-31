@@ -1,0 +1,11 @@
+{
+  "name": "com.nitou.samplelib",
+  "displayName": "Sample Lib",
+  "version": "1.0.0",
+  "unity": "2021.2",
+  "description": "Sample Lib.",
+  "keywords": [],
+  "license": "MIT",
+  "category": "",
+  "dependencies": {}
+}
