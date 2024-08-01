@@ -1,0 +1,113 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+// [参考]
+//  Hatena Blog: Action, Func, Predicateデリゲートを使ってみた https://oooomincrypto.hatenadiary.jp/entry/2022/04/24/201149
+//  JojoBase: 拡張メソッドは作って貯めておくと便利です https://johobase.com/custom-extension-methods-list/#i-5
+//  JojoBase: コレクションの拡張メソッド Collection Extensions https://johobase.com/collection-extensions-methods-list/
+//  qiita: あるとちょっと便利な拡張メソッド紹介 https://qiita.com/s_mino_ri/items/0fd2e2b3cebb7a62ad46
+
+namespace nitou {
+
+    /// <summary>
+    /// Collectionの基本的な拡張メソッド集
+    /// </summary>
+    public static partial class CollectionExtensions {
+
+        /// ----------------------------------------------------------------------------
+        // 要素の判定
+
+        /// <summary>
+        /// コレクションがNullまたは空かどうかを判定する拡張メソッド
+        /// </summary>
+        public static bool IsNullOrEmpty(this ICollection self) {
+            return self == null || self.Count == 0;
+        }
+
+        /// <summary>
+        /// 指定した要素が全てコレクション内にあるかどうかを判定する拡張メソッド
+        /// </summary>
+        public static bool ContainsAll<T>(this ICollection<T> self, params T[] items) {
+            foreach (T item in items) {
+                if (self.Contains(item)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 複数の要素のいずれかがコレクションに格納されているかどうかを判定する拡張メソッド
+        /// </summary>
+        public static bool ContainsAny<T>(this ICollection<T> self, params T[] items) {
+            foreach (T item in items) {
+                if (self.Contains(item)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        /// ----------------------------------------------------------------------------
+        // 要素の追加
+
+        /// <summary>
+        /// 指定した処理条件を満たす場合に要素を追加する拡張メソッド
+        /// </summary>
+        public static bool AddIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
+            if (predicate(item)) {
+                self.Add(item);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 要素がコレクション内に含まれなければ追加する拡張メソッド
+        /// </summary>
+        public static bool AddIfNotContains<T>(this ICollection<T> self, T item) {
+            if (!self.Contains(item)) {
+                self.Add(item);
+                return true;
+            }
+            return false;
+        }
+
+
+        /// ----------------------------------------------------------------------------
+        // 要素の削除
+
+        /// <summary>
+        /// 指定した処理条件を満たす場合に要素を削除する拡張メソッド
+        /// </summary>
+        public static void RemoveIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
+            if (predicate(item)) {
+                self.Remove(item);
+            }
+        }
+
+        /// <summary>
+        /// 複数の要素を削除する拡張メソッド
+        /// </summary>
+        public static void RemoveRange<T>(this ICollection<T> self, params T[] items) {
+            foreach (T item in items) {
+                self.Remove(item);
+            }
+        }
+
+        /// <summary>
+        /// 複数の要素のそれぞれに対して指定した条件を満たす場合に削除する拡張メソッド
+        /// </summary>
+        public static void RemoveRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, params T[] items) {
+            foreach (T item in items) {
+                if (predicate(item)) {
+                    self.Remove(item);
+                }
+            }
+        }
+
+    }
+}
