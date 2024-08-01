@@ -62,10 +62,10 @@ namespace nitou {
         //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
 
 
-        public static Vector2 foo(Vector3 worldPoint) {
+        //public static Vector2 foo(Vector3 worldPoint) {
 
-            return Vector2.zero;
-        }
+        //    return Vector2.zero;
+        //}
 
 
         #endregion
