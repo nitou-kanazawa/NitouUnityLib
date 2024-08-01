@@ -3,7 +3,7 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 
-// [TODO]　2年近くメンテナンスされてないので，動作検証から取り組む
+// [TODO]　2年近くメンテナンスされてないので，動作検証から取り組む (2024.08.01)
 
 namespace nitou {
 
