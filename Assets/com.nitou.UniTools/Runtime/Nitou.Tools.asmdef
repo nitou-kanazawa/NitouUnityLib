@@ -1,13 +1,10 @@
 {
-    "name": "Nitou.Tools.Editor",
-    "rootNamespace": "nitou.Tools.Editor",
+    "name": "Nitou.Tools.Runtime",
+    "rootNamespace": "nitou.Tools",
     "references": [
-        "Nitou.Lib",
-        "Nitou.Lib.Editor"
+        "Nitou.Lib"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
