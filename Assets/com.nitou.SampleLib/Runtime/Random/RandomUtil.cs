@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.Random;
 using static UnityEngine.Mathf;
+using Random = UnityEngine.Random;
 
 // [参考]
+//  UnityDocument: Random https://docs.unity3d.com/ja/2021.1/Manual/class-Random.html
 //  PG日誌: リストから要素をランダムにN個取得する https://takap-tech.com/entry/2019/10/17/003706
 
 namespace nitou {
@@ -13,7 +14,6 @@ namespace nitou {
     /// 乱数に関する汎用メソッド集
     /// </summary>
     public static class RandomUtil {
-
 
         /// ----------------------------------------------------------------------------
         #region 範囲内からの選出
@@ -30,16 +30,21 @@ namespace nitou {
             return Random.Range(range.Min, range.Max);
         }
 
+        /// <summary>
+        /// 0~1の範囲内の乱数
+        /// </summary>
+        public static float Range01() {
+            return Random.value;
+        }
+
         public static float RangePlusMinus(float value) {
             return Random.Range(-value, value);
         }
         #endregion
 
 
-
         /// ----------------------------------------------------------------------------
         #region 要素内からの選択
-
 
         /// <summary>
         /// 任意型の２値からランダムに取得する
@@ -96,7 +101,6 @@ namespace nitou {
             currentIndex = index;
         }
 
-
         /// <summary>
         /// リスト内の値からランダムに取得する拡張メソッド
         /// </summary>
@@ -117,6 +121,7 @@ namespace nitou {
             }
         }
         #endregion
+
 
         /// ----------------------------------------------------------------------------
         #region  真偽
@@ -159,11 +164,9 @@ namespace nitou {
         /// 四角形上のランダムな点を取得する
         /// </summary>
         public static Vector2 PointInBox2D(float halfSizeX, float halfSizeY) {
-            float posX = Range(-halfSizeX, halfSizeX);
-            float posY = Range(-halfSizeY, halfSizeY);
-
-            Vector2 pos = new Vector2(posX, posY);
-            return pos;
+            return new Vector2(
+                x: RangePlusMinus(halfSizeX),
+                y: RangePlusMinus(halfSizeY));
         }
 
         /// <summary>
@@ -177,13 +180,19 @@ namespace nitou {
         /// Box上のランダムな点を取得する
         /// </summary>
         public static Vector3 PointInBox(float halfSizeX, float halfSizeY, float halfSizeZ) {
-            float posX = Range(-halfSizeX, halfSizeX);
-            float posY = Range(-halfSizeY, halfSizeY);
-            float posZ = Range(-halfSizeZ, halfSizeZ);
-
-            Vector3 pos = new Vector3(posX, posY, posZ);
-            return pos;
+            return new Vector3(
+                x: RangePlusMinus(halfSizeX),
+                y: RangePlusMinus(halfSizeY),
+                z: RangePlusMinus(halfSizeZ));
         }
+
+        /// <summary>
+        /// Box内のランダムな点を取得する
+        /// </summary>
+        public static Vector3 PointInBox(Vector3 halfSize) {
+            return PointInBox(halfSize.x, halfSize.y, halfSize.z);
+        }
+
         #endregion
 
 
