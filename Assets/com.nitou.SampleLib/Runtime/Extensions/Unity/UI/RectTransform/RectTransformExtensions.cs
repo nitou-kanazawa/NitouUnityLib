@@ -9,13 +9,11 @@ using UnityEngine.EventSystems;
 //  Hatena: RectTransformのスクリーン座標のRectを取得する https://hacchi-man.hatenablog.com/entry/2020/12/11/220000
 
 namespace nitou {
-    //namespace UnityEngine {
-
 
     /// <summary>
     /// <see cref="RectTransform"/>の基本的な拡張メソッド集
     /// </summary>
-    public static class RectTransformExtensions {
+    public static partial class RectTransformExtensions {
 
         // [NOTE]
         //  いかにユースケースをメモしておく

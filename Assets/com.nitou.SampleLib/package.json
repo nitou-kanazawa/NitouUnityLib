@@ -1,9 +1,9 @@
 {
-  "name": "com.nitou.samplelib",
-  "displayName": "Sample Lib",
-  "version": "1.0.0",
+  "name": "com.nitou.unilib",
+  "displayName": "Nitou UniLib",
+  "version": "0.1.0",
   "unity": "2021.2",
-  "description": "Sample Lib.",
+  "description": "Basic Libraly.",
   "keywords": [],
   "license": "MIT",
   "category": "",
