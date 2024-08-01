@@ -233,14 +233,24 @@ namespace nitou {
         /// ローカルの座標，回転を初期化する拡張メソッド
         /// </summary>
         public static void ResetLocalPositionAndRotation(this Transform self) {
+#if UNITY_2021_3_OR_NEWER
             self.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+#else
+            self.localPosition = Vector3.zero;
+            self.localRotation = Quaternion.identity;
+#endif
         }
 
         /// <summary>
         /// ローカルの座標，回転を初期化する拡張メソッド
         /// </summary>
         public static void ResetWorldPositionAndRotation(this Transform self) {
+#if UNITY_2021_3_OR_NEWER
             self.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+#else
+            self.position = Vector3.zero;
+            self.rotation = Quaternion.identity;
+#endif
         }
         #endregion
 
@@ -273,7 +283,7 @@ namespace nitou {
     public static partial class GameObjectExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region 位置の設定
+#region 位置の設定
 
         /// <summary>
         /// 位置を設定します
@@ -373,11 +383,11 @@ namespace nitou {
         public static void AddLocalPositionZ(this GameObject self, float z) {
             self.transform.AddLocalPositionZ(z);
         }
-        #endregion
+#endregion
 
 
         /// ----------------------------------------------------------------------------
-        #region 角度の設定
+#region 角度の設定
 
         /// <summary>
         /// 回転角を設定します
@@ -477,11 +487,11 @@ namespace nitou {
         public static void AddLocalEulerAngleZ(this GameObject self, float z) {
             self.transform.AddLocalEulerAngleZ(z);
         }
-        #endregion
+#endregion
 
 
         /// ----------------------------------------------------------------------------
-        #region スケールの設定
+#region スケールの設定
 
         /// <summary>
         /// ローカル座標系の回転角を設定します
@@ -532,11 +542,11 @@ namespace nitou {
         public static void AddLocalScaleZ(this GameObject self, float z) {
             self.transform.AddLocalScaleZ(z);
         }
-        #endregion
+#endregion
 
 
         /// ----------------------------------------------------------------------------
-        #region 親子関係
+#region 親子関係
 
         /// <summary>
         /// 親オブジェクトを設定する拡張メソッド
@@ -581,7 +591,7 @@ namespace nitou {
             self.transform.localRotation = Quaternion.identity;
             self.transform.localScale = Vector3.one;
         }
-        #endregion
+#endregion
     }
 
 }

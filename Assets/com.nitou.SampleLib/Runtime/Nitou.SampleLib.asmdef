@@ -1,6 +1,6 @@
 {
     "name": "Nitou.SampleLib",
-    "rootNamespace": "Nitou",
+    "rootNamespace": "nitou",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

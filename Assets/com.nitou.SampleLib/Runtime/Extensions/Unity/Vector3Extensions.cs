@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -133,6 +135,13 @@ namespace nitou {
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
+
+
+
+        public static Vector3 FindMinVector(IEnumerable<Vector3> ptList) {
+            // LINQを使用して最小のベクトルを見つける
+            return ptList.Aggregate((minVec, nextVec) => Vector3.Min(minVec, nextVec));
+        }
     }
 
 }
