@@ -1,13 +1,18 @@
 {
-    "name": "Nitou.UniLib",
-    "rootNamespace": "nitou",
-    "references": [],
-    "includePlatforms": [],
+    "name": "Nitou.Tools.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Nitou.Lib",
+        "Nitou.Lib.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

@@ -1,0 +1,13 @@
+{
+  "name": "com.nitou.unitool",
+  "displayName": "Nitou Tool",
+  "version": "0.1.0",
+  "unity": "2021.2",
+  "description": "Basic Tools.",
+  "keywords": [],
+  "license": "MIT",
+  "category": "",
+  "dependencies": {
+
+  }
+}
