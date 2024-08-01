@@ -1,8 +1,8 @@
 {
-    "name": "Nitou.SampleLib.Editor",
+    "name": "Nitou.UniLib.Editor",
     "rootNamespace": "nitou.EditorScripts",
     "references": [
-        "Nitou.SampleLib"
+        "Nitou.UniLib"
     ],
     "includePlatforms": [
         "Editor"
