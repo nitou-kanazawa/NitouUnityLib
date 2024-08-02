@@ -193,39 +193,6 @@ namespace nitou.EditorShared {
     }
 
 
-	public static partial class EditorUtil {
-
-		public class RotateScope : System.IDisposable {
-			private readonly Matrix4x4 previousMatrix;
-
-			public RotateScope(float angle, Vector2 pivotPoint) {
-				previousMatrix = UnityEngine.GUI.matrix;
-				GUIUtility.RotateAroundPivot(angle, pivotPoint);
-			}
-
-			public void Dispose() {
-				UnityEngine.GUI.matrix = previousMatrix;
-			}
-		}
-	}
-
 }
 
 #endif
-
-
-
-namespace nitou {
-
-    public static class EnumerableUtil {
-        /// <summary>
-        /// 指定された範囲内で一定のステップごとに値を生成する
-        /// </summary>
-        public static IEnumerable<float> LinspaceWithStep(float start, float end, float step) {
-            for (float value = start; value <= end; value += step) {
-                yield return value;
-            }
-        }
-    }
-
-}

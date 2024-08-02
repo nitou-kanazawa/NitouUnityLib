@@ -58,6 +58,17 @@ namespace nitou {
     public static partial class RectTransformExtensions {
 
         /// <summary>
+        /// 固定サイズ(※anchorMinとanchorMaxが同じ位置)かどうか確認する拡張メソッド
+        /// </summary>
+        public static bool IsFixedSize(this RectTransform self) {
+            return self.sizeDelta == self.rect.size;
+        }
+
+
+        /// ----------------------------------------------------------------------------
+        // アンカー、ピボットの設定
+
+        /// <summary>
         /// アンカーを設定する拡張メソッド
         /// </summary>
         public static void SetAnchor(this RectTransform self, AnchorPresets allign, int offsetX = 0, int offsetY = 0) {
@@ -211,6 +222,5 @@ namespace nitou {
             self.offsetMin = new Vector2(left, bottom);
             self.offsetMax = new Vector2(-right, -top);
         }
-
     }
 }

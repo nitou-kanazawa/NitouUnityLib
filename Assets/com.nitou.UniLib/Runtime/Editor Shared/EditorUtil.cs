@@ -11,12 +11,12 @@ using UnityEditor;
 //  qiita: エディタ拡張で仕切り線を描く https://qiita.com/Gok/items/96e8747269bf4a2a9cc5
 
 namespace nitou.EditorShared {
-    public static partial class EditorUtil {
+    //public static partial class EditorUtil {
 
 
 
         
 
-    }
+    //}
 }
 #endif
