@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
+using System;
 using UnityEngine;
 using UnityEditor;
-using System;
 
 // Rererence: https://www.foundations.unity.com/fundamentals/color-palette
 

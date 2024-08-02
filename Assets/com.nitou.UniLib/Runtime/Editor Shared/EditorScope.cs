@@ -120,6 +120,28 @@ namespace nitou.EditorShared {
         }
 
         #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region Misc
+
+        /// <summary>
+        /// 同次変換行列を設定するスコープ
+        /// </summary>
+        public class RotateScope : UnityEngine.GUI.Scope {
+
+            private readonly Matrix4x4 previousMatrix;
+
+            public RotateScope(float angle, Vector2 pivotPoint) {
+                previousMatrix = UnityEngine.GUI.matrix;
+                GUIUtility.RotateAroundPivot(angle, pivotPoint);
+            }
+
+            protected override void CloseScope() {
+                UnityEngine.GUI.matrix = previousMatrix;
+            }
+        }
+        #endregion
     }
 }
 #endif

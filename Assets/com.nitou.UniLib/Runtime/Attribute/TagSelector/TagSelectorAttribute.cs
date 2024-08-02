@@ -13,7 +13,7 @@ namespace nitou {
 
 
 #if UNITY_EDITOR
-namespace nitou.EditorScript {
+namespace nitou.EditorScripts {
 
     // Original by DYLAN ENGELMAN http://jupiterlighthousestudio.com/custom-inspectors-unity/
     // Altered by Brecht Lecluyse https://www.brechtos.com

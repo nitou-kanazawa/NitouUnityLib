@@ -43,7 +43,7 @@ namespace nitou {
 
 /// ----------------------------------------------------------------------------
 #if UNITY_EDITOR
-namespace nitou.EditorScript {
+namespace nitou.EditorScripts {
 
     [CustomPropertyDrawer(typeof(ClampedValue))]
     public class ClampedValueEditor : PropertyDrawer {
