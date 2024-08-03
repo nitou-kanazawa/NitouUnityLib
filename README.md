@@ -5,3 +5,18 @@
 
 
 ## test
+
+
+@startuml
+skinparam classAttributeIconSize 0
+
+title サンプルクラス
+
+class Encoder{
+    + translate()
+}
+Interface Reader
+Reader <|-- CsvReader
+Encoder .> Reader
+@enduml
+@enduml

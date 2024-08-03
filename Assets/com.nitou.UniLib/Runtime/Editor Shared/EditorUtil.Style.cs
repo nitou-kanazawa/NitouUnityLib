@@ -9,10 +9,26 @@ using UnityEditor;
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
-        public static partial class Style {
+        public static partial class Styles {
+
+            public static GUIStyle folderHeader;
 
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            static Styles(){
+                
+                folderHeader = new GUIStyle("ShurikenModuleTitle") {
+                    font = new GUIStyle(EditorStyles.label).font,
+                    fontSize = 12,
+                    border = new RectOffset(15, 7, 4, 4),
+                    fixedHeight = 22,
+                    contentOffset = new Vector2(20f, -2f),
+                };
 
+
+            }
 
             public static GUIStyle XmlText() {
                 return new GUIStyle(EditorStyles.label) {
