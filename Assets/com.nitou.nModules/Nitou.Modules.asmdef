@@ -2,7 +2,10 @@
     "name": "Nitou.Modules",
     "rootNamespace": "nitou",
     "references": [
-        "Nitou.Lib"
+        "Nitou.Lib",
+        "UniTask",
+        "UniRx",
+        "Alchemy"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

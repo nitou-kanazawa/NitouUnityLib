@@ -10,9 +10,28 @@ namespace nitou {
 
     public class TestMono : MonoBehaviour {
         public TestType testType;
+
+        public Vector2 vec_a;
+
+        [BreakVector2("a","x")]
+        public Vector2 vec_b;
+
+        public int a;
+
+        [InlineProperty]
+        public SomeClass ss;
     }
 
 
+    [System.Serializable]
+    public class SomeClass {
+        public int someInt;
+        public float someFloat;
+        public string someString;
+    }
+
+
+    /*
     [CustomEditor(typeof(TestMono))]
     public class TestScriptEditor : Editor {
         public override void OnInspectorGUI() {
@@ -52,5 +71,8 @@ namespace nitou {
             }
         }
     }
+    */
+
+
 
 }

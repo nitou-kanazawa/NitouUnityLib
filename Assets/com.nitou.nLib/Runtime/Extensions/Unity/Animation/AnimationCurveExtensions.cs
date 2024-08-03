@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using nitou;
+using UnityEngine;
 
-namespace UnityEngine {
+namespace nitou {
 
     /// <summary>
     /// <see cref="AnimationCurve"/>の基本的な拡張メソッド集

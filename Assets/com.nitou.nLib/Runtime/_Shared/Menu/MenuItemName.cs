@@ -16,12 +16,13 @@ namespace nitou {
             /// <summary>
             /// 
             /// </summary>
-            public const string EditorCommand = "Tools/Nitou/";
-
+            public const string EditorWindow = "Window/Nitou/";
+            
             /// <summary>
             /// 
             /// </summary>
-            public const string EditorWindow = "Window/Nitou/";
+            public const string EditorCommand = "Tools/Nitou/";
+
 
             /// <summary>
             /// 
