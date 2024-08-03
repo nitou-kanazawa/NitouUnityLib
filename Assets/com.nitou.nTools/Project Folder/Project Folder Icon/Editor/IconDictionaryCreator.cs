@@ -16,7 +16,7 @@ namespace nitou.Tools {
     public class IconDictionaryCreator : AssetPostprocessor {
 
         // ƒŠƒ\[ƒXî•ñ
-        private const string AssetsPath = "com.nitou.UniTools/Project Folder/Project Folder Icon/Icons";
+        private const string AssetsPath = "com.nitou.nTools/Project Folder/Project Folder Icon/Icons";
         internal static Dictionary<string, Texture> IconDictionary;
 
 

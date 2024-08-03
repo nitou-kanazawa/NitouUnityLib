@@ -1,22 +1,25 @@
 # Nitou Unity Lib
 
 ## 【概要】
-基本的な拡張メソッドやMath関連の汎用クラス（構造体）を備えたライブラリ．
 
 
-## test
 
+## 【構成】
+導入するコードを選択可能にするため，以下のように複数パッケージに分ける．
+（※あまりアセンブリファイルを増やしたくないので，分割方法は使いながら調整していく）
 
-@startuml
-skinparam classAttributeIconSize 0
+- Lib
+- Main Modules
+- Tools
+- Framwork
 
-title サンプルクラス
+--- 
 
-class Encoder{
-    + translate()
-}
-Interface Reader
-Reader <|-- CsvReader
-Encoder .> Reader
-@enduml
-@enduml
+#### Lib 
+基本的な拡張メソッドや Math 関連の汎用クラス（構造体）を備えたライブラリ．
+
+#### Main Modules
+
+#### Tools
+
+#### Framwork
