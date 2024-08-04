@@ -1,5 +1,8 @@
 using UnityEngine;
 
+// [参考]
+//  UnityDocument: Rect https://docs.unity3d.com/ja/2023.2/ScriptReference/Rect.html
+
 namespace nitou {
 
     /// <summary>
@@ -98,7 +101,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Add
+        #region Add Position
 
         public static Rect AddPosition(this Rect rect, Vector2 move) {
             rect.position += move;
@@ -155,10 +158,6 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region Align
 
-        public static Rect AlignBottom(this Rect rect, float height) {
-            return new Rect(rect.x, rect.yMax - height, rect.width, height);
-        }
-
         public static Rect AlignCenter(this Rect rect, float width) {
             return new Rect(rect.x + (rect.width - width) / 2, rect.y, width, rect.height);
         }
@@ -183,13 +182,22 @@ namespace nitou {
             return new Rect(rect.x, rect.y + (rect.height - height) / 2, rect.width, height);
         }
 
-        public static Rect AlignLeft(this Rect rect, float width) {
-            return new Rect(rect.x, rect.y, width, rect.height);
+        public static Rect AlignTop(this Rect rect, float height) {
+            return new Rect(rect.x, rect.y, rect.width, height);
         }
 
         public static Rect AlignMiddle(this Rect rect, float height) {
             return new Rect(rect.x, rect.y + (rect.height - height) / 2, rect.width, height);
         }
+
+        public static Rect AlignBottom(this Rect rect, float height) {
+            return new Rect(rect.x, rect.yMax - height, rect.width, height);
+        }
+
+        public static Rect AlignLeft(this Rect rect, float width) {
+            return new Rect(rect.x, rect.y, width, rect.height);
+        }
+
 
         public static Rect AlignRight(this Rect rect, float width) {
             return new Rect(rect.xMax - width, rect.y, width, rect.height);
@@ -199,27 +207,66 @@ namespace nitou {
             return clamp ? new Rect(Mathf.Max(rect.x, rect.xMax - width), rect.y, width, rect.height) : new Rect(rect.xMax - width, rect.y, width, rect.height);
         }
 
-        public static Rect AlignTop(this Rect rect, float height) {
-            return new Rect(rect.x, rect.y, rect.width, height);
-        }
         #endregion
 
 
         /// ----------------------------------------------------------------------------
         #region Expand
 
+        /// <summary>
+        /// 全方向に指定値だけ広げる拡張メソッド
+        /// </summary>
         public static Rect Expand(this Rect rect, float left, float right, float top, float bottom) {
-            return new Rect(rect.x - left, rect.y - top, rect.width + left + right, rect.height + top + bottom);
+            return new Rect(
+                rect.x - left,
+                rect.y - top,
+                rect.width + left + right,
+                rect.height + top + bottom);
         }
 
+        /// <summary>
+        /// 全方向に指定値だけ広げる拡張メソッド
+        /// </summary>
         public static Rect Expand(this Rect rect, float horizontal, float vertical) {
-            return new Rect(rect.x - horizontal / 2, rect.y - vertical / 2, rect.width + horizontal, rect.height + vertical);
+            return new Rect(
+                rect.x - horizontal / 2,
+                rect.y - vertical / 2,
+                rect.width + horizontal,
+                rect.height + vertical);
         }
 
+        /// <summary>
+        /// 全方向に指定値だけ広げる拡張メソッド
+        /// </summary>
         public static Rect Expand(this Rect rect, float expand) {
-            return new Rect(rect.x - expand, rect.y - expand, rect.width + 2 * expand, rect.height + 2 * expand);
+            return new Rect(
+                rect.x - expand,
+                rect.y - expand,
+                rect.width + 2 * expand,
+                rect.height + 2 * expand);
         }
 
+        /// <summary>
+        /// 左右方向にそれぞれ指定値だけ広げる拡張メソッド
+        /// </summary>
+        public static Rect ExpandX(this Rect rect, float value) {
+            rect.xMin -= value;
+            rect.xMax += value;
+            return rect;
+        }
+
+        /// <summary>
+        /// 上下方向にそれぞれ指定値だけ広げる拡張メソッド
+        /// </summary>
+        public static Rect ExpandY(this Rect rect, float value) {
+            rect.yMin -= value;
+            rect.yMax += value;
+            return rect;
+        }
+
+        /// <summary>
+        /// 指定座標を含むように広げる拡張メソッド
+        /// </summary>
         public static Rect ExpandTo(this Rect rect, Vector2 pos) {
             if (!rect.Contains(pos)) {
                 rect.xMin = Mathf.Min(rect.xMin, pos.x);
@@ -229,6 +276,47 @@ namespace nitou {
             }
             return rect;
         }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region Padding
+
+        public static Rect Padding(this Rect rect, float left, float right, float top, float bottom) {
+            return new Rect(
+                rect.x + left,
+                rect.y + top,
+                rect.width - left - right,
+                rect.height - top - bottom);
+        }
+
+        public static Rect Padding(this Rect rect, float horizontal, float vertical) {
+            return new Rect(
+                rect.x + horizontal,
+                rect.y + vertical,
+                rect.width - 2 * horizontal,
+                rect.height - 2 * vertical);
+        }
+
+        public static Rect Padding(this Rect rect, float padding) {
+            return new Rect(
+                rect.x + padding,
+                rect.y + padding,
+                rect.width - 2 * padding,
+                rect.height - 2 * padding);
+        }
+
+        /// <summary>
+        /// 全方向に指定値だけ縮小する拡張メソッド
+        /// </summary>
+        public static Rect Padding(this Rect rect, Padding padding) {
+            return new Rect(
+                rect.x + padding.left,
+                rect.y + padding.top,
+                rect.width - padding.Width,
+                rect.height - padding.Height);
+        }
+
         #endregion
 
 
@@ -274,21 +362,46 @@ namespace nitou {
             return rect;
         }
 
-        public static Rect Padding(this Rect rect, float left, float right, float top, float bottom) {
-            return new Rect(rect.x + left, rect.y + top, rect.width - left - right, rect.height - top - bottom);
-        }
 
-        public static Rect Padding(this Rect rect, float horizontal, float vertical) {
-            return new Rect(rect.x + horizontal, rect.y + vertical, rect.width - 2 * horizontal, rect.height - 2 * vertical);
-        }
-
-        public static Rect Padding(this Rect rect, float padding) {
-            return new Rect(rect.x + padding, rect.y + padding, rect.width - 2 * padding, rect.height - 2 * padding);
-        }
 
 
         /// ----------------------------------------------------------------------------
         #region Split
+
+        /// <summary>
+        /// 左半分を取得する拡張メソッド
+        /// </summary>
+        public static Rect LeftHalf(this Rect rect) {
+            rect.width /= 2;
+            return rect;
+        }
+
+        /// <summary>
+        /// 右半分を取得する拡張メソッド
+        /// </summary>
+        public static Rect RightHalf(this Rect rect) {
+            rect.width /= 2;
+            rect.x += rect.width / 2;
+            return rect;
+        }
+
+        /// <summary>
+        /// 上半分を取得する拡張メソッド
+        /// </summary>
+        public static Rect TopHalf(this Rect rect) {
+            rect.height /= 2;
+            return rect;
+        }
+
+        /// <summary>
+        /// 下半分を取得する拡張メソッド
+        /// </summary>
+        public static Rect BottomHalf(this Rect rect) {
+            rect.height /= 2;
+            rect.y += rect.height / 2;
+            return rect;
+        }
+
 
         /// <summary>
         /// 水平方向に指定数で分割する拡張メソッド
@@ -330,15 +443,34 @@ namespace nitou {
             return rects;
         }
         #endregion
-    }
 
+
+        /// ----------------------------------------------------------------------------
+        #region Misc
+
+        public static Vector2[] GetCorners(this Rect rect) {
+            return new Vector2[]{
+                new Vector2(rect.xMin, rect.yMin),
+                new Vector2(rect.xMax, rect.yMin),
+                new Vector2(rect.xMax, rect.yMax),
+                new Vector2(rect.xMin, rect.yMax),
+            };
+        }
+
+
+        #endregion
+
+    }
 
     public static class RectUtil {
 
+
         public static Rect Create(Vector2 center, Vector2 size) {
-            Vector2 position = center - size / 2;
-            return new Rect(position, size);
+            float x = center.x - size.x / 2;
+            float y = center.y - size.y / 2;
+            return new Rect(x, y, size.x, size.y);
         }
+
     }
 
 }

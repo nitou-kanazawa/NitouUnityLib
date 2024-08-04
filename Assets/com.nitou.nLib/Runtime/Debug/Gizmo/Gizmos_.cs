@@ -30,7 +30,7 @@ namespace nitou {
         /// 線分を描画する
         /// </summary>
         public static void DrawLine(Vector3 from, Vector3 to, Color color) {
-            using  (new GizmoUtil.ColorScope(color)) {
+            using (new GizmoUtil.ColorScope(color)) {
                 Gizmos.DrawLine(from, to);
             }
         }
@@ -211,7 +211,7 @@ namespace nitou {
         /// キューブを描画する
         /// </summary>
         public static void DrawWireCube(BoxCollider collider) {
-            //GizmoDrawer.Cube.DrawWireCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+            GizmoDrawer.Cube.DrawWireCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
         }
 
         /// <summary>
@@ -219,7 +219,23 @@ namespace nitou {
         /// </summary>
         public static void DrawWireCube(BoxCollider collider, Color color) {
             using (new GizmoUtil.ColorScope(color)) {
-                GizmoDrawer.Cube.DrawWireCube(collider.bounds.center, collider.transform.rotation, collider.size);
+                GizmoDrawer.Cube.DrawWireCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+            }
+        }
+
+        /// <summary>
+        /// キューブを描画する
+        /// </summary>
+        public static void DrawWireCube(Shapes.Box box) {
+            GizmoDrawer.Cube.DrawWireCube(box.position, box.rotation, box.size);
+        }
+
+        /// <summary>
+        /// キューブを描画する
+        /// </summary>
+        public static void DrawWireCube(Shapes.Box box, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawWireCube(box.position, box.rotation, box.size);
             }
         }
 
@@ -269,7 +285,23 @@ namespace nitou {
         /// </summary>
         public static void DrawCube(Transform transform, Vector3 size, Color color) {
             using (new GizmoUtil.ColorScope(color)) {
-                GizmoDrawer.Cube.DrawCube( transform.position, transform.rotation, size);
+                GizmoDrawer.Cube.DrawCube(transform.position, transform.rotation, size);
+            }
+        }
+
+        /// <summary>
+        /// キューブを描画する
+        /// </summary>
+        public static void DrawCube(Shapes.Box box) {
+            GizmoDrawer.Cube.DrawCube(box.position, box.rotation, box.size);
+        }
+
+        /// <summary>
+        /// キューブを描画する
+        /// </summary>
+        public static void DrawCube(Shapes.Box box, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawCube(box.position, box.rotation, box.size);
             }
         }
         #endregion

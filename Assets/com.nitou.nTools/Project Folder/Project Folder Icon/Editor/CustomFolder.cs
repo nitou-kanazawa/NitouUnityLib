@@ -15,7 +15,7 @@ namespace nitou.Tools.ProjectWindow {
         /// コンストラクタ（静的）
         /// </summary>
         static CustomFolder() {
-            Debug.Log($"CustomFolder constructor");
+            //Debug.Log($"CustomFolder constructor");
 
 
             IconDictionaryCreator.BuildDictionary();

@@ -1,8 +1,9 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
-using Alchemy.Inspector;
+using UnityEditor.EditorTools;
 
 // [参考]
 //  Zenn: Vector3やEnumをSceneView上で編集できるようにする https://zenn.dev/kd_gamegikenblg/articles/30b2b1139b213c
@@ -24,18 +25,69 @@ namespace nitou.LevelObjects.EditorScripts{
             _instance = target as WayPoints;
         }
 
+        private void OnDisable() {
+            _instance = null;
+        }
+
         private void OnSceneGUI() {
+            if (_instance == null) return;
 
-            // Handle
-            foreach(var wayPoint in _instance.Points) {
-                EditorGUI.BeginChangeCheck();
-                Vector3 newPosition = Handles.PositionHandle(wayPoint.position, Quaternion.identity);
+            // [参考]
+            //  LIGHT11: HandleCapがクリックされたことを取得する https://light11.hatenadiary.com/entry/2018/03/20/003345
+            //  StackOverflow: エディターハンドルを選択してプロパティインスペクターウィンドウを表示する方法 https://stackoverflow.com/questions/51238340/how-to-make-editor-handles-selectable-to-display-properties-inspector-window
 
-                // 変更の反映
-                if (EditorGUI.EndChangeCheck()) {
-                    Undo.RecordObject(_instance, "Move WayPoint");
-                    wayPoint.position = newPosition;
+            _instance.Targets.ForEach((point, index) => {
+
+                bool isSelectedBox = (point == _instance.Selected);
+
+                int controlId = GUIUtility.GetControlID(FocusType.Passive);
+                var capSize = HandleUtility.GetHandleSize(_instance.transform.TransformPoint(point.position)) * 0.2f;
+
+                // ※スコープ内のHandleメソッドはローカル座標で指定できる
+                using (new Handles.DrawingScope(_instance.transform.localToWorldMatrix)) {
+
+                    // 選択用ハンドルキャップの描画
+                    if (Event.current.type.IsRepaintOrLayout()) {
+                        var color = isSelectedBox ? Colors.Orange : Colors.White;
+                        using (new Handles.DrawingScope(color)) {
+                            Handles.SphereHandleCap(controlId, point.position, Quaternion.identity, capSize, Event.current.type);
+                        }
+                    }
+
+                    // 選択アイテムの更新
+                    else if (Event.current.type == EventType.MouseDown) {
+                        // クリックした部分にあるもののControlIdが一致したら選択中とする
+                        //if (controlId == EditorGUIUtility.hotControl) {
+                        if (controlId == HandleUtility.nearestControl) {
+                            _instance.Select(point);
+
+                            // Editor Toolの選択
+                            ToolManager.SetActiveTool(typeof(MoveTool));
+                        }
+                    }
+
+                    // 原点から選択アイテムまでの破線
+                    if (isSelectedBox) {
+                        using (new Handles.DrawingScope(Colors.GreenYellow)) {
+                            Handles.DrawDottedLine(Vector3.zero, point.position, 4);
+                        }
+                    }
+
+                    // ラベル
+                    Styles.label.normal.textColor = point.GetColor();
+                    Handles.Label(point.position, $"\n\n{index}: {point.tag}", Styles.label);
                 }
+            });
+
+            /*
+
+            // 破線
+            using (new Handles.DrawingScope(_instance.transform.localToWorldMatrix)) {
+                for(int i=0; i< _instance.Count; i++) {
+                    var point = _instance.ta
+
+                }
+                Handles.DrawDottedLines(_instance.Targets.Select(p => p.position).ToArray(), 4);
             }
 
             // Others
@@ -67,12 +119,56 @@ namespace nitou.LevelObjects.EditorScripts{
                 Handles.EndGUI();
             }
 
+            */
+
         }
+
+        
 
 
         /// ----------------------------------------------------------------------------
         // Private Method
 
+        // [参考]
+        //  kanのメモ帳: Unityエディタの左上に独自の機能を追加出来るEditorTool https://kan-kikuchi.hatenablog.com/entry/EditorTool
+        //  UnityDocument: EditorTool https://docs.unity3d.com/ja/2022.1/ScriptReference/EditorTools.EditorTool.html
+
+        [EditorTool("WayPoints/Move", typeof(WayPoints))]
+        public class MoveTool : EditorTool {
+
+            /// <summary>
+            /// EditorToolsがアクティブのときに表示されるハンドル
+            /// </summary>
+            public override void OnToolGUI(EditorWindow window) {
+                if (!(window is SceneView sceneView)) return;
+
+                var instance = target as WayPoints;
+
+                var point = instance.Selected;
+                if (point == null) return;
+
+                using (new Handles.DrawingScope(instance.transform.localToWorldMatrix)) {
+                    EditorGUI.BeginChangeCheck();
+
+                    var newPosition = Handles.PositionHandle(point.position, Quaternion.identity);
+                    if (EditorGUI.EndChangeCheck()) {
+                        Undo.RecordObject(instance, "Change WayPoint Position");
+                        point.position = newPosition;
+                    }
+                }
+            }
+        }
+
+        private static class Styles {
+            public static GUIStyle label;
+
+            static Styles() {
+                label = new GUIStyle(GUI.skin.label) {
+                    alignment = TextAnchor.MiddleCenter,
+                    fontSize = 14,
+                };
+            }
+        }
     }
 }
 #endif

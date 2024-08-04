@@ -45,27 +45,11 @@ namespace nitou{
 
             return self.transform.position;
         }
+               
 
-        /// <summary>
-        /// グローバル座標に変換したコライダー中心座標を取得する拡張メソッド
-        /// </summary>
-        public static Vector3 GetWorldCenter(this BoxCollider self) {
-            return self.transform.TransformPoint(self.center);
-        }
+        
 
-        /// <summary>
-        /// グローバル座標に変換したコライダー中心座標を取得する拡張メソッド
-        /// </summary>
-        public static Vector3 GetWorldCenter(this SphereCollider self) {
-            return self.transform.TransformPoint(self.center);
-        }
-
-        /// <summary>
-        /// グローバル座標に変換したコライダー中心座標を取得する拡張メソッド
-        /// </summary>
-        public static Vector3 GetWorldCenter(this CapsuleCollider self) {
-            return self.transform.TransformPoint(self.center);
-        }
+        
         #endregion
     }
 }

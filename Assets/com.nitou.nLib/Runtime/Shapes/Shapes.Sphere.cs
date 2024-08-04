@@ -18,12 +18,19 @@ namespace nitou {
             /// ----------------------------------------------------------------------------
             // Public Method
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             public Sphere(Vector3 position, Quaternion rotation, float radius)
                 : base(position, rotation) {
                 this.radius = radius;
             }
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             private Sphere() { }
+
 
             public override string ToString() {
                 return $"[Sphere] position: {position}, rotation: {eulerAngle}, radius: {radius}";

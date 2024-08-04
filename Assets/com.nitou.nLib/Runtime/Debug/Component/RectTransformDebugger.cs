@@ -9,7 +9,7 @@ using nitou.EditorShared;
 // [参考]
 // ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
 
-namespace nitou.DebugScripts {
+namespace nitou.DebugInternal {
 
     /// <summary>
     /// <see cref="RectTransform"/>の各プロパティを可視化するためのデバッグ用コンポーネント

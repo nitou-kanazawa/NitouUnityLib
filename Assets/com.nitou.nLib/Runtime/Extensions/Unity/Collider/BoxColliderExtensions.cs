@@ -12,12 +12,26 @@ namespace nitou {
     /// </summary>
     public static partial class BoxColliderExtensions {
 
+        /// ----------------------------------------------------------------------------
+        // 
+
+        /// <summary>
+        /// グローバル座標に変換したコライダー中心座標を取得する拡張メソッド
+        /// </summary>
+        public static Vector3 GetWorldCenter(this BoxCollider box) {
+            return box.transform.TransformPoint(box.center);
+        }
+
         /// <summary>
         /// 親階層を考慮したスケールを取得する拡張メソッド
         /// </summary>
         public static Vector3 GetScaledSize(this BoxCollider box) {
             return Vector3.Scale(box.transform.lossyScale, box.size);
         }
+
+
+        /// ----------------------------------------------------------------------------
+
 
         /// <summary>
         /// 点が<see cref="BoxCollider"/>の内部に含まれるか判定する拡張メソッド

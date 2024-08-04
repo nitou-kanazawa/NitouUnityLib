@@ -521,11 +521,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _points:
-  - position: {x: -1.889849, y: 0, z: 1.6992401}
+  - position: {x: -3.1920695, y: 0, z: 1.4547223}
     tag: 3
-  - position: {x: -2.2402656, y: 0, z: -0.836795}
+  - position: {x: -1.3792443, y: 0, z: -1.8961709}
     tag: 0
-  - position: {x: 1.3091494, y: 0, z: -1.7716825}
+  - position: {x: 1.1993649, y: 0.57168984, z: -2.8296099}
+    tag: 1
+  - position: {x: 4.680069, y: 0.3571217, z: -2.3360472}
+    tag: 0
+  - position: {x: 4.907947, y: 0, z: 4.2323194}
     tag: 0
 --- !u!4 &1127557622
 Transform:
@@ -535,7 +539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127557620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.56, y: 0, z: 0.33}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

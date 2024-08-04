@@ -34,6 +34,18 @@ namespace nitou {
                 this.size = size;
             }
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            public Box(BoxCollider collider) {
+                this.position = collider.GetWorldCenter();
+                this.eulerAngle = collider.transform.rotation.eulerAngles;
+                this.size = collider.GetScaledSize();
+            }
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             private Box(){}
 
             public override string ToString() {
@@ -55,16 +67,16 @@ namespace nitou {
         /// <summary>
         /// 形状情報を取得する
         /// </summary>
-        public static Shapes.Box GetVolume(this BoxCollider self) {
+        //public static Shapes.Box GetVolume(this BoxCollider self) {
 
-            // ワールド座標系での位置，回転，サイズ
-            Vector3 worldCenter = self.transform.TransformPoint(self.center);
-            Quaternion worldRotation = self.transform.rotation;
-            Vector3 worldSize = Vector3.Scale(self.transform.lossyScale, self.size);
+        //    // ワールド座標系での位置，回転，サイズ
+        //    Vector3 worldCenter = self.transform.TransformPoint(self.center);
+        //    Quaternion worldRotation = self.transform.rotation;
+        //    Vector3 worldSize = Vector3.Scale(self.transform.lossyScale, self.size);
 
-            // Boxのプロパティを設定
-            var boxShape = new Shapes.Box(worldCenter, worldRotation, worldSize);
-            return boxShape;
-        }
+        //    // Boxのプロパティを設定
+        //    var boxShape = new Shapes.Box(worldCenter, worldRotation, worldSize);
+        //    return boxShape;
+        //}
     }
 }

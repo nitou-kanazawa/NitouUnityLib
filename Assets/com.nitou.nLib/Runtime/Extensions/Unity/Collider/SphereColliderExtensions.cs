@@ -8,6 +8,16 @@ namespace nitou {
     /// </summary>
     public static class SphereColliderExtensions {
 
+        /// ----------------------------------------------------------------------------
+        // 
+
+        /// <summary>
+        /// グローバル座標に変換したコライダー中心座標を取得する拡張メソッド
+        /// </summary>
+        public static Vector3 GetWorldCenter(this SphereCollider self) {
+            return self.transform.TransformPoint(self.center);
+        }
+
         /// <summary>
         /// 親階層を考慮した半径を取得する拡張メソッド
         /// </summary>
@@ -15,6 +25,10 @@ namespace nitou {
             // (※Sphereコライダーは常に球形を維持して，半径に各軸の最大スケールが適用される)
             return sphere.radius * MathUtil.Max(sphere.transform.lossyScale);
         }
+
+
+        /// ----------------------------------------------------------------------------
+
 
         /// <summary>
         /// 指定座標が<see cref="SphereCollider"/>の内部に含まれるか判定する拡張メソッド
