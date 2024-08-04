@@ -26,7 +26,7 @@ namespace nitou.DebugFuncition {
             }
 
             var matrix = Matrix4x4.TRS(center, rotation, size);
-            using ( new Gizmos_.MatrixScope(matrix)){
+            using ( new GizmoUtil.MatrixScope(matrix)){
                 
                 // ï`âÊèàóù
                 switch (type) {

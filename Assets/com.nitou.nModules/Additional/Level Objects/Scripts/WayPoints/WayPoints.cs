@@ -26,7 +26,7 @@ namespace nitou.LevelObjects{
         /// ----------------------------------------------------------------------------
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected() {
-            //Gizmos_.DrawLines(_points.Select(x => x.position).ToList(), Colors.GreenYellow);
+            Gizmos_.DrawLines(_points.Select(x => x.position).ToList(), Colors.GreenYellow);
         }
 #endif
 

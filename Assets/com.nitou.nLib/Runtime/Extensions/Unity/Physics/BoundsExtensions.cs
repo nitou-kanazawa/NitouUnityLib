@@ -39,7 +39,7 @@ namespace nitou {
         /// Gizmoを表示する拡張メソッド
         /// </summary>
         public static void DrawGizmo(this Bounds self){
-            using (new Gizmos_.ColorScope(Color.green)) {
+            using (new GizmoUtil.ColorScope(Color.green)) {
                 Gizmos.DrawWireCube(self.center, self.size);
             }
         }

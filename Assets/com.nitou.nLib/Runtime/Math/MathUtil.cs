@@ -6,10 +6,8 @@ namespace nitou{
     public static class MathUtil{
 
         private const int MIN_SEGMENT = 3;
-
         
-
-
+        
         /// ----------------------------------------------------------------------------
         #region ‰~Œ`À•W
 
@@ -17,14 +15,14 @@ namespace nitou{
         /// ‰~ã‚ÌÀ•W‚ğæ“¾‚·‚é
         /// </summary>
         public static List<Vector3> CirclePoints(float radius = 1f, int segments = 20,
-            Vector3 offset = default, bool includeLast = true,
+            Vector3 offset = default, bool isLoop = true,
             PlaneType type = PlaneType.ZX) {
 
             var pointCount = Mathf.Max(segments, MIN_SEGMENT);
             var deltaAngle = (Mathf.PI * 2) / pointCount;
 
             // ¦360“x‚Ì“_‚àŠÜ‚ß‚½‚¢ê‡‚Í{‚P
-            if (includeLast) pointCount++;
+            if (isLoop) pointCount++;
 
             // “_—ñ‚ÌŒvZ
             var points = new List<Vector3>();
@@ -37,8 +35,8 @@ namespace nitou{
         /// <summary>
         /// ‰~ã‚ÌÀ•W‚ğæ“¾‚·‚é
         /// </summary>
-        public static Vector3 CirclePoint(float radius, float angle, PlaneType type = PlaneType.ZX) =>
-            type switch {
+        public static Vector3 CirclePoint(float radius, float angle, PlaneType type = PlaneType.ZX) {
+         return type switch {
                 PlaneType.XY => new Vector3(
                     x: radius * Mathf.Cos(angle),
                     y: radius * Mathf.Sin(angle),
@@ -53,10 +51,7 @@ namespace nitou{
                     z: radius * Mathf.Cos(angle)),
                 _ => throw new System.NotImplementedException()
             };
-
-        
-
-
+        }      
         #endregion
 
 

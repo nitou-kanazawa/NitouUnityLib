@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 // [参考]
 //  _: Gizmosで平面を描画する https://nyama41.hatenablog.com/entry/draw_gizmos_plane
 
 namespace nitou {
-    public partial class Gizmos_ {
+    public partial class GizmoUtil {
 
         /// <summary>
         /// Gizmoに<see cref="Color"/>を適用するスコープ

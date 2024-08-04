@@ -26,7 +26,7 @@ namespace nitou {
         /// <summary>
         /// 平面に対応した法線ベクトルを取得する
         /// </summary>
-        public static Vector3 GetNormal(PlaneType type) {
+        public static Vector3 GetNormal(this PlaneType type) {
             return type switch {
                 PlaneType.XY => Vector3.forward,
                 PlaneType.YZ => Vector3.right,
