@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 // [参考]
@@ -21,7 +20,7 @@ namespace nitou.DebugInternal {
 
 
             /// ----------------------------------------------------------------------------
-            #region 描画メソッド (Gizmo)
+            #region 描画メソッド
 
             /// <summary>
             /// 位置，方向を指定して矢印を描画する

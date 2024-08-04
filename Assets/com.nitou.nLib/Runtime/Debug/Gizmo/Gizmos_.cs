@@ -8,8 +8,7 @@ using UnityEngine;
 
 namespace nitou {
     using nitou.DebugInternal;
-    using nitou.DebugFuncition;
-    //using ArrowType = nitou.DebugFuncition.ArrowDrawer.ArrowType;
+    using ArrowType = nitou.DebugInternal.GizmoDrawer.Arrow.ArrowType;
 
     //using CubeType = nitou.DebugFuncition.CubeDrawer.Type;
     //using CircleType = nitou.MathUtil.PlaneType;
@@ -71,24 +70,22 @@ namespace nitou {
         #endregion
 
 
-        /*
-
-
         /// ----------------------------------------------------------------------------
         #region 3Dê}å` (Ray)
 
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawRayArrow(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) =>
-            ArrowDrawer.DrawRayArrow_ForGizmo(ArrowType.Solid, pos, direction, arrowHeadLength, arrowHeadAngle);
+        public static void DrawRayArrow(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+            GizmoDrawer.Arrow.DrawRayArrow(ArrowType.Solid, pos, direction, arrowHeadLength, arrowHeadAngle);
+        }
 
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawRayArrow(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-            using (GizmoScope.ColorScope(color)) {
-                ArrowDrawer.DrawRayArrow_ForGizmo(ArrowType.Solid, pos, direction, arrowHeadLength, arrowHeadAngle);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Arrow.DrawRayArrow(ArrowType.Solid, pos, direction, arrowHeadLength, arrowHeadAngle);
             }
         }
 
@@ -97,38 +94,42 @@ namespace nitou {
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawLineArrow(Vector3 from, Vector3 to, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) =>
-            ArrowDrawer.DrawLineArrow_ForGizmo(ArrowType.Solid, from, to, arrowHeadLength, arrowHeadAngle);
+        public static void DrawLineArrow(Vector3 from, Vector3 to, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+            GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, from, to, arrowHeadLength, arrowHeadAngle);
+        }
 
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawLineArrow(Vector3 from, Vector3 to, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-            using (GizmoScope.ColorScope(color)) {
-                ArrowDrawer.DrawLineArrow_ForGizmo(ArrowType.Solid, from, to, arrowHeadLength, arrowHeadAngle);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, from, to, arrowHeadLength, arrowHeadAngle);
             }
         }
 
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawLineArrow(LineSegment2 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-            using (GizmoScope.ColorScope(color)) {
-                ArrowDrawer.DrawLineArrow_ForGizmo(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
-            }
-        }
+        //public static void DrawLineArrow(LineSegment2 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        //    using (new GizmoUtil.ColorScope(color)) {
+        //        GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
+        //    }
+        //}
 
         /// <summary>
         /// ñÓàÛÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawLineArrow(LineSegment3 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-            using (GizmoScope.ColorScope(color)) {
-                ArrowDrawer.DrawLineArrow_ForGizmo(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
-            }
-        }
+        //public static void DrawLineArrow(LineSegment3 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+        //    using (new GizmoUtil.ColorScope(color)) {
+        //        GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
+        //    }
+        //}
+
+
         #endregion
 
 
+        /*
 
 
         /// ----------------------------------------------------------------------------
@@ -160,66 +161,73 @@ namespace nitou {
 
         #endregion
 
+
+        */
+
         /// ----------------------------------------------------------------------------
         #region 3Dê}å` (Cube)
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCube(Vector3 center, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.WireCube, center, Quaternion.identity, size);
+        public static void DrawWireCube(Vector3 center, Vector3 size) {
+            GizmoDrawer.Cube.DrawWireCube(center, Quaternion.identity, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCube(Vector3 center, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.WireCube, center, Quaternion.identity, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawWireCube(center, Quaternion.identity, size);
             }
         }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCube(Vector3 center, Quaternion rotation, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.WireCube, center, rotation, size);
+        public static void DrawWireCube(Vector3 center, Quaternion rotation, Vector3 size) {
+            GizmoDrawer.Cube.DrawWireCube(center, rotation, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCube(Vector3 center, Quaternion rotation, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.WireCube, center, rotation, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawWireCube(center, rotation, size);
             }
         }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCube(Transform transform, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.WireCube, transform.position, transform.rotation, size);
+        public static void DrawWireCube(Transform transform, Vector3 size) {
+            GizmoDrawer.Cube.DrawWireCube(transform.position, transform.rotation, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCube(Transform transform, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.WireCube, transform.position, transform.rotation, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawWireCube(transform.position, transform.rotation, size);
             }
         }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCube(BoxCollider collider) =>
-            CubeDrawer.DrawCube(CubeType.WireCube, collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+        public static void DrawWireCube(BoxCollider collider) {
+            //GizmoDrawer.Cube.DrawWireCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCube(BoxCollider collider, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.WireCube, collider.bounds.center, collider.transform.rotation, collider.size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawWireCube(collider.bounds.center, collider.transform.rotation, collider.size);
             }
         }
 
@@ -228,48 +236,53 @@ namespace nitou {
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawCube(Vector3 center, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.Cube, center, Quaternion.identity, size);
+        public static void DrawCube(Vector3 center, Vector3 size) {
+            GizmoDrawer.Cube.DrawCube(center, Quaternion.identity, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawCube(Vector3 center, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.Cube, center, Quaternion.identity, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawCube(center, Quaternion.identity, size);
             }
         }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawCube(Vector3 center, Quaternion rotation, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.Cube, center, rotation, size);
+        public static void DrawCube(Vector3 center, Quaternion rotation, Vector3 size) {
+            GizmoDrawer.Cube.DrawCube(center, rotation, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawCube(Vector3 center, Quaternion rotation, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.Cube, center, rotation, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawCube(center, rotation, size);
             }
         }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawCube(Transform transform, Vector3 size) =>
-            CubeDrawer.DrawCube(CubeType.Cube, transform.position, transform.rotation, size);
+        public static void DrawCube(Transform transform, Vector3 size) {
+            GizmoDrawer.Cube.DrawCube(transform.position, transform.rotation, size);
+        }
 
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawCube(Transform transform, Vector3 size, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CubeDrawer.DrawCube(CubeType.Cube, transform.position, transform.rotation, size);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawCube( transform.position, transform.rotation, size);
             }
         }
         #endregion
+
+
 
 
         /// ----------------------------------------------------------------------------
@@ -279,7 +292,7 @@ namespace nitou {
         /// ãÖÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireSphere(Vector3 position, float radius, Color color) {
-            using (GizmoScope.ColorScope(color)) {
+            using (new GizmoUtil.ColorScope(color)) {
                 Gizmos.DrawWireSphere(position, radius);
             }
         }
@@ -288,11 +301,10 @@ namespace nitou {
         /// ãÖÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawSphere(Vector3 position, float radius, Color color) {
-            using (GizmoScope.ColorScope(color)) {
+            using (new GizmoUtil.ColorScope(color)) {
                 Gizmos.DrawSphere(position, radius);
             }
         }
-
         #endregion
 
 
@@ -302,30 +314,32 @@ namespace nitou {
         /// <summary>
         /// â~íåÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCylinder(Vector3 center, float radius, float height) =>
-            CylinderDrawer.DrawWireCylinder(CircleType.ZX, center, Quaternion.identity, radius, height);
+        public static void DrawWireCylinder(Vector3 center, float radius, float height) {
+            GizmoDrawer.Cylinder.DrawWireCylinder(PlaneType.ZX, center, Quaternion.identity, radius, height);
+        }
 
         /// <summary>
         /// â~íåÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCylinder(Vector3 center, float radius, float height, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CylinderDrawer.DrawWireCylinder(CircleType.ZX, center, Quaternion.identity, radius, height);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cylinder.DrawWireCylinder(PlaneType.ZX, center, Quaternion.identity, radius, height);
             }
         }
 
         /// <summary>
         /// â~íåÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCylinder(Transform transform, float radius, float height) =>
-            CylinderDrawer.DrawWireCylinder(CircleType.ZX, transform.position, transform.rotation, radius, height);
+        public static void DrawWireCylinder(Transform transform, float radius, float height) {
+            GizmoDrawer.Cylinder.DrawWireCylinder(PlaneType.ZX, transform.position, transform.rotation, radius, height);
+        }
 
         /// <summary>
         /// â~íåÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCylinder(Transform transform, float radius, float height, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CylinderDrawer.DrawWireCylinder(CircleType.ZX, transform.position, transform.rotation, radius, height);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cylinder.DrawWireCylinder(PlaneType.ZX, transform.position, transform.rotation, radius, height);
             }
         }
         #endregion
@@ -337,21 +351,23 @@ namespace nitou {
         /// <summary>
         /// â~êçÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCone(Vector3 center, float radius, float height) =>
-            CylinderDrawer.DrawWireCone(CircleType.ZX, center, Quaternion.identity, radius, height);
+        public static void DrawWireCone(Vector3 center, float radius, float height) {
+            GizmoDrawer.Cylinder.DrawWireCone(PlaneType.ZX, center, Quaternion.identity, radius, height);
+        }
 
         /// <summary>
         /// â~êçÇï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCone(Transform transform, float radius, float height) =>
-            CylinderDrawer.DrawWireCone(CircleType.ZX, transform.position, transform.rotation, radius, height);
+        public static void DrawWireCone(Transform transform, float radius, float height) {
+            GizmoDrawer.Cylinder.DrawWireCone(PlaneType.ZX, transform.position, transform.rotation, radius, height);
+        }
 
         /// <summary>
         /// â~êçÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCone(Transform transform, float radius, float height, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                CylinderDrawer.DrawWireCone(CircleType.ZX, transform.position, transform.rotation, radius, height);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cylinder.DrawWireCone(PlaneType.ZX, transform.position, transform.rotation, radius, height);
             }
         }
         #endregion
@@ -361,21 +377,28 @@ namespace nitou {
         #region 3Dê}å` (Mesh)
 
         /// <summary>
-        /// ãÖÇï`âÊÇ∑ÇÈ
+        /// ÉÅÉbÉVÉÖÇï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawMesh(Mesh mesh, Vector3 position, Quaternion rotation, Color color) {
-            using (GizmoScope.ColorScope(color)) {
+            using (new GizmoUtil.ColorScope(color)) {
                 Gizmos.DrawMesh(mesh, position, rotation);
             }
         }
 
+        /// <summary>
+        /// ÉÅÉbÉVÉÖÇï`âÊÇ∑ÇÈ
+        /// </summary>
+        public static void DrawMesh(Mesh mesh, Transform transform, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                Gizmos.DrawMesh(mesh, transform.position, transform.rotation);
+            }
+        }
         #endregion
 
 
 
 
 
-        */
     }
 
 }

@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeAppLauncher: 0
   text: 
+  s: 0
+  _referenceResolution: {x: 1920, y: 1080}
+  _screenCanvasSortingOrder: 10
+  _overlayCanvasSortingOrder: 100
