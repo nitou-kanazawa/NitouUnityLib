@@ -3,13 +3,48 @@ using UnityEngine;
 
 namespace nitou{
 
+    /// <summary>
+    /// <see cref="Mathf"/>に足りない機能を提供するユーティリティクラス
+    /// </summary>
     public static class MathUtil{
 
-        private const int MIN_SEGMENT = 3;
-        
-        
+        /// ----------------------------------------------------------------------------
+        #region 要素の取得
+
+        /// <summary>
+        /// 要素の最大値を返す
+        /// </summary>
+        public static float Max(Vector2 vector) {
+            return Mathf.Max(vector.x, vector.y);
+        }
+
+        /// <summary>
+        /// 要素の最大値を返す
+        /// </summary>
+        public static float Max(Vector3 vector) {
+            return Mathf.Max(vector.x, vector.y, vector.z);
+        }
+
+        /// <summary>
+        /// 要素の最小値を返す
+        /// </summary>
+        public static float Min(Vector2 vector) {
+            return Mathf.Min(vector.x, vector.y);
+        }
+
+        /// <summary>
+        /// 要素の最小値を返す
+        /// </summary>
+        public static float Min(Vector3 vector) {
+            return Mathf.Min(vector.x, vector.y, vector.z);
+        }
+        #endregion
+
+
         /// ----------------------------------------------------------------------------
         #region 円形座標
+
+        private const int MIN_SEGMENT = 3;
 
         /// <summary>
         /// 円上の座標を取得する

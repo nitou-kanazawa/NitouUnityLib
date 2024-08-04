@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -6,6 +5,7 @@ using UnityEditor;
 
 // [参考]
 //  _: フィールドの値などをインスペクタで横に並べて表示する   http://fantom1x.blog130.fc2.com/blog-entry-419.html
+//  LIGHT11: Serializableなクラスにはデフォルトコンストラクタを忘れずつけようという話 https://light11.hatenadiary.com/entry/2022/12/26/191200
 
 namespace nitou {
 

@@ -85,7 +85,6 @@ namespace nitou {
                 .Select(i => start + i * step)
                 .TakeWhile(value => value <= end);
         }
-
         #endregion
 
 

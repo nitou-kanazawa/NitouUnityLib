@@ -14,7 +14,6 @@ namespace nitou {
     /// </summary>
     public static class Gizmos_ {
 
-
         /// ----------------------------------------------------------------------------
         #region 3Dê}å`
 
