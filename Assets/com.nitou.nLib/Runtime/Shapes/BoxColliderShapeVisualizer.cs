@@ -12,19 +12,24 @@ namespace nitou {
             if (!drawGizmo) return;
 
             // BoxColliderを取得
-            BoxCollider boxCollider = GetComponent<BoxCollider>();
-            if (boxCollider == null) return;
+            //BoxCollider boxCollider = GetComponent<BoxCollider>();
+            //if (boxCollider == null) return;
 
-            // GetShapeメソッドを使用してBoxShapeを取得
-            Shapes.Box boxShape = boxCollider.GetShape();
+            //// GetShapeメソッドを使用してBoxShapeを取得
+            //Shapes.Box boxShape = boxCollider.GetShape();
 
-            // BoxColliderのGizmo描画（赤色）
-            Gizmos.color = Color.red;
-            DrawBoxColliderGizmo(boxCollider);
+            //// BoxColliderのGizmo描画（赤色）
+            //Gizmos.color = Color.red;
+            //DrawBoxColliderGizmo(boxCollider);
 
-            // BoxShapeのGizmo描画（緑色）
-            Gizmos.color = Color.green;
-            DrawBoxShapeGizmo(boxShape);
+            //// BoxShapeのGizmo描画（緑色）
+            //Gizmos.color = Color.green;
+            //DrawBoxShapeGizmo(boxShape);
+
+
+            Gizmos_.DrawCube(_box.position, _box.rotation, _box.size, new Color(0,.8f,.8f,.3f));
+            Gizmos_.DrawWireCube(_box.position, _box.rotation, _box.size, Colors.Green);
+
         }
 
         private void DrawBoxColliderGizmo(BoxCollider boxCollider) {

@@ -1,10 +1,14 @@
 {
-  "name": "com.nitou.unilib",
-  "displayName": "Nitou UniLib",
+  "name": "com.nitou.nlib",
+  "displayName": "Nitou Lib",
   "version": "0.1.0",
   "unity": "2021.2",
   "description": "Basic Libraly.",
   "keywords": [],
+  "author": {
+    "name": "Nitou",
+    "url": "https://github.com/nitou-kanazawa"
+  },
   "license": "MIT",
   "category": "",
   "dependencies": {

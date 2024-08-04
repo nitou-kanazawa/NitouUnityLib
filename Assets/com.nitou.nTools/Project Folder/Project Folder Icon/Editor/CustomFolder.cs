@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -5,15 +6,18 @@ using UnityEngine;
 // [参考]
 //  unity doqument: 起動時エディタースクリプト実行 https://docs.unity3d.com/ja/2019.4/Manual/RunningEditorCodeOnLaunch.html
 
-namespace nitou.Tools {
+namespace nitou.Tools.ProjectWindow {
 
     [InitializeOnLoad]
-    public class CustomFolder {
-        
+    internal class CustomFolder{
+
         /// <summary>
         /// コンストラクタ（静的）
         /// </summary>
         static CustomFolder() {
+            Debug.Log($"CustomFolder constructor");
+
+
             IconDictionaryCreator.BuildDictionary();
             EditorApplication.projectWindowItemOnGUI += DrawFolderIcon;
         }
@@ -52,3 +56,4 @@ namespace nitou.Tools {
         }
     }
 }
+#endif

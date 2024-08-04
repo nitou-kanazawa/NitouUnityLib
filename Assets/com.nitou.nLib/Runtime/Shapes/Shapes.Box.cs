@@ -18,8 +18,19 @@ namespace nitou {
             /// ----------------------------------------------------------------------------
             // Public Method
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             public Box(Vector3 position, Quaternion rotation, Vector3 size)
                 : base(position, rotation) {
+                this.size = size;
+            }
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            public Box(Transform transform, Vector3 size)
+                : base(transform) {
                 this.size = size;
             }
 
@@ -28,6 +39,12 @@ namespace nitou {
             public override string ToString() {
                 return $"[Box] position: {position}, rotation: {eulerAngle}, size: {size}";
             }
+
+
+
+            /// ----------------------------------------------------------------------------
+            // Public Method
+
         }
 
     }
@@ -38,7 +55,7 @@ namespace nitou {
         /// <summary>
         /// 形状情報を取得する
         /// </summary>
-        public static Shapes.Box GetShape(this BoxCollider self) {
+        public static Shapes.Box GetVolume(this BoxCollider self) {
 
             // ワールド座標系での位置，回転，サイズ
             Vector3 worldCenter = self.transform.TransformPoint(self.center);

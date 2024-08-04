@@ -1,9 +1,9 @@
 {
-  "name": "com.nitou.ntools",
-  "displayName": "Nitou Tools",
+  "name": "com.nitou.nmodules",
+  "displayName": "Nitou Modules",
   "version": "0.1.0",
   "unity": "2021.2",
-  "description": "Basic Tools.",
+  "description": "Basic Modules.",
   "keywords": [],
   "author": {
     "name": "Nitou",

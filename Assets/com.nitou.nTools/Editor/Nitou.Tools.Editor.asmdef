@@ -1,6 +1,6 @@
 {
     "name": "Nitou.Tools.Editor",
-    "rootNamespace": "nitou.Tools.Editor",
+    "rootNamespace": "nitou.Tools",
     "references": [
         "Nitou.Lib",
         "Nitou.Lib.Editor"

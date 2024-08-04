@@ -52,6 +52,14 @@ namespace nitou {
                 this.eulerAngle = rotation.eulerAngles;
             }
 
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            public ShapeBase(Transform transform) {
+                this.position = transform.position;
+                this.eulerAngle = transform.rotation.eulerAngles;
+            }
+
             protected ShapeBase() {}
 
             /// <summary>
@@ -67,13 +75,6 @@ namespace nitou {
             public Quaternion GetWorldRotaion(Transform transform) {
                 return transform.rotation * Quaternion.Euler(this.eulerAngle);
             }
-        }
-
-
-        
-    }
-
-
-    
-
+        }        
+    }   
 }
