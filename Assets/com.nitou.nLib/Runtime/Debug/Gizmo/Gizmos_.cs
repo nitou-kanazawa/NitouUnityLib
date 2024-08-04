@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,15 +9,11 @@ namespace nitou {
     using nitou.DebugInternal;
     using ArrowType = nitou.DebugInternal.GizmoDrawer.Arrow.ArrowType;
 
-    //using CubeType = nitou.DebugFuncition.CubeDrawer.Type;
-    //using CircleType = nitou.MathUtil.PlaneType;
-
     /// <summary>
     /// Gizmo描画に関する汎用機能を提供するライブラリ (※ファサードクラス)
     /// </summary>
     public static class Gizmos_ {
 
-        private static Color DefaultColor => Colors.Gray;
 
         /// ----------------------------------------------------------------------------
         #region 3D図形
@@ -44,20 +39,20 @@ namespace nitou {
         /// <summary>
         /// 線分を描画する
         /// </summary>
-        //public static void DrawLine(LineSegment2 segment, Color color) {
-        //    using (GizmoScope.ColorScope(color)) {
-        //        Gizmos.DrawLine(segment.start, segment.end);
-        //    }
-        //}
+        public static void DrawLine(LineSegment2 segment, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                Gizmos.DrawLine(segment.start, segment.end);
+            }
+        }
 
         /// <summary>
         /// 線分を描画する
         /// </summary>
-        //public static void DrawLine(LineSegment3 segment, Color color) {
-        //    using (GizmoScope.ColorScope(color)) {
-        //        Gizmos.DrawLine(segment.start, segment.end);
-        //    }
-        //}
+        public static void DrawLine(LineSegment3 segment, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                Gizmos.DrawLine(segment.start, segment.end);
+            }
+        }
 
         /// <summary>
         /// 折れ線を描画する
@@ -110,22 +105,20 @@ namespace nitou {
         /// <summary>
         /// 矢印を描画する
         /// </summary>
-        //public static void DrawLineArrow(LineSegment2 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-        //    using (new GizmoUtil.ColorScope(color)) {
-        //        GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
-        //    }
-        //}
+        public static void DrawLineArrow(LineSegment2 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
+            }
+        }
 
         /// <summary>
         /// 矢印を描画する
         /// </summary>
-        //public static void DrawLineArrow(LineSegment3 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
-        //    using (new GizmoUtil.ColorScope(color)) {
-        //        GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
-        //    }
-        //}
-
-
+        public static void DrawLineArrow(LineSegment3 segment, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Arrow.DrawLineArrow(ArrowType.Solid, segment.start, segment.end, arrowHeadLength, arrowHeadAngle);
+            }
+        }
         #endregion
 
 
@@ -283,8 +276,6 @@ namespace nitou {
         #endregion
 
 
-
-
         /// ----------------------------------------------------------------------------
         #region 3D図形 (Sphere)
 
@@ -394,12 +385,5 @@ namespace nitou {
             }
         }
         #endregion
-
-
-
-
-
     }
-
 }
-

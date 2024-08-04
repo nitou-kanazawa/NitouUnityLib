@@ -15,7 +15,7 @@ namespace nitou {
     public static class EnumerableUtil {
 
         /// ----------------------------------------------------------------------------
-        #region 補間
+        #region 補間 (要素数指定)
 
         /// <summary>
         /// 線形に配置されたデータを作成する
@@ -31,16 +31,29 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ステップサイズで線形に配置されたデータを作成する
+        /// 線形に配置されたデータを作成する
         /// </summary>
-        public static IEnumerable<float> LinspaceWithStep(float start, float end, float step) {
-            if (step <= 0) throw new InvalidOperationException("Step must be positive and non-zero.");
+        public static IEnumerable<Vector2> Linspace(Vector2 start, Vector2 end, int num = 10) {
+            if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
+            if (num == 1) return new List<Vector2> { start };
 
-            int count = (int)((end - start) / step) + 1;
+            Vector2 step = (end - start) / (num - 1);
             return Enumerable
-                .Range(0, count)
-                .Select(i => start + i * step)
-                .TakeWhile(value => value <= end);
+                .Range(0, num)
+                .Select(i => start + i * step);
+        }
+
+        /// <summary>
+        /// 線形に配置されたデータを作成する
+        /// </summary>
+        public static IEnumerable<Vector3> Linspace(Vector3 start, Vector3 end, int num = 10) {
+            if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
+            if (num == 1) return new List<Vector3> { start };
+
+            Vector3 step = (end - start) / (num - 1);
+            return Enumerable
+                .Range(0, num)
+                .Select(i => start + i * step);
         }
 
         /// <summary>
@@ -54,6 +67,25 @@ namespace nitou {
                 .Range(0, num)
                 .Select(i => Math.Pow(10, startExp + i * (endExp - startExp) / (num - 1)));
         }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 補間 (ステップ指定)
+
+        /// <summary>
+        /// ステップサイズで線形に配置されたデータを作成する
+        /// </summary>
+        public static IEnumerable<float> LinspaceWithStep(float start, float end, float step) {
+            if (step <= 0) throw new InvalidOperationException("Step must be positive and non-zero.");
+
+            int count = (int)((end - start) / step) + 1;
+            return Enumerable
+                .Range(0, count)
+                .Select(i => start + i * step)
+                .TakeWhile(value => value <= end);
+        }
+
         #endregion
 
 
