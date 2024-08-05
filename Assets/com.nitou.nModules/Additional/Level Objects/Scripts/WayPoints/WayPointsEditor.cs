@@ -57,7 +57,6 @@ namespace nitou.LevelObjects.EditorScripts {
                 }
             }
 
-
             // -----
             using (var group = new EditorUtil.GUI.FoldoutGroupScope("Title 2", _animBool2)) {
                 if (group.Visible) {
