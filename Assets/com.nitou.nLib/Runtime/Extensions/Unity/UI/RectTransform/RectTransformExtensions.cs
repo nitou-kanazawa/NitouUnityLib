@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 // [参考]
 // ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
@@ -37,6 +38,93 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
+        #region Wolrd座標
+
+        // [NOTE]
+        //  RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
+
+        /// <summary>
+        /// ワールド座標での位置を取得する
+        /// </summary>
+        public static Vector2 GetWorldPosition(this RectTransform self) {
+            self.GetWorldCorners(_corners);
+            return _corners[0];  // ※Zは無視
+        }
+
+        /// <summary>
+        /// ワールド座標でのサイズを取得する
+        /// </summary>
+        public static Vector2 GetWorldSize(this RectTransform self) {
+            self.GetWorldCorners(_corners);
+            float width = Vector3.Distance(_corners[LB], _corners[RB]);
+            float height = Vector3.Distance(_corners[LB], _corners[LT]);
+            return new Vector2(width, height);
+        }
+
+        /// <summary>
+        /// ワールド座標での幅を取得する
+        /// </summary>
+        public static float GetWorldWidth(this RectTransform self) {
+            self.GetWorldCorners(_corners);
+            float width = Vector3.Distance(_corners[LB], _corners[RB]);
+            return width;
+        }
+
+        /// <summary>
+        /// ワールド座標での高さを取得する
+        /// </summary>
+        public static float GetWorldHeight(this RectTransform self) {
+            self.GetWorldCorners(_corners);
+            float height = Vector3.Distance(_corners[LB], _corners[LT]);
+            return height;
+        }
+
+        /// <summary>
+        /// ワールド座標での位置とサイズを取得する
+        /// </summary>
+        public static (Vector2 pos, Vector2 size) GetWorldPositionAndSize(this RectTransform self) {
+            self.GetWorldCorners(_corners);
+            Vector2 pos = _corners[0];  // ※Zは無視
+            float width = Vector3.Distance(_corners[0], _corners[3]);
+            float height = Vector3.Distance(_corners[0], _corners[1]);
+            return (pos, new Vector2(width, height));
+        }
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region Viewport座標
+
+        /// <summary>
+        /// キャンバスに対する相対位置(0~1)を取得する
+        /// </summary>
+        public static Vector2 GetViewportPosition(this RectTransform self) {
+            // [NOTE]
+            // Game画面での絶対座標を取得するのが意外と困難だったため、
+            // Canvasから相対位置を取得する方針で実装.
+
+            // 直近のCanvasを取得
+            var canvas = self.GetParentCanvas();
+            if (canvas == null) {
+                Debug.LogWarning("RectTransform is not a child of a Canvas. Returning Vector2.zero.");
+                return Vector2.zero;
+            }
+            var canvasRect = canvas.GetComponent<RectTransform>();
+
+            // ワールド座標での位置・サイズ (※pixel座標ではない)
+            var (canvasPos, canvasSize) = canvasRect.GetWorldPositionAndSize();
+            var (selfPos, _) = self.GetWorldPositionAndSize();
+
+            // キャンバスの位置・サイズで正規化した座標（※canva値域 0 ~ 1）
+            return new Vector2(
+                (selfPos.x - canvasPos.x) / canvasSize.x,
+                (selfPos.y - canvasPos.y) / canvasSize.y);
+        }
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region コンポーネント取得
 
         /// <summary>
         /// 親階層をたどって所属する<see cref="Canvas"/>を取得する拡張メソッド
@@ -51,6 +139,24 @@ namespace nitou {
             }
             return null;
         }
+
+        /// <summary>
+        /// 親階層をたどって所属する<see cref="CanvasScaler"/>を取得する拡張メソッド
+        /// </summary>
+        public static CanvasScaler GetParentCanvasScaler(this RectTransform self) {
+            var canvas = self.GetParentCanvas();
+            if (canvas is null) return null;
+
+            return canvas.GetComponent<CanvasScaler>();
+        }
+
+        #endregion
+
+
+
+
+
+
 
 
         /// ----------------------------------------------------------------------------
@@ -86,8 +192,8 @@ namespace nitou {
             othrer.GetWorldCorners(_corners2);
 
             // 各コーナーをチェック
-            for (var i =0; i< CORNER_COUNT; i++) {
-                
+            for (var i = 0; i < CORNER_COUNT; i++) {
+
                 //rect1の角がrect2の内部にあるか
                 if (IsPointInsideRect(_corners[i], _corners2)) {
                     return true;

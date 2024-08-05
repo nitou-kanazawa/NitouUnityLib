@@ -4,18 +4,24 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.EditorTools;
+using UnityEditor.AnimatedValues;
 
 // [参考]
 //  Zenn: Vector3やEnumをSceneView上で編集できるようにする https://zenn.dev/kd_gamegikenblg/articles/30b2b1139b213c
 //  qiita: Unity Editorの拡張 Vector3の座標をシーンから変更できるようにする https://qiita.com/RYA234/items/13d98a49e291ee2028d7
 
-namespace nitou.LevelObjects.EditorScripts{
+namespace nitou.LevelObjects.EditorScripts {
+    using nitou.EditorShared;
 
     [CustomEditor(typeof(WayPoints))]
-    public class WayPointsEditor : Editor{
+    public class WayPointsEditor : Editor {
 
         // 操作対象
         private static WayPoints _instance = null;
+
+        // 描画用
+        private AnimBool _animBool;
+        private AnimBool _animBool2;
 
 
         /// ----------------------------------------------------------------------------
@@ -23,10 +29,45 @@ namespace nitou.LevelObjects.EditorScripts{
 
         private void OnEnable() {
             _instance = target as WayPoints;
+
+            _animBool = new AnimBool(false);
+            _animBool.valueChanged.AddListener(Repaint);
+
+            _animBool2 = new AnimBool(false);
+            _animBool2.valueChanged.AddListener(Repaint);
         }
 
         private void OnDisable() {
             _instance = null;
+        }
+
+
+        public override void OnInspectorGUI() {
+            DrawDefaultInspector();
+
+
+            // -----
+            using (var group = new EditorUtil.GUI.FoldoutGroupScope("Title", _animBool)) {
+                if (group.Visible) {
+
+                    EditorGUILayout.LabelField("Test a");
+                    EditorGUILayout.LabelField("Test b");
+                    EditorGUILayout.LabelField("Test v");
+            
+                }
+            }
+
+
+            // -----
+            using (var group = new EditorUtil.GUI.FoldoutGroupScope("Title 2", _animBool2)) {
+                if (group.Visible) {
+
+                    EditorGUILayout.LabelField("Test a");
+                    EditorGUILayout.LabelField("Test b");
+                    EditorGUILayout.LabelField("Test v");
+
+                }
+            }
         }
 
         private void OnSceneGUI() {
@@ -123,7 +164,7 @@ namespace nitou.LevelObjects.EditorScripts{
 
         }
 
-        
+
 
 
         /// ----------------------------------------------------------------------------

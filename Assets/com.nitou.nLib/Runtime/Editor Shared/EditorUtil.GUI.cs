@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 
 // [参考]
 //  _: Unityのエディタ拡張で FoldOut をかっこよくするのをやってみた https://tips.hecomi.com/entry/2016/10/15/004144
@@ -99,6 +100,10 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             #region Foldout
 
+            // [参考]
+            //  _: Unity のエディタ拡張で FoldOut をかっこよくするのをやってみた https://tips.hecomi.com/entry/2016/10/15/004144 
+            //  github: https://github.com/Unity-Technologies/MissilesPerfectMaster/blob/master/Assets/CinematicEffects/Common/Editor/EditorGUIHelper.cs
+
             /// <summary>
             /// Foldout可能なヘッダーを表示する
             /// </summary>
@@ -133,6 +138,73 @@ namespace nitou.EditorShared {
 
                 return display;
             }
+
+
+            public static bool Header(SerializedProperty group, SerializedProperty enabledField) {
+                var display = group == null || group.isExpanded;
+                var enabled = enabledField != null && enabledField.boolValue;
+                var title = group == null ? "Unknown Group" : ObjectNames.NicifyVariableName(group.displayName);
+
+                Rect rect = GUILayoutUtility.GetRect(16f, 22f, Styles.folderHeader);
+                UnityEngine.GUI.Box(rect, title, Styles.folderHeader);
+
+                Rect toggleRect = new Rect(rect.x + 4f, rect.y + 4f, 13f, 13f);
+                if (Event.current.type == EventType.Repaint)
+                    Styles.headerCheckbox.Draw(toggleRect, false, false, enabled, false);
+
+                var e = Event.current;
+
+                if (e.type == EventType.MouseDown) {
+                    if (toggleRect.Contains(e.mousePosition) && enabledField != null) {
+                        enabledField.boolValue = !enabledField.boolValue;
+                        e.Use();
+                    } else if (rect.Contains(e.mousePosition) && group != null) {
+                        display = !display;
+                        group.isExpanded = !group.isExpanded;
+                        e.Use();
+                    }
+                }
+                return display;
+            }
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public class FoldoutGroupScope : UnityEngine.GUI.Scope {
+
+                // 内部スコープ要素
+                private readonly EditorGUILayout.FadeGroupScope _fadeGroup;
+                private readonly EditorGUI.IndentLevelScope _indentScope;
+                private readonly EditorGUILayout.VerticalScope _verticalScope;
+
+                public bool Visible => _fadeGroup.visible;
+
+                /// <summary>
+                /// コンストラクタ
+                /// </summary>
+                public FoldoutGroupScope(string headerTitle, AnimBool animBool, bool withBackdrop = false) {
+
+                    if (withBackdrop) {
+                        _verticalScope = new EditorGUILayout.VerticalScope(UnityEngine.GUI.skin.box);
+                    }
+
+                    animBool.target = EditorUtil.GUI.FoldoutHeader(headerTitle, animBool.target);
+                    _fadeGroup = new EditorGUILayout.FadeGroupScope(animBool.faded);
+                    _indentScope = new EditorGUI.IndentLevelScope();
+
+                }
+
+                /// <summary>
+                /// 終了処理
+                /// </summary>
+                protected override void CloseScope() {
+                    _fadeGroup?.Dispose();
+                    _indentScope?.Dispose();
+                    _verticalScope?.Dispose();
+                }
+            }
+
             #endregion
 
 

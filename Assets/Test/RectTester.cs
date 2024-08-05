@@ -26,7 +26,7 @@ namespace test {
             rectLength = _target.GetGrobalWidth();
 
             // ビューポート座標
-            viewport = _target.GetViewportPosition(_canvas);
+            viewport = _target.GetViewportPosition();
 
         }
 

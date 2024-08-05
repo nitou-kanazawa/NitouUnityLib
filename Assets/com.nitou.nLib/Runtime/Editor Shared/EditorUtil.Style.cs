@@ -1,5 +1,4 @@
 #if UNITY_EDITOR
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -9,9 +8,17 @@ using UnityEditor;
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static partial class Styles {
 
             public static GUIStyle folderHeader;
+            public static GUIStyle folderToggleHeader;
+            public static GUIStyle headerCheckbox;
+
+            private const float HeadingSpace = 22.0f;
 
 
             /// <summary>
@@ -23,11 +30,19 @@ namespace nitou.EditorShared {
                     font = new GUIStyle(EditorStyles.label).font,
                     fontSize = 12,
                     border = new RectOffset(15, 7, 4, 4),
-                    fixedHeight = 22,
+                    fixedHeight = HeadingSpace,
                     contentOffset = new Vector2(20f, -2f),
                 };
 
+                folderToggleHeader = new GUIStyle("ShurikenEmitterTitle") {
+                    font = new GUIStyle(EditorStyles.label).font,
+                    fontSize = 12,
+                    border = new RectOffset(15, 7, 4, 4),
+                    fixedHeight = HeadingSpace,
+                    contentOffset = new Vector2(20f, -2f),
+                };
 
+                headerCheckbox = new GUIStyle("ShurikenCheckMark");
             }
 
             public static GUIStyle XmlText() {
