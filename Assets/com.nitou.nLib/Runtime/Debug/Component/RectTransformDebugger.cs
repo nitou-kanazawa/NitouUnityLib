@@ -38,11 +38,18 @@ namespace nitou.DebugInternal {
         private AnimBool _globalCornersAnim;
 
         private void OnEnable() {
+            EditorApplication.update += Repaint;
+
             _localCornersAnim = new AnimBool(false);
             _globalCornersAnim = new AnimBool(false);
             _localCornersAnim.valueChanged.AddListener(Repaint);
             _globalCornersAnim.valueChanged.AddListener(Repaint);
         }
+
+        private void OnDisable() {
+            EditorApplication.update -= Repaint;
+        }
+
 
         public override void OnInspectorGUI() {
 
@@ -97,12 +104,16 @@ namespace nitou.DebugInternal {
             }
 
             // World Corners
-            EditorGUILayout.LabelField("World Corners");
             rectTrans.GetWorldCorners(_corners);
+            _globalCornersAnim.target = EditorUtil.GUI.FoldoutHeader("World Corners", _globalCornersAnim.target);
+            using (var group = new EditorGUILayout.FadeGroupScope(_globalCornersAnim.faded))
             using (new EditorGUI.IndentLevelScope())
             using (new EditorGUI.DisabledScope(true)) {
-                for (int i = 0; i < _corners.Length; i++) {
-                    EditorGUILayout.Vector3Field($"Corner {i}", _corners[i]);
+                if (group.visible) {
+
+                    for (int i = 0; i < _corners.Length; i++) {
+                        EditorGUILayout.Vector3Field($"Corner {i}", _corners[i]);
+                    }
                 }
             }
 
@@ -116,13 +127,13 @@ namespace nitou.DebugInternal {
             EditorUtil.GUI.HorizontalLine();
             using (new EditorGUILayout.VerticalScope(Styles.box)) {
 
-
                 Color labelColor = rectTrans.IsFixedSize() ? Colors.Orange : Colors.Cyan;
                 string label = rectTrans.IsFixedSize() ? "Fixed Size" : "Flexible Size";
                 using (new EditorUtil.GUIColorScope(labelColor)) {
                     EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
                 }
                 using (new EditorGUI.IndentLevelScope()) {
+                    EditorGUILayout.Vector2Field("Rect Pos", rectTrans.rect.position);
                     EditorGUILayout.Vector2Field("Rect Size", rectTrans.rect.size);
                     rectTrans.sizeDelta = EditorGUILayout.Vector2Field("Size Delta", rectTrans.sizeDelta);
                 }
@@ -144,18 +155,14 @@ namespace nitou.DebugInternal {
         // Private Method ()
 
 
-
         /// ----------------------------------------------------------------------------
         private static class Styles {
-
             public static readonly GUIStyle box;
-
             static Styles() {
                 box = new GUIStyle(GUI.skin.box) {
 
                 };
             }
-
         }
     }
 #endif

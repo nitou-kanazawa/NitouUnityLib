@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Alchemy.Inspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -18,7 +19,7 @@ namespace nitou.LevelObjects{
         }
 
         [SerializeField] List<WayPoint> _points = new();
-
+ 
 
         /// ----------------------------------------------------------------------------
         #region IContainer interface
