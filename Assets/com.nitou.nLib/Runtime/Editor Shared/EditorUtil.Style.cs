@@ -14,11 +14,15 @@ namespace nitou.EditorShared {
         /// </summary>
         public static partial class Styles {
 
+            // Folder
             public static GUIStyle folderHeader;
             public static GUIStyle folderToggleHeader;
             public static GUIStyle headerCheckbox;
 
             private const float HeadingSpace = 22.0f;
+
+            // Text
+            public static GUIStyle textArea;
 
 
             /// <summary>
@@ -43,6 +47,11 @@ namespace nitou.EditorShared {
                 };
 
                 headerCheckbox = new GUIStyle("ShurikenCheckMark");
+
+                // テキスト
+                textArea = new GUIStyle(EditorStyles.textArea) {
+                    wordWrap = false,
+                };
             }
 
             public static GUIStyle XmlText() {
