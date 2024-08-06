@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 #if UNITY_EDITOR
@@ -11,7 +10,7 @@ using nitou.EditorShared;
 // Search Issue Tracker:  https://issuetracker.unity3d.com/issues/screen-dot-width-slash-screen-dot-height-in-onenable-shows-inspector-window-size-when-the-component-is-enabled-by-a-toggle-in-inspector-window
 
 //[ExecuteAlways]
-public class ScreenSizeDebugger: MonoBehaviour{
+internal class ScreenSizeDebugger: MonoBehaviour{
 
     // サイズの記録
     public Vector2 size_Update;
@@ -40,7 +39,7 @@ public class ScreenSizeDebugger: MonoBehaviour{
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(ScreenSizeDebugger))]
-public class ScreenSizeDebuggerEditor : Editor {
+internal class ScreenSizeDebuggerEditor : Editor {
 
     public override void OnInspectorGUI() {
         var instance = target as ScreenSizeDebugger;

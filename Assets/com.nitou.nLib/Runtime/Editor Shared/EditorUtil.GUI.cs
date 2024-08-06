@@ -87,7 +87,6 @@ namespace nitou.EditorShared {
                 }
             }
 
-
             /// <summary>
             /// 仕切り線を表示する
             /// </summary>
@@ -139,7 +138,6 @@ namespace nitou.EditorShared {
                 return display;
             }
 
-
             public static bool Header(SerializedProperty group, SerializedProperty enabledField) {
                 var display = group == null || group.isExpanded;
                 var enabled = enabledField != null && enabledField.boolValue;
@@ -166,7 +164,6 @@ namespace nitou.EditorShared {
                 }
                 return display;
             }
-
 
             /// <summary>
             /// 
@@ -208,7 +205,6 @@ namespace nitou.EditorShared {
             #endregion
 
 
-
             /// ----------------------------------------------------------------------------
             #region  Misc
 
@@ -223,7 +219,6 @@ namespace nitou.EditorShared {
                     Help.BrowseURL(url);
                 }
             }
-
 
             /// <summary>
             /// 区間のオンオフ切り替え
@@ -248,8 +243,9 @@ namespace nitou.EditorShared {
                 return state;
             }
             #endregion
-
         }
     }
 }
 #endif
+
+

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,19 +10,18 @@ using UnityEngine.UI;
 
 namespace nitou {
 
+        // [NOTE]
+        //  ユースケースをメモしておく
+        //  ・
+        //  ・
+        //  ・
+        //  ・
+        //  ・
+
     /// <summary>
     /// <see cref="RectTransform"/>の基本的な拡張メソッド集
     /// </summary>
     public static partial class RectTransformExtensions {
-
-        // [NOTE]
-        //  いかにユースケースをメモしておく
-        //  ・
-        //  ・
-        //  ・
-        //  ・
-        //  ・
-
 
         // 計算用
         private static readonly Vector3[] _corners = new Vector3[4];
