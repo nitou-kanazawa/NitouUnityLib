@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using Alchemy.Inspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
