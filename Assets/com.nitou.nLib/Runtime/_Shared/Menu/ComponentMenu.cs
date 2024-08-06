@@ -2,7 +2,7 @@
 namespace nitou {
 
     /// <summary>
-    /// "Component Menu"のキーワード定義 (※AddComponentMenu属性の呼び出し時に使用する)
+    /// "Component Menu"の各種定義
     /// </summary>
     public static partial class ComponentMenu {
 
@@ -19,12 +19,10 @@ namespace nitou {
             public const string Phisics = "Phisics/";
             public const string UI = "UI/";
 
-
             // Custom Category
             public const string EventChannel = "Event Channel/";
             public const string Scene = "Scene Management/";
             public const string Camera = "Camera Control/";
-
         }
 
         

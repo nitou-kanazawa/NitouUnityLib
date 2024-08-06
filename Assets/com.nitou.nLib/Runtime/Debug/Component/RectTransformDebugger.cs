@@ -34,14 +34,17 @@ namespace nitou.DebugInternal {
         private static readonly Vector3[] _corners = new Vector3[4];
 
         // 描画用
+        private AnimBool _positionAnim;
         private AnimBool _localCornersAnim;
         private AnimBool _globalCornersAnim;
 
         private void OnEnable() {
             EditorApplication.update += Repaint;
 
+            _positionAnim = new AnimBool(true);
             _localCornersAnim = new AnimBool(false);
             _globalCornersAnim = new AnimBool(false);
+            _positionAnim.valueChanged.AddListener(Repaint);
             _localCornersAnim.valueChanged.AddListener(Repaint);
             _globalCornersAnim.valueChanged.AddListener(Repaint);
         }
@@ -49,7 +52,6 @@ namespace nitou.DebugInternal {
         private void OnDisable() {
             EditorApplication.update -= Repaint;
         }
-
 
         public override void OnInspectorGUI() {
 
@@ -76,27 +78,29 @@ namespace nitou.DebugInternal {
         /// 位置関連のプロパティ
         /// </summary>
         private void DrawPoisitonProperty(RectTransform rectTrans) {
-            EditorUtil.GUI.HorizontalLine();
 
-            // Local
-            EditorGUILayout.Vector3Field("Local Position", rectTrans.localPosition);
-            EditorGUILayout.Vector3Field("Local Rotation", rectTrans.localRotation.eulerAngles);
-            EditorGUILayout.Vector3Field("Local Scale", rectTrans.localScale);
+            using (var group = new EditorUtil.GUI.FoldoutGroupScope("Transform Info", _positionAnim)) {
+                if (group.Visible) {
 
-            // Global
-            EditorGUILayout.Vector3Field("Global Position", rectTrans.position);
-            EditorGUILayout.Vector3Field("Global Rotation", rectTrans.rotation.eulerAngles);
+                    // Local
+                    rectTrans.localPosition = EditorGUILayout.Vector3Field("Local Position", rectTrans.localPosition);
+                    rectTrans.eulerAngles = EditorGUILayout.Vector3Field("Local Rotation", rectTrans.localRotation.eulerAngles);
+                    rectTrans.localScale = EditorGUILayout.Vector3Field("Local Scale", rectTrans.localScale);
+
+                    EditorUtil.GUI.HorizontalLine();
+
+                    // Global
+                    rectTrans.position = EditorGUILayout.Vector3Field("Global Position", rectTrans.position);
+                    rectTrans.eulerAngles = EditorGUILayout.Vector3Field("Global Rotation", rectTrans.rotation.eulerAngles);
+                }
+            }
 
             EditorGUILayout.Space();
 
             // Local Corners
             rectTrans.GetLocalCorners(_corners);
-            _localCornersAnim.target = EditorUtil.GUI.FoldoutHeader("Local Corners", _localCornersAnim.target);
-            using (var group = new EditorGUILayout.FadeGroupScope(_localCornersAnim.faded))
-            using (new EditorGUI.IndentLevelScope())
-            using (new EditorGUI.DisabledScope(true)) {
-                if (group.visible) {
-
+            using (var group = new EditorUtil.GUI.FoldoutGroupScope("Local Corners", _localCornersAnim)) {
+                if (group.Visible) {
                     for (int i = 0; i < _corners.Length; i++) {
                         EditorGUILayout.Vector3Field($"Corner {i}", _corners[i]);
                     }
@@ -105,12 +109,8 @@ namespace nitou.DebugInternal {
 
             // World Corners
             rectTrans.GetWorldCorners(_corners);
-            _globalCornersAnim.target = EditorUtil.GUI.FoldoutHeader("World Corners", _globalCornersAnim.target);
-            using (var group = new EditorGUILayout.FadeGroupScope(_globalCornersAnim.faded))
-            using (new EditorGUI.IndentLevelScope())
-            using (new EditorGUI.DisabledScope(true)) {
-                if (group.visible) {
-
+            using (var group = new EditorUtil.GUI.FoldoutGroupScope("World Corners", _globalCornersAnim)) {
+                if (group.Visible) {
                     for (int i = 0; i < _corners.Length; i++) {
                         EditorGUILayout.Vector3Field($"Corner {i}", _corners[i]);
                     }

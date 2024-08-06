@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 // [参考]
 //  ねこじゃらシティ: スクリプトの実行順序を制御する https://nekojara.city/unity-script-execution-order
@@ -8,7 +5,7 @@ using UnityEngine;
 
 namespace nitou {
 
-    public static class GameConfigs{
+    public static partial class GameConfigs{
 
         /// <summary>
         /// ExecutionOrderを指定するための静的クラス（※オーダー値の設定に関しては模索中）

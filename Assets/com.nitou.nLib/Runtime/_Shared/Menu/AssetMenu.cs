@@ -16,16 +16,6 @@ namespace nitou {
             public const string ScriptableObject = "Scriptable Objects/";
 
             /// <summary>
-            /// イベントチャンネル
-            /// </summary>
-            public const string EventChannel = "Event Channel/";
-
-            /// <summary>
-            /// キャラクター操作関連
-            /// </summary>
-            public const string CharacterControl = "CharacterControl/";
-            
-            /// <summary>
             /// キャラクターモデル
             /// </summary>
             public const string ActorModelInfo = ScriptableObject + "Actor Model/";
@@ -40,12 +30,22 @@ namespace nitou {
             /// </summary>
             public const string SceneInfo = ScriptableObject + "Scene Info/";
 
+            // ----- 
 
+            /// <summary>
+            /// イベントチャンネル
+            /// </summary>
+            public const string EventChannel = "Event Channel/";
+            
             /// <summary>
             /// アニメーションデータ
             /// </summary>
             public const string AnimationData = "Animation Data/";
 
+            /// <summary>
+            /// キャラクター操作関連
+            /// </summary>
+            public const string CharacterControl = "CharacterControl/";
         }
 
 

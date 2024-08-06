@@ -31,12 +31,8 @@ namespace nitou {
 
 
             /// <summary>
-            /// 
+            /// GameObject
             /// </summary>
-            public const string PrototypingCommand = "Tools/Nitou/Prototyping/";
-
-
-
             public const string GameObject = "GameObject/";
 
         }

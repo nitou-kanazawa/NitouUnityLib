@@ -30,6 +30,9 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // Public Method
 
+		/// <summary>
+		/// コンストラクタ 
+		/// </summary>
         public FixedSizeStack(int maxSize) {
             if (maxSize <= 0) {
                 throw new ArgumentException("maxSize must be greater than zero.", nameof(maxSize));
