@@ -13,6 +13,9 @@ namespace nitou {
     //  ・アンカー4点をバラけさせると、サイズはParentに対して相対的に決まる（可変サイズ）
     //  　→ (sizeDelta = 要素のサイズ – 親要素のサイズ)
 
+    /// <summary>
+    /// アンカーの種類
+    /// </summary>
     public enum AnchorPresets {
         // ----- 固定サイズ -----
         TopLeft,
@@ -40,6 +43,9 @@ namespace nitou {
         StretchAll
     }
 
+    /// <summary>
+    /// ピボットの種類
+    /// </summary>
     public enum PivotPresets {
         TopLeft,
         TopCenter,
