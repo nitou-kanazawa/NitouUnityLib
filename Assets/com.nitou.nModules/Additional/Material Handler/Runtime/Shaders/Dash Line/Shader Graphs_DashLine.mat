@@ -21,10 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shader Graphs_DashLine
-  m_Shader: {fileID: -6465566751694194690, guid: b1bed6d7332957e46b7b1e51c50c5071,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Shader: {fileID: -6465566751694194690, guid: b1bed6d7332957e46b7b1e51c50c5071, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -34,7 +31,6 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -52,11 +48,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Length: 0.1
+    - _Length: 0.05
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Space: 0.05
+    - _Space: 0.03
+    - _Speed: 0.05
+    - _Tiling: 4.9
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1

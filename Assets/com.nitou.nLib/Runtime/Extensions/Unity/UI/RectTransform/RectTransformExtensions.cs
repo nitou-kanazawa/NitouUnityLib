@@ -93,6 +93,11 @@ namespace nitou {
         // ----------------------------------------------------------------------------
         #region Viewport座標
 
+        //public static Vector2 GetViewport(this RectTransform self, Canvas canvas = null) {
+
+        //}
+
+
         /// <summary>
         /// キャンバスに対する相対位置(0~1)を取得する
         /// </summary>
@@ -102,7 +107,7 @@ namespace nitou {
             // Canvasから相対位置を取得する方針で実装.
 
             // 直近のCanvasを取得
-            var canvas = self.GetParentCanvas();
+            var canvas = self.GetBelongedCanvas();
             if (canvas == null) {
                 Debug.LogWarning("RectTransform is not a child of a Canvas. Returning Vector2.zero.");
                 return Vector2.zero;
@@ -127,7 +132,7 @@ namespace nitou {
         /// <summary>
         /// 親階層をたどって所属する<see cref="Canvas"/>を取得する拡張メソッド
         /// </summary>
-        public static Canvas GetParentCanvas(this RectTransform self) {
+        public static Canvas GetBelongedCanvas(this RectTransform self) {
             var currentTrans = self.transform;
             while (currentTrans != null) {
                 if (currentTrans.TryGetComponent<Canvas>(out var canvas)) {
@@ -141,8 +146,8 @@ namespace nitou {
         /// <summary>
         /// 親階層をたどって所属する<see cref="CanvasScaler"/>を取得する拡張メソッド
         /// </summary>
-        public static CanvasScaler GetParentCanvasScaler(this RectTransform self) {
-            var canvas = self.GetParentCanvas();
+        public static CanvasScaler GetBelongedCanvasScaler(this RectTransform self) {
+            var canvas = self.GetBelongedCanvas();
             if (canvas is null) return null;
 
             return canvas.GetComponent<CanvasScaler>();
