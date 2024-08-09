@@ -31,9 +31,17 @@ namespace nitou {
         /// インデックスが範囲内にあるかどうかを判定する拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsInRange<T>(this int self, IReadOnlyCollection<T> collection) {
-            bool isBetween = (0 <= self && self < collection.Count);
+        public static bool IsInRange<T>(this int index, IReadOnlyCollection<T> collection) {
+            bool isBetween = (0 <= index && index < collection.Count);
             return isBetween;
+        }
+
+        /// <summary>
+        /// インデックスが範囲外にあるかどうかを判定する拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsOutRage<T>(this int index, IReadOnlyCollection<T> collection) {
+            return !index.IsInRange(collection);
         }
         #endregion
 

@@ -25,6 +25,11 @@ namespace nitou {
             /// </summary>
             public const string Animation = "GameObject/Animation/";
 
+            /// <summary>
+            /// 
+            /// </summary>
+            public const string Line = "GameObject/Line/";
+
         }
 
 

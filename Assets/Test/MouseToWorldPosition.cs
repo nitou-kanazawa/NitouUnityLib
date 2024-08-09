@@ -7,6 +7,7 @@ namespace DesignPatterns.ISP {
     /// as a "dead zone".
     /// </summary>
     public class MouseToWorldPosition : MonoBehaviour {
+        
         [Header("Sprite")]
         [Tooltip("Sprite to visualize mouse world position")]
         [SerializeField] private SpriteRenderer m_SpriteRenderer;
