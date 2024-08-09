@@ -36,7 +36,7 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region Wolrd座標
+        #region WORLD座標
 
         // [NOTE]
         //  RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
@@ -91,12 +91,35 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region Viewport座標
+        #region VIEW PORT座標
 
-        //public static Vector2 GetViewport(this RectTransform self, Canvas canvas = null) {
+        public static Vector2 GetViewportPos(this RectTransform self, Canvas canvas = null) {
+            if (canvas == null) {
+                canvas = self.GetBelongedCanvas();
+            }
+            Vector2 bottomLeftViewportPos = Vector2.zero;
 
-        //}
+            // Rect左下のワールド座標
+            self.GetWorldCorners(_corners);
+            Vector3 bottomLeftWorld = _corners[0];
 
+            // Canvasのモード毎の処理
+            switch (canvas.renderMode) {
+                case RenderMode.ScreenSpaceOverlay: {
+                        // スクリーン空間のオーバーレイモード
+                        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, bottomLeftWorld);
+                        bottomLeftViewportPos = new Vector3(screenPos.x / Screen.width, screenPos.y / Screen.height, 0);
+                        break;
+                    }
+                case RenderMode.ScreenSpaceCamera:
+                case RenderMode.WorldSpace: {
+                        // ワールド座標をビューポート座標に変換
+                        bottomLeftViewportPos = Camera.main.WorldToViewportPoint(bottomLeftWorld);
+                        break;
+                    }
+            }
+            return bottomLeftViewportPos;
+        }
 
         /// <summary>
         /// キャンバスに対する相対位置(0~1)を取得する
@@ -123,6 +146,15 @@ namespace nitou {
                 (selfPos.x - canvasPos.x) / canvasSize.x,
                 (selfPos.y - canvasPos.y) / canvasSize.y);
         }
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region SCREEN座標
+
+
+
+
         #endregion
 
 
