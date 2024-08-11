@@ -1,5 +1,4 @@
 #if UNITY_EDITOR
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
@@ -10,8 +9,9 @@ using UnityEditor.AnimatedValues;
 //  Hatena: インデント付きでGUI.Buttonを表示する https://neptaco.hatenablog.jp/entry/2019/05/18/234426
 
 namespace nitou.EditorShared {
-
     public static partial class EditorUtil {
+        
+        
         public static partial class GUI {
 
             /// ----------------------------------------------------------------------------

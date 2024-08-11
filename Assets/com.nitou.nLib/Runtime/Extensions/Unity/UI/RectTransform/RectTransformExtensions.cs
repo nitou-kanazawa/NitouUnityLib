@@ -23,30 +23,30 @@ namespace nitou {
     /// </summary>
     public static partial class RectTransformExtensions {
 
+        // [NOTE]
+        //  RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
+
         // 計算用
         private static readonly Vector3[] _corners = new Vector3[4];
         private static readonly Vector3[] _corners2 = new Vector3[4];
 
         // 定数
         private const int CORNER_COUNT = 4;
-        private const int LB = 0;   // Left bottom  ※左下から時計回りに格納される
-        private const int LT = 1;   // Left top
-        private const int RT = 2;   // Right top
-        private const int RB = 3;   // Right bottom
+        private const int Min = 0;          // Left bottom  ※左下から時計回りに格納される
+        private const int MinX_MaxY = 1;    // Left top
+        private const int Max = 2;          // Right top
+        private const int MaxX_MinY = 3;    // Right bottom
 
 
         // ----------------------------------------------------------------------------
         #region WORLD座標
-
-        // [NOTE]
-        //  RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
 
         /// <summary>
         /// ワールド座標での位置を取得する
         /// </summary>
         public static Vector2 GetWorldPosition(this RectTransform self) {
             self.GetWorldCorners(_corners);
-            return _corners[0];  // ※Zは無視
+            return _corners[Min];  // ※Zは無視
         }
 
         /// <summary>
@@ -54,40 +54,45 @@ namespace nitou {
         /// </summary>
         public static Vector2 GetWorldSize(this RectTransform self) {
             self.GetWorldCorners(_corners);
-            float width = Vector3.Distance(_corners[LB], _corners[RB]);
-            float height = Vector3.Distance(_corners[LB], _corners[LT]);
+            float width = Vector3.Distance(_corners[Min], _corners[MaxX_MinY]);
+            float height = Vector3.Distance(_corners[Min], _corners[MinX_MaxY]);
             return new Vector2(width, height);
-        }
-
-        /// <summary>
-        /// ワールド座標での幅を取得する
-        /// </summary>
-        public static float GetWorldWidth(this RectTransform self) {
-            self.GetWorldCorners(_corners);
-            float width = Vector3.Distance(_corners[LB], _corners[RB]);
-            return width;
-        }
-
-        /// <summary>
-        /// ワールド座標での高さを取得する
-        /// </summary>
-        public static float GetWorldHeight(this RectTransform self) {
-            self.GetWorldCorners(_corners);
-            float height = Vector3.Distance(_corners[LB], _corners[LT]);
-            return height;
         }
 
         /// <summary>
         /// ワールド座標での位置とサイズを取得する
         /// </summary>
-        public static (Vector2 pos, Vector2 size) GetWorldPositionAndSize(this RectTransform self) {
+        public static Rect GetWorldRect(this RectTransform self) {
             self.GetWorldCorners(_corners);
             Vector2 pos = _corners[0];  // ※Zは無視
             float width = Vector3.Distance(_corners[0], _corners[3]);
             float height = Vector3.Distance(_corners[0], _corners[1]);
-            return (pos, new Vector2(width, height));
+            return new Rect(pos, new Vector2(width, height));
         }
         #endregion
+
+        /// <summary>
+        /// キャンバスに対する相対位置(0~1)を取得する
+        /// </summary>
+        public static Rect GetRelativeRect(this RectTransform self, RectTransform other) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self), "self recttransform cannot be null.");
+            if (other == null) throw new System.ArgumentNullException(nameof(other), "other recttransform cannot be null.");
+
+            // ワールド座標での位置・サイズ (※pixel座標ではない)
+            var canvasRect = other.GetWorldRect();
+            var selfRect = self.GetWorldRect();
+
+            // 相対位置
+            var relativePos = new Vector2(
+                (selfRect.position.x - canvasRect.position.x) / canvasRect.size.x,
+                (selfRect.position.y - canvasRect.position.y) / canvasRect.size.y);
+            // 相対サイズ
+            var relativeSize = new Vector2(
+                selfRect.size.x / canvasRect.size.x,
+                selfRect.size.y / canvasRect.size.y);
+
+            return new Rect(relativePos, relativeSize);
+        }
 
 
         // ----------------------------------------------------------------------------
@@ -121,38 +126,58 @@ namespace nitou {
             return bottomLeftViewportPos;
         }
 
-        /// <summary>
-        /// キャンバスに対する相対位置(0~1)を取得する
-        /// </summary>
-        public static Vector2 GetViewportPosition(this RectTransform self) {
-            // [NOTE]
-            // Game画面での絶対座標を取得するのが意外と困難だったため、
-            // Canvasから相対位置を取得する方針で実装.
-
-            // 直近のCanvasを取得
-            var canvas = self.GetBelongedCanvas();
-            if (canvas == null) {
-                Debug.LogWarning("RectTransform is not a child of a Canvas. Returning Vector2.zero.");
-                return Vector2.zero;
-            }
-            var canvasRect = canvas.GetComponent<RectTransform>();
-
-            // ワールド座標での位置・サイズ (※pixel座標ではない)
-            var (canvasPos, canvasSize) = canvasRect.GetWorldPositionAndSize();
-            var (selfPos, _) = self.GetWorldPositionAndSize();
-
-            // キャンバスの位置・サイズで正規化した座標（※canva値域 0 ~ 1）
-            return new Vector2(
-                (selfPos.x - canvasPos.x) / canvasSize.x,
-                (selfPos.y - canvasPos.y) / canvasSize.y);
-        }
+        
         #endregion
 
 
         // ----------------------------------------------------------------------------
         #region SCREEN座標
 
+        public static Vector2 GetScreenPos(this RectTransform self, Canvas canvas = null) {
+            if (canvas == null) {
+                canvas = self.GetBelongedCanvas();
+            }
 
+            // Rect左下のワールド座標
+            self.GetWorldCorners(_corners);
+            Vector3 bottomLeftWorld = _corners[0];
+
+            // Canvasのモード毎の処理
+            Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, bottomLeftWorld);
+            return screenPos;
+        }
+
+        public static Rect GetScreenRect(this RectTransform self, Canvas canvas = null) {
+            var position = self.GetScreenPos(canvas);
+            return new Rect(position, self.rect.size);
+        }
+
+
+        public static Rect GetScreenRect(this RectTransform self, Camera camera) {
+            self.GetWorldCorners(_corners);
+            if (camera != null) {
+                _corners[Min] = RectTransformUtility.WorldToScreenPoint(camera, _corners[Min]);
+                _corners[Max] = RectTransformUtility.WorldToScreenPoint(camera, _corners[Max]);
+            }
+
+            var rect = new Rect {
+                x = _corners[Min].x,
+                y = _corners[Min].y,
+                width = _corners[Max].x - _corners[Min].x,
+                height = _corners[Max].y - _corners[Min].y
+            };
+            return rect;
+        }
+
+        public static Rect GetScreenRect(this RectTransform self, PointerEventData data) {
+            return self.GetScreenRect(data.pressEventCamera);
+        }
+
+
+        //public static Rect GetScreenRect(this RectTransform self) {
+        //    var canvas = self.GetComponentInParent<Canvas>();
+        //    return self.GetScreenRect(canvas.worldCamera);
+        //}
 
 
         #endregion
@@ -305,32 +330,11 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
 
-        public static Rect GetScreenRect(this RectTransform self, Camera camera) {
-            self.GetWorldCorners(_corners);
-            if (camera != null) {
-                _corners[LB] = RectTransformUtility.WorldToScreenPoint(camera, _corners[LB]);
-                _corners[RT] = RectTransformUtility.WorldToScreenPoint(camera, _corners[RT]);
-            }
-
-            var rect = new Rect {
-                x = _corners[LB].x,
-                y = _corners[LB].y,
-                width = _corners[RT].x - _corners[LB].x,
-                height = _corners[RT].y - _corners[LB].y
-            };
-            return rect;
-        }
-
-        public static Rect GetScreenRect(this RectTransform self, PointerEventData data) {
-            return self.GetScreenRect(data.pressEventCamera);
-        }
+        
 
 
-        public static Rect GetScreenRect(this RectTransform self) {
-            var canvas = self.GetComponentInParent<Canvas>();
-            return self.GetScreenRect(canvas.worldCamera);
-        }
 
+        #region 重なり判定
 
 
         /// ----------------------------------------------------------------------------
@@ -385,9 +389,7 @@ namespace nitou {
             self.pivot = new Vector2(self.pivot.x, Mathf.Clamp01(y));
         }
 
-
-        /// ----------------------------------------------------------------------------
-        // 座標設定
+        #endregion
     }
 
 

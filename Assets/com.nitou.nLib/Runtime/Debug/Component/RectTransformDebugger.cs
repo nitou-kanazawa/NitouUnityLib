@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.AnimatedValues;
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 using nitou.EditorShared;
 #endif
 
@@ -14,21 +13,31 @@ namespace nitou.DebugInternal {
     /// <summary>
     /// <see cref="RectTransform"/>の各プロパティを可視化するためのデバッグ用コンポーネント
     /// </summary>
-    public class RectTransformDebugger : DebugComponent<RectTransform> {
+    internal class RectTransformDebugger : DebugComponent<RectTransform> {
 
         private RectTransform _rectTrans;
         public RectTransform RectTrans => _rectTrans;
 
-        void OnValidate() {
+        private void OnValidate() {
             _rectTrans = gameObject.GetComponent<RectTransform>();
         }
+
+#if UNITY_EDITOR
+        private void OnGUI() {
+            if (_rectTrans == null) return;
+
+            var rect = _rectTrans.GetScreenRect();
+
+            EditorUtil.ScreenGUI.Box(rect);
+            EditorUtil.ScreenGUI.AuxiliaryLine(rect.position);
+        }
+#endif
     }
 
 
 #if UNITY_EDITOR
-
     [CustomEditor(typeof(RectTransformDebugger))]
-    public class RectTransformDebuggerEditor : Editor {
+    internal class RectTransformDebuggerEditor : Editor {
 
         // 計算用
         private static readonly Vector3[] _corners = new Vector3[4];
@@ -41,7 +50,7 @@ namespace nitou.DebugInternal {
         private void OnEnable() {
             EditorApplication.update += Repaint;
 
-            _positionAnim = new AnimBool(true);
+            _positionAnim = new AnimBool(false);
             _localCornersAnim = new AnimBool(false);
             _globalCornersAnim = new AnimBool(false);
             _positionAnim.valueChanged.AddListener(Repaint);
@@ -55,11 +64,13 @@ namespace nitou.DebugInternal {
 
         public override void OnInspectorGUI() {
 
-            RectTransformDebugger debugger = (RectTransformDebugger)target;
-            var rectTrans = debugger.RectTrans;
+            var instance = target as RectTransformDebugger;
+            var rectTrans = instance.RectTrans;
 
             if (rectTrans != null) {
                 EditorGUILayout.LabelField("RectTransform Properties", EditorStyles.boldLabel);
+
+                DraeViewportProperty(rectTrans);
 
                 DrawPoisitonProperty(rectTrans);
                 DrawSizeProperty(rectTrans);
@@ -71,13 +82,23 @@ namespace nitou.DebugInternal {
         }
 
 
-        /// ----------------------------------------------------------------------------
-        // Private Method ()
 
-        /// <summary>
-        /// 位置関連のプロパティ
-        /// </summary>
-        private void DrawPoisitonProperty(RectTransform rectTrans) {
+        /// ----------------------------------------------------------------------------
+        // Private Method (Inspector Drawer)
+
+        private void DraeViewportProperty(RectTransform rectTransform) {
+            using (new EditorGUILayout.VerticalScope(Styles.box))
+            using (new EditorGUI.DisabledScope(true)) {
+                // ビューポート座標
+                EditorGUILayout.Vector2Field("Viewport", rectTransform.GetViewportPos());
+            }
+            
+        }
+
+            /// <summary>
+            /// 位置関連のプロパティ
+            /// </summary>
+            private void DrawPoisitonProperty(RectTransform rectTrans) {
 
             using (var group = new EditorUtil.GUI.FoldoutGroupScope("Transform Info", _positionAnim)) {
                 if (group.Visible) {
@@ -95,7 +116,7 @@ namespace nitou.DebugInternal {
                 }
             }
 
-            EditorGUILayout.Space();
+            //EditorGUILayout.Space();
 
             // Local Corners
             rectTrans.GetLocalCorners(_corners);
@@ -142,6 +163,9 @@ namespace nitou.DebugInternal {
             EditorGUILayout.Space();
         }
 
+        /// <summary>
+        /// アンカー関連のプロパティ
+        /// </summary>
         private void DrawAnchorPivotProperty(RectTransform rectTrans) {
             EditorUtil.GUI.HorizontalLine();
             EditorGUILayout.Vector2Field("Anchor Min", rectTrans.anchorMin);

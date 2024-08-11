@@ -130,15 +130,15 @@ namespace nitou.EditorShared {
         /// </summary>
         public class RotateScope : UnityEngine.GUI.Scope {
 
-            private readonly Matrix4x4 previousMatrix;
+            private readonly Matrix4x4 _oldMatrix;
 
             public RotateScope(float angle, Vector2 pivotPoint) {
-                previousMatrix = UnityEngine.GUI.matrix;
+                _oldMatrix = UnityEngine.GUI.matrix;
                 GUIUtility.RotateAroundPivot(angle, pivotPoint);
             }
 
             protected override void CloseScope() {
-                UnityEngine.GUI.matrix = previousMatrix;
+                UnityEngine.GUI.matrix = _oldMatrix;
             }
         }
         #endregion

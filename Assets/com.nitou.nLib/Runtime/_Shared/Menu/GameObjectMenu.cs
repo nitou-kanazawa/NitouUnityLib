@@ -1,3 +1,4 @@
+using UnityEngine;
 
 namespace nitou {
 
@@ -48,6 +49,20 @@ namespace nitou {
 
         }
 
+
+
+        /// ----------------------------------------------------------------------------
+
+        //public class CreationScope : System.IDisposable {
+
+        //    public CreationScope(System.Func<GameObject>) {
+
+        //    }
+
+        //    public void Dispose() {
+        //        throw new System.NotImplementedException();
+        //    }
+        //}
 
     }
 }
