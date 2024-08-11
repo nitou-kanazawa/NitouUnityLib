@@ -37,6 +37,13 @@ namespace nitou {
         private const int Max = 2;          // Right top
         private const int MaxX_MinY = 3;    // Right bottom
 
+        public enum Corner {
+            Min = 0,
+            MinX_MaxY = 1,
+            Max = 2,
+            MaxX_MinY = 3
+        }
+
 
         // ----------------------------------------------------------------------------
         #region WORLD座標
@@ -44,7 +51,7 @@ namespace nitou {
         /// <summary>
         /// ワールド座標での位置を取得する
         /// </summary>
-        public static Vector2 GetWorldPosition(this RectTransform self) {
+        public static Vector2 GetWorldPosition(this RectTransform self, Corner corner = Corner.Min) {
             self.GetWorldCorners(_corners);
             return _corners[Min];  // ※Zは無視
         }
