@@ -86,6 +86,9 @@ namespace nitou {
         // ----------------------------------------------------------------------------
         #region SCREEN座標
 
+        // [参考]
+        //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
+
         /// <summary>
         /// スクリーン座標での位置を取得する
         /// </summary>
@@ -159,6 +162,9 @@ namespace nitou {
             return bottomLeftViewportPos;
         }
 
+        /// <summary>
+        /// ビューポート座標系での位置とサイズを取得する
+        /// </summary>
         public static Rect GetViewpoetRect(this RectTransform self, Canvas canvas = null) {
             throw new System.NotImplementedException();
         }
@@ -216,33 +222,8 @@ namespace nitou {
 
             return canvas.GetComponent<CanvasScaler>();
         }
-
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-        /// ----------------------------------------------------------------------------
-        #region 変換
-
-        // [参考]
-        //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
-
-
-        //public static Vector2 foo(Vector3 worldPoint) {
-
-        //    return Vector2.zero;
-        //}
-
-
-        #endregion
 
 
         // ----------------------------------------------------------------------------
@@ -295,10 +276,6 @@ namespace nitou {
             return inside;
         }
 
-
-        // 
-
-
         public static bool Contains(this RectTransform self, RectTransform other) {
             var selfBounds = GetBounds(self);
             var otherBounds = GetBounds(other);
@@ -339,15 +316,8 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
+        #region その他
 
-        
-
-
-
-        #region 重なり判定
-
-
-        /// ----------------------------------------------------------------------------
         // サイズ設定
 
         /// <summary>
@@ -381,8 +351,6 @@ namespace nitou {
             self.sizeDelta = size - anchorSize;
         }
 
-
-        /// ----------------------------------------------------------------------------
         // ピボット設定
 
         /// <summary>
@@ -402,11 +370,5 @@ namespace nitou {
         #endregion
     }
 
-
-    public static class RectTransformUtil {
-
-
-
-    }
 
 }
