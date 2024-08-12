@@ -3,6 +3,7 @@ using Alchemy.Inspector;
 
 namespace nitou.LevelObjects{
 
+    //[ExecuteAlways]
     public class LineToTarget : LineRendererAddOn {
 
         [Title("Target Components")]

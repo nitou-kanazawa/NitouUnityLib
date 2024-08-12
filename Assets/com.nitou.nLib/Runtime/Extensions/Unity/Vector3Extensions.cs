@@ -23,6 +23,35 @@ namespace nitou {
             z = self.z;
         }
 
+        /// <summary>
+        /// Vector2への変換
+        /// </summary>
+        public static Vector2 ToVector2(this Vector3 vector) {
+                return new Vector2(vector.x, vector.y);
+            }
+
+        /// <summary>
+        /// 要素同士の割り算
+        /// </summary>
+        public static Vector3 Divide(this Vector3 vector, Vector3 other) {
+            return new Vector3(
+                other.x != 0 ? vector.x / other.x : 0,
+                other.y != 0 ? vector.y / other.y : 0,
+                other.z != 0 ? vector.z / other.z : 0
+            );
+        }
+
+        /// <summary>
+        /// 要素同士の割り算
+        /// </summary>
+        public static Vector3 Divide(this Vector3 vector, Vector3 other, float defaultValue) {
+            return new Vector3(
+                other.x != 0 ? vector.x / other.x : defaultValue,
+                other.y != 0 ? vector.y / other.y : defaultValue,
+                other.z != 0 ? vector.z / other.z : defaultValue
+            );
+        }
+
 
         /// ----------------------------------------------------------------------------
         #region 値の取得
@@ -41,6 +70,9 @@ namespace nitou {
             return Mathf.Min(self.x, self.y, self.z);
         }
         #endregion
+
+
+        
 
 
         /// ----------------------------------------------------------------------------
@@ -62,6 +94,25 @@ namespace nitou {
         public static void SetZ(ref this Vector3 self, float z) => self.z = z;
 
 
+        /// <summary>
+        /// X値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 WithX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
+
+        /// <summary>
+        /// Y値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 WithY(this Vector3 self, float y) => new Vector3(self.x, y, self.z);
+
+        /// <summary>
+        /// Z値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
+
+
         /// ----------------------------------------------------------------------------
         // 値の加算
 
@@ -81,7 +132,10 @@ namespace nitou {
         public static void AddZ(ref this Vector3 self, float z) => self.z += z;
 
 
+
         /// ----------------------------------------------------------------------------
+        #region 値の変換
+
         // Clamp
 
         /// <summary>
@@ -99,7 +153,6 @@ namespace nitou {
         }
 
 
-        /// ----------------------------------------------------------------------------
         // 簡易計算
 
         /// <summary>
@@ -115,26 +168,16 @@ namespace nitou {
         public static Vector3 Twice(this Vector3 self) => self * 2f;
 
 
-        /// ----------------------------------------------------------------------------
         // 簡易計算
 
-        /// <summary>
-        /// X値のみ変更した値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
+        
+        #endregion
 
-        /// <summary>
-        /// Y値のみ変更した値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithY(this Vector3 self, float y) => new Vector3(self.x, y, self.z);
 
-        /// <summary>
-        /// Z値のみ変更した値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
+
+
+
+
 
 
 

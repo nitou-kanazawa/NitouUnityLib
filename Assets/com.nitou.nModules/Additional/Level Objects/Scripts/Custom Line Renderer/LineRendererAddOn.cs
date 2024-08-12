@@ -46,7 +46,7 @@ namespace nitou.LevelObjects {
         }
 
         private void Update() {
-            if (Application.isPlaying) return;  // ※実行中は更新しない
+            //if (Application.isPlaying) return;  // ※実行中は更新しない
 
             if (_isDirty || CheckDirtyFlag()) {
                 UpdateLineRenderer();

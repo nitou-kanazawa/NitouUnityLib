@@ -33,7 +33,7 @@ namespace nitou.SceneSystem {
 namespace nitou.SceneSystem.EditorScripts {
 
     [CustomPropertyDrawer(typeof(SceneObject))]
-    public class SceneObjectEditor : PropertyDrawer {
+    internal class SceneObjectEditor : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 
@@ -73,6 +73,6 @@ namespace nitou.SceneSystem.EditorScripts {
             return null;
         }
     }
-#endif
 
 }
+#endif
