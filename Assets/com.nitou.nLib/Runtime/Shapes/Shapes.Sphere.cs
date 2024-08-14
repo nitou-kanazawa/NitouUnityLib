@@ -29,6 +29,14 @@ namespace nitou {
             /// <summary>
             /// コンストラクタ
             /// </summary>
+            public Sphere(Transform transform, float radius)
+                : base(transform) {
+                this.radius = radius;
+            }
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
             private Sphere() { }
 
 

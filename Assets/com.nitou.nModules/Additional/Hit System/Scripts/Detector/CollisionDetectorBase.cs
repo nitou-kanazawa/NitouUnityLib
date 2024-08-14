@@ -35,9 +35,10 @@ namespace nitou.HitSystem {
         [DisableInPlayMode]
         [SerializeField, Indent] protected bool _useHitTag = false;
 
-        [ShowIf("@_useHitTag")]
+        [ShowIf("_useHitTag")]
         [DisableInPlayMode]
         [SerializeField, Indent] protected string[] _hitTagArray;
+
 
         // --- 
 
@@ -93,14 +94,14 @@ namespace nitou.HitSystem {
         /// コリジョンが検出されたときのイベント通知
         /// </summary>
         public System.IObservable<List<GameObject>> OnHitObjects => _onHitObjectsSubject;
-        private Subject<List<GameObject>> _onHitObjectsSubject = new();
+        private readonly Subject<List<GameObject>> _onHitObjectsSubject = new();
 
 
         /// ----------------------------------------------------------------------------
         // MonoBehaviour Method
 
         protected virtual void Reset() {
-            _hitLayer = LayerMaskUtil.Only("Default");
+            _hitLayer = LayerMaskUtil.OnlyDefault();
         }
 
         protected virtual void OnDestroy() {
@@ -133,48 +134,6 @@ namespace nitou.HitSystem {
             _hitObjects.Clear();
             _hitObjectsInThisFrame.Clear();
             _hitCollidersInThisFrame.Clear();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected GameObject GetHitObject(Collider hit) {
-
-            switch (_cacheTargetType) {
-                case CachingTarget.RootObject: {
-                        // Returns the root object of the collision target.
-                        return hit.transform.root.gameObject;
-                    }
-                case CachingTarget.Rigidbody: {
-                        // ※Rigidbodyがnullの場合，コライダーを返す.
-                        var attachedRigidbody = hit.attachedRigidbody;
-                        return (attachedRigidbody != null) ? attachedRigidbody.gameObject : hit.gameObject;
-                    }
-                case CachingTarget.CharacterController: {
-                        // If the parent object of the collided target has a CharacterController, return the object with the CharacterController attached.
-                        var controller = hit.transform.GetComponentInParent<CharacterController>();
-                        return controller != null ? controller.gameObject : hit.gameObject;
-                    }
-                case CachingTarget.RigidbodyOrCharacterController: {
-                        // If the parent object has a Rigidbody, return the object with the Rigidbody attached.
-                        var attachedRigidbody = hit.attachedRigidbody;
-                        if (attachedRigidbody != null)
-                            return attachedRigidbody.gameObject;
-
-                        // If the parent object has a CharacterController, return the object with the CharacterController attached.
-                        var controller = hit.transform.GetComponentInParent<CharacterController>();
-                        if (controller != null)
-                            return controller.gameObject;
-
-                        // If none of the above conditions are met, return the current Collider.
-                        return hit.gameObject;
-                    }
-                default:
-                    // Returns the GameObject of the collided Collider.
-                    return hit.gameObject;
-            }
-
-
         }
 
         /// <summary>
