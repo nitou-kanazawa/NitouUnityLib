@@ -7,7 +7,7 @@ namespace nitou {
         /// 円柱の形状を表すインスタンス
         /// </summary>
         [System.Serializable]
-        public class Cylinder : ShapeBase {
+        public class Cylinder : Volume {
 
             /// <summary>
             /// 半径

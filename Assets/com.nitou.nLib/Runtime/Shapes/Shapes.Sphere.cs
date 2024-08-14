@@ -7,7 +7,7 @@ namespace nitou {
         /// 球体の形状を表すインスタンス
         /// </summary>
         [System.Serializable]
-        public class Sphere : ShapeBase{
+        public class Sphere : Volume{
 
             /// <summary>
             /// 半径

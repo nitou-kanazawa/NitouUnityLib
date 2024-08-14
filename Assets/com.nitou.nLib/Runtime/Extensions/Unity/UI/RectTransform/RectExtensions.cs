@@ -282,6 +282,9 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region Padding
 
+        /// <summary>
+        /// 全方向に指定値だけ縮小する拡張メソッド
+        /// </summary>
         public static Rect Padding(this Rect rect, float left, float right, float top, float bottom) {
             return new Rect(
                 rect.x + left,
@@ -290,6 +293,9 @@ namespace nitou {
                 rect.height - top - bottom);
         }
 
+        /// <summary>
+        /// 全方向に指定値だけ縮小する拡張メソッド
+        /// </summary>
         public static Rect Padding(this Rect rect, float horizontal, float vertical) {
             return new Rect(
                 rect.x + horizontal,
@@ -298,6 +304,9 @@ namespace nitou {
                 rect.height - 2 * vertical);
         }
 
+        /// <summary>
+        /// 全方向に指定値だけ縮小する拡張メソッド
+        /// </summary>
         public static Rect Padding(this Rect rect, float padding) {
             return new Rect(
                 rect.x + padding,

@@ -3,8 +3,11 @@ using UnityEngine;
 namespace nitou {
     public static partial class Shapes {
 
+        /// <summary>
+        /// 形状の基底クラス
+        /// </summary>
         [System.Serializable]
-        public abstract class ShapeBase {
+        public abstract class Volume {
 
             /// <summary>
             /// ローカル座標
@@ -47,7 +50,7 @@ namespace nitou {
             /// <summary>
             /// コンストラクタ
             /// </summary>
-            public ShapeBase(Vector3 position, Quaternion rotation) {
+            public Volume(Vector3 position, Quaternion rotation) {
                 this.position = position;
                 this.eulerAngle = rotation.eulerAngles;
             }
@@ -55,12 +58,12 @@ namespace nitou {
             /// <summary>
             /// コンストラクタ
             /// </summary>
-            public ShapeBase(Transform transform) {
+            public Volume(Transform transform) {
                 this.position = transform.position;
                 this.eulerAngle = transform.rotation.eulerAngles;
             }
 
-            protected ShapeBase() {}
+            protected Volume() {}
 
             /// <summary>
             /// ワールド座標系での位置を取得する

@@ -7,7 +7,7 @@ namespace nitou {
         /// 直方体の形状を表すインスタンス
         /// </summary>
         [System.Serializable]
-        public class Box : ShapeBase {
+        public class Box : Volume {
 
             /// <summary>
             /// サイズ
