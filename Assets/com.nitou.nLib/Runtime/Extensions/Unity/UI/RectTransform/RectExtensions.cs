@@ -463,21 +463,4 @@ namespace nitou {
     }
 
 
-    public static class RectUtil {
-
-        public static Rect Create(Vector2 center, Vector2 size) {
-            float x = center.x - size.x / 2;
-            float y = center.y - size.y / 2;
-            return new Rect(x, y, size.x, size.y);
-        }
-
-
-        /// <summary>
-        /// ç≈è¨ÅEç≈ëÂì_Ç©ÇÁRectÇê∂ê¨Ç∑ÇÈ
-        /// </summary>
-        public static Rect MinMaxRect(Vector2 min, Vector2 max) {
-            return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
-        }
-    }
-
 }
