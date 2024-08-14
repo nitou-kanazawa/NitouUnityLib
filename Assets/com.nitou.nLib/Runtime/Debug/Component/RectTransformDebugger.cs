@@ -29,7 +29,8 @@ namespace nitou.DebugInternal {
             var rect = _rectTrans.GetScreenRect();
 
             EditorUtil.ScreenGUI.Box(rect);
-            EditorUtil.ScreenGUI.AuxiliaryLine(rect.position);
+            EditorUtil.ScreenGUI.AuxiliaryLine(rect.position, 2f, Colors.Gray);
+            EditorUtil.ScreenGUI.Label(rect.position, rect.position.ToString());
         }
 #endif
     }
@@ -70,8 +71,10 @@ namespace nitou.DebugInternal {
             if (rectTrans != null) {
                 EditorGUILayout.LabelField("RectTransform Properties", EditorStyles.boldLabel);
 
-                DraeViewportProperty(rectTrans);
+                // Info
+                DrawRectSizeInfo(rectTrans);
 
+                // Properties
                 DrawPoisitonProperty(rectTrans);
                 DrawSizeProperty(rectTrans);
                 DrawAnchorPivotProperty(rectTrans);
@@ -86,19 +89,19 @@ namespace nitou.DebugInternal {
         /// ----------------------------------------------------------------------------
         // Private Method (Inspector Drawer)
 
-        private void DraeViewportProperty(RectTransform rectTransform) {
+        private void DrawRectSizeInfo(RectTransform rectTransform) {
             using (new EditorGUILayout.VerticalScope(Styles.box))
             using (new EditorGUI.DisabledScope(true)) {
                 // ビューポート座標
                 EditorGUILayout.Vector2Field("Viewport", rectTransform.GetViewportPos());
             }
-            
+
         }
 
-            /// <summary>
-            /// 位置関連のプロパティ
-            /// </summary>
-            private void DrawPoisitonProperty(RectTransform rectTrans) {
+        /// <summary>
+        /// 位置関連のプロパティ
+        /// </summary>
+        private void DrawPoisitonProperty(RectTransform rectTrans) {
 
             using (var group = new EditorUtil.GUI.FoldoutGroupScope("Transform Info", _positionAnim)) {
                 if (group.Visible) {

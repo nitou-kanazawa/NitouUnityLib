@@ -10,13 +10,13 @@ using UnityEngine.UI;
 
 namespace nitou {
 
-        // [NOTE]
-        //  ユースケースをメモしておく
-        //  ・
-        //  ・
-        //  ・
-        //  ・
-        //  ・
+    // [NOTE]
+    //  ユースケースをメモしておく
+    //  ・
+    //  ・
+    //  ・
+    //  ・
+    //  ・
 
     /// <summary>
     /// <see cref="RectTransform"/>の基本的な拡張メソッド集
@@ -52,8 +52,17 @@ namespace nitou {
         /// </summary>
         public static Vector2 GetWorldPosition(this RectTransform self, Corner corner = Corner.Min) {
             self.GetWorldCorners(_corners);
-            
+
             return _corners[(int)corner];  // ※Zは無視
+        }
+
+        /// <summary>
+        /// ワールド座標での中心位置を取得する
+        /// </summary>
+        public static Vector2 GetWorldCenterPosition(this RectTransform self, Corner corner = Corner.Min) {
+            self.GetWorldCorners(_corners);
+
+            return _corners.GetCenter();  // ※Zは無視
         }
 
         /// <summary>
@@ -61,10 +70,10 @@ namespace nitou {
         /// </summary>
         public static Vector2 GetWorldSize(this RectTransform self) {
             self.GetWorldCorners(_corners);
-            
+
             float width = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MaxX_MinY]);
             float height = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MinX_MaxY]);
-            
+
             return new Vector2(width, height);
         }
 
@@ -77,9 +86,13 @@ namespace nitou {
             Vector2 pos = _corners[(int)Corner.Min];
             float width = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MaxX_MinY]);
             float height = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MinX_MaxY]);
-            
+
             return new Rect(pos, new Vector2(width, height));
         }
+        
+        
+        //public static void SetWorldConers(Vector3[])
+        
         #endregion
 
 
@@ -166,33 +179,63 @@ namespace nitou {
         /// ビューポート座標系での位置とサイズを取得する
         /// </summary>
         public static Rect GetViewpoetRect(this RectTransform self, Canvas canvas = null) {
+            // [TODO] 実装する
             throw new System.NotImplementedException();
         }
 
+
+        // [FIXME] どちらに対する相対位置、サイズなのか曖昧なのを統一する
+
         /// <summary>
-        /// キャンバスに対する相対位置(0~1)を取得する
+        /// 相対的な位置を取得する
+        /// </summary>
+        public static Vector2 GetRelativePosition(this RectTransform self, Vector2 position) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self), "self recttransform cannot be null.");
+
+            // ワールド座標での位置 (※pixel座標ではない)
+            var selfRect = self.GetWorldRect();
+
+            // 相対位置
+            return new Vector2(
+                (position.x - selfRect.xMin) / selfRect.width,
+                (position.y - selfRect.yMin) / selfRect.height);
+        }
+
+        /// <summary>
+        /// 相対的な位置とサイズを取得する
         /// </summary>
         public static Rect GetRelativeRect(this RectTransform self, RectTransform other) {
             if (self == null) throw new System.ArgumentNullException(nameof(self), "self recttransform cannot be null.");
             if (other == null) throw new System.ArgumentNullException(nameof(other), "other recttransform cannot be null.");
 
             // ワールド座標での位置・サイズ (※pixel座標ではない)
-            var canvasRect = other.GetWorldRect();
             var selfRect = self.GetWorldRect();
+            var otherRect = other.GetWorldRect();
 
             // 相対位置
             var relativePos = new Vector2(
-                (selfRect.position.x - canvasRect.position.x) / canvasRect.size.x,
-                (selfRect.position.y - canvasRect.position.y) / canvasRect.size.y);
+                (selfRect.position.x - otherRect.position.x) / otherRect.size.x,
+                (selfRect.position.y - otherRect.position.y) / otherRect.size.y);
             // 相対サイズ
             var relativeSize = new Vector2(
-                selfRect.size.x / canvasRect.size.x,
-                selfRect.size.y / canvasRect.size.y);
+                selfRect.size.x / otherRect.size.x,
+                selfRect.size.y / otherRect.size.y);
 
             return new Rect(relativePos, relativeSize);
         }
 
         #endregion
+
+        private static Vector3 GetCenter(this Vector3[] corners) {
+            return (corners[(int)Corner.Min] + corners[(int)Corner.Max]) / 2f;
+        }
+
+
+
+
+
+
+
 
 
 

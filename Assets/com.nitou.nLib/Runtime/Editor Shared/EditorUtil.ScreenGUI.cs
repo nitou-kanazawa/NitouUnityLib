@@ -23,6 +23,10 @@ namespace nitou.EditorShared {
                 lineTexture = new Texture2D(1, 1);
             }
 
+
+            /// ----------------------------------------------------------------------------
+            #region Basic Method
+
             /// <summary>
             /// 
             /// </summary>
@@ -31,25 +35,33 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
+            /// GUI.Label()のラップメソッド
+            /// </summary>
+            public static void Label(Vector2 screenPos, string text = "") {
+
+                // 画面上でscreenPosの下にRectを生成
+                var size = Style.label.CalcSize(new GUIContent(text));
+                var rect = new Rect(screenPos, size);
+
+                UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);
+            }
+
+            /// <summary>
             /// 補助線を表示する
             /// </summary>
-            public static void AuxiliaryLine(Vector2 position) {
+            public static void AuxiliaryLine(Vector2 position, float width, Color color) {
 
-                float width = 2f;
-
-                //var horizontalRect = Rect.MinMaxRect(0f, position.y, position.x, position.y);
+                // Rect
                 var horizontalRect = new Rect(0f, position.y, position.x, width);
                 var verticalRect = new Rect(position.x, 0f, width, position.y);
 
-                using (new EditorUtil.GUIColorScope(Colors.Gray)) {
+                using (new EditorUtil.GUIColorScope(color)) {
                     UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(horizontalRect), lineTexture);
                     UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(verticalRect), lineTexture);
                 }
-                //UnityEngine.GUI.DrawTexture(new Rect(position.x, 0f, 1f, position.y), lineTexture);
-
-                //UnityEngine.GUI.Box(Convetor.ScreenToGUI(horizontalRect),"");
-                //UnityEngine.GUI.Box(Convetor.ScreenToGUI(verticalRect),"");
             }
+
+            #endregion
 
 
             /// ----------------------------------------------------------------------------
@@ -75,19 +87,26 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             private static class Style {
 
+                // 
                 public readonly static GUIStyle borderLine;
+                public readonly static GUIStyle label;
+
+
                 static Style() {
                     borderLine = new GUIStyle(UnityEngine.GUI.skin.box);
-
                     // 背景を透明にする
                     borderLine.normal.background = Texture2D.blackTexture;
                     borderLine.normal.textColor = Color.clear;
+
+                    // ラベル
+                    label = new GUIStyle(UnityEngine.GUI.skin.label) { 
+                        alignment = TextAnchor.LowerCenter,
+                        fontSize = 30                        
+                    };
                 }
 
             }
         }
-
-
 
     }
 }
