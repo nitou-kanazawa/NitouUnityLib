@@ -6,11 +6,14 @@ namespace nitou {
 
     public class testAttri : MonoBehaviour {
 
+        [Title("aaaa")]
 
-        public int a;
-        [ReadOnly] public int b;
-        [Indent] public int e;
-        [Title("Title")]
-        [Indent]public int f;
+        [SerializeField,Indent] int a;
+        
+        [HideInPlayMode]
+        [SerializeField,Indent] int b;
+
+        [DisableInPlayMode]
+        [SerializeField, Indent] int f;
     }
 }

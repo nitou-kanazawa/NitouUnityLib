@@ -1,10 +1,10 @@
 using UnityEngine;
-using Alchemy.Inspector;
 
 // [参考]
 //  youtube: Devlog 2｜スクリプタブルオブジェクトを使ったゲームアーキテクチャ https://www.youtube.com/watch?v=WLDgtRNK2VE
 
 namespace nitou.EventChannel.Shared {
+    using nitou.Inspector;
 
     /// <summary>
     /// イベントチャンネル用のたたき台となるScriptable Object

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
-using Alchemy.Inspector;
 
 // [参考] 
 //  qiita: いまさらColliderのisTriggerを結合して判定する方法を知ったのでメモ https://qiita.com/tsujihaneta/items/ec656c2092e06a881ca8
 
 namespace nitou.HitSystem {
     using nitou.BachProcessor;
+    using nitou.Inspector;
 
     /// <summary>
     /// コリジョン検出用コンポーネントの基底クラス
@@ -35,7 +35,7 @@ namespace nitou.HitSystem {
         [DisableInPlayMode]
         [SerializeField, Indent] protected bool _useHitTag = false;
 
-        [ShowIf("_useHitTag")]
+        //[ShowIf("_useHitTag")]
         [DisableInPlayMode]
         [SerializeField, Indent] protected string[] _hitTagArray;
 

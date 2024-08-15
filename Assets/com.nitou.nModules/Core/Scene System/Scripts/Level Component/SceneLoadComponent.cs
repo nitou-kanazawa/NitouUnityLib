@@ -1,13 +1,13 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Alchemy.Inspector;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace nitou.SceneSystem.Demo{
     using nitou.RichText;
+    using nitou.Inspector;
 
     /// <summary>
     /// インスペクタで設定したシーンを読み込むコンポーネント
@@ -20,7 +20,7 @@ namespace nitou.SceneSystem.Demo{
         /// <summary>
         /// 設定したシーンを読み込む
         /// </summary>
-        [Button, HideInEditMode]
+        [Button]
         public async void LoadScene() {
             if (_nextScene == null) return;
 

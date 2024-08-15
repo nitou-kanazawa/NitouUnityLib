@@ -1,7 +1,7 @@
 using UnityEngine;
-using Alchemy.Inspector;
 
 namespace nitou.LevelObjects {
+    using nitou.Inspector;
 
     /// <summary>
     /// シーン上の通過点を表すクラス
@@ -23,12 +23,12 @@ namespace nitou.LevelObjects {
         /// ----------------------------------------------------------------------------
         // Field
 
-        [HorizontalGroup]
-        [HideLabel]
+        //[HorizontalGroup]
+        //[HideLabel]
         public Vector3 position = Vector3.zero;
 
-        [HorizontalGroup()]
-        [HideLabel]
+        //[HorizontalGroup()]
+        //[HideLabel]
         public TagTypes tag = TagTypes.None;
 
 

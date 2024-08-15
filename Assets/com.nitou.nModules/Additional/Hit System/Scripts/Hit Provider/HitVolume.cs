@@ -1,8 +1,8 @@
 using UniRx;
 using UnityEngine;
-using Alchemy.Inspector;
 
 namespace nitou.HitSystem{
+    using nitou.Inspector;
 
     /// <summary>
     /// ヒットを与えるオブジェクト
