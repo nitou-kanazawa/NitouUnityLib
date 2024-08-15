@@ -2,9 +2,9 @@
 using System;
 using UnityEngine;
 using UnityEditor;
-using Alchemy.Inspector;
 
 namespace nitou.EditorShared {
+    using nitou.Inspector;
 
     /// <summary>
     /// Editorで参照するプロジェクト固有の設定データ
@@ -56,7 +56,7 @@ namespace nitou.EditorShared {
             RemoveInBuild = 2
         }
 
-        [LabelText("Dammy Object Mode")]
+        //[LabelText("Dammy Object Mode")]
         [SerializeField] HierarchyObjectMode _hierarchyObjectMode = HierarchyObjectMode.RemoveInBuild;
         [SerializeField] bool _showToggles;
         [SerializeField] bool _showComponentIcons;

@@ -1,10 +1,13 @@
 #if UNITY_EDITOR
+using System.Reflection;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor;
 
 namespace nitou.EditorScripts.Drawers {
     using nitou.Inspector;
+
+    /// ----------------------------------------------------------------------------
+    #region d
 
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public sealed class ReadOnlyDrawer : PropertyDrawer {
@@ -19,19 +22,48 @@ namespace nitou.EditorScripts.Drawers {
     public class IndentDrawer : PropertyDrawer {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             var indentAttribute = (IndentAttribute)attribute;
-            EditorGUI.indentLevel += indentAttribute.indent;
+            EditorGUI.indentLevel += indentAttribute.IndentLevel;
             EditorGUI.PropertyField(position, property, label, true);
-            EditorGUI.indentLevel -= indentAttribute.indent;
+            EditorGUI.indentLevel -= indentAttribute.IndentLevel;
         }
     }
 
-    [CustomPropertyDrawer(typeof(LabelTextAttribute))]
-    public class LabelTextDrawer : PropertyDrawer {
+    #endregion
+
+
+    /// ----------------------------------------------------------------------------
+    #region Condition
+
+    [CustomPropertyDrawer(typeof(DisableInPlayModeAttribute))]
+    public class DisableInPlayModeDrawer : PropertyDrawer {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            var labelTextAttribute = (LabelTextAttribute)attribute;
-            EditorGUI.PropertyField(position, property, new GUIContent(labelTextAttribute.Text), true);
+            GUI.enabled = !Application.isPlaying;
+            EditorGUI.PropertyField(position, property, label, true);
+            GUI.enabled = true;
         }
     }
+
+    [CustomPropertyDrawer(typeof(HideInPlayModeAttribute))]
+    public class HideInPlayModeDrawer : PropertyDrawer {
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+            if (!Application.isPlaying) {
+                EditorGUI.PropertyField(position, property, label, true);
+            }
+        }
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
+            if (!Application.isPlaying) {
+                return EditorGUI.GetPropertyHeight(property, label, true);
+            }
+            return 0; // Hide the property by setting height to 0
+        }
+    }
+
+    #endregion
+
+
+    /// ----------------------------------------------------------------------------
+	#region Title label
 
     [CustomPropertyDrawer(typeof(TitleAttribute))]
     public class TitleDrawer : PropertyDrawer {
@@ -57,5 +89,8 @@ namespace nitou.EditorScripts.Drawers {
             return EditorGUIUtility.singleLineHeight + 4 + base.GetPropertyHeight(property, label);
         }
     }
+    #endregion
+
+
 }
 #endif

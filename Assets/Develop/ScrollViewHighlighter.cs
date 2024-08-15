@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Alchemy.Inspector;
 using nitou;
+using nitou.Inspector;
 
-namespace Project
-{
-    public class ScrollViewHighlighter : MonoBehaviour
-    {
+namespace Project {
+    public class ScrollViewHighlighter : MonoBehaviour {
 
         [SerializeField] ScrollRect _scrollView;
         [SerializeField] RectTransform _selectedItem;
@@ -16,12 +14,11 @@ namespace Project
         public float normalizedY = 0;
 
 
-        void Update()
-        {
+        void Update() {
             // Content内の相対位置
             var selectedCenter = _selectedItem.GetWorldCenterPosition();
             Debug.Log($"selectedCenter :{selectedCenter}");
-            
+
             // ※Content SizeFitterのサイズは0になる
             var contentRect = _scrollView.content.GetWorldRect();
             Debug.Log($"contentRect :{contentRect}");

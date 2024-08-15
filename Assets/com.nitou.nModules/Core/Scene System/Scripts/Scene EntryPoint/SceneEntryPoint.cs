@@ -2,9 +2,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Alchemy.Inspector;
 
 namespace nitou.SceneSystem {
+    using nitou.Inspector;
     //using nitou.Sound;
 
     /// <summary>
@@ -13,18 +13,16 @@ namespace nitou.SceneSystem {
     [DisallowMultipleComponent]
     public class SceneEntryPoint : MonoBehaviour, ISceneEntryPoint {
 
-        [HideLabel]
         [SerializeField] private SceneType _sceneType = SceneType.MainLevel;
 
         // ÉJÉÅÉâ
-        [Group("Main Level Settings"), Indent]
+        [Title("Main Level Settings")]
         //[ShowIf("_sceneType", SceneType.MainLevel)]
-        [SerializeField] private Camera _sceneCamera;
+        [SerializeField, Indent] Camera _sceneCamera;
 
         // BGM
-        [Group("Main Level Settings"), Indent]
         //[ShowIf("_sceneType", SceneType.MainLevel)]
-        [SerializeField] private AudioClip _bgmClip;
+        [SerializeField, Indent] AudioClip _bgmClip;
 
 
         /// ----------------------------------------------------------------------------

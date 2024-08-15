@@ -1,7 +1,7 @@
 using UnityEngine;
-using Alchemy.Inspector;
 
 namespace nitou.LevelObjects{
+    using nitou.Inspector;
 
     //[ExecuteAlways]
     public class LineToTarget : LineRendererAddOn {

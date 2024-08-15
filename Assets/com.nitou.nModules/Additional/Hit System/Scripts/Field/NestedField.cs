@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Alchemy.Inspector;
 
 namespace nitou.HitSystem {
     using nitou.BachProcessor;
+    using nitou.Inspector;
 
     /// <summary>
     /// 入れ子構造の範囲オブジェクト
@@ -58,7 +58,7 @@ namespace nitou.HitSystem {
         /// <summary>
         /// Initializes a list of colliders that this component has collided with.
         /// </summary>
-        private void InitializeBufferOfCollidedCollision() {}
+        private void InitializeBufferOfCollidedCollision() { }
 
         /// <summary>
         /// 各フレームでの検出開始時の初期化処理
