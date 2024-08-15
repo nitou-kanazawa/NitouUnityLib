@@ -2,7 +2,7 @@
     "name": "Test.Nitou.Lib",
     "rootNamespace": "nitou.Test",
     "references": [
-        "GUID:cf22d43159e5c1140b43906e53a5d607"
+        "Nitou.Lib"
     ],
     "includePlatforms": [
         "Editor"

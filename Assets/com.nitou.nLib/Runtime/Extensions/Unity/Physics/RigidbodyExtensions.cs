@@ -3,7 +3,7 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rigidbody"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Rigidbody"/>ï¿½ÌŠï¿½{ï¿½Iï¿½ÈŠgï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½W
     /// </summary>
     public static class RigidbodyExtensions {
 
@@ -11,14 +11,14 @@ namespace nitou {
         #region Basic
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ï¿½ï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h
         /// </summary>
         public static Vector3 GetLocalPosition(this Rigidbody self) {
             return self.transform.parent.InverseTransformPoint(self.position);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‰ñ“]‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ï¿½ï¿½ï¿½[ï¿½Jï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h
         /// </summary>
         public static Quaternion GetLocalRotation(this Rigidbody self) {
             return Quaternion.Inverse(self.transform.parent.rotation) * self.rotation;
@@ -30,7 +30,7 @@ namespace nitou {
         #region Move
 
         /// <summary>
-        /// LocalÀ•W‚ğw’è‚µ‚½ˆÚ“®ƒƒ\ƒbƒh
+        /// Localï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½wï¿½è‚µï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h
         /// </summary>
         public static void MoveLocalPosition(this Rigidbody self, Vector3 localPosition) {
             var position = self.transform.parent.TransformPoint(localPosition);
@@ -45,7 +45,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// LocalÀ•W‚ğw’è‚µ‚½‰ñ“]ƒƒ\ƒbƒh
+        /// Localï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½wï¿½è‚µï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½\ï¿½bï¿½h
         /// </summary>
         public static void MoveLocalRotaion(this Rigidbody self, Quaternion localRotation) {
             var rotation = self.transform.parent.rotation * localRotation;
@@ -55,7 +55,7 @@ namespace nitou {
 
 
         /// <summary>
-        /// ‘¬“x‚ğƒŠƒZƒbƒg‚·‚é
+        /// ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public static void ResetVelocity(this Rigidbody self) {
             self.velocity = Vector3.zero;

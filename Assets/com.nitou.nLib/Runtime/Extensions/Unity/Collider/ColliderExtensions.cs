@@ -20,15 +20,28 @@ namespace nitou{
             return self;
         }
 
+
+
         /// <summary>
         /// <see cref="Collider.material"/>‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
         /// </summary>
-        public static TCollider SetMaterial<TCollider>(this TCollider self, PhysicMaterial material)
+#if UNITY_6000_0_OR_NEWER
+        public static TCollider SetMaterial<TCollider>(this TCollider self, PhysicsMaterial material)
             where TCollider : Collider {
             
             self.material = material;
             return self;
         }
+#else
+       public static TCollider SetMaterial<TCollider>(this TCollider self, PhysicMaterial material)
+            where TCollider : Collider {
+            
+            self.material = material;
+            return self;
+        }
+
+#endif
+
         #endregion
 
 
@@ -50,6 +63,6 @@ namespace nitou{
         
 
         
-        #endregion
+#endregion
     }
 }
