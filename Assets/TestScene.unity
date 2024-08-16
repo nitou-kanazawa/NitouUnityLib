@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 352034800}
   - component: {fileID: 352034799}
   - component: {fileID: 352034802}
+  - component: {fileID: 352034803}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -825,6 +826,18 @@ MonoBehaviour:
   _selectedItem: {fileID: 1361769921}
   _icon: {fileID: 438189427}
   normalizedY: 0
+--- !u!114 &352034803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352034797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdcb4eae39dd6044aa98cb553bd1ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &391196133
 GameObject:
   m_ObjectHideFlags: 0
@@ -3668,7 +3681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063976111}
-  - component: {fileID: 2063976110}
+  - component: {fileID: 2063976112}
   m_Layer: 0
   m_Name: Separator
   m_TagString: Untagged
@@ -3676,19 +3689,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2063976110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063976109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941cd1bade9ee428cbf8dc33883c67b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hierarchyObjectMode: 0
 --- !u!4 &2063976111
 Transform:
   m_ObjectHideFlags: 0
@@ -3704,6 +3704,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063976112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063976109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3d8078a98142340bdf2b853808d70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiElements: []
 --- !u!1 &2088757571
 GameObject:
   m_ObjectHideFlags: 0

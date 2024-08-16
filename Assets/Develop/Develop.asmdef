@@ -2,8 +2,9 @@
     "name": "RuntimeTest",
     "rootNamespace": "Project",
     "references": [
-        "GUID:cf22d43159e5c1140b43906e53a5d607",
-        "GUID:14d14a38d1c9a1f43b1b739aba632d1e"
+        "GUID:14d14a38d1c9a1f43b1b739aba632d1e",
+        "GUID:dd8cd4690239d464487727ff012b3a2e",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
