@@ -1,5 +1,5 @@
 {
-    "name": "Nitou.Tools.Runtime",
+    "name": "Nitou.Tools",
     "rootNamespace": "nitou.Tools",
     "references": [
         "Nitou.Lib"

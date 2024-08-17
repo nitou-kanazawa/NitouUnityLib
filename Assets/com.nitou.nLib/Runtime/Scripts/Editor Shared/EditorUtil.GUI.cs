@@ -11,8 +11,10 @@ using UnityEditor.AnimatedValues;
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
         
-        
-        public static partial class GUI {
+        /// <summary>
+        /// 
+        /// </summary>
+        public static class GUI {
 
             /// ----------------------------------------------------------------------------
             #region Object Field

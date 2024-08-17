@@ -3,7 +3,8 @@
     "rootNamespace": "nitou.Tools",
     "references": [
         "Nitou.Lib",
-        "Nitou.Lib.Editor"
+        "Nitou.Lib.Editor",
+        "Nitou.Tools"
     ],
     "includePlatforms": [
         "Editor"
