@@ -17,6 +17,7 @@ node "Basic Modules" #LightBlue{
 ' 追加モジュール
 node "Additional Modules" #LightYellow{
   component "Hit System" as HitSystem
+  component "Level Actor" as LevelActor
 }
 
 ' 依存関係
