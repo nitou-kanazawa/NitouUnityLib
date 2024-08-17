@@ -1,10 +1,11 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace nitou.Tools.Hierarchy.EditorSctipts {
-    using nitou.EditorShared;
     using nitou.Tools.Shared;
+    using nitou.EditorShared;
 
     public class HierarchyTreeMapDrawer : HierarchyDrawer {
 
@@ -53,6 +54,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 return tex;
             }
         }
+
 
         public override void OnGUI(int instanceID, Rect selectionRect) {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
@@ -112,3 +114,4 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         }
     }
 }
+#endif
