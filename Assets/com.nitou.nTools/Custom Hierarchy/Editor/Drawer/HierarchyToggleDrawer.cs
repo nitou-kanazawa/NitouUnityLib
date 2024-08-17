@@ -1,6 +1,11 @@
+#if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+
+// [参考]
+//  _: Hierarchy でオブジェクトのコンポーネント一覧をアイコン表示 https://www.midnightunity.net/unity-extension-hierarchy-show-components/
+//  github : Alchemy/HierarchyToggleDrawer.cs https://github.com/AnnulusGames/Alchemy/blob/main/Alchemy/Assets/Alchemy/Editor/Hierarchy/HierarchyToggleDrawer.cs
 
 namespace nitou.Tools.Hierarchy.EditorSctipts {
     using nitou.EditorShared;
@@ -8,18 +13,33 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
     public sealed class HierarchyToggleDrawer : HierarchyDrawer {
 
+        private const float TOGGLE_SIZE = 16f;
+        private const float ICON_SIZE = 14f;
+        private const float RIGHT_OFFSET = 2.7f;
+
+        private static readonly Color _disableColor = new(1.0f, 1.0f, 1.0f, 0.5f);
+
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
         public override void OnGUI(int instanceID, Rect selectionRect) {
+            
+            // GameObject取得
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
-            if (gameObject.TryGetComponent<HierarchyObject>(out _)) return;
+            if (gameObject.TryGetComponent<HierarchyObject>(out _)) return;     // ※ダミーオブジェクトははじく
 
+            // 設定データ
             var settings = nToolsSettings.GetOrCreateSettings();
 
+            // トグルボタン
             if (settings.ShowHierarchyToggles) {
                 var rect = selectionRect;
-                rect.x = rect.xMax - 2.7f;
-                rect.width = 16f;
+                rect.x = rect.xMax - RIGHT_OFFSET;  // ※右端に配置
+                rect.width = TOGGLE_SIZE;
 
+                // Active状態の反映
                 var active = GUI.Toggle(rect, gameObject.activeSelf, string.Empty);
                 if (active != gameObject.activeSelf) {
                     Undo.RecordObject(gameObject, $"{(active ? "Activate" : "Deactivate")} GameObject '{gameObject.name}'");
@@ -28,18 +48,22 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 }
             }
 
+            // アイコン
             if (settings.ShowComponentIcons) {
+                // 描画位置
                 var rect = selectionRect;
-                rect.x = rect.xMax - (settings.ShowHierarchyToggles ? 18.7f : 2.7f);
+                rect.x = rect.xMax - ((settings.ShowHierarchyToggles ? TOGGLE_SIZE : 0f) + RIGHT_OFFSET);
                 rect.y += 1f;
-                rect.width = 14f;
-                rect.height = 14f;
+                rect.width = ICON_SIZE;
+                rect.height = ICON_SIZE;
 
-                var components = gameObject
-                    .GetComponents<Component>()
-                    .AsEnumerable()
+                // オブジェクトが所持しているコンポーネント一覧を取得
+                var components = gameObject.GetComponents<Component>()
+                    //.AsEnumerable()           // ※Transform & RectTransformを表示する場合はこっち
+                    .Where(x => x is not Transform)
                     .Reverse();
 
+                // アイコンの描画
                 var existsScriptIcon = false;
                 foreach (var component in components) {
                     var image = AssetPreview.GetMiniThumbnail(component);
@@ -49,26 +73,25 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                         if (existsScriptIcon) continue;
                         existsScriptIcon = true;
                     }
-
-                    DrawIcon(ref rect, image, IsEnabled(component) ? Color.white : new(1f, 1f, 1f, 0.5f));
+                    var color =   component.IsEnabled() ? Color.white : _disableColor;
+                    DrawIcon(ref rect, image, color);
                 }
             }
         }
 
-        static void DrawIcon(ref Rect rect, Texture image, Color color) {
-            var defaultColor = GUI.color;
-            GUI.color = color;
 
-            GUI.DrawTexture(rect, image, ScaleMode.ScaleToFit);
-            rect.x -= rect.width;
+        /// ----------------------------------------------------------------------------
+        // Static Method
 
-            GUI.color = defaultColor;
+        private static void DrawIcon(ref Rect rect, Texture image, Color color) {
+            
+            using (new EditorUtil.GUIColorScope(color)) {
+                GUI.DrawTexture(rect, image, ScaleMode.ScaleToFit);
+                rect.x -= rect.width;
+            }
         }
 
-        static bool IsEnabled(Component component) {
-            var property = component.GetType().GetProperty("enabled", typeof(bool));
-            return (bool)(property?.GetValue(component, null) ?? true);
-        }
     }
 
 }
+#endif

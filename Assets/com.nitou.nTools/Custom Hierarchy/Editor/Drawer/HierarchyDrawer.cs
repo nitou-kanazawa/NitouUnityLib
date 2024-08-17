@@ -6,11 +6,16 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
     using nitou.EditorShared;
 
     /// <summary>
-    /// Base class for adding custom drawing processing to hierarchy items.
+    /// ヒエラルキードロワーの基底クラス
     /// </summary>
     public abstract class HierarchyDrawer {
 
+        // ※HierarchyItemCallbackとして登録する
         public abstract void OnGUI(int instanceID, Rect selectionRect);
+
+
+        /// ----------------------------------------------------------------------------
+        // Inner Method
 
         protected static Rect GetBackgroundRect(Rect selectionRect) {
             return selectionRect.AddXMax(20f);

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -5,13 +6,18 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
     using nitou.Tools.Shared;
 
     public class HierarchyRowSeparatorDrawer : HierarchyDrawer{
-        
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
         public override void OnGUI(int instanceID, Rect selectionRect) {
 
+            // 
             var settings = nToolsSettings.GetOrCreateSettings();
             if (!settings.ShowSeparator) return;
-            var rect = new Rect {y = selectionRect.y, width = selectionRect.width + selectionRect.x, height = 1, x = 0};
 
+            // ëŒè€óÃàÊ
+            var rect = new Rect {y = selectionRect.y, width = selectionRect.width + selectionRect.x, height = 1, x = 0};
             EditorGUI.DrawRect(rect, settings.SeparatorColor);
 
             if (!settings.ShowRowShading) return;
@@ -23,3 +29,4 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         }
     }
 }
+#endif
