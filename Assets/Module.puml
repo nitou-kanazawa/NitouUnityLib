@@ -1,0 +1,29 @@
+@startuml "Nitiou Packages"
+title "Nitiou Unity Packages"
+skinparam packageStyle rectangle
+skinparam BackgroundColor LightGray
+
+' 共通ライブラリ
+node "Common Library" #LightBlue{
+  component "nLib" as Library
+}
+
+' 基本モジュール
+node "Basic Modules" #LightBlue{
+  component "nModules" as BasicModules
+  component "nTools" as BasicTools
+}
+
+' 追加モジュール
+node "Additional Modules" #LightYellow{
+  component "Hit System" as HitSystem
+}
+
+' 依存関係
+BasicModules -up-> Library
+BasicTools -up-> Library
+
+HitSystem -up-> Library
+HitSystem -up-> BasicModules
+
+@enduml
