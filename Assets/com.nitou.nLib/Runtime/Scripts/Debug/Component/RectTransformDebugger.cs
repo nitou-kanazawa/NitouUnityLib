@@ -13,10 +13,15 @@ namespace nitou.DebugInternal {
     /// <summary>
     /// <see cref="RectTransform"/>の各プロパティを可視化するためのデバッグ用コンポーネント
     /// </summary>
+    [RequireComponent(typeof(RequireComponent))]
     internal class RectTransformDebugger : DebugComponent<RectTransform> {
 
         private RectTransform _rectTrans;
         public RectTransform RectTrans => _rectTrans;
+
+
+        /// ----------------------------------------------------------------------------
+        // MonoBehaviour Method
 
         private void OnValidate() {
             _rectTrans = gameObject.GetComponent<RectTransform>();

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rigidbody"/>�̊�{�I�Ȋg�����\�b�h�W
+    /// <see cref="Rigidbody"/>の基本的な拡張メソッド集
     /// </summary>
     public static class RigidbodyExtensions {
 
@@ -58,7 +58,12 @@ namespace nitou {
         /// ���x�����Z�b�g����
         /// </summary>
         public static void ResetVelocity(this Rigidbody self) {
+
+#if UNITY_6000_0_OR_NEWER
+            self.linearVelocity = Vector3.zero;
+#else
             self.velocity = Vector3.zero;
+#endif
             self.angularVelocity = Vector3.zero;
         }
     }
