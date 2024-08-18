@@ -27,7 +27,7 @@ namespace nitou.Tools.ProjectWindow {
         /// </summary>
         private static void DrawFolderIcon(string guid, Rect rect) {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-            var iconDictionary = IconDictionaryCreator.IconDictionary;
+            var iconDictionary = IconDictionaryCreator._iconDictionary;
             var fileName = Path.GetFileName(path);
 
             // •]‰¿

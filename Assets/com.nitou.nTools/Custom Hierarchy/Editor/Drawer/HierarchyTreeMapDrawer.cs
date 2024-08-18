@@ -16,7 +16,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapCurrent), out var tex);
                 if (tex != null) return tex;
 
-                tex = CustomPackageUtil.FindAssetWithPath<Texture2D>("tree_map_current.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = NonResources.Load<Texture2D>("tree_map_current.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
             }
@@ -27,7 +27,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLast), out var tex);
 
                 if (tex != null) return tex;
-                tex = CustomPackageUtil.FindAssetWithPath<Texture2D>("tree_map_last.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = NonResources.Load<Texture2D>("tree_map_last.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
                 TextureCached[nameof(TreeMapLast)] = tex;
                 return tex;
             }
@@ -38,7 +38,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLevel), out var tex);
 
                 if (tex != null) return tex;
-                tex = CustomPackageUtil.FindAssetWithPath<Texture2D>("tree_map_level.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = NonResources.Load<Texture2D>("tree_map_level.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
                 TextureCached[nameof(TreeMapLevel)] = tex;
                 return tex;
             }
@@ -49,7 +49,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLine), out var tex);
 
                 if (tex != null) return tex;
-                tex = CustomPackageUtil.FindAssetWithPath<Texture2D>("tree_map_line.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = NonResources.Load<Texture2D>("tree_map_line.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
                 TextureCached[nameof(TreeMapLine)] = tex;
                 return tex;
             }

@@ -120,7 +120,8 @@ namespace nitou {
                     break;
                 }
                 // —v‘f’Ç‰Á
-                sb.Append($"[ {index} ] = {list[index]} \n".WithIndentTag());
+                var rowText = $"[ {index} ] = {list[index]}".WithIndentTag();
+                sb.Append($"{rowText} \n");
             }
             return sb.ToString();
         }

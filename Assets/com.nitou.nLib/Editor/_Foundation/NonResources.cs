@@ -24,11 +24,13 @@ namespace nitou.EditorShared {
             return AssetDatabase.LoadAssetAtPath<T>(path);
         }
 
-        /// <summary>
-        /// ファイルのパス(Assetsから、拡張子も含める)を設定し、Objectを読み込む。存在しない場合はNullを返す
-        /// </summary>
-        public static Object Load(string path) {
-            return Load<Object>(path);
+        public static T Load<T>(string assetName, string relativePath) where T : Object {
+            return AssetDatabase.LoadAssetAtPath<T>($"{relativePath}/{assetName}");
+        }
+
+        public static T Load<T>(string assetName, string relativePath, PackageFolderInfo packageInfo) where T : Object {
+            string path = GetAssetPathInPackage(relativePath, assetName, packageInfo);
+            return AssetDatabase.LoadAssetAtPath<T>(path);
         }
 
 
@@ -58,11 +60,84 @@ namespace nitou.EditorShared {
         /// <summary>
         /// ディレクトリのパス(Assetsから)を設定し、Objectを読み込む。存在しない場合は空のListを返す
         /// </summary>
-        public static List<Object> LoadAll(string directoryPath) {
-            return LoadAll<Object>(directoryPath);
+        public static List<T> LoadAll<T>(string relativePath, PackageFolderInfo packageInfo) where T : Object {
+            return LoadAll<T>(GetDirectoryPathInPackage(relativePath, packageInfo));
         }
+
+
+
+        /// ----------------------------------------------------------------------------
+        // Private Method
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string GetAssetPathInPackage(string relativePath, string assetName, PackageFolderInfo packageInfo) {
+
+            var fullRelativePath = $"{relativePath}/{assetName}";
+
+            // 配布先でのパス
+            var upmPath = $"Packages/{packageInfo.upmFolderName}/{fullRelativePath}";
+            // 開発プロジェクト内でのパス
+            var normalPath = $"Assets/{packageInfo.normalFolderName}/{fullRelativePath}";
+
+            // 
+            if (File.Exists(Path.GetFullPath(upmPath))) {
+                return upmPath;
+            }
+            // 
+            else if (File.Exists(Path.GetFullPath(normalPath))) {
+                return normalPath;
+            }
+            // 
+            else {
+                Debug.LogError($"File not found in both UPM and normal paths: \n" +
+                    $"  [{upmPath}] and \n" +
+                    $"  [{normalPath}]");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string GetDirectoryPathInPackage(string relativePath, PackageFolderInfo packageInfo) {
+            // 配布先でのパス
+            var upmPath = $"Packages/{packageInfo.upmFolderName}/{relativePath}";
+            // 開発プロジェクト内でのパス
+            var normalPath = $"Assets/{packageInfo.normalFolderName}/{relativePath}";
+
+            // 
+            if (Directory.Exists(Path.GetFullPath(upmPath))) {
+                return upmPath;
+            }
+            // 
+            else if (Directory.Exists(Path.GetFullPath(normalPath))) {
+                return normalPath;
+            }
+            // 
+            else {
+                Debug.LogError($"Directory not found in both UPM and normal paths: \n" +
+                    $"  [{upmPath}] and \n" +
+                    $"  [{normalPath}]");
+                return null;
+            }
+        }
+
     }
 
+
+
+    public struct PackageFolderInfo {
+        
+        public readonly string upmFolderName;
+        public readonly string normalFolderName;
+
+        public PackageFolderInfo(string upmFolderName = "com.nitou.nLib", string normalFolderName = "nLib") {
+            this.upmFolderName = upmFolderName;
+            this.normalFolderName = normalFolderName;
+        }
+    }
 }
 
 #endif
