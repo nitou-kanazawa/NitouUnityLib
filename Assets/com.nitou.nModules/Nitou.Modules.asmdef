@@ -5,7 +5,7 @@
         "Nitou.Lib",
         "UniTask",
         "UniRx",
-        "Alchemy"
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

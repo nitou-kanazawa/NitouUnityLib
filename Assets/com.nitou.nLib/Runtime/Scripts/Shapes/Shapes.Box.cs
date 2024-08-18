@@ -52,34 +52,8 @@ namespace nitou {
                 return $"[Box] position: {position}, rotation: {eulerAngle}, size: {size}";
             }
 
-
-
-            /// ----------------------------------------------------------------------------
-            // Public Method
-
-
-
-
         }
 
     }
 
-
-    public static partial class BoxColliderExtensions {
-
-        /// <summary>
-        /// 形状情報を取得する
-        /// </summary>
-        //public static Shapes.Box GetVolume(this BoxCollider self) {
-
-        //    // ワールド座標系での位置，回転，サイズ
-        //    Vector3 worldCenter = self.transform.TransformPoint(self.center);
-        //    Quaternion worldRotation = self.transform.rotation;
-        //    Vector3 worldSize = Vector3.Scale(self.transform.lossyScale, self.size);
-
-        //    // Boxのプロパティを設定
-        //    var boxShape = new Shapes.Box(worldCenter, worldRotation, worldSize);
-        //    return boxShape;
-        //}
-    }
 }

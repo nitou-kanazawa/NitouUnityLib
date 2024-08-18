@@ -19,9 +19,12 @@ namespace nitou.SceneSystem{
     ' MonoBehaviourを継承した基底クラス
     class SceneEntryPointBase{}
 
-    ' -----------------
-    ' 依存関係
+    static class SceneNavigator{}
+
+    ' 継承関係
     SceneEntryPointBase -up-|> ISceneEntryPoint
+    ' 依存関係
+
 }
 
 namespace nitou.SceneSystem{

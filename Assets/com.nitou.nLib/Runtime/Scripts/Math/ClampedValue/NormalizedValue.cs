@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-// [éQçl]
-
 namespace nitou {
 
     /// <summary>
