@@ -8,7 +8,7 @@ namespace nitou.EditorShared {
     public struct PackageFolderInfo {
         public readonly string upmFolderName;
         public readonly string normalFolderName;
-        
+
         public PackageFolderInfo(string upmFolderName = "com.nitou.nLib", string normalFolderName = "nLib") {
             this.upmFolderName = upmFolderName;
             this.normalFolderName = normalFolderName;
@@ -25,15 +25,17 @@ namespace nitou.EditorShared {
             where T : Object {
 
             string path = AssetInPackagePath(relativePath, assetName, packageInfo);
-            var t = AssetDatabase.LoadAssetAtPath(path, typeof(T));
-            if (t == null) Debug.LogError($"Couldn't load the {nameof(T)} at path :{path}");
-            return t as T;
+            return AssetDatabase.LoadAssetAtPath<T>(path);
+
+            //var t = AssetDatabase.LoadAssetAtPath(path, typeof(T));
+            //if (t == null) Debug.LogError($"Couldn't load the {nameof(T)} at path :{path}");
+            //return t as T;
         }
 
 
         /// ----------------------------------------------------------------------------
         // Private Method
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -50,16 +52,19 @@ namespace nitou.EditorShared {
             // 開発プロジェクト内でのパス
             var normalPath = $"Assets/{packageInfo.normalFolderName}/{fullRelativePath}";
 
-            return !File.Exists(Path.GetFullPath(upmPath)) ? normalPath : upmPath;
-
-            //if (File.Exists(Path.GetFullPath(upmPath))) {
-            //    return upmPath;
-            //} else if (File.Exists(Path.GetFullPath(normalPath))) {
-            //    return normalPath;
-            //} else {
-            //    Debug.LogError($"File not found in both UPM and normal paths: {upmPath} and {normalPath}");
-            //    return null;
-            //}
+            // 
+            if (File.Exists(Path.GetFullPath(upmPath))) {
+                return upmPath;
+            }
+            // 
+            else if (File.Exists(Path.GetFullPath(normalPath))) {
+                return normalPath;
+            } 
+            // 
+            else {
+                Debug.LogError($"File not found in both UPM and normal paths: {upmPath} and {normalPath}");
+                return null;
+            }
         }
     }
 }

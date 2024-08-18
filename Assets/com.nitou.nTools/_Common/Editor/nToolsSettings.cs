@@ -14,7 +14,7 @@ namespace nitou.Tools.Shared {
         static nToolsSettings _instance;
         
         static readonly string SettingsPath = "ProjectSettings/ToolsSettings.json";
-        static readonly string SettingsMenuName = "Project/nTools";
+        static readonly string SettingsMenuName = "Project/Nitou Tools";
 
 
         [SerializeField] HierarchyObjectMode hierarchyObjectMode = HierarchyObjectMode.RemoveInBuild;

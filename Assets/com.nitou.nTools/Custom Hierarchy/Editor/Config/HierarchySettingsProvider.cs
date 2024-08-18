@@ -10,7 +10,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
     public class HierarchySettingsProvider : SettingsProvider {
 
         // 設定のパス (※第1階層は「Preferences」にする)
-        private const string SettingPath = "Project/_Nitou/Hierarchy";
+        private const string SettingPath = "Project/Nitou Tools/Hierarchy";
 
         private Editor _editor;
 
@@ -21,7 +21,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public HierarchySettingsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords) : base(path, scopes, keywords) { }
+        public HierarchySettingsProvider(string path, SettingsScope scopes) : base(path, scopes) { }
 
         /// <summary>
         /// このメソッドが重要です
@@ -30,7 +30,10 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         [SettingsProvider]
         public static SettingsProvider CreateSettingProvider() {
             // ※第三引数のkeywordsは、検索時にこの設定項目を引っかけるためのキーワード
-            return new HierarchySettingsProvider(SettingPath, SettingsScope.Project, null);
+            return new HierarchySettingsProvider(SettingPath, SettingsScope.Project) { 
+                label = "Hierarchy Settings",
+                keywords = new HashSet<string>(new[] { "Nitou, Inspector, Hierarchy" })
+            };
         }
 
 

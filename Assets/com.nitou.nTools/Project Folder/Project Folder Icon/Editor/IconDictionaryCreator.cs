@@ -60,38 +60,7 @@ namespace nitou.Tools.ProjectWindow {
             IconDictionary = dictionary;
         }
 
-        /*
 
-        /// <summary>
-        /// フルパスから相対パスを取得する
-        /// </summary>
-        private static string GetRelativePath(string rootPath, string fullPath) {
-            if (fullPath.StartsWith(rootPath)) {
-                return "Assets" + fullPath.Substring(Application.dataPath.Length);
-            }
-            return fullPath;
-        }
-
-        /// <summary>
-        /// アイコンのパスを決定する
-        /// </summary>
-        private static string DetermineIconPath() {
-            // Assetsフォルダ内のパスを確認
-            string assetsFullPath = Path.Combine(Application.dataPath, AssetsPath);
-            if (Directory.Exists(assetsFullPath)) {
-                return assetsFullPath;
-            }
-
-            // Packagesフォルダ内のパスを確認
-            string packageFullPath = Path.Combine(Application.dataPath.Replace("Assets", ""), PackagePath);
-            if (Directory.Exists(packageFullPath)) {
-                return packageFullPath;
-            }
-
-            return string.Empty;
-        }
-
-        */
 
 
 

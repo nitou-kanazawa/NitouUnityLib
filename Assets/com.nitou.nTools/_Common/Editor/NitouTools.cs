@@ -4,12 +4,12 @@ using UnityEngine;
 namespace nitou.Tools.Shared{
     using nitou.EditorShared;
 
-    internal static class NitouToolsConfig{
+    internal static class NitouTools{
 
         internal static readonly PackageFolderInfo pacakageInfo;
 
 
-        static NitouToolsConfig() {
+        static NitouTools() {
             pacakageInfo = new PackageFolderInfo(
                 upmFolderName: "com.nitou.nTools",
                 normalFolderName: "com.nitou.nTools");
