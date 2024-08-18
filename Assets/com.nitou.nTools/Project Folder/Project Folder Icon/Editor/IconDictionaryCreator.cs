@@ -35,8 +35,8 @@ namespace nitou.Tools.ProjectWindow {
 
             var texs = NonResources.LoadAll<Texture2D>(floderPath, NitouTools.pacakageInfo);
             _iconDictionary = texs.ToDictionary(texture => texture.name, texture => (Texture)texture);
-            
-            //Debug_.ListLog(texs);
+
+            Debug_.ListLog(texs);
         }
 
 
