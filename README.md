@@ -11,6 +11,18 @@ Unityでの開発で頻繁に使用するコードを試験的にパッケージ
 ※PackageManagerで自作パッケージの依存関係を解決（自動インストール）する方法が分かっていないため，
 できるだけパッケージ数は少なくしたい
 
+## 【インストール】
+``` 
+// Nitou.Lib
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nLib
+
+// Nitou.Modules
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nModules
+
+// Nitou.Tools
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nTools
+```
+
 ## 【構成】
 導入するコードを選択可能にするため，以下のように複数パッケージに分ける．
 （※あまりアセンブリファイルを増やしたくないので，分割方法は使いながら調整していく）
