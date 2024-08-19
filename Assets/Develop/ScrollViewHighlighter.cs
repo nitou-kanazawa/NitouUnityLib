@@ -1,40 +1,49 @@
 using UnityEngine;
 using UnityEngine.UI;
-using nitou;
-using nitou.Inspector;
 
-namespace Project {
+namespace nitou {
+    using nitou.Inspector;
+    
     public class ScrollViewHighlighter : MonoBehaviour {
 
         [SerializeField, Indent] ScrollRect _scrollView;
-        [SerializeField, Indent] RectTransform _selectedItem;
         [SerializeField, Indent] ScrollVarTick _icon;
 
-        [Title("Info")]
 
-        [ReadOnly]
-        [SerializeField, Indent] float normalizedY = 0;
+        // ----------------------------------------------------------------------------
+        // Public Method
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool SetTarget(RectTransform target) {
+            if (_scrollView == null || _scrollView.content == null || _icon == null) return false;
 
-        void Update() {
+            if (target == null || target.parent != _scrollView.content) {
+                Debug.Log("target is null or not contents element.");
+                return false;
+            }
 
-            var itemPosition = _selectedItem.GetWorldCenterPosition();
-            
-            // Content内の相対位置
-            var contentRect = _scrollView.content.GetWorldRect();   // ※開始時のContent SizeFitterのサイズは0になるので注意
-            if (contentRect.size == Vector2.zero) return;
-            var relativePos = RectUtil.GetRelativePosition(itemPosition, contentRect);
-
-            //Debug.Log($"contentRect :{contentRect}");
-
-
-            //Debug.Log($"relativePos :{relativePos}");
-            normalizedY = relativePos.y;
-
-            _icon.Rate = normalizedY;
-
+            var relativePos = GetNormalizedPosition(target);
+            _icon.Rate = relativePos.y;
+            return true;
         }
 
 
+        /// ----------------------------------------------------------------------------
+        // Private Method
+
+        private Vector2 GetNormalizedPosition(RectTransform selectedItem) {
+
+            var itemPosition = selectedItem.GetWorldCenterPosition();
+
+            // ContentのRect情報
+            var contentRect = _scrollView.content.GetWorldRect();   // ※開始時のContent SizeFitterのサイズは0になるので注意
+            if (contentRect.size == Vector2.zero) return Vector2.zero;
+
+            // Content内の相対位置
+            var relativePos = RectUtil.GetRelativePosition(itemPosition, contentRect);
+            return relativePos;
+        }
     }
 }
