@@ -605,7 +605,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1785659955}
-  - component: {fileID: 1785659954}
   - component: {fileID: 1785659956}
   m_Layer: 0
   m_Name: Collision Detector
@@ -614,25 +613,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1785659954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785659953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d147a8b25d4684e9d7b8c4ab9420f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Timing: 0
-  _cacheTargetType: 1
-  _hitLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  _useHitTag: 0
-  _hitTagArray: []
 --- !u!4 &1785659955
 Transform:
   m_ObjectHideFlags: 0
@@ -661,8 +641,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: 0
-  b: 0
+  b: 48
   f: 0
+  _range:
+    _minValue: 0.08687864
+    _maxValue: 0.6619048
+  s: 0.477
+  vector: {x: 0, y: 0}
 --- !u!1 &1900220002
 GameObject:
   m_ObjectHideFlags: 0

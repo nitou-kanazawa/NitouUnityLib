@@ -13,6 +13,9 @@ namespace nitou {
 
         [SerializeField] float _value;
 
+        /// <summary>
+        /// ílÅi0Å`1ÇÃîÕàÕÅjÅB
+        /// </summary>
         public float Value {
             get => _value;
             set => _value = Mathf.Clamp01(value);
@@ -25,16 +28,22 @@ namespace nitou {
             _value = Mathf.Clamp01(value);
         }
 
+        /// <summary>
+        /// floatå^Ç÷ÇÃà√ñŸÇÃïœä∑
+        /// </summary>
         public static implicit operator float(NormalizedValue normalizedValue) {
             return normalizedValue.Value;
         }
 
+        /// <summary>
+        /// floatå^Ç©ÇÁÇÃà√ñŸÇÃïœä∑
+        /// </summary>
         public static implicit operator NormalizedValue(float value) {
             return new NormalizedValue(value);
         }
 
         public override string ToString() {
-            return _value.ToString();
+            return _value.ToString("0.00");
         }
     }
 }
@@ -50,7 +59,6 @@ namespace nitou.EditorScripts {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 
             using (new EditorGUI.PropertyScope(position, label, property)) {
-                // Find the value property
                 SerializedProperty valueProperty = property.FindPropertyRelative("_value");
 
                 // Draw a float slider

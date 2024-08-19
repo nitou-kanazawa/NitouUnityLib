@@ -15,5 +15,11 @@ namespace nitou {
 
         [DisableInPlayMode]
         [SerializeField, Indent] int f;
+
+
+        public NormalizedRange _range;
+
+        [Range(0, 1)] public float s;
+        public Vector2 vector;
     }
 }
