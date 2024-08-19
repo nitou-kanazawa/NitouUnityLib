@@ -178,7 +178,7 @@ namespace nitou {
         /// <summary>
         /// ビューポート座標系での位置とサイズを取得する
         /// </summary>
-        public static Rect GetViewpoetRect(this RectTransform self, Canvas canvas = null) {
+        public static Rect GetViewportRect(this RectTransform self, Canvas canvas = null) {
             // [TODO] 実装する
             throw new System.NotImplementedException();
         }

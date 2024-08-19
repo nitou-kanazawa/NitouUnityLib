@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace nitou{
 
+    [ExecuteAlways]
     public class ScrollVarTick : MonoBehaviour{
 
         [SerializeField] Scrollbar _scrollbar;
@@ -20,6 +21,9 @@ namespace nitou{
         }
 
 
+        /// ----------------------------------------------------------------------------
+        // MonoBehaviour Method
+
         private void Awake() {
             if(_scrollbar != null) {
                 _scrollbarRect = _scrollbar.GetComponent<RectTransform>();
@@ -28,6 +32,19 @@ namespace nitou{
             // 
             UpdatePosition();
         }
+
+        private void OnValidate() {
+            if (_scrollbar != null && _scrollbarRect == null) {
+                _scrollbarRect = _scrollbar.GetComponent<RectTransform>();
+            } else {
+                _scrollbarRect = null;
+            }
+
+            UpdatePosition();
+        }
+
+        /// ----------------------------------------------------------------------------
+        // Private Method
 
         private void UpdatePosition() {
             if (_scrollbarRect == null) return;
