@@ -35,18 +35,6 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// GUI.Label()のラップメソッド
-            /// </summary>
-            public static void Label(Vector2 screenPos, string text = "") {
-
-                // 画面上でscreenPosの下にRectを生成
-                var size = Style.label.CalcSize(new GUIContent(text));
-                var rect = new Rect(screenPos, size);
-
-                UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);
-            }
-
-            /// <summary>
             /// 補助線を表示する
             /// </summary>
             public static void AuxiliaryLine(Vector2 position, float width, Color color) {
@@ -60,6 +48,34 @@ namespace nitou.EditorShared {
                     UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(verticalRect), _lineTexture);
                 }
             }
+
+            #endregion
+
+
+            /// ----------------------------------------------------------------------------
+            #region Basic Method
+
+            /// <summary>
+            /// GUI.Label()のラップメソッド
+            /// </summary>
+            public static void Label(Vector2 screenPos, string text = "", 
+                int fontSize = 20, TextAnchor alignment = TextAnchor.LowerLeft) {
+
+                // 描画範囲
+                var size = Style.label.CalcSize(new GUIContent(text));
+                var rect = new Rect(screenPos - size, size *2f);
+
+                // デバッグ
+                UnityEngine.GUI.Box(Convetor.ScreenToGUI(rect), "");
+
+                // ラベル描画
+                Style.label.fontSize = fontSize;
+                Style.label.alignment = alignment;
+                UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);
+            }
+
+
+
 
             #endregion
 
@@ -93,15 +109,16 @@ namespace nitou.EditorShared {
 
 
                 static Style() {
+
+                    // 補助線
                     borderLine = new GUIStyle(UnityEngine.GUI.skin.box);
-                    // 背景を透明にする
                     borderLine.normal.background = Texture2D.blackTexture;
-                    borderLine.normal.textColor = Color.clear;
+                    borderLine.normal.textColor = Color.clear;      // ※背景を透明にする
 
                     // ラベル
                     label = new GUIStyle(UnityEngine.GUI.skin.label) { 
                         alignment = TextAnchor.LowerCenter,
-                        fontSize = 30                        
+                        fontSize = 10                        
                     };
                 }
 

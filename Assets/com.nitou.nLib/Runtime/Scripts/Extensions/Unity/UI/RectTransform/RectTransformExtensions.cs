@@ -90,9 +90,6 @@ namespace nitou {
             return new Rect(pos, new Vector2(width, height));
         }
         
-        
-        //public static void SetWorldConers(Vector3[])
-        
         #endregion
 
 
@@ -147,7 +144,7 @@ namespace nitou {
         /// <summary>
         /// ビューポート座標系での位置を取得する
         /// </summary>
-        public static Vector2 GetViewportPos(this RectTransform self, Canvas canvas = null) {
+        public static Vector2 GetViewportPos(this RectTransform self, Canvas canvas = null, Corner corner = Corner.Min) {
             if (canvas == null) {
                 canvas = self.GetBelongedCanvas();
             }
@@ -155,7 +152,7 @@ namespace nitou {
 
             // Rect左下のワールド座標
             self.GetWorldCorners(_corners);
-            Vector3 bottomLeftWorld = _corners[0];
+            Vector3 bottomLeftWorld = _corners[(int)corner];
 
             // Canvasのモード毎の処理
             switch (canvas.renderMode) {

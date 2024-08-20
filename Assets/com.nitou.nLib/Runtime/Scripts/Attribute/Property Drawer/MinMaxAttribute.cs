@@ -11,9 +11,9 @@ namespace nitou.Inspector {
         public float Min { get; private set; }
         public float Max { get; private set; }
 
-        public MinMaxSliderAttribute(float minValue, float maxValue) {
-            Min = minValue;
-            Max = maxValue;
+        public MinMaxSliderAttribute(float min, float max) {
+            Min = min;
+            Max = max;
         }
     }
 
@@ -26,7 +26,7 @@ namespace nitou.EditorScripts.Drawers {
     using UnityEditor;
 
     [CustomPropertyDrawer(typeof(MinMaxSliderAttribute))]
-    public class MinMaxSliderDrawer : PropertyDrawer {
+    public class MinMaxSliderDrawer : PropertyDrawer, IAttributePropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 
@@ -47,7 +47,6 @@ namespace nitou.EditorScripts.Drawers {
             }
 
         }
-
 
         /// <summary>
         /// <see cref="Vector2"/>用のMinMaxスライダーを描画する

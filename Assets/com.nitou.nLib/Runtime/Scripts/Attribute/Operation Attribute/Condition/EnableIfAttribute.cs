@@ -6,8 +6,12 @@ using UnityEditor;
 
 namespace nitou.Inspector {
 
+    /// <summary>
+	/// 判定用の変数、またはメソッドに応じてEnable状態を設定するInspector属性
+	/// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public sealed class EnableIfAttribute : MultiPropertyAttribute {
+
         public string ConditionName { get; private set; }
         public EnableIfAttribute(string conditionName) => this.ConditionName = conditionName;
 
