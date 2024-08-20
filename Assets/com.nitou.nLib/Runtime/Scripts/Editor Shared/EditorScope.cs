@@ -123,6 +123,31 @@ namespace nitou.EditorShared {
 
 
         // ----------------------------------------------------------------------------
+        #region Condition
+
+        public class EnableScope : UnityEngine.GUI.Scope {
+            private readonly bool _oldEnabled;
+
+            /// <summary>
+            /// コンストラクタ
+            /// </summary>
+            public EnableScope(bool enabled) {
+                _oldEnabled = UnityEngine.GUI.enabled;
+                UnityEngine.GUI.enabled = enabled;
+            }
+
+            /// <summary>
+            /// 終了処理
+            /// </summary>
+            protected override void CloseScope() {
+                UnityEngine.GUI.enabled = _oldEnabled;
+            }
+        }
+
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
         #region Misc
 
         /// <summary>

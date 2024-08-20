@@ -6,29 +6,6 @@ using UnityEditor;
 namespace nitou.EditorScripts.Drawers {
     using nitou.Inspector;
 
-    /// ----------------------------------------------------------------------------
-    #region d
-
-    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-    public sealed class ReadOnlyDrawer : PropertyDrawer {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            GUI.enabled = false;
-            EditorGUI.PropertyField(position, property, label, true);
-            GUI.enabled = true;
-        }
-    }
-
-    [CustomPropertyDrawer(typeof(IndentAttribute))]
-    public class IndentDrawer : PropertyDrawer {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            var indentAttribute = (IndentAttribute)attribute;
-            EditorGUI.indentLevel += indentAttribute.IndentLevel;
-            EditorGUI.PropertyField(position, property, label, true);
-            EditorGUI.indentLevel -= indentAttribute.IndentLevel;
-        }
-    }
-
-    #endregion
 
 
     /// ----------------------------------------------------------------------------

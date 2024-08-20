@@ -6,26 +6,6 @@ using UnityEngine;
 
 namespace nitou.Inspector{
 
-	/// ----------------------------------------------------------------------------
-	#region Simple
-
-	/// <summary>
-	/// ReadOnlyó‘Ô‚É‚·‚éInspector‘®«
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-	public sealed class ReadOnlyAttribute : PropertyAttribute { }
-
-	/// <summary>
-	/// ƒCƒ“ƒfƒ“ƒg‚ğİ’è‚·‚éInspector‘®«
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-	public sealed class IndentAttribute : PropertyAttribute {
-		public readonly int IndentLevel;
-		public IndentAttribute(int indentLevel = 1) => this.IndentLevel = indentLevel;
-	}
-
-    #endregion
-
 
     /// ----------------------------------------------------------------------------
     #region Condition
@@ -37,11 +17,7 @@ namespace nitou.Inspector{
 	public sealed class HideInPlayModeAttribute : PropertyAttribute { }
 
 
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
-	public sealed class EnableIfAttribute : PropertyAttribute {
-		public string ConditionName { get; private set; }
-		public EnableIfAttribute(string conditionName) => this.ConditionName = conditionName;
-	}
+	
 
 	#endregion
 

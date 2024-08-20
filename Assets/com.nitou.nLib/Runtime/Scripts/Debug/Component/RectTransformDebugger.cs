@@ -19,6 +19,8 @@ namespace nitou.DebugInternal {
         private RectTransform _rectTrans;
         public RectTransform RectTrans => _rectTrans;
 
+        public bool showGui = true;
+
 
         /// ----------------------------------------------------------------------------
         // MonoBehaviour Method
@@ -29,7 +31,7 @@ namespace nitou.DebugInternal {
 
 #if UNITY_EDITOR
         private void OnGUI() {
-            if (_rectTrans == null) return;
+            if (_rectTrans == null || !showGui) return;
 
             var rect = _rectTrans.GetScreenRect();
 
@@ -72,6 +74,8 @@ namespace nitou.DebugInternal {
 
             var instance = target as RectTransformDebugger;
             var rectTrans = instance.RectTrans;
+
+            EditorUtil.GUI.MonoBehaviourField<RectTransformDebugger>(instance);
 
             if (rectTrans != null) {
                 EditorGUILayout.LabelField("RectTransform Properties", EditorStyles.boldLabel);
