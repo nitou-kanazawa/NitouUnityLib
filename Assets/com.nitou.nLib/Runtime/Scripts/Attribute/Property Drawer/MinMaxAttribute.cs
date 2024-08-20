@@ -6,7 +6,10 @@ using UnityEngine;
 
 namespace nitou.Inspector {
 
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
+    /// <summary>
+    /// 
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
     public class MinMaxSliderAttribute : PropertyAttribute {
         public float Min { get; private set; }
         public float Max { get; private set; }

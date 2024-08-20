@@ -53,7 +53,7 @@ namespace nitou.EditorShared {
 
 
             /// ----------------------------------------------------------------------------
-            #region Basic Method
+            #region Label
 
             /// <summary>
             /// GUI.Label()のラップメソッド
@@ -61,6 +61,9 @@ namespace nitou.EditorShared {
             public static void Label(Vector2 screenPos, string text = "", 
                 int fontSize = 20, TextAnchor alignment = TextAnchor.LowerLeft) {
 
+                Style.label.fontSize = fontSize;
+                Style.label.alignment = alignment;
+                
                 // 描画範囲
                 var size = Style.label.CalcSize(new GUIContent(text));
                 var rect = new Rect(screenPos - size, size *2f);
@@ -69,13 +72,11 @@ namespace nitou.EditorShared {
                 UnityEngine.GUI.Box(Convetor.ScreenToGUI(rect), "");
 
                 // ラベル描画
-                Style.label.fontSize = fontSize;
-                Style.label.alignment = alignment;
                 UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);
             }
 
 
-
+            //public struct FontSize
 
             #endregion
 

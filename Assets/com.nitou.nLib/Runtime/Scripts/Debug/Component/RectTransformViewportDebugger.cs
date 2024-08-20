@@ -5,6 +5,7 @@ using nitou.EditorShared;
 #endif
 
 namespace nitou.DebugInternal {
+    using nitou.Inspector;
 
     /// <summary>
     /// <see cref="RectTransform"/>のRect範囲をViewport情報として可視化するデバッグ用コンポーネント
@@ -12,6 +13,9 @@ namespace nitou.DebugInternal {
     [RequireComponent(typeof(RequireComponent))]
     internal class RectTransformViewportDebugger : DebugComponent<RectTransform> {
 
+        /// <summary>
+        /// 描画モード
+        /// </summary>
         public enum Mode {
             Screen,
             Viewport,
@@ -20,17 +24,14 @@ namespace nitou.DebugInternal {
         private RectTransform _rectTrans;
         private Canvas _canvas;
 
-        public RectTransform RectTrans => _rectTrans;
-
-        public Vector2 position;
-        public Vector2 size;
-
         public TextAnchor minAlignment = TextAnchor.UpperRight;
         public TextAnchor maxAlignment = TextAnchor.LowerLeft;
 
         [Min(1)] public int fontSize = 20;
 
+        [EnumToggle]
         public Mode mode;
+
 
         /// ----------------------------------------------------------------------------
         // MonoBehaviour Method

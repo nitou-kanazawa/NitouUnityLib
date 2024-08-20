@@ -1203,8 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b8cd8c709ab4439fd64f867d12e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
-  size: {x: 0, y: 0}
   minAlignment: 2
   maxAlignment: 6
   fontSize: 30
@@ -2310,7 +2308,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1473544220}
   - component: {fileID: 1473544219}
-  - component: {fileID: 1473544221}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -2351,26 +2348,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1473544221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473544218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae242f5566951124bbc17beeb6a0ad7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  c: 0
-  b: 49
-  f: 0
-  _range:
-    _minValue: 0
-    _maxValue: 0.6249999
-  s: 0
-  vector: {x: 0, y: 0}
 --- !u!1 &1559933309
 GameObject:
   m_ObjectHideFlags: 0
