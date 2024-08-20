@@ -37,11 +37,7 @@ namespace nitou.Inspector{
 	public sealed class HideInPlayModeAttribute : PropertyAttribute { }
 
 
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
-	public sealed class EnableIfAttribute : PropertyAttribute {
-		public string ConditionName { get; private set; }
-		public EnableIfAttribute(string conditionName) => this.ConditionName = conditionName;
-	}
+	
 
 	#endregion
 

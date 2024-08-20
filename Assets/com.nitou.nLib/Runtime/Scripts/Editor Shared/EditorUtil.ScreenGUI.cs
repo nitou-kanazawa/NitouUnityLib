@@ -13,14 +13,14 @@ namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// 
+        /// スクリーン座標指定でGameWindow上にGUIを描画するためのUtilクラス
         /// </summary>
         public static class ScreenGUI {
 
-            private static readonly Texture2D lineTexture;
+            private static readonly Texture2D _lineTexture;
 
             static ScreenGUI() {
-                lineTexture = new Texture2D(1, 1);
+                _lineTexture = new Texture2D(1, 1);
             }
 
 
@@ -56,8 +56,8 @@ namespace nitou.EditorShared {
                 var verticalRect = new Rect(position.x, 0f, width, position.y);
 
                 using (new EditorUtil.GUIColorScope(color)) {
-                    UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(horizontalRect), lineTexture);
-                    UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(verticalRect), lineTexture);
+                    UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(horizontalRect), _lineTexture);
+                    UnityEngine.GUI.DrawTexture(Convetor.ScreenToGUI(verticalRect), _lineTexture);
                 }
             }
 
