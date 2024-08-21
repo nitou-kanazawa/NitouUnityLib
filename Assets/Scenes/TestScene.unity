@@ -1203,10 +1203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b8cd8c709ab4439fd64f867d12e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
   minAlignment: 2
   maxAlignment: 6
-  fontSize: 30
-  mode: 0
+  fontSize: 50
+  _lineColor: {r: 1, g: 1, b: 1, a: 1}
+  screenModeColor: {r: 0, g: 1, b: 1, a: 1}
+  viewportModeColor: {r: 1, g: 0.64705884, b: 0, a: 1}
 --- !u!1 &537898900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1247,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.30588236, g: 0.5726195, b: 0.8509804, a: 0}
+  m_BackGroundColor: {r: 0.1704699, g: 0.3686003, b: 0.5754717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2332,7 +2335,6 @@ MonoBehaviour:
   test: 3.61
   test2: 0
   intt: 0
-  vectorB: {x: 26.325497, y: 71.845505}
 --- !u!4 &1473544220
 Transform:
   m_ObjectHideFlags: 0

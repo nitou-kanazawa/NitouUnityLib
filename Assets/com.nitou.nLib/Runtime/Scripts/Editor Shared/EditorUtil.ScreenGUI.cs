@@ -59,17 +59,18 @@ namespace nitou.EditorShared {
             /// GUI.Label()のラップメソッド
             /// </summary>
             public static void Label(Vector2 screenPos, string text = "", 
-                int fontSize = 20, TextAnchor alignment = TextAnchor.LowerLeft) {
+                int fontSize = 20, TextAnchor alignment = TextAnchor.LowerLeft, Color? color = null) {
 
                 Style.label.fontSize = fontSize;
                 Style.label.alignment = alignment;
+                Style.label.normal.textColor = color ?? Colors.White;
                 
                 // 描画範囲
                 var size = Style.label.CalcSize(new GUIContent(text));
                 var rect = new Rect(screenPos - size, size *2f);
 
                 // デバッグ
-                UnityEngine.GUI.Box(Convetor.ScreenToGUI(rect), "");
+                //UnityEngine.GUI.Box(Convetor.ScreenToGUI(rect), "");
 
                 // ラベル描画
                 UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);

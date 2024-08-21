@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // [参考]
-// ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
-// _: nGUIなどのRectTransformのwidthやheightなどの値を変更する方法 https://nekosuko.jp/1792/
-// Unity Forums: Best algorithm to clamp a UI window within the canvas? https://forum.unity.com/threads/best-algorithm-to-clamp-a-ui-window-within-the-canvas.314034/
+//  ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
+//  _: nGUIなどのRectTransformのwidthやheightなどの値を変更する方法 https://nekosuko.jp/1792/
+//  Unity Forums: Best algorithm to clamp a UI window within the canvas? https://forum.unity.com/threads/best-algorithm-to-clamp-a-ui-window-within-the-canvas.314034/
 //  Hatena: RectTransformのスクリーン座標のRectを取得する https://hacchi-man.hatenablog.com/entry/2020/12/11/220000
 
 namespace nitou {
@@ -23,8 +23,7 @@ namespace nitou {
     /// </summary>
     public static partial class RectTransformExtensions {
 
-        // [NOTE]
-        //  RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
+        // [NOTE] RectTransform.GetCornersは0:左下、1左上、2:右上、3:右下の順で点が格納される
 
         // 計算用
         private static readonly Vector3[] _corners = new Vector3[4];
@@ -59,10 +58,10 @@ namespace nitou {
         /// <summary>
         /// ワールド座標での中心位置を取得する
         /// </summary>
-        public static Vector2 GetWorldCenterPosition(this RectTransform self, Corner corner = Corner.Min) {
+        public static Vector2 GetWorldCenterPosition(this RectTransform self) {
             self.GetWorldCorners(_corners);
 
-            return _corners.GetCenter();  // ※Zは無視
+            return _corners.GetCenter();
         }
 
         /// <summary>
@@ -71,10 +70,9 @@ namespace nitou {
         public static Vector2 GetWorldSize(this RectTransform self) {
             self.GetWorldCorners(_corners);
 
-            float width = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MaxX_MinY]);
-            float height = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MinX_MaxY]);
-
-            return new Vector2(width, height);
+            var min = _corners[(int)Corner.Min];
+            var max = _corners[(int)Corner.Max];
+            return max - min;
         }
 
         /// <summary>
@@ -83,13 +81,10 @@ namespace nitou {
         public static Rect GetWorldRect(this RectTransform self) {
             self.GetWorldCorners(_corners);
 
-            Vector2 pos = _corners[(int)Corner.Min];
-            float width = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MaxX_MinY]);
-            float height = Vector3.Distance(_corners[(int)Corner.Min], _corners[(int)Corner.MinX_MaxY]);
-
-            return new Rect(pos, new Vector2(width, height));
+            var min = _corners[(int)Corner.Min];
+            var max = _corners[(int)Corner.Max];
+            return new Rect(min, max -min);
         }
-        
         #endregion
 
 
@@ -98,11 +93,34 @@ namespace nitou {
 
         // [参考]
         //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
+        //  LIGHT11: uGUIにアルファ付きのマスクを掛ける https://light11.hatenadiary.com/entry/2019/04/24/232041
+
+        /// <summary>
+        /// スクリーン座標での位置を取得する
+        /// </summary>
+        public static Vector2 GetScreenPosition(this RectTransform self, Canvas canvas = null, Corner corner = Corner.Min) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+            if (canvas == null) {
+                canvas = self.GetBelongedCanvas();
+            }
+
+            // ワールド座標
+            var worldPos = self.GetWorldPosition(corner);
+
+            // スクリーン座標
+            return canvas.renderMode switch {
+                RenderMode.ScreenSpaceOverlay => worldPos,
+                RenderMode.ScreenSpaceCamera => RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPos),
+                RenderMode.WorldSpace => RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos),
+                _ => throw new System.NotImplementedException()
+            };
+        }
 
         /// <summary>
         /// スクリーン座標での位置を取得する
         /// </summary>
         public static Rect GetScreenRect(this RectTransform self, Canvas canvas = null) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
             if (canvas == null) {
                 canvas = self.GetBelongedCanvas();
             }
@@ -115,7 +133,6 @@ namespace nitou {
             Vector2 screenMin, screenMax;
             switch (canvas.renderMode) {
                 case RenderMode.ScreenSpaceOverlay: {
-                        //float scaleFactor = canvas.scaleFactor;
                         screenMin = worldMin;
                         screenMax = worldMax;
                         return RectUtil.MinMaxRect(screenMin, screenMax);
@@ -125,7 +142,7 @@ namespace nitou {
                         screenMax = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldMax);
                         return RectUtil.MinMaxRect(screenMin, screenMax);
                     }
-                case RenderMode.WorldSpace: {
+                case RenderMode.WorldSpace: {   // ※WorldCanvas基準のRectが必要なら相対座標を使用する
                         screenMin = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMin);
                         screenMax = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMax);
                         return RectUtil.MinMaxRect(screenMin, screenMax);
@@ -133,9 +150,9 @@ namespace nitou {
                 default:
                     throw new System.NotImplementedException();
             }
-
         }
         #endregion
+
 
 
         // ----------------------------------------------------------------------------
@@ -145,41 +162,33 @@ namespace nitou {
         /// ビューポート座標系での位置を取得する
         /// </summary>
         public static Vector2 GetViewportPos(this RectTransform self, Canvas canvas = null, Corner corner = Corner.Min) {
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
-            }
-            Vector2 bottomLeftViewportPos = Vector2.zero;
 
-            // Rect左下のワールド座標
-            self.GetWorldCorners(_corners);
-            Vector3 bottomLeftWorld = _corners[(int)corner];
-
-            // Canvasのモード毎の処理
-            switch (canvas.renderMode) {
-                case RenderMode.ScreenSpaceOverlay: {
-                        // スクリーン空間のオーバーレイモード
-                        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(null, bottomLeftWorld);
-                        bottomLeftViewportPos = new Vector3(screenPos.x / Screen.width, screenPos.y / Screen.height, 0);
-                        break;
-                    }
-                case RenderMode.ScreenSpaceCamera:
-                case RenderMode.WorldSpace: {
-                        // ワールド座標をビューポート座標に変換
-                        bottomLeftViewportPos = Camera.main.WorldToViewportPoint(bottomLeftWorld);
-                        break;
-                    }
-            }
-            return bottomLeftViewportPos;
+            // スクリーン座標
+            var screenPos = self.GetScreenPosition(canvas, corner);
+            
+            // ビューポート座標
+            return new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
         }
 
         /// <summary>
         /// ビューポート座標系での位置とサイズを取得する
         /// </summary>
         public static Rect GetViewportRect(this RectTransform self, Canvas canvas = null) {
-            // [TODO] 実装する
-            throw new System.NotImplementedException();
+            
+            // スクリーン座標
+            var screenRect = self.GetScreenRect(canvas);
+
+            // ビューポート座標
+            var viewportMin = new Vector2(screenRect.min.x / Screen.width, screenRect.min.y / Screen.height);
+            var viewportSize = new Vector2(screenRect.size.x / Screen.width, screenRect.size.y / Screen.height);
+            return new Rect(viewportMin, viewportSize);
         }
 
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region RELATIVE座標
 
         // [FIXME] どちらに対する相対位置、サイズなのか曖昧なのを統一する
 
@@ -193,9 +202,7 @@ namespace nitou {
             var selfRect = self.GetWorldRect();
 
             // 相対位置
-            return new Vector2(
-                (position.x - selfRect.xMin) / selfRect.width,
-                (position.y - selfRect.yMin) / selfRect.height);
+            return RectUtil.GetRelativePosition(position, selfRect);
         }
 
         /// <summary>
@@ -223,11 +230,16 @@ namespace nitou {
 
         #endregion
 
+
+
+
         private static Vector3 GetCenter(this Vector3[] corners) {
             return (corners[(int)Corner.Min] + corners[(int)Corner.Max]) / 2f;
         }
 
-
+        private static Vector2 GetCenter(Vector2 min, Vector2 max) {
+            return (min + max) / 2f;
+        }
 
 
 
