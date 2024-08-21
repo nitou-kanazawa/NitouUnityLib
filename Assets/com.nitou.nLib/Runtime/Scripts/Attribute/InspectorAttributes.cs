@@ -8,39 +8,12 @@ namespace nitou.Inspector{
 
 
     /// ----------------------------------------------------------------------------
-    #region Condition
+    // Condition
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
 	public sealed class DisableInPlayModeAttribute : PropertyAttribute { }
 
 	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
 	public sealed class HideInPlayModeAttribute : PropertyAttribute { }
-
-
-	
-
-	#endregion
-
-
-	/// ----------------------------------------------------------------------------
-	#region Title label
-
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
-	public sealed class TitleAttribute : PropertyAttribute {
-		public string TitleText { get; }
-		public string SubtitleText { get; }
-
-		public TitleAttribute(string titleText) {
-			TitleText = titleText;
-			SubtitleText = null;
-		}
-
-		public TitleAttribute(string titleText, string subtitle) {
-			TitleText = titleText;
-			SubtitleText = subtitle;
-		}
-	}
-	#endregion
-
 
 }

@@ -220,7 +220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4a5d6ac8ea482e41ac999a38d5c54dc, type: 2}
+  - {fileID: 2100000, guid: 3b412a86f76691745ac3af06b0d333b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -258,7 +258,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197004865}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.33, y: 1.02, z: 1.09}
+  m_LocalPosition: {x: 0, y: 1.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -536,7 +536,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -640,14 +640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae242f5566951124bbc17beeb6a0ad7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0
-  b: 48
-  f: 0
-  _range:
-    _minValue: 0.08687864
-    _maxValue: 0.6619048
-  s: 0.477
-  vector: {x: 0, y: 0}
 --- !u!1 &1900220002
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,13 +24,19 @@ namespace nitou.DebugInternal {
         private RectTransform _rectTrans;
         private Canvas _canvas;
 
+        //[Title("Mode")]
+        [Indent,EnumToggle] public Mode mode;
+        
+        
         public TextAnchor minAlignment = TextAnchor.UpperRight;
         public TextAnchor maxAlignment = TextAnchor.LowerLeft;
 
         [Min(1)] public int fontSize = 20;
 
-        [EnumToggle]
-        public Mode mode;
+        public Color _lineColor = Colors.Gray;
+        
+        public Color screenModeColor = Colors.Cyan;
+        public Color viewportModeColor = Colors.Orange;
 
 
         /// ----------------------------------------------------------------------------
@@ -50,17 +56,18 @@ namespace nitou.DebugInternal {
 
             var rect = _rectTrans.GetScreenRect();
 
-            EditorUtil.ScreenGUI.Box(rect);
+            //EditorUtil.ScreenGUI.Box(rect);
 
+            var textColor = mode == Mode.Screen ? screenModeColor : viewportModeColor;
             (var minText, var maxText) = GetPositionString(mode);
 
             // Min point
-            EditorUtil.ScreenGUI.AuxiliaryLine(rect.min, 2f, Colors.Gray);
-            EditorUtil.ScreenGUI.Label(rect.min, minText, fontSize, minAlignment);
+            EditorUtil.ScreenGUI.AuxiliaryLine(rect.min, 2f, _lineColor);
+            EditorUtil.ScreenGUI.Label(rect.min, minText, fontSize, minAlignment, textColor);
 
             // Max point
-            EditorUtil.ScreenGUI.AuxiliaryLine(rect.max, 2f, Colors.Gray);
-            EditorUtil.ScreenGUI.Label(rect.max, maxText, fontSize, maxAlignment);
+            EditorUtil.ScreenGUI.AuxiliaryLine(rect.max, 2f, _lineColor);
+            EditorUtil.ScreenGUI.Label(rect.max, maxText, fontSize, maxAlignment, textColor);
         }
 #endif
 
