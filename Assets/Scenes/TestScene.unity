@@ -1203,12 +1203,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384b8cd8c709ab4439fd64f867d12e4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
   minAlignment: 2
   maxAlignment: 6
   fontSize: 50
   _lineColor: {r: 1, g: 1, b: 1, a: 1}
-  screenModeColor: {r: 0, g: 1, b: 1, a: 1}
+  screenModeColor: {r: 0, g: 0.47917986, b: 1, a: 1}
   viewportModeColor: {r: 1, g: 0.64705884, b: 0, a: 1}
 --- !u!1 &537898900
 GameObject:
