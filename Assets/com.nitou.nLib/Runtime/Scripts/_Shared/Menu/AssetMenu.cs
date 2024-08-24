@@ -59,7 +59,7 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // •\¦‡
         public static class Order {
-
+            public const int First = 100;
         }
     }
 

@@ -5,15 +5,18 @@ using UnityEditor;
 namespace nitou.Tools.TodoTask {
 
     public class TodoListWindow : EditorWindow {
+        
         private TaskController sharedTaskController;
         private TaskController projectTaskController;
+
         private string newTaskName = "";
         private int selectedTab = 0;
         private readonly string[] tabs = { "Shared Tasks", "Project Tasks" };
+        private Vector2 scrollPos;
 
         [MenuItem("Tools/ToDo List")]
         public static void ShowWindow() {
-            GetWindow<TodoListWindow>("ToDo List");
+            GetWindow<TodoListWindow>("Todo List");
         }
 
         private void OnEnable() {
@@ -28,6 +31,9 @@ namespace nitou.Tools.TodoTask {
 
             EditorGUILayout.LabelField(tabs[selectedTab], EditorStyles.boldLabel);
 
+            // スクロールビューの開始
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(200));
+
             for (int i = 0; i < activeController.Tasks.Count; i++) {
                 EditorGUILayout.BeginHorizontal();
 
@@ -41,8 +47,11 @@ namespace nitou.Tools.TodoTask {
                 EditorGUILayout.EndHorizontal();
             }
 
-            EditorGUILayout.Space();
+            EditorGUILayout.EndScrollView(); // スクロールビューの終了
 
+            GUILayout.FlexibleSpace(); // ウインドウの残りスペースを空ける
+
+            // 新しいタスクの追加と保存ボタンを下部に配置
             EditorGUILayout.BeginHorizontal();
             newTaskName = EditorGUILayout.TextField(newTaskName);
 
@@ -52,13 +61,11 @@ namespace nitou.Tools.TodoTask {
             }
             EditorGUILayout.EndHorizontal();
 
-            EditorGUILayout.Space();
-
             if (GUILayout.Button("Save Tasks")) {
                 activeController.SaveTasks();
             }
         }
-    }
 
+    }
 }
 #endif
