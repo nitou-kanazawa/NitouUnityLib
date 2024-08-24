@@ -15,17 +15,21 @@ namespace nitou.Tools.TodoTask {
     }
 
 
-    public class SharedTaskRepository : ITaskRepository {        
+    public class SharedTaskRepository : ITaskRepository {
         private const string SharedTasksKey = "SharedTasks";
 
-        public List<TodoTask> LoadTasks() {    
-            return EditorPrefs.HasKey(SharedTasksKey)
-                ? JsonUtility.FromJson<List<TodoTask>>(EditorPrefs.GetString(SharedTasksKey))
-                : new List<TodoTask>();
+        public List<TodoTask> LoadTasks() {
+            if (!EditorPrefs.HasKey(SharedTasksKey))
+                return new List<TodoTask>();
+
+            string json = EditorPrefs.GetString(SharedTasksKey);
+            return JsonUtility.FromJson<TodoTaskListWrapper>(json).Tasks;
         }
 
         public void SaveTasks(List<TodoTask> tasks) {
-            EditorPrefs.SetString(SharedTasksKey, JsonUtility.ToJson(tasks));
+            var wrapper = new TodoTaskListWrapper { Tasks = tasks };
+            string json = JsonUtility.ToJson(wrapper);
+            EditorPrefs.SetString(SharedTasksKey, json);
         }
     }
 
@@ -34,13 +38,17 @@ namespace nitou.Tools.TodoTask {
         private string projectKey = "ProjectTasks_" + Application.productName;
 
         public List<TodoTask> LoadTasks() {
-            return EditorPrefs.HasKey(projectKey)
-                ? JsonUtility.FromJson<List<TodoTask>>(EditorPrefs.GetString(projectKey))
-                : new List<TodoTask>();
+            if (!EditorPrefs.HasKey(projectKey))
+                return new List<TodoTask>();
+
+            string json = EditorPrefs.GetString(projectKey);
+            return JsonUtility.FromJson<TodoTaskListWrapper>(json).Tasks;
         }
 
         public void SaveTasks(List<TodoTask> tasks) {
-            EditorPrefs.SetString(projectKey, JsonUtility.ToJson(tasks));
+            var wrapper = new TodoTaskListWrapper { Tasks = tasks };
+            string json = JsonUtility.ToJson(wrapper);
+            EditorPrefs.SetString(projectKey, json);
         }
     }
 }

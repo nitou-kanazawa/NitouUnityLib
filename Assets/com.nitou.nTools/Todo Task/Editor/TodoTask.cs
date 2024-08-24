@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 
 namespace nitou.Tools.TodoTask{
 
@@ -5,5 +6,10 @@ namespace nitou.Tools.TodoTask{
     public class TodoTask {
         public string name;
         public bool isDone;
+    }
+
+    [System.Serializable]
+    public class TodoTaskListWrapper {
+        public List<TodoTask> Tasks;
     }
 }
