@@ -59,7 +59,9 @@ namespace nitou.Tools {
         /// 
         /// </summary>
         private void OnGUI() {
-            _searchField ??= new();
+            // パディングを設定
+            int padding = 5;
+            using var areaScope = new GUILayout.AreaScope(new Rect(padding, padding, position.width - padding * 2, position.height - padding * 2));
 
             // 
             using (new EditorGUILayout.HorizontalScope()) {
@@ -75,6 +77,7 @@ namespace nitou.Tools {
                 }
 
                 // 検索フィールド
+                _searchField ??= new();
                 _filteringText = _searchField.OnToolbarGUI(_filteringText);
             }
 
