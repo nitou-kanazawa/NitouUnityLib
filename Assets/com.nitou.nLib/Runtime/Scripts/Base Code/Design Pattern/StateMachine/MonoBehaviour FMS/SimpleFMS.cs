@@ -295,7 +295,7 @@ namespace nitou.DesignPattern {
             if (SceneView.currentDrawingSceneView.camera.ContaineWorldPosition(transform.position, distance: 20)) {
 
                 var textColor = CurrentState.GetColor();
-                var fontSize = 16;
+                //var fontSize = 16;
                 Handles.Label(drawPos, $"{CurrentState.GetName()}");
             }
         }
