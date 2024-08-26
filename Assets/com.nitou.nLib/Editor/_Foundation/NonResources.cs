@@ -18,19 +18,22 @@ namespace nitou.EditorShared {
         // Method (単体ロード)
 
         /// <summary>
-        /// ファイルのパス(Assetsから、拡張子も含める)と型を設定し、Objectを読み込む。存在しない場合はNullを返す
+        /// ファイルのアセットパス(拡張子も含める)と型を設定し、Objectを読み込む．
         /// </summary>
         public static T Load<T>(string path) where T : Object {
             return AssetDatabase.LoadAssetAtPath<T>(path);
         }
 
+        /// <summary>
+        /// ファイルのパス(Assetsから、拡張子も含める)と型を設定し、Objectを読み込む．
+        /// </summary>
         public static T Load<T>(string assetName, string relativePath) where T : Object {
             return AssetDatabase.LoadAssetAtPath<T>($"{relativePath}/{assetName}");
         }
 
         public static T Load<T>(string assetName, string relativePath, PackageFolderInfo packageInfo) where T : Object {
             string path = GetAssetPathInPackage(relativePath, assetName, packageInfo);
-            return AssetDatabase.LoadAssetAtPath<T>(path);
+            return (path != null) ? AssetDatabase.LoadAssetAtPath<T>(path) : null;
         }
 
 
@@ -67,6 +70,7 @@ namespace nitou.EditorShared {
 
 
         /// ----------------------------------------------------------------------------
+        /// 
         // Private Method
 
         /// <summary>
