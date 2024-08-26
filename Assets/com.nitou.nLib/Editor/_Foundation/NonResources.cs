@@ -70,7 +70,6 @@ namespace nitou.EditorShared {
 
 
         /// ----------------------------------------------------------------------------
-        /// 
         // Private Method
 
         /// <summary>

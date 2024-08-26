@@ -17,7 +17,7 @@ namespace nitou {
     public static partial class CollectionExtensions {
 
         /// ----------------------------------------------------------------------------
-        // 要素の判定
+        #region 要素の判定
 
         /// <summary>
         /// コレクションがNullまたは空かどうかを判定する拡張メソッド
@@ -49,16 +49,28 @@ namespace nitou {
             }
             return false;
         }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-        // 要素の追加
+        #region 要素の追加
 
         /// <summary>
         /// 指定した処理条件を満たす場合に要素を追加する拡張メソッド
         /// </summary>
         public static bool AddIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
             if (predicate(item)) {
+                self.Add(item);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 要素がNullの場合にコレクションに追加する拡張メソッド
+        /// </summary>
+        public static bool AddIfNotNull<T>(this ICollection<T> self, T item) where T : class {
+            if (item != null) {
                 self.Add(item);
                 return true;
             }
@@ -75,10 +87,11 @@ namespace nitou {
             }
             return false;
         }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-        // 要素の削除
+        #region 要素の削除
 
         /// <summary>
         /// 指定した処理条件を満たす場合に要素を削除する拡張メソッド
@@ -108,6 +121,7 @@ namespace nitou {
                 }
             }
         }
+        #endregion
 
     }
 }

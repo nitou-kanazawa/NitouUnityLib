@@ -1,8 +1,10 @@
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
 namespace nitou.Tools{
     using nitou.EditorShared;
+    using System.IO;
 
     public class DataClassGeneratorWindow : EditorWindow{
 
@@ -18,16 +20,16 @@ namespace nitou.Tools{
         public void OnGUI() {
             GUILayout.Label("Asset Loader", EditorStyles.boldLabel);
 
-            EditorGUILayout.LabelField(_directoryPath);
+            _directoryPath = EditorGUILayout.TextField(_directoryPath);
 
             if (GUILayout.Button("Get Path")) {
 
+                // ƒpƒX
                 var path = AssetPath.FromRelativePath(_directoryPath);
                 Debug_.Log(path.ToAssetDatabasePath());
                 Debug_.Log(path.ToAbsolutePath());
 
-
-
+                AssetsLoader.LoadAll<MonoScript>(path);
             }
 
             GUILayout.Label("Result:", EditorStyles.boldLabel);

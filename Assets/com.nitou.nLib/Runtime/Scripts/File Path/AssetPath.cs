@@ -19,15 +19,28 @@ namespace nitou {
         // "Assets/以下の相対パス"
         [SerializeField] private string _relativePath = "";
 
+        private const string PREFIX = "Assets/";
+
+
         // 非公開のコンストラクタ
         private AssetPath(string relativePath) {
             _relativePath = relativePath!=null ? relativePath.Replace("\\", "/") : "";
         }
 
+
         /// --------------------------------------------------------------------
         #region Factory Methods
 
         public static AssetPath Empty() => new AssetPath("");
+
+        public static AssetPath FromAssetPath(string assetPath) {
+            if (assetPath == null) throw new ArgumentNullException(nameof(assetPath));
+
+            if (!assetPath.StartsWith("Assets/")) {
+                throw new ArgumentException("");
+            }
+            return new AssetPath(assetPath.Substring("Assets/".Length));
+        }
 
         /// <summary> 
         /// "Assets/"以下の相対パスを指定して生成する
@@ -44,14 +57,14 @@ namespace nitou {
         /// <summary> 
         /// "Assets/"以下の相対パスを指定して生成する
         /// </summary>
-        public static AssetPath FromRelativePath(string relativePath, string assetName) {
-            if (relativePath == null) throw new ArgumentNullException(nameof(relativePath));
+        public static AssetPath FromRelativePath(string relativeDirectoryPath, string assetName) {
+            if (relativeDirectoryPath == null) throw new ArgumentNullException(nameof(relativeDirectoryPath));
             if (assetName == null) throw new ArgumentNullException(nameof(assetName));
 
-            if (relativePath.StartsWith("Assets/")) {
-                relativePath = relativePath.Substring("Assets/".Length);
+            if (relativeDirectoryPath.StartsWith("Assets/")) {
+                relativeDirectoryPath = relativeDirectoryPath.Substring("Assets/".Length);
             }
-            return new AssetPath($"{relativePath}/{assetName}");
+            return new AssetPath($"{relativeDirectoryPath}/{assetName}");
         }
 
         /// <summary>
