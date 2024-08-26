@@ -13,46 +13,45 @@ namespace nitou {
     // パス操作: パスの結合、相対パスと絶対パスの変換、拡張子の変更や削除など、基本的なパス操作が可能。
     // パスの検証: アセットパスが正しいフォーマットであるか、存在するかを検証できる。
 
+    [System.Serializable]
     public sealed class AssetPath {
 
         // "Assets/以下の相対パス"
-        private readonly string _relativePath;
-
+        [SerializeField] private string _relativePath = "";
 
         // 非公開のコンストラクタ
         private AssetPath(string relativePath) {
-            _relativePath = relativePath.Replace("\\", "/");
+            _relativePath = relativePath!=null ? relativePath.Replace("\\", "/") : "";
         }
 
         /// --------------------------------------------------------------------
         #region Factory Methods
 
-        public static AssetPath Empty() {
-            return new AssetPath("");
-        }
+        public static AssetPath Empty() => new AssetPath("");
 
         /// <summary> 
         /// "Assets/"以下の相対パスを指定して生成する
         /// </summary>
         public static AssetPath FromRelativePath(string relativePath) {
+            if (relativePath == null) throw new ArgumentNullException(nameof(relativePath));
+
             if (relativePath.StartsWith("Assets/")) {
                 relativePath = relativePath.Substring("Assets/".Length);
             }
             return new AssetPath(relativePath);
         }
 
-        /// <summary>
-        /// 任意のアセットから生成する
+        /// <summary> 
+        /// "Assets/"以下の相対パスを指定して生成する
         /// </summary>
-        public static AssetPath FromAsset(UnityEngine.Object asset) {
-            if (asset == null)
-                throw new ArgumentNullException(nameof(asset));
+        public static AssetPath FromRelativePath(string relativePath, string assetName) {
+            if (relativePath == null) throw new ArgumentNullException(nameof(relativePath));
+            if (assetName == null) throw new ArgumentNullException(nameof(assetName));
 
-            string assetPath = UnityEditor.AssetDatabase.GetAssetPath(asset);
-            if (string.IsNullOrEmpty(assetPath))
-                throw new ArgumentException("The provided asset is not a valid asset in the Assets folder.");
-
-            return FromRelativePath(assetPath);
+            if (relativePath.StartsWith("Assets/")) {
+                relativePath = relativePath.Substring("Assets/".Length);
+            }
+            return new AssetPath($"{relativePath}/{assetName}");
         }
 
         /// <summary>
@@ -61,6 +60,23 @@ namespace nitou {
         public static AssetPath FromAbsolutePath(string absolutePath) {
             string relativePath = absolutePath.Replace(Application.dataPath, "").TrimStart('\\', '/');
             return new AssetPath(relativePath);
+        }
+
+        /// <summary>
+        /// 任意のアセットから生成する
+        /// </summary>
+        public static AssetPath FromAsset(UnityEngine.Object asset) {
+            if (asset == null) throw new ArgumentNullException(nameof(asset));
+
+            string assetPath = "";
+#if UNITY_EDITOR
+            assetPath = UnityEditor.AssetDatabase.GetAssetPath(asset);
+            if (string.IsNullOrEmpty(assetPath)) {
+                throw new ArgumentException("The provided asset is not a valid asset in the Assets folder.");
+            }
+#endif
+
+            return FromRelativePath(assetPath);
         }
         #endregion
 
@@ -87,6 +103,7 @@ namespace nitou {
         #endregion
 
 
+        /// --------------------------------------------------------------------
 
         public AssetPath ChangeExtension(string newExtension) {
             return new AssetPath(Path.ChangeExtension(_relativePath, newExtension));
@@ -100,6 +117,10 @@ namespace nitou {
             return new AssetPath(Path.Combine(_relativePath, additionalPath).Replace("\\", "/"));
         }
 
+
+        /// --------------------------------------------------------------------
+        #region Check
+
         /// <summary>
         /// 
         /// </summary>
@@ -111,8 +132,28 @@ namespace nitou {
         /// ファイルが存在するか確認する
         /// </summary>
         public bool Exists() {
+            return this.IsFile() || this.IsDirectory();
+        }
+
+        /// <summary>
+        /// パスにファイルが存在するか確認する
+        /// </summary>
+        public bool IsFile() {
             return File.Exists(this.ToAbsolutePath());
         }
+
+        /// <summary>
+        /// パスにフォルダが存在するか確認する
+        /// </summary>
+        public bool IsDirectory() {
+            return Directory.Exists(this.ToAbsolutePath());
+        }
+
+        #endregion
+
+
+        /// --------------------------------------------------------------------
+        #region Equality Overrides
 
         public override bool Equals(object obj) {
             if (obj is AssetPath other) {
@@ -124,6 +165,35 @@ namespace nitou {
         public override int GetHashCode() => _relativePath.GetHashCode(StringComparison.OrdinalIgnoreCase);
 
         public static bool operator ==(AssetPath left, AssetPath right) => Equals(left, right);
+        
         public static bool operator !=(AssetPath left, AssetPath right) => !Equals(left, right);
+        #endregion
     }
 }
+
+
+/// --------------------------------------------------------------------
+#if UNITY_EDITOR
+namespace nitou.EditorScripts {
+    using UnityEditor;
+
+    [CustomPropertyDrawer(typeof(AssetPath))]
+    public class AssetPathDrawer : PropertyDrawer {
+
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+            // "relativePath"プロパティを正しく取得する
+            var relativePathProperty = property.FindPropertyRelative("_relativePath");
+
+            // "Assets/" のラベルを表示
+            EditorGUI.LabelField(new Rect(position.x, position.y, 50, position.height), "Assets/");
+
+            // 相対パスの入力フィールドを表示
+            EditorGUI.PropertyField(
+                new Rect(position.x + 50, position.y, position.width - 50, position.height),
+                relativePathProperty,
+                GUIContent.none
+            );
+        }
+    }
+}
+#endif

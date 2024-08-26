@@ -52,7 +52,6 @@ namespace nitou.Tools.CodeGeneration{
 
             Debug.Log($"ƒNƒ‰ƒX¶¬Š®—¹: {fileName}");
         }
-
     }
 }
 #endif

@@ -7,30 +7,25 @@ namespace Project
 {
     public class AssetPathTest : MonoBehaviour{
 
-        
+        [SerializeField] AssetPath path;
+
         void Start()
         {
 
             // AssetPathクラスの使用例
             var relativePath = "Textures/MyTexture.png";
             var assetPath = AssetPath.FromRelativePath(relativePath);
-            Debug_.Log(relativePath);
-            Debug_.Log(assetPath.ToAssetDatabasePath());
-            Debug_.Log(assetPath.ToAbsolutePath());
-            Debug_.Log(assetPath.ToSystemIOPath());
+            Debug_.Log($"relativePath : {relativePath}");
+            Debug_.Log($"AssetDatabasePath : {assetPath.ToAssetDatabasePath()}");
+            Debug_.Log($"AbsolutePath : {assetPath.ToAbsolutePath()}");
+            Debug_.Log($"To String : {assetPath.ToString()}");
 
-
-            // System.IO用のパスに変換
-            string systemPath = assetPath.ToSystemIOPath();
+            Debug_.Log("--------------------");
 
             // 拡張子を変更
             var newAssetPath = assetPath.ChangeExtension(".jpg");
-
-            // パスの検証
-            bool isValid = assetPath.IsValidAssetPath();
-
-            // アセットが存在するか確認
-            bool exists = assetPath.Exists();
+            Debug_.Log($"relativePath : {newAssetPath.ToRelativePath()}");
+            Debug_.Log($"AssetDatabasePath : {newAssetPath.ToAssetDatabasePath()}");
 
 
         }
