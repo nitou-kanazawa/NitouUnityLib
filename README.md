@@ -16,9 +16,6 @@ Unityでの開発で頻繁に使用するコードを試験的にパッケージ
 // Nitou.Lib
 https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nLib
 
-// Nitou.Modules
-https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nModules
-
 // Nitou.Tools
 https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nTools
 ```
@@ -40,5 +37,8 @@ https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nTools
 #### Main Modules
 
 #### Tools
+- Scene Switcher
+- Todo List
+- Material Watcher
 
 #### Framwork

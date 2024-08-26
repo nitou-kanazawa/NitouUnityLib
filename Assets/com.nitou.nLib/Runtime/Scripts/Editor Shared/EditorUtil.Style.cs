@@ -10,7 +10,7 @@ namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// 
+        /// Editor拡張で使用する汎用的な<see cref="GUIStyle"/>のライブラリ
         /// </summary>
         public static partial class Styles {
 
@@ -19,6 +19,7 @@ namespace nitou.EditorShared {
             public static GUIStyle folderToggleHeader;
             public static GUIStyle headerCheckbox;
 
+            // 定数
             private const float HeadingSpace = 22.0f;
 
             // Text

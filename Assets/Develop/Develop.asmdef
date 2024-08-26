@@ -3,10 +3,12 @@
     "rootNamespace": "Project",
     "references": [
         "GUID:14d14a38d1c9a1f43b1b739aba632d1e",
-        "GUID:dd8cd4690239d464487727ff012b3a2e",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:e1d7738d1fce4764cbb91f16eaf9b26d"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
