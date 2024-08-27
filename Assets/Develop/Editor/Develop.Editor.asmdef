@@ -1,10 +1,10 @@
 {
-    "name": "RuntimeTest",
-    "rootNamespace": "Project",
+    "name": "Develop.Editor",
+    "rootNamespace": "Project.EditorScripts",
     "references": [
         "GUID:14d14a38d1c9a1f43b1b739aba632d1e",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:e1d7738d1fce4764cbb91f16eaf9b26d"
+        "GUID:e1d7738d1fce4764cbb91f16eaf9b26d",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
     ],
     "includePlatforms": [
         "Editor"

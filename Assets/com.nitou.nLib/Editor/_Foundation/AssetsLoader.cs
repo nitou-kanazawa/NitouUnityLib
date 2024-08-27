@@ -47,7 +47,7 @@ namespace nitou.EditorShared{
 
             // 指定したディレクトリに入っている全ファイルを取得(子ディレクトリも含む)
             // ※Directory.GetFilesはアセットパスで指定可能
-            var filePaths = Directory.EnumerateFiles(directoryPath.ToAssetDatabasePath(), "*", SearchOption.AllDirectories);
+            var filePaths = Directory.EnumerateFiles(directoryPath.ToProjectPath(), "*", SearchOption.AllDirectories);
             Debug_.ListLog(filePaths.ToList());
 
             // 取得したファイルの中からアセットだけリストに追加する

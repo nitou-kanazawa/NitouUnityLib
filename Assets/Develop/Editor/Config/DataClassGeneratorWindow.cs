@@ -26,7 +26,7 @@ namespace nitou.Tools{
 
                 // ƒpƒX
                 var path = AssetPath.FromRelativePath(_directoryPath);
-                Debug_.Log(path.ToAssetDatabasePath());
+                Debug_.Log(path.ToProjectPath());
                 Debug_.Log(path.ToAbsolutePath());
 
                 AssetsLoader.LoadAll<MonoScript>(path);
