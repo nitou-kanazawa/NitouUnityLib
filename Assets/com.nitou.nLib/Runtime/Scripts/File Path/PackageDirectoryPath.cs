@@ -12,21 +12,36 @@ namespace nitou {
             NotExist,
         }
 
-        // Package配布後の相対パス ("Packages/...")
+        // 相対パス
         private readonly string _upmRelativePath;
-
-        // 開発プロジェクトでの相対パス ("Assets/...")
         private readonly string _normalRelativePath;
 
         private Mode _mode;
 
-
+        /// <summary>
+        /// Package配布後のパッケージパス
+        /// </summary>
         public string UpmPath => $"Packages/{_upmRelativePath}";
+
+        /// <summary>
+        /// 開発プロジェクトでのアセットパス
+        /// </summary>
         public string NormalPath => $"Assets/{_normalRelativePath}";
 
 
         /// ----------------------------------------------------------------------------
         // Pubic Method
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public PackageDirectoryPath(string relativePath = "com.nitou.nLib") {
+            _upmRelativePath = relativePath;
+            _normalRelativePath = relativePath;
+
+            // 判定する
+            _mode = CheckDirectoryLocation();
+        }
 
         /// <summary>
         /// コンストラクタ
@@ -38,14 +53,26 @@ namespace nitou {
             // 判定する
             _mode = CheckDirectoryLocation();
         }
-            
+
+
+        /// ----------------------------------------------------------------------------
+        // Pubic Method
+
+        /// <summary>
+        /// Projectディレクトリを起点としたパス
+        /// </summary>
         public string ToProjectPath() {
-            throw new System.NotImplementedException();
+            return _mode switch {
+                Mode.Upm => UpmPath,
+                Mode.Normal => NormalPath,
+                _ => ""
+            };
         }
 
-        public string ToAbsolutePath() {
-            throw new System.NotImplementedException();
-        }
+        /// <summary>
+        /// 絶対パス
+        /// </summary>
+        public string ToAbsolutePath() => Path.GetFullPath(ToProjectPath());
 
 
         /// ----------------------------------------------------------------------------

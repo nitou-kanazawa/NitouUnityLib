@@ -135,13 +135,6 @@ namespace nitou {
         #region Check
 
         /// <summary>
-        /// 
-        /// </summary>
-        public bool IsValidAssetPath() {
-            return !string.IsNullOrEmpty(_relativePath);
-        }
-
-        /// <summary>
         /// ファイルが存在するか確認する
         /// </summary>
         public bool Exists() {

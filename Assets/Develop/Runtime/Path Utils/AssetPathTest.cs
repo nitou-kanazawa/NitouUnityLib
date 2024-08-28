@@ -31,6 +31,7 @@ namespace Project{
             var packageDirectoryPath = new PackageDirectoryPath("com.nitou.nLib", "com.nitou.nLib");
             Debug_.Log(packageDirectoryPath.UpmPath);
             Debug_.Log(packageDirectoryPath.NormalPath);
+
         }
 
 

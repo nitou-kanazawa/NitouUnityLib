@@ -10,7 +10,7 @@ using UnityEditor.AnimatedValues;
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -68,7 +68,44 @@ namespace nitou.EditorShared {
             public static bool IndentedButton(string content) =>
                 IndentedButton(new GUIContent(content));
 
+
+            //public static bool ToggleButton(bool isOn, GUIContent on, GUIContent off, 
+            //    System.Action<bool> onClick = null, params GUILayoutOption[] options) {
+
+            //    if( GUILayout.Button(isOn ? on : off, options)){
+
+            //        onClick?.Invoke(isOn);
+            //    }
+            //}
+
             #endregion
+
+
+            public static void EnumToggles(SerializedProperty property) {
+                // Enum のフィールドをトグルボタンとして表示
+                //using (new EditorGUILayout.PropertyScope(label, property)) {
+
+                    // 現在のEnumのインデックスを取得
+                    EditorGUI.BeginChangeCheck();
+                    int value = property.enumValueIndex;
+                    string[] enumNames = property.enumDisplayNames;
+
+                    // トグルボタンを横に並べて表示
+                    EditorGUILayout.BeginHorizontal();
+                    for (int i = 0; i < enumNames.Length; i++) {
+                        if (GUILayout.Toggle(value == i, enumNames[i], "Button")) {
+                            value = i;
+                        }
+                    }
+                    EditorGUILayout.EndHorizontal();
+
+                    // インデックスが変更された場合、プロパティに新しい値を設定
+                    if (EditorGUI.EndChangeCheck()) {
+                        property.enumValueIndex = value;
+                    }
+                //}
+
+            }
 
 
             /// ----------------------------------------------------------------------------

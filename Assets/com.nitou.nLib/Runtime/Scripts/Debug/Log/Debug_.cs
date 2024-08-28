@@ -120,8 +120,12 @@ namespace nitou {
                     break;
                 }
                 // —v‘f’Ç‰Á
-                var rowText = $"[ {index} ] = {list[index]}".WithIndentTag();
-                sb.Append($"{rowText} \n");
+                var rowText = $"[ {index} ] = {list[index]}";
+#if UNITY_2022_1_OR_NEWER
+                sb.Append($"{rowText.WithIndentTag()} \n");
+#else
+                sb.Append($"    {rowText} \n");
+#endif
             }
             return sb.ToString();
         }
@@ -143,8 +147,14 @@ namespace nitou {
                     sb.Append($"(+{dict.Count - MAX_ROW_NUM} items has been omitted)");
                     break;
                 }
-                // —v‘f‚Ì’Ç‰Á
-                sb.Append($"[ {key} ] = {value} \n".WithIndentTag());
+
+                // —v‘f’Ç‰Á
+                var rowText = $"[ {key} ] = {value}";
+#if UNITY_2022_1_OR_NEWER
+                sb.Append($"{rowText.WithIndentTag()} \n");
+#else
+                sb.Append($"    {rowText} \n");
+#endif
                 index++;
             }
             return sb.ToString();
