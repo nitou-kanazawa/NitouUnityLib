@@ -48,11 +48,11 @@ namespace nitou {
         /// <summary>
         /// 要素同士の割り算
         /// </summary>
-        public static Vector3 Divide(this Vector3 vector, Vector3 other, float defaultValue) {
+        public static Vector3 Divide(this Vector3 self, Vector3 other, float defaultValue) {
             return new Vector3(
-                other.x != 0 ? vector.x / other.x : defaultValue,
-                other.y != 0 ? vector.y / other.y : defaultValue,
-                other.z != 0 ? vector.z / other.z : defaultValue
+                other.x != 0 ? self.x / other.x : defaultValue,
+                other.y != 0 ? self.y / other.y : defaultValue,
+                other.z != 0 ? self.z / other.z : defaultValue
             );
         }
 
@@ -70,7 +70,7 @@ namespace nitou {
         /// <summary>
         /// 最小の要素の値を取得する
         /// </summary>
-        public static float MixElement(this Vector3 self) {
+        public static float MinElement(this Vector3 self) {
             return Mathf.Min(self.x, self.y, self.z);
         }
 
@@ -105,7 +105,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region 値の変換
+        #region 値の変換 
 
         /// <summary>
         /// X値のみ変更した値を返す拡張メソッド
@@ -139,50 +139,70 @@ namespace nitou {
         /// </summary>
         public static Vector3 KeepZ(this Vector3 self) => new Vector3(0, 0, self.z);
 
-        #endregion
+        /// <summary>
+        /// Vector3のx, y, zのうち最大の要素のみを保持し、他の要素を0にする拡張メソッド
+        /// </summary>
+        public static Vector3 KeepMax(this Vector3 self) {
 
-
-
-
-
-        /// ----------------------------------------------------------------------------
-        // 値の設定
+            // 最大の値を持つ要素のみ保持
+            if (self.x >= self.y && self.x >= self.z) {
+                return self.KeepX();
+            } else if (self.y >= self.x && self.y >= self.z) {
+                return self.KeepY();
+            } else {
+                return self.KeepZ();
+            }
+        }
 
         /// <summary>
-        /// X値を設定する拡張メソッド
+        /// Vector3のx, y, zのうち最小の要素のみを保持し、他の要素を0にする拡張メソッド
         /// </summary>
-        public static void SetX(ref this Vector3 self, float x) => self.x = x;
+        public static Vector3 KeepMin(this Vector3 self) {
 
-        /// <summary>
-        /// Y値を設定する拡張メソッド
-        /// </summary>
-        public static void SetY(ref this Vector3 self, float y) => self.y = y;
-
-        /// <summary>
-        /// Z値を設定する拡張メソッド
-        /// </summary>
-        public static void SetZ(ref this Vector3 self, float z) => self.z = z;
-
-
-        /// ----------------------------------------------------------------------------
-
-        /// <summary>
-        /// Vector3のx, y, zのうち最も大きい要素のみを保持し、他の要素を0にする拡張メソッド
-        /// </summary>
-        public static Vector3 KeepMax(this Vector3 vector) {
-            // x, y, zの中で最も大きい要素を保持し、他を0に設定
-            float max = Mathf.Max(vector.x, vector.y, vector.z);
-
-            // 最大の値を持つ要素以外を0に設定
-            vector.x = vector.x == max ? vector.x : 0;
-            vector.y = vector.y == max ? vector.y : 0;
-            vector.z = vector.z == max ? vector.z : 0;
-
-            return vector;
+            // 最大の値を持つ要素のみ保持
+            if (self.x <= self.y && self.x <= self.z) {
+                return self.KeepX();
+            } else if (self.y <= self.x && self.y <= self.z) {
+                return self.KeepY();
+            } else {
+                return self.KeepZ();
+            }
         }
 
 
-        
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 値の変換 
+
+        /// <summary>
+        /// 全ての要素を正の値にする拡張メソッド
+        /// </summary>
+        public static Vector3 Positate(this Vector3 self) => new Vector3(Mathf.Abs(self.x), Mathf.Abs(self.y), Mathf.Abs(self.z));
+
+        /// <summary>
+        /// 全ての要素を負の値にする拡張メソッド
+        /// </summary>
+        public static Vector3 Negate(this Vector3 self) => new Vector3(Mathf.Abs(self.x), Mathf.Abs(self.y), Mathf.Abs(self.z));
+
+        // -----
+
+        /// <summary>
+        /// 半分の値を返す拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 Half(this Vector3 self) => self * 0.5f;
+
+        /// <summary>
+        /// ２倍の値を返す拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 Twice(this Vector3 self) => self * 2f;
+
+        #endregion
+
+
 
 
         /// ----------------------------------------------------------------------------
@@ -208,7 +228,15 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region 値の変換
 
-        // Clamp
+        /// <summary>
+        /// 全ての要素を指定の範囲内にClampする拡張メソッド
+        /// </summary>
+        public static Vector3 Clamp(this Vector3 self, float min, float max) {
+            return new Vector3(
+                Mathf.Clamp(self.x, min, max), 
+                Mathf.Clamp(self.y, min, max), 
+                Mathf.Clamp(self.z, min, max));
+        }
 
         /// <summary>
         /// <see cref="Vector3.ClampMagnitude(Vector3, float)"/>の拡張メソッド
@@ -225,32 +253,8 @@ namespace nitou {
         }
 
 
-        // 簡易計算
-
-        /// <summary>
-        /// 半分の値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 Half(this Vector3 self) => self * 0.5f;
-
-        /// <summary>
-        /// ２倍の値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 Twice(this Vector3 self) => self * 2f;
-
-
-        // 簡易計算
-
         
         #endregion
-
-
-
-
-
-
-
 
 
         public static Vector3 FindMinVector(IEnumerable<Vector3> ptList) {
