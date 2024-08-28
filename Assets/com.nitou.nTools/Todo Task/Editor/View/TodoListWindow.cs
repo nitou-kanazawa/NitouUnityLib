@@ -14,7 +14,11 @@ namespace nitou.Tools.TodoTask {
         private readonly string[] tabs = { "Shared Tasks", "Project Tasks" };
         private Vector2 scrollPos;
 
-        [MenuItem("Tools/ToDo List")]
+
+        /// ----------------------------------------------------------------------------
+        // Edtor Method
+
+        [MenuItem(MenuItemName.Prefix.EditorTool + "Todo List")]
         public static void ShowWindow() {
             GetWindow<TodoListWindow>("Todo List");
         }

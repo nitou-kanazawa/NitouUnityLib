@@ -130,7 +130,6 @@ namespace nitou.EditorShared {
     }
 
 
-
     public struct PackageFolderInfo {
         
         public readonly string upmFolderName;

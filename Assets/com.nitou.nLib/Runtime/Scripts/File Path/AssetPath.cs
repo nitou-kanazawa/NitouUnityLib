@@ -14,15 +14,15 @@ namespace nitou {
     // パスの検証: アセットパスが正しいフォーマットであるか、存在するかを検証できる。
 
     [System.Serializable]
-    public sealed class AssetPath {
+    public sealed class AssetPath : IUnityProjectPath{
 
         // "Assets/以下の相対パス"
         [SerializeField] private string _relativePath = "";
 
-        private const string PREFIX = "Assets/";
 
-
-        // 非公開のコンストラクタ
+        /// <summary>
+        /// コンストラクタ（※非公開）
+        /// </summary>
         private AssetPath(string relativePath) {
             _relativePath = relativePath!=null ? relativePath.Replace("\\", "/") : "";
         }
@@ -105,14 +105,14 @@ namespace nitou {
         /// <summary>
         /// アセットパス
         /// </summary>
-        public string ToAssetDatabasePath() => "Assets/" + _relativePath;
+        public string ToProjectPath() => "Assets/" + _relativePath;
 
         /// <summary>
         /// 絶対パス
         /// </summary>
         public string ToAbsolutePath() => Path.GetFullPath(Path.Combine(Application.dataPath, _relativePath));
         
-        public override string ToString() => this.ToAssetDatabasePath();
+        public override string ToString() => this.ToProjectPath();
         #endregion
 
 
@@ -133,13 +133,6 @@ namespace nitou {
 
         /// --------------------------------------------------------------------
         #region Check
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool IsValidAssetPath() {
-            return !string.IsNullOrEmpty(_relativePath);
-        }
 
         /// <summary>
         /// ファイルが存在するか確認する

@@ -21,7 +21,7 @@ namespace nitou {
             /// <summary>
             /// 
             /// </summary>
-            public const string EditorCommand = "Tools/Nitou/";
+            public const string EditorTool = "Tools/Nitou/";
 
 
             /// <summary>

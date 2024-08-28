@@ -25,11 +25,16 @@ namespace nitou.Tools{
             if (GUILayout.Button("Get Path")) {
 
                 // ƒpƒX
-                var path = AssetPath.FromRelativePath(_directoryPath);
-                Debug_.Log(path.ToAssetDatabasePath());
-                Debug_.Log(path.ToAbsolutePath());
+                //var path = AssetPath.FromRelativePath(_directoryPath);
+                //Debug_.Log(path.ToProjectPath());
+                //Debug_.Log(path.ToAbsolutePath());
+                //AssetsLoader.LoadAll<MonoScript>(path);
 
-                AssetsLoader.LoadAll<MonoScript>(path);
+                var packageDirectoryPath = new PackageDirectoryPath("com.nitou.nLib", "com.nitou.nLib");
+                var results = AssetsLoader.LoadAll<MonoScript>(packageDirectoryPath, "Editor");
+
+                Debug_.ListLog(results.Select(x =>x.name).ToList());
+
             }
 
             GUILayout.Label("Result:", EditorStyles.boldLabel);

@@ -14,6 +14,10 @@ namespace nitou {
     /// </summary>
     public static partial class Vector3Extensions {
 
+        /// [TODO] 機能が十分に揃った頃に、以下を各メソッドへ付与する
+        //   [MethodImpl(MethodImplOptions.AggressiveInlining)]
+
+
         /// <summary>
         /// デコンストラクタ
         /// </summary>
@@ -26,18 +30,18 @@ namespace nitou {
         /// <summary>
         /// Vector2への変換
         /// </summary>
-        public static Vector2 ToVector2(this Vector3 vector) {
-                return new Vector2(vector.x, vector.y);
+        public static Vector2 ToVector2(this Vector3 self) {
+                return new Vector2(self.x, self.y);
             }
 
         /// <summary>
         /// 要素同士の割り算
         /// </summary>
-        public static Vector3 Divide(this Vector3 vector, Vector3 other) {
+        public static Vector3 Divide(this Vector3 self, Vector3 other) {
             return new Vector3(
-                other.x != 0 ? vector.x / other.x : 0,
-                other.y != 0 ? vector.y / other.y : 0,
-                other.z != 0 ? vector.z / other.z : 0
+                other.x != 0 ? self.x / other.x : 0,
+                other.y != 0 ? self.y / other.y : 0,
+                other.z != 0 ? self.z / other.z : 0
             );
         }
 
@@ -54,7 +58,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region 値の取得
+        #region 要素の判定
 
         /// <summary>
         /// 最大の要素の値を取得する
@@ -69,10 +73,76 @@ namespace nitou {
         public static float MixElement(this Vector3 self) {
             return Mathf.Min(self.x, self.y, self.z);
         }
+
+        /// <summary>
+        /// 最大の要素の軸を取得する
+        /// </summary>
+        public static Axis MaxAxis(this Vector3 self) {
+            // [NOTE] 値が等しい場合は(x , y , z)の順で優先される
+            if (self.x >= self.y && self.x >= self.z) {
+                return Axis.X;
+            } else if (self.y >= self.x && self.y >= self.z) {
+                return Axis.Y;
+            } else {
+                return Axis.Z;
+            }
+        }
+
+        /// <summary>
+        /// 最小の要素の軸を取得する
+        /// </summary>
+        public static Axis MinAxis(this Vector3 self) {
+            // [NOTE] 値が等しい場合は(x > y > z)の順で優先される
+            if (self.x <= self.y && self.x <= self.z) {
+                return Axis.X;
+            } else if (self.y <= self.x && self.y <= self.z) {
+                return Axis.Y;
+            } else {
+                return Axis.Z;
+            }
+        }
         #endregion
 
 
-        
+        /// ----------------------------------------------------------------------------
+        #region 値の変換
+
+        /// <summary>
+        /// X値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 WithX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
+
+        /// <summary>
+        /// Y値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 WithY(this Vector3 self, float y) => new Vector3(self.x, y, self.z);
+
+        /// <summary>
+        /// Z値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
+
+        // ------ 
+
+        /// <summary>
+        /// X値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 KeepX(this Vector3 self) => new Vector3(self.x, 0, 0);
+
+        /// <summary>
+        /// Y値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 KeepY(this Vector3 self) => new Vector3(0, self.y, 0);
+
+        /// <summary>
+        /// Z値のみ変更した値を返す拡張メソッド
+        /// </summary>
+        public static Vector3 KeepZ(this Vector3 self) => new Vector3(0, 0, self.z);
+
+        #endregion
+
+
+
 
 
         /// ----------------------------------------------------------------------------
@@ -94,23 +164,25 @@ namespace nitou {
         public static void SetZ(ref this Vector3 self, float z) => self.z = z;
 
 
-        /// <summary>
-        /// X値のみ変更した値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
+        /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// Y値のみ変更した値を返す拡張メソッド
+        /// Vector3のx, y, zのうち最も大きい要素のみを保持し、他の要素を0にする拡張メソッド
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithY(this Vector3 self, float y) => new Vector3(self.x, y, self.z);
+        public static Vector3 KeepMax(this Vector3 vector) {
+            // x, y, zの中で最も大きい要素を保持し、他を0に設定
+            float max = Mathf.Max(vector.x, vector.y, vector.z);
 
-        /// <summary>
-        /// Z値のみ変更した値を返す拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
+            // 最大の値を持つ要素以外を0に設定
+            vector.x = vector.x == max ? vector.x : 0;
+            vector.y = vector.y == max ? vector.y : 0;
+            vector.z = vector.z == max ? vector.z : 0;
+
+            return vector;
+        }
+
+
+        
 
 
         /// ----------------------------------------------------------------------------

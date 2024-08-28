@@ -20,17 +20,15 @@ namespace nitou.Tools.Demo {
         [MenuItem( MenuItemName.Prefix.Develop + "CheckBoxes")]
         public static void Open() {
 
-            var names = new[]
-            {
-            "フシギダネ",
-            "フシギソウ",
-            "フシギバナ",
-        };
+            var names = new[]{
+                "フシギダネ",
+                "フシギソウ",
+                "フシギバナ",
+            };
 
             var dataArray = names
                     .Select(x => new Data(x))
-                    .ToArray()
-                ;
+                    .ToArray();
 
 
             CheckBoxWindow.Open(title: "Select", dataList: dataArray, onOk: _ => {

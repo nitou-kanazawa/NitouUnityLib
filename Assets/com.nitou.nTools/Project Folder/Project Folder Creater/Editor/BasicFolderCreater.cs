@@ -20,7 +20,7 @@ namespace nitou.Tools.ProjectWindow {
 
 
 
-        [MenuItem(MenuItemName.Prefix.EditorCommand + "Project Window/Create AssetData Folders")]
+        [MenuItem(MenuItemName.Prefix.EditorTool + "Project Window/Create AssetData Folders")]
         public static void CreateAssetDataFolders() {
 
             string parentFolder = "Assets/AssetData";
@@ -38,7 +38,7 @@ namespace nitou.Tools.ProjectWindow {
             CreateFolder(parentFolder, "Shaders");
         }
 
-        [MenuItem(MenuItemName.Prefix.EditorCommand + "Project Window/Create Code Folders")]
+        [MenuItem(MenuItemName.Prefix.EditorTool + "Project Window/Create Code Folders")]
         public static void CreateProjectCodeFolders() {
 
             string parentFolder = "Assets/_Project";
@@ -60,7 +60,7 @@ namespace nitou.Tools.ProjectWindow {
         /// <summary>
         /// ビルドデータ用のフォルダを生成する
         /// </summary>
-        [MenuItem(MenuItemName.Prefix.EditorCommand + "Project Window/Create Build Folder")]
+        [MenuItem(MenuItemName.Prefix.EditorTool + "Project Window/Create Build Folder")]
         public static void CreateBuildFolder() {
             CreateFolder("Build/");
         }
