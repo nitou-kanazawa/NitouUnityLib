@@ -131,6 +131,11 @@ namespace nitou.EditorShared {
             /// </summary>
             public static void HorizontalLine(int thickness = 1, int padding = 10, bool useIndentLevel = false) =>
                 HorizontalLine(EditorColors.ButtonBackgroundHover, thickness, padding, useIndentLevel);
+
+            public static void Line(int height = 1) {
+                GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(height));
+            }
+
             #endregion
 
 

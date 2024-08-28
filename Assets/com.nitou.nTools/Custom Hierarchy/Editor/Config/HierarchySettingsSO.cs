@@ -1,9 +1,9 @@
 #if UNITY_EDITOR
-using System;
 using UnityEngine;
 using UnityEditor;
 
 namespace nitou.Tools.Hierarchy{
+    using nitou.EditorShared;
 
     /// <summary>
     /// Editorで参照するプロジェクト固有の設定データ
@@ -12,7 +12,7 @@ namespace nitou.Tools.Hierarchy{
         "ProjectSettings/HierarchySettingsSO.asset",
         FilePathAttribute.Location.ProjectFolder
     )]
-    public class HierarchySettingsSO : ScriptableSingleton<HierarchySettingsSO> {
+    internal sealed class HierarchySettingsSO : ScriptableSingleton<HierarchySettingsSO> , ISettingsData{
 
         [SerializeField] HierarchyObjectMode hierarchyObjectMode = HierarchyObjectMode.RemoveInBuild;
         [SerializeField] bool showHierarchyToggles;
@@ -26,8 +26,9 @@ namespace nitou.Tools.Hierarchy{
         [SerializeField] Color oddRowColor = Color.clear;
 
 
-
-
+        /// <summary>
+        /// データを保存する
+        /// </summary>
         public void Save() => Save(true);
     }
 }
