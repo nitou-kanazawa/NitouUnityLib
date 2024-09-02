@@ -2,6 +2,7 @@
 // [参考]
 //  kanのメモ帳 メニューを追加するための属性「MenuItem」は意外と多機能 https://kan-kikuchi.hatenablog.com/entry/MenuItem
 //  はなちる: エディタ拡張でメニューバーにチェックを付ける(Menu.SetChecked) https://www.hanachiru-blog.com/entry/2023/01/02/120000
+
 namespace nitou {
 
     /// <summary>
@@ -16,18 +17,18 @@ namespace nitou {
             /// <summary>
             /// 
             /// </summary>
-            public const string EditorWindow = "Window/Nitou/";
+            //public const string EditorWindow = "Window/Nitou/";
             
             /// <summary>
             /// 
             /// </summary>
-            public const string EditorTool = "Tools/Nitou/";
+            //public const string EditorTool = "Tools/Nitou/";
 
 
             /// <summary>
             /// 
             /// </summary>
-            public const string Develop = "Develop/";
+            //public const string Develop = "Develop/";
 
 
             /// <summary>

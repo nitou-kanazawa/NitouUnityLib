@@ -11,7 +11,7 @@ namespace nitou.Tools{
         private string _directoryPath = "";
         private string _resultText = "";
 
-        [MenuItem(MenuItemName.Prefix.Develop + "Test Window")]
+        [MenuItem(ToolBarMenu.Prefix.Develop + "Test Window")]
         public static void Open() {
             GetWindow<DataClassGeneratorWindow>();
         }

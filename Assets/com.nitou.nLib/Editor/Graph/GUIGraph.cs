@@ -68,7 +68,10 @@ namespace nitou.EditorShared {
 
         private Vector2[] _points;
 
-        [MenuItem(MenuItemName.Prefix.Develop + "Test Graph")]
+        /// <summary>
+        /// 
+        /// </summary>
+        [MenuItem(ToolBarMenu.Prefix.Develop + "Test Graph")]
         public static void Open() {
             GetWindow<TestGraphWindow>("Test Graph");
         }

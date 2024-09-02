@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -9,8 +8,10 @@ namespace nitou.EditorScripts {
 	// デモ表示用のエディタウインドウ
 	public class DemoEditorWindow : EditorWindow {
 
-		[MenuItem(MenuItemName.Prefix.Develop + "Test/Demo Graph")]
-
+		/// <summary>
+		/// 
+		/// </summary>
+		[MenuItem(ToolBarMenu.Prefix.Develop + "Test/Demo Graph")]
 		public static void Open() => GetWindow<DemoEditorWindow>("Demo Graph");
 
 		private void OnGUI() {

@@ -4,7 +4,7 @@ namespace nitou {
     /// <summary>
     /// "Create Asset Menu"用の各種定義
     /// </summary>
-    public static partial class AssetMenu {
+    public static class AssetMenu {
 
         /// ----------------------------------------------------------------------------
         // 接頭辞
@@ -59,7 +59,11 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // 表示順
         public static class Order {
-            public const int First = 100;
+            public static readonly int VeryEarly = 100;
+            public static readonly int Early = 50;
+            public static readonly int Normal = 0;
+            public static readonly int Late = -50;
+            public static readonly int VeryLate = -100;
         }
     }
 

@@ -18,7 +18,7 @@ namespace nitou.Tools.TodoTask {
         /// ----------------------------------------------------------------------------
         // Edtor Method
 
-        [MenuItem(MenuItemName.Prefix.EditorTool + "Todo List")]
+        [MenuItem(ToolBarMenu.Prefix.EditorTool + "Todo List")]
         public static void ShowWindow() {
             GetWindow<TodoListWindow>("Todo List");
         }

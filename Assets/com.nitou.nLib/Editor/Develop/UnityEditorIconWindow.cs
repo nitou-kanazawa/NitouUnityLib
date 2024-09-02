@@ -43,8 +43,8 @@ namespace nitou.Tools {
         // Editor Method
 
         [MenuItem(
-            MenuItemName.Prefix.Develop + "GUI Icon/Editor Icons %e", 
-            priority = -100
+            ToolBarMenu.Prefix.Develop + "GUI Icon/Editor Icons %e", 
+            priority = ToolBarMenu.Order.VeryEarly
         )]
         public static void Open() {
             var w = GetWindow<UnityEditorIconWindow>("Editor Icons");

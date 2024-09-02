@@ -10,8 +10,10 @@ namespace nitou.EditorScripts {
         private List<GUIStyle> _editorGUIStyles;
         private Vector2 _position;
 
-
-        [MenuItem(MenuItemName.Prefix.Develop + "GUI Style/GUIStyleChecker")]
+        /// <summary>
+        /// 
+        /// </summary>
+        [MenuItem(ToolBarMenu.Prefix.Develop + "GUI Style/GUIStyleChecker")]
         private static void Open() {
             GetWindow<GUIStyleChecker>("GUIStyleChecker");
         }

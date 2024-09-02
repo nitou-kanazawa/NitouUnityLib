@@ -12,7 +12,7 @@ namespace nitou.EditorScripts.Internal {
 
         private Vector2 _scrollPos;
 
-        [MenuItem(MenuItemName.Prefix.Develop + "GUI Styles/Unit Defaults")]
+        [MenuItem(ToolBarMenu.Prefix.Develop + "GUI Styles/Unit Defaults")]
         private static void Open() {
             GetWindow<ExampleClass>(true);
         }

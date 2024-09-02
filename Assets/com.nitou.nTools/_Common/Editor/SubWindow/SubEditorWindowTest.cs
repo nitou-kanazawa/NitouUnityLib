@@ -17,7 +17,7 @@ namespace nitou.Tools.Demo {
             }
         }
 
-        [MenuItem( MenuItemName.Prefix.Develop + "CheckBoxes")]
+        [MenuItem(ToolBarMenu.Prefix.Develop + "CheckBoxes")]
         public static void Open() {
 
             var names = new[]{

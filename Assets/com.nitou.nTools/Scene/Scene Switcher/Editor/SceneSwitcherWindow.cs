@@ -33,7 +33,7 @@ namespace nitou.Tools.SceneSystem {
         // EditorWindow Method
 
         [MenuItem(
-            MenuItemName.Prefix.EditorTool + "Scene Switcher",
+            ToolBarMenu.Prefix.EditorTool + "Scene Switcher",
             priority = -1001
         )]
         static void Open() {

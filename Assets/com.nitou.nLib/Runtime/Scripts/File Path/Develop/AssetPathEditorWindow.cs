@@ -19,7 +19,7 @@ namespace nitou.EditorScripts{
         /// ----------------------------------------------------------------------------
         // Edtor Method
 
-        [MenuItem(MenuItemName.Prefix.Develop + "File Path/AssetPath Window")]
+        [MenuItem(ToolBarMenu.Prefix.Develop + "File Path/AssetPath Window")]
         public static void Open() {
             GetWindow<AssetPathEditorWindow>("AssetPath");
         }
