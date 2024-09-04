@@ -120,8 +120,19 @@ namespace nitou{
         public static Vector2 DegToVector(this float degree) {
             return new Vector2(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad));
         }
-
         #endregion
+
+
+        /// <summary>
+        /// Œõü‚Æ“_‚ÌÅ‹ß–T“_‚ğæ“¾‚·‚é
+        /// </summary>
+        public static Vector3 FindClosestPointOnRay(Vector3 position, Vector3 direction, Vector3 targetPoint) {
+            Vector3 fromRayToPoint = targetPoint - position;
+            float projectionLength = Vector3.Dot(fromRayToPoint, direction);
+            Vector3 closestPoint = position + direction * projectionLength;
+
+            return closestPoint;
+        }
 
     }
 
