@@ -72,7 +72,7 @@ namespace nitou.Tools.Inspector {
             // マテリアルのインスペクタにはカスタムGUIを表示しない
             if (editor.target is Material || editor.target is DefaultAsset) {
                 return;
-            } 
+            }
 
             using (new EditorGUILayout.HorizontalScope())
             using (new EditorUtil.GUIContentColorScope(Colors.White)) {
@@ -83,22 +83,14 @@ namespace nitou.Tools.Inspector {
                 DrawPingButton(editor.target);
                 DrawPropertiesButton();
 
-                var oldEnabled = GUI.enabled;
-                GUI.enabled = editor.targets.All(x => !EditorUtility.IsPersistent(x));
 
-                //try {
-                //    DrawExpandAllComponentsButton();
-                //    DrawCollapseAllComponentsButton();
-                //} finally {
-                //    GUI.enabled = oldEnabled;
-                //}
-
-                DrawPasteComponentAsNew(editor);
-                DrawOpenMetaButton(editor);
-                DrawOpenVisualStudioCodeButton(editor);
-                DrawRevealInFinderButton(editor);
+                using (new EditorUtil.EnableScope(editor.targets.All(x => !EditorUtility.IsPersistent(x)))) {
+                    DrawPasteComponentAsNew(editor);
+                    DrawOpenMetaButton(editor);
+                    DrawOpenVisualStudioCodeButton(editor);
+                    DrawRevealInFinderButton(editor);
+                }
             }
-
             DrawGuidLabel(editor);
         }
 
@@ -157,17 +149,6 @@ namespace nitou.Tools.Inspector {
         }
 
         /// <summary>
-        /// プロパティボタンを表示する
-        /// </summary>
-        private static void DrawPropertiesButton() {
-            using var enableScope = new EditorUtil.EnableScope(true);
-
-            if (GUILayout.Button(PROPERTIES_TEXTURE.GuiContent, EditorStyles.miniButtonMid)) {
-                EditorApplication.ExecuteMenuItem("Assets/Properties...");
-            }
-        }
-
-        /// <summary>
         /// 
         /// </summary>
         private static void DrawPingButton(UnityEngine.Object target) {
@@ -177,10 +158,17 @@ namespace nitou.Tools.Inspector {
                 EditorGUIUtility.PingObject(target);
             }
         }
-        #endregion
 
+        /// <summary>
+        /// プロパティボタンを表示する
+        /// </summary>
+        private static void DrawPropertiesButton() {
+            using var enableScope = new EditorUtil.EnableScope(true);
 
-        /// ----------------------------------------------------------------------------
+            if (GUILayout.Button(PROPERTIES_TEXTURE.GuiContent, EditorStyles.miniButtonMid)) {
+                EditorApplication.ExecuteMenuItem("Assets/Properties...");
+            }
+        }
 
         /// <summary>
         /// コンポーネントの貼付ボタンを表示する
@@ -195,22 +183,6 @@ namespace nitou.Tools.Inspector {
                 }
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void DrawRevealInFinderButton(Editor editor) {
-            var enabled = editor.targets.All(x => EditorUtility.IsPersistent(x));
-            using var enableScope = new EditorUtil.EnableScope(enabled);
-
-            if (GUILayout.Button(REVEAL_IN_FINDER_TEXTURE.GuiContent, EditorStyles.miniButtonRight)) {
-                foreach (var target in editor.targets) {
-                    var assetPath = AssetDatabase.GetAssetPath(target);
-                    EditorUtility.RevealInFinder(assetPath);
-                }
-            }
-        }
-
 
         private static void DrawOpenMetaButton(Editor editor) {
             var enabled = editor.targets.All(x => EditorUtility.IsPersistent(x));
@@ -256,14 +228,38 @@ namespace nitou.Tools.Inspector {
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void DrawRevealInFinderButton(Editor editor) {
+            var enabled = editor.targets.All(x => EditorUtility.IsPersistent(x));
+            using var enableScope = new EditorUtil.EnableScope(enabled);
+
+            if (GUILayout.Button(REVEAL_IN_FINDER_TEXTURE.GuiContent, EditorStyles.miniButtonRight)) {
+                foreach (var target in editor.targets) {
+                    var assetPath = AssetDatabase.GetAssetPath(target);
+                    EditorUtility.RevealInFinder(assetPath);
+                }
+            }
+        }
+        #endregion
 
 
+        /// ----------------------------------------------------------------------------
+        // 
+
+        /// <summary>
+        /// GUIDを表示する
+        /// </summary>
+        /// <param name="editor"></param>
         private static void DrawGuidLabel(Editor editor) {
             if (editor.targets.Any(x => !EditorUtility.IsPersistent(x))) return;
 
             var assetPath = AssetDatabase.GetAssetPath(editor.target);
             var guid = AssetDatabase.AssetPathToGUID(assetPath);
             var totalRect = EditorGUILayout.GetControlRect();
+
+            // 
             var controlRect = EditorGUI.PrefixLabel(totalRect, EditorGUIUtility.TrTempContent("GUID"));
 
             if (1 < editor.targets.Length) {
