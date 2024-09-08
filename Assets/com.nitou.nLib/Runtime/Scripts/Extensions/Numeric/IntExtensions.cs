@@ -53,14 +53,14 @@ namespace nitou {
         /// 正の値にする拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Positive(this int self) =>
+        public static int Positive(this int self) =>
             Mathf.Abs(self);
 
         /// <summary>
         /// 負の値にする拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float Negative(this int self) =>
+        public static int Negative(this int self) =>
             Mathf.Abs(self) * (-1);
 
         /// <summary>
