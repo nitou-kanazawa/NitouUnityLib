@@ -59,11 +59,11 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // •\¦‡
         public static class Order {
-            public static readonly int VeryEarly = 100;
-            public static readonly int Early = 50;
-            public static readonly int Normal = 0;
-            public static readonly int Late = -50;
-            public static readonly int VeryLate = -100;
+            public const int VeryEarly = 100;
+            public const int Early = 50;
+            public const int Normal = 0;
+            public const int Late = -50;
+            public const int VeryLate = -100;
         }
     }
 
