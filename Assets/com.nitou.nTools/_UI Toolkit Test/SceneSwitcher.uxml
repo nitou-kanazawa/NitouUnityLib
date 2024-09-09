@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <uie:Toolbar style="justify-content: space-between;">
+        <uie:ObjectField allow-scene-objects="false" type="UnityEditor.SceneAsset, UnityEditor" style="width: 124px;" />
+        <uie:ToolbarSpacer />
+        <uie:ToolbarButton text="Add current Scene" display-tooltip-when-elided="true" name="add_current_btn" style="justify-content: space-between; -unity-text-align: middle-left;" />
+    </uie:Toolbar>
+    <ui:VisualElement name="Content" style="margin-left: 5px; margin-right: 5px; margin-top: 10px; margin-bottom: 10px; align-items: center;" />
+</ui:UXML>
