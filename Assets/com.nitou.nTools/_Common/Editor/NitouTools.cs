@@ -6,13 +6,20 @@ namespace nitou.Tools.Shared{
 
     internal static class NitouTools{
 
+        // old
         internal static readonly PackageFolderInfo pacakageInfo;
+
+        // new
+        internal static readonly PackageDirectoryPath pacakagePath = null;
 
 
         static NitouTools() {
             pacakageInfo = new PackageFolderInfo(
                 upmFolderName: "com.nitou.nTools",
                 normalFolderName: "com.nitou.nTools");
+
+
+            pacakagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
 
     }

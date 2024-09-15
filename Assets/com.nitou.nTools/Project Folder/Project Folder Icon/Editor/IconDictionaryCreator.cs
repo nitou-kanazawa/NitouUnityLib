@@ -20,7 +20,7 @@ namespace nitou.Tools.ProjectWindow {
     internal class IconDictionaryCreator : AssetPostprocessor {
 
         // ÉäÉ\Å[ÉXèÓïÒ
-        private const string floderPath = "Project Folder/Project Folder Icon/Icons";
+        private const string relativeFolderPath = "Project Folder/Project Folder Icon/Icons";
         internal static Dictionary<string, Texture> _iconDictionary;
 
 
@@ -33,7 +33,7 @@ namespace nitou.Tools.ProjectWindow {
         /// </summary>
         internal static void BuildDictionary() {
 
-            var texs = NonResources.LoadAll<Texture2D>(floderPath, NitouTools.pacakageInfo);
+            var texs = NonResources.LoadAll<Texture2D>(relativeFolderPath, NitouTools.pacakageInfo);
             _iconDictionary = texs.ToDictionary(texture => texture.name, texture => (Texture)texture);
         }
 

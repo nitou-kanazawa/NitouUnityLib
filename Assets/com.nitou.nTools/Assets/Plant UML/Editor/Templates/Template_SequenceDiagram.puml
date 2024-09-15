@@ -1,0 +1,12 @@
+@startuml New Sequence
+
+actor User
+participant {{Object1}} as O1
+participant {{Object2}} as O2
+
+' シーケンスのプレースホルダー
+User -> O1: {{Method1}}
+O1 -> O2: {{Method2}}
+O2 --> User: {{Response}}
+
+@enduml

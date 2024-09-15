@@ -1,0 +1,14 @@
+@startuml New Class
+
+' クラス定義のプレースホルダー
+class {{ClassName}} {
+    + {{Property1}} : {{Type1}}
+    + {{Property2}} : {{Type2}}
+    - {{Field1}} : {{Type3}}
+    # {{Method1}}()
+}
+
+' 関係の定義（必要に応じて編集）
+{{ClassName}} <|-- {{RelatedClassName}} : 継承
+
+@enduml
