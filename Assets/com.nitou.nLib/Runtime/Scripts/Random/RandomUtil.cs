@@ -101,6 +101,8 @@ namespace nitou {
             currentIndex = index;
         }
 
+
+
         /// <summary>
         /// リスト内の値からランダムに取得する拡張メソッド
         /// </summary>
@@ -120,6 +122,7 @@ namespace nitou {
                 yield return collection[value];
             }
         }
+
         #endregion
 
 
@@ -221,6 +224,13 @@ namespace nitou {
                 Range(alpha.x, alpha.y));
         }
         #endregion
+    }
+
+
+    public static class RandomExtensions {
+
+
+        
     }
 
 }

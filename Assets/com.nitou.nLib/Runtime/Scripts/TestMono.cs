@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 namespace nitou {
+    using nitou.Inspector;
 
     public enum TestType {
         A, B, C

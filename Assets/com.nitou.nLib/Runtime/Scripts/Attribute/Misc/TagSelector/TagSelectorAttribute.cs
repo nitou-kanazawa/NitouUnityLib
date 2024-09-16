@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace nitou {
+namespace nitou.Inspector {
 
     public class TagSelectorAttribute : PropertyAttribute {
         public bool UseDefaultTagFieldDrawer = false;
@@ -13,7 +13,7 @@ namespace nitou {
 
 
 #if UNITY_EDITOR
-namespace nitou.EditorScripts {
+namespace nitou.Inspector.EditorScripts {
 
     // Original by DYLAN ENGELMAN http://jupiterlighthousestudio.com/custom-inspectors-unity/
     // Altered by Brecht Lecluyse https://www.brechtos.com

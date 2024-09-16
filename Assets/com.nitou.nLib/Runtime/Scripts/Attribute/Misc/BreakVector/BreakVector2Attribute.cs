@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace nitou {
+namespace nitou.Inspector {
 
     /// <summary>
     /// Vector2の各成分 (x,y) を独立してインスペクタ表示させる属性
@@ -27,7 +27,7 @@ namespace nitou {
 
 #if UNITY_EDITOR
 
-namespace nitou.EditorScripts {
+namespace nitou.Inspector.EditorScripts {
 
     [CustomPropertyDrawer(typeof(BreakVector2Attribute))]
     public class BreakVector2AttributeEditor : PropertyDrawer {

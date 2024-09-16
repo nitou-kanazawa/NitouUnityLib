@@ -8,7 +8,7 @@ using nitou.EditorShared;
 // [éQçl]
 //  _: InlinePropertyAttribute class  https://odininspector.com/documentation/sirenix.odininspector.inlinepropertyattribute
 
-namespace nitou {
+namespace nitou.Inspector {
 
     [AttributeUsage(
         AttributeTargets.Field, 
@@ -22,7 +22,7 @@ namespace nitou {
 
 
 #if UNITY_EDITOR
-namespace nitou.EditorScripts {
+namespace nitou.Inspector.EditorScripts {
 
     [CustomPropertyDrawer(typeof(InlinePropertyAttribute))]
     public class InlinePropertyDrawer : PropertyDrawer {

@@ -3,7 +3,7 @@
 using UnityEditor;
 #endif
 
-namespace nitou {
+namespace nitou.Inspector {
 
     [System.AttributeUsage(
         System.AttributeTargets.Field,
@@ -25,7 +25,7 @@ namespace nitou {
 
 #if UNITY_EDITOR
 
-namespace nitou.EditorScripts {
+namespace nitou.Inspector.EditorScripts {
 
     [CustomPropertyDrawer(typeof(BreakVector3Attribute))]
     public class BreakVector3AttributeEditor : PropertyDrawer {
