@@ -11,6 +11,74 @@ namespace nitou.Tests {
         Fourth
     }
 
+    public enum TestEnum {
+        First,
+        Second,
+        Third,
+        Fourth
+    }
+
+
+    public class EnumExtensionsTests {
+
+        [Test]
+        public void IsAnyOf_SingleMatch_ReturnsTrue() {
+            // Arrange
+            var value = TestEnum.Second;
+
+            // Act
+            var result = value.IsAnyOf(TestEnum.Second);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void IsAnyOf_MultipleMatches_ReturnsTrue() {
+            // Arrange
+            var value = TestEnum.Third;
+
+            // Act
+            var result = value.IsAnyOf(TestEnum.First, TestEnum.Third, TestEnum.Fourth);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void IsAnyOf_NoMatch_ReturnsFalse() {
+            // Arrange
+            var value = TestEnum.First;
+
+            // Act
+            var result = value.IsAnyOf(TestEnum.Second, TestEnum.Third);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void IsAnyOf_EmptyArray_ReturnsFalse() {
+            // Arrange
+            var value = TestEnum.First;
+
+            // Act
+            var result = value.IsAnyOf(new TestEnum[] { });
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void IsAnyOf_NullArray_ThrowsArgumentNullException() {
+            // Arrange
+            var value = TestEnum.First;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>(() => value.IsAnyOf(null));
+        }
+    }
+
 
     public class EnumUtilTests {
         [Test]

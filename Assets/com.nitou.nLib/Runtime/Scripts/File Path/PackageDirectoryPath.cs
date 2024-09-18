@@ -7,8 +7,11 @@ namespace nitou {
     public sealed class PackageDirectoryPath : IUnityProjectPath{
 
         public enum Mode {
+            // 配布後
             Upm,
+            // 開発プロジェクト内
             Normal,
+            // 
             NotExist,
         }
 

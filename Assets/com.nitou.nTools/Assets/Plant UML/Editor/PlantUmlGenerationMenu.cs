@@ -14,12 +14,12 @@ namespace nitou.Tools.PumlGenerator {
         private const string RelativeFolderPath = "Assets/Plant UML/Editor/Templates";
 
 
-        [MenuItem(MenuPath + "Class Diagram")]
+        [MenuItem(MenuPath + "Class Diagram", priority = -100)]
         private static void GenerateClassDiagram() {
             GenerateDiagramFromTemplate("Template_ClassDiagram.puml");
         }
 
-        [MenuItem(MenuPath + "Sequence Diagram")]
+        [MenuItem(MenuPath + "Sequence Diagram", priority = -100)]
         private static void GenerateSequenceDiagram() {
             GenerateDiagramFromTemplate("Template_SequenceDiagram.puml");
         }
