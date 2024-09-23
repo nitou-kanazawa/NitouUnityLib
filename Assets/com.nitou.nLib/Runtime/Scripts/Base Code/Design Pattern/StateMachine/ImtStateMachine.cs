@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 
+// [参考]
+//  github: Sinoa/ImtStateMachine https://github.com/Sinoa/ImtStateMachine
+//  qiita: ステートマシン実装の決定版ImtStateMachineについて語り尽くす https://qiita.com/BelColo/items/a94c9ccc2d5174dc29a3
+
 namespace nitou.DesignPattern {
 
     /// <summary>
@@ -30,6 +34,7 @@ namespace nitou.DesignPattern {
 
     /// ----------------------------------------------------------------------------
     #region 標準ステートマシン基底実装
+    
     /// <summary>
     /// コンテキストを持つことのできるステートマシンクラスです
     /// </summary>
@@ -37,24 +42,26 @@ namespace nitou.DesignPattern {
     /// <typeparam name="TEvent">ステートマシンへ送信するイベントの型</typeparam>
     public class ImtStateMachine<TContext, TEvent> {
 
+        /// ----------------------------------------------------------------------------
         #region ステートクラス本体と特別ステートクラスの定義
+
         /// <summary>
         /// ステートマシンが処理する状態を表現するステートクラスです。
         /// </summary>
         public abstract class State {
             // メンバ変数定義
-            internal Dictionary<TEvent, State> transitionTable;
-            internal ImtStateMachine<TContext, TEvent> stateMachine;
+            internal Dictionary<TEvent, State> _transitionTable;
+            internal ImtStateMachine<TContext, TEvent> _stateMachine;
 
             /// <summary>
             /// このステートが所属するステートマシン
             /// </summary>
-            protected ImtStateMachine<TContext, TEvent> StateMachine => stateMachine;
+            protected ImtStateMachine<TContext, TEvent> StateMachine => _stateMachine;
 
             /// <summary>
             /// このステートが所属するステートマシンが持っているコンテキスト
             /// </summary>
-            protected TContext Context => stateMachine.Context;
+            protected TContext Context => _stateMachine.Context;
 
             /// <summary>
             /// ステートに突入したときの処理を行います
@@ -116,6 +123,7 @@ namespace nitou.DesignPattern {
 
         /// ----------------------------------------------------------------------------
         #region 列挙型定義
+
         /// <summary>
         /// ステートマシンのUpdate状態を表現します
         /// </summary>
@@ -145,12 +153,12 @@ namespace nitou.DesignPattern {
 
         /// ----------------------------------------------------------------------------
         // メンバ変数定義
-        private UpdateState updateState;
-        private List<State> stateList;
-        private State currentState;
-        private State nextState;
-        private Stack<State> stateStack;
-        private HashSet<Func<Type, State>> stateFactorySet;
+        private UpdateState _updateState;
+        private List<State> _stateList;
+        private State _currentState;
+        private State _nextState;
+        private Stack<State> _stateStack;
+        private HashSet<Func<Type, State>> _stateFactorySet;
 
 
         /// ----------------------------------------------------------------------------
@@ -170,25 +178,25 @@ namespace nitou.DesignPattern {
         /// <summary>
         /// ステートマシンが起動しているかどうか
         /// </summary>
-        public bool Running => currentState != null;
+        public bool Running => _currentState != null;
 
         /// <summary>
         /// ステートマシンが、更新処理中かどうか。
         /// Update 関数から抜けたと思っても、このプロパティが true を示す場合、
         /// Update 中に例外などで不正な終了の仕方をしている場合が考えられます。
         /// </summary>
-        public bool Updating => (Running && updateState != UpdateState.Idle);
+        public bool Updating => (Running && _updateState != UpdateState.Idle);
 
         /// <summary>
         /// 現在のスタックしているステートの数
         /// </summary>
-        public int StackCount => stateStack.Count;
+        public int StackCount => _stateStack.Count;
 
         /// <summary>
         /// 現在のステートの名前を取得します。
         /// まだステートマシンが起動していない場合は空文字列になります。
         /// </summary>
-        public string CurrentStateName => (Running ? currentState.GetType().Name : string.Empty);
+        public string CurrentStateName => (Running ? _currentState.GetType().Name : string.Empty);
 
         /// <summary>
         /// SendEvent() 関数によって一度、遷移状態になった後に再び SendEvent() による遷移し直しを許可するかどうか
@@ -219,26 +227,25 @@ namespace nitou.DesignPattern {
         /// <exception cref="ArgumentNullException">context が null です</exception>
         /// <exception cref="InvalidOperationException">ステートクラスのインスタンスの生成に失敗しました</exception>
         public ImtStateMachine(TContext context) {
-            // 渡されたコンテキストがnullなら
+
             if (context == null) {
-                // nullは許されない
                 throw new ArgumentNullException(nameof(context));
             }
 
-
             // メンバの初期化をする
             Context = context;
-            stateList = new List<State>();
-            stateStack = new Stack<State>();
-            updateState = UpdateState.Idle;
+            _stateList = new List<State>();
+            _stateStack = new Stack<State>();
+            _updateState = UpdateState.Idle;
             AllowRetransition = false;
             UnhandledExceptionMode = ImtStateMachineUnhandledExceptionMode.ThrowException;
-            stateFactorySet = new HashSet<Func<Type, State>>();
+            _stateFactorySet = new HashSet<Func<Type, State>>();
         }
 
         
         /// ----------------------------------------------------------------------------
         #region 汎用ロジック系
+
         /// <summary>
         /// 型からステートインスタンスを生成するファクトリ関数を登録します
         /// </summary>
@@ -246,7 +253,7 @@ namespace nitou.DesignPattern {
         /// <exception cref="ArgumentNullException">stateFactory が null です</exception>
         public void RegisterStateFactory(Func<Type, State> stateFactory) {
             // ハッシュセットに登録する
-            stateFactorySet.Add(stateFactory ?? throw new ArgumentNullException(nameof(stateFactory)));
+            _stateFactorySet.Add(stateFactory ?? throw new ArgumentNullException(nameof(stateFactory)));
         }
 
         /// <summary>
@@ -256,13 +263,14 @@ namespace nitou.DesignPattern {
         /// <exception cref="ArgumentNullException">stateFactory が null です</exception>
         public void UnregisterStateFactory(Func<Type, State> stateFactory) {
             // ハッシュセットから登録を解除する
-            stateFactorySet.Remove(stateFactory ?? throw new ArgumentNullException(nameof(stateFactory)));
+            _stateFactorySet.Remove(stateFactory ?? throw new ArgumentNullException(nameof(stateFactory)));
         }
         #endregion
 
 
         /// ----------------------------------------------------------------------------
         #region ステート遷移テーブル構築系
+        
         /// <summary>
         /// ステートの任意遷移構造を追加します。
         /// </summary>
@@ -304,14 +312,14 @@ namespace nitou.DesignPattern {
 
 
             // 遷移元ステートの遷移テーブルに既に同じイベントIDが存在していたら
-            if (prevState.transitionTable.ContainsKey(eventId)) {
+            if (prevState._transitionTable.ContainsKey(eventId)) {
                 // 上書き登録を許さないので例外を吐く
                 throw new ArgumentException($"ステート'{prevState.GetType().Name}'には、既にイベントID'{eventId}'の遷移が設定済みです");
             }
 
 
             // 遷移テーブルに遷移を設定する
-            prevState.transitionTable[eventId] = nextState;
+            prevState._transitionTable[eventId] = nextState;
         }
 
         /// <summary>
@@ -329,13 +337,14 @@ namespace nitou.DesignPattern {
 
 
             // 次に処理するステートの設定をする
-            nextState = GetOrCreateState<TStartState>();
+            _nextState = GetOrCreateState<TStartState>();
         }
         #endregion
 
 
         /// ----------------------------------------------------------------------------
         #region ステートスタック操作系
+
         /// <summary>
         /// 現在実行中のステートを、ステートスタックにプッシュします
         /// </summary>
@@ -344,9 +353,8 @@ namespace nitou.DesignPattern {
             // そもそもまだ現在実行中のステートが存在していないなら例外を投げる
             IfNotRunningThrowException();
 
-
             // 現在のステートをスタックに積む
-            stateStack.Push(currentState);
+            _stateStack.Push(_currentState);
         }
 
         /// <summary>
@@ -362,16 +370,14 @@ namespace nitou.DesignPattern {
             // そもそもまだ現在実行中のステートが存在していないなら例外を投げる
             IfNotRunningThrowException();
 
-
             // そもそもスタックが空であるか、次に遷移するステートが存在 かつ 再遷移が未許可か、ポップする前に現在のステートにガードされたのなら
-            if (stateStack.Count == 0 || (nextState != null && !AllowRetransition) || currentState.GuardPop()) {
+            if (_stateStack.Count == 0 || (_nextState != null && !AllowRetransition) || _currentState.GuardPop()) {
                 // ポップ自体出来ないのでfalseを返す
                 return false;
             }
 
-
             // ステートをスタックから取り出して次のステートへ遷移するようにして成功を返す
-            nextState = stateStack.Pop();
+            _nextState = _stateStack.Pop();
             return true;
         }
 
@@ -390,14 +396,14 @@ namespace nitou.DesignPattern {
 
 
             // そもそもスタックが空であるか、ポップする前に現在のステートにガードされたのなら
-            if (stateStack.Count == 0 || currentState.GuardPop()) {
+            if (_stateStack.Count == 0 || _currentState.GuardPop()) {
                 // ポップ自体出来ないのでfalseを返す
                 return false;
             }
 
 
             // ステートをスタックから取り出して現在のステートとして設定して成功を返す
-            currentState = stateStack.Pop();
+            _currentState = _stateStack.Pop();
             return true;
         }
 
@@ -409,14 +415,14 @@ namespace nitou.DesignPattern {
         /// </remarks>
         public void PopAndDropState() {
             // スタックが空なら
-            if (stateStack.Count == 0) {
+            if (_stateStack.Count == 0) {
                 // 何もせず終了
                 return;
             }
 
 
             // スタックからステートを取り出して何もせずそのまま捨てる
-            stateStack.Pop();
+            _stateStack.Pop();
         }
 
         /// <summary>
@@ -424,13 +430,14 @@ namespace nitou.DesignPattern {
         /// </summary>
         public void ClearStack() {
             // スタックを空にする
-            stateStack.Clear();
+            _stateStack.Clear();
         }
         #endregion
 
 
         /// ----------------------------------------------------------------------------
         #region ステートマシン制御系
+
         /// <summary>
         /// 現在実行中のステートが、指定されたステートかどうかを調べます。
         /// </summary>
@@ -441,9 +448,8 @@ namespace nitou.DesignPattern {
             // そもそもまだ現在実行中のステートが存在していないなら例外を投げる
             IfNotRunningThrowException();
 
-
             // 現在のステートと型が一致するかの条件式の結果をそのまま返す
-            return currentState.GetType() == typeof(TState);
+            return _currentState.GetType() == typeof(TState);
         }
 
         /// <summary>
@@ -464,32 +470,27 @@ namespace nitou.DesignPattern {
             // そもそもまだ現在実行中のステートが存在していないなら例外を投げる
             IfNotRunningThrowException();
 
-
             // もし Exit 処理中なら
-            if (updateState == UpdateState.Exit) {
-                // Exit 中の SendEvent は許されない
+            if (_updateState == UpdateState.Exit) {
                 throw new InvalidOperationException("ステートが Exit 処理中のためイベントを受け付けることが出来ません");
             }
 
-
             // 既に遷移準備をしていて かつ 再遷移が許可されていないなら
-            if (nextState != null && !AllowRetransition) {
+            if (_nextState != null && !AllowRetransition) {
                 // イベントの受付が出来なかったことを返す
                 return false;
             }
 
-
             // 現在のステートにイベントガードを呼び出して、ガードされたら
-            if (currentState.GuardEvent(eventId)) {
+            if (_currentState.GuardEvent(eventId)) {
                 // ガードされて失敗したことを返す
                 return false;
             }
 
-
             // 次に遷移するステートを現在のステートから取り出すが見つけられなかったら
-            if (!currentState.transitionTable.TryGetValue(eventId, out nextState)) {
+            if (!_currentState._transitionTable.TryGetValue(eventId, out _nextState)) {
                 // 任意ステートからすらも遷移が出来なかったのなら
-                if (!GetOrCreateState<AnyState>().transitionTable.TryGetValue(eventId, out nextState)) {
+                if (!GetOrCreateState<AnyState>()._transitionTable.TryGetValue(eventId, out _nextState)) {
                     // イベントの受付が出来なかった
                     return false;
                 }
@@ -513,7 +514,7 @@ namespace nitou.DesignPattern {
         /// <exception cref="InvalidOperationException">開始ステートが設定されていないため、ステートマシンの起動が出来ません</exception>
         public virtual void Update() {
             // もしステートマシンの更新状態がアイドリング以外だったら
-            if (updateState != UpdateState.Idle) {
+            if (_updateState != UpdateState.Idle) {
                 // もし別スレッドからのUpdateによる多重Updateなら
                 int currentThreadId = Thread.CurrentThread.ManagedThreadId;
                 if (LastUpdateThreadId != currentThreadId) {
@@ -521,48 +522,44 @@ namespace nitou.DesignPattern {
                     throw new InvalidOperationException($"現在のステートマシンは、別のスレッドによって更新処理を実行しています。[UpdaterThread={LastUpdateThreadId}, CurrentThread={currentThreadId}]");
                 }
 
-
                 // 多重でUpdateが呼び出せない例外を吐く
                 throw new InvalidOperationException("現在のステートマシンは、既に更新処理を実行しています");
             }
 
-
             // Updateの起動スレッドIDを覚える
             LastUpdateThreadId = Thread.CurrentThread.ManagedThreadId;
-
 
             // まだ未起動なら
             if (!Running) {
                 // 次に処理するべきステート（つまり起動開始ステート）が未設定なら
-                if (nextState == null) {
+                if (_nextState == null) {
                     // 起動が出来ない例外を吐く
                     throw new InvalidOperationException("開始ステートが設定されていないため、ステートマシンの起動が出来ません");
                 }
 
                 // 現在処理中ステートとして設定する
-                currentState = nextState;
-                nextState = null;
+                _currentState = _nextState;
+                _nextState = null;
 
                 try {
                     // Enter処理中であることを設定してEnterを呼ぶ
-                    updateState = UpdateState.Enter;
-                    currentState.Enter();
+                    _updateState = UpdateState.Enter;
+                    _currentState.Enter();
                 } catch (Exception exception) {
                     // 起動時の復帰は現在のステートにnullが入っていないとまずいので遷移前の状態に戻す
-                    nextState = currentState;
-                    currentState = null;
+                    _nextState = _currentState;
+                    _currentState = null;
 
                     // 更新状態をアイドリングにして、例外発生時のエラーハンドリングを行い終了する
-                    updateState = UpdateState.Idle;
+                    _updateState = UpdateState.Idle;
                     DoHandleException(exception);
                     return;
                 }
 
-
                 // 次に遷移するステートが無いなら
-                if (nextState == null) {
+                if (_nextState == null) {
                     // 起動処理は終わったので一旦終わる
-                    updateState = UpdateState.Idle;
+                    _updateState = UpdateState.Idle;
                     return;
                 }
             }
@@ -570,36 +567,35 @@ namespace nitou.DesignPattern {
 
             try {
                 // 次に遷移するステートが存在していないなら
-                if (nextState == null) {
+                if (_nextState == null) {
                     // Update処理中であることを設定してUpdateを呼ぶ
-                    updateState = UpdateState.Update;
-                    currentState.Update();
+                    _updateState = UpdateState.Update;
+                    _currentState.Update();
                 }
-
 
                 // 次に遷移するステートが存在している間ループ
-                while (nextState != null) {
-                    Debug_.Log($"Change State : [{currentState}] => [{nextState}]");
+                while (_nextState != null) {
+                    Debug_.Log($"Change State : [{_currentState}] => [{_nextState}]");
 
                     // Exit処理中であることを設定してExit処理を呼ぶ
-                    updateState = UpdateState.Exit;
-                    currentState.Exit();
+                    _updateState = UpdateState.Exit;
+                    _currentState.Exit();
 
                     // 次のステートに切り替える
-                    currentState = nextState;
-                    nextState = null;
+                    _currentState = _nextState;
+                    _nextState = null;
 
                     // Enter処理中であることを設定してEnterを呼ぶ
-                    updateState = UpdateState.Enter;
-                    currentState.Enter();
+                    _updateState = UpdateState.Enter;
+                    _currentState.Enter();
                 }
 
-
                 // 更新処理が終わったらアイドリングに戻る
-                updateState = UpdateState.Idle;
+                _updateState = UpdateState.Idle;
+
             } catch (Exception exception) {
                 // 更新状態をアイドリングにして、例外発生時のエラーハンドリングを行い終了する
-                updateState = UpdateState.Idle;
+                _updateState = UpdateState.Idle;
                 DoHandleException(exception);
                 return;
             }
@@ -609,6 +605,7 @@ namespace nitou.DesignPattern {
 
         /// ----------------------------------------------------------------------------
         #region 内部ロジック系
+
         /// <summary>
         /// 発生した未処理の例外をハンドリングします
         /// </summary>
@@ -633,9 +630,9 @@ namespace nitou.DesignPattern {
 
 
             // もし、例外を拾ってステートに任せるモード かつ 現在の実行ステートが設定されているのなら
-            if (UnhandledExceptionMode == ImtStateMachineUnhandledExceptionMode.CatchStateException && currentState != null) {
+            if (UnhandledExceptionMode == ImtStateMachineUnhandledExceptionMode.CatchStateException && _currentState != null) {
                 // ステートに例外を投げて、正しくハンドリングされたのなら
-                if (currentState.Error(exception)) {
+                if (_currentState.Error(exception)) {
                     // そのまま終了
                     return;
                 }
@@ -668,7 +665,7 @@ namespace nitou.DesignPattern {
         private TState GetOrCreateState<TState>() where TState : State, new() {
             // ステートの数分回る
             var stateType = typeof(TState);
-            foreach (var state in stateList) {
+            foreach (var state in _stateList) {
                 // もし該当のステートの型と一致するインスタンスなら
                 if (state.GetType() == stateType) {
                     // そのインスタンスを返す
@@ -679,12 +676,12 @@ namespace nitou.DesignPattern {
 
             // ループから抜けたのなら、型一致するインスタンスが無いという事なのでインスタンスを生成してキャッシュする
             var newState = CreateStateInstanceCore<TState>() ?? throw new InvalidOperationException("ステートクラスのインスタンスの生成に失敗しました");
-            stateList.Add(newState);
+            _stateList.Add(newState);
 
 
             // 新しいステートに、自身の参照と遷移テーブルのインスタンスの初期化も行って返す
-            newState.stateMachine = this;
-            newState.transitionTable = new Dictionary<TEvent, State>();
+            newState._stateMachine = this;
+            newState._transitionTable = new Dictionary<TEvent, State>();
             return newState;
         }
 
@@ -700,7 +697,7 @@ namespace nitou.DesignPattern {
 
             // 登録されているファクトリ関数分回る
             var stateType = typeof(TState);
-            foreach (var factory in stateFactorySet) {
+            foreach (var factory in _stateFactorySet) {
                 // 生成を試みてインスタンスが生成されたのなら
                 result = (TState)factory(stateType);
                 if (result != null) {
@@ -724,24 +721,6 @@ namespace nitou.DesignPattern {
             return new TState();
         }
         #endregion
-    }
-    #endregion
-
-
-    /// ----------------------------------------------------------------------------
-    #region 旧intイベント型ベースのステートマシン実装
-    /// <summary>
-    /// コンテキストを持つことのできるステートマシンクラスです
-    /// </summary>
-    /// <typeparam name="TContext">このステートマシンが持つコンテキストの型</typeparam>
-    public class ImtStateMachine<TContext> : ImtStateMachine<TContext, int> {
-
-        /// <summary>
-        /// ImtStateMachine のインスタンスを初期化します
-        /// </summary>
-        /// <param name="context">このステートマシンが持つコンテキスト</param>
-        /// <exception cref="ArgumentNullException">context が null です</exception>
-        public ImtStateMachine(TContext context) : base(context) { }
     }
     #endregion
 }
