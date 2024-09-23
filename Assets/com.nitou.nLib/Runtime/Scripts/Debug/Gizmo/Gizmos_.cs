@@ -121,6 +121,32 @@ namespace nitou {
         #endregion
 
 
+
+        public static void DrawCollider(in Collider collider, Color color) {
+            var trs = collider.transform;
+            var position = trs.position;
+            var rotation = trs.rotation;
+            var scale = trs.localScale;
+
+            switch (collider) {
+                case MeshCollider meshCollider:
+                    DrawMesh(meshCollider.sharedMesh, trs, color);
+                    break;
+                case BoxCollider boxCollider:
+                    DrawCube(boxCollider, color);
+                    break;
+                case SphereCollider sphereCollider:
+                    DrawSphere(sphereCollider, color);
+                    break;
+                case CapsuleCollider:
+                case CharacterController:
+                    // [TODO] é¿ëïÇ∑ÇÈ
+                    //DrawMesh(CapsuleMesh, position, rotation, scale, color, alpha);
+                    break;
+            }
+        }
+
+
         /*
 
 
@@ -292,6 +318,22 @@ namespace nitou {
         /// <summary>
         /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
         /// </summary>
+        public static void DrawCube(BoxCollider collider) {
+            GizmoDrawer.Cube.DrawCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+        }
+
+        /// <summary>
+        /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
+        /// </summary>
+        public static void DrawCube(BoxCollider collider, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Cube.DrawCube(collider.GetWorldCenter(), collider.transform.rotation, collider.size);
+            }
+        }
+
+        /// <summary>
+        /// ÉLÉÖÅ[ÉuÇï`âÊÇ∑ÇÈ
+        /// </summary>
         public static void DrawCube(Shapes.Box box) {
             GizmoDrawer.Cube.DrawCube(box.position, box.rotation, box.size);
         }
@@ -322,9 +364,27 @@ namespace nitou {
         /// <summary>
         /// ãÖÇï`âÊÇ∑ÇÈ
         /// </summary>
+        public static void DrawWireSphere(SphereCollider collider, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                Gizmos.DrawWireSphere(collider.GetWorldCenter(), collider.radius);
+            }
+        }
+
+        /// <summary>
+        /// ãÖÇï`âÊÇ∑ÇÈ
+        /// </summary>
         public static void DrawSphere(Vector3 position, float radius, Color color) {
             using (new GizmoUtil.ColorScope(color)) {
                 Gizmos.DrawSphere(position, radius);
+            }
+        }
+
+        /// <summary>
+        /// ãÖÇï`âÊÇ∑ÇÈ
+        /// </summary>
+        public static void DrawSphere(SphereCollider collider, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                Gizmos.DrawSphere(collider.GetWorldCenter(), collider.radius);
             }
         }
         #endregion
