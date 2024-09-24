@@ -2,24 +2,30 @@
 using UnityEngine;
 
 namespace nitou.Tools.Shared{
-    using nitou.EditorShared;
 
+    /// <summary>
+    /// パッケージの各種設定を管理する静的クラス
+    /// </summary>
     internal static class NitouTools{
 
         // old
-        internal static readonly PackageFolderInfo pacakageInfo;
+        internal static readonly nitou.EditorShared.PackageFolderInfo pacakageInfo;
 
-        // new
-        internal static readonly PackageDirectoryPath pacakagePath = null;
+        /// <summary>
+        /// パッケージのディレクトリパス
+        /// </summary>
+        internal static readonly PackageDirectoryPath packagePath = null;
 
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         static NitouTools() {
-            pacakageInfo = new PackageFolderInfo(
+            pacakageInfo = new nitou.EditorShared.PackageFolderInfo(
                 upmFolderName: "com.nitou.nTools",
                 normalFolderName: "com.nitou.nTools");
 
 
-            pacakagePath = new PackageDirectoryPath("com.nitou.nTools");
+            packagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
 
     }
