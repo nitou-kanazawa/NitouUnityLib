@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-// [�Q�l]
-//  �R�K�l�u���O: Color �^�̒萔�����������`���ꂽ�uColors�v�Љ� https://baba-s.hatenablog.com/entry/2017/12/28/145900
+// [参考]
+//  コガネブログ: Color 型の定数がたくさん定義された「Colors」紹介 https://baba-s.hatenablog.com/entry/2017/12/28/145900
 
 namespace nitou {
 
     /// <summary>
-    /// �l�X��<see cref="Color"/>�f�[�^��񋟂��郉�C�u����
+    /// 様々な<see cref="Color"/>データを提供するライブラリ
     /// </summary>
     public static class Colors {
 
@@ -159,10 +159,26 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
 
 
-        public static Color FromRGB255(float r, float g, float b, float a) {
+        public static Color FromRgb255(float r, float g, float b, float a) {
             return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
         }
 
+        public static string ToRgbCode(Color color) {
+            
+            // ColorをRGBコードに変換（0-255の範囲に変換）
+            int r = Mathf.RoundToInt(color.r * 255);
+            int g = Mathf.RoundToInt(color.g * 255);
+            int b = Mathf.RoundToInt(color.b * 255);
+            
+            return $"#{r:X2}{g:X2}{b:X2}";
+        }
+
+
+        public static Color SelectFromManyColors(int hashCode) {
+            // HashCodeをもとに動的に色を生成する（Hueの範囲を0〜1で調整）
+            float hue = (Mathf.Abs(hashCode) % 1000) / 1000f; // ハッシュを0-1の範囲にマッピング
+            return Color.HSVToRGB(hue, 0.8f, 0.9f); // 彩度と明度を固定しつつ色相を変える
+        }
     }
 
 }

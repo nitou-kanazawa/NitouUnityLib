@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using UnityEngine;
@@ -12,6 +13,7 @@ using UnityEngine;
 
 namespace nitou {
     using nitou.RichText;
+    using System.Text.RegularExpressions;
     using Debug = UnityEngine.Debug;
 
     /// <summary>
@@ -33,6 +35,11 @@ namespace nitou {
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void Log(object o, Color color) => Debug.Log(FormatObject(o).WithColorTag(color));
+
+        public static void Log(params object[] messages) {
+            var message = string.Join(',', messages.Select(FormatObject));
+            Debug.Log(message);
+        }
 
         /// <summary>
         /// UnityEditor上でのみ実行されるLogWarningメソッド
@@ -159,6 +166,26 @@ namespace nitou {
             }
             return sb.ToString();
         }
+
+
+        static string DecorateColorTag(object message) {
+            var sb = new StringBuilder();
+            var messageString = message.ToString();
+            sb.Append(messageString);
+            var reg = new Regex("\\[(?<tag>.*?)\\]", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+            var matches = reg.Matches(messageString);
+            foreach (var match in matches.Reverse()) {
+                var tag = match.Groups["tag"].Value;
+                // HashCodeをもとに何らかの色を取得
+                var color = Colors.SelectFromManyColors(tag.GetHashCode());
+                sb.Insert(match.Index + match.Length, "</color></b>");
+                sb.Insert(match.Index, $"<b><color={Colors.ToRgbCode(color)}>");
+            }
+
+            return sb.ToString();
+        }
+
         #endregion
 
     }
