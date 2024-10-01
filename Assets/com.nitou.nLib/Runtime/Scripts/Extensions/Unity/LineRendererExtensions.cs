@@ -29,7 +29,9 @@ namespace UnityEngine {
         /// ----------------------------------------------------------------------------
         // ê∂ê¨
 
-        public static float CaluculateLegth(this LineRenderer self) {
+        public static float CalculateLength(this LineRenderer self) {
+            if (self == null || self.positionCount < 2) return 0f; 
+
             var totalLegth = 0f;
 
             for (var i = 0; i < self.positionCount - 1; i++) {
@@ -47,6 +49,7 @@ namespace UnityEngine {
 
             return totalLegth;
         }
+
 
     }
 }

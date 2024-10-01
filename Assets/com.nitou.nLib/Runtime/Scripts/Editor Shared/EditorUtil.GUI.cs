@@ -54,6 +54,18 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             #region Button
 
+            // [参考]
+            //  zenn:  EditorWindow で TextField と同じ幅のボタンを配置する https://zenn.dev/kobi32768/articles/01f34751878fc8
+
+            /// <summary>
+            /// GUI.Buttonをインデント付きで表示する
+            /// </summary>
+            public static bool FieldSizeButton(GUIContent content) {
+                Rect rect = EditorGUILayout.GetControlRect(true);
+                rect = EditorGUI.PrefixLabel(rect, new GUIContent("Label"));
+                return UnityEngine.GUI.Button(rect, content);
+            }
+
             /// <summary>
             /// GUI.Buttonをインデント付きで表示する
             /// </summary>

@@ -27,7 +27,6 @@ namespace nitou.Tools.Shared{
 
             packagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
-
     }
 }
 #endif
