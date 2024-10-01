@@ -1,5 +1,4 @@
 using System.Linq;
-//using UniRx;
 using UnityEngine;
 
 // [参考]
@@ -34,7 +33,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // コンポーネントの削除
+        #region コンポーネント (削除)
 
         /// <summary>
         /// 指定されたコンポーネントを削除する拡張メソッド
@@ -49,7 +48,7 @@ namespace nitou {
         /// <summary>
         /// 指定されたコンポーネントを削除する拡張メソッド
         /// </summary>
-        public static GameObject RemoveComponent<T1, T2>(this GameObject self)
+        public static GameObject RemoveComponents<T1, T2>(this GameObject self)
             where T1 : Component where T2 : Component {
             self.RemoveComponent<T1>();
             self.RemoveComponent<T2>();
@@ -59,9 +58,9 @@ namespace nitou {
         /// <summary>
         /// 指定されたコンポーネントを削除する拡張メソッド
         /// </summary>
-        public static GameObject RemoveComponent<T1, T2, T3>(this GameObject self)
+        public static GameObject RemoveComponents<T1, T2, T3>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component {
-            self.RemoveComponent<T1, T2>();
+            self.RemoveComponents<T1, T2>();
             self.RemoveComponent<T3>();
             return self;
         }
@@ -69,16 +68,30 @@ namespace nitou {
         /// <summary>
         /// 指定されたコンポーネントを削除する拡張メソッド
         /// </summary>
-        public static GameObject RemoveComponent<T1, T2, T3, T4>(this GameObject self)
+        public static GameObject RemoveComponents<T1, T2, T3, T4>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component where T4 : Component {
-            self.RemoveComponent<T1, T2, T3>();
+            self.RemoveComponents<T1, T2, T3>();
             self.RemoveComponent<T4>();
             return self;
         }
 
+        /// <summary>
+        /// 全てのコンポーネントを削除する拡張メソッド
+        /// </summary>
+        public static GameObject RemoveAllComponents(this GameObject self) {
+            foreach (var component in self.GetComponents<Component>()) {
+                if (!(component is Transform)) {
+                    Object.Destroy(component);
+                }
+            }
+
+            return self;
+        }
+        #endregion
+
 
         /// ----------------------------------------------------------------------------
-        // コンポーネント（追加）
+        #region コンポーネント (追加)
 
         /// <summary>
         /// 指定されたコンポーネントを追加する拡張メソッド
@@ -89,6 +102,39 @@ namespace nitou {
             self.AddComponent<T2>();
             return self;
         }
+
+        /// <summary>
+        /// 指定されたコンポーネントを追加する拡張メソッド
+        /// </summary>
+        public static GameObject AddComponents<T1, T2, T3>(this GameObject self)
+            where T1 : Component where T2 : Component where T3 : Component {
+            self.AddComponents<T1, T2>();
+            self.AddComponentIfNotExists<T3>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定されたコンポーネントを追加する拡張メソッド
+        /// </summary>
+        public static GameObject AddComponents<T1, T2, T3, T4>(this GameObject self)
+            where T1 : Component where T2 : Component where T3 : Component where T4 : Component {
+            self.AddComponents<T1, T2, T3>();
+            self.AddComponentIfNotExists<T4>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定されたコンポーネントを追加する拡張メソッド
+        /// </summary>
+        public static GameObject AddComponentIfNotExists<T>(this GameObject self)
+            where T : Component {
+            // コンポーネントが存在しない場合のみ追加
+            if (self.GetComponent<T>() == null) {
+                self.AddComponent<T>();
+            }
+            return self;
+        }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
