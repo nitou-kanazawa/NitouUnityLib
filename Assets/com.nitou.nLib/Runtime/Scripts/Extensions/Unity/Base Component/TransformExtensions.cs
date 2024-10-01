@@ -269,7 +269,7 @@ namespace nitou {
         /// 全ての子要素を削除する拡張メソッド
         /// </summary>
         public static void DestroyAllChildren(this Transform self) {
-            foreach(Transform child in self) {
+            foreach (Transform child in self) {
                 GameObject.Destroy(child.gameObject);
             }
         }
@@ -383,11 +383,11 @@ namespace nitou {
         public static void AddLocalPositionZ(this GameObject self, float z) {
             self.transform.AddLocalPositionZ(z);
         }
-#endregion
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-#region 角度の設定
+        #region 角度の設定
 
         /// <summary>
         /// 回転角を設定します
@@ -487,11 +487,11 @@ namespace nitou {
         public static void AddLocalEulerAngleZ(this GameObject self, float z) {
             self.transform.AddLocalEulerAngleZ(z);
         }
-#endregion
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-#region スケールの設定
+        #region スケールの設定
 
         /// <summary>
         /// ローカル座標系の回転角を設定します
@@ -542,11 +542,11 @@ namespace nitou {
         public static void AddLocalScaleZ(this GameObject self, float z) {
             self.transform.AddLocalScaleZ(z);
         }
-#endregion
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-#region 親子関係
+        #region 親子関係
 
         /// <summary>
         /// 親オブジェクトを設定する拡張メソッド
@@ -582,7 +582,7 @@ namespace nitou {
                 Vector3 localPosition = rectTransform.localPosition;
                 localPosition.z = 0;
                 rectTransform.localPosition = localPosition;
-            } 
+            }
             // 
             else {
                 self.transform.localPosition = Vector3.zero;
@@ -591,7 +591,7 @@ namespace nitou {
             self.transform.localRotation = Quaternion.identity;
             self.transform.localScale = Vector3.one;
         }
-#endregion
+        #endregion
     }
 
 }

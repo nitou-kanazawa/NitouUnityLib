@@ -14,7 +14,7 @@ namespace nitou {
     public static partial class GameObjectExtensions {
 
         /// ----------------------------------------------------------------------------
-        // コンポーネントの有無
+        #region コンポーネント (有無)
 
         /// <summary>
         /// 指定されたコンポーネントがアタッチされているかどうかを確認する拡張メソッド
@@ -30,6 +30,7 @@ namespace nitou {
         public static bool HasComponent(this GameObject self, System.Type type) {
             return self.GetComponent(type);
         }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
@@ -138,15 +139,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // コンポーネント（取得）
-
-        /// <summary>
-        /// 自分自身を含まないGetComponentsInChaidrenの拡張メソッド
-        /// </summary>
-        public static T[] GetComponentsInChildrenWithoutSelf<T>(this GameObject self)
-            where T : Component {
-            return self.GetComponentsInChildren<T>().Where(c => self != c.gameObject).ToArray();
-        }
+        #region コンポーネント（取得）
 
         /// <summary>
         /// 対象のコンポーネント持つ場合はそれを取得し，なければ追加して返す拡張メソッド
@@ -155,6 +148,14 @@ namespace nitou {
             where T : Component {
             var component = self.GetComponent<T>();
             return component ?? self.AddComponent<T>();
+        }
+
+        /// <summary>
+        /// 自分自身を含まないGetComponentsInChaidrenの拡張メソッド
+        /// </summary>
+        public static T[] GetComponentsInChildrenWithoutSelf<T>(this GameObject self)
+            where T : Component {
+            return self.GetComponentsInChildren<T>().Where(c => self != c.gameObject).ToArray();
         }
 
         /// <summary>
@@ -203,11 +204,11 @@ namespace nitou {
             where T1 : Component {
             return self.GetComponentInBranch<T1, T1>(includeInactive);
         }
-
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-        // コンポーネント（有効状態）
+        #region コンポーネント（有効状態）
 
         /// <summary>
         /// 指定されたコンポーネントを有効化する拡張メソッド
@@ -216,6 +217,36 @@ namespace nitou {
             if (self.HasComponent<T>()) {
                 self.GetComponent<T>().enabled = true;
             }
+            return self;
+        }
+
+        /// <summary>
+        /// 指定された複数のコンポーネントを有効化する拡張メソッド
+        /// </summary>
+        public static GameObject EnableComponents<T1, T2>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour {
+            self.EnableComponent<T1>();
+            self.EnableComponent<T2>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定された3つのコンポーネントを有効化する拡張メソッド
+        /// </summary>
+        public static GameObject EnableComponents<T1, T2, T3>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour {
+            self.EnableComponents<T1, T2>();
+            self.EnableComponent<T3>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定された4つのコンポーネントを有効化する拡張メソッド
+        /// </summary>
+        public static GameObject EnableComponents<T1, T2, T3, T4>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour where T4 : Behaviour {
+            self.EnableComponents<T1, T2, T3>();
+            self.EnableComponent<T4>();
             return self;
         }
 
@@ -229,9 +260,40 @@ namespace nitou {
             return self;
         }
 
+        /// <summary>
+        /// 指定された複数のコンポーネントを無効化する拡張メソッド
+        /// </summary>
+        public static GameObject DisableComponents<T1, T2>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour {
+            self.DisableComponent<T1>();
+            self.DisableComponent<T2>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定された3つのコンポーネントを無効化する拡張メソッド
+        /// </summary>
+        public static GameObject DisableComponents<T1, T2, T3>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour {
+            self.DisableComponents<T1, T2>();
+            self.DisableComponent<T3>();
+            return self;
+        }
+
+        /// <summary>
+        /// 指定された4つのコンポーネントを無効化する拡張メソッド
+        /// </summary>
+        public static GameObject DisableComponents<T1, T2, T3, T4>(this GameObject self)
+            where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour where T4 : Behaviour {
+            self.DisableComponents<T1, T2, T3>();
+            self.DisableComponent<T4>();
+            return self;
+        }
+        #endregion
+
 
         /// ----------------------------------------------------------------------------
-        // 複製
+        #region 複製
 
         /// <summary>
         /// 対象のGameObjectを複製(生成)して返す拡張メソッド
@@ -269,10 +331,11 @@ namespace nitou {
             instance.transform.localPosition = localPos;
             return instance;
         }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-        // 破棄
+        #region 破棄
 
         /// <summary>
         /// Destroyの拡張メソッド
@@ -289,13 +352,23 @@ namespace nitou {
         }
 
         /// <summary>
+        /// 子オブジェクトをすべて破壊する拡張メソッド
+        /// </summary>
+        public static GameObject DestroyAllChildren(this GameObject self) {
+            foreach (Transform child in self.transform) {
+                Object.Destroy(child.gameObject);
+            }
+            return self;
+        }
+
+        /// <summary>
         /// DontDestroyOnLoadの拡張メソッド
         /// </summary>
         public static GameObject DontDestroyOnLoad(this GameObject self) {
             Object.DontDestroyOnLoad(self);
             return self;
         }
-
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
@@ -400,10 +473,5 @@ namespace nitou {
             }
 
         }
-
     }
-
-
-
-
 }
