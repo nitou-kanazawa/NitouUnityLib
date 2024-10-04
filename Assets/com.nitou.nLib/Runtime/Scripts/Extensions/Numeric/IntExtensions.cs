@@ -19,13 +19,15 @@ namespace nitou {
         /// 偶数かどうかを判定する拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsEven(this int self) => (self % 2) == 0;
+        public static bool IsEven(this int self) => 
+            (self % 2) == 0;
 
         /// <summary>
         /// 奇数かどうかを判定する拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsOdd(this int self) => (self % 2) != 0;
+        public static bool IsOdd(this int self) => 
+            (self % 2) != 0;
 
         /// <summary>
         /// インデックスが範囲内にあるかどうかを判定する拡張メソッド
@@ -53,28 +55,33 @@ namespace nitou {
         /// 正の値にする拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Positive(this int self) =>
+        public static int Positive(this int self) => 
             Mathf.Abs(self);
 
         /// <summary>
         /// 負の値にする拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Negative(this int self) =>
+        public static int Negative(this int self) => 
             Mathf.Abs(self) * (-1);
 
         /// <summary>
         /// 入力を指定範囲内の値に制限する拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Clamp(this int self, int min, int max) =>
+        public static int Clamp(this int self, int min, int max) => 
             Mathf.Clamp(self, min, max);
 
         /// <summary>
-        /// 数値を加算して、範囲を超えた分は 0 からの値として処理して返す拡張メソッド
+        /// 数値を加算して、範囲を超えた分は min からの値として処理して返す拡張メソッド
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Repeat(this int self, int value, int max) => (self + value + max) % max;
+        public static int Repeat(this int self, int min, int max) {
+            if (min >= max)
+                throw new System.ArgumentException("min must be less than max");
+
+            return (self - min + (max - min)) % (max - min) + min;
+        }
 
         #endregion
 
