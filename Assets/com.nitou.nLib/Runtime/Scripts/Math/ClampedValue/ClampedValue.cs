@@ -9,6 +9,9 @@ using UnityEditor;
 
 namespace nitou {
 
+    /// <summary>
+    /// 最大、最小の範囲に制限される値
+    /// </summary>
     [System.Serializable]
     public class ClampedValue{
 
@@ -24,19 +27,30 @@ namespace nitou {
             set => _value = Mathf.Clamp(value, _min, _max);
         }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         private ClampedValue() { }
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public ClampedValue(float min, float max, float value = 0) {
             _min = min;
             _max = Mathf.Max(min,max);  // ※minを基準とする
-            
             Value = value;
         }
 
         public static implicit operator float(ClampedValue clampedValue) {
             return clampedValue.Value;
         }
-        
+
+        /// <summary>
+        /// 文字列形式でオブジェクトの状態を返す
+        /// </summary>
+        public override string ToString() {
+            return $"(Min: {Min}, Max: {Max}, Value: {Value})";
+        }
     }
 }
 
