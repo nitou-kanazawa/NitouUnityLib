@@ -12,8 +12,43 @@ namespace nitou {
     /// </summary>
     public static partial class ColorExtensions {
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Color WithRed(this Color color, float red) {
+            return new Color(red, color.g, color.b, color.a);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Color WithGreen(this Color color, float green) {
+            return new Color(color.r, green, color.b, color.a);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Color WithBlue(this Color color, float blue) {
+            return new Color(color.r, color.g, blue, color.a);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Color WithAlpha(this Color color, float alpha) {
+            return new Color(color.r, color.g, color.b, alpha);
+        }
+
+
+
+
+
+
+
         /// ----------------------------------------------------------------------------
-        #region SpriteRenderer
+        #region Misc
 
         /// <summary>
         /// α値を設定する拡張メソッド
@@ -23,12 +58,6 @@ namespace nitou {
             color.a = alpha;
             spriteRenderer.color = color;
         }
-        #endregion
-               
-
-
-        /// ----------------------------------------------------------------------------
-        #region Misc
 
         /// <summary>
         /// α値を設定する拡張メソッド
