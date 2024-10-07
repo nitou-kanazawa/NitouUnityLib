@@ -13,7 +13,7 @@ namespace nitou.DesignPattern.Pooling {
         private static readonly HashSet<List<T>> busy = new ();
 
         /// <summary>
-        /// 
+        /// リストを取得する．
         /// </summary>
         public static List<T> New() {
             lock (@lock) {
@@ -30,7 +30,7 @@ namespace nitou.DesignPattern.Pooling {
         }
 
         /// <summary>
-        /// 
+        /// 使用済みのリストをプールに戻す．
         /// </summary>
         public static void Free(List<T> list) {
             lock (@lock) {

@@ -14,7 +14,7 @@ namespace nitou.DesignPattern.Pooling {
         private static readonly HashSet<T[]> busy = new();
 
         /// <summary>
-        /// 
+        /// 指定した長さの配列を取得する．
         /// </summary>
         public static T[] New(int length) {
             lock (@lock) {
@@ -35,7 +35,7 @@ namespace nitou.DesignPattern.Pooling {
         }
 
         /// <summary>
-        /// 
+        /// 使用済みの配列をプールに戻す．
         /// </summary>
         public static void Free(T[] array) {
             lock (@lock) {

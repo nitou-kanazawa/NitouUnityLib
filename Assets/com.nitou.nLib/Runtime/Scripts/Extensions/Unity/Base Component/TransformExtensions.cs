@@ -255,6 +255,84 @@ namespace nitou {
         #endregion
 
 
+
+        /// ----------------------------------------------------------------------------
+        // é¸ï”èÓïÒ
+        
+        /// <summary>
+        /// Get the direction vector towards a specified position.
+        /// </summary>
+        public static Vector3 GetDirectionToPosition(this Transform self, Vector3 position) {
+            var delta = position - self.position;
+
+            return delta.sqrMagnitude > 0 ? delta.normalized : Vector3.zero;
+        }
+
+        /// <summary>
+        /// Get the direction vector towards a target.
+        /// </summary>
+        public static Vector3 GetDirectionToTarget(this Transform self, Transform target) {
+            return GetDirectionToPosition(self, target.position);
+        }
+
+
+        /// <summary>
+        /// Get the distance to a target position.
+        /// </summary>
+        public static float GetDistanceFromPosition(this Transform self, Vector3 position) {
+            return Vector3.Distance(self.position, position);
+        }
+
+        /// <summary>
+        /// Get the distance to a target Transform.
+        /// </summary>
+        public static float GetDistanceFromTransform(this Transform self, Transform target) {
+            return GetDistanceFromPosition(self, target.position);
+        }
+
+        
+        /// <summary>
+        /// Get rotation towards a specified direction. (Å¶Yç¿ïWÇÕñ≥éã)
+        /// </summary>
+        public static Quaternion GetYawRotationToPosition(this Transform self, Vector3 position) {
+            var delta = position - self.position;
+            delta.y = 0;
+            return Quaternion.LookRotation(delta, Vector3.up);
+        }
+
+        /// <summary>
+        /// Get rotation towards a specified direction while ignoring the Y-axis.
+        /// </summary>
+        /// <param name="self">Self</param>
+        /// <param name="target">Transform to face towards</param>
+        /// <returns>Rotation to face the target</returns>
+        public static Quaternion GetYawRotationToTarget(this Transform self, Transform target) {
+            return GetYawRotationToPosition(self, target.position);
+        }
+
+
+        /// <summary>
+        /// Get the angle between Transform's forward and a vector.
+        /// </summary>
+        public static float GetDeltaAngle(this Transform self, Vector3 direction, bool ignoreY = true) {
+            var forward = self.forward;
+            if (ignoreY) {
+                forward = Vector3.ProjectOnPlane(forward, Vector3.up);
+                direction = Vector3.ProjectOnPlane(direction, Vector3.up);
+            }
+
+            return Vector3.SignedAngle(forward, direction, Vector3.up);
+        }
+
+        /// <summary>
+        /// Get the angle between Transform's forward and a rotation.
+        /// </summary>
+        public static float GetDeltaAngle(this Transform self, Quaternion rotation, bool ignoreY = true) {
+            var direction = rotation * Vector3.forward;
+            return GetDeltaAngle(self, direction, ignoreY);
+        }
+
+
         /// ----------------------------------------------------------------------------
         // ÇªÇÃëº
 
