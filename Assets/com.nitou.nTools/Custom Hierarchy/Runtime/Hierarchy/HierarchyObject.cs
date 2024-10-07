@@ -18,7 +18,9 @@ namespace nitou.Tools.Hierarchy {
 
         [SerializeField] Mode _hierarchyObjectMode = Mode.UseSettings;
 
-
+        /// <summary>
+        /// ÉÇÅ[Éh
+        /// </summary>
         public Mode HierarchyObjectMode => _hierarchyObjectMode;
     }
 }
