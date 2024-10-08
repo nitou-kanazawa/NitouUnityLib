@@ -36,8 +36,6 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             };
         }
 
-
-
         public override void OnActivate(string searchContext, VisualElement rootElement) {
 
             var preferences = HierarchySettingsSO.instance;
@@ -48,7 +46,6 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             // 設定ファイルの標準のインスペクターのエディタを生成
             Editor.CreateCachedEditor(preferences, null, ref _editor);
         }
-
 
         public override void OnGUI(string searchContext) {
 

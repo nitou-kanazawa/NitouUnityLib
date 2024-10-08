@@ -5,6 +5,7 @@ using UnityEditor;
 namespace nitou.Tools.ProjectWindow {
     using nitou.EditorShared;
 
+
     public class FolderCreationWindow : EditorWindow {
 
 
