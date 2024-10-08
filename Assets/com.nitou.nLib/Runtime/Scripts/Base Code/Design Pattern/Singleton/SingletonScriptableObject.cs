@@ -21,6 +21,7 @@ namespace nitou.DesignPattern{
         public static T Instance {
             get {
                 if (_instance == null) {
+
                     // Resourceフォルダからアセットを取得
 					_instance = Resources.Load<T>(typeof(T).Name);
 
