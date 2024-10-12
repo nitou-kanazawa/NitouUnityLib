@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 // [参考]
 //  ねこじゃらシティ: RectTransform.sizeDeltaの仕様と注意点 https://nekojara.city/unity-rect-transform-size-delta
@@ -27,7 +26,7 @@ namespace nitou {
         MiddleRight,
 
         BottomLeft,
-        BottonCenter,
+        BottomCenter,
         BottomRight,
         BottomStretch,
 
@@ -47,14 +46,17 @@ namespace nitou {
     /// ピボットの種類
     /// </summary>
     public enum PivotPresets {
+        // Top
         TopLeft,
         TopCenter,
         TopRight,
 
+        // Middle
         MiddleLeft,
         MiddleCenter,
         MiddleRight,
 
+        // Bottom
         BottomLeft,
         BottomCenter,
         BottomRight,
@@ -67,7 +69,7 @@ namespace nitou {
         /// 固定サイズ(※anchorMinとanchorMaxが同じ位置)かどうか確認する拡張メソッド
         /// </summary>
         public static bool IsFixedSize(this RectTransform self) {
-            return self.sizeDelta == self.rect.size;
+            return self.anchorMin == self.anchorMax;
         }
 
 
@@ -78,8 +80,10 @@ namespace nitou {
         /// アンカーを設定する拡張メソッド
         /// </summary>
         public static void SetAnchor(this RectTransform self, AnchorPresets allign, int offsetX = 0, int offsetY = 0) {
+            // 
             self.anchoredPosition = new Vector3(offsetX, offsetY, 0);
 
+            // Allign更新
             switch (allign) {
                 case (AnchorPresets.TopLeft): {
                         self.anchorMin = new Vector2(0, 1);
@@ -118,7 +122,7 @@ namespace nitou {
                         self.anchorMax = new Vector2(0, 0);
                         break;
                     }
-                case (AnchorPresets.BottonCenter): {
+                case (AnchorPresets.BottomCenter): {
                         self.anchorMin = new Vector2(0.5f, 0);
                         self.anchorMax = new Vector2(0.5f, 0);
                         break;
@@ -167,7 +171,14 @@ namespace nitou {
                         break;
                     }
             }
+            
         }
+
+        /// <summary>
+        /// アンカーを設定する拡張メソッド
+        /// </summary>
+        public static void SetAnchor(this RectTransform self, AnchorPresets allign, Vector2Int offset) =>
+            self.SetAnchor(allign, offset.x, offset.y);
 
         /// <summary>
         /// ピボットを設定する拡張メソッド
@@ -216,17 +227,30 @@ namespace nitou {
             }
         }
 
+
+        /// ----------------------------------------------------------------------------
+        // Rectの設定
+
         /// <summary>
         /// Parentの各端点から距離を指定してサイズ設定を行う拡張メソッド
         /// </summary>
-        public static void SetSizeBasedOnEdges(this RectTransform self,
+        public static void SetRectBasedOnParentEdiges(this RectTransform self,
             float top, float bottom, float right, float left
         ) {
+
+            // 可変サイズ設定
             self.SetAnchor(AnchorPresets.StretchAll);
 
             // 親要素の各辺からの相対的な位置を設定する
             self.offsetMin = new Vector2(left, bottom);
             self.offsetMax = new Vector2(-right, -top);
         }
+
+        /// <summary>
+        /// Parentの各端点から距離を指定してサイズ設定を行う拡張メソッド
+        /// </summary>
+        public static void SetRectBasedOnParentEdiges(this RectTransform self, Padding padding) =>
+            self.SetRectBasedOnParentEdiges(padding.top, padding.bottom, padding.right, padding.left);
+
     }
 }

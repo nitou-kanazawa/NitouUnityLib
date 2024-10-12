@@ -85,6 +85,33 @@ namespace nitou {
             var max = _corners[(int)Corner.Max];
             return new Rect(min, max - min);
         }
+
+        // ----- 
+
+        /// <summary>
+        /// ワールド座標でのコーナー位置を設定する
+        /// </summary>
+        public static void SetWorldPosition(this RectTransform self, Vector2 worldPos, Corner corner = Corner.Min) {
+            // 現在のワールド座標
+            var currentWorldPos = self.GetWorldPosition(corner);
+
+            // 位置の差分を計算し、ローカル座標に反映
+            var delta = (Vector3)(worldPos - currentWorldPos);
+            self.localPosition += delta;
+        }
+
+        /// <summary>
+        /// ワールド座標でのコーナー位置を設定する
+        /// </summary>
+        public static void SetWorldCenterPosition(this RectTransform self, Vector2 worldPos) {
+            // 現在のワールド座標
+            var currentWorldPos = self.GetWorldCenterPosition();
+
+            // 位置の差分を計算し、ローカル座標に反映
+            var delta = (Vector3)(worldPos - currentWorldPos);
+            self.localPosition += delta;
+        }
+
         #endregion
 
 
@@ -214,44 +241,6 @@ namespace nitou {
             var worldMin = self.GetWorldPosition(Corner.Min);
             var worldMax = self.GetWorldPosition(Corner.Max);
             return canvas.GetScreenRect(worldMin, worldMax);
-        }
-
-
-        // ----
-
-        /// スクリーン座標取得の内部処理
-        private static Vector2 GetScreenPositionInternal(Canvas canvas, Vector2 worldPos) {
-            // スクリーン座標
-            return canvas.renderMode switch {
-                RenderMode.ScreenSpaceOverlay => worldPos,
-                RenderMode.ScreenSpaceCamera => RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPos),
-                RenderMode.WorldSpace => RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos),
-                _ => throw new System.NotImplementedException()
-            };
-        }
-
-        /// スクリーンRect取得の内部処理
-        private static Rect GetScreenRectInternal(Canvas canvas, Vector2 worldMin, Vector2 worldMax) {
-            Vector2 screenMin, screenMax;
-
-            switch (canvas.renderMode) {
-                case RenderMode.ScreenSpaceOverlay:
-                    screenMin = worldMin;
-                    screenMax = worldMax;
-                    break;
-                case RenderMode.ScreenSpaceCamera:
-                    screenMin = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldMin);
-                    screenMax = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldMax);
-                    break;
-                case RenderMode.WorldSpace:
-                    screenMin = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMin);
-                    screenMax = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMax);
-                    break;
-                default:
-                    throw new System.NotImplementedException();
-            }
-
-            return RectUtil.MinMaxRect(screenMin, screenMax);
         }
 
         #endregion
