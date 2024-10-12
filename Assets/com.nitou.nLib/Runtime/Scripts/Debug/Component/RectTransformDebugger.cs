@@ -17,6 +17,8 @@ namespace nitou.DebugInternal {
     internal class RectTransformDebugger : DebugComponent<RectTransform> {
 
         private RectTransform _rectTrans;
+        private Canvas _canvas;
+
         public RectTransform RectTrans => _rectTrans;
 
         public bool showGui = true;
@@ -81,7 +83,8 @@ namespace nitou.DebugInternal {
                 EditorGUILayout.LabelField("RectTransform Properties", EditorStyles.boldLabel);
 
                 // Info
-                DrawRectSizeInfo(rectTrans);
+                Canvas canvas = null;
+                DrawRectSizeInfo(rectTrans, ref canvas);
 
                 // Properties
                 DrawPoisitonProperty(rectTrans);
@@ -98,11 +101,11 @@ namespace nitou.DebugInternal {
         /// ----------------------------------------------------------------------------
         // Private Method (Inspector Drawer)
 
-        private void DrawRectSizeInfo(RectTransform rectTransform) {
+        private void DrawRectSizeInfo(RectTransform rectTransform, ref Canvas canvas) {
             using (new EditorGUILayout.VerticalScope(Styles.box))
             using (new EditorGUI.DisabledScope(true)) {
                 // ビューポート座標
-                EditorGUILayout.Vector2Field("Viewport", rectTransform.GetViewportPos());
+                EditorGUILayout.Vector2Field("Viewport", rectTransform.GetViewportPos(ref canvas));
             }
 
         }
