@@ -46,6 +46,8 @@ namespace nitou {
         // ----------------------------------------------------------------------------
         #region WORLD座標
 
+        // Getter
+
         /// <summary>
         /// ワールド座標でのコーナー位置を取得する
         /// </summary>
@@ -86,7 +88,7 @@ namespace nitou {
             return new Rect(min, max - min);
         }
 
-        // ----- 
+        // Setter
 
         /// <summary>
         /// ワールド座標でのコーナー位置を設定する
@@ -122,19 +124,16 @@ namespace nitou {
         //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
         //  LIGHT11: uGUIにアルファ付きのマスクを掛ける https://light11.hatenadiary.com/entry/2019/04/24/232041
 
+        // Getter
+
         /// <summary>
         /// スクリーン座標でのコーナー位置を取得する．
         /// </summary>
         public static Vector2 GetScreenPosition(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // キャンバス取得
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
-                if (canvas == null) {
-                    Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
-                    return Vector2.zero;
-                }
+            if(!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Vector2.zero;
             }
 
             // ワールド座標→スクリーン座標
@@ -152,7 +151,7 @@ namespace nitou {
             // キャンバス取得
             var canvas = self.GetBelongedCanvas();
             if (canvas == null) {
-                Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
+                Debug_.LogWarning("Root Canvas does not exist. Please ensure the UI element is placed under a Canvas.");
                 return Vector2.zero;
             }
 
@@ -168,14 +167,8 @@ namespace nitou {
         public static Vector2 GetScreenCenterPosition(this RectTransform self, ref Canvas canvas) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // キャンバス取得
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
-
-                if (canvas == null) {
-                    Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
-                    return Vector2.zero;
-                }
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Vector2.zero;
             }
 
             // ワールド座標→スクリーン座標
@@ -191,9 +184,8 @@ namespace nitou {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
             // キャンバス取得
-            var canvas = self.GetBelongedCanvas();
-            if (canvas == null) {
-                Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
+            Canvas canvas = null;
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Vector2.zero;
             }
 
@@ -210,12 +202,8 @@ namespace nitou {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
             // キャンバスの取得
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
-                if (canvas == null) {
-                    Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
-                    return Rect.zero;
-                }
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Rect.zero;
             }
 
             // ワールド座標→スクリーン座標
@@ -231,9 +219,8 @@ namespace nitou {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
             // キャンバスの取得
-            var canvas = self.GetBelongedCanvas();
-            if (canvas == null) {
-                Debug_.LogWarning("Root Canvas dose not exist. Please ensure the UI element is placed under a Canvas.");
+            Canvas canvas = null;
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Rect.zero;
             }
 
@@ -243,8 +230,53 @@ namespace nitou {
             return canvas.GetScreenRect(worldMin, worldMax);
         }
 
-        #endregion
+        // Setter
 
+        /// <summary>
+        /// スクリーン座標でコーナー位置を設定する
+        /// </summary>
+        public static void SetScreenPosition(this RectTransform self, Vector2 screenPos, ref Canvas canvas, Corner corner = Corner.Min) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            // キャンバスの取得
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return;
+            }
+
+            // スクリーン座標→ワールド座標の変換
+            Vector3 worldPos = ScreenToWorldPosition(screenPos, canvas);
+
+            // ワールド座標をローカル座標に変換し、RectTransformに反映
+            SetWorldPosition(self, worldPos, corner);
+        }
+
+
+        /// <summary>
+        /// スクリーン座標をワールド座標に変換する内部メソッド
+        /// </summary>
+        private static Vector3 ScreenToWorldPosition(Vector2 screenPos, Canvas canvas) {
+            Vector3 worldPos = Vector3.zero;
+
+            switch (canvas.renderMode) {
+                case RenderMode.ScreenSpaceOverlay:
+                    worldPos = screenPos;
+                    break;
+
+                case RenderMode.ScreenSpaceCamera:
+                    RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.transform as RectTransform, screenPos, canvas.worldCamera, out worldPos);
+                    break;
+
+                case RenderMode.WorldSpace:
+                    RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.transform as RectTransform, screenPos, Camera.main, out worldPos);
+                    break;
+
+                default:
+                    throw new System.NotImplementedException();
+            }
+            return worldPos;
+        }
+
+        #endregion
 
 
         // ----------------------------------------------------------------------------
@@ -363,6 +395,23 @@ namespace nitou {
 
             return canvas.GetComponent<CanvasScaler>();
         }
+
+        /// <summary>
+        /// 親階層をたどって所属する<see cref="CanvasScaler"/>を取得する拡張メソッド
+        /// </summary>
+        private static bool TryGetBelongedCanvasIfNull(this RectTransform self, ref Canvas canvas) {
+            if (canvas == null) {
+                canvas = self.GetBelongedCanvas();
+
+                if (canvas == null) {
+                    Debug_.LogWarning("Root Canvas does not exist. Please ensure the UI element is placed under a Canvas.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
         #endregion
 
 
