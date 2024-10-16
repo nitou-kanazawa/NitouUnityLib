@@ -32,7 +32,7 @@ namespace nitou {
         /// <summary>
         /// 開発プロジェクトでのアセットパス
         /// </summary>
-        public string NormalPath => $"Assets/{_normalRelativePath}";
+        public string NormalPath => $"Assets/{_normalRelativePath}".ToAssetsPath();
 
 
         /// ----------------------------------------------------------------------------

@@ -91,6 +91,7 @@ namespace nitou {
 
             return FromRelativePath(assetPath);
         }
+
         #endregion
 
 
