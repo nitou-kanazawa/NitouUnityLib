@@ -38,6 +38,112 @@ namespace nitou.DebugInternal {
             }
             #endregion
 
+
+            /// ----------------------------------------------------------------------------
+            #region â~å 
+
+            /// <summary>
+            /// â~å Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawWireArc(float radius, float angle, int segments = 20) {
+
+                Vector3 from = Vector3.forward * radius;
+                var step = Mathf.RoundToInt(angle / segments);
+                for (int i = 0; i <= angle; i += step) {
+                    var to = new Vector3(
+                        x: radius * Mathf.Sin(i * Mathf.Deg2Rad),
+                        y: 0,
+                        z: radius * Mathf.Cos(i * Mathf.Deg2Rad)
+                    );
+                    Gizmos.DrawLine(from, to);
+                    from = to;
+                }
+            }
+
+            /// <summary>
+            /// â~å Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawWireArc(Vector3 center, Quaternion rotation, float radius, float angle, int segments = 20) {
+
+                if (rotation.Equals(default)) {
+                    rotation = Quaternion.identity;
+                }
+
+                var matrix = Matrix4x4.TRS(center, rotation, Vector3.one);
+                using (new GizmoUtil.MatrixScope(matrix)) {
+                    DrawWireArc(radius, angle, segments);
+                }
+            }
+
+            /// <summary>
+            /// â~å Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawWireArc(Matrix4x4 matrix, float radius, float angle, int segments) {
+
+                using (new GizmoUtil.MatrixScope(matrix)) {
+                    DrawWireArc(radius, angle, segments);
+                }
+            }
+
+
+            // Å¶Å´êeÇÃâÒì]Ççló∂
+
+            /// <summary>
+            /// â~å Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawWireArc(Vector3 center, float radius, float angle, int segments, Quaternion rotation, Vector3 centerOfRotation) {
+
+                if (rotation.Equals(default)) {
+                    rotation = Quaternion.identity;
+                }
+
+                var matrix = Matrix4x4.TRS(centerOfRotation, rotation, Vector3.one);
+                using (new GizmoUtil.MatrixScope(matrix)) {
+
+                    var deltaTranslation = centerOfRotation - center;
+                    Vector3 from = deltaTranslation + Vector3.forward * radius;
+                    var step = Mathf.RoundToInt(angle / segments);
+                    for (int i = 0; i <= angle; i += step) {
+                        var to = new Vector3(
+                            radius * Mathf.Sin(i * Mathf.Deg2Rad),
+                            0,
+                            radius * Mathf.Cos(i * Mathf.Deg2Rad)
+                        ) + deltaTranslation;
+
+                        Gizmos.DrawLine(from, to);
+                        from = to;
+                    }
+                }
+            }
+            #endregion
+
+
+            /// ----------------------------------------------------------------------------
+            #region â~
+
+            /// <summary>
+            /// â~Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawCircle(PlaneType type, float radius, int segments = 20) {
+                var points = MathUtil.CirclePoints(radius, segments, type: type);
+                DrawLines(points);
+            }
+
+            /// <summary>
+            /// â~Çï`âÊÇ∑ÇÈ
+            /// </summary>
+            public static void DrawCircle(PlaneType type, Vector3 center, Quaternion rotation, float radius, int segments = 20) {
+                if (rotation.Equals(default)) {
+                    rotation = Quaternion.identity;
+                }
+
+                var matrix = Matrix4x4.TRS(center, rotation, Vector3.one);
+                using (new GizmoUtil.MatrixScope(matrix)) {
+                    DrawCircle(type, radius, segments);
+                }
+            }
+            #endregion
+
         }
     }
 }

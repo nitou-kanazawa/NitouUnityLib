@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// [参考]
+//  PG日誌: JsonUtilityで配列とリストを処理する https://takap-tech.com/entry/2021/02/02/222406
+//  コガネブログ: DictionaryをJsonUtilityで変換できるようにするクラス https://baba-s.hatenablog.com/entry/2020/11/20/080300
+
 namespace nitou.Serialization{
 
     /// <summary>
@@ -8,6 +12,7 @@ namespace nitou.Serialization{
     /// </summary>
     public static class JsonUtil{
 
+        /// ----------------------------------------------------------------------------
         #region Collection
 
         public static T[] FromJsonArray<T>(string json) {

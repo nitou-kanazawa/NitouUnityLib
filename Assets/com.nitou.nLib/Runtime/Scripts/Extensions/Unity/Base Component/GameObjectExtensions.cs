@@ -21,15 +21,24 @@ namespace nitou {
         /// </summary>
         public static bool HasComponent<T>(this GameObject self)
             where T : Component {
-            return self.GetComponent<T>();
+            return self.GetComponent<T>() != null;
         }
 
         /// <summary>
         /// 指定されたコンポーネントがアタッチされているかどうかを確認する拡張メソッド
         /// </summary>
         public static bool HasComponent(this GameObject self, System.Type type) {
-            return self.GetComponent(type);
+            return self.GetComponent(type) != null;
         }
+
+        /// <summary>
+        /// 指定されたコンポーネントがアタッチされているかどうかを確認する拡張メソッド
+        /// </summary>
+        public static bool HasComponents<T1, T2>(this GameObject self)
+            where T1 : Component where T2 : Component{
+            return self.HasComponent<T1>() && self.HasComponent<T2>();
+        }
+
         #endregion
 
 
@@ -99,8 +108,8 @@ namespace nitou {
         /// </summary>
         public static GameObject AddComponents<T1, T2>(this GameObject self)
             where T1 : Component where T2 : Component {
-            self.AddComponent<T1>();
-            self.AddComponent<T2>();
+            self.AddComponentIfNotExists<T1>();
+            self.AddComponentIfNotExists<T2>();
             return self;
         }
 
@@ -130,7 +139,7 @@ namespace nitou {
         public static GameObject AddComponentIfNotExists<T>(this GameObject self)
             where T : Component {
             // コンポーネントが存在しない場合のみ追加
-            if (self.GetComponent<T>() == null) {
+            if (!self.HasComponent<T>()) {
                 self.AddComponent<T>();
             }
             return self;

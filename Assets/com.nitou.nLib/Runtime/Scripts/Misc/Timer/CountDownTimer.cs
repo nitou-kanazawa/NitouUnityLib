@@ -20,15 +20,14 @@ namespace nitou {
 
         private float _elapsedTime;           // ※実計算用の変数
 
-
-        /// ----------------------------------------------------------------------------
-        // Properity
-
         /// <summary>
         /// 
         /// </summary>
         public int Max { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsTimeOverd => _currentRP.Value <= 0f;
 
         /// <summary>
@@ -40,7 +39,6 @@ namespace nitou {
         /// 終了通知
         /// </summary>
         public IObservable<Unit> OverObservable => _overSubject;
-
 
 
         /// ----------------------------------------------------------------------------
@@ -64,8 +62,8 @@ namespace nitou {
         public void Dispose() {
             Stop();
 
-            _currentRP.Dispose();
-            _overSubject.Dispose();
+            _currentRP?.Dispose();
+            _overSubject?.Dispose();
         }
 
 
