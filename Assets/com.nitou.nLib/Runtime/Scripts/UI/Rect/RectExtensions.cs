@@ -6,13 +6,17 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rect"/>の基本的な拡張メソッド集
+    /// <see cref="Rect"/>型の基本的な拡張メソッド集．
+    /// 主にエディタ拡張での使用を想定．
     /// </summary>
     public static class RectExtensions {
 
         /// ----------------------------------------------------------------------------
         #region Set Position
 
+        /// <summary>
+        /// 位置を設定する拡張メソッド．
+        /// </summary>
         public static Rect SetPosition(this Rect rect, Vector2 position) {
             rect.position = position;
             return rect;
@@ -198,7 +202,6 @@ namespace nitou {
             return new Rect(rect.x, rect.y, width, rect.height);
         }
 
-
         public static Rect AlignRight(this Rect rect, float width) {
             return new Rect(rect.xMax - width, rect.y, width, rect.height);
         }
@@ -206,7 +209,6 @@ namespace nitou {
         public static Rect AlignRight(this Rect rect, float width, bool clamp) {
             return clamp ? new Rect(Mathf.Max(rect.x, rect.xMax - width), rect.y, width, rect.height) : new Rect(rect.xMax - width, rect.y, width, rect.height);
         }
-
         #endregion
 
 
@@ -214,7 +216,7 @@ namespace nitou {
         #region Expand
 
         /// <summary>
-        /// 全方向に指定値だけ広げる拡張メソッド
+        /// 全方向に指定値だけ広げる拡張メソッド．
         /// </summary>
         public static Rect Expand(this Rect rect, float left, float right, float top, float bottom) {
             return new Rect(
@@ -225,7 +227,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 全方向に指定値だけ広げる拡張メソッド
+        /// 全方向に指定値だけ広げる拡張メソッド．
         /// </summary>
         public static Rect Expand(this Rect rect, float horizontal, float vertical) {
             return new Rect(
@@ -236,7 +238,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 全方向に指定値だけ広げる拡張メソッド
+        /// 全方向に指定値だけ広げる拡張メソッド．
         /// </summary>
         public static Rect Expand(this Rect rect, float expand) {
             return new Rect(
@@ -247,7 +249,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 左右方向にそれぞれ指定値だけ広げる拡張メソッド
+        /// 左右方向にそれぞれ指定値だけ広げる拡張メソッド．
         /// </summary>
         public static Rect ExpandX(this Rect rect, float value) {
             rect.xMin -= value;
@@ -256,7 +258,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 上下方向にそれぞれ指定値だけ広げる拡張メソッド
+        /// 上下方向にそれぞれ指定値だけ広げる拡張メソッド．
         /// </summary>
         public static Rect ExpandY(this Rect rect, float value) {
             rect.yMin -= value;
@@ -265,7 +267,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 指定座標を含むように広げる拡張メソッド
+        /// 指定座標を含むように広げる拡張メソッド．
         /// </summary>
         public static Rect ExpandTo(this Rect rect, Vector2 pos) {
             if (!rect.Contains(pos)) {

@@ -135,7 +135,6 @@ namespace nitou {
 			_list.Clear();
 		}
 		#endregion
-
     }
 }
 

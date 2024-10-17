@@ -2,6 +2,9 @@ using System;
 
 namespace nitou.Networking {
 
+    /// <summary>
+    /// ステータス
+    /// </summary>
     [Serializable]
     public class HttpResponseStatus{
         public int ok;
@@ -9,6 +12,9 @@ namespace nitou.Networking {
     }
 
 
+    /// <summary>
+    /// レスポンスの基底クラス
+    /// </summary>
     public abstract class HttpResponse {
         public HttpResponseStatus status;
     }

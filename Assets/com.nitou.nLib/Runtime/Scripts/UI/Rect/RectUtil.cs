@@ -7,7 +7,6 @@ namespace nitou{
     /// </summary>
     public static class RectUtil{
 
-
         /// ----------------------------------------------------------------------------
         // ‘Š‘ÎÀ•W
 

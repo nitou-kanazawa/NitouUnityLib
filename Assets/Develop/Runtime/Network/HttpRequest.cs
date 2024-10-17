@@ -6,6 +6,9 @@ namespace nitou.Networking {
     /// </summary>
     public abstract class HttpRequest {
         
+        /// <summary>
+        /// URL
+        /// </summary>
         public abstract string Path { get; }
 
 
