@@ -16,10 +16,7 @@ namespace nitou {
         private IDisposable _subscription = null;
 
         private float _elapsedTime;           // ※実計算用の変数
-
-        /// ----------------------------------------------------------------------------
-        // Properity
-
+                
         /// <summary>
         /// 現在の時間
         /// </summary>
@@ -29,15 +26,21 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // Public Method
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public CountUpTimer() {
             _elapsedTime = 0;
             _currentRP = new ReactiveProperty<int>(0);
         }
 
+        /// <summary>
+        /// 終了処理
+        /// </summary>
         public void Dispose() {
             Stop();
 
-            _currentRP.Dispose();
+            _currentRP?.Dispose();
         }
 
 
