@@ -8,6 +8,9 @@ namespace nitou.DesignPattern.Pooling {
     /// </summary>
     public static class ListPool<T> {
 
+        // [MEMO]
+        // Å‘åŠi”[”‚ğİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚é‚±‚Æ‚àŒŸ“¢‚·‚×‚«
+
         private static readonly object @lock = new ();
         private static readonly Stack<List<T>> free = new ();
         private static readonly HashSet<List<T>> busy = new ();
