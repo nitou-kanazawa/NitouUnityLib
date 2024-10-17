@@ -121,66 +121,35 @@ namespace nitou {
         #endregion
 
 
-
-        public static void DrawCollider(in Collider collider, Color color) {
-            var trs = collider.transform;
-            var position = trs.position;
-            var rotation = trs.rotation;
-            var scale = trs.localScale;
-
-            switch (collider) {
-                case MeshCollider meshCollider:
-                    DrawMesh(meshCollider.sharedMesh, trs, color);
-                    break;
-                case BoxCollider boxCollider:
-                    DrawCube(boxCollider, color);
-                    break;
-                case SphereCollider sphereCollider:
-                    DrawSphere(sphereCollider, color);
-                    break;
-                case CapsuleCollider:
-                case CharacterController:
-                    // [TODO] é¿ëïÇ∑ÇÈ
-                    //DrawMesh(CapsuleMesh, position, rotation, scale, color, alpha);
-                    break;
-            }
-        }
-
-
-        /*
-
-
         /// ----------------------------------------------------------------------------
         #region 3Dê}å` (Arc)
 
         /// <summary>
         /// â~Çï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCircle(Vector3 center, float radius) =>
-            BasicShapeDrawer.DrawCircle(CircleType.ZX, center, Quaternion.identity, radius);
+        public static void DrawWireCircle(Vector3 center, float radius) {
+            GizmoDrawer.Basic.DrawCircle(PlaneType.ZX, center, Quaternion.identity, radius);
+        }
 
         /// <summary>
         /// â~Çï`âÊÇ∑ÇÈ
         /// </summary>
         public static void DrawWireCircle(Vector3 center, float radius, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                BasicShapeDrawer.DrawCircle(CircleType.ZX, center, Quaternion.identity, radius);
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Basic.DrawCircle(PlaneType.ZX, center, Quaternion.identity, radius);
             }
         }
 
         /// <summary>
         /// â~Çï`âÊÇ∑ÇÈ
         /// </summary>
-        public static void DrawWireCircle(Vector3 center, float radius, CircleType type, Color color) {
-            using (GizmoScope.ColorScope(color)) {
-                BasicShapeDrawer.DrawCircle(type, center, Quaternion.identity, radius);
+        public static void DrawWireCircle(Vector3 center, float radius, PlaneType type, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Basic.DrawCircle(type, center, Quaternion.identity, radius);
             }
         }
-
         #endregion
 
-
-        */
 
         /// ----------------------------------------------------------------------------
         #region 3Dê}å` (Cube)
@@ -476,5 +445,40 @@ namespace nitou {
             }
         }
         #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 3Dê}å` (Misc)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collider"></param>
+        /// <param name="color"></param>
+        public static void DrawCollider(in Collider collider, Color color) {
+            var trs = collider.transform;
+            var position = trs.position;
+            var rotation = trs.rotation;
+            var scale = trs.localScale;
+
+            switch (collider) {
+                case MeshCollider meshCollider:
+                    DrawMesh(meshCollider.sharedMesh, trs, color);
+                    break;
+                case BoxCollider boxCollider:
+                    DrawCube(boxCollider, color);
+                    break;
+                case SphereCollider sphereCollider:
+                    DrawSphere(sphereCollider, color);
+                    break;
+                case CapsuleCollider:
+                case CharacterController:
+                    // [TODO] é¿ëïÇ∑ÇÈ
+                    //DrawMesh(CapsuleMesh, position, rotation, scale, color, alpha);
+                    break;
+            }
+        }
+        #endregion
+
     }
 }
