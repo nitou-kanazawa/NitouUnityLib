@@ -6,13 +6,16 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rect"/>の基本的な拡張メソッド集
+    /// <see cref="Rect"/>型の基本的な拡張メソッド集
     /// </summary>
     public static class RectExtensions {
 
         /// ----------------------------------------------------------------------------
         #region Set Position
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static Rect SetPosition(this Rect rect, Vector2 position) {
             rect.position = position;
             return rect;
@@ -197,7 +200,6 @@ namespace nitou {
         public static Rect AlignLeft(this Rect rect, float width) {
             return new Rect(rect.x, rect.y, width, rect.height);
         }
-
 
         public static Rect AlignRight(this Rect rect, float width) {
             return new Rect(rect.xMax - width, rect.y, width, rect.height);

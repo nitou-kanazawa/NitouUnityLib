@@ -7,7 +7,6 @@ namespace nitou{
     /// </summary>
     public static class RectUtil{
 
-
         /// ----------------------------------------------------------------------------
         // ëäëŒç¿ïW
 
@@ -40,14 +39,16 @@ namespace nitou{
 
 
         /// ----------------------------------------------------------------------------
+        // Factory
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static Rect Create(Vector2 center, Vector2 size) {
             float x = center.x - size.x / 2;
             float y = center.y - size.y / 2;
             return new Rect(x, y, size.x, size.y);
         }
-
 
         /// <summary>
         /// ç≈è¨ÅEç≈ëÂì_Ç©ÇÁRectÇê∂ê¨Ç∑ÇÈ
