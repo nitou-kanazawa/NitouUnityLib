@@ -15,7 +15,6 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             get {
                 TextureCached.TryGetValue(nameof(TreeMapCurrent), out var tex);
                 if (tex != null) return tex;
-
                 tex = NonResources.Load<Texture2D>("tree_map_current.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;

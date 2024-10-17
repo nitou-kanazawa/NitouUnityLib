@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,29 +7,30 @@ namespace Project{
 
     public class TestMono : MonoBehaviour{
 
-        [SerializeField] private List<GraphicRaycaster> raycasters; // ƒ`ƒFƒbƒN‚·‚éGraphicRaycaster‚ÌƒŠƒXƒg
+        [SerializeField] private List<GraphicRaycaster> raycasters; // ï¿½`ï¿½Fï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½GraphicRaycasterï¿½Ìƒï¿½ï¿½Xï¿½g
 
         private void Update() {
-            if (Input.GetMouseButtonDown(0)) // ƒ}ƒEƒX¶ƒNƒŠƒbƒN‚Ìƒ`ƒFƒbƒN
+            if (Input.GetMouseButtonDown(0)) // ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½Ìƒ`ï¿½Fï¿½bï¿½N
             {
                 CheckOverlap();
             }
         }
 
         private void CheckOverlap() {
-            // PointerEventData‚ğ‰Šú‰»
+            // PointerEventDataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var pointerEventData = new PointerEventData(EventSystem.current) {
-                position = Input.mousePosition // ƒNƒŠƒbƒN‚µ‚½ƒXƒNƒŠ[ƒ“À•W‚ğİ’è
+                position = Input.mousePosition // ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½İ’ï¿½
             };
 
-            // OverlapUIƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄAUI‚ªd‚È‚Á‚Ä‚¢‚é‚©‚ğƒ`ƒFƒbƒN
+            // OverlapUIï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ÄAUIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
             bool isOverlap = raycasters.OverlapUI(pointerEventData);
 
-            // Œ‹‰Ê‚ğƒƒOo—Í
+            // ï¿½ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½Oï¿½oï¿½ï¿½
             if (isOverlap) {
-                Debug_.Log("UI‚ªd‚È‚Á‚Ä‚¢‚Ü‚·B", Colors.Red);
+                Debug_.Log("UIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B", Colors.Red);
             } else {
-                Debug_.Log("UI‚ªd‚È‚Á‚Ä‚¢‚Ü‚¹‚ñB", Colors.Green);
+                Debug_.Log("UIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B", Colors.Green);
+
             }
         }
     }

@@ -19,7 +19,7 @@ namespace nitou {
     //  ・
 
     /// <summary>
-    /// <see cref="RectTransform"/>の基本的な拡張メソッド集
+    /// <see cref="RectTransform"/>型の基本的な拡張メソッド集
     /// </summary>
     public static partial class RectTransformExtensions {
 
@@ -46,8 +46,10 @@ namespace nitou {
         // ----------------------------------------------------------------------------
         #region WORLD座標
 
+        // Getter
+
         /// <summary>
-        /// ワールド座標での位置を取得する
+        /// ワールド座標でのコーナー位置を取得する
         /// </summary>
         public static Vector2 GetWorldPosition(this RectTransform self, Corner corner = Corner.Min) {
             self.GetWorldCorners(_corners);
@@ -83,8 +85,35 @@ namespace nitou {
 
             var min = _corners[(int)Corner.Min];
             var max = _corners[(int)Corner.Max];
-            return new Rect(min, max -min);
+            return new Rect(min, max - min);
         }
+
+        // Setter
+
+        /// <summary>
+        /// ワールド座標でのコーナー位置を設定する
+        /// </summary>
+        public static void SetWorldPosition(this RectTransform self, Vector2 worldPos, Corner corner = Corner.Min) {
+            // 現在のワールド座標
+            var currentWorldPos = self.GetWorldPosition(corner);
+
+            // 位置の差分を計算し、ローカル座標に反映
+            var delta = (Vector3)(worldPos - currentWorldPos);
+            self.localPosition += delta;
+        }
+
+        /// <summary>
+        /// ワールド座標でのコーナー位置を設定する
+        /// </summary>
+        public static void SetWorldCenterPosition(this RectTransform self, Vector2 worldPos) {
+            // 現在のワールド座標
+            var currentWorldPos = self.GetWorldCenterPosition();
+
+            // 位置の差分を計算し、ローカル座標に反映
+            var delta = (Vector3)(worldPos - currentWorldPos);
+            self.localPosition += delta;
+        }
+
         #endregion
 
 
@@ -95,64 +124,159 @@ namespace nitou {
         //  テラシュール: Screenの座標とWorld（3D）座標の変換について https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
         //  LIGHT11: uGUIにアルファ付きのマスクを掛ける https://light11.hatenadiary.com/entry/2019/04/24/232041
 
+        // Getter
+
+        /// <summary>
+        /// スクリーン座標でのコーナー位置を取得する．
+        /// </summary>
+        public static Vector2 GetScreenPosition(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            if(!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Vector2.zero;
+            }
+
+            // ワールド座標→スクリーン座標
+            var worldPos = self.GetWorldPosition(corner);
+            return canvas.GetScreenPosition(worldPos);
+        }
+
+        /// <summary>
+        /// スクリーン座標でのコーナー位置を取得する．
+        /// （Canvasをキャッシュしない場合）
+        /// </summary>
+        public static Vector2 GetScreenPosition(this RectTransform self, Corner corner = Corner.Min) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            // キャンバス取得
+            var canvas = self.GetBelongedCanvas();
+            if (canvas == null) {
+                Debug_.LogWarning("Root Canvas does not exist. Please ensure the UI element is placed under a Canvas.");
+                return Vector2.zero;
+            }
+
+            // ワールド座標→スクリーン座標
+            var worldPos = self.GetWorldPosition(corner);
+            return canvas.GetScreenPosition(worldPos); 
+        }
+
+
+        /// <summary>
+        /// ワールド座標での中心位置を取得する．
+        /// </summary>
+        public static Vector2 GetScreenCenterPosition(this RectTransform self, ref Canvas canvas) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Vector2.zero;
+            }
+
+            // ワールド座標→スクリーン座標
+            var worldCenter = self.GetWorldCenterPosition();
+            return canvas.GetScreenPosition(worldCenter);
+        }
+
+        /// <summary>
+        /// ワールド座標での中心位置を取得する．
+        /// （Canvasをキャッシュしない場合）
+        /// </summary>
+        public static Vector2 GetScreenCenterPosition(this RectTransform self) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            // キャンバス取得
+            Canvas canvas = null;
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Vector2.zero;
+            }
+
+            // ワールド座標→スクリーン座標
+            var worldCenter = self.GetWorldCenterPosition();
+            return canvas.GetScreenPosition(worldCenter);
+        }
+
+
         /// <summary>
         /// スクリーン座標での位置を取得する
         /// </summary>
-        public static Vector2 GetScreenPosition(this RectTransform self, Canvas canvas = null, Corner corner = Corner.Min) {
+        public static Rect GetScreenRect(this RectTransform self, ref Canvas canvas) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
+
+            // キャンバスの取得
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Rect.zero;
             }
 
-            // ワールド座標
-            var worldPos = self.GetWorldPosition(corner);
-
-            // スクリーン座標
-            return canvas.renderMode switch {
-                RenderMode.ScreenSpaceOverlay => worldPos,
-                RenderMode.ScreenSpaceCamera => RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPos),
-                RenderMode.WorldSpace => RectTransformUtility.WorldToScreenPoint(Camera.main, worldPos),
-                _ => throw new System.NotImplementedException()
-            };
+            // ワールド座標→スクリーン座標
+            var worldMin = self.GetWorldPosition(Corner.Min);
+            var worldMax = self.GetWorldPosition(Corner.Max);
+            return canvas.GetScreenRect(worldMin, worldMax);
         }
 
         /// <summary>
         /// スクリーン座標での位置を取得する
         /// </summary>
-        public static Rect GetScreenRect(this RectTransform self, Canvas canvas = null) {
+        public static Rect GetScreenRect(this RectTransform self) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
-            if (canvas == null) {
-                canvas = self.GetBelongedCanvas();
+
+            // キャンバスの取得
+            Canvas canvas = null;
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return Rect.zero;
             }
 
-            // ワールド座標
+            // ワールド座標→スクリーン座標
             var worldMin = self.GetWorldPosition(Corner.Min);
             var worldMax = self.GetWorldPosition(Corner.Max);
+            return canvas.GetScreenRect(worldMin, worldMax);
+        }
 
-            // スクリーン座標
-            Vector2 screenMin, screenMax;
+        // Setter
+
+        /// <summary>
+        /// スクリーン座標でコーナー位置を設定する
+        /// </summary>
+        public static void SetScreenPosition(this RectTransform self, Vector2 screenPos, ref Canvas canvas, Corner corner = Corner.Min) {
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+
+            // キャンバスの取得
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+                return;
+            }
+
+            // スクリーン座標→ワールド座標の変換
+            Vector3 worldPos = ScreenToWorldPosition(screenPos, canvas);
+
+            // ワールド座標をローカル座標に変換し、RectTransformに反映
+            SetWorldPosition(self, worldPos, corner);
+        }
+
+
+        /// <summary>
+        /// スクリーン座標をワールド座標に変換する内部メソッド
+        /// </summary>
+        private static Vector3 ScreenToWorldPosition(Vector2 screenPos, Canvas canvas) {
+            Vector3 worldPos = Vector3.zero;
+
             switch (canvas.renderMode) {
-                case RenderMode.ScreenSpaceOverlay: {
-                        screenMin = worldMin;
-                        screenMax = worldMax;
-                        return RectUtil.MinMaxRect(screenMin, screenMax);
-                    }
-                case RenderMode.ScreenSpaceCamera: {
-                        screenMin = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldMin);
-                        screenMax = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldMax);
-                        return RectUtil.MinMaxRect(screenMin, screenMax);
-                    }
-                case RenderMode.WorldSpace: {   // ※WorldCanvas基準のRectが必要なら相対座標を使用する
-                        screenMin = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMin);
-                        screenMax = RectTransformUtility.WorldToScreenPoint(Camera.main, worldMax);
-                        return RectUtil.MinMaxRect(screenMin, screenMax);
-                    }
+                case RenderMode.ScreenSpaceOverlay:
+                    worldPos = screenPos;
+                    break;
+
+                case RenderMode.ScreenSpaceCamera:
+                    RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.transform as RectTransform, screenPos, canvas.worldCamera, out worldPos);
+                    break;
+
+                case RenderMode.WorldSpace:
+                    RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.transform as RectTransform, screenPos, Camera.main, out worldPos);
+                    break;
+
                 default:
                     throw new System.NotImplementedException();
             }
+            return worldPos;
         }
-        #endregion
 
+        #endregion
 
 
         // ----------------------------------------------------------------------------
@@ -161,11 +285,11 @@ namespace nitou {
         /// <summary>
         /// ビューポート座標系での位置を取得する
         /// </summary>
-        public static Vector2 GetViewportPos(this RectTransform self, Canvas canvas = null, Corner corner = Corner.Min) {
+        public static Vector2 GetViewportPos(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
 
             // スクリーン座標
-            var screenPos = self.GetScreenPosition(canvas, corner);
-            
+            var screenPos = self.GetScreenPosition(ref canvas, corner);
+
             // ビューポート座標
             return new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
         }
@@ -174,9 +298,9 @@ namespace nitou {
         /// ビューポート座標系での位置とサイズを取得する
         /// </summary>
         public static Rect GetViewportRect(this RectTransform self, Canvas canvas = null) {
-            
+
             // スクリーン座標
-            var screenRect = self.GetScreenRect(canvas);
+            var screenRect = self.GetScreenRect(ref canvas);
 
             // ビューポート座標
             var viewportMin = new Vector2(screenRect.min.x / Screen.width, screenRect.min.y / Screen.height);
@@ -196,7 +320,7 @@ namespace nitou {
         /// 相対的な位置を取得する
         /// </summary>
         public static Vector2 GetRelativePosition(this RectTransform self, Vector2 position) {
-            if (self == null) throw new System.ArgumentNullException(nameof(self), "self recttransform cannot be null.");
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
 
             // ワールド座標での位置 (※pixel座標ではない)
             var selfRect = self.GetWorldRect();
@@ -209,8 +333,8 @@ namespace nitou {
         /// 相対的な位置とサイズを取得する
         /// </summary>
         public static Rect GetRelativeRect(this RectTransform self, RectTransform other) {
-            if (self == null) throw new System.ArgumentNullException(nameof(self), "self recttransform cannot be null.");
-            if (other == null) throw new System.ArgumentNullException(nameof(other), "other recttransform cannot be null.");
+            if (self == null) throw new System.ArgumentNullException(nameof(self));
+            if (other == null) throw new System.ArgumentNullException(nameof(other));
 
             // ワールド座標での位置・サイズ (※pixel座標ではない)
             var selfRect = self.GetWorldRect();
@@ -271,6 +395,23 @@ namespace nitou {
 
             return canvas.GetComponent<CanvasScaler>();
         }
+
+        /// <summary>
+        /// 親階層をたどって所属する<see cref="CanvasScaler"/>を取得する拡張メソッド
+        /// </summary>
+        private static bool TryGetBelongedCanvasIfNull(this RectTransform self, ref Canvas canvas) {
+            if (canvas == null) {
+                canvas = self.GetBelongedCanvas();
+
+                if (canvas == null) {
+                    Debug_.LogWarning("Root Canvas does not exist. Please ensure the UI element is placed under a Canvas.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
         #endregion
 
 
@@ -309,15 +450,29 @@ namespace nitou {
 
         // [参考]
         //  _: 点の多角形に対する内外判定 https://www.nttpc.co.jp/technology/number_algorithm.html
+
+
+        /// 点が指定されたRect内に存在するかどうかを判定する
         private static bool IsPointInsideRect(Vector2 point, Vector3[] rectCorners) {
             var inside = false;
 
             //rectCornersの各頂点に対して、pointがrect内にあるかを確認
             for (int i = 0, j = 3; i < CORNER_COUNT; j = i++) {
-                // ※交差回数で内外判定
-                if (((rectCorners[i].y > point.y) != (rectCorners[j].y > point.y)) &&
-                    (point.x < (rectCorners[j].x - rectCorners[i].x) * (point.y - rectCorners[i].y) / (rectCorners[j].y - rectCorners[i].y) + rectCorners[i].x)) {
-                    // 交差する度に切り替え
+
+                // 各コーナーのy座標がpointのy座標と比較してどちらに位置するか
+                bool pointIsBetweenYOfCurrentAndPreviousCorners =
+                    (rectCorners[i].y > point.y) != (rectCorners[j].y > point.y);
+
+                // point.x の位置と、i と j のコーナー間の直線上の x 座標を比較
+                float intersectionX = rectCorners[i].x +
+                    (rectCorners[j].x - rectCorners[i].x) * (point.y - rectCorners[i].y) /
+                    (rectCorners[j].y - rectCorners[i].y);
+
+                // 説明変数: point.x が、現在のコーナー間の直線を横切るかどうかを確認
+                bool pointIsLeftOfIntersection = point.x < intersectionX;
+
+                // 状態の更新
+                if (pointIsBetweenYOfCurrentAndPreviousCorners && pointIsLeftOfIntersection) {
                     inside = !inside;
                 }
             }

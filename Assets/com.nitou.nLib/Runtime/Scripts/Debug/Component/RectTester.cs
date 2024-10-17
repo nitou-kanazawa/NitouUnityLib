@@ -35,15 +35,9 @@ namespace test {
             }
 
             // 
-            screen = _target.GetScreenRect(_canvas);
-
-            // ビューポート座標
-            viewport.position = _target.GetViewportPos(_canvas);
-
-            // 相対
+            screen = _target.GetScreenRect(ref _canvas);
+            viewport.position = _target.GetViewportPos(ref _canvas);
             relative = _target.GetRelativeRect(_canvasRect);
-
-
 
 
             // サイズ

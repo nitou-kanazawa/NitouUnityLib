@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace nitou {
 
+    /// <summary>
+    /// 自作パッケージのディレクトリパス指定用のクラス
+    /// </summary>
     [System.Serializable]
     public sealed class PackageDirectoryPath : IUnityProjectPath{
 
@@ -29,7 +32,7 @@ namespace nitou {
         /// <summary>
         /// 開発プロジェクトでのアセットパス
         /// </summary>
-        public string NormalPath => $"Assets/{_normalRelativePath}";
+        public string NormalPath => $"Assets/{_normalRelativePath}".ToAssetsPath();
 
 
         /// ----------------------------------------------------------------------------
@@ -49,7 +52,7 @@ namespace nitou {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public PackageDirectoryPath(string upmRelativePath = "com.nitou.nLib", string normalRelativePath = "nLib") {
+        public PackageDirectoryPath(string upmRelativePath = "com.nitou.nLib", string normalRelativePath = "Plugins/com.nitou.nLib") {
             _upmRelativePath = upmRelativePath;
             _normalRelativePath = normalRelativePath;
 
