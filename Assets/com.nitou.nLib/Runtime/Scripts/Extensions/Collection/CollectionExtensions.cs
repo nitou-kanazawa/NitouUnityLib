@@ -20,6 +20,13 @@ namespace nitou {
         #region 要素の判定
 
         /// <summary>
+        /// コレクションが空かどうかを判定する拡張メソッド
+        /// </summary>
+        public static bool IsEmpty(this ICollection self) {
+            return self.Count == 0;
+        }
+
+        /// <summary>
         /// コレクションがNullまたは空かどうかを判定する拡張メソッド
         /// </summary>
         public static bool IsNullOrEmpty(this ICollection self) {

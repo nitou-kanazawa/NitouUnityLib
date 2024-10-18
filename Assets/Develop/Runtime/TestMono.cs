@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using nitou;
+using System.Collections.Generic;
 
 namespace Project{
 
