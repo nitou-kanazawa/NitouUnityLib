@@ -1,7 +1,7 @@
 {
   "name": "com.nitou.ntools",
   "displayName": "Nitou Tools",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "unity": "2021.2",
   "description": "Basic Tools.",
   "keywords": [],

@@ -5,12 +5,12 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace nitou.EditorShared{
+namespace nitou.EditorShared {
 
     /// <summary>
     /// <see cref="Resources"/>ライクに非Resourcesフォルダのアセットを読み込むためのクラス（※AssetDatabaseのラッパー）
     /// </summary>
-    public class AssetsLoader{
+    public class AssetsLoader {
 
         /// ----------------------------------------------------------------------------
         #region Public Method (単体ロード)
@@ -18,16 +18,27 @@ namespace nitou.EditorShared{
         /// <summary>
         /// ファイルのアセットパス(拡張子も含める)と型を設定し、Objectを読み込む．
         /// </summary>
-        public static T Load<T>(AssetPath assetPath) where T : Object {
+        public static T Load<T>(AssetPath assetPath)
+            where T : Object {
             return AssetDatabase.LoadAssetAtPath<T>(assetPath.ToString());
         }
 
         /// <summary>
         /// ファイルのアセットパス(拡張子も含める)と型を設定し、Objectを読み込む．
         /// </summary>
-        public static Object Load(AssetPath assetPath){
+        public static Object Load(AssetPath assetPath) {
             return Load<Object>(assetPath);
         }
+
+        /// <summary>
+        /// ファイルのアセットパス(拡張子も含める)と型を設定し、Objectを読み込む．
+        /// </summary>
+        public static T Load<T>(PackageDirectoryPath packagePath, string relativePath, string fileName)
+            where T : Object {
+            var path = PathUtil.Combine(packagePath.ToProjectPath(), relativePath, fileName);
+            return AssetDatabase.LoadAssetAtPath<T>(path);
+        }
+
         #endregion
 
 
@@ -38,7 +49,7 @@ namespace nitou.EditorShared{
         /// ディレクトリのパス(Assetsから)と型を設定し、Objectを読み込む．存在しない場合は空のListを返す．
         /// </summary>
         public static List<T> LoadAll<T>(AssetPath directoryPath) where T : Object {
- 
+
             if (!directoryPath.IsDirectory()) {
                 Debug_.LogWarning($"The specified directory ({directoryPath}) does not exist.");
                 return new List<T>();
@@ -54,10 +65,10 @@ namespace nitou.EditorShared{
             return LoadAll<Object>(directoryPath);
         }
 
-        public static List<T> LoadAll<T>(PackageDirectoryPath packageDirectoryPath, string relativePath) where T : Object {
+        public static List<T> LoadAll<T>(PackageDirectoryPath packagePath, string relativePath) where T : Object {
 
 
-            return LoadAll_Internal<T>($"{packageDirectoryPath.ToProjectPath()}/{relativePath}");
+            return LoadAll_Internal<T>($"{packagePath.ToProjectPath()}/{relativePath}");
         }
 
         #endregion

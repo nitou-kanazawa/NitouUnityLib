@@ -15,11 +15,6 @@ namespace nitou.Tools.Shared{
         /// コンストラクタ
         /// </summary>
         static PackageInfo() {
-            //pacakageInfo = new nitou.EditorShared.PackageFolderInfo(
-            //    upmFolderName: "com.nitou.nTools",
-            //    normalFolderName: "com.nitou.nTools");
-
-
             packagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
     }

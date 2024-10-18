@@ -28,7 +28,8 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(CURRENT_TEXTURE));
+                //tex = AssetsLoader.Load<Texture2D>(GetAssetPath(CURRENT_TEXTURE));
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH,CURRENT_TEXTURE);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
             }

@@ -17,7 +17,6 @@ namespace nitou {
     /// </summary>
     public static class PathUtil {
 
-
         /// --------------------------------------------------------------------
         // 取得
 
@@ -45,7 +44,7 @@ namespace nitou {
         #region パスの変換（string拡張メソッド）
 
         /// <summary>
-        /// フルパスをアセット以下パス(Asset/..)に変換する
+        /// フルパスをアセット以下パス(Assets/..)に変換する
         /// </summary>
         public static string ToAssetsPath(this string fullPath) {
             // "Assets/"位置を取得
