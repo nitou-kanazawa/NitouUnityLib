@@ -159,9 +159,9 @@ namespace nitou {
         #region  その他
 
         /// <summary>
-        /// Csv 形式の文字列に変換します。
+        /// Csv形式の文字列に変換します。
         /// </summary>
-        public static string ToCsv(this IEnumerable<string> enumerable, char separator = ',') {
+        public static string ToCsvText(this IEnumerable<string> enumerable, char separator = ',') {
             if (enumerable == null) return null;
 
             var csv = new StringBuilder();

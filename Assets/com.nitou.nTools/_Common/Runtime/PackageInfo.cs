@@ -1,15 +1,10 @@
-#if UNITY_EDITOR
-using UnityEngine;
 
 namespace nitou.Tools.Shared{
 
     /// <summary>
     /// パッケージの各種設定を管理する静的クラス
     /// </summary>
-    internal static class NitouTools{
-
-        // old
-        internal static readonly nitou.EditorShared.PackageFolderInfo pacakageInfo;
+    internal static class PackageInfo{
 
         /// <summary>
         /// パッケージのディレクトリパス
@@ -19,14 +14,13 @@ namespace nitou.Tools.Shared{
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        static NitouTools() {
-            pacakageInfo = new nitou.EditorShared.PackageFolderInfo(
-                upmFolderName: "com.nitou.nTools",
-                normalFolderName: "com.nitou.nTools");
+        static PackageInfo() {
+            //pacakageInfo = new nitou.EditorShared.PackageFolderInfo(
+            //    upmFolderName: "com.nitou.nTools",
+            //    normalFolderName: "com.nitou.nTools");
 
 
             packagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
     }
 }
-#endif

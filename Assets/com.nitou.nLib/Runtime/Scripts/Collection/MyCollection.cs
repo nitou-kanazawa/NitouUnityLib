@@ -7,7 +7,7 @@ namespace nitou {
 
     public class MyCollection<T> : Collection<T>{
 
-        
+            
 
     }
 }

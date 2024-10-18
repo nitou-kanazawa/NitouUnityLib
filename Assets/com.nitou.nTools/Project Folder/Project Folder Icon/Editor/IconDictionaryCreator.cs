@@ -33,7 +33,8 @@ namespace nitou.Tools.ProjectWindow {
         /// </summary>
         internal static void BuildDictionary() {
 
-            var texs = NonResources.LoadAll<Texture2D>(relativeFolderPath, NitouTools.pacakageInfo);
+            var texs = AssetsLoader.LoadAll<Texture2D>(PackageInfo.packagePath, relativeFolderPath);
+            //var texs = NonResources.LoadAll<Texture2D>(relativeFolderPath, NitouTools.pacakageInfo);
             _iconDictionary = texs.ToDictionary(texture => texture.name, texture => (Texture)texture);
         }
 

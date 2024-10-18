@@ -1,60 +1,37 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using nitou; // RectTransformExtensions ‚Ì‚ ‚é–¼‘O‹óŠÔ
+using nitou;
+using System.Collections.Generic;
 
-namespace Project {
-    public class TestMono : MonoBehaviour {
+namespace Project{
 
-        public RectTransformExtensions.Corner corner;
+    public class TestMono : MonoBehaviour{
 
-        [SerializeField] private RectTransform _worldCanvasRect;  // ‘€ì‘ÎÛ‚Ì RectTransform
-        [SerializeField] private Button[] _buttons;               // ƒ{ƒ^ƒ“”z—ñi•¡”‚Ìƒ{ƒ^ƒ“j
-        private int _currentButtonIndex = 0;                      // Œ»İ‚Ìƒ{ƒ^ƒ“QÆ
+        [SerializeField] private List<GraphicRaycaster> raycasters; // ï¿½`ï¿½Fï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½GraphicRaycasterï¿½Ìƒï¿½ï¿½Xï¿½g
 
-        private void Start() {
-            // Šeƒ{ƒ^ƒ“‚ÉˆÙ‚È‚éÀ•W‚Ö‚ÌˆÚ“®ƒCƒxƒ“ƒg‚ğ’Ç‰Á
-            for (int i = 0; i < _buttons.Length; i++) {
-                int index = i;  // ƒNƒ[ƒWƒƒ‘Îô
-                _buttons[i].onClick.AddListener(() => OnButtonClicked(index));
+        private void Update() {
+            if (Input.GetMouseButtonDown(0)) // ï¿½}ï¿½Eï¿½Xï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½Ìƒ`ï¿½Fï¿½bï¿½N
+            {
+                CheckOverlap();
             }
         }
 
-        /// <summary>
-        /// ƒ{ƒ^ƒ“‚ªƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«‚Ìˆ—
-        /// </summary>
-        /// <param name="buttonIndex">‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚ÌƒCƒ“ƒfƒbƒNƒX</param>
-        private void OnButtonClicked(int buttonIndex) {
-            // ƒ{ƒ^ƒ“‚²‚Æ‚ÉˆÙ‚È‚éƒ^[ƒQƒbƒgˆÊ’u‚ğİ’è
-            Vector2[] targetPositions = new Vector2[]
-            {
-                new Vector2(1, 1),  // ƒ{ƒ^ƒ“1‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒ^[ƒQƒbƒgˆÊ’u
-                new Vector2(2, 2),  // ƒ{ƒ^ƒ“2‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒ^[ƒQƒbƒgˆÊ’u
-                new Vector2(-2, 1),  // ƒ{ƒ^ƒ“3‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒ^[ƒQƒbƒgˆÊ’u
-                new Vector2(0       , 0),  // ƒ{ƒ^ƒ“3‚ğ‰Ÿ‚µ‚½‚Æ‚«‚Ìƒ^[ƒQƒbƒgˆÊ’u
+        private void CheckOverlap() {
+            // PointerEventDataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            var pointerEventData = new PointerEventData(EventSystem.current) {
+                position = Input.mousePosition // ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Nï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½İ’ï¿½
             };
 
-            // RectTransform ‚ÌˆÊ’u‚ğ SetWorldPosition ‚ÅˆÚ“®
-            if (buttonIndex < targetPositions.Length) {
-                //_worldCanvasRect.SetWorldPosition(targetPositions[buttonIndex], corner);
-                _worldCanvasRect.SetWorldCenterPosition(targetPositions[buttonIndex]);
-                Debug.Log($"Button {buttonIndex + 1} clicked: New Position = {targetPositions[buttonIndex]}");
+            // OverlapUIï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ÄAUIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
+            bool isOverlap = raycasters.OverlapUI(pointerEventData);
+
+            // ï¿½ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½Oï¿½oï¿½ï¿½
+            if (isOverlap) {
+                Debug_.Log("UIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B", Colors.Red);
             } else {
-                Debug.LogWarning("Invalid button index or target position");
-            }
+                Debug_.Log("UIï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B", Colors.Green);
 
-            // Œ»İ‚ÌÀ•W‚ğXV‚·‚é
-            UpdateButtonText(_buttons[buttonIndex], targetPositions[buttonIndex]);
-        }
-
-        /// <summary>
-        /// ƒ{ƒ^ƒ“‚ÌƒeƒLƒXƒg‚ÉŒ»İ‚ÌˆÊ’u‚ğ•\¦
-        /// </summary>
-        /// <param name="button">‘ÎÛ‚Ìƒ{ƒ^ƒ“</param>
-        /// <param name="position">•\¦‚·‚éÀ•W</param>
-        private void UpdateButtonText(Button button, Vector2 position) {
-            var buttonText = button.GetComponentInChildren<Text>();
-            if (buttonText != null) {
-                buttonText.text = $"Move to ({position.x}, {position.y})";
             }
         }
     }
