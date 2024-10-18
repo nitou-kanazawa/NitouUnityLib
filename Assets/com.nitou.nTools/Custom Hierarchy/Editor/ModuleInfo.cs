@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace nitou.Tools.Shared{
+namespace nitou.Tools.Hierarchy{
 
     /// <summary>
     /// パッケージの各種設定を管理する静的クラス

@@ -7,15 +7,19 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
     using nitou.Tools.Shared;
     using nitou.EditorShared;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class HierarchyTreeMapDrawer : HierarchyDrawer {
 
         private static readonly Dictionary<string, Texture2D> TextureCached = new();
 
         // íËêî
-        private readonly string CURRENT_TEXTURE = "tree_map_current.png";
-        private readonly string LAST_TEXTURE = "tree_map_last.png";
-        private readonly string LEVEL_TEXTURE = "tree_map_level.png";
-        private readonly string LINE_TEXTURE = "tree_map_line.png";
+        private static readonly string REATIVE_PATH = "Custom Hierarchy/Editor/Textures";
+        private static readonly string CURRENT_TEXTURE = "tree_map_current.png";
+        private static readonly string LAST_TEXTURE = "tree_map_last.png";
+        private static readonly string LEVEL_TEXTURE = "tree_map_level.png";
+        private static readonly string LINE_TEXTURE = "tree_map_line.png";
 
 
         public static Texture2D TreeMapCurrent {
@@ -24,14 +28,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                var relativePath = "Custom Hierarchy/Editor/Textures";
-                var assetName = "tree_map_current.png";
-                var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(),relativePath, assetName);
-                Debug_.Log(fullPath, Colors.Orange);
-                Debug_.Log(AssetPath.FromAbsolutePath(fullPath), Colors.Red);
-                tex = AssetsLoader.Load<Texture2D>(AssetPath.FromAbsolutePath(fullPath));
-
-                //tex = NonResources.Load<Texture2D>("tree_map_current.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(CURRENT_TEXTURE));
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
             }
@@ -43,14 +40,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                var relativePath = "Custom Hierarchy/Editor/Textures";
-                var assetName = "tree_map_last.png";
-                var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(), relativePath, assetName);
-                Debug_.Log(fullPath, Colors.Orange);
-                Debug_.Log(AssetPath.FromAbsolutePath(fullPath), Colors.Red);
-                tex = AssetsLoader.Load<Texture2D>(AssetPath.FromAbsolutePath(fullPath));
-
-                //tex = NonResources.Load<Texture2D>("tree_map_last.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LAST_TEXTURE));
                 TextureCached[nameof(TreeMapLast)] = tex;
                 return tex;
             }
@@ -62,14 +52,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                var relativePath = "Custom Hierarchy/Editor/Textures";
-                var assetName = "tree_map_level.png";
-                var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(), relativePath, assetName);
-                Debug_.Log(fullPath, Colors.Orange);
-                Debug_.Log(AssetPath.FromAbsolutePath(fullPath), Colors.Red);
-                tex = AssetsLoader.Load<Texture2D>(AssetPath.FromAbsolutePath(fullPath));
-
-                //tex = NonResources.Load<Texture2D>("tree_map_level.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LEVEL_TEXTURE));
                 TextureCached[nameof(TreeMapLevel)] = tex;
                 return tex;
             }
@@ -81,20 +64,13 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                var relativePath = "Custom Hierarchy/Editor/Textures";
-                var assetName = "tree_map_line.png";
-                var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(), relativePath, assetName);
-                Debug_.Log(fullPath, Colors.Orange);
-                Debug_.Log(AssetPath.FromAbsolutePath(fullPath), Colors.Red);
-                tex = AssetsLoader.Load<Texture2D>(AssetPath.FromAbsolutePath(fullPath));
-
-                //tex = NonResources.Load<Texture2D>("tree_map_line.png", "Custom Hierarchy/Editor/Textures", NitouTools.pacakageInfo);
+                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LINE_TEXTURE));
                 TextureCached[nameof(TreeMapLine)] = tex;
                 return tex;
             }
         }
 
-
+        
         public override void OnGUI(int instanceID, Rect selectionRect) {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
@@ -150,6 +126,14 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
                 GUI.color = tempColor;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static AssetPath GetAssetPath(string assetName) {
+            var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(), REATIVE_PATH, assetName);
+            return AssetPath.FromAbsolutePath(fullPath);
         }
     }
 }
