@@ -44,7 +44,7 @@ namespace nitou.Tools.PumlGenerator {
 
 
             // テンプレートのパスを返す。ユーザーが独自のテンプレートを追加できるようにディレクトリを設定
-            return Path.Combine(NitouTools.packagePath.ToProjectPath(), RelativeFolderPath, templateName);
+            return Path.Combine(PackageInfo.packagePath.ToProjectPath(), RelativeFolderPath, templateName);
         }
 
         /// <summary>

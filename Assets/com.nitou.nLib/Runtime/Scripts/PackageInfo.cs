@@ -5,7 +5,7 @@ namespace nitou.Shared{
     /// <summary>
     /// パッケージの各種設定を管理する静的クラス
     /// </summary>
-    internal static class NitouLib {
+    internal static class PackageInfo {
 
         /// <summary>
         /// パッケージのディレクトリパス
@@ -15,9 +15,8 @@ namespace nitou.Shared{
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        static NitouLib() {
+        static PackageInfo() {
             packagePath = new PackageDirectoryPath("com.nitou.nLib");
-
         }
     }
 }

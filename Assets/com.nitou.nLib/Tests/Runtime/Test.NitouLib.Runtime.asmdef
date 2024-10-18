@@ -1,5 +1,5 @@
 {
-    "name": "Test.Nitou.Lib",
+    "name": "Test.NitouLib.Runtime",
     "rootNamespace": "nitou.Test",
     "references": [
         "Nitou.Lib"
