@@ -90,7 +90,7 @@ namespace nitou.EditorShared {
             // 取得したファイルの中からアセットだけリストに追加する
             var assetList = new List<T>();
             foreach (string filePath in filePaths) {
-                T asset = Load<T>(AssetPath.FromAssetPath(filePath));
+                T asset = AssetDatabase.LoadAssetAtPath<T>(filePath);
                 assetList.AddIfNotNull(asset);
             }
             return assetList;
