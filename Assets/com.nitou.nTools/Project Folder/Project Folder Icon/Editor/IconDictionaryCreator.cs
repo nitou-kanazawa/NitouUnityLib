@@ -27,7 +27,6 @@ namespace nitou.Tools.ProjectWindow {
         /// ----------------------------------------------------------------------------
         // Internal Method
 
-
         /// <summary>
         /// Dictionaryの生成
         /// </summary>
@@ -37,7 +36,6 @@ namespace nitou.Tools.ProjectWindow {
             //var texs = NonResources.LoadAll<Texture2D>(relativeFolderPath, NitouTools.pacakageInfo);
             _iconDictionary = texs.ToDictionary(texture => texture.name, texture => (Texture)texture);
         }
-
 
         /// <summary>
         /// 指定したキーに対応するアイコン画像を取得する

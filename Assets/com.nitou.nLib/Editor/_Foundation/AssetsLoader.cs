@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 namespace nitou.EditorShared {
+    using nitou.Shared;
 
     /// <summary>
     /// <see cref="Resources"/>ライクに非Resourcesフォルダのアセットを読み込むためのクラス（※AssetDatabaseのラッパー）
@@ -67,8 +68,8 @@ namespace nitou.EditorShared {
 
         public static List<T> LoadAll<T>(PackageDirectoryPath packagePath, string relativePath) where T : Object {
 
-
-            return LoadAll_Internal<T>($"{packagePath.ToProjectPath()}/{relativePath}");
+            var path = PathUtil.Combine(packagePath.ToProjectPath(), relativePath);
+            return LoadAll_Internal<T>( path);
         }
 
         #endregion

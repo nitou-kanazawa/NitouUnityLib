@@ -22,7 +22,7 @@ namespace nitou.Tools.ProjectWindow {
         }
         
         /// <summary>
-        /// 
+        /// フォルダアイコンを描画する
         /// </summary>
         private static void DrawFolderIcon(string guid, Rect rect) {
             var path = AssetDatabase.GUIDToAssetPath(guid);
