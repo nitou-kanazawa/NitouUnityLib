@@ -14,8 +14,10 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
         private static readonly Dictionary<string, Texture2D> TextureCached = new();
 
-        // 定数
+        // リソースパス
         private static readonly string REATIVE_PATH = "Custom Hierarchy/Editor/Textures";
+
+        // ファイル名
         private static readonly string CURRENT_TEXTURE = "tree_map_current.png";
         private static readonly string LAST_TEXTURE = "tree_map_last.png";
         private static readonly string LEVEL_TEXTURE = "tree_map_level.png";
@@ -28,8 +30,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Texture読み込み
-                //tex = AssetsLoader.Load<Texture2D>(GetAssetPath(CURRENT_TEXTURE));
-                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH,CURRENT_TEXTURE);
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, CURRENT_TEXTURE);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
             }
@@ -41,7 +42,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Texture読み込み
-                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LAST_TEXTURE));
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LAST_TEXTURE);
                 TextureCached[nameof(TreeMapLast)] = tex;
                 return tex;
             }
@@ -53,7 +54,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Texture読み込み
-                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LEVEL_TEXTURE));
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LEVEL_TEXTURE);
                 TextureCached[nameof(TreeMapLevel)] = tex;
                 return tex;
             }
@@ -65,13 +66,16 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Texture読み込み
-                tex = AssetsLoader.Load<Texture2D>(GetAssetPath(LINE_TEXTURE));
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LINE_TEXTURE);
                 TextureCached[nameof(TreeMapLine)] = tex;
                 return tex;
             }
         }
 
-        
+
+        /// <summary>
+        /// 描画処理
+        /// </summary>
         public override void OnGUI(int instanceID, Rect selectionRect) {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
