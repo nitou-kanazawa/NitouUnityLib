@@ -94,6 +94,25 @@ namespace nitou {
             }
             return false;
         }
+
+        /// <summary>
+        /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
+        /// </summary>
+        public static void AddRangeIfNotContains<T>(this ICollection<T> self, IEnumerable<T> items) {
+            foreach (var item in items) {
+                self.AddIfNotContains(item);
+            }
+        }
+
+        /// <summary>
+        /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
+        /// </summary>
+        public static void AddRangeIfNotContains<T>(this ICollection<T> self, params T[] items) {
+            foreach (var item in items) {
+                self.AddIfNotContains(item);
+            }
+        }
+
         #endregion
 
 
@@ -128,7 +147,7 @@ namespace nitou {
                 }
             }
         }
-        #endregion
 
+        #endregion
     }
 }
