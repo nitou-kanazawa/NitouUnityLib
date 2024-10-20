@@ -1,4 +1,5 @@
 using UnityEngine;
+using nitou.DesignPattern.Pooling;
 
 // [参考]
 //  Kanのメモ帳: ギズモで矢印、円柱、カプセル、円、弧を描画出来るようにするGizmoExtensions https://kan-kikuchi.hatenablog.com/entry/GizmoExtensions
@@ -91,16 +92,22 @@ namespace nitou.DebugInternal {
             private static void DrawWireCylinderOuterLines(PlaneType planeType, DiscParam upperDisc, DiscParam lowerDisc) {
                 if (upperDisc.segments != lowerDisc.segments) return;
 
+                // リスト取得
+                var upperPoints = ListPool<Vector3>.New();
+                var lowerPoints = ListPool<Vector3>.New();
+
                 // 座標計算
-                var upperPoints = MathUtil.CirclePoints(
+                MathUtil.CirclePoints(
                     radius: upperDisc.radius,
+                    resultPoints: upperPoints,
                     segments: upperDisc.segments,
                     offset: upperDisc.offset * planeType.GetNormal(),
                     isLoop: false,
                     type: planeType
                 );
-                var lowerPoints = MathUtil.CirclePoints(
+                MathUtil.CirclePoints(
                     radius: lowerDisc.radius,
+                    resultPoints: lowerPoints,
                     segments: lowerDisc.segments,
                     offset: lowerDisc.offset * planeType.GetNormal(),
                     isLoop: false,
@@ -109,6 +116,10 @@ namespace nitou.DebugInternal {
 
                 // 描画（※上下円の各点を結ぶ線分）
                 Basic.DrawLineSet(upperPoints, lowerPoints);
+
+                // リスト解放
+                upperPoints.Free();
+                lowerPoints.Free();
             }
 
             /// <summary>
@@ -116,9 +127,13 @@ namespace nitou.DebugInternal {
             /// </summary>
             private static void DrawWireConeOuterLines(PlaneType type, DiscParam lowerDisc, float height) {
 
+                // リスト取得
+                var lowerPoints = ListPool<Vector3>.New();
+
                 var top = (lowerDisc.offset + height) * type.GetNormal();
-                var lowerPoints = MathUtil.CirclePoints(
+                MathUtil.CirclePoints(
                     radius: lowerDisc.radius,
+                    resultPoints: lowerPoints,
                     segments: lowerDisc.segments,
                     offset: lowerDisc.offset * type.GetNormal(),
                     isLoop: false,
@@ -127,6 +142,9 @@ namespace nitou.DebugInternal {
 
                 // 描画（※底面(円)の各点から頂点への線分）
                 lowerPoints.ForEach(p => Gizmos.DrawLine(p, top));
+
+                // リスト解放
+                lowerPoints.Free();
             }
 
             /// <summary>
@@ -134,9 +152,13 @@ namespace nitou.DebugInternal {
             /// </summary>
             private static void DrawWireDisc(PlaneType planType, DiscParam disc) {
 
+                // リスト取得
+                var points = ListPool<Vector3>.New();
+
                 // 座標計算
-                var points = MathUtil.CirclePoints(
+                MathUtil.CirclePoints(
                     radius: disc.radius,
+                    resultPoints: points,
                     segments: disc.segments,
                     offset: disc.offset * planType.GetNormal(),
                     isLoop: true,
@@ -145,6 +167,9 @@ namespace nitou.DebugInternal {
 
                 // 描画
                 Basic.DrawLines(points);
+
+                // リスト解放
+                points.Free();
             }
             #endregion
         }

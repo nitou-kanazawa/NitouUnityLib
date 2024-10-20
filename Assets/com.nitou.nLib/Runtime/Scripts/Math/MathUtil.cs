@@ -49,7 +49,7 @@ namespace nitou{
         /// <summary>
         /// ‰~ã‚ÌÀ•W‚ğæ“¾‚·‚é
         /// </summary>
-        public static List<Vector3> CirclePoints(float radius = 1f, int segments = 20,
+        public static List<Vector3> CirclePoints(float radius, List<Vector3> resultPoints, int segments = 20, 
             Vector3 offset = default, bool isLoop = true,
             PlaneType type = PlaneType.ZX) {
 
@@ -59,12 +59,12 @@ namespace nitou{
             // ¦360“x‚Ì“_‚àŠÜ‚ß‚½‚¢ê‡‚Í{‚P
             if (isLoop) pointCount++;
 
-            // “_—ñ‚ÌŒvZ
-            var points = new List<Vector3>();
+            // “_—ñ‚Ì¶¬
+            resultPoints.Clear();
             for (int i = 0; i < pointCount; i++) {
-                points.Add(CirclePoint(radius, i * deltaAngle, type) + offset);
+                resultPoints.Add(CirclePoint(radius, i * deltaAngle, type) + offset);
             }
-            return points;
+            return resultPoints;
         }
 
         /// <summary>

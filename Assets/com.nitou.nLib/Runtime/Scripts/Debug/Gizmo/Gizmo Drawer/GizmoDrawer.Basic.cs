@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using nitou.DesignPattern.Pooling;
 
 namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer{
@@ -125,8 +126,12 @@ namespace nitou.DebugInternal {
             /// ‰~‚ð•`‰æ‚·‚é
             /// </summary>
             public static void DrawCircle(PlaneType type, float radius, int segments = 20) {
-                var points = MathUtil.CirclePoints(radius, segments, type: type);
+                var points = ListPool<Vector3>.New();
+                
+                MathUtil.CirclePoints(radius,points, segments, type: type);
                 DrawLines(points);
+
+                points.Free();
             }
 
             /// <summary>

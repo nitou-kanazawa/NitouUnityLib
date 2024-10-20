@@ -148,6 +148,25 @@ namespace nitou {
                 GizmoDrawer.Basic.DrawCircle(type, center, Quaternion.identity, radius);
             }
         }
+
+        /// <summary>
+        /// ‰~‚ð•`‰æ‚·‚é
+        /// </summary>
+        public static void DrawWireCircle(Vector3 center, Quaternion rotation, float radius, PlaneType type, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Basic.DrawCircle(type, center, rotation, radius);
+            }
+        }
+
+        /// <summary>
+        /// ‰~‚ð•`‰æ‚·‚é
+        /// </summary>
+        public static void DrawWireCircle(Transform transform, float radius, PlaneType type, Color color) {
+            using (new GizmoUtil.ColorScope(color)) {
+                GizmoDrawer.Basic.DrawCircle(type, transform.position, transform.rotation, radius);
+            }
+        }
+
         #endregion
 
 
