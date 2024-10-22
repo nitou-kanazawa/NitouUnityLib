@@ -91,7 +91,7 @@ namespace nitou.EditorShared {
         /// <summary>
         /// インデント設定をスコープで管理するためのクラス
         /// </summary>
-        public class IndentScope : UnityEngine.GUI.Scope {
+        public sealed class IndentScope : UnityEngine.GUI.Scope {
 
             private readonly int _oldIndentLevel;
 
@@ -122,10 +122,13 @@ namespace nitou.EditorShared {
         #endregion
 
 
-        // ----------------------------------------------------------------------------
+        /// ----------------------------------------------------------------------------
         #region Condition
 
-        public class EnableScope : UnityEngine.GUI.Scope {
+        /// <summary>
+        /// 
+        /// </summary>
+        public sealed class EnableScope : UnityEngine.GUI.Scope {
             private readonly bool _oldEnabled;
 
             /// <summary>
@@ -147,7 +150,7 @@ namespace nitou.EditorShared {
         #endregion
 
 
-        // ----------------------------------------------------------------------------
+        /// ----------------------------------------------------------------------------
         #region Misc
 
         /// <summary>

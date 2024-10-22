@@ -12,7 +12,7 @@ namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// 
+        /// GUI描画関連のメソッド集．
         /// </summary>
         public static class GUI {
 
@@ -20,7 +20,7 @@ namespace nitou.EditorShared {
             #region Object Field
 
             /// <summary>
-            /// MonoBehaviourファイルへの参照を表示する
+            /// MonoBehaviourファイルへの参照を表示する．
             /// </summary>
             public static void MonoBehaviourField<T>(T target) where T : MonoBehaviour {
 
@@ -30,7 +30,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// Scriptable Objectファイルへの参照を表示する
+            /// Scriptable Objectファイルへの参照を表示する．
             /// </summary>
             public static void ScriptableObjectField<T>(T target) where T : ScriptableObject {
 
@@ -40,7 +40,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// PropertyFieldをReadOnlyで表示する
+            /// PropertyFieldをReadOnlyで表示する．
             /// </summary>
             public static void ReadOnlyPropertyField(SerializedProperty property, params GUILayoutOption[] options) {
                 using (new EditorGUI.DisabledScope(true)) {
@@ -92,7 +92,9 @@ namespace nitou.EditorShared {
 
             #endregion
 
-
+            /// <summary>
+            /// 
+            /// </summary>
             public static void EnumToggles(SerializedProperty property) {
                 // Enum のフィールドをトグルボタンとして表示
                 //using (new EditorGUILayout.PropertyScope(label, property)) {

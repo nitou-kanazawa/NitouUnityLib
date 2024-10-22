@@ -19,6 +19,9 @@ namespace nitou.EditorShared {
 
             private static readonly Texture2D _lineTexture;
 
+            /// <summary>
+            /// コンストラクタ．
+            /// </summary>
             static ScreenGUI() {
                 _lineTexture = new Texture2D(1, 1);
             }
@@ -28,14 +31,14 @@ namespace nitou.EditorShared {
             #region Basic Method
 
             /// <summary>
-            /// 
+            /// スクリーン座標を指定してボックスを表示する．
             /// </summary>
             public static void Box(Rect screenRect) {
                 UnityEngine.GUI.Box(Convetor.ScreenToGUI(screenRect), "");
             }
 
             /// <summary>
-            /// 補助線を表示する
+            /// スクリーン座標を指定して補助線を描画する．
             /// </summary>
             public static void AuxiliaryLine(Vector2 position, float width, Color color) {
 
@@ -49,6 +52,40 @@ namespace nitou.EditorShared {
                 }
             }
 
+            /// <summary>
+            /// スクリーン座標を指定して線分を描画する．
+            /// </summary>
+            public static void Line(Vector2 screenPos1, Vector2 screenPos2, Color color, float width = 5f) {
+
+                // スクリーン座標をGUI座標に変換
+                var p1 = Convetor.ScreenToGUI(screenPos1);
+                var p2 = Convetor.ScreenToGUI(screenPos2);
+
+                // 線幅設定（線幅に対応するのはエディタのHandlesのみ）
+                using (new HandleUtil.ColorScope(color)) {
+                    Handles.DrawAAPolyLine(width, p1, p2);
+                }
+            }
+
+            /// <summary>
+            /// スクリーン座標を指定して線分を描画する．
+            /// </summary>
+            public static void Outline(Rect screenRect, Color color, float width = 5f) {
+
+                // スクリーン座標の矩形をGUI座標に変換
+                var points = new Vector3[] {
+                    Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMin)),
+                    Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMax)),
+                    Convetor.ScreenToGUI(new Vector2(screenRect.xMax, screenRect.yMax)),
+                    Convetor.ScreenToGUI(new Vector2(screenRect.xMax, screenRect.yMin)),
+                    Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMin)),
+                };
+
+                // 矩形の各辺に線を描画
+                using (new HandleUtil.ColorScope(color)) {
+                    Handles.DrawAAPolyLine(width, points);
+                }
+            }
             #endregion
 
 
@@ -85,17 +122,23 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             private static class Convetor {
 
+                /// <summary>
+                /// スクリーン座標からGUI座標への変換．
+                /// </summary>
                 public static Rect ScreenToGUI(Rect screenRect) {
                     // Screen座標系
                     var screenPos = screenRect.position;
 
                     // GUI座標系
-                    var guiPos = new Vector2(screenPos.x, Screen.height - screenPos.y);
+                    var guiPos = ScreenToGUI(screenPos);
                     var guiRect = new Rect(guiPos + (Vector2.down * screenRect.height), screenRect.size);
 
                     return guiRect;
                 }
 
+                /// <summary>
+                /// スクリーン座標からGUI座標への変換．
+                /// </summary>
                 public static Vector2 ScreenToGUI(Vector2 screenPos) {
                     return new Vector2(screenPos.x, Screen.height - screenPos.y);
                 }
@@ -128,10 +171,6 @@ namespace nitou.EditorShared {
                     box = new GUIStyle(UnityEngine.GUI.skin.box);
                     box.normal.background = Texture2D.grayTexture;
                 }
-
-
-
-
             }
         }
 

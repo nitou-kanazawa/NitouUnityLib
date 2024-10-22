@@ -5,8 +5,7 @@ using UnityEditor;
 
 namespace nitou.EditorShared {
 
-
-    public static class HandleUtil {
+    public static partial class HandleUtil {
 
     }
 }
