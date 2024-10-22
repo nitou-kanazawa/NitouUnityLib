@@ -30,8 +30,8 @@ namespace nitou.EditorShared {
             /// <summary>
             /// 
             /// </summary>
-            public static void Box(Rect screenRect, string text = "") {
-                UnityEngine.GUI.Box(Convetor.ScreenToGUI(screenRect), text);
+            public static void Box(Rect screenRect) {
+                UnityEngine.GUI.Box(Convetor.ScreenToGUI(screenRect), "");
             }
 
             /// <summary>
@@ -105,9 +105,10 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             private static class Style {
 
-                // 
+                // キャッシュ
                 public readonly static GUIStyle borderLine;
                 public readonly static GUIStyle label;
+                public readonly static GUIStyle box;
 
 
                 static Style() {
@@ -122,7 +123,14 @@ namespace nitou.EditorShared {
                         alignment = TextAnchor.LowerCenter,
                         fontSize = 10                        
                     };
+
+                    // ボックス
+                    box = new GUIStyle(UnityEngine.GUI.skin.box);
+                    box.normal.background = Texture2D.grayTexture;
                 }
+
+
+
 
             }
         }

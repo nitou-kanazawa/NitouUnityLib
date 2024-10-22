@@ -42,9 +42,9 @@ namespace nitou{
         // Factory
 
         /// <summary>
-        /// 
+        /// 中心位置とサイズから<see cref="Rect"/>を生成する
         /// </summary>
-        public static Rect Create(Vector2 center, Vector2 size) {
+        public static Rect CenterSizeRect(Vector2 center, Vector2 size) {
             float x = center.x - size.x / 2;
             float y = center.y - size.y / 2;
             return new Rect(x, y, size.x, size.y);
