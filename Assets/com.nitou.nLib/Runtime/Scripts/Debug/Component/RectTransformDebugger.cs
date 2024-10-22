@@ -21,7 +21,7 @@ namespace nitou.DebugInternal {
 
         public RectTransform RectTrans => _rectTrans;
 
-        public bool showGui = true;
+        public static bool showGui = true;
 
 
         /// ----------------------------------------------------------------------------
@@ -35,11 +35,14 @@ namespace nitou.DebugInternal {
         private void OnGUI() {
             if (_rectTrans == null || !showGui) return;
 
-            var rect = _rectTrans.GetScreenRect();
+            var rect = _rectTrans.GetScreenRect(ref _canvas);
 
-            EditorUtil.ScreenGUI.Box(rect);
-            EditorUtil.ScreenGUI.AuxiliaryLine(rect.position, 2f, Colors.Gray);
-            EditorUtil.ScreenGUI.Label(rect.position, rect.position.ToString());
+            var boxSize = Vector2.one * 100;
+            var minRect = RectUtil.CenterSizeRect(rect.min, boxSize);
+            var maxRect = RectUtil.CenterSizeRect(rect.max, boxSize);
+            EditorUtil.ScreenGUI.Box(minRect);
+            EditorUtil.ScreenGUI.Box(maxRect);
+
         }
 #endif
     }

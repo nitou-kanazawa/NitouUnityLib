@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 // [参考]
 //  ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
@@ -9,14 +9,6 @@ using UnityEngine.UI;
 //  Hatena: RectTransformのスクリーン座標のRectを取得する https://hacchi-man.hatenablog.com/entry/2020/12/11/220000
 
 namespace nitou {
-
-    // [NOTE]
-    //  ユースケースをメモしておく
-    //  ・
-    //  ・
-    //  ・
-    //  ・
-    //  ・
 
     /// <summary>
     /// <see cref="RectTransform"/>型の基本的な拡張メソッド集
@@ -113,7 +105,6 @@ namespace nitou {
             var delta = (Vector3)(worldPos - currentWorldPos);
             self.localPosition += delta;
         }
-
         #endregion
 
 
@@ -275,7 +266,6 @@ namespace nitou {
             }
             return worldPos;
         }
-
         #endregion
 
 
@@ -307,7 +297,6 @@ namespace nitou {
             var viewportSize = new Vector2(screenRect.size.x / Screen.width, screenRect.size.y / Screen.height);
             return new Rect(viewportMin, viewportSize);
         }
-
         #endregion
 
 
@@ -351,7 +340,6 @@ namespace nitou {
 
             return new Rect(relativePos, relativeSize);
         }
-
         #endregion
 
 
@@ -410,8 +398,6 @@ namespace nitou {
             }
             return true;
         }
-
-
         #endregion
 
 

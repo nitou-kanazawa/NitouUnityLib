@@ -1,5 +1,5 @@
 
-namespace nitou{
+namespace nitou {
 
     /// <summary>
     /// UnityProject内のデータ、またはディレクトリを指すパスのインターフェース
