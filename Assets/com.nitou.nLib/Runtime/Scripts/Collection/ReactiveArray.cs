@@ -11,8 +11,7 @@ namespace nitou {
     /// <summary>
     /// 配列の要素の変更や移動をリアクティブに監視できる ReactiveArray クラス
     /// </summary>
-    public sealed class ReactiveArray<T> : IDisposable, IEnumerable<T>, IEnumerable
-        where T : new() {
+    public sealed class ReactiveArray<T> : IDisposable, IEnumerable<T>, IEnumerable {
 
         private readonly T[] _items;
 

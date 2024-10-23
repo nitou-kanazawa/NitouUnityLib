@@ -13,7 +13,7 @@ using System.Runtime.CompilerServices;
 namespace nitou {
 
     /// <summary>
-    /// Collectionの基本的な拡張メソッド集
+    /// Collectionの基本的な拡張メソッド集．
     /// </summary>
     public static partial class CollectionExtensions {
 
@@ -21,21 +21,21 @@ namespace nitou {
         #region 要素の判定
 
         /// <summary>
-        /// コレクションが空かどうかを判定する拡張メソッド
+        /// コレクションが空かどうかを判定する拡張メソッド．
         /// </summary>
         public static bool IsEmpty(this ICollection self) {
             return self.Count == 0;
         }
 
         /// <summary>
-        /// コレクションがNullまたは空かどうかを判定する拡張メソッド
+        /// コレクションがNullまたは空かどうかを判定する拡張メソッド．
         /// </summary>
         public static bool IsNullOrEmpty(this ICollection self) {
             return self == null || self.Count == 0;
         }
 
         /// <summary>
-        /// 指定した要素が全てコレクション内にあるかどうかを判定する拡張メソッド
+        /// 指定した要素が全てコレクション内にあるかどうかを判定する拡張メソッド．
         /// </summary>
         public static bool ContainsAll<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -47,7 +47,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 複数の要素のいずれかがコレクションに格納されているかどうかを判定する拡張メソッド
+        /// 複数の要素のいずれかがコレクションに格納されているかどうかを判定する拡張メソッド．
         /// </summary>
         public static bool ContainsAny<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -86,7 +86,7 @@ namespace nitou {
         #region 要素の追加
 
         /// <summary>
-        /// 指定した処理条件を満たす場合に要素を追加する拡張メソッド
+        /// 指定した処理条件を満たす場合に要素を追加する拡張メソッド．
         /// </summary>
         public static bool AddIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
             if (predicate(item)) {
@@ -97,7 +97,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 要素がNullの場合にコレクションに追加する拡張メソッド
+        /// 要素がNullの場合にコレクションに追加する拡張メソッド．
         /// </summary>
         public static bool AddIfNotNull<T>(this ICollection<T> self, T item) where T : class {
             if (item != null) {
@@ -108,7 +108,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 要素がコレクション内に含まれなければ追加する拡張メソッド
+        /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
         /// </summary>
         public static bool AddIfNotContains<T>(this ICollection<T> self, T item) {
             if (!self.Contains(item)) {
@@ -143,7 +143,7 @@ namespace nitou {
         #region 要素の削除
 
         /// <summary>
-        /// 指定した処理条件を満たす場合に要素を削除する拡張メソッド
+        /// 指定した処理条件を満たす場合に要素を削除する拡張メソッド．
         /// </summary>
         public static void RemoveIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
             if (predicate(item)) {
@@ -152,7 +152,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 複数の要素を削除する拡張メソッド
+        /// 複数の要素を削除する拡張メソッド．
         /// </summary>
         public static void RemoveRange<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -161,7 +161,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 複数の要素のそれぞれに対して指定した条件を満たす場合に削除する拡張メソッド
+        /// 複数の要素のそれぞれに対して指定した条件を満たす場合に削除する拡張メソッド．
         /// </summary>
         public static void RemoveRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, params T[] items) {
             foreach (T item in items) {
