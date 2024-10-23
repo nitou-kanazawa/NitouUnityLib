@@ -16,35 +16,18 @@ namespace nitou {
         #region 値の判定
 
         /// <summary>
-        /// 偶数かどうかを判定する拡張メソッド
+        /// 偶数かどうかを判定する拡張メソッド．
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsEven(this int self) => 
             (self % 2) == 0;
 
         /// <summary>
-        /// 奇数かどうかを判定する拡張メソッド
+        /// 奇数かどうかを判定する拡張メソッド．
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsOdd(this int self) => 
             (self % 2) != 0;
-
-        /// <summary>
-        /// インデックスが範囲内にあるかどうかを判定する拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsInRange<T>(this int index, IReadOnlyCollection<T> collection) {
-            bool isBetween = (0 <= index && index < collection.Count);
-            return isBetween;
-        }
-
-        /// <summary>
-        /// インデックスが範囲外にあるかどうかを判定する拡張メソッド
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool IsOutRage<T>(this int index, IReadOnlyCollection<T> collection) {
-            return !index.IsInRange(collection);
-        }
         #endregion
 
 

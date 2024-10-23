@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 // [参考]
 //  Hatena Blog: Action, Func, Predicateデリゲートを使ってみた https://oooomincrypto.hatenadiary.jp/entry/2022/04/24/201149
@@ -56,6 +57,28 @@ namespace nitou {
             }
             return false;
         }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 要素数の判定
+
+        /// <summary>
+        /// 指定インデックスが範囲内にあるかどうかを判定する拡張メソッド．
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsInRange<T>(this int index, IReadOnlyCollection<T> collection) {
+            return 0 <= index && index < collection.Count;
+        }
+
+        /// <summary>
+        /// 指定インデックスが範囲外にあるかどうかを判定する拡張メソッド．
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsOutRange<T>(this int index, IReadOnlyCollection<T> collection) {
+            return !index.IsInRange(collection);
+        }
+
         #endregion
 
 
