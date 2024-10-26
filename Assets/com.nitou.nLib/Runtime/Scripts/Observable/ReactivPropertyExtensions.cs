@@ -11,8 +11,6 @@ using TMPro;
 
 namespace nitou {
 
-
-
     /// <summary>
     /// 
     /// </summary>
@@ -121,24 +119,6 @@ namespace nitou {
                 value => value.ToString("F2"));
         }
         #endregion
-
-        //public static void Foo() {
-        // 
-        //    // int バインディング
-        //    propertyInt.BindToInputField(
-        //        inputField,
-        //        disposables,
-        //        value => int.Parse(value),
-        //        value => value.ToString());
-        // 
-        //    // float バインディング
-        //    propertyFloat.BindToInputField(
-        //        inputField,
-        //        disposables,
-        //        value => float.Parse(value),
-        //        value => value.ToString("G"));
-        //}
-
 
 
         /// ----------------------------------------------------------------------------

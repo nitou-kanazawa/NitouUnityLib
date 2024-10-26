@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 // [参考]
 //  ねこじゃらシティ: RectTransformのサイズをスクリプトから変更する https://nekojara.city/unity-rect-transform-size
@@ -123,7 +122,7 @@ namespace nitou {
         public static Vector2 GetScreenPosition(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            if(!self.TryGetBelongedCanvasIfNull(ref canvas)) {
+            if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Vector2.zero;
             }
 
@@ -148,7 +147,7 @@ namespace nitou {
 
             // ワールド座標→スクリーン座標
             var worldPos = self.GetWorldPosition(corner);
-            return canvas.GetScreenPosition(worldPos); 
+            return canvas.GetScreenPosition(worldPos);
         }
 
 
@@ -343,8 +342,6 @@ namespace nitou {
         #endregion
 
 
-
-
         private static Vector3 GetCenter(this Vector3[] corners) {
             return (corners[(int)Corner.Min] + corners[(int)Corner.Max]) / 2f;
         }
@@ -352,9 +349,6 @@ namespace nitou {
         private static Vector2 GetCenter(Vector2 min, Vector2 max) {
             return (min + max) / 2f;
         }
-
-
-
 
 
         // ----------------------------------------------------------------------------
@@ -399,7 +393,6 @@ namespace nitou {
             return true;
         }
         #endregion
-
 
 
         // ----------------------------------------------------------------------------

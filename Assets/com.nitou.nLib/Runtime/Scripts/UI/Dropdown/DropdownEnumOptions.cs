@@ -11,7 +11,7 @@ namespace nitou {
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TMP_Dropdown))]
-    public abstract class DropdownEnumOptions<TEnum> : MonoBehaviour 
+    public abstract class DropdownEnumOptions<TEnum> : MonoBehaviour ,IDataHolder<TEnum>
         where TEnum : Enum{
 
         private TMP_Dropdown _dropdown;
@@ -67,12 +67,18 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         // Private Method
 
-        public void SetValue(TEnum type) {
-            _currentRP.Value = type;
-        }
-
+        /// <summary>
+        /// ゲッタ．
+        /// </summary>
         public TEnum GetValue() {
             return _currentRP.Value;
+        }
+
+        /// <summary>
+        /// セッタ．
+        /// </summary>
+        public void SetValue(TEnum type) {
+            _currentRP.Value = type;
         }
 
         /// <summary>
