@@ -4,7 +4,9 @@
     "references": [
         "UniRx",
         "UniTask",
-        "UniTask.Linq"
+        "UniTask.Linq",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

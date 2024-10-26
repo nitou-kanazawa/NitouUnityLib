@@ -119,9 +119,36 @@ namespace nitou {
         }
 
         /// <summary>
+        /// 要素群を追加する拡張メソッド．
+        /// </summary>
+        public static void AddRange<T>(this ICollection<T> self, params T[] items) {
+            foreach (var item in items) {
+                self.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// 指定コレクションから存在しない要素を追加する拡張メソッド.
+        /// </summary>
+        public static void AddRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, params T[] items) {
+            foreach (var item in items) {
+                self.AddIf(predicate, item);
+            }
+        }
+
+        /// <summary>
         /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
         /// </summary>
-        public static void AddRangeIfNotContains<T>(this ICollection<T> self, IEnumerable<T> items) {
+        public static void AddRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, IEnumerable<T> items) {
+            foreach (var item in items) {
+                self.AddIf(predicate, item);
+            }
+        }
+
+        /// <summary>
+        /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
+        /// </summary>
+        public static void AddRangeIfNotContains<T>(this ICollection<T> self, params T[] items) {
             foreach (var item in items) {
                 self.AddIfNotContains(item);
             }
@@ -130,7 +157,7 @@ namespace nitou {
         /// <summary>
         /// 要素がコレクション内に含まれなければ追加する拡張メソッド．
         /// </summary>
-        public static void AddRangeIfNotContains<T>(this ICollection<T> self, params T[] items) {
+        public static void AddRangeIfNotContains<T>(this ICollection<T> self, IEnumerable<T> items) {
             foreach (var item in items) {
                 self.AddIfNotContains(item);
             }

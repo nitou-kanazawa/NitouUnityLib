@@ -10,6 +10,7 @@ namespace nitou{
     /// </summary>
     public static class ReactiveCollectionExtensions {
 
+
         /// <summary>
         /// •ÏX‚ª‚ ‚Á‚½‚±‚Æ‚ğ’Ê’m‚·‚éObservable‚ğ•Ô‚·.
         /// </summary>
