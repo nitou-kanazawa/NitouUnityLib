@@ -6,6 +6,9 @@ using TMPro;
 
 namespace nitou {
 
+    /// <summary>
+    /// 
+    /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TMP_Dropdown))]
     public abstract class DropdownEnumOptions<TEnum> : MonoBehaviour 
@@ -27,6 +30,8 @@ namespace nitou {
         }
 
 
+        /// ----------------------------------------------------------------------------
+        // LifeCycle Events
 
         protected void Start() {
             Setup();
@@ -58,6 +63,9 @@ namespace nitou {
                 _dropdown = GetComponent<TMP_Dropdown>();
         }
 
+
+        /// ----------------------------------------------------------------------------
+        // Private Method
 
         public void SetValue(TEnum type) {
             _currentRP.Value = type;

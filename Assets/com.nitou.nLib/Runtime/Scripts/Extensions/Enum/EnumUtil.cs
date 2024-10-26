@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 // [Ql]
@@ -82,12 +83,8 @@ namespace nitou {
         /// <summary>
         /// ‘S‚Ä‚Ì€–Ú‚ª“ü‚Á‚½List‚ğæ“¾
         /// </summary>
-        public static List<T> GetAllInList<T>() where T : Enum {
-            var list = new List<T>();
-            foreach (T t in Enum.GetValues(typeof(T))) {
-                list.Add(t);
-            }
-            return list;
+        public static T[] GetAllInList<T>() where T : Enum {
+            return (T[])Enum.GetValues(typeof(T));
         }
         #endregion
 

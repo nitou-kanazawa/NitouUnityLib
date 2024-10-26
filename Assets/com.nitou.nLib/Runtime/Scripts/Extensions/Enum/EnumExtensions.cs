@@ -25,7 +25,9 @@ namespace nitou {
             return false;
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static bool HasFlags<TEnum>(this TEnum value, params TEnum[] flags)
             where TEnum : Enum {
 

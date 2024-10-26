@@ -8,7 +8,7 @@ namespace nitou{
     /// <summary>
     /// <see cref="ReactiveCollection{T}"/>の拡張メソッド集．
     /// </summary>
-    public static class RactiveCollectionExtensions {
+    public static class ReactiveCollectionExtensions {
 
         /// <summary>
         /// 変更があったことを通知するObservableを返す.

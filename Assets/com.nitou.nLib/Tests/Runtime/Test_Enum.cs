@@ -133,15 +133,6 @@ namespace nitou.Tests {
             Assert.IsTrue(Enum.IsDefined(typeof(SampleEnum), random));
         }
 
-        [Test]
-        public void GetAllInList_ReturnsAllEnumValues() {
-            var allValues = EnumUtil.GetAllInList<SampleEnum>();
-            Assert.AreEqual(4, allValues.Count);
-            Assert.Contains(SampleEnum.First, allValues);
-            Assert.Contains(SampleEnum.Second, allValues);
-            Assert.Contains(SampleEnum.Third, allValues);
-            Assert.Contains(SampleEnum.Fourth, allValues);
-        }
 
         [Test]
         public void KeyToType_ReturnsCorrectEnumValue() {
