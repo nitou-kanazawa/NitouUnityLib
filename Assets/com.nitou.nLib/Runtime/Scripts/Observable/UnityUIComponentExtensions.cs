@@ -1,20 +1,21 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UniRx;
 using UnityEngine.UI;
 using TMPro;
+using nitou;
 
 // [参考]
 //  qiita: UniRx入門　~ データバインディングとUnityイベント関数の購読 ~ https://qiita.com/su10/items/6d7fd792d4b553454a4f
 //  Hatena: UniRx: SubscribeWithState は Subscribe より効率がよい https://noriok.hatenadiary.jp/entry/2018/09/17/144930
 
-namespace nitou {
+namespace UniRx {
 
     /// <summary>
     /// 
     /// </summary>
     public static partial class UnityUIComponentExtensions {
+
 
         /// ----------------------------------------------------------------------------
         #region Text
@@ -46,8 +47,6 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
         #region InputField
-
-        // [MEMO] OnValuChangedの方がObservable.CreateWithStateを介してるのは，おそらくSubscribe時に初期値を通知するため．
 
         /// <summary>
         /// Observe onEndEdit(Submit) event.
@@ -111,7 +110,7 @@ namespace nitou {
                 value => value.ToString());
         }
 
-        public static void BindToInputFieldFloat(this IReactiveProperty<float> property, TMP_InputField inputField, ICollection<IDisposable> disposables) {
+        public static void BindToInputField(this IReactiveProperty<float> property, TMP_InputField inputField, ICollection<IDisposable> disposables) {
 
             // float 
             property.BindToInputField(inputField, disposables,
@@ -135,6 +134,18 @@ namespace nitou {
             // View → Model
             slider.OnValueChangedAsObservable()
                 .SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
+        }
+
+        /// <summary>
+        /// ReactivePropertyとSliderの双方向バインディングを行います（bool型用）。
+        /// </summary>
+        public static void BindToSlider(this IReactiveProperty<bool> reactiveProperty, Slider slider, ICollection<IDisposable> disposables) {
+            // Model → View
+            reactiveProperty.SubscribeWithState(slider, (value, s) => s.value = value ? 1f : 0f).AddTo(disposables);
+
+            // View → Model
+            slider.OnValueChangedAsObservable()
+                  .SubscribeWithState(reactiveProperty, (value, p) => p.Value = value >= 0.5f).AddTo(disposables);
         }
         #endregion
 

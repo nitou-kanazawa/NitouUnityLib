@@ -30,7 +30,7 @@ namespace nitou {
 
             // Bind properties to input fields
             _intProperty.BindToInputField(intInputField, _disposables);
-            _floatProperty.BindToInputFieldFloat(floatInputField, _disposables);
+            _floatProperty.BindToInputField(floatInputField, _disposables);
             _stringProperty.BindToInputField(stringInputField, _disposables);
 
             // Bind properties to display text for UI feedback
