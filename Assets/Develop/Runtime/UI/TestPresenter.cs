@@ -1,12 +1,11 @@
 using UniRx;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 
 
 namespace Project
 {
     using nitou;
-    using nitou.Inspector;
 
     public class TestPresenter : MonoBehaviour
     {
