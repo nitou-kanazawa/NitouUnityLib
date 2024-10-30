@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UniRx;
+using UnityEngine;
+using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
-using nitou.EditorShared;
 #endif
 
 namespace nitou.DesignPattern {
-    using nitou.Inspector;
 
     /// <summary>
     /// MonoBahaviourを継承したシンプルなステートマシン
@@ -81,7 +80,7 @@ namespace nitou.DesignPattern {
 
 
         /// ----------------------------------------------------------------------------
-        // MonoBehaviour Method 
+        // Lifecycle Events
 
         private void OnDestroy() {
             _stateChangeSubject.Dispose();
