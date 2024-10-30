@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
 namespace nitou.Tools.Demo {
-
+    using nitou.Tools.Shared;
 
     public static class SubEditorWindowTest {
 

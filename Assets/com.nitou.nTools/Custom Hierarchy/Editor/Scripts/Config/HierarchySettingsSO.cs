@@ -12,7 +12,8 @@ namespace nitou.Tools.Hierarchy{
         "ProjectSettings/HierarchySettingsSO.asset",
         FilePathAttribute.Location.ProjectFolder
     )]
-    internal sealed class HierarchySettingsSO : ScriptableSingleton<HierarchySettingsSO> , ISettingsData{
+    internal sealed class HierarchySettingsSO : ScriptableSingleton<HierarchySettingsSO> , 
+        ISettingsData{
 
         [SerializeField] HierarchyObjectMode hierarchyObjectMode = HierarchyObjectMode.RemoveInBuild;
         [SerializeField] bool showHierarchyToggles;
@@ -25,6 +26,17 @@ namespace nitou.Tools.Hierarchy{
         [SerializeField] Color evenRowColor = new(0f, 0f, 0f, 0.07f);
         [SerializeField] Color oddRowColor = Color.clear;
 
+        // Property
+        public HierarchyObjectMode HierarchyObjectMode => hierarchyObjectMode;
+        public bool ShowHierarchyToggles => showHierarchyToggles;
+        public bool ShowComponentIcons => showComponentIcons;
+        public bool ShowTreeMap => showTreeMap;
+        public Color TreeMapColor => treeMapColor;
+        public bool ShowSeparator => showSeparator;
+        public bool ShowRowShading => showRowShading;
+        public Color SeparatorColor => separatorColor;
+        public Color EvenRowColor => evenRowColor;
+        public Color OddRowColor => oddRowColor;
 
         /// <summary>
         /// ÉfÅ[É^Çï€ë∂Ç∑ÇÈ

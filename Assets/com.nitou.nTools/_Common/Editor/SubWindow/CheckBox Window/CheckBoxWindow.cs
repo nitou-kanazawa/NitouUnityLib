@@ -1,8 +1,9 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace nitou.Tools {
+namespace nitou.Tools.Shared {
 
     /// <summary>
     /// チェックボックスウインドウを呼び出すための静的クラス
@@ -12,7 +13,7 @@ namespace nitou.Tools {
         /// <summary>
         /// ウインドウを開く
         /// </summary>
-        public static void Open (
+        public static void Open(
             string title,
             IReadOnlyList<ICheckBoxWindowData> dataList,
             Action<IReadOnlyList<ICheckBoxWindowData>> onOk
@@ -25,3 +26,4 @@ namespace nitou.Tools {
         }
     }
 }
+#endif

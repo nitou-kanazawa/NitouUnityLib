@@ -104,6 +104,9 @@ namespace UniRx {
                 .AddTo(disposables);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void BindToInputField(this IReactiveProperty<int> property, TMP_InputField inputField, ICollection<IDisposable> disposables) {
 
             // int
@@ -112,6 +115,9 @@ namespace UniRx {
                 value => value.ToString());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void BindToInputField(this IReactiveProperty<float> property, TMP_InputField inputField, ICollection<IDisposable> disposables) {
 
             // float 

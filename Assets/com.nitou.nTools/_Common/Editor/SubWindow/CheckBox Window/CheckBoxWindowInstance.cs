@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
@@ -7,7 +8,7 @@ using UnityEngine;
 // [参考]
 //  github: Kogane Check Box Window https://github.com/baba-s/Kogane.CheckBoxWindow
 
-namespace nitou.Tools {
+namespace nitou.Tools.Shared {
     using nitou.EditorShared;
 
     /// <summary>
@@ -170,3 +171,4 @@ namespace nitou.Tools {
         }
     }
 }
+#endif

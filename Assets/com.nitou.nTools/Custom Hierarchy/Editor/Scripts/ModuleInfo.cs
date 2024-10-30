@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace nitou.Tools.Hierarchy{
+    using nitou.Tools.Shared;
 
     /// <summary>
     /// パッケージの各種設定を管理する静的クラス
@@ -8,9 +9,9 @@ namespace nitou.Tools.Hierarchy{
     internal static class ModuleInfo{
 
         /// <summary>
-        /// パッケージのディレクトリパス
+        /// 
         /// </summary>
-        internal static readonly PackageDirectoryPath packagePath = new ("com.nitou.nTools");
+        internal static readonly string SettingsMenuPath = PackageInfo.SettingsMenuPath + "Hierarchy";
 
     }
 }

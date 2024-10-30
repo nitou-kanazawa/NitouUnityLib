@@ -31,7 +31,9 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             if (gameObject.TryGetComponent<HierarchyObject>(out _)) return;     // ※ダミーオブジェクトははじく
 
             // 設定データ
-            var settings = nToolsSettings.GetOrCreateSettings();
+            //var settings = nToolsSettings.GetOrCreateSettings();
+            var settings = HierarchySettingsSO.instance;
+
 
             // トグルボタン
             if (settings.ShowHierarchyToggles) {

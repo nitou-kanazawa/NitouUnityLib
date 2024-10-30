@@ -1,4 +1,5 @@
-﻿namespace nitou.Tools {
+﻿#if UNITY_EDITOR
+namespace nitou.Tools.Shared {
 
     public interface ICheckBoxWindowData {
 
@@ -28,3 +29,5 @@
         }
     }
 }
+
+#endif

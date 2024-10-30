@@ -13,7 +13,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         public override void OnGUI(int instanceID, Rect selectionRect) {
 
             // 
-            var settings = nToolsSettings.GetOrCreateSettings();
+            var settings = HierarchySettingsSO.instance;
             if (!settings.ShowSeparator) return;
 
             // ‘ÎÛ—Ìˆæ

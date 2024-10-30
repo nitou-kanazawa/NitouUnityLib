@@ -9,13 +9,18 @@ namespace nitou.Tools.Shared{
         /// <summary>
         /// パッケージのディレクトリパス
         /// </summary>
-        internal static readonly PackageDirectoryPath packagePath = null;
+        internal static readonly PackageDirectoryPath PackagePath = null;
+
+        /// <summary>
+        /// ProjectSettingsのメニューパス
+        /// </summary>
+        internal static readonly string SettingsMenuPath = "Project/Nitou Tools/";
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         static PackageInfo() {
-            packagePath = new PackageDirectoryPath("com.nitou.nTools");
+            PackagePath = new PackageDirectoryPath("com.nitou.nTools");
         }
     }
 }

@@ -30,7 +30,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, CURRENT_TEXTURE);
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, CURRENT_TEXTURE);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
             }
@@ -42,7 +42,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LAST_TEXTURE);
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LAST_TEXTURE);
                 TextureCached[nameof(TreeMapLast)] = tex;
                 return tex;
             }
@@ -54,7 +54,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LEVEL_TEXTURE);
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LEVEL_TEXTURE);
                 TextureCached[nameof(TreeMapLevel)] = tex;
                 return tex;
             }
@@ -66,7 +66,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 if (tex != null) return tex;
 
                 // Textureì«Ç›çûÇ›
-                tex = AssetsLoader.Load<Texture2D>(PackageInfo.packagePath, REATIVE_PATH, LINE_TEXTURE);
+                tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LINE_TEXTURE);
                 TextureCached[nameof(TreeMapLine)] = tex;
                 return tex;
             }
@@ -80,7 +80,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
 
-            var settings = nToolsSettings.GetOrCreateSettings();
+            var settings = HierarchySettingsSO.instance;
 
             var tempColor = GUI.color;
 
@@ -137,7 +137,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         /// 
         /// </summary>
         private static AssetPath GetAssetPath(string assetName) {
-            var fullPath = PathUtil.Combine(PackageInfo.packagePath.ToAbsolutePath(), REATIVE_PATH, assetName);
+            var fullPath = PathUtil.Combine(PackageInfo.PackagePath.ToAbsolutePath(), REATIVE_PATH, assetName);
             return AssetPath.FromAbsolutePath(fullPath);
         }
     }

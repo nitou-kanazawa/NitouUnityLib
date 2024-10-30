@@ -7,6 +7,9 @@ namespace nitou.Tools.PumlGenerator {
 
     public static class PlantUmlGenerator {
         
+        /// <summary>
+        /// Pumlファイルを生成する．
+        /// </summary>
         public static void GenerateDiagram(string templatePath, string outputPath) {
             if (!File.Exists(templatePath)) {
                 Debug.LogError($"Template not found at: {templatePath}");
