@@ -58,9 +58,11 @@ namespace UniRx {
         /// <summary>
         /// Observe onValueChanged with current `text` value on subscribe.
         /// </summary>
-        public static IObservable<string> OnValueChangedAsObservable(this TMP_InputField inputField) {
+        public static IObservable<string> OnValueChangedAsObservable(this TMP_InputField inputField, bool withCurrentValue = true) {
             return Observable.CreateWithState<string, TMP_InputField>(inputField, (i, observer) => {
-                observer.OnNext(i.text);
+                if (withCurrentValue) {
+                    observer.OnNext(i.text);
+                }
                 return i.onValueChanged.AsObservable().Subscribe(observer);
             });
         }
@@ -175,9 +177,11 @@ namespace UniRx {
         /// <summary>
         /// Observe onValueChanged with current `value` on subscribe.
         /// </summary>
-        public static IObservable<int> OnValueChangedAsObservable(this TMP_Dropdown dropdown) {
+        public static IObservable<int> OnValueChangedAsObservable(this TMP_Dropdown dropdown, bool withCurrentValue = true) {
             return Observable.CreateWithState<int, TMP_Dropdown>(dropdown, (d, observer) => {
-                observer.OnNext(d.value);
+                if (withCurrentValue) {
+                    observer.OnNext(d.value);
+                }
                 return d.onValueChanged.AsObservable().Subscribe(observer);
             });
         }
