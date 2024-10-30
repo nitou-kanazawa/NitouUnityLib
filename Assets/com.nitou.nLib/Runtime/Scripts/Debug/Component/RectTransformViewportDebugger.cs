@@ -1,12 +1,11 @@
 using UnityEngine;
-using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
 using nitou.EditorShared;
 #endif
 
 namespace nitou.DebugInternal {
-    //using nitou.Inspector;
+    using nitou.Inspector;
 
     /// <summary>
     /// <see cref="RectTransform"/>のRect範囲をViewport情報として可視化するデバッグ用コンポーネント
@@ -26,7 +25,7 @@ namespace nitou.DebugInternal {
         private Canvas _canvas;
 
         //[Title("Mode")]
-        [Indent, EnumToggleButtons] public Mode mode;
+        [Indent,EnumToggle] public Mode mode;
         
         
         public TextAnchor minAlignment = TextAnchor.UpperRight;

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
-using Sirenix.OdinInspector;
+using UniRx;
 #if UNITY_EDITOR
 using UnityEditor;
 using nitou.EditorShared;
 #endif
 
 namespace nitou.DesignPattern {
+    using nitou.Inspector;
 
     /// <summary>
     /// MonoBahaviourを継承したシンプルなステートマシン
