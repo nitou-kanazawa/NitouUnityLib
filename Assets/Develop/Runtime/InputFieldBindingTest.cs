@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 namespace nitou {
     public class InputFieldBindingTest : MonoBehaviour {
@@ -47,7 +47,7 @@ namespace nitou {
         private void OnDestroy() {
             // Dispose of all subscriptions when the object is destroyed
             foreach (var disposable in _disposables) {
-                disposable.Dispose();
+                disposable?.Dispose();
             }
         }
 
