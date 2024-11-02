@@ -31,6 +31,16 @@ namespace Project {
                     Debug.Log("Long press state!");
                 }).AddTo(this);
 
+            var streem = new Subject<Unit>();
+
+            // 1
+            streem.ThrottleFirst(TimeSpan.FromSeconds(1f))
+                .Subscribe();
+
+            // 2
+
+
+
         }
 
     }

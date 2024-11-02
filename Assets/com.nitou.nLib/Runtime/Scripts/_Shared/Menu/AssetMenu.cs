@@ -36,6 +36,7 @@ namespace nitou {
             public const string SceneInfo = ScriptableObject + "Scene Info/";
 
             // ----- 
+
             /// <summary>
             /// アニメーションデータ
             /// </summary>

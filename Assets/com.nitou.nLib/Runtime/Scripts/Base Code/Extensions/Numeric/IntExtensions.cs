@@ -28,6 +28,28 @@ namespace nitou {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsOdd(this int self) => 
             (self % 2) != 0;
+
+        /// <summary>
+        /// 正の値かどうかを判定する拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsPositive(this int self) =>
+            self > 0;
+
+        /// <summary>
+        /// 負の値かどうかを判定する拡張メソッド
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsNegative(this int self) =>
+            self < 0;
+
+
+        /// <summary>
+        /// 指定された範囲内に収まっているかどうかを判定する拡張メソッド．
+        /// </summary>
+        public static bool IsInRange(this int self, int min, int max) =>
+            min <= self && self <= max;
+
         #endregion
 
 
@@ -51,14 +73,12 @@ namespace nitou {
         /// <summary>
         /// 入力を指定範囲内の値に制限する拡張メソッド
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Clamp(this int self, int min, int max) => 
             Mathf.Clamp(self, min, max);
 
         /// <summary>
         /// 数値を加算して、範囲を超えた分は min からの値として処理して返す拡張メソッド
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Repeat(this int self, int min, int max) {
             if (min >= max)
                 throw new System.ArgumentException("min must be less than max");

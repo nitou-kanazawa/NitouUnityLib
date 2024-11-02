@@ -88,7 +88,7 @@ namespace nitou {
                 throw new System.ArgumentOutOfRangeException();
             }
 
-            if (!currentIndex.IsInRange(0, list.Count)) {
+            if (!GenericExtensions.IsInRange(currentIndex, 0, list.Count)) {
                 throw new System.ArgumentOutOfRangeException(nameof(currentIndex));
             }
 

@@ -11,8 +11,8 @@ namespace nitou {
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(TMP_Dropdown))]
-    public abstract class DropdownEnumOptions<TEnum> : MonoBehaviour ,IDataHolder<TEnum>
-        where TEnum : Enum{
+    public abstract class DropdownEnumOptions<TEnum> : MonoBehaviour, IDataHolder<TEnum>
+        where TEnum : Enum {
 
         private TMP_Dropdown _dropdown;
         private ReactiveProperty<TEnum> _currentRP = new();
@@ -45,7 +45,7 @@ namespace nitou {
                         Setup();
                 })
                 .AddTo(this);
-            
+
             // RP‚ÌXV
             _currentRP
                 .Subscribe(type => {
@@ -57,7 +57,7 @@ namespace nitou {
         private void OnDestroy() {
             _currentRP?.Dispose();
         }
-        
+
         private void OnValidate() {
             if (_dropdown is null)
                 _dropdown = GetComponent<TMP_Dropdown>();

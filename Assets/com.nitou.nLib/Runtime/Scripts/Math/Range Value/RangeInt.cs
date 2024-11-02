@@ -54,7 +54,7 @@ namespace nitou{
         /// ’l‚ª”ÍˆÍ“à‚©’²‚×‚é
         /// </summary>
         public bool Contains(int value) {
-            return value.IsInRange(_min, _max);
+            return GenericExtensions.IsInRange(value, _min, _max);
         }
 
         public float Clamp(int value) {
