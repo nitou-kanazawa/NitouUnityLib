@@ -1,0 +1,50 @@
+@startuml
+class Battler {
+    - Character character
+    - Weapon weapon
+    - List<StatusEffect> statusEffects
+    + int Attack
+    + int Defense
+    + int Speed
+    + void CalculateTotalStats()
+}
+
+class Character {
+    + int MaxHP
+    + int CurrentHP
+    + int MaxSP
+    + int CurrentSP
+    + int Attack
+    + int Defense
+    + int Speed
+    + List<Skill> skills
+}
+
+class Weapon {
+    + int AttackBoost
+    + int DefenseBoost
+    + int SpeedBoost
+}
+
+class StatusEffect {
+    + string Name
+    + int Duration
+    + void ApplyEffect(Battler target)
+}
+
+class TurnManager {
+    + List<Battler> battlers
+    + void DetermineTurnOrder()
+    + void StartNextTurn()
+}
+
+class Skill {
+    + string Name
+    + void Execute(Battler user, Battler target)
+}
+
+Battler "1" *-- "1" Character
+Battler "0..1" *-- "1" Weapon
+Battler "0..*" *-- "1" StatusEffect
+Character "1" o-- "*" Skill
+TurnManager "1" o-- "*" Battler
