@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace nitou.DesignPattern {
 
@@ -7,8 +6,7 @@ namespace nitou.DesignPattern {
     /// MonoBehaviour を継承したステート基底クラス
     /// </summary>
     public abstract class State<TContext, TParam> : MonoBehaviour
-        where TParam : StateSetupParam {
-
+        where TParam : FMSSetupParam {
 
         /// <summary>
         /// このステートが所属するステートマシンが持っているコンテキスト

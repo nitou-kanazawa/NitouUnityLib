@@ -9,11 +9,17 @@ using UnityEditor;
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// MonoBahaviourを継承したシンプルなステートマシン
+    /// ステートマシンの初期化パラメータ．
+    /// </summary>
+    public class FMSSetupParam { }
+
+
+    /// <summary>
+    /// MonoBahaviourを継承したシンプルなステートマシン．
     /// </summary>
     public abstract partial class SimpleFMS<TContext, TParam> : MonoBehaviour,
         IInitializable<TContext, TParam>
-        where TParam : StateSetupParam {
+        where TParam : FMSSetupParam {
 
         /// <summary>
         /// ステートマシンが保持しているコンテキスト
@@ -27,22 +33,22 @@ namespace nitou.DesignPattern {
         /// <summary>
         ///  初期ステート
         /// </summary>
-        //[TitleGroup("State Informations")]
-        //[SerializeField, Indent]
+        [TitleGroup("State Informations")]
+        [SerializeField, Indent]
         protected State<TContext, TParam> _initialState = null;
 
         /// <summary>
         ///  現在のステート
         /// </summary>
-        //[TitleGroup("State Informations")]
-        //[ShowInInspector, ReadOnly, Indent]
+        [TitleGroup("State Informations")]
+        [ShowInInspector, ReadOnly, Indent]
         public State<TContext, TParam> CurrentState { get; private set; }
 
         /// <summary>
         ///  前回のステート
         /// </summary>
-        //[TitleGroup("State Informations")]
-        //[ShowInInspector, ReadOnly, Indent]
+        [TitleGroup("State Informations")]
+        [ShowInInspector, ReadOnly, Indent]
         public State<TContext, TParam> PreviousState { get; private set; }
 
 
@@ -65,8 +71,8 @@ namespace nitou.DesignPattern {
         /// <summary>
         /// 初期化が完了しているかどうか
         /// </summary>
-        //[TitleGroup("Others")]
-        //[ShowInInspector, ReadOnly, Indent]
+        [TitleGroup("Others")]
+        [ShowInInspector, ReadOnly, Indent]
         public bool IsInitialized { get; private set; }
 
         // 内部処理用
