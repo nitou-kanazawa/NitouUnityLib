@@ -6,7 +6,7 @@ namespace nitou.DesignPattern {
     /// MonoBehaviour を継承したステート基底クラス
     /// </summary>
     public abstract class State<TContext, TParam> : MonoBehaviour
-        where TParam : FMSSetupParam {
+        where TParam : StateSetupParam {
 
         /// <summary>
         /// このステートが所属するステートマシンが持っているコンテキスト

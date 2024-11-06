@@ -9,9 +9,9 @@ using UnityEditor;
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// ステートマシンの初期化パラメータ．
+    /// ステートの初期化パラメータ．
     /// </summary>
-    public class FMSSetupParam { }
+    public class StateSetupParam { }
 
 
     /// <summary>
@@ -19,7 +19,7 @@ namespace nitou.DesignPattern {
     /// </summary>
     public abstract partial class SimpleFMS<TContext, TParam> : MonoBehaviour,
         IInitializable<TContext, TParam>
-        where TParam : FMSSetupParam {
+        where TParam : StateSetupParam {
 
         /// <summary>
         /// ステートマシンが保持しているコンテキスト
