@@ -42,6 +42,23 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
+
+        /// <summary>
+        /// カラーを変換する拡張メソッド
+        /// </summary>
+        public static string ToHtmlStringRGB(this Color color) {
+            return $"#{ColorUtility.ToHtmlStringRGB(color)}";
+        }
+
+        /// <summary>
+        /// カラーを変換する拡張メソッド
+        /// </summary>
+        public static string ToHtmlStringRGBA(this Color color) {
+            return $"#{ColorUtility.ToHtmlStringRGBA(color)}";
+        }
+
+
+        /// ----------------------------------------------------------------------------
         #region Misc
 
         /// <summary>
