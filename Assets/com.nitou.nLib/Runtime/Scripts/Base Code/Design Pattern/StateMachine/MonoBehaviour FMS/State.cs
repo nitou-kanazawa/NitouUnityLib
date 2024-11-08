@@ -9,17 +9,17 @@ namespace nitou.DesignPattern {
         where TParam : StateSetupParam {
 
         /// <summary>
-        /// このステートが所属するステートマシンが持っているコンテキスト
+        /// このステートが所属するステートマシンが持っているコンテキスト．
         /// </summary>
         protected TContext Context { get; private set; }
 
         /// <summary>
-        /// ステートマシン
+        /// ステートマシン．
         /// </summary>
         protected SimpleFMS<TContext, TParam> StateMachine { get; private set; }
 
         /// <summary>
-        /// 初期化が完了しているかどうか
+        /// 初期化が完了しているかどうか．
         /// </summary>
         public bool IsInitialized { get; private set; } = false;
 
@@ -28,7 +28,7 @@ namespace nitou.DesignPattern {
         // Public Method (初期化処理)
 
         /// <summary>
-        /// 初期化処理
+        /// 初期化処理．
         /// </summary>
         public void Initialize(SimpleFMS<TContext, TParam> machine, TParam param) {
             Error.ArgumentNullException(machine);
@@ -45,7 +45,7 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// 派生クラス用の初期化処理
+        /// 派生クラス用の初期化処理．
         /// </summary>
         protected virtual void OnInitialized(TParam param) { }
 
@@ -54,13 +54,13 @@ namespace nitou.DesignPattern {
         // Public Method (ステート遷移条件)
 
         /// <summary>
-        /// ステート遷移条件を満たしているかをチェックする
+        /// ステート遷移条件を満たしているか確認する．
         /// </summary>
         public virtual void CheckExitTransition() { }
 
         /// <summary>
-        /// 他ステートからの遷移を受け入れられるかチェックする
-        /// (※遷移可能ならtrue，不可能ならfalse)
+        /// 他ステートからの遷移を受け入れられるか確認する．
+        /// 遷移可能ならtrue，不可能ならfalseを返す．
         /// </summary>  
         public virtual bool CheckEnterTransition(State<TContext, TParam> fromState) => true;
 
@@ -107,6 +107,5 @@ namespace nitou.DesignPattern {
 
         public virtual Color GetColor() => Color.white;
     }
-
 
 }

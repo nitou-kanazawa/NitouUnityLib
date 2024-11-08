@@ -8,6 +8,21 @@ namespace nitou {
     public static class StringUtil {
 
         /// ----------------------------------------------------------------------------
+        #region 文字列への変換
+
+        public static string ToFloatText(this float self) {
+            return self.ToString("0.00");
+        }
+
+        public static string ToFloatText(this float self, int decimalPlaces = 2) {
+            // 小数点以下の桁数に基づいてフォーマット
+            string format = "0." + new string('0', decimalPlaces);
+            return self.ToString(format);
+        }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
         #region 文字列の生成
 
         /// <summary>
@@ -27,6 +42,23 @@ namespace nitou {
         }
         private const string PASSWORD_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz";
 
+        #endregion
+
+    }
+
+
+    public static class ParseUtil {
+
+        /// ----------------------------------------------------------------------------
+        #region 文字列の生成
+
+        public static float FloatOrZero(string text) {
+            return float.TryParse(text, out var result) ? result : 0f;
+        }
+
+        public static float FloatOrDefault(string text, float value) {
+            return float.TryParse(text, out var result) ? result : value;
+        }
         #endregion
 
     }

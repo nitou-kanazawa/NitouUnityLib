@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 
-namespace nitou{
+namespace nitou {
 
     /// <summary>
     /// <see cref="T"/>型のデータを保持できるオブジェクト．
     /// </summary>
-    public interface IDataHolder<T>{
+    public interface IDataHolder<T> {
 
         /// <summary>
         /// 値が変化したときに通知するObservable．
