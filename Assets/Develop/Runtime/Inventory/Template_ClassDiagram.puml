@@ -1,0 +1,69 @@
+@startuml
+package CommonModule {
+    interface IInventoryChangeNotifier<T> {
+        + OnItemAdded(): IObservable<T>
+        + OnItemRemoved(): IObservable<T>
+    }
+
+    abstract class InventoryItem<T> {
+        + T Data
+        + ItemCategory Category
+    }
+
+    class Inventory<T> {
+        - List<InventoryItem<T>> items
+        + void AddItem(T item)
+        + void RemoveItem(T item)
+        + List<InventoryItem<T>> GetItemsByCategory(ItemCategory category)
+    }
+
+    class ReactiveInventory<T> {
+        + IObservable<T> OnItemAdded
+        + IObservable<T> OnItemRemoved
+    }
+
+    enum ItemCategory {
+        Weapon
+        Shield
+        Consumable
+        Other
+    }
+}
+
+package ProjectSpecificModule {
+    abstract class ItemCommand<T> {
+        + void Execute(InventoryItem<T> item)
+    }
+
+    class EquipCommand<T> {
+        + void Execute(InventoryItem<T> item)
+    }
+
+    class DiscardCommand<T> {
+        + void Execute(InventoryItem<T> item)
+    }
+
+    class InventoryUI<T> {
+        + void DisplayInventory(List<InventoryItem<T>> items)
+        + void OnItemSelected(InventoryItem<T> item)
+    }
+
+    class InventorySelectionManager<T> {
+        - InventoryItem<T> selectedItem
+        + void SelectItem(InventoryItem<T> item)
+        + InventoryItem<T> GetSelectedItem()
+    }
+}
+
+
+ReactiveInventory -up-|> Inventory
+ReactiveInventory .up.|> IInventoryChangeNotifier
+
+Inventory --> InventoryItem : <<composition>>
+InventoryItem --> ItemCategory
+InventoryUI --> Inventory
+InventorySelectionManager --> InventoryItem
+EquipCommand -up-|> ItemCommand
+DiscardCommand -up-|> ItemCommand
+
+@enduml
