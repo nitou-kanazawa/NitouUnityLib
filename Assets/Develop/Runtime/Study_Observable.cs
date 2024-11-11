@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 
 
-public class RetryOnErrorExample : MonoBehaviour {
+public class Study_Observable : MonoBehaviour {
 
     private Subject<Unit> stopTimerSubject = new Subject<Unit>();
 
@@ -25,6 +25,11 @@ public class RetryOnErrorExample : MonoBehaviour {
             .Subscribe(t => Debug.Log($"time: {t}"))
             .AddTo(this);
 
+
+
+        //Observable.Create<char>(observer => {
+        //    var disposable = new CancellationDisposable();
+        //})
 
     }
 
