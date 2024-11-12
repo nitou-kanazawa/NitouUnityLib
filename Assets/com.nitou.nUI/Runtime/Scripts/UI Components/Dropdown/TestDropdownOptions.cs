@@ -1,9 +1,8 @@
 using System;
-using UniRx;
 using UnityEngine;
 using TMPro;
 
-namespace nitou {
+namespace nitou.UI.Demo {
 
     public enum MyType {
         ModeA,Å@ModeB,Å@ModeC,Å@ModeD,

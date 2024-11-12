@@ -3,11 +3,12 @@ using UniRx;
 using UnityEngine;
 using TMPro;
 using Sirenix.OdinInspector;
+using System.Globalization;
 
 namespace nitou.UI {
 
     /// <summary>
-    /// 
+    /// <see cref="Vector3"/>の入力を受け付けるためのView．
     /// </summary>
     public sealed class Vector3InputFieldView : InputFieldView<Vector3> {
 
@@ -33,7 +34,7 @@ namespace nitou.UI {
                 _yInputField.onEndEdit.AsObservable().AsUnitObservable(),
                 _zInputField.onEndEdit.AsObservable().AsUnitObservable()
             )
-            .Subscribe(_ => UpdateVectorValue())
+            .Subscribe(_ => UpdateValue())
             .AddTo(this);
         }
 
@@ -41,7 +42,7 @@ namespace nitou.UI {
         /// ----------------------------------------------------------------------------
         // Private Method
 
-        private void UpdateVectorValue() {
+        private void UpdateValue() {
             Vector3 currentValue = _valueRP.Value;
             Vector3? parsedValue = TryParseValue();
 
@@ -58,9 +59,11 @@ namespace nitou.UI {
         /// Viewから値を読み取る．
         /// </summary>
         private Vector3? TryParseValue() {
-            bool xParsed = float.TryParse(_xInputField.text, out var x);
-            bool yParsed = float.TryParse(_yInputField.text, out var y);
-            bool zParsed = float.TryParse(_zInputField.text, out var z);
+
+            // parse values
+            bool xParsed = float.TryParse(_xInputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out var x);
+            bool yParsed = float.TryParse(_yInputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out var y);
+            bool zParsed = float.TryParse(_zInputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out var z);
 
             // 全てのパースが成功した場合にのみ値を返す
             if (xParsed && yParsed && zParsed) {

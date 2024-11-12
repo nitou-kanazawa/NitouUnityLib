@@ -1,7 +1,6 @@
 using System;
 using UniRx;
 using UnityEngine;
-using TMPro;
 using Sirenix.OdinInspector;
 
 namespace nitou.UI{
@@ -35,6 +34,7 @@ namespace nitou.UI{
         }
 
         public virtual void SetValue(T newValue) {
+            // ※必要に応じてバリデーション等を追加する．
             _valueRP.Value = newValue;
         }
 
