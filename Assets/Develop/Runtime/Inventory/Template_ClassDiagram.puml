@@ -1,21 +1,30 @@
 @startuml
+
 package CommonModule {
-    interface IInventoryChangeNotifier<T> {
-        + OnItemAdded(): IObservable<T>
-        + OnItemRemoved(): IObservable<T>
+
+    ' インベントリに格納されるアイテム
+    interface IInventoryItem{
+        + string Name
     }
+
+    abstract class Inventory<T> {
+        - List<T> items
+        + void AddItem(T item)
+        + void RemoveItem(T item)
+        + List<InventoryItem<T>> GetItemsByCategory(ItemCategory category)
+    }
+
 
     abstract class InventoryItem<T> {
         + T Data
         + ItemCategory Category
     }
 
-    class Inventory<T> {
-        - List<InventoryItem<T>> items
-        + void AddItem(T item)
-        + void RemoveItem(T item)
-        + List<InventoryItem<T>> GetItemsByCategory(ItemCategory category)
+    interface IInventoryChangeNotifier<T> {
+        + OnItemAdded(): IObservable<T>
+        + OnItemRemoved(): IObservable<T>
     }
+
 
     class ReactiveInventory<T> {
         + IObservable<T> OnItemAdded
@@ -29,6 +38,10 @@ package CommonModule {
         Other
     }
 }
+
+Inventory "1"-->"n" IInventoryItem : <<composition>>
+
+
 
 package ProjectSpecificModule {
     abstract class ItemCommand<T> {
@@ -59,7 +72,7 @@ package ProjectSpecificModule {
 ReactiveInventory -up-|> Inventory
 ReactiveInventory .up.|> IInventoryChangeNotifier
 
-Inventory --> InventoryItem : <<composition>>
+
 InventoryItem --> ItemCategory
 InventoryUI --> Inventory
 InventorySelectionManager --> InventoryItem
