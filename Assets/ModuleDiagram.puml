@@ -10,6 +10,7 @@ node "Common Library" #LightBlue{
 
 ' 基本モジュール
 node "Basic Modules" #LightBlue{
+  component "nUI" as BasicUI
   component "nModules" as BasicModules
   component "nTools" as BasicTools
 }
@@ -21,6 +22,7 @@ node "Additional Modules" #LightYellow{
 }
 
 ' 依存関係
+BasicUI -up-> Library
 BasicModules -up-> Library
 BasicTools -up-> Library
 

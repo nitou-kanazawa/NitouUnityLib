@@ -1,0 +1,23 @@
+{
+    "name": "Nitou.UI.Editor",
+    "rootNamespace": "nitou.UI.EditorScripts",
+    "references": [
+        "Nitou.Lib",
+        "Nitou.Lib.Editor",
+        "Nitou.UI",
+        "UnityScreenNavigator"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "USN_USE_ASYNC_METHODS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

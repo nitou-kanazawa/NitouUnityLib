@@ -26,7 +26,7 @@ namespace nitou {
         #region 文字列の生成
 
         /// <summary>
-        /// 簡易的なパスワードを生成する
+        /// 簡易的なパスワードを生成する．
         /// </summary>
         public static string GeneratePassword(int length) {
             var sb = new System.Text.StringBuilder(length);

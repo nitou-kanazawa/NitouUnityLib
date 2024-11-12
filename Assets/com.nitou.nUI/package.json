@@ -1,0 +1,18 @@
+{
+  "name": "com.nitou.nui",
+  "displayName": "Nitou UI",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "UI Libraly.",
+  "keywords": [],
+  "author": {
+    "name": "Nitou",
+    "url": "https://github.com/nitou-kanazawa"
+  },
+  "license": "MIT",
+  "category": "",
+  "dependencies": {
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.inputsystem": "1.8.2"
+  }
+}
