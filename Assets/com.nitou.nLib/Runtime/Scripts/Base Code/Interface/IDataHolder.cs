@@ -5,22 +5,22 @@ using UniRx;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="T"/>型のデータを保持できるオブジェクト．
+    /// An object that can hold data of type <see cref="T"/>.
     /// </summary>
     public interface IDataHolder<T> {
 
         /// <summary>
-        /// 値が変化したときに通知するObservable．
+        /// Observable that notifies when the value changes.
         /// </summary>
         public IObservable<T> OnValueChanged { get; }
 
         /// <summary>
-        /// 値を取得する．
+        /// Retrieves the value.
         /// </summary>
         public T GetValue();
 
         /// <summary>
-        /// 値を設定する．
+        /// Sets the value.
         /// </summary>
         public void SetValue(T value);
     }
@@ -29,7 +29,7 @@ namespace nitou {
     public static class DataHolderExtensions {
 
         /// <summary>
-        /// 双方向バインディング．
+        /// Two-way binding.
         /// </summary>
         public static void BindTo<T>(this IReactiveProperty<T> property, IDataHolder<T> target, ICollection<IDisposable> disposables) {
 

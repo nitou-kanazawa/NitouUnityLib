@@ -8,12 +8,13 @@ namespace DG.Tweening {
     /// <summary>
     /// <see cref="Tween"/>に関する汎用メソッド集
     /// </summary>
-    public static class TweenUtil{
+    public static class TweenUtils{
 
         /// <summary>
-        /// SetUpdate(true)の糖衣構文
+        /// SetUpdate(true)の糖衣構文.
         /// </summary>
-        public static T IgnoreTimeScale<T>(this T t) where T : Tween {
+        public static T IgnoreTimeScale<T>(this T t) 
+            where T : Tween {
             return t.SetUpdate(true);
         }
 
