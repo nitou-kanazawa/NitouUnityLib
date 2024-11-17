@@ -5,12 +5,12 @@ namespace nitou.UI.Component {
     public interface IIconView {
 
         /// <summary>
-        /// スプライトを設定する
+        /// Set sprite.
         /// </summary>
         public void SetSprite(Sprite sprite);
 
         /// <summary>
-        /// スプライトのネイティブサイズを適用する
+        /// Set size of sprite.
         /// </summary>
         public void SetNativeSize(float scale);
     }

@@ -3,17 +3,17 @@ using UnityEngine;
 namespace nitou.UI.Component {
 
     /// <summary>
-    /// スコア表示を担うUIであることを示すインターフェース
+    /// UI interface with score indication.
     /// </summary>
     public interface IScoreTextView{
 
         /// <summary>
-        /// スコアを設定する
+        /// Set score value.
         /// </summary>
         public void SetScore(int value);
 
         /// <summary>
-        /// デフォルト値を設定する
+        /// Set default score value.
         /// </summary>
         public void SetDefaule();
     }

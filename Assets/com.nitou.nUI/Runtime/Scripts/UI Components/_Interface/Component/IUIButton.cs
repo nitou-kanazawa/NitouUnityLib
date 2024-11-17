@@ -2,7 +2,7 @@
 namespace nitou.UI.Component {
 
     /// <summary>
-    /// カスタムボタンを表すインターフェース
+    /// Interface of custom ui button.
     /// </summary>
-    public interface IUIButton : IUISelectable, IUISubmitable ,IUIMoveable{ }
+    public interface IUIButton : IUISelectable, IUISubmitable, IUIMoveable { }
 }

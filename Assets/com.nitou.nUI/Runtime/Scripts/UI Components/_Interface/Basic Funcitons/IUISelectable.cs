@@ -4,7 +4,7 @@ using UniRx;
 namespace nitou.UI.Component {
 
     /// <summary>
-    /// Interface of the UI that handles the ÅgSelectÅh event
+    /// Interface of the UI that handles the ÅgSelectÅh event.
     /// </summary>
     public interface IUISelectable : IUIComponent {
 

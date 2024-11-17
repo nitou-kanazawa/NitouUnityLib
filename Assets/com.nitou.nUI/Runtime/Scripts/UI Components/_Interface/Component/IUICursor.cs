@@ -3,8 +3,6 @@ using UniRx;
 
 namespace nitou.UI.Component {
 
-    public interface IUICursor : IUIComponent {
-        
-    }
+    public interface IUICursor : IUIComponent { }
 
 }
