@@ -13,7 +13,7 @@ namespace nitou.Tools.CodeGeneration{
 
             // インポート対象のファイルパス
             string filePath = ctx.assetPath;
-            string fileName = PathUtil.GetFileName(filePath);
+            string fileName = PathUtils.GetFileName(filePath);
 
             // アセットをインポートする処理（例: テキストファイルの内容を読み込む）
             string fileContent = System.IO.File.ReadAllText(filePath);

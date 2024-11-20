@@ -36,7 +36,7 @@ namespace nitou.EditorShared {
         /// </summary>
         public static T Load<T>(PackageDirectoryPath packagePath, string relativePath, string fileName)
             where T : Object {
-            var path = PathUtil.Combine(packagePath.ToProjectPath(), relativePath, fileName);
+            var path = PathUtils.Combine(packagePath.ToProjectPath(), relativePath, fileName);
             return AssetDatabase.LoadAssetAtPath<T>(path);
         }
 
@@ -68,7 +68,7 @@ namespace nitou.EditorShared {
 
         public static List<T> LoadAll<T>(PackageDirectoryPath packagePath, string relativePath) where T : Object {
 
-            var path = PathUtil.Combine(packagePath.ToProjectPath(), relativePath);
+            var path = PathUtils.Combine(packagePath.ToProjectPath(), relativePath);
             return LoadAll_Internal<T>( path);
         }
 

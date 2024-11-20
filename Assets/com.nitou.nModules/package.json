@@ -1,9 +1,9 @@
 {
-  "name": "com.nitou.nlib",
-  "displayName": "Nitou Lib",
-  "version": "1.0.0",
+  "name": "com.nitou.nmodules",
+  "displayName": "Nitou Modules",
+  "version": "0.1.0",
   "unity": "6000.0",
-  "description": "Basic Libraly.",
+  "description": "Basic Modules.",
   "keywords": [],
   "author": {
     "name": "Nitou",
@@ -12,7 +12,6 @@
   "license": "MIT",
   "category": "",
   "dependencies": {
-    "com.unity.modules.ui": "1.0.0",
     "com.unity.inputsystem": "1.8.2"
   }
 }

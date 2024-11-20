@@ -137,7 +137,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         /// 
         /// </summary>
         private static AssetPath GetAssetPath(string assetName) {
-            var fullPath = PathUtil.Combine(PackageInfo.PackagePath.ToAbsolutePath(), REATIVE_PATH, assetName);
+            var fullPath = PathUtils.Combine(PackageInfo.PackagePath.ToAbsolutePath(), REATIVE_PATH, assetName);
             return AssetPath.FromAbsolutePath(fullPath);
         }
     }

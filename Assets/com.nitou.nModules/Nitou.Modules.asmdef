@@ -1,12 +1,12 @@
 {
-    "name": "Nitou.Lib",
+    "name": "Nitou.Modules",
     "rootNamespace": "nitou",
     "references": [
-        "UniRx",
+        "Nitou.Lib",
         "UniTask",
-        "UniTask.Linq",
-        "Unity.TextMeshPro",
-        "Unity.InputSystem"
+        "UniRx",
+        "Unity.InputSystem",
+        "VContainer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
