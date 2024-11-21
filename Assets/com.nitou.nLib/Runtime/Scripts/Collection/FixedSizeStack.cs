@@ -3,13 +3,13 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
-// [参考]
+// [REF]
 //  _: Stack<T> クラス https://learn.microsoft.com/ja-jp/dotnet/api/system.collections.generic.stack-1?view=net-8.0
 
 namespace nitou {
 
 	/// <summary>
-	/// <see cref="Stack{T}"/>に最大要素数の制限をかけたコレクション
+	/// A stack with a fixed maximum size.
 	/// </summary>
     public class FixedSizeStack<T> : IEnumerable<T>, IReadOnlyCollection<T> {
 
@@ -17,12 +17,12 @@ namespace nitou {
         private readonly LinkedList<T> _list;
 
 		/// <summary>
-		/// 現在の要素数
+		/// Number of items in the stack.
 		/// </summary>
-        public int Count => _list.Count;
+		public int Count => _list.Count;
 
 		/// <summary>
-		/// 空かどうか
+		/// Checks if the stack is empty.
 		/// </summary>
         public bool IsEmpty => _list.Count == 0;
 
@@ -31,7 +31,7 @@ namespace nitou {
         // Public Method
 
 		/// <summary>
-		/// コンストラクタ 
+		/// Constructor. Sets the maximum size.
 		/// </summary>
         public FixedSizeStack(int maxSize) {
             if (maxSize <= 0) {
@@ -42,14 +42,14 @@ namespace nitou {
         }
 
 		/// <summary>
-		/// 指定した要素が含まれているかどうかを確認する
+		/// Checks if the stack contains the specified item.
 		/// </summary>
 		public bool Contains(T item) {
 			return _list.Contains(item);
 		}
 
 		/// <summary>
-		/// スタックを配列に変換する
+		/// Convert to array.
 		/// </summary>
 		public T[] ToArray() {
 			return _list.ToArray();
@@ -65,10 +65,10 @@ namespace nitou {
 
 
 		/// ----------------------------------------------------------------------------
-		#region Public Method (要素の追加/取得)
+		// Public Method (Add/Remove)
 
 		/// <summary>
-		/// 先頭に要素を追加する
+		/// Adds item to the top of the stack.
 		/// </summary>
 		public void Push(T item) {
             if (_list.Count == _maxSize) {
@@ -79,10 +79,10 @@ namespace nitou {
             _list.AddFirst(item);
         }
 
-        /// <summary>
-        /// 先頭から要素を取り出す
-        /// </summary>
-        public T Pop() {
+		/// <summary>
+		/// Removes and returns the top item.
+		/// </summary>
+		public T Pop() {
             if (_list.Count == 0) {
                 throw new InvalidOperationException("The stack is empty.");
             }
@@ -92,10 +92,10 @@ namespace nitou {
             return value;
         }
 
-        /// <summary>
-        /// 要素を取り出さずに確認する
-        /// </summary>
-        public T Peek() {
+		/// <summary>
+		/// Returns the top item without removing it.
+		/// </summary>
+		public T Peek() {
             if (_list.Count == 0) {
                 throw new InvalidOperationException("The stack is empty.");
             }
@@ -104,7 +104,7 @@ namespace nitou {
         }
 
 		/// <summary>
-		/// 先頭の要素を取り出さずに確認する。成功した場合はtrueを返し、要素をoutパラメーターに格納する
+		/// Tries to get the top item without removing it.
 		/// </summary>
 		public bool TryPeek(out T result) {
 			if (_list.Count == 0) {
@@ -116,7 +116,7 @@ namespace nitou {
 		}
 
 		/// <summary>
-		/// 先頭から要素を取り出す。成功した場合はtrueを返し、要素をoutパラメーターに格納する
+		/// Tries to remove and return the top item.
 		/// </summary>
 		public bool TryPop(out T result) {
 			if (_list.Count == 0) {
@@ -129,12 +129,11 @@ namespace nitou {
 		}
 
 		/// <summary>
-		/// 全ての要素を削除する
+		/// Removes all items from the stack.
 		/// </summary>
 		public void Clear() {
 			_list.Clear();
 		}
-		#endregion
     }
 }
 
