@@ -54,7 +54,7 @@ namespace nitou.EditorShared {
             public void DrawGridX(Color color) {
                 using (new Handles.DrawingScope(color)) {
                     var start = Mathf.Ceil(xAxis.range.Min / xAxis.step) * xAxis.step;
-                    var ticks = EnumerableUtil.LinspaceWithStep(start, xAxis.range.Max, xAxis.step);
+                    var ticks = EnumerableUtils.LinspaceWithStep(start, xAxis.range.Max, xAxis.step);
 
                     ticks.ForEach(x => {
                         DrawLine(new Vector2(x, yAxis.range.Min), new Vector2(x, yAxis.range.Max), PointType.GUIPoint);
@@ -71,7 +71,7 @@ namespace nitou.EditorShared {
             public void DrawGridY(Color color) {
                 using (new Handles.DrawingScope(color)) {
                     var start = Mathf.Ceil(yAxis.range.Min / yAxis.step) * yAxis.step;
-                    var ticks = EnumerableUtil.LinspaceWithStep(start, yAxis.range.Max, yAxis.step);
+                    var ticks = EnumerableUtils.LinspaceWithStep(start, yAxis.range.Max, yAxis.step);
 
                     ticks.ForEach(y => {
                         DrawLine(new Vector2(xAxis.range.Min, y), new Vector2(xAxis.range.Max, y), PointType.GUIPoint);

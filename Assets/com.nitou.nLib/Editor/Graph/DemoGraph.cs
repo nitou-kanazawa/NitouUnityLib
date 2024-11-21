@@ -19,7 +19,7 @@ namespace nitou.EditorScripts {
 			GUILayout.Label("-------------");
 			{ // グラフ描画
 				var settings = new AxisSettings(xRange: (0, 10), yRange: (0, 10), xStep: 1, yStep: 2);
-				var dummyData = EnumerableUtil.LinspaceWithStep(-2, 12, 0.5f)
+				var dummyData = EnumerableUtils.LinspaceWithStep(-2, 12, 0.5f)
 					.Select(x => new Vector2(x, Mathf.Sin(x) + x))
 					.ToArray();
 
@@ -57,7 +57,7 @@ namespace nitou.EditorScripts {
 
 				// X軸
 				var xStart = Mathf.Ceil(settings.xRange.min / settings.xStep) * settings.xStep;
-				var xTicks = EnumerableUtil.LinspaceWithStep(xStart, settings.xRange.max, settings.xStep);
+				var xTicks = EnumerableUtils.LinspaceWithStep(xStart, settings.xRange.max, settings.xStep);
 				foreach (var x in xTicks) {
 					var value1 = new Vector2(x, settings.yRange.min);
 					var value2 = new Vector2(x, settings.yRange.max);
@@ -70,7 +70,7 @@ namespace nitou.EditorScripts {
 
 				// Y軸
 				var yStart = Mathf.Ceil(settings.yRange.min / settings.yStep) * settings.yStep;
-				var yTicks = EnumerableUtil.LinspaceWithStep(yStart, settings.yRange.max, settings.yStep);
+				var yTicks = EnumerableUtils.LinspaceWithStep(yStart, settings.yRange.max, settings.yStep);
 				foreach (var y in yTicks) {
 					var value1 = new Vector2(settings.xRange.min, y);
 					var value2 = new Vector2(settings.xRange.max, y);

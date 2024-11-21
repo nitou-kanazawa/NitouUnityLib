@@ -48,7 +48,7 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// コンストラクタ
+        /// Constructor.
         /// </summary>
         public TimedCollection(TimeSpan timeout) {
             _timeout = timeout;
@@ -70,7 +70,7 @@ namespace nitou {
         // Private Method (コレクション操作)
 
         /// <summary>
-        /// 要素を追加する
+        /// Add item.
         /// </summary>
         public void Add(T item) {
             var expirationTime = DateTime.UtcNow + _timeout;
@@ -83,7 +83,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 要素を削除する
+        /// Remove item.
         /// </summary>
         public bool Remove(T item) {
             var timedItem = _items.Find(t => EqualityComparer<T>.Default.Equals(t.Item, item));
