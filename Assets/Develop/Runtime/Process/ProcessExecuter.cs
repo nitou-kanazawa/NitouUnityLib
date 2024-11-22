@@ -10,6 +10,7 @@ namespace Project.Test {
 
         private readonly IEnumerable<IProcess> _processes;
         private bool _isPaused;
+        private bool _isRunning;
 
         /// <summary>
         /// Constructor.
@@ -22,7 +23,22 @@ namespace Project.Test {
         /// 
         /// </summary>
         public async UniTask Run(CancellationToken token) {
+
+            if (_isRunning) {
+                Debug.LogWarning("Execution is already running.");
+                return;
+            }
+            _isRunning = true;
+
+            Debug.Log("Run processes.");
+
             try {
+
+                foreach (var process in _processes) {
+                    process.OnBeforeRun();
+                }
+
+
                 foreach (var process in _processes) {
                     // îÒìØä˙Ç…àÍéûí‚é~Çë“Ç¬èàóù
                     while (_isPaused) {
@@ -35,16 +51,21 @@ namespace Project.Test {
                 }
             } catch (OperationCanceledException) {
                 Debug.Log("Execution was cancelled.");
+            } finally {
+                _isRunning = false;
             }
+
         }
 
         public void Pause() {
             _isPaused = true;
+            foreach(var process in _processes) { process.Pause(); }
             Debug.Log("Execution paused.");
         }
 
         public void Resume() {
             _isPaused = false;
+            foreach(var process in _processes) { process.Resume(); }
             Debug.Log("Execution resumed.");
         }
     }
