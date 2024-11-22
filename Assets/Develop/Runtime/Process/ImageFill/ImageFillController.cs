@@ -15,7 +15,7 @@ namespace Project.Test {
         [SerializeField] private Button cancelButton;
 
         private ProcessExecuter _processExecuter;
-        private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource _cts;
 
         private void Start() {
             startButton.onClick.AddListener(StartProcesses);
@@ -25,14 +25,17 @@ namespace Project.Test {
         }
 
         private void StartProcesses() {
+
+            _cts?.Cancel();
+
             List<IProcess> processes = new List<IProcess>();
             foreach (var image in images) {
-                processes.Add(new ImageFillProcess(image, 5f)); // 5ïbÇ©ÇØÇƒfillÇëùÇ‚Ç∑
+                processes.Add(new ImageFillProcess(image, 3f)); // 5ïbÇ©ÇØÇƒfillÇëùÇ‚Ç∑
             }
 
             _processExecuter = new ProcessExecuter(processes);
-            _cancellationTokenSource = new CancellationTokenSource();
-            _processExecuter.Run(_cancellationTokenSource.Token).Forget();
+            _cts = new CancellationTokenSource();
+            _processExecuter.Run(_cts.Token).Forget();
         }
 
         private void PauseProcesses() {
@@ -44,7 +47,9 @@ namespace Project.Test {
         }
 
         private void CancelProcesses() {
-            _cancellationTokenSource?.Cancel();
+            _cts?.Cancel();
+            _cts?.Dispose();
+            _cts = null;
         }
     }
 }

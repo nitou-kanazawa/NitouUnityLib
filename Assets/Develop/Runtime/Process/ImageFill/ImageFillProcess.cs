@@ -35,6 +35,15 @@ namespace Project.Test {
         }
 
         public void Pause() => _isPaused = true;
+
         public void Resume() => _isPaused = false;
+
+        public void OnBeforeRun() {
+            _image.fillAmount = 0f;
+        }
+
+        public void OnComplete() {
+            throw new System.NotImplementedException();
+        }
     }
 }
