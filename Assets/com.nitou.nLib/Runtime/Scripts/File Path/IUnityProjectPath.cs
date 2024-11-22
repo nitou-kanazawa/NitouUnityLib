@@ -7,12 +7,12 @@ namespace nitou {
     public interface IUnityProjectPath{
 
         /// <summary>
-        /// Projectディレクトリを起点としたパスに変換する
+        /// Convert to project path that start with "Assets/".
         /// </summary>
         string ToProjectPath();
 
         /// <summary>
-        /// 絶対パスに変換する
+        /// Covert to absolute path.
         /// </summary>
         string ToAbsolutePath();
     }

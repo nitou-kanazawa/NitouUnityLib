@@ -65,7 +65,7 @@ namespace nitou {
         public Vector3[] GetPoints(int num) {
             if (num <= 0) throw new System.InvalidOperationException("The number of divisions must be a positive integer greater than zero.");
 
-            return EnumerableUtil.Linspace(start, end, num).ToArray();
+            return EnumerableUtils.Linspace(start, end, num).ToArray();
         }
 
         /// <summary>

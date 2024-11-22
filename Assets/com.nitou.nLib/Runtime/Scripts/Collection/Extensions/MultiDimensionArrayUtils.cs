@@ -10,7 +10,7 @@ namespace nitou {
     /// <summary>
     /// 配列に対する汎用機能を提供するライブラリ
     /// </summary>
-    public static class MultiDimensionArrayUtility {
+    public static class MultiDimensionArrayUtils {
 
         /// ----------------------------------------------------------------------------
         // 配列の生成
@@ -251,27 +251,27 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
 
         public static T[,] Clone<T>(this T[,] src) =>
-            MultiDimensionArrayUtility.Clone(src);
+            MultiDimensionArrayUtils.Clone(src);
         public static T[,] Cut<T>(this T[,] src, int x, int y, int w, int h) =>
-            MultiDimensionArrayUtility.Cut(src, x, y, w, h);
+            MultiDimensionArrayUtils.Cut(src, x, y, w, h);
         public static T[,] AddMargin<T>(this T[,] src, int m)
-            => MultiDimensionArrayUtility.AddMargin(src, m);
+            => MultiDimensionArrayUtils.AddMargin(src, m);
 
         /// ----------------------------------------------------------------------------
 
         public static T[] To1dArray<T>(this T[,] src) =>
-            MultiDimensionArrayUtility.To1dArray(src);
+            MultiDimensionArrayUtils.To1dArray(src);
         public static T[] To1dArray<T>(this T[,,] src) =>
-            MultiDimensionArrayUtility.To1dArray(src);
+            MultiDimensionArrayUtils.To1dArray(src);
         public static T[,] To2dArray<T>(this T[] src, int xmax, int ymax) =>
-            MultiDimensionArrayUtility.To2dArray(src, xmax, ymax);
+            MultiDimensionArrayUtils.To2dArray(src, xmax, ymax);
         public static T[,,] To3dArray<T>(this T[] src, int xmax, int ymax, int zmax) =>
-            MultiDimensionArrayUtility.To3dArray(src, xmax, ymax, zmax);
+            MultiDimensionArrayUtils.To3dArray(src, xmax, ymax, zmax);
 
         public static string ToStringByDebug<T>(this T[,] src) =>
-            MultiDimensionArrayUtility.ToStringByDebug(src);
+            MultiDimensionArrayUtils.ToStringByDebug(src);
         public static string ToStringByDebug<T>(this T[,,] src, Func<T, bool> evaluate = null) =>
-            MultiDimensionArrayUtility.ToStringByDebug(src, evaluate);
+            MultiDimensionArrayUtils.ToStringByDebug(src, evaluate);
 
 
         /// ----------------------------------------------------------------------------

@@ -12,7 +12,7 @@ namespace nitou {
     /// <summary>
     /// 汎用的なシーケンスデータを生成するユーティリティクラス
     /// </summary>
-    public static class EnumerableUtil {
+    public static class EnumerableUtils {
 
 
         /// ----------------------------------------------------------------------------

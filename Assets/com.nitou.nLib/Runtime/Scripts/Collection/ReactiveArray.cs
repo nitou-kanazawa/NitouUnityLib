@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 
-// [参考]
+// [REF]
 //  github: ReactiveCollection.cs https://github.com/neuecc/UniRx/blob/master/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/ReactiveCollection.cs#L40
 
 namespace nitou {
@@ -32,21 +32,21 @@ namespace nitou {
         /// <summary>
         /// 要素数．
         /// </summary>
-        public int Count => _items.Length;
+        public int Length => _items.Length;
 
 
         /// ----------------------------------------------------------------------------
         // Public Method
 
         /// <summary>
-        /// コンストラクタ．
+        /// Constructor.
         /// </summary>
         public ReactiveArray(int length) {
             _items = new T[length];
         }
 
         /// <summary>
-        /// コンストラクタ．
+        /// Constructor.
         /// </summary>
         public ReactiveArray(IList<T> list) {
             if (list is null) throw new ArgumentNullException(nameof(list));
@@ -158,5 +158,4 @@ namespace nitou {
             return GetEnumerator();
         }
     }
-
 }

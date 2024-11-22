@@ -55,8 +55,6 @@ namespace nitou.SceneSystem.Demo.EditorScripts {
             var sceneProperty = serializedObject.FindProperty("_nextScene");
 
 
-
-
             EditorGUILayout.PropertyField(sceneProperty);
             serializedObject.ApplyModifiedProperties();
 
