@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  kanのメモ帳: Enumerable.Rangeを使って簡単かつスマートに連番のListを作る https://kan-kikuchi.hatenablog.com/entry/EnumerableRange
 //  MathWorks: linspace https://jp.mathworks.com/help/matlab/ref/linspace.html
 

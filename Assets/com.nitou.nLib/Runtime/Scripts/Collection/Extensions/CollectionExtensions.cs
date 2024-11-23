@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-// [参考]
+// [REF]
 //  Hatena Blog: Action, Func, Predicateデリゲートを使ってみた https://oooomincrypto.hatenadiary.jp/entry/2022/04/24/201149
 //  JojoBase: 拡張メソッドは作って貯めておくと便利です https://johobase.com/custom-extension-methods-list/#i-5
 //  JojoBase: コレクションの拡張メソッド Collection Extensions https://johobase.com/collection-extensions-methods-list/
@@ -39,7 +39,7 @@ namespace nitou {
         /// </summary>
         public static bool ContainsAll<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
-                if (self.Contains(item)) {
+                if (!self.Contains(item)) {
                     return false;
                 }
             }

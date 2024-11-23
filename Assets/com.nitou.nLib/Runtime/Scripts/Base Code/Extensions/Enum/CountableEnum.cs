@@ -10,7 +10,7 @@ namespace nitou {
     /// </summary>
     public class CountableEnum<T> where T : Enum {
         
-        private Array _valueArray;  // 対象(列挙型)の全要素
+        private readonly Array _valueArray;  // 対象(列挙型)の全要素
         private int _id;            // 現在値のインデックス
 
 
@@ -59,7 +59,6 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
         // Private Method
-
         
         private T Get(int id) => (T)_valueArray.GetValue(id);
         
@@ -70,8 +69,6 @@ namespace nitou {
             }
             throw new System.ArgumentException();
         }
-
-
     }
 
 }

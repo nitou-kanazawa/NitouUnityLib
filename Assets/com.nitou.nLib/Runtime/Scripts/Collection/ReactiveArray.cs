@@ -18,8 +18,8 @@ namespace nitou {
         [NonSerialized] bool isDisposed = false;
 
         // Streem
-        [NonSerialized] Subject<CollectionReplaceEvent<T>> collectionReplace = null;
-        [NonSerialized] Subject<CollectionMoveEvent<T>> collectionMove = null;
+        [NonSerialized] Subject<CollectionReplaceEvent<T>> _collectionReplace = null;
+        [NonSerialized] Subject<CollectionMoveEvent<T>> _collectionMove = null;
 
         /// <summary>
         /// インデクサ
@@ -62,8 +62,8 @@ namespace nitou {
         /// </summary>
         public void Dispose() {
             if (!isDisposed) {
-                SubjectUtil.DisposeSubject(ref collectionReplace);
-                SubjectUtil.DisposeSubject(ref collectionMove);
+                SubjectUtil.DisposeSubject(ref _collectionReplace);
+                SubjectUtil.DisposeSubject(ref _collectionMove);
 
                 isDisposed = true;
             }
@@ -89,7 +89,7 @@ namespace nitou {
             _items[index] = value;
 
             // イベント通知
-            collectionReplace?.OnNext(new CollectionReplaceEvent<T>(index, oldValue, value));
+            _collectionReplace?.OnNext(new CollectionReplaceEvent<T>(index, oldValue, value));
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace nitou {
             _items[newIndex] = item;
 
             // Move イベントを発行
-            collectionMove?.OnNext(new CollectionMoveEvent<T>(oldIndex, newIndex, item));
+            _collectionMove?.OnNext(new CollectionMoveEvent<T>(oldIndex, newIndex, item));
         }
 
 
@@ -128,7 +128,7 @@ namespace nitou {
         /// </summary>
         public IObservable<CollectionReplaceEvent<T>> ObserveReplace() {
             if (isDisposed) return Observable.Empty<CollectionReplaceEvent<T>>();
-            return collectionReplace ?? (collectionReplace = new Subject<CollectionReplaceEvent<T>>());
+            return _collectionReplace ?? (_collectionReplace = new Subject<CollectionReplaceEvent<T>>());
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace nitou {
         /// </summary>
         public IObservable<CollectionMoveEvent<T>> ObserveMove() {
             if (isDisposed) return Observable.Empty<CollectionMoveEvent<T>>();
-            return collectionMove ?? (collectionMove = new Subject<CollectionMoveEvent<T>>());
+            return _collectionMove ?? (_collectionMove = new Subject<CollectionMoveEvent<T>>());
         }
 
 

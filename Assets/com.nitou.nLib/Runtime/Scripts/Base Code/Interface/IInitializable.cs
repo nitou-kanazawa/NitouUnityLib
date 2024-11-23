@@ -8,12 +8,12 @@ namespace nitou {
     public interface IInitializable {
 
         /// <summary>
-        /// 初期化が完了しているかどうか
+        /// 初期化が完了しているかどうか．
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// 初期化処理
+        /// 初期化処理．
         /// </summary>
         public void Initialize();
     }
@@ -22,12 +22,12 @@ namespace nitou {
     public interface IInitializable<T> {
 
         /// <summary>
-        /// 初期化が完了しているかどうか
+        /// 初期化が完了しているかどうか．
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// 初期化処理
+        /// 初期化処理．
         /// </summary>
         public void Initialize(T item);
     }
@@ -36,12 +36,12 @@ namespace nitou {
     public interface IInitializable<T1, T2> {
 
         /// <summary>
-        /// 初期化が完了しているかどうか
+        /// 初期化が完了しているかどうか．
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// 初期化処理
+        /// 初期化処理．
         /// </summary>
         public void Initialize(T1 item1, T2 item2);
     }
