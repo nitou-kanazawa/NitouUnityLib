@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-// [参考]
+// [REF]
 //  qiita: Unityで独自の設定のUIを提供できるSettingsProviderの紹介と設定ファイルの保存について https://qiita.com/sune2/items/a88cdee6e9a86652137c
 
 namespace nitou.EditorShared {
@@ -29,8 +29,14 @@ namespace nitou.EditorShared {
 
         /// ----------------------------------------------------------------------------
 
+        /// <summary>
+        /// コンストラクタ．
+        /// </summary>
         public PreferencesProvider(string path, SettingsScope scopes, IEnumerable<string> keywords) : base(path, scopes, keywords) {}
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override void OnActivate(string searchContext, VisualElement rootElement) {
 
             var preferences = PreferencesSO.instance;
@@ -42,7 +48,9 @@ namespace nitou.EditorShared {
             Editor.CreateCachedEditor(preferences, null, ref _editor);
         }
 
-
+        /// <summary>
+        /// 描画処理．
+        /// </summary>
         public override void OnGUI(string searchContext) {
 
             EditorGUI.BeginChangeCheck();
@@ -57,6 +65,5 @@ namespace nitou.EditorShared {
             }
         }
     }
-
 }
 #endif

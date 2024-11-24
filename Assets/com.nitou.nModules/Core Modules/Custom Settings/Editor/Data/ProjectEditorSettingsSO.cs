@@ -7,11 +7,11 @@ using Sirenix.OdinInspector;
 namespace nitou.EditorShared {
 
     /// <summary>
-    /// Editorで参照するプロジェクト固有の設定データ
+    /// Editorで参照するプロジェクト固有の設定データ．
     /// </summary>
     [UnityEditor.FilePath(
-        "ProjectSettings/MyProjectEditorSettings.asset",
-        UnityEditor.FilePathAttribute.Location.ProjectFolder
+        relativePath: "ProjectSettings/MyProjectEditorSettings.asset",
+        location: UnityEditor.FilePathAttribute.Location.ProjectFolder
     )]
     public class ProjectEditorSettingsSO : ScriptableSingleton<ProjectEditorSettingsSO> {
 

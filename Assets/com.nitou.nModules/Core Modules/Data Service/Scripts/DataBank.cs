@@ -11,8 +11,8 @@ namespace nitou.SaveSystem {
 
     public class DataBank {
 
-        static DataBank _instance = new DataBank();
-        static Dictionary<string, object> _bank = new Dictionary<string, object>();
+        static DataBank _instance = new ();
+        static Dictionary<string, object> _bank = new ();
 
         static readonly string path = "SaveData";
         static readonly string fullPath = $"{ Application.persistentDataPath }/{ path }";

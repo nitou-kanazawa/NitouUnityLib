@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  youtube: データの永続化 - よくある間違いを回避しながらゲームの状態を保存およびロード | Unity チュートリアル https://www.youtube.com/watch?v=mntS45g8OK4&t=240s
 //  qiita: いい感じのUnity用セーブデータ管理クラス https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
 
@@ -23,7 +23,7 @@ namespace nitou.SaveSystem {
         public readonly bool encrypted;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         public DataServiceBase(bool encrypted) {
             this.encrypted = encrypted;
@@ -34,7 +34,7 @@ namespace nitou.SaveSystem {
         // Public Method
 
         /// <summary>
-        /// 指定したパスにデータを保存する
+        /// 指定したパスにデータを保存する．
         /// </summary>
         public bool SaveData<T>(string key, T data) {
 
@@ -68,7 +68,7 @@ namespace nitou.SaveSystem {
         }
 
         /// <summary>
-        /// 指定したパスからデータを読み込む
+        /// 指定したパスからデータを読み込む．
         /// </summary>
         public T LoadData<T>(string key) {
 

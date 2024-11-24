@@ -8,7 +8,7 @@ namespace nitou.EditorShared {
 
     public class ProjectEditorSettingsProvider : SettingsProvider {
 
-        // 設定のパス (※第1階層は「Preferences」にする)
+        // [NOTE] 設定のパス (※第1階層は「Preferences」にする) 
         private const string SettingPath = SettingsProviderKey.ProjectSettings +"Editor";
 
         private Editor _editor;
@@ -27,8 +27,14 @@ namespace nitou.EditorShared {
 
         /// ----------------------------------------------------------------------------
 
+        /// <summary>
+        /// コンストラクタ．
+        /// </summary>
         public ProjectEditorSettingsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords) : base(path, scopes, keywords) { }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override void OnActivate(string searchContext, VisualElement rootElement) {
 
             var preferences = ProjectEditorSettingsSO.instance;
@@ -40,7 +46,9 @@ namespace nitou.EditorShared {
             Editor.CreateCachedEditor(preferences, null, ref _editor);
         }
 
-
+        /// <summary>
+        /// 描画処理．
+        /// </summary>
         public override void OnGUI(string searchContext) {
 
             EditorGUI.BeginChangeCheck();
