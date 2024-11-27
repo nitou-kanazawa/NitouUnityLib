@@ -77,6 +77,15 @@ namespace nitou {
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void Clear(string path) {
+            Directory.Delete(path);
+            Directory.CreateDirectory(path);
+        }
+
+
+        /// <summary>
         /// ディレクトリ検索．
         /// </summary>
         public static List<string> Find(string directoryPath) {
