@@ -25,6 +25,8 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region 文字列の生成
 
+        private const string PASSWORD_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz";
+        
         /// <summary>
         /// 簡易的なパスワードを生成する．
         /// </summary>
@@ -40,7 +42,11 @@ namespace nitou {
 
             return sb.ToString();
         }
-        private const string PASSWORD_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz";
+
+
+        //public static string GetUniquName(string baseName, IEnumerable<string> names) {
+
+        //}
 
         #endregion
 
