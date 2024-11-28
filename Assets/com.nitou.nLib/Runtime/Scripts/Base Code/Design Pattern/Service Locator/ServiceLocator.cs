@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// Simple implementation of a Service Locator
+    /// シンプルな実装のサービスロケータ．
     /// </summary>
     public static class ServiceLocator {
 
