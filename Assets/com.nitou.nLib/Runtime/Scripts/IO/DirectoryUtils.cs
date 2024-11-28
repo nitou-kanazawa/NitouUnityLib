@@ -36,7 +36,22 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region コピー
+        #region 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IEnumerable<string> EnumerateDirectoryNames(string path) {
+            return Directory
+                .EnumerateDirectories(path)
+                .Select(dirPath => Path.GetFileName(dirPath));
+        }
+
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 操作（コピー）
 
         //// [REF] Microsoft Learn: ディレクトリをコピーする https://learn.microsoft.com/ja-jp/dotnet/standard/io/how-to-copy-directories
 
