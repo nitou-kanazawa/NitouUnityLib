@@ -5,7 +5,7 @@ namespace nitou {
     /// <summary>
     /// <see cref="Subject{T}"/>型の基本的な拡張メソッド集
     /// </summary>
-    public static class SubjectUtil {
+    public static class SubjectUtils {
 
         /// <summary>
         /// 

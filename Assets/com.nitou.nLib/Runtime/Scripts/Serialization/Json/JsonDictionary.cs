@@ -15,28 +15,29 @@ namespace nitou.Serialization {
     [Serializable]
     public class JsonDictionary<TKey, TValue> : ISerializationCallbackReceiver {
                 
-        [SerializeField] [UsedImplicitly] private KeyValuePair[] dictionary = default;
+        [UsedImplicitly] 
+        [SerializeField] KeyValuePair[] dictionary = default;
 
-        private Dictionary<TKey, TValue> m_dictionary;
+        private Dictionary<TKey, TValue> _dictionary;
 
-        public Dictionary<TKey, TValue> Dictionary => m_dictionary;
+        public Dictionary<TKey, TValue> Dictionary => _dictionary;
 
 
         /// ----------------------------------------------------------------------------
         // Public Method
 
         public JsonDictionary(Dictionary<TKey, TValue> dictionary) {
-            m_dictionary = dictionary;
+            _dictionary = dictionary;
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize() {
-            dictionary = m_dictionary
+            dictionary = _dictionary
                     .Select(x => new KeyValuePair(x.Key, x.Value))
                     .ToArray();
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize() {
-            m_dictionary = dictionary.ToDictionary(x => x.Key, x => x.Value);
+            _dictionary = dictionary.ToDictionary(x => x.Key, x => x.Value);
             dictionary = null;
         }
 

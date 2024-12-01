@@ -15,7 +15,7 @@ namespace nitou {
 
         private readonly T[] _items;
 
-        [NonSerialized] bool isDisposed = false;
+        [NonSerialized] bool _isDisposed = false;
 
         // Streem
         [NonSerialized] Subject<CollectionReplaceEvent<T>> _collectionReplace = null;
@@ -61,11 +61,11 @@ namespace nitou {
         /// 終了処理
         /// </summary>
         public void Dispose() {
-            if (!isDisposed) {
-                SubjectUtil.DisposeSubject(ref _collectionReplace);
-                SubjectUtil.DisposeSubject(ref _collectionMove);
+            if (!_isDisposed) {
+                SubjectUtils.DisposeSubject(ref _collectionReplace);
+                SubjectUtils.DisposeSubject(ref _collectionMove);
 
-                isDisposed = true;
+                _isDisposed = true;
             }
         }
 
@@ -73,7 +73,7 @@ namespace nitou {
         /// 指定インデックスの要素を取得する．
         /// </summary>
         public T GetItem(int index) {
-            if (isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
+            if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
             if (index.IsOutRange(_items)) throw new ArgumentOutOfRangeException(nameof(index));
             return _items[index];
         }
@@ -82,7 +82,7 @@ namespace nitou {
         /// 指定インデックスに要素を設定する．
         /// </summary>
         public void SetItem(int index, T value) {
-            if (isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
+            if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
             if (index.IsOutRange(_items)) throw new ArgumentOutOfRangeException(nameof(index));
 
             var oldValue = _items[index];
@@ -96,7 +96,7 @@ namespace nitou {
         /// 要素を移動する．
         /// </summary>
         public void Move(int oldIndex, int newIndex) {
-            if (isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
+            if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
             if (oldIndex.IsOutRange(_items) || newIndex.IsOutRange(_items)) {
                 throw new ArgumentOutOfRangeException();
             }
@@ -127,7 +127,7 @@ namespace nitou {
         /// 
         /// </summary>
         public IObservable<CollectionReplaceEvent<T>> ObserveReplace() {
-            if (isDisposed) return Observable.Empty<CollectionReplaceEvent<T>>();
+            if (_isDisposed) return Observable.Empty<CollectionReplaceEvent<T>>();
             return _collectionReplace ?? (_collectionReplace = new Subject<CollectionReplaceEvent<T>>());
         }
 
@@ -135,7 +135,7 @@ namespace nitou {
         /// 
         /// </summary>
         public IObservable<CollectionMoveEvent<T>> ObserveMove() {
-            if (isDisposed) return Observable.Empty<CollectionMoveEvent<T>>();
+            if (_isDisposed) return Observable.Empty<CollectionMoveEvent<T>>();
             return _collectionMove ?? (_collectionMove = new Subject<CollectionMoveEvent<T>>());
         }
 
@@ -147,7 +147,7 @@ namespace nitou {
         /// 配列の列挙をサポートするための IEnumerable<T> の実装
         /// </summary>
         public IEnumerator<T> GetEnumerator() {
-            if (isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
+            if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
             return ((IEnumerable<T>)_items).GetEnumerator();
         }
 

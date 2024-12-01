@@ -36,6 +36,9 @@ namespace nitou {
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void Log(object o, Color color) => Debug.Log(FormatObject(o).WithColorTag(color));
 
+        /// <summary>
+        /// UnityEditor上でのみ実行されるLogメソッド
+        /// </summary>
         public static void Log(params object[] messages) {
             var message = string.Join(',', messages.Select(FormatObject));
             Debug.Log(message);

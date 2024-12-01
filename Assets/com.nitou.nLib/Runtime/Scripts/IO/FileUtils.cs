@@ -9,6 +9,9 @@ using System.Linq;
 
 namespace nitou {
     
+    /// <summary>
+    /// ファイル操作に関する汎用メソッド集．
+    /// </summary>
     public static class FileUtils {
 
         /// ----------------------------------------------------------------------------

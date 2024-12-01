@@ -4,38 +4,38 @@ using System;
 namespace nitou {
 
     /// <summary>
-    /// 範囲を表すインターフェース
+    /// 範囲を表すインターフェース．
     /// </summary>
     public interface IRangeValue<TValue>
         where TValue : struct {
 
         /// <summary>
-        /// 最小値
+        /// 最小値．
         /// </summary>
         TValue Min { get; set; }
 
         /// <summary>
-        /// 最大値
+        /// 最大値．
         /// </summary>
         TValue Max { get; set; }
 
         /// <summary>
-        /// 中央値
+        /// 中央値．
         /// </summary>
         TValue Mid { get; }
 
         /// <summary>
-        /// 範囲の長さ
+        /// 範囲の長さ．
         /// </summary>
         TValue Length { get; }
 
         /// <summary>
-        /// 範囲内のランダムな値
+        /// 範囲内のランダムな値．
         /// </summary>
         TValue Random { get; }
 
         /// <summary>
-        /// 値が範囲内か調べる
+        /// 値が範囲内か調べる．
         /// </summary>
         bool Contains(TValue value);
     }
@@ -44,7 +44,7 @@ namespace nitou {
     public static class RangeVelueExtensions {
 
         /// <summary>
-        /// 範囲を 0 から 1 の範囲に正規化する拡張メソッド
+        /// 範囲を 0 から 1 の範囲に正規化する拡張メソッド．
         /// </summary>
         public static float GetNormalized<TValue>(this IRangeValue<TValue> range, TValue value)
             where TValue : struct, IConvertible {
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 指定された値を新しい範囲にスケールする拡張メソッド
+        /// 指定された値を新しい範囲にスケールする拡張メソッド．
         /// </summary>
         public static TValue ScaleToRange<TValue>(this IRangeValue<TValue> range, TValue value, IRangeValue<TValue> newRange)
             where TValue : struct, IConvertible {

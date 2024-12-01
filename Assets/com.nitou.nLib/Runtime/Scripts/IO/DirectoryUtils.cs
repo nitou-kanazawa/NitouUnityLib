@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace nitou {
 
     /// <summary>
-    /// ディレクトリ操作に関する汎用メソッド集
+    /// ディレクトリ操作に関する汎用メソッド集．
     /// </summary>
     public static class DirectoryUtils {
 
@@ -87,7 +87,6 @@ namespace nitou {
                 }
             }
         }
-
         #endregion
 
 
@@ -99,7 +98,6 @@ namespace nitou {
             Directory.CreateDirectory(path);
         }
 
-
         /// <summary>
         /// ディレクトリ検索．
         /// </summary>
@@ -109,13 +107,10 @@ namespace nitou {
         }
 
 
-
-
         //public static string GetUniqDirectoryName() {
 
 
         //}
-
 
         /// <summary>
         /// <para>指定したディレクトリ内のファイルの名前 (パスを含む) を返します</para>
@@ -150,6 +145,5 @@ namespace nitou {
                 .Select(c => c.Replace("\\", "/"))
                 .ToArray();
         }
-
     }
 }
