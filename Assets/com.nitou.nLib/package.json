@@ -9,7 +9,6 @@
     "name": "Nitou",
     "url": "https://github.com/nitou-kanazawa"
   },
-  "license": "MIT",
   "category": "",
   "dependencies": {
     "com.unity.modules.ui": "1.0.0",

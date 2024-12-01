@@ -22,6 +22,10 @@ https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nLib
 
 // Nitou.Tools [Basic]
 https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nTools
+
+// Nitou.SceneLoader
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.sceneloader
+
 ```
 
 ## 【構成】
