@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// [Ql]
+// [REF]
 //  _: Gizmos‚Å•½–Ê‚ğ•`‰æ‚·‚é https://nyama41.hatenablog.com/entry/draw_gizmos_plane
 
 namespace nitou {

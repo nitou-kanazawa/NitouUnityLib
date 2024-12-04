@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-// [参考]
+// [REF]
 //  qiita: パスワードのようなランダムな文字列を生成して返す関数 https://baba-s.hatenablog.com/entry/2015/07/07/000000
 
 namespace nitou {
