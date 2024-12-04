@@ -1,14 +1,14 @@
 using System.Threading;
 
-// [参考]
+// [REF]
 //  Zenn: UniRx/UniTask大全 https://zenn.dev/tmb/articles/e4fb3fe350852f
 
 namespace nitou {
 
     /// <summary>
-    /// CancellationTokenSourceインスタンスを入れ替えて繰り返し使用するためのラッパー
+    /// CancellationTokenSourceインスタンスを入れ替えて繰り返し使用するためのラッパー．
     /// </summary>
-    public class CancellationTokenHelper {
+    public sealed class CancellationTokenHelper {
         
         /// <summary>
         /// ソース
@@ -25,21 +25,21 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         public CancellationTokenHelper() {
             Reset();
         }
 
         /// <summary>
-        /// デストラクタ
+        /// デストラクタ．
         /// </summary>
         ~CancellationTokenHelper() {
             Dispose();
         }
 
         /// <summary>
-        /// リセット
+        /// リセット．
         /// </summary>
         public void Reset() {
             Dispose();
@@ -47,7 +47,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 破棄
+        /// 破棄．
         /// </summary>
         public void Dispose() {
             if (Cts != null) {
