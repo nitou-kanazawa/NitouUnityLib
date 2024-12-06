@@ -14,7 +14,7 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region 要素の判定
 
-        // [参考]
+        // [REF]
         // _: IEnumerable.IsNullOrEmpty https://csharpvbcomparer.blogspot.com/2014/04/tips-ienumerable-isnullorempty.html
 
         /// <summary>
@@ -156,7 +156,9 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region  その他
+        #region  文字列への変換
+
+
 
         /// <summary>
         /// Csv形式の文字列に変換します。
@@ -179,6 +181,14 @@ namespace nitou {
             });
             return csv.ToString(0, csv.Length - 1);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string ToBracketedString<T>(this IEnumerable<T> source) {
+            return $"[{string.Join(", ", source)}]";
+        }
+
         #endregion
     }
 }

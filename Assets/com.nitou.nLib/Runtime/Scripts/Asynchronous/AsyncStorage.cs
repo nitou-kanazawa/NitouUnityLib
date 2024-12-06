@@ -21,6 +21,9 @@ namespace nitou {
 
 		private readonly UniTaskCompletionSource<T> _completionSource = new();
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public async UniTask<T> GetAsync(CancellationToken cancellationToken = default) {
 			return await _completionSource.Task.AttachExternalCancellation(cancellationToken);
 		}
@@ -31,7 +34,6 @@ namespace nitou {
 		public bool TrySet(T content) {
 			return _completionSource.TrySetResult(content);
 		}
-
 	}
 
 }
