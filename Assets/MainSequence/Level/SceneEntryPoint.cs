@@ -1,56 +1,37 @@
-using UnityEngine;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Playables;
+
 
 namespace Demo.Sequencer {
 
     public class SceneEntryPoint : MonoBehaviour {
 
+        [SerializeField] PlayableDirector _director;
 
-        private SequenceManager _inGameManager;
 
         private  async void Start() {
 
+        }
 
-            try {
-                //await SomProcessAsync();
-                SomProcessAsync().Forget();
 
-            } catch (Exception e) {
+        public async UniTask PlayTimelineAsync() {
 
-                Debug.Log($"Catch error : {e}");
+            if(_director == null){
+                Debug.LogError("PlayableDirectorが設定されていません。");
+                return;
             }
 
+            // 
+            _director.Play();
 
-            //_inGameManager = new SequenceManager();
+            await UniTask.WaitUntil(() => _director.state != PlayState.Playing);
 
-            //var sequences = new List<ISequence>{
-            //    new OpeningSequence("Welcome to the stage!"),
-            //    new MainSequence(),
-            //    new ResultSequence()
-            //};
-
-            //_inGameManager.SetSequences(sequences);
-            //RunGame().Forget();
+            Debug.Log("タイムラインが終了しました．");
         }
 
-        private async UniTask SomProcessAsync() {
-            await UniTask.RunOnThreadPool(() => throw new Exception("ExampleException"));
-        }
-
-
-        private async UniTaskVoid RunGame() {
-
-            var cts = new CancellationTokenSource();
-            try {
-                await _inGameManager.RunStage(cts.Token);
-            } catch (OperationCanceledException) {
-                Debug.Log("Game canceled.");
-            }
-
-        }
 
     }
 }
