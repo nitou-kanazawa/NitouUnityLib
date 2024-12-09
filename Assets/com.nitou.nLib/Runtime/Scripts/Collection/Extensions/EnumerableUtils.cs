@@ -19,7 +19,7 @@ namespace nitou {
         #region 補間 (要素数指定)
 
         /// <summary>
-        /// 線形に配置されたデータを作成する
+        /// 線形に配置されたデータを作成する．
         /// </summary>
         public static IEnumerable<float> Linspace(float start, float end, int num = 10) {
             if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
@@ -32,7 +32,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 線形に配置されたデータを作成する
+        /// 線形に配置されたデータを作成する．
         /// </summary>
         public static IEnumerable<Vector2> Linspace(Vector2 start, Vector2 end, int num = 10) {
             if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
@@ -45,7 +45,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 線形に配置されたデータを作成する
+        /// 線形に配置されたデータを作成する．
         /// </summary>
         public static IEnumerable<Vector3> Linspace(Vector3 start, Vector3 end, int num = 10) {
             if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
@@ -58,7 +58,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 対数的に配置されたデータを作成する
+        /// 対数的に配置されたデータを作成する．
         /// </summary>
         public static IEnumerable<double> Logspace(double startExp, double endExp, int num) {
             if (num <= 0) throw new InvalidOperationException("Number of points must be positive and non-zero.");
@@ -75,7 +75,7 @@ namespace nitou {
         #region 補間 (ステップ指定)
 
         /// <summary>
-        /// ステップサイズで線形に配置されたデータを作成する
+        /// ステップサイズで線形に配置されたデータを作成する．
         /// </summary>
         public static IEnumerable<float> LinspaceWithStep(float start, float end, float step) {
             if (step <= 0) throw new InvalidOperationException("Step must be positive and non-zero.");
@@ -92,7 +92,7 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// start〜end(含む)の連番を順に含んだListを作成し取得
+        /// start〜end(含む)の連番を順に含んだListを作成し取得する．
         /// </summary>
         public static List<int> RangeNumbers(int start, int end) {
             if (start == end) {
