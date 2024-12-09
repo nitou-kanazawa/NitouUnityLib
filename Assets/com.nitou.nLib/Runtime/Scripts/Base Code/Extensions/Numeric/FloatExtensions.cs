@@ -17,6 +17,12 @@ namespace nitou {
         public static bool IsOver(this float self, float value) =>
             self > value;
 
+        /// <summary>
+        /// 値が０か判定する拡張メソッド．
+        /// </summary>
+        public static bool ApproxZero(this float self) =>
+            Mathf.Approximately(self, 0f);
+
         #endregion
 
 
@@ -40,21 +46,18 @@ namespace nitou {
         /// <summary>
         /// 指定範囲内の値に制限する拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Clamp(this float self, float min, float max) =>
             Mathf.Clamp(self, min, max);
 
         /// <summary>
         /// 指定範囲内の値に制限する拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Clamp01(this float self) =>
             Mathf.Clamp01(self);
 
         /// <summary>
         /// 値を切り捨ててInt型で返す拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int FloorToInt(this float self) =>
             Mathf.FloorToInt(self);
 
@@ -64,7 +67,6 @@ namespace nitou {
         /// <summary>
         /// 半分の値を返す拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Remap(this float value,
             float fromMin, float fromMax,
             float toMin, float toMax,
