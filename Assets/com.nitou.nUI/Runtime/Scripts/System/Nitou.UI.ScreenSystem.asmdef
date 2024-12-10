@@ -1,0 +1,24 @@
+{
+    "name": "Nitou.UI.ScreenSystem",
+    "rootNamespace": "",
+    "references": [
+        "Nitou.Lib",
+        "Nitou.UI",
+        "Unity.TextMeshPro",
+        "UniRx",
+        "UniTask",
+        "VContainer",
+        "UnityScreenNavigator"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "USN_USE_ASYNC_METHODS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

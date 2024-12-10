@@ -11,7 +11,7 @@ namespace nitou.GameSystem {
     /// <summary>
     /// プロセスの基底クラス．
     /// </summary>
-    public abstract class ProcessBase : IProcess {
+    public abstract class ProcessBase /*: IProcess*/ {
 
         // State
         private ImtStateMachine<ProcessBase, StateEvent> _stateMachine;

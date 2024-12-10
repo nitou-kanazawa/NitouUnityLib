@@ -14,6 +14,20 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region 値の判定
 
+        /// <summary>
+        /// 正の値かどうかを判定する拡張メソッド．
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsPositive(this float self) =>
+            self > 0;
+
+        /// <summary>
+        /// 負の値かどうかを判定する拡張メソッド．
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsNegative(this float self) =>
+            self < 0;
+
         public static bool IsOver(this float self, float value) =>
             self > value;
 

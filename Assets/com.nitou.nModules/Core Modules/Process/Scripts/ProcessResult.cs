@@ -19,13 +19,11 @@ namespace nitou.GameSystem {
     /// </summary>
     public class CancelResult : ProcessResult {
 
-        public readonly string message;
+        public string Message { get; }
 
-        public CancelResult(string message) {
-            this.message = message;
+        public CancelResult(string message = "") {
+            Message = message;
         }
-
-        public CancelResult() : this(string.Empty) { }
     }
 
 }

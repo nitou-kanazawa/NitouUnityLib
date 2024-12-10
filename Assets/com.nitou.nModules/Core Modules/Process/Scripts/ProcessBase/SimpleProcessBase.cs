@@ -33,9 +33,9 @@ namespace nitou.GameSystem {
         /// </summary>
         void IProcess.Run() {
             if (_state.Value != ProcessState.NotStarted)
-                throw new InvalidOperationException("Process can only be started once.");
+                throw new InvalidOperationException($"Invalid state transition: {nameof(IProcess.Run)} can only be called from {ProcessState.NotStarted}.");
 
-            OnStart(); // ライフサイクルイベント
+            OnStart(); 
             _state.Value = ProcessState.Running;
         }
 
@@ -44,9 +44,9 @@ namespace nitou.GameSystem {
         /// </summary>
         void IProcess.Pause() {
             if (_state.Value != ProcessState.Running)
-                throw new InvalidOperationException("Process can only be paused when running.");
+                throw new InvalidOperationException($"Invalid state transition: {nameof(IProcess.Pause)} can only be called from {ProcessState.Running}.");
 
-            OnPause(); // ライフサイクルイベント
+            OnPause(); 
             _state.Value = ProcessState.Paused;
         }
 
@@ -55,9 +55,9 @@ namespace nitou.GameSystem {
         /// </summary>
         void IProcess.UnPause() {
             if (_state.Value != ProcessState.Paused)
-                throw new InvalidOperationException("Process can only be unpaused when paused.");
+                throw new InvalidOperationException($"Invalid state transition: {nameof(IProcess.UnPause)} can only be called from {ProcessState.Paused}.");
 
-            OnUnPause(); // ライフサイクルイベント            
+            OnUnPause(); 
             _state.Value = ProcessState.Running;
         }
 
@@ -68,7 +68,7 @@ namespace nitou.GameSystem {
         void IProcess.Cancel(CancelResult cancelResult) {
             if (_state.Value != ProcessState.Running && 
                 _state.Value != ProcessState.Paused)
-                throw new InvalidOperationException("Process can only be cancelled when running or paused.");
+                throw new InvalidOperationException($"Invalid state transition: {nameof(IProcess.Cancel)} can only be called from {ProcessState.Running} or {ProcessState.Paused}.");
 
             OnCancel(cancelResult); // ライフサイクルイベント
             _state.Value = ProcessState.Cancelled;
@@ -84,6 +84,7 @@ namespace nitou.GameSystem {
                 ((IProcess)this).Cancel(new CancelResult("Disposed before completion."));
             }
 
+            OnDispose();
             _state.Dispose();
         }
 

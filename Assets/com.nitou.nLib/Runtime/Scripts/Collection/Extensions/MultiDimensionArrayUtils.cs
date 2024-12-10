@@ -10,7 +10,7 @@ namespace nitou {
     /// <summary>
     /// 配列に対する汎用機能を提供するライブラリ
     /// </summary>
-    public static class MultiDimensionArrayUtils {
+    public static partial class MultiDimensionArrayUtils {
 
         /// ----------------------------------------------------------------------------
         // 配列の生成

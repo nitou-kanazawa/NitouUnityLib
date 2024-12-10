@@ -12,10 +12,10 @@ namespace nitou {
     /// <summary>
     /// <see cref="Dictionary{TKey, TValue}"/>型の基本的な拡張メソッド集
     /// </summary>
-    public static class DictionaryExtensions {
+    public static partial class DictionaryExtensions {
 
         /// <summary>
-        /// デコンストラクタ
+        /// デコンストラクタ．
         /// </summary>
         public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> self, out TKey key,out TValue value) {
             key = self.Key;

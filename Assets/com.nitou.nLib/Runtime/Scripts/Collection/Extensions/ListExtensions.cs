@@ -6,7 +6,7 @@ namespace nitou {
     /// <summary>
     /// <see cref="List{T}"/>型の基本的な拡張メソッド集
     /// </summary>
-    public static class ListExtensions {
+    public static partial class ListExtensions {
 
         /// <summary>
         /// 最後の要素を取り出す拡張メソッド．要素が0なら<see cref="InvalidOperationException">例外</see>を投げる．
