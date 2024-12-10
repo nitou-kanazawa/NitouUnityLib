@@ -12,8 +12,7 @@ namespace nitou {
     /// <summary>
     /// 汎用的なシーケンスデータを生成するユーティリティクラス
     /// </summary>
-    public static class EnumerableUtils {
-
+    public static partial class EnumerableUtils {
 
         /// ----------------------------------------------------------------------------
         #region 補間 (要素数指定)

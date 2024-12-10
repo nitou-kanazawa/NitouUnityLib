@@ -6,11 +6,23 @@ namespace nitou {
     /// <summary>
     /// <see cref="List{T}"/>型の基本的な拡張メソッド集
     /// </summary>
-    public static class ListExtensions {
+    public static partial class ListExtensions {
 
+        /// <summary>
+        /// 最後の要素を取り出す拡張メソッド．要素が0なら<see cref="InvalidOperationException">例外</see>を投げる．
+        /// </summary>
+        public static T PopLast<T>(this IList<T> list) {
+            if (list.Count == 0) {
+                throw new InvalidOperationException();
+            }
 
-        /// ----------------------------------------------------------------------------
-        #region 要素の削除
+            var t = list[list.Count - 1];
+
+            list.RemoveAt(list.Count - 1);
+
+            return t;
+        }
+
 
         /// <summary>
         /// 該当する要素を全て削除する拡張メソッド．
@@ -22,6 +34,11 @@ namespace nitou {
                 }
             }
         }
+        
+        
+        /// ----------------------------------------------------------------------------
+        #region 要素の削除
+
         #endregion
 
     }

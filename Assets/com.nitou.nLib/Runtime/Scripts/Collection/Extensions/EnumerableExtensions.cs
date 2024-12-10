@@ -4,6 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+// [REF]
+//  qiita: .NET 9でLINQに追加されたメソッド https://qiita.com/RyotaMurohoshi/items/595b87e1db93768d0d44
+// _: IEnumerable.IsNullOrEmpty https://csharpvbcomparer.blogspot.com/2014/04/tips-ienumerable-isnullorempty.html
+
 namespace nitou {
 
     /// <summary>
@@ -14,15 +18,11 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region 要素の判定
 
-        // [REF]
-        // _: IEnumerable.IsNullOrEmpty https://csharpvbcomparer.blogspot.com/2014/04/tips-ienumerable-isnullorempty.html
-
         /// <summary>
-        /// Null,または空かどうか調べる拡張メソッド
+        /// Null,または空かどうか調べる拡張メソッド．
         /// </summary>
         public static bool IsNullOrEmptyEnumerable<T>(this IEnumerable<T> source) {
-            if (source == null) return true;
-            using (var e = source.GetEnumerator()) return !e.MoveNext();
+            return source == null || !source.Any();
         }
         #endregion
 
@@ -31,10 +31,17 @@ namespace nitou {
         #region 要素の変換
 
         /// <summary>
-        /// nullを除いたシーケンスに変換する拡張メソッド
+        /// nullを除いたシーケンスに変換する拡張メソッド．
         /// </summary>
         public static IEnumerable<T> WithoutNull<T>(this IEnumerable<T> source) where T : class {
             return source.Where(item => item != null);
+        }
+
+        /// <summary>
+        /// 各要素にインデックスを付与したシーケンスを取得する拡張メソッド．
+        /// </summary>
+        public static IEnumerable<(T item, int index)> Index<T>(this IEnumerable<T> source) {
+            return source.Select((item, index) => (item, index));
         }
         #endregion
 
@@ -43,17 +50,17 @@ namespace nitou {
         #region 要素の走査
 
         /// <summary>
-        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド
+        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T, int> action) {
-            foreach (var n in source.Select((val, index) => new { val, index })) {
-                action(n.val, n.index);
+            foreach ((var item, var index) in source.Index()) {
+                action(item, index);
             }
             return source;
         }
 
         /// <summary>
-        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド
+        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action) {
             foreach (var n in source) {
@@ -68,7 +75,33 @@ namespace nitou {
         #region 要素の取得
 
         /// <summary>
-        /// 最大値と最小値を取得する拡張メソッド
+        /// 条件に基づいて最小の要素を取得する拡張メソッド．
+        /// </summary>
+        public static T MinBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector)
+            where TKey : IComparable<TKey> {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
+
+            return source
+                .Aggregate((min, current) => selector(current)
+                .CompareTo(selector(min)) < 0 ? current : min);
+        }
+
+        /// <summary>
+        /// 条件に基づいて最大の要素を取得する拡張メソッド．
+        /// </summary>
+        public static T MaxBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector)
+            where TKey : IComparable<TKey> {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (selector == null) throw new ArgumentNullException(nameof(selector));
+
+            return source
+                .Aggregate((max, current) => selector(current)
+                .CompareTo(selector(max)) > 0 ? current : max);
+        }
+
+        /// <summary>
+        /// 最大値と最小値を取得する拡張メソッド．
         /// </summary>
         public static (T min, T max) MinMax<T>(this IEnumerable<T> source)
             where T : IComparable<T> {
@@ -95,7 +128,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 最大値と最小値を取得する拡張メソッド
+        /// 最大値と最小値を取得する拡張メソッド．
         /// </summary>
         public static (TResult min, TResult max) MinMax<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
             where TResult : IComparable<TResult> {
@@ -125,7 +158,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 最大値と最小値を取得する拡張メソッド
+        /// 最大値と最小値を取得する拡張メソッド．
         /// </summary>
         public static (T min, T max) MinMax<T>(this IEnumerable<T> source, Func<T, T, bool> isGreaterThan) {
             if (source is null) throw new System.ArgumentNullException(nameof(source));
@@ -157,8 +190,6 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
         #region  文字列への変換
-
-
 
         /// <summary>
         /// Csv形式の文字列に変換します。

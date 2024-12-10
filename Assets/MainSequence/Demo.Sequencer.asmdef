@@ -2,7 +2,10 @@
     "name": "Demo.Sequencer",
     "rootNamespace": "Demo.Sequencer",
     "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:3a05ecd4d4c982d43bcfed70b77ee770",
+        "GUID:94d7381ffd9bf9f4989c41178ac30cd8"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

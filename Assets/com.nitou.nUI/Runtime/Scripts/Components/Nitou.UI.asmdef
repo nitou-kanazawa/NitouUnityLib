@@ -1,0 +1,24 @@
+{
+    "name": "Nitou.UI",
+    "rootNamespace": "nitou.UI",
+    "references": [
+        "Nitou.Lib",
+        "UnityEngine.UI",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "DOTween.Modules",
+        "UniRx",
+        "UniTask",
+        "UniTask.DOTween",
+        "UnityScreenNavigator"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

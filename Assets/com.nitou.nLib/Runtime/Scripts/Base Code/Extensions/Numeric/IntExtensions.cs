@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ namespace nitou {
     /// <summary>
     /// <see cref="int"/>型の基本的な拡張メソッド集
     /// </summary>
-    public static class IntExtensions {
+    public static partial class IntExtensions {
 
         /// ----------------------------------------------------------------------------
         #region 値の判定

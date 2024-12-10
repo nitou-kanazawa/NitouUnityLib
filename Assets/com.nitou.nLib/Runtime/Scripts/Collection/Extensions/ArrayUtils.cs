@@ -6,7 +6,7 @@ namespace nitou {
     /// <summary>
     /// <see cref="Array"/>型の汎用メソッド．
     /// </summary>
-    public static class ArrayUtils {
+    public static partial class ArrayUtils {
 
         public static void Add<T>(ref T[] array, T value) {
             int length = array.Length;

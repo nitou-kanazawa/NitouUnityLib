@@ -21,7 +21,7 @@ namespace nitou.GameSystem {
         /// <summary>
         /// 現在のステート．
         /// </summary>
-        //public IReadOnlyReactiveProperty<ProcessState> State { get; }
+        public IReadOnlyReactiveProperty<ProcessState> State { get; }
 
         /// <summary>
         /// 終了時の通知．
