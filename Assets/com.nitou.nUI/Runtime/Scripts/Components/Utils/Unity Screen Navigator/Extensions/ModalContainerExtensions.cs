@@ -11,7 +11,6 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
     /// </summary>
     public static class ModalContainerExtensions {
 
-
         /// <summary>
         /// コンテナが空かどうか．
         /// </summary>
@@ -20,8 +19,9 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         }
 
         /// <summary>
-        /// 
+        /// コンテナに<see cref="Modal"/>をPushする．
         /// </summary>
+        /// <returns>Pushされたモーダル</returns>
         public async static UniTask<TModal> PushModal<TModal>(this ModalContainer self,
             string resourceKey, bool playAnimation, string modalId = null, bool loadAsync = true,
             Action<(string modalId, TModal modal)> onLoad = null) where TModal: Modal{
@@ -42,7 +42,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         // Public Method (Modalの取得)
 
         /// <summary>
-        /// アクティブなModalを取得する
+        /// アクティブなModalを取得する．
         /// </summary>
         public static Modal GetActiveModal(this ModalContainer container) {
             if (container.Modals.Count <= 0) return null;
@@ -52,7 +52,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         }
 
         /// <summary>
-        /// アクティブなModalを取得する
+        /// アクティブなModalを取得する．
         /// </summary>
         public static bool TryGetActiveModal(this ModalContainer container, out Modal modal) {
             modal = container.GetActiveModal();
@@ -60,7 +60,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         }
 
         /// <summary>
-        /// アクティブなModalを取得する
+        /// アクティブなModalを取得する．
         /// </summary>
         public static Modal GetPreviousModal(this ModalContainer container) {
             if (container.Modals.Count <= 1) return null;
