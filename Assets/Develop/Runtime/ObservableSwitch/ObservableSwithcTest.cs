@@ -11,9 +11,9 @@ namespace Project
         {
             _selectionController = new ActorSelectionController();
 
-            var actor1 = new Actor();
-            var actor2 = new Actor();
-            var actor3 = new Actor();
+            var actor1 = new Actor ();
+            var actor2 = new Actor ();
+            var actor3 = new Actor ();
 
             _selectionController.CurrentActorRP
                 .Where(actor => actor is not null)
