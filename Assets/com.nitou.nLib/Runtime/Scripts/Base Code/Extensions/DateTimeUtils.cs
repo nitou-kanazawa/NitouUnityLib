@@ -5,7 +5,8 @@ using System.Globalization;
 //  LIGHT11: 
 
 namespace nitou {
-    public static class DateTimeUtil {
+
+    public static class DateTimeUtils {
 
         const string DatetimeSerializeFormat = "yyyy-MM-dd HH:mm:ss";
 
