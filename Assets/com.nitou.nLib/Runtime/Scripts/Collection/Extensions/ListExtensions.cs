@@ -1,5 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
+// [REF]
+//  コガネブログ: 配列やリストの分解代入を可能にする Deconstruct https://baba-s.hatenablog.com/entry/2019/09/12/085000#google_vignette
+//  StackOverflow: Does C# 7 have array/enumerable destructuring? https://stackoverflow.com/questions/47815660/does-c-sharp-7-have-array-enumerable-destructuring
 
 namespace nitou {
 
@@ -23,7 +28,6 @@ namespace nitou {
             return t;
         }
 
-
         /// <summary>
         /// 該当する要素を全て削除する拡張メソッド．
         /// </summary>
@@ -34,10 +38,52 @@ namespace nitou {
                 }
             }
         }
-        
-        
+
+
         /// ----------------------------------------------------------------------------
-        #region 要素の削除
+        #region 要素の分解
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct<T>(this IList<T> self,
+            out T first, out IList<T> rest) {
+            first = self.Count > 0 ? self[0] : default;
+            rest = self.Skip(1).ToArray();
+        }
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct<T>(this IList<T> self,
+            out T first, out T second, out IList<T> rest) {
+            first = self.Count > 0 ? self[0] : default;
+            second = self.Count > 1 ? self[1] : default;
+            rest = self.Skip(2).ToArray();
+        }
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct<T>(this IList<T> self,
+            out T first, out T second, out T third, out IList<T> rest) {
+            first = self.Count > 0 ? self[0] : default;
+            second = self.Count > 1 ? self[1] : default;
+            third = self.Count > 2 ? self[2] : default;
+            rest = self.Skip(3).ToArray();
+        }
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct<T>(this IList<T> self,
+            out T first, out T second, out T third, out T four, out IList<T> rest) {
+            first = self.Count > 0 ? self[0] : default;
+            second = self.Count > 1 ? self[1] : default;
+            third = self.Count > 2 ? self[2] : default;
+            four = self.Count > 3 ? self[3] : default;
+            rest = self.Skip(4).ToArray();
+        }
 
         #endregion
 

@@ -2,13 +2,33 @@ using UnityEngine;
 
 // [参考]
 //  UnityDocument: Rect https://docs.unity3d.com/ja/2023.2/ScriptReference/Rect.html
+//  コガネブログ: Rect の代入を簡略化する Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230100#google_vignette
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rect"/>型の基本的な拡張メソッド集
+    /// <see cref="Rect"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static class RectExtensions {
+    public static partial class RectExtensions {
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct(this Rect self, out Vector2 position, out Vector2 size) {
+            position = self.position;
+            size = self.size;
+        }
+
+        /// <summary>
+        /// デコンストラクタ．
+        /// </summary>
+        public static void Deconstruct( this Rect self, out float x, out float y, out float width, out float height) {
+            x = self.x;
+            y = self.y;
+            width = self.width;
+            height = self.height;
+        }
+
 
         /// ----------------------------------------------------------------------------
         #region Set Position
