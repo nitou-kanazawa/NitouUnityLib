@@ -228,7 +228,6 @@ namespace nitou {
         public static Rect AlignRight(this Rect rect, float width, bool clamp) {
             return clamp ? new Rect(Mathf.Max(rect.x, rect.xMax - width), rect.y, width, rect.height) : new Rect(rect.xMax - width, rect.y, width, rect.height);
         }
-
         #endregion
 
 
@@ -347,7 +346,6 @@ namespace nitou {
                 rect.width - padding.Width,
                 rect.height - padding.Height);
         }
-
         #endregion
 
 
@@ -392,8 +390,6 @@ namespace nitou {
             }
             return rect;
         }
-
-
 
 
         /// ----------------------------------------------------------------------------
@@ -487,11 +483,6 @@ namespace nitou {
                 new Vector2(rect.xMin, rect.yMax),
             };
         }
-
-
         #endregion
-
     }
-
-
 }

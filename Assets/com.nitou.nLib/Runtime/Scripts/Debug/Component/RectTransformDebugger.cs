@@ -38,8 +38,8 @@ namespace nitou.DebugInternal {
             var rect = _rectTrans.GetScreenRect(ref _canvas);
 
             var boxSize = Vector2.one * 100;
-            var minRect = RectUtil.CenterSizeRect(rect.min, boxSize);
-            var maxRect = RectUtil.CenterSizeRect(rect.max, boxSize);
+            var minRect = RectUtils.CenterSizeRect(rect.min, boxSize);
+            var maxRect = RectUtils.CenterSizeRect(rect.max, boxSize);
             EditorUtil.ScreenGUI.Box(minRect);
             EditorUtil.ScreenGUI.Box(maxRect);
 
