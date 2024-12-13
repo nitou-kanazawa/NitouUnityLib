@@ -42,7 +42,7 @@ namespace nitou {
             if (contentRect.size == Vector2.zero) return Vector2.zero;
 
             // Content“à‚Ì‘Š‘ÎˆÊ’u
-            var relativePos = RectUtil.GetRelativePosition(itemPosition, contentRect);
+            var relativePos = RectUtils.GetRelativePosition(itemPosition, contentRect);
             return relativePos;
         }
     }

@@ -78,7 +78,7 @@ namespace nitou.DebugInternal {
         public (string min, string max) GetPositionString(Mode mode) {
             var rect = mode switch {
                 Mode.Screen => _rectTrans.GetScreenRect(ref _canvas),
-                Mode.Viewport => _rectTrans.GetViewportRect(_canvas),
+                Mode.Viewport => _rectTrans.GetViewportRect(ref _canvas),
                 _ => throw new System.NotImplementedException()
             };
 

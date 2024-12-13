@@ -1,8 +1,10 @@
-using UnityEngine;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UniRx;
+using UnityEngine;
 
-namespace Project {
-}
 
 public class Actor {
     // 攻撃力
@@ -20,48 +22,39 @@ public class TestMono : MonoBehaviour {
     private ActorSelectionController _actorSelectionController = new();
 
     private void Start() {
-        _actorSelectionController.CurrentActorRP
-            .Where(actor => actor != null)
-            
-            // 変更箇所
-            .SelectMany(actor => actor.AttackRP)
-            //.Select(actor => actor.AttackRP)
-            //.Switch()
 
-            .Subscribe(attack => Debug.Log($"Actor's Attack : {attack}"))
-            .AddTo(this);
+        var observable = Observable.Create<char>(observer => {
+            var cd = new CancellationDisposable();
 
-        // サンプルシナリオ
-        SimulateActorSwitching();
+            // 非同期処理 (※キャプチャ問題はある)
+            Task.Run(async () => {
+                for (var i = 0; i < 26; i++) {
+                    await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken: cd.Token);
+                    observer.OnNext((char)('A'+i));
+                }
+                observer.OnCompleted();
+            }, cancellationToken: cd.Token);
+            return cd;
+        });
+
+
+        observable.Subscribe(x => Debug.Log(x)).AddTo(this);
     }
 
-    private void SimulateActorSwitching() {
-        // Actorの生成
-        var actor1 = new Actor();
-        var actor2 = new Actor();
 
-        // Actor1を選択
-        _actorSelectionController.CurrentActorRP.Value = actor1;
+    private IObservable<int> CreateCountObservable(int count) {
 
-        // Actor1のAttackRPを変更
-        actor1.AttackRP.Value = 1;
-        actor1.AttackRP.Value = 2;
-        actor1.AttackRP.Value = 3;
+        if (count <= 0) return Observable.Empty<int>();
 
-        // Actor2を選択
-        _actorSelectionController.CurrentActorRP.Value = actor2;
+        return Observable.CreateWithState<int, int>(state: count,
+            (maxCount, observer) => {
+                for (int i =0; i<maxCount; i++) {
+                    observer.OnNext(i);
+                }
 
-        // Actor2のAttackRPを変更
-        actor2.AttackRP.Value = 10;
-        actor2.AttackRP.Value = 20;
-        actor2.AttackRP.Value = 30;
-
-        // 再びActor1を選択
-        _actorSelectionController.CurrentActorRP.Value = actor1;
-
-        // Actor1のAttackRPを変更
-        actor1.AttackRP.Value = 5;
-        actor1.AttackRP.Value = 6;
-        actor1.AttackRP.Value = 7;
+                observer.OnCompleted();
+                return Disposable.Empty;
+            });
     }
+
 }

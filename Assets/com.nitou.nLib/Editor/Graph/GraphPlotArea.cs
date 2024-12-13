@@ -122,7 +122,7 @@ namespace nitou.EditorShared {
 
                 var p = GetPoint(new Vector2(x, yAxis.range.Min), PointType.GUIPoint);
                 var offset = new Vector2(0, 10);
-                var labelRect = RectUtil.CenterSizeRect(p + offset, new Vector2(30, 20));
+                var labelRect = RectUtils.CenterSizeRect(p + offset, new Vector2(30, 20));
                 GUI.Label(labelRect, x.ToString("0.0"), Style.label);
             }
 
@@ -134,14 +134,14 @@ namespace nitou.EditorShared {
 
                 var p = GetPoint(new Vector2(xAxis.range.Min, y), PointType.GUIPoint);
                 var offset = new Vector2(-20, 0);
-                var labelRect = RectUtil.CenterSizeRect(p + offset, new Vector2(30, 20));
+                var labelRect = RectUtils.CenterSizeRect(p + offset, new Vector2(30, 20));
                 GUI.Label(labelRect, y.ToString("0.0"), Style.label);
             }
 
 			public void DrawAxisTitleX() {
 				var axisCenter = GetPoint(new Vector2(xAxis.range.Mid, yAxis.range.Min), PointType.GUIPoint);
 				var offset = new Vector2(0, 25);
-				var labelRect = RectUtil.CenterSizeRect(axisCenter + offset, new Vector2(150, 20));
+				var labelRect = RectUtils.CenterSizeRect(axisCenter + offset, new Vector2(150, 20));
                 GUI.Label(labelRect, xAxis.label, Style.label);
 			}
 
@@ -149,7 +149,7 @@ namespace nitou.EditorShared {
 				var axisCenter = GetPoint(new Vector2(xAxis.range.Min, yAxis.range.Mid), PointType.GUIPoint);
 				using (new EditorUtil.RotateScope(-90, axisCenter)) {
 					var offset = new Vector2(0, -40);	// ※-90度の回転を考慮したオフセット
-					var labelRect = RectUtil.CenterSizeRect(axisCenter + offset, new Vector2(150, 30));
+					var labelRect = RectUtils.CenterSizeRect(axisCenter + offset, new Vector2(150, 30));
 					//EditorGUI.DrawRect(labelRect, Color.blue);
                     GUI.Label(labelRect, yAxis.label, Style.label);
                 }
