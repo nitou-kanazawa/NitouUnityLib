@@ -10,7 +10,7 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector3"/>の拡張メソッドクラス
+    /// <see cref="Vector3"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static partial class Vector3Extensions {
 

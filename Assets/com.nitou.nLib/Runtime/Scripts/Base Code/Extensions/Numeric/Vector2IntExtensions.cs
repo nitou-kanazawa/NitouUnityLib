@@ -7,17 +7,16 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector3Int"/>型の基本的な拡張メソッド集．
+    /// <see cref="Vector2Int"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static partial class Vector3IntExtensions     {
+    public static partial class Vector2IntExtensions     {
 
         /// <summary>
         /// デコンストラクタ．
         /// </summary>
-        public static void Deconstruct(this Vector3Int self, out int x, out int y, out int z) {
+        public static void Deconstruct(this Vector2Int self, out int x, out int y) {
             x = self.x;
             y = self.y;
-            z = self.z;
         }
     }
 }

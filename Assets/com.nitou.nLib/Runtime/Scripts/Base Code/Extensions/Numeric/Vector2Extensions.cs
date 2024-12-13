@@ -8,12 +8,12 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector2"/>の基本的な拡張メソッド集
+    /// <see cref="Vector2"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static partial class Vector2Extensions {
 
         /// <summary>
-        /// デコンストラクタ
+        /// デコンストラクタ．
         /// </summary>
         public static void Deconstruct(this Vector2 self, out float x, out float y) {
             x = self.x;
@@ -44,7 +44,7 @@ namespace nitou {
         // 簡易計算
 
         /// <summary>
-        /// 
+        /// 角度を計算する拡張メソッド．
         /// </summary>
         public static float Angle(this Vector2 self, Vector2 other) {
             return Vector2.Angle(self, other);
