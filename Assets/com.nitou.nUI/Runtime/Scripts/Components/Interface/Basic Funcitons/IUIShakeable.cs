@@ -1,0 +1,23 @@
+using System;
+using UniRx;
+using UnityEngine;
+
+namespace nitou.UI.Components{
+
+    /// <summary>
+    /// Interface of the UI that handles the ÅgShakeÅh event.
+    /// </summary>
+    public interface IUIShakeable : IUIComponent {
+
+        /// <summary>
+        /// Observable that notifiers when forward moved.
+        /// </summary>
+        public IObservable<Unit> OnMoveNext { get; }
+
+        /// <summary>
+        /// Observable that notifiers when backward moved.
+        /// </summary>
+        public IObservable<Unit> OnMovePrevious { get; }
+    
+    }
+}

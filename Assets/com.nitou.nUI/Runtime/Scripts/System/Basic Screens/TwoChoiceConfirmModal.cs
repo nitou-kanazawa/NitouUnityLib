@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using Sirenix.OdinInspector;
 
 namespace nitou.UI.BasicScreens {
-    using nitou.UI.Component;
+    using nitou.UI.Components;
 
     /// <summary>
     /// ２選択肢の確認モーダル

@@ -2,7 +2,7 @@
 namespace nitou {
 
     /// <summary>
-    /// "Component Menu"の各種定義
+    /// "Component Menu"の各種定義．
     /// </summary>
     public static partial class ComponentMenu {
 
@@ -28,7 +28,7 @@ namespace nitou {
         
         /// ----------------------------------------------------------------------------
         // 接尾辞
-        public static class Suffix {
+        public static partial class Suffix {
 
         }
 
