@@ -9,12 +9,12 @@ namespace nitou.UI.Components {
     /// <summary>
     /// 基本機能のみの独自ボタンUI（※クリックとサブミットは同一として扱う）
     /// </summary>
-    [AddComponentMenu(
-        menuName: ComponentMenu.Prefix.UIComponents + "Button"
-    )]
-    public class UIButton : UISelectable, IUISubmitable, IUICancelable,
+    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "Button")]
+    public class UIButton : UISelectable, 
+        IUISubmitable, IUICancelable,
         ISubmitHandler, ICancelHandler, IPointerClickHandler {
 
+        // Event stream
         protected Subject<Unit> _onSubmitSubject = new();
         protected Subject<Unit> _onCancelSubject = new();
 

@@ -4,29 +4,29 @@ using UnityEngine.UI;
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Graphic"/>型の基本的な拡張メソッド集
+    /// <see cref="Graphic"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static class GraphicExtentions{
+    public static partial class GraphicExtentions{
 
         /// ----------------------------------------------------------------------------
         #region カラー設定
 
         /// <summary>
-        /// カラー値(0~1)を設定する拡張メソッド
+        /// カラー値(0~1)を設定する拡張メソッド．
         /// </summary>
         public static void SetColor(this Graphic graphic, float r, float g, float b, float a) {
             graphic.color = new Color(r, g, b, a);
         }
 
         /// <summary>
-        /// カラー値(0~255)を設定する拡張メソッド
+        /// カラー値(0~255)を設定する拡張メソッド．
         /// </summary>
         public static void SetColor32(this Graphic graphic, byte r, byte g, byte b, byte a) {
             graphic.color = new Color32(r, g, b, a);
         }
 
         /// <summary>
-        /// RGB値を設定する拡張メソッド
+        /// RGB値を設定する拡張メソッド．
         /// </summary>
         public static void SetRGB(this Graphic graphic, float r, float g, float b) {
             var color = graphic.color;
@@ -37,7 +37,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// R値を設定する拡張メソッド
+        /// R値を設定する拡張メソッド．
         /// </summary>
         public static void SetR(this Graphic graphic, float r) {
             var color = graphic.color;
@@ -46,7 +46,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// G値を設定する拡張メソッド
+        /// G値を設定する拡張メソッド．
         /// </summary>
         public static void SetG(this Graphic graphic, float g) {
             var color = graphic.color;
@@ -55,7 +55,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// B値を設定する拡張メソッド
+        /// B値を設定する拡張メソッド．
         /// </summary>
         public static void SetB(this Graphic graphic, float b) {
             var color = graphic.color;
@@ -64,7 +64,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// α値を設定する拡張メソッド
+        /// α値を設定する拡張メソッド．
         /// </summary>
         public static void SetAlpha(this Graphic graphic, float alpha) {
             var color = graphic.color;

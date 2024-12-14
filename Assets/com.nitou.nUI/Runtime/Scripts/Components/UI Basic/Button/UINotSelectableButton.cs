@@ -8,12 +8,12 @@ namespace nitou.UI.Components {
     /// <summary>
     /// ëIëèÛë‘Ç…Ç»ÇÁÇ»Ç¢ì∆é©É{É^ÉìUI
     /// </summary>
-    [AddComponentMenu(
-         menuName: ComponentMenu.Prefix.UIComponents + "NotSelectable Button"
-    )]
-    public class UINotSelectableButton : UIBehaviour, IUISubmitable, 
+    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "NotSelectable Button")]
+    public class UINotSelectableButton : UIBehaviour, 
+        IUISubmitable, 
         IPointerClickHandler {
 
+        // Event stream
         private Subject<Unit> _onClickSubject = new();
 
         /// <summary>

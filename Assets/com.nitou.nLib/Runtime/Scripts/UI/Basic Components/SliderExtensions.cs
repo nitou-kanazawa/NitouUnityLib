@@ -5,9 +5,9 @@ using UnityEngine.UI;
 namespace nitou {
 
     /// <summary>
-    /// Sliderの拡張メソッドクラス
+    /// <see cref="Slider"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static class SliderExtensions {
+    public static partial class SliderExtensions {
 
         /// ----------------------------------------------------------------------------
         // イベントの登録

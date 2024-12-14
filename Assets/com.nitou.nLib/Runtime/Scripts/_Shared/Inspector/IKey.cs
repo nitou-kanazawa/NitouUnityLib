@@ -4,7 +4,7 @@ namespace nitou {
     /// <summary>
     /// Inspector で頻繁に使用するキーワード集 (※あくまでタイプミス防止用)
     /// </summary>
-    public static class IKey {
+    public static partial class IKey {
 
         /// ----------------------------------------------------------------------------
 
@@ -26,10 +26,6 @@ namespace nitou {
         public const string EVENT = "Event";
 
         public const string BUTTON_GROUP = "Control Buttons";
-
-
-
-
 
 
         public static class Button {

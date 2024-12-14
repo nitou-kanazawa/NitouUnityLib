@@ -14,13 +14,12 @@ namespace nitou {
             /// <summary>
             /// カスタムUI
             /// </summary>
-            public const string UIComponents = "UI Components/";
+            public const string UIComponents = "UI/Components/";
 
             /// <summary>
             /// カスタムUI
             /// </summary>
-            public const string UIView = "UI View/";
-
+            public const string UIView = "UI/View/";
         }
     }
 

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 namespace nitou {
 
     /// <summary>
-    ///  Toggleの拡張メソッドクラス
+    /// <see cref="Toggle"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static class ToggleExtensions {
+    public static partial class ToggleExtensions {
 
         /// ----------------------------------------------------------------------------
         // イベントの登録

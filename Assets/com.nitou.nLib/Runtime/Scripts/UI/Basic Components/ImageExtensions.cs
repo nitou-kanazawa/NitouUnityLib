@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,43 +8,43 @@ using UnityEngine.UI;
 namespace nitou{
 
     /// <summary>
-    /// Imageの拡張メソッドクラス
+    /// <see cref="Image"/>型の基本的な拡張メソッド集．
     /// </summary>
-    public static class ImageExtensions {
+    public static partial class ImageExtensions {
 
         /// ----------------------------------------------------------------------------
         // Fill 
 
         /// <summary>
-        /// Fill Originを設定する拡張メソッド
+        /// Fill Originを設定する拡張メソッド．
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.OriginHorizontal origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Originを設定する拡張メソッド
+        /// Fill Originを設定する拡張メソッド．
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.OriginVertical origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Originを設定する拡張メソッド
+        /// Fill Originを設定する拡張メソッド．
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.Origin90 origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Originを設定する拡張メソッド
+        /// Fill Originを設定する拡張メソッド．
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.Origin360 origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Horizontal Fillに設定する拡張メソッド
+        /// Horizontal Fillに設定する拡張メソッド．
         /// </summary>
         public static void SetHorizontalFillMode(this Image self, Image.OriginHorizontal origin) {
             self.type = Image.Type.Filled;
@@ -54,7 +53,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// Vertical Fillに設定する拡張メソッド
+        /// Vertical Fillに設定する拡張メソッド．
         /// </summary>
         public static void SetVerticalFillMode(this Image self, Image.OriginVertical origin) {
             self.type = Image.Type.Filled;
@@ -67,7 +66,7 @@ namespace nitou{
         // sprite
 
         /// <summary>
-        /// ImageのSpriteに、テクスチャを設定する拡張メソッド
+        /// ImageのSpriteに、テクスチャを設定する拡張メソッド．
         /// </summary>
         public static void SetTexture2D(this Image self, Texture2D tex2D) {
             if (tex2D != null) {

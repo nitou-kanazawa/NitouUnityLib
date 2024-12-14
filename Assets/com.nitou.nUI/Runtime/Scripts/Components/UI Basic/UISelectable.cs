@@ -9,9 +9,10 @@ namespace nitou.UI.Components {
     /// <summary>
     /// <see cref="Selectable"/>に独自機能を追加した基本コンポーネント
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class UISelectable : Selectable, 
-        IUISelectable, IUIMoveable 
-    {
+        IUISelectable, IUIMoveable {
+
         //
         [SerializeField] protected UICursor _cursor;
 
