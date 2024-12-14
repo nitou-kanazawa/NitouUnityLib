@@ -29,6 +29,7 @@ namespace nitou.UI.Components{
         }
 
         void IPointerExitHandler.OnPointerExit(PointerEventData eventData) {
+
         }
     }
 }

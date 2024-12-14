@@ -9,7 +9,7 @@ namespace nitou.UI.Components {
     /// <summary>
     /// 基本機能のみの独自ボタンUI（※クリックとサブミットは同一として扱う）
     /// </summary>
-    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "Button")]
+    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "UI Button")]
     public class UIButton : UISelectable, 
         IUISubmitable, IUICancelable,
         ISubmitHandler, ICancelHandler, IPointerClickHandler {

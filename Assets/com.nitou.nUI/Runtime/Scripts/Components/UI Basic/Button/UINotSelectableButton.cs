@@ -8,7 +8,7 @@ namespace nitou.UI.Components {
     /// <summary>
     /// ‘I‘ğó‘Ô‚É‚È‚ç‚È‚¢“Æ©ƒ{ƒ^ƒ“UI
     /// </summary>
-    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "NotSelectable Button")]
+    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "UI NotSelectable Button")]
     public class UINotSelectableButton : UIBehaviour, 
         IUISubmitable, 
         IPointerClickHandler {

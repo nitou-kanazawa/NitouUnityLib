@@ -4,7 +4,7 @@ using UniRx;
 
 namespace nitou.UI.Components{
 
-    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "Toggle")]
+    [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "UI Toggle")]
     public class UIToggleButton : UIButton {
 
         // [FIXME]

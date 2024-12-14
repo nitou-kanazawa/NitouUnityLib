@@ -10,7 +10,7 @@ namespace nitou.UI.Components {
     /// <summary>
     /// 基本機能のみの独自スライダーUI
     /// </summary>
-    [AddComponentMenu(menuName: ComponentMenu.Prefix.UIComponents + "Slider")]
+    [AddComponentMenu(menuName: ComponentMenu.Prefix.UIComponents + "UI Slider")]
     public class UISlider : Slider, IUISlider {
 
         // Event stream

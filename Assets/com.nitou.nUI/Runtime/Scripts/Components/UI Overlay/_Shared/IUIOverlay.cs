@@ -5,7 +5,7 @@ using UnityEngine;
 namespace nitou.UI.Overlay{
 
     /// <summary>
-    /// オーバーレイ画面のインターフェース
+    /// オーバーレイ画面のインターフェース．
     /// </summary>
     public interface IUIOverlay{
 

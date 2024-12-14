@@ -17,7 +17,8 @@
     "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [
-        "USN_USE_ASYNC_METHODS"
+        "USN_USE_ASYNC_METHODS",
+        "UNITASK_DOTWEEN_SUPPORT"
     ],
     "versionDefines": [],
     "noEngineReferences": false
