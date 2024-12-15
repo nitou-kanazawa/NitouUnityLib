@@ -2,10 +2,11 @@
 
 ## 【概要】
 
-Unity での開発で頻繁に使用するコードを試験的にパッケージとして切り出している．
+自分用に Unity での開発で頻繁に使用するコードを試験的にパッケージとして切り出している．
 パッケージ群は[Basic]と[Aditional]の２層に分類され，
 全プロジェクトで共通して使用するモジュールは[Basic]，
-オプションとして追加したいモジュールは[Aditional]として振り分ける．
+オプションとして追加したいモジュールは[Aditional],
+エディタ用のツール群は[Tools]として振り分ける．
 
 ![image](https://github.com/user-attachments/assets/4e5f3e04-d02f-4463-b678-91145a08c979)
 
@@ -16,16 +17,34 @@ Unity での開発で頻繁に使用するコードを試験的にパッケー�
 
 本リポジトリは以下のパッケージを内包している．
 
+- Nitou Lib [Basic]
+- Nitou UI [Basic]
+- Nitou Modules [Adittional]
+- Nitou Tools [Tools]
+
+導入するコードを選択可能にするため，複数パッケージに分割している．
+（※あまりアセンブリファイルを増やしたくないので，分割方法は使いながら調整していく）
+
+-***Nitou.Lib***
+拡張メソッドやユーティリティ関数などの汎用的なライブラリ．
+s
 ```
-// Nitou.Lib [Basic]
 https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nLib
+```
 
-// Nitou.Tools [Basic]
+- ***Nitou.UI***
+```
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nUI
+```
+
+- ***Nitou.Modules***
+```
+https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nModules
+```
+
+- ***Nitou.Tools***
+```
 https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.nTools
-
-// Nitou.SceneLoader
-https://github.com/nitou-kanazawa/NitouUnityLib.git?path=Assets/com.nitou.sceneloader
-
 ```
 
 ## 【構成】
