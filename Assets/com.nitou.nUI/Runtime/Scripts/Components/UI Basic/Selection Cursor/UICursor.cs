@@ -8,7 +8,7 @@ namespace nitou.UI.Components {
     /// 基本機能のみの独自カーソルUI
     /// </summary>
     [AddComponentMenu(
-        menuName: ComponentMenu.Prefix.UIComponents +"Cursor"
+        menuName: ComponentMenu.Prefix.UIComponents +"UI Cursor"
     )]
     [DisallowMultipleComponent]
     public class UICursor : MonoBehaviour, IUIComponent {

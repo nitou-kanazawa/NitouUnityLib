@@ -48,7 +48,7 @@ namespace Project {
             _currentIndex.
                 DistinctUntilChanged()
                 .Do(_ => ResetImageSprite())
-                .Delay(TimeSpan.FromSeconds(1f))
+                .Throttle(TimeSpan.FromSeconds(1f))
                 .Select(index => ResourceKeys[index])
                 .Select(path => ObservableConverter.FromUniTask(ct => LoadSpriteAsync(path, ct)))
                 // 最新のIObservableに切り替える
@@ -66,12 +66,16 @@ namespace Project {
 
         // スプライト読み込み
         private async UniTask<Sprite> LoadSpriteAsync(string resourcePath, CancellationToken token = default) {
+            token.ThrowIfCancellationRequested();
+
             Debug_.Log($"Load resource from :{resourcePath}", Colors.White);
             
             var sprite = await Resources.LoadAsync<Sprite>(resourcePath) as Sprite;
 
             // 仮に3秒程かかるとする
-            await UniTask.WaitForSeconds(2f, cancellationToken: token);
+            await UniTask.WaitForSeconds(1f, cancellationToken: token);
+
+            Debug_.Log($"Complete Load ");
             return sprite;
         }
 
