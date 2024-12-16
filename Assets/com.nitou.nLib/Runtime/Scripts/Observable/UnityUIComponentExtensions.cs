@@ -25,21 +25,21 @@ namespace UniRx {
         /// <summary>
         /// 
         /// </summary>
-        public static IDisposable SubscribeToText(this IObservable<string> source, TextMeshProUGUI text) {
+        public static IDisposable SubscribeToTextMeshPro(this IObservable<string> source, TextMeshProUGUI text) {
             return source.SubscribeWithState(text, (x, t) => t.text = x);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static IDisposable SubscribeToText<T>(this IObservable<T> source, TextMeshProUGUI text) {
+        public static IDisposable SubscribeToTextMeshPro<T>(this IObservable<T> source, TextMeshProUGUI text) {
             return source.SubscribeWithState(text, (x, t) => t.text = x.ToString());
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public static IDisposable SubscribeToText<T>(this IObservable<T> source, TextMeshProUGUI text, Func<T, string> selector) {
+        public static IDisposable SubscribeToTextMeshPro<T>(this IObservable<T> source, TextMeshProUGUI text, Func<T, string> selector) {
             return source.SubscribeWithState2(text, selector, (x, t, s) => t.text = s(x));
         }
         #endregion
