@@ -1,0 +1,20 @@
+{
+    "name": "Nitou.UI.Develop",
+    "rootNamespace": "Develop",
+    "references": [
+        "GUID:14d14a38d1c9a1f43b1b739aba632d1e",
+        "GUID:002662d23621f7546bb13dbc4a623e1a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:174b432621f01fb418be26ffc6c90e22"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

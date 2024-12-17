@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// [参考]
+// [REF]
 //  _: Image クラスの拡張メソッド https://kazupon.org/unity-image-extension/
 //  _: 2DRPG開発日誌 #79 ImageのFill方向をスクリプトから変更する https://kitty-pool.com/ss079/
 
