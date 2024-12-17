@@ -11,7 +11,7 @@ namespace nitou {
     /// <summary>
     /// <see cref="string"/>型の汎用メソッド集．
     /// </summary>
-    public static class StringUtils {
+    public static partial class StringUtils {
 
         /// ----------------------------------------------------------------------------
         #region 文字列への変換
@@ -129,8 +129,6 @@ namespace nitou {
             return baseName;
         }
         #endregion
-
-
 
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1750393136850375988}
   - component: {fileID: 6378066347233679452}
-  - component: {fileID: 8383982840162524263}
+  - component: {fileID: 1202866547031667705}
   m_Layer: 5
   m_Name: Footer
   m_TagString: Untagged
@@ -50,7 +50,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8383982840162524263
+--- !u!114 &1202866547031667705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,9 +59,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 647521616767379873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 526a76a6dda0a3d4db86707b5ab6b967, type: 3}
+  m_Script: {fileID: 11500000, guid: dd80d0f92511d254e8cea9dfe466a00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _backdropImage: {fileID: 0}
 --- !u!1 &887681657183503181
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9163188185279364465}
   - component: {fileID: 69206294680898682}
-  - component: {fileID: 7370050598117629577}
+  - component: {fileID: 6214508160675297587}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -297,7 +298,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7370050598117629577
+--- !u!114 &6214508160675297587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,9 +307,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3181438451169806494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9b1fbd3c96bb243831ddd2165d3877, type: 3}
+  m_Script: {fileID: 11500000, guid: efd01b1fee4f95a4cb1e526351a6dee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _backdropImage: {fileID: 0}
 --- !u!1 &3689432869035467395
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7237398883084032310}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
