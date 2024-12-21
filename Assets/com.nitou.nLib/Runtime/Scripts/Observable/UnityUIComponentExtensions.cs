@@ -18,9 +18,7 @@ namespace UniRx {
 
 
         /// ----------------------------------------------------------------------------
-        #region Text
-
-        // [MEMO] SubscribeWithStateはクロージャが生成されない分，Subscribeより効率がよいらしい．
+        #region Text Mesh Pro
 
         /// <summary>
         /// 
