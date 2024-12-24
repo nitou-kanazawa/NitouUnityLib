@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
 
 // [参考]
 //  qiita: Dictionaryの拡張メソッド 36選 https://qiita.com/soi/items/6ce0e0ddefdd062c026a
@@ -14,10 +13,12 @@ namespace nitou {
     /// </summary>
     public static partial class DictionaryExtensions {
 
+        /// ----------------------------------------------------------------------------
+
         /// <summary>
         /// デコンストラクタ．
         /// </summary>
-        public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> self, out TKey key,out TValue value) {
+        public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> self, out TKey key, out TValue value) {
             key = self.Key;
             value = self.Value;
         }
@@ -68,7 +69,7 @@ namespace nitou {
         /// <summary>
         /// キーが含まれていない場合に新規要素を追加する拡張メソッド
         /// </summary>
-        public static bool TryAddNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) where TValue : new() 
+        public static bool TryAddNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) where TValue : new()
             => dict.TryAdd(key, _ => new TValue());
 
         /// <summary>
@@ -106,11 +107,17 @@ namespace nitou {
             return self.TryGetValue(key, out TValue result) ? result : default;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static TValue GetValueOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value) {
             dict.TryAdd(key, value);
             return dict[key];
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static TValue GetValueOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, Func<TKey, TValue> valueFactory) {
             dict.TryAdd(key, valueFactory);
             return dict[key];
@@ -132,7 +139,7 @@ namespace nitou {
             return dict[key];
         }
 
-        
+
         /// ----------------------------------------------------------------------------
         // その他
 
@@ -147,41 +154,6 @@ namespace nitou {
         }
 
 
-
-
-        /// ----------------------------------------------------------------------------
-        #region Demo
-
-        /*
-
-        private static Dictionary<string, int> CreateSourceDictionary()
-        => new Dictionary<string, int> {
-            ["A"] = 10,
-            ["B"] = 20,
-            ["C"] = 99,
-        };
-
-        [UnityEditor.MenuItem("sssss/sss")]
-        public static void Test() {
-
-            var dict = CreateSourceDictionary();
-
-            Debug_.Log("--------------");
-            Debug_.DictLog(dict);
-
-            dict.TryAdd("A",1000);
-            dict.TryAdd("F",1000);
-
-            Debug_.Log("--------------");
-
-
-            Debug_.Log(dict.GetValueOrDefault("F"));
-            Debug_.Log(dict.GetValueOrDefault("X"));
-        }
-
-        */
-        
-        #endregion
-
+ 
     }
 }

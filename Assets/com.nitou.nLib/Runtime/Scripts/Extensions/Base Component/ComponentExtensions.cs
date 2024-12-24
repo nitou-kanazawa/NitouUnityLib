@@ -7,7 +7,7 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Component"/>型の基本的な拡張メソッド集
+    /// <see cref="Component"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static partial class ComponentExtensions {
 
@@ -15,14 +15,14 @@ namespace nitou {
         // コンポーネントの追加
 
         /// <summary>
-        /// AddComponentの拡張メソッド
+        /// AddComponentの拡張メソッド．
         /// </summary>
         public static T AddComponent<T>(this Component self) where T : Component {
             return self.gameObject.AddComponent<T>();
         }
 
         /// <summary>
-        /// AddComponentsの拡張メソッド
+        /// AddComponentsの拡張メソッド．
         /// </summary>
         public static void AddComponents<T1, T2>(this Component self)
             where T1 : Component where T2 : Component {
@@ -30,7 +30,15 @@ namespace nitou {
         }
 
         /// <summary>
-        /// GameObjectが対象のコンポーネント持つ場合はそれを取得し，なければ追加して返す拡張メソッド
+        /// AddComponentsの拡張メソッド．
+        /// </summary>
+        public static void AddComponents<T1, T2, T3>(this Component self)
+            where T1 : Component where T2 : Component where T3 : Component {
+            self.gameObject.AddComponents<T1, T2, T3>();
+        }
+
+        /// <summary>
+        /// GameObjectが対象のコンポーネント持つ場合はそれを取得し，なければ追加して返す拡張メソッド．
         /// </summary>
         public static T GetOrAddComponent<T>(this Component self) where T : Component {
             return self.gameObject.GetOrAddComponent<T>();
@@ -41,21 +49,21 @@ namespace nitou {
         // コンポーネントの破棄
 
         /// <summary>
-        /// Destoryの拡張メソッド
+        /// Destoryの拡張メソッド．
         /// </summary>
         public static void Destroy(this Component self) {
             Object.Destroy(self);
         }
 
         /// <summary>
-        /// DestroyImmediateの拡張メソッド
+        /// DestroyImmediateの拡張メソッド．
         /// </summary>
         public static void DestroyImmediate(this Component self) {
             Object.DestroyImmediate(self);
         }
 
         /// <summary>
-        /// ComponentがアタッチされているGameObjectを破棄する
+        /// ComponentがアタッチされているGameObjectを破棄する．
         /// </summary>
         public static void DestroyGameObject(this Component self) {
             Object.Destroy(self.gameObject);
