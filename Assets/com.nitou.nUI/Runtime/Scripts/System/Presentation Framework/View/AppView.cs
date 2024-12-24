@@ -6,7 +6,8 @@ namespace nitou.UI.PresentationFramework {
     /// <summary>
     /// UI要素のインスタンス．
     /// </summary>
-    public abstract class AppView<TState> : MonoBehaviour where TState : AppViewState {
+    public abstract class AppView<TState> : MonoBehaviour 
+        where TState : AppViewState {
         
         /// <summary>
         /// 初期化が完了しているかどうか．

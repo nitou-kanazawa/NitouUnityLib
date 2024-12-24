@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using nitou;
 
-// [参考]
+// [REF]
 //  qiita: UniRx入門　~ データバインディングとUnityイベント関数の購読 ~ https://qiita.com/su10/items/6d7fd792d4b553454a4f
 //  Hatena: UniRx: SubscribeWithState は Subscribe より効率がよい https://noriok.hatenadiary.jp/entry/2018/09/17/144930
 
