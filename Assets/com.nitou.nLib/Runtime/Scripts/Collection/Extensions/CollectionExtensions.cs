@@ -66,7 +66,6 @@ namespace nitou {
         /// <summary>
         /// 指定インデックスが範囲内にあるかどうかを判定する拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsInRange<T>(this int index, IReadOnlyCollection<T> collection) {
             return 0 <= index && index < collection.Count;
         }
@@ -74,7 +73,6 @@ namespace nitou {
         /// <summary>
         /// 指定インデックスが範囲外にあるかどうかを判定する拡張メソッド．
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsOutRange<T>(this int index, IReadOnlyCollection<T> collection) {
             return !index.IsInRange(collection);
         }

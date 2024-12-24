@@ -63,8 +63,8 @@ namespace nitou {
         /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action) {
-            foreach (var n in source) {
-                action(n);
+            foreach (var item in source) {
+                action(item);
             }
             return source;
         }
@@ -73,6 +73,44 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
         #region 要素の取得
+
+        /// <summary>
+        /// 指定要素のインデックスを取得する拡張メソッド．シーケンスに含まれない場合は-1を返す．
+        /// </summary>
+        public static int IndexOf<T>(this IEnumerable<T> source, T value) {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+
+            int index = 0;
+            var comparer = EqualityComparer<T>.Default;
+
+            foreach (var item in source) {
+                if (comparer.Equals(item, value))
+                    return index;
+
+                index++;
+            }
+
+            return -1; // 見つからない場合
+        }
+
+        /// <summary>
+        /// 指定要素のインデックスを取得する拡張メソッド．シーケンスに含まれない場合は-1を返す．
+        /// </summary>
+        public static int IndexOf<T>(this IEnumerable<T> source, Func<T, bool> predicate) {
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
+
+            int index = 0;
+            foreach (var item in source) {
+                if (predicate(item))
+                    return index;
+
+                index++;
+            }
+
+            return -1; // 条件に合致する要素がない場合
+        }
+
 
         /// <summary>
         /// 条件に基づいて最小の要素を取得する拡張メソッド．
@@ -194,11 +232,11 @@ namespace nitou {
         /// <summary>
         /// Csv形式の文字列に変換します。
         /// </summary>
-        public static string ToCsvText(this IEnumerable<string> enumerable, char separator = ',') {
-            if (enumerable == null) return null;
+        public static string ToCsvText(this IEnumerable<string> source, char separator = ',') {
+            if (source == null) return null;
 
             var csv = new StringBuilder();
-            enumerable.ForEach(v => {
+            source.ForEach(v => {
                 string val = v;
                 if (v.Contains("\"") || v.Contains("\n")) {
                     if (v.Contains("\"")) {
@@ -219,7 +257,6 @@ namespace nitou {
         public static string ToBracketedString<T>(this IEnumerable<T> source) {
             return $"[{string.Join(", ", source)}]";
         }
-
         #endregion
     }
 }
