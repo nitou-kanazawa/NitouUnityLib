@@ -484,5 +484,24 @@ namespace nitou {
             };
         }
         #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region String
+
+        /// <summary>
+        /// x,yの値域を示す文字列へ変換する拡張メソッド．
+        /// </summary>
+        public static string ToStringAsRange(this Rect rect) {
+            return string.Format(
+                "X : [{0:F2} ~ {1:F2}], Y : [{2:F2} ~ {3:F2}]",
+                rect.x,
+                rect.x + rect.width,
+                rect.y,
+                rect.y + rect.height
+            );
+        }
+
+        #endregion
     }
 }

@@ -14,6 +14,40 @@ namespace nitou {
     /// </summary>
     public static partial class EnumerableUtils {
 
+        // ----------------------------------------------------------------------------
+        #region 取得
+
+        /// <summary>
+        /// 重複している要素を取得する．
+        /// </summary>
+        public static IEnumerable<TKey> GetDuplication<TKey, TSource>(this IEnumerable<TSource> self, Func<TSource, TKey> keySelector) {
+            return self.GroupBy(keySelector)
+                    .Where(c => 1 < c.Count())
+                    .Select(c => c.Key);
+        }
+
+        #endregion
+
+
+        // ----------------------------------------------------------------------------
+        #region 判定
+
+        /// <summary>
+        /// 重複した値が存在するか確認する．
+        /// </summary>
+        public static bool HasDuplication<TKey, TSource> (this IEnumerable<TSource> self, Func<TSource, TKey> keySelector) {
+            return self.GroupBy(keySelector)
+                    .Any(x => 1 < x.Count());
+        }
+
+        public static bool HasDuplication<TSource>(this IEnumerable<TSource> self) {
+            return self.GroupBy(x => x)
+                    .Any(x => 1 < x.Count());
+        }
+
+        #endregion
+
+
         /// ----------------------------------------------------------------------------
         #region 補間 (要素数指定)
 
@@ -89,18 +123,24 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
+        
+        /// <summary>
+        /// 1つの要素で構成されるシーケンスを返す．
+        /// </summary>
+        public static IEnumerable<T> Return<T>(T value) {
+            yield return value;
+        }
 
         /// <summary>
         /// start〜end(含む)の連番を順に含んだListを作成し取得する．
         /// </summary>
-        public static List<int> RangeNumbers(int start, int end) {
-            if (start == end) {
-                return new List<int>() { start };
-            }
-            if (start > end) {
-                return Enumerable.Range(end, start - end + 1).Reverse().ToList();
-            }
-            return Enumerable.Range(start, end - start + 1).ToList();
+        public static IEnumerable<int> RangeNumbers(int start, int end) {
+            if (start == end)
+                return EnumerableUtils.Return(start);
+            else if (start > end)
+                return Enumerable.Range(end, start - end + 1).Reverse();
+            else
+                return Enumerable.Range(start, end - start + 1);
         }
     }
 }

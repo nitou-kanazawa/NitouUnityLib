@@ -34,7 +34,7 @@ namespace nitou {
         /// <summary>
         /// 値が０か判定する拡張メソッド．
         /// </summary>
-        public static bool ApproxZero(this float self) =>
+        public static bool IsZero(this float self) =>
             Mathf.Approximately(self, 0f);
 
         #endregion
@@ -74,6 +74,12 @@ namespace nitou {
         /// </summary>
         public static int FloorToInt(this float self) =>
             Mathf.FloorToInt(self);
+
+        /// <summary>
+        /// 値を丸めてInt型で返す拡張メソッド．
+        /// </summary>
+        public static int RoundToInt(this float self) =>
+            Mathf.RoundToInt(self);
 
         // [NOTE]
         //  _: 値を特定の範囲に収める拡張メソッド https://12px.com/blog/2023/01/remap/

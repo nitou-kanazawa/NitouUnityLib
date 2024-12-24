@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UniRx;
+using nitou;
 
-namespace nitou{
+namespace UniRx {
 
     /// <summary>
     /// <see cref="ReactiveCollection{T}"/>の拡張メソッド集．
