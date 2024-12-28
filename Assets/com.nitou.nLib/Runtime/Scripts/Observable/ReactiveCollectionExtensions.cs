@@ -6,9 +6,9 @@ using nitou;
 namespace UniRx {
 
     /// <summary>
-    /// <see cref="ReactiveCollection{T}"/>の拡張メソッド集．
+    /// <see cref="ReactiveCollection{T}"/>の基本的な拡張メソッド集．
     /// </summary>
-    public static class ReactiveCollectionExtensions {
+    public static partial class ReactiveCollectionExtensions {
 
         /// <summary>
         /// 変更があったことを通知するObservableを返す.
