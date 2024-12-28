@@ -7,17 +7,17 @@ namespace nitou.Tools.Shared{
     internal static class PackageInfo{
 
         /// <summary>
-        /// パッケージのディレクトリパス
+        /// パッケージのディレクトリパス．
         /// </summary>
         internal static readonly PackageDirectoryPath PackagePath = null;
 
         /// <summary>
-        /// ProjectSettingsのメニューパス
+        /// ProjectSettingsのメニューパス．
         /// </summary>
         internal static readonly string SettingsMenuPath = "Project/Nitou Tools/";
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         static PackageInfo() {
             PackagePath = new PackageDirectoryPath("com.nitou.nTools");

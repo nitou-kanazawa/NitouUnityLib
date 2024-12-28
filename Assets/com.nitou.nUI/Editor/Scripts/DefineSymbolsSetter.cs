@@ -15,7 +15,8 @@ namespace nitou.EditorScripts {
     internal static class DefineSymbolsSetter{
 
         // 定義したいシンボル
-        private const string SYMBOL_TO_DEFINE = "NLIB_PACKAGE_SYMBOL";
+        private const string SYMBOL_USN_ASYNC = "USN_USE_ASYNC_METHODS";
+        private const string SYMBOL_UNITASK_DOTWEEN = "UNITASK_DOTWEEN_SUPPORT";
 
 
         /// <summary>
@@ -26,7 +27,10 @@ namespace nitou.EditorScripts {
             var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
 
             // パッケージがインストールされたときに実行される処理
-            AddDefineSymbolsIfNeeded(buildTarget, SYMBOL_TO_DEFINE);
+
+            AddDefineSymbolsIfNeeded(buildTarget, SYMBOL_USN_ASYNC);
+            AddDefineSymbolsIfNeeded(buildTarget, SYMBOL_UNITASK_DOTWEEN);
+            //AddDefineSymbolsIfNeeded(buildTarget, "UNITASK_DOTWEEN_SUPPORT");
         }
 
 
@@ -50,7 +54,7 @@ namespace nitou.EditorScripts {
                 PlayerSettings.SetScriptingDefineSymbols(buildTarget, symbol);
 
                 // デバッグ用ログ
-                Debug.Log($"Added define symbol: {SYMBOL_TO_DEFINE}");
+                Debug.Log($"Added define symbol: {symbol}");
             } else {
                 //Debug.Log($"{SYMBOL_TO_DEFINE} is already defined.");
             }
