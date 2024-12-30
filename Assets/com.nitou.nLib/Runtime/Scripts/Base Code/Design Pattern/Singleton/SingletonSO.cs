@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  youtube: The BEST Unity Feature You Don't Know About - Scriptable Object Singletons Tutorial https://www.youtube.com/watch?v=6kWUGEQiMUI&t=100s
 //  github: ciwolsey/ScriptableObjectSingleton.cs https://gist.github.com/ciwolsey/3bd0189a8bbc76e3f7242b51473ff3f6
-//  _: ƒVƒ“ƒOƒ‹ƒgƒ“‚ÈScriptableObject‚ğÀ‘•‚·‚é https://mackysoft.net/singleton-scriptableobject/
+//  _: ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãªScriptableObjectã‚’å®Ÿè£…ã™ã‚‹ https://mackysoft.net/singleton-scriptableobject/
 
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// ƒOƒ[ƒoƒ‹ƒAƒNƒZƒX‚ğ‚ÂƒVƒ“ƒOƒ‹ƒgƒ“‚ÌScriptable Object
-    /// ¦—Bˆê«‚ÍƒR[ƒh‚Å’S•Û‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚É’ˆÓ
+    /// ã‚°ãƒ­ãƒ¼ãƒãƒ«ã‚¢ã‚¯ã‚»ã‚¹ã‚’æŒã¤ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®Scriptable Object
+    /// â€»å”¯ä¸€æ€§ã¯ã‚³ãƒ¼ãƒ‰ã§æ‹…ä¿ã•ã‚Œã¦ã„ãªã„ã®ã«æ³¨æ„
     /// </summary>
     public class SingletonSO<T> : ScriptableObject where T : SingletonSO<T> {
 
@@ -20,10 +20,10 @@ namespace nitou.DesignPattern {
                     T[] assets = Resources.LoadAll<T>("");
 
                     if (assets == null || assets.Length < 1) {
-                        throw new System.Exception($"ResoucesƒtƒHƒ‹ƒ_“à‚É{typeof(T)}Œ^‚ÌƒAƒZƒbƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");
+                        throw new System.Exception($"Resoucesãƒ•ã‚©ãƒ«ãƒ€å†…ã«{typeof(T)}å‹ã®ã‚¢ã‚»ãƒƒãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ");
 
                     } else if (assets.Length > 1) {
-                        Debug.LogWarning($"{typeof(T)}Œ^‚ÌƒAƒZƒbƒg‚ª•¡”‘¶İ‚µ‚Ä‚¢‚Ü‚·");
+                        Debug.LogWarning($"{typeof(T)}å‹ã®ã‚¢ã‚»ãƒƒãƒˆãŒè¤‡æ•°å­˜åœ¨ã—ã¦ã„ã¾ã™");
                     }
                     _instance = assets[0];
                 }

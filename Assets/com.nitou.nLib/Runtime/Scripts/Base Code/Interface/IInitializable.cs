@@ -1,19 +1,19 @@
-
+ï»¿
 // [Memo]
-//  ”CˆÓ‚Ìƒ^ƒCƒ~ƒ“ƒO‚ÅƒŠƒZƒbƒg‚µ‚½‚¢‚±‚Æ‚ª‘½‚­‚ ‚é‚½‚ßCƒCƒ“ƒ^[ƒtƒF[ƒX‚ğì¬D
-//  eƒIƒuƒWƒFƒNƒg‚©‚çÄ‹A“I‚Éˆ—‚·‚é‚±‚Æ‚ªå–Ú“ID
+//  ä»»æ„ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ãƒªã‚»ãƒƒãƒˆã—ãŸã„ã“ã¨ãŒå¤šãã‚ã‚‹ãŸã‚ï¼Œã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½œæˆï¼
+//  è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å†å¸°çš„ã«å‡¦ç†ã™ã‚‹ã“ã¨ãŒä¸»ç›®çš„ï¼
 
 namespace nitou {
 
     public interface IInitializable {
 
         /// <summary>
-        /// ‰Šú‰»‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// ‰Šú‰»ˆ—D
+        /// åˆæœŸåŒ–å‡¦ç†ï¼
         /// </summary>
         public void Initialize();
     }
@@ -22,12 +22,12 @@ namespace nitou {
     public interface IInitializable<T> {
 
         /// <summary>
-        /// ‰Šú‰»‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// ‰Šú‰»ˆ—D
+        /// åˆæœŸåŒ–å‡¦ç†ï¼
         /// </summary>
         public void Initialize(T item);
     }
@@ -36,12 +36,12 @@ namespace nitou {
     public interface IInitializable<T1, T2> {
 
         /// <summary>
-        /// ‰Šú‰»‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsInitialized { get; }
 
         /// <summary>
-        /// ‰Šú‰»ˆ—D
+        /// åˆæœŸåŒ–å‡¦ç†ï¼
         /// </summary>
         public void Initialize(T1 item1, T2 item2);
     }

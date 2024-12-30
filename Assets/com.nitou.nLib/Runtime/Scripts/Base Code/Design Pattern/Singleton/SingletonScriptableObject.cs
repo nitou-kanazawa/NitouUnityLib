@@ -1,18 +1,18 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [Ql]
-//  _: ƒVƒ“ƒOƒ‹ƒgƒ“‚ÈScriptableObject‚ğÀ‘•‚·‚é https://mackysoft.net/singleton-scriptableobject/
-//  qiita: Generics ‚Ìƒƒ\ƒbƒh‚ÅŒ^î•ñ‚ğæ“¾‚·‚é https://qiita.com/TsuyoshiUshio@github/items/7b9544fbc338af5807f5
+// [å‚è€ƒ]
+//  _: ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ãªScriptableObjectã‚’å®Ÿè£…ã™ã‚‹ https://mackysoft.net/singleton-scriptableobject/
+//  qiita: Generics ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å‹æƒ…å ±ã‚’å–å¾—ã™ã‚‹ https://qiita.com/TsuyoshiUshio@github/items/7b9544fbc338af5807f5
 //  github: somedeveloper00/SingletonScriptableObject https://github.com/somedeveloper00/SingletonScriptableObject/blob/master/Runtime/src/Sample.cs
 
 namespace nitou.DesignPattern{
 
     /// <summary>
-    /// ScriptableObject‚ğŒp³‚µ‚½ƒVƒ“ƒOƒ‹ƒgƒ“
+    /// ScriptableObjectã‚’ç¶™æ‰¿ã—ãŸã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³
     /// </summary>
     public abstract class SingletonScriptableObject<T> : ScriptableObject where T: ScriptableObject {
 
@@ -22,19 +22,19 @@ namespace nitou.DesignPattern{
             get {
                 if (_instance == null) {
 
-                    // ResourceƒtƒHƒ‹ƒ_‚©‚çƒAƒZƒbƒg‚ğæ“¾
+                    // Resourceãƒ•ã‚©ãƒ«ãƒ€ã‹ã‚‰ã‚¢ã‚»ãƒƒãƒˆã‚’å–å¾—
 					_instance = Resources.Load<T>(typeof(T).Name);
 
 #if UNITY_EDITOR
-                    // AssetsƒtƒHƒ‹ƒ_“à‚©‚çƒAƒZƒbƒg‚ğæ“¾
+                    // Assetsãƒ•ã‚©ãƒ«ãƒ€å†…ã‹ã‚‰ã‚¢ã‚»ãƒƒãƒˆã‚’å–å¾—
                     if (_instance == null) {
                         _instance = ScriptableObjectUtil.FindScriptableObject<T>();
                     }
 #endif
 
-                    // ‘¶İ‚µ‚È‚¢ê‡‚ÍƒGƒ‰[
+                    // å­˜åœ¨ã—ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
                     if (_instance == null) {
-                        Debug.LogError(typeof(T) + " ‚ÌƒAƒZƒbƒg‚ÍƒtƒHƒ‹ƒ_“à‚É‘¶İ‚µ‚Ü‚¹‚ñ");
+                        Debug.LogError(typeof(T) + " ã®ã‚¢ã‚»ãƒƒãƒˆã¯ãƒ•ã‚©ãƒ«ãƒ€å†…ã«å­˜åœ¨ã—ã¾ã›ã‚“");
                     }
                 }
                 return _instance;
@@ -67,17 +67,17 @@ namespace nitou.DesignPattern{
         // Private Method
 
         /// <summary>
-        /// ‘¼‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ÉƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‚©’²‚×‚é
+        /// ä»–ã®ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
         /// </summary>
         protected bool CheckInstance() {
-            // ‘¶İ‚µ‚È‚¢ior©•ª©gjê‡
+            // å­˜åœ¨ã—ãªã„ï¼ˆorè‡ªåˆ†è‡ªèº«ï¼‰å ´åˆ
             if (_instance == null) {
                 _instance = this as T;
                 return true;
             } else if (Instance == this) {
                 return true;
             }
-            // Šù‚É‘¶İ‚·‚éê‡
+            // æ—¢ã«å­˜åœ¨ã™ã‚‹å ´åˆ
             return false;
         }
 
@@ -85,25 +85,25 @@ namespace nitou.DesignPattern{
 
 
     /// <summary>
-    /// ScriptableObject‚ğ‘ÎÛ‚Æ‚µ‚½”Ä—pƒ‰ƒCƒuƒ‰ƒŠ
+    /// ScriptableObjectã‚’å¯¾è±¡ã¨ã—ãŸæ±ç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
     /// </summary>
     public static partial class ScriptableObjectUtil {
 
 #if UNITY_EDITOR
 
         /// <summary>
-        /// AssetsƒtƒHƒ‹ƒ_“à‚ÌScriptableObject‚ğŒŸõ‚·‚é
+        /// Assetsãƒ•ã‚©ãƒ«ãƒ€å†…ã®ScriptableObjectã‚’æ¤œç´¢ã™ã‚‹
         /// </summary>
         public static T FindScriptableObject<T>() where T: ScriptableObject{
 
-            // ‘ÎÛ‚Ìƒtƒ@ƒCƒ‹î•ñ
+            // å¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±
             var guid = AssetDatabase.FindAssets("t:" + typeof(T).Name).FirstOrDefault();
             var filePath = AssetDatabase.GUIDToAssetPath(guid);
 
             if (string.IsNullOrEmpty(filePath)) {
                 throw new System.IO.FileNotFoundException(typeof(T).Name + " does not found");
 
-                // Log o‚µ‚Ä return null
+                // Log å‡ºã—ã¦ return null
                 //Debug_.LogWarning("Oh...");
                 //return null;
             }

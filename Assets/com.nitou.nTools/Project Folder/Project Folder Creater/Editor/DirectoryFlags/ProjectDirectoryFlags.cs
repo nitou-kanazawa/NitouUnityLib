@@ -1,4 +1,4 @@
-
+﻿
 namespace nitou.Tools.ProjectWindow {
 
     /// <summary>

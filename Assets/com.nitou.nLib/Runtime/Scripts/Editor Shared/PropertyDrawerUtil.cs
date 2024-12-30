@@ -1,24 +1,24 @@
-# if UNITY_EDITOR
+ï»¿# if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  LIGHT11: PropertyDrawer‚ÅƒfƒtƒHƒ‹ƒg‚ÌGUI‚ğ•`‰æ‚·‚é https://light11.hatenadiary.com/entry/2019/05/13/215814
+// [å‚è€ƒ]
+//  LIGHT11: PropertyDrawerã§ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®GUIã‚’æç”»ã™ã‚‹ https://light11.hatenadiary.com/entry/2019/05/13/215814
 
 namespace nitou.EditorShared {
 
     /// <summary>
-    /// <see cref="PropertyDrawer"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="PropertyDrawer"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class PropertyDrawerUtil {
 
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒg‚ÌGUI‚ğ•\¦‚·‚é
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®GUIã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public static void DrawDefaultGUI(Rect position, SerializedProperty property, GUIContent label) {
 
-            property = property.serializedObject.FindProperty(property.propertyPath);   // ©‰½‚â‚Á‚Ä‚éH
+            property = property.serializedObject.FindProperty(property.propertyPath);   // â†ä½•ã‚„ã£ã¦ã‚‹ï¼Ÿ
 
             var fieldRect = position;
             fieldRect.height = EditorGUIUtility.singleLineHeight;
@@ -26,7 +26,7 @@ namespace nitou.EditorShared {
             using (new EditorGUI.PropertyScope(fieldRect, label, property)) {
 
 
-                // [TODO] À‘•
+                // [TODO] å®Ÿè£…
 
 
 
@@ -38,7 +38,7 @@ namespace nitou.EditorShared {
         public static float GetDefaultPropertyHeight() {
 
 
-            // [TODO] À‘•
+            // [TODO] å®Ÿè£…
 
             return 0f;
         }

@@ -1,27 +1,27 @@
-using System;
+ï»¿using System;
 using System.IO;
 using UnityEngine;
 
-// [Ql]
-//  _:â‘ÎƒpƒX‚Æ Assets ƒpƒX‚Ì•ÏŠ·ƒƒ\ƒbƒh https://www.create-forever.games/unity-absolute-path-assets-path/#google_vignette
+// [å‚è€ƒ]
+//  _:çµ¶å¯¾ãƒ‘ã‚¹ã¨ Assets ãƒ‘ã‚¹ã®å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰ https://www.create-forever.games/unity-absolute-path-assets-path/#google_vignette
 
 namespace nitou {
 
-    // [Šî–{‹@”\]
-    // ƒAƒZƒbƒgƒpƒX‚Ì•Û: ƒAƒZƒbƒgƒpƒX‚ğ•\‚·•¶š—ñ‚ğ•Û‚·‚éB
-    // ƒpƒX‚Ì•ÏŠ·: AssetDatabase—p‚ÌƒAƒZƒbƒgƒpƒX‚ÆASystem.IO—p‚Ìƒtƒ@ƒCƒ‹ƒVƒXƒeƒ€ƒpƒX‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ªŠÈ’P‚És‚¦‚éB
-    // ƒpƒX‘€ì: ƒpƒX‚ÌŒ‹‡A‘Š‘ÎƒpƒX‚Æâ‘ÎƒpƒX‚Ì•ÏŠ·AŠg’£q‚Ì•ÏX‚âíœ‚È‚ÇAŠî–{“I‚ÈƒpƒX‘€ì‚ª‰Â”\B
-    // ƒpƒX‚ÌŒŸØ: ƒAƒZƒbƒgƒpƒX‚ª³‚µ‚¢ƒtƒH[ƒ}ƒbƒg‚Å‚ ‚é‚©A‘¶İ‚·‚é‚©‚ğŒŸØ‚Å‚«‚éB
+    // [åŸºæœ¬æ©Ÿèƒ½]
+    // ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ã®ä¿æŒ: ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ã‚’è¡¨ã™æ–‡å­—åˆ—ã‚’ä¿æŒã™ã‚‹ã€‚
+    // ãƒ‘ã‚¹ã®å¤‰æ›: AssetDatabaseç”¨ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ã¨ã€System.IOç”¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ãƒ‘ã‚¹ã¨ã®ç›¸äº’å¤‰æ›ãŒç°¡å˜ã«è¡Œãˆã‚‹ã€‚
+    // ãƒ‘ã‚¹æ“ä½œ: ãƒ‘ã‚¹ã®çµåˆã€ç›¸å¯¾ãƒ‘ã‚¹ã¨çµ¶å¯¾ãƒ‘ã‚¹ã®å¤‰æ›ã€æ‹¡å¼µå­ã®å¤‰æ›´ã‚„å‰Šé™¤ãªã©ã€åŸºæœ¬çš„ãªãƒ‘ã‚¹æ“ä½œãŒå¯èƒ½ã€‚
+    // ãƒ‘ã‚¹ã®æ¤œè¨¼: ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ãŒæ­£ã—ã„ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§ã‚ã‚‹ã‹ã€å­˜åœ¨ã™ã‚‹ã‹ã‚’æ¤œè¨¼ã§ãã‚‹ã€‚
 
     [System.Serializable]
     public sealed class AssetPath : IUnityProjectPath{
 
-        // "Assets/ˆÈ‰º‚Ì‘Š‘ÎƒpƒX"
+        // "Assets/ä»¥ä¸‹ã®ç›¸å¯¾ãƒ‘ã‚¹"
         [SerializeField] private string _relativePath = "";
 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^i¦”ñŒöŠJj
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆâ€»éå…¬é–‹ï¼‰
         /// </summary>
         private AssetPath(string relativePath) {
             _relativePath = relativePath!=null ? relativePath.Replace("\\", "/") : "";
@@ -43,7 +43,7 @@ namespace nitou {
         }
 
         /// <summary> 
-        /// "Assets/"ˆÈ‰º‚Ì‘Š‘ÎƒpƒX‚ğw’è‚µ‚Ä¶¬‚·‚é
+        /// "Assets/"ä»¥ä¸‹ã®ç›¸å¯¾ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦ç”Ÿæˆã™ã‚‹
         /// </summary>
         public static AssetPath FromRelativePath(string relativePath) {
             if (relativePath == null) throw new ArgumentNullException(nameof(relativePath));
@@ -55,7 +55,7 @@ namespace nitou {
         }
 
         /// <summary> 
-        /// "Assets/"ˆÈ‰º‚Ì‘Š‘ÎƒpƒX‚ğw’è‚µ‚Ä¶¬‚·‚é
+        /// "Assets/"ä»¥ä¸‹ã®ç›¸å¯¾ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦ç”Ÿæˆã™ã‚‹
         /// </summary>
         public static AssetPath FromRelativePath(string relativeDirectoryPath, string assetName) {
             if (relativeDirectoryPath == null) throw new ArgumentNullException(nameof(relativeDirectoryPath));
@@ -68,7 +68,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// â‘ÎƒpƒX‚©‚ç¶¬‚·‚é
+        /// çµ¶å¯¾ãƒ‘ã‚¹ã‹ã‚‰ç”Ÿæˆã™ã‚‹
         /// </summary>
         public static AssetPath FromAbsolutePath(string absolutePath) {
             string relativePath = absolutePath.Replace(Application.dataPath, "").TrimStart('\\', '/');
@@ -76,7 +76,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ”CˆÓ‚ÌƒAƒZƒbƒg‚©‚ç¶¬‚·‚é
+        /// ä»»æ„ã®ã‚¢ã‚»ãƒƒãƒˆã‹ã‚‰ç”Ÿæˆã™ã‚‹
         /// </summary>
         public static AssetPath FromAsset(UnityEngine.Object asset) {
             if (asset == null) throw new ArgumentNullException(nameof(asset));
@@ -99,17 +99,17 @@ namespace nitou {
         #region Convert to string
 
         /// <summary>
-        /// ‘Š‘ÎƒpƒX
+        /// ç›¸å¯¾ãƒ‘ã‚¹
         /// </summary>
         public string ToRelativePath() => _relativePath;
 
         /// <summary>
-        /// ƒAƒZƒbƒgƒpƒX
+        /// ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹
         /// </summary>
         public string ToProjectPath() => "Assets/" + _relativePath;
 
         /// <summary>
-        /// â‘ÎƒpƒX
+        /// çµ¶å¯¾ãƒ‘ã‚¹
         /// </summary>
         public string ToAbsolutePath() => Path.GetFullPath(Path.Combine(Application.dataPath, _relativePath));
         
@@ -136,21 +136,21 @@ namespace nitou {
         #region Check
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚©Šm”F‚·‚é
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèªã™ã‚‹
         /// </summary>
         public bool Exists() {
             return this.IsFile() || this.IsDirectory();
         }
 
         /// <summary>
-        /// ƒpƒX‚Éƒtƒ@ƒCƒ‹‚ª‘¶İ‚·‚é‚©Šm”F‚·‚é
+        /// ãƒ‘ã‚¹ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèªã™ã‚‹
         /// </summary>
         public bool IsFile() {
             return File.Exists(this.ToAbsolutePath());
         }
 
         /// <summary>
-        /// ƒpƒX‚ÉƒtƒHƒ‹ƒ_‚ª‘¶İ‚·‚é‚©Šm”F‚·‚é
+        /// ãƒ‘ã‚¹ã«ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèªã™ã‚‹
         /// </summary>
         public bool IsDirectory() {
             return Directory.Exists(this.ToAbsolutePath());
@@ -188,13 +188,13 @@ namespace nitou.EditorScripts {
     public class AssetPathDrawer : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            // "relativePath"ƒvƒƒpƒeƒB‚ğ³‚µ‚­æ“¾‚·‚é
+            // "relativePath"ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ­£ã—ãå–å¾—ã™ã‚‹
             var relativePathProperty = property.FindPropertyRelative("_relativePath");
 
-            // "Assets/" ‚Ìƒ‰ƒxƒ‹‚ğ•\¦
+            // "Assets/" ã®ãƒ©ãƒ™ãƒ«ã‚’è¡¨ç¤º
             EditorGUI.LabelField(new Rect(position.x, position.y, 50, position.height), "Assets/");
 
-            // ‘Š‘ÎƒpƒX‚Ì“ü—ÍƒtƒB[ƒ‹ƒh‚ğ•\¦
+            // ç›¸å¯¾ãƒ‘ã‚¹ã®å…¥åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤º
             EditorGUI.PropertyField(
                 new Rect(position.x + 50, position.y, position.width - 50, position.height),
                 relativePathProperty,

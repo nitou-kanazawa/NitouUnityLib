@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UniRx;
 
 namespace nitou.UI.Components {
     
     /// <summary>
-    /// Šî–{‹@”\‚Ì‚İ‚Ì“Æ©ƒJ[ƒ\ƒ‹UI
+    /// åŸºæœ¬æ©Ÿèƒ½ã®ã¿ã®ç‹¬è‡ªã‚«ãƒ¼ã‚½ãƒ«UI
     /// </summary>
     [AddComponentMenu(
         menuName: ComponentMenu.Prefix.UIComponents +"UI Cursor"
@@ -13,17 +13,17 @@ namespace nitou.UI.Components {
     [DisallowMultipleComponent]
     public class UICursor : MonoBehaviour, IUIComponent {
 
-        // À‘•
+        // å®Ÿè£…
         private Subject<Unit> _onEnableSubject = new();
         private Subject<Unit> _onDisableSubject = new();
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnEnabled => _onEnableSubject;
 
         /// <summary>
-        /// ”ñƒAƒNƒeƒBƒu‚É‚È‚Á‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnDisabled => _onDisableSubject;
 

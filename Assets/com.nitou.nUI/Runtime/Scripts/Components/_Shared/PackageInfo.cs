@@ -1,18 +1,18 @@
-
+ï»¿
 namespace nitou.UI.Shared{
 
     /// <summary>
-    /// ƒpƒbƒP[ƒW‚ÌŠeíİ’è‚ğŠÇ—‚·‚éÃ“IƒNƒ‰ƒXD
+    /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å„ç¨®è¨­å®šã‚’ç®¡ç†ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹ï¼
     /// </summary>
     internal static class PackageInfo {
 
         /// <summary>
-        /// ƒpƒbƒP[ƒW‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒXD
+        /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹ï¼
         /// </summary>
         internal static readonly PackageDirectoryPath packagePath = null;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         static PackageInfo() {
             packagePath = new PackageDirectoryPath("com.nitou.nUI");

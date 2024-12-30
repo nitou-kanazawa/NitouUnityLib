@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// <see cref="float"/>Œ^‚ÌƒCƒxƒ“ƒgƒŠƒXƒi[
+    /// <see cref="float"/>å‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼
     /// </summary>
     [AddComponentMenu(
         ComponentMenu.Prefix.EventChannel + "Float Event Listener"

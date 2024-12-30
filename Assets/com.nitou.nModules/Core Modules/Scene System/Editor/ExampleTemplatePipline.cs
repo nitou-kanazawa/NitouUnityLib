@@ -1,17 +1,17 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneTemplate;
 
-// [Ql]
-//  LIGHT11: ƒV[ƒ“‚Ì—Œ`‚ğì‚ê‚éScene Template‹@”\‚Ìg‚¢•û‚Ü‚Æ‚ß https://light11.hatenadiary.com/entry/2022/06/08/193509
+// [å‚è€ƒ]
+//  LIGHT11: ã‚·ãƒ¼ãƒ³ã®é››å½¢ã‚’ä½œã‚Œã‚‹Scene Templateæ©Ÿèƒ½ã®ä½¿ã„æ–¹ã¾ã¨ã‚ https://light11.hatenadiary.com/entry/2022/06/08/193509
 
 namespace nitou.SceneSystem.EditorScripts {
 
     public class ExampleTemplatePipline : ISceneTemplatePipeline {
 
         /// <summary>
-        /// —LŒø‚Èƒeƒ“ƒvƒŒ[ƒg‚©”»’è‚·‚é
+        /// æœ‰åŠ¹ãªãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‹åˆ¤å®šã™ã‚‹
         /// </summary>
         public bool IsValidTemplateForInstantiation(SceneTemplateAsset sceneTemplateAsset) {
             Debug_.Log($"{nameof(IsValidTemplateForInstantiation)} - sceneTemplateAsset: {sceneTemplateAsset.name}");
@@ -19,14 +19,14 @@ namespace nitou.SceneSystem.EditorScripts {
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ªì¬‚³‚ê‚½‘O‚ÌƒR[ƒ‹ƒoƒbƒN
+        /// ã‚·ãƒ¼ãƒ³ãŒä½œæˆã•ã‚ŒãŸå‰ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
         /// </summary>
         public void BeforeTemplateInstantiation(SceneTemplateAsset sceneTemplateAsset, bool isAdditive, string sceneName) {
             Debug.Log($"{nameof(BeforeTemplateInstantiation)} - isAdditive: {isAdditive} sceneName: {sceneName}");
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ªì¬‚³‚ê‚éŒã‚ÌƒR[ƒ‹ƒoƒbƒN
+        /// ã‚·ãƒ¼ãƒ³ãŒä½œæˆã•ã‚Œã‚‹å¾Œã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
         /// </summary>
         public void AfterTemplateInstantiation(SceneTemplateAsset sceneTemplateAsset, Scene scene, bool isAdditive, string sceneName) {
             Debug.Log($"{nameof(AfterTemplateInstantiation)} - scene: {scene} isAdditive: {isAdditive} sceneName: {sceneName}");

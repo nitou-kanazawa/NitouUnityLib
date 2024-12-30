@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
     public partial class Shapes {
 
         /// <summary>
-        /// ’¼•û‘Ì‚ÌŒ`ó‚ğ•\‚·ƒCƒ“ƒXƒ^ƒ“ƒX
+        /// ç›´æ–¹ä½“ã®å½¢çŠ¶ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         /// </summary>
         [System.Serializable]
         public class Box : Volume {
 
             /// <summary>
-            /// ƒTƒCƒY
+            /// ã‚µã‚¤ã‚º
             /// </summary>
             public Vector3 size = Vector3.zero;
 
@@ -19,7 +19,7 @@ namespace nitou {
             // Public Method
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Box(Vector3 position, Quaternion rotation, Vector3 size)
                 : base(position, rotation) {
@@ -27,7 +27,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Box(Transform transform, Vector3 size)
                 : base(transform) {
@@ -35,7 +35,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Box(BoxCollider collider) {
                 this.position = collider.GetWorldCenter();
@@ -44,7 +44,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             private Box(){}
 

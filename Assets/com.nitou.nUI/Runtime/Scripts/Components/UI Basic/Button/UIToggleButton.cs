@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UniRx;
 
@@ -13,7 +13,7 @@ namespace nitou.UI.Components{
         protected Subject<int> _onValueChangeSubject = new();
 
         /// <summary>
-        /// ’l‚ª•Ï‰»‚µ‚½‚É
+        /// å€¤ãŒå¤‰åŒ–ã—ãŸæ™‚ã«
         /// </summary>
         public IObservable<int> OnValueChanged => _onValueChangeSubject;
 

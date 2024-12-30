@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// Transform‚Ì"position"‚Æ"rotation"‚Ì‚İ‚ğˆµ‚¤ƒf[ƒ^\‘¢‘Ì
+    /// Transformã®"position"ã¨"rotation"ã®ã¿ã‚’æ‰±ã†ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct Coord {
@@ -12,7 +12,7 @@ namespace nitou {
         public Quaternion rotation;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public Coord(Vector3 position, Quaternion rotation) {
             this.position = position;
@@ -20,7 +20,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public Coord(Transform transform) {
             this.position = transform.position;
@@ -32,7 +32,7 @@ namespace nitou {
     public static partial class TransformExtension {
 
         /// <summary>
-        /// ˆÊ’u‚Æp¨‚ğˆêŠ‡İ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ä½ç½®ã¨å§¿å‹¢ã‚’ä¸€æ‹¬è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetPositionAndRotation(this Transform self, Coord coord) =>
             self.SetPositionAndRotation(coord.position, coord.rotation);

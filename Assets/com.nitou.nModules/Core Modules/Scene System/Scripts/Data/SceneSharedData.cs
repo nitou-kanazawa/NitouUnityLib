@@ -1,12 +1,12 @@
-
-// [Ql]
-//  qiita: Unity‚ÌSceneŠÔ‚Å‚Ìƒf[ƒ^‚Ìó‚¯“n‚µ•û–@‚É‚Â‚¢‚Ä”äŠr‚·‚é https://qiita.com/Kosei-Yoshida/items/d7dc37bcde3a52cb5265
-//  zenn: Unity‚ÌÅ‹­ƒV[ƒ“‘JˆÚŠÇ—ƒtƒŒ[ƒ€ƒ[ƒNwNavigathenax‚Æ‰æ–ÊŠÇ—‚ÌİŒvv‘z‚É‚Â‚¢‚Ä‰ğà https://zenn.dev/makihiro_dev/articles/scene-management-framework
+ï»¿
+// [å‚è€ƒ]
+//  qiita: Unityã®Sceneé–“ã§ã®ãƒ‡ãƒ¼ã‚¿ã®å—ã‘æ¸¡ã—æ–¹æ³•ã«ã¤ã„ã¦æ¯”è¼ƒã™ã‚‹ https://qiita.com/Kosei-Yoshida/items/d7dc37bcde3a52cb5265
+//  zenn: Unityã®æœ€å¼·ã‚·ãƒ¼ãƒ³é·ç§»ç®¡ç†ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã€Navigathenaã€ã¨ç”»é¢ç®¡ç†ã®è¨­è¨ˆæ€æƒ³ã«ã¤ã„ã¦è§£èª¬ https://zenn.dev/makihiro_dev/articles/scene-management-framework
 
 namespace nitou.SceneSystem {
 
     /// <summary>
-    /// ƒV[ƒ“ŠÔ‚Å‚Ì‹¤—Lƒf[ƒ^‚ÌŠî’êƒNƒ‰ƒX
+    /// ã‚·ãƒ¼ãƒ³é–“ã§ã®å…±æœ‰ãƒ‡ãƒ¼ã‚¿ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class SceneSharedData{ }
 }

@@ -1,4 +1,4 @@
-using UnityEditor;
+ï»¿using UnityEditor;
 using UnityEngine;
 using nitou.Tools.ProjectWindow;
 
@@ -28,7 +28,7 @@ namespace nitou.Tools.ProjectWindow {
 
             EditorGUILayout.LabelField("Scripts Directory Flags", EditorStyles.boldLabel);
 
-            // IFlagContainer ‚ÌŠg’£ƒƒ\ƒbƒh‚ğg—p‚µ‚Ä“®“I‚ÉƒtƒB[ƒ‹ƒh‚ğ•\¦
+            // IFlagContainer ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¦å‹•çš„ã«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤º
             DrawFlagFields(_scriptsFlags);
 
             if (GUILayout.Button("Create Folders")) {

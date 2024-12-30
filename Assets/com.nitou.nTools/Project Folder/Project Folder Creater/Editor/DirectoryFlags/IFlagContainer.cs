@@ -1,16 +1,16 @@
-using System.Reflection;
+ï»¿using System.Reflection;
 using System.Linq;
 
 namespace nitou.Tools.ProjectWindow {
 
     /// <summary>
-    /// ƒtƒ‰ƒO‚ğ’è‹`‚µ‚Ä‚¢‚éƒNƒ‰ƒX
+    /// ãƒ•ãƒ©ã‚°ã‚’å®šç¾©ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public interface IFlagContainer {}
 
 
     /// <summary>
-    /// <see cref="IFlagContainer"/>‚É‘Î‚·‚éŠg’£ƒƒ\ƒbƒh
+    /// <see cref="IFlagContainer"/>ã«å¯¾ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
     /// </summary>
     public static class FlagContainerExtensions {
 
@@ -27,7 +27,7 @@ namespace nitou.Tools.ProjectWindow {
         }
 
         /// <summary>
-        /// ƒtƒ‰ƒO–¼‚ÌƒŠƒXƒg‚ğæ“¾‚·‚é
+        /// ãƒ•ãƒ©ã‚°åã®ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string[] GetFlagNames(this IFlagContainer container) {
             return container.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance)

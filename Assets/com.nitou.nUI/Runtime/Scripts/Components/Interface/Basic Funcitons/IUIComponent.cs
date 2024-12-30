@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// ©ì‚ÌŠî–{ƒRƒ“ƒ|[ƒlƒ“ƒg‚Å‚ ‚é‚±‚Æ‚ğ¦‚·ƒCƒ“ƒ^[ƒtƒF[ƒX
+    /// è‡ªä½œã®åŸºæœ¬ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã§ã‚ã‚‹ã“ã¨ã‚’ç¤ºã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     /// </summary>
     public interface IUIComponent { }
     

@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: ƒŒƒCƒ„[‚ğƒCƒ“ƒXƒyƒNƒ^[‚©‚ç‘I‘ğ‰Â”\‚É‚·‚é\‘¢‘Ì https://nekojara.city/unity-layer-inspector
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã‹ã‚‰é¸æŠå¯èƒ½ã«ã™ã‚‹æ§‹é€ ä½“ https://nekojara.city/unity-layer-inspector
 
 namespace nitou {
 
     /// <summary>
-    /// ƒŒƒCƒ„[İ’è—p‚Ì\‘¢‘Ì
+    /// ãƒ¬ã‚¤ãƒ¤ãƒ¼è¨­å®šç”¨ã®æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct Layer {
@@ -17,51 +17,51 @@ namespace nitou {
         [SerializeField] private int _value;
 
         /// <summary>
-        /// ƒŒƒCƒ„[’l
+        /// ãƒ¬ã‚¤ãƒ¤ãƒ¼å€¤
         /// </summary>
         public int Value {
             get => _value;
             set {
-                // ƒŒƒCƒ„[‚Ì”ÍˆÍƒ`ƒFƒbƒN
+                // ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç¯„å›²ãƒã‚§ãƒƒã‚¯
                 if (value < 0 || 31 < value) {
-                    throw new System.ArgumentOutOfRangeException(nameof(value), "ƒŒƒCƒ„[‚Í0`31‚Ì”ÍˆÍ‚Åw’è‚µ‚Ä‚­‚¾‚³‚¢B");
+                    throw new System.ArgumentOutOfRangeException(nameof(value), "ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¯0ï½31ã®ç¯„å›²ã§æŒ‡å®šã—ã¦ãã ã•ã„ã€‚");
                 }
                 _value = value;
             }
         }
 
         /// <summary>
-        /// ƒŒƒCƒ„[–¼
+        /// ãƒ¬ã‚¤ãƒ¤ãƒ¼å
         /// </summary>
         public string Name {
             get => LayerMask.LayerToName(_value);
             set {
                 var layerValue = LayerMask.NameToLayer(value);
 
-                // ƒŒƒCƒ„[–¼‚ª‘¶İ‚µ‚È‚¢ê‡‚ÍƒGƒ‰[
+                // ãƒ¬ã‚¤ãƒ¤ãƒ¼åãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
                 if (layerValue == -1)
-                    throw new System.ArgumentException($"ƒŒƒCƒ„[–¼u{value}v‚Í‘¶İ‚µ‚Ü‚¹‚ñB", nameof(value));
+                    throw new System.ArgumentException($"ãƒ¬ã‚¤ãƒ¤ãƒ¼åã€Œ{value}ã€ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚", nameof(value));
 
                 _value = layerValue;
             }
         }
 
         /// <summary>
-        /// intŒ^‚Ö‚Ì•ÏŠ· 
+        /// intå‹ã¸ã®å¤‰æ› 
         /// </summary>
         public static implicit operator int(Layer layer) {
             return layer.Value;
         }
 
         /// <summary>
-        /// LayerŒ^‚Ö‚Ì•ÏŠ· 
+        /// Layerå‹ã¸ã®å¤‰æ› 
         /// </summary>
         public static explicit operator Layer(int value) {
             return new Layer { Value = value };
         }
 
         /// <summary>
-        /// stringŒ^‚Ö‚Ì•ÏŠ·
+        /// stringå‹ã¸ã®å¤‰æ›
         /// </summary>
         public override string ToString() {
             return $"{Name}({_value})";
@@ -79,13 +79,13 @@ namespace nitou {
 
             var valueProperty = property.FindPropertyRelative("_value");
 
-            // Œ»İİ’è‚³‚ê‚Ä‚¢‚éƒŒƒCƒ„[’l‚ğæ“¾
+            // ç¾åœ¨è¨­å®šã•ã‚Œã¦ã„ã‚‹ãƒ¬ã‚¤ãƒ¤ãƒ¼å€¤ã‚’å–å¾—
             var currentValue = valueProperty.intValue;
 
-            // ƒŒƒCƒ„[ˆê——‚ğ•\¦
+            // ãƒ¬ã‚¤ãƒ¤ãƒ¼ä¸€è¦§ã‚’è¡¨ç¤º
             var newValue = EditorGUI.LayerField(position, label, currentValue);
 
-            // ƒŒƒCƒ„[’l‚ğXV
+            // ãƒ¬ã‚¤ãƒ¤ãƒ¼å€¤ã‚’æ›´æ–°
             valueProperty.intValue = newValue;
 
             EditorGUI.EndProperty();

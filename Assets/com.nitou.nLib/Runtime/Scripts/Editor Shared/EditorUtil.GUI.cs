@@ -1,18 +1,18 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 
-// [Ql]
-//  _: Unity‚ÌƒGƒfƒBƒ^Šg’£‚Å FoldOut ‚ğ‚©‚Á‚±‚æ‚­‚·‚é‚Ì‚ğ‚â‚Á‚Ä‚İ‚½ https://tips.hecomi.com/entry/2016/10/15/004144
-//  _: •ÒW•s‰Â‚Ìƒpƒ‰ƒ[ƒ^‚ğInspector‚É•\¦‚·‚é https://kazupon.org/unity-no-edit-param-view-inspector/
-//  Hatena: ƒCƒ“ƒfƒ“ƒg•t‚«‚ÅGUI.Button‚ğ•\¦‚·‚é https://neptaco.hatenablog.jp/entry/2019/05/18/234426
+// [å‚è€ƒ]
+//  _: Unityã®ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µã§ FoldOut ã‚’ã‹ã£ã“ã‚ˆãã™ã‚‹ã®ã‚’ã‚„ã£ã¦ã¿ãŸ https://tips.hecomi.com/entry/2016/10/15/004144
+//  _: ç·¨é›†ä¸å¯ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’Inspectorã«è¡¨ç¤ºã™ã‚‹ https://kazupon.org/unity-no-edit-param-view-inspector/
+//  Hatena: ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä»˜ãã§GUI.Buttonã‚’è¡¨ç¤ºã™ã‚‹ https://neptaco.hatenablog.jp/entry/2019/05/18/234426
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// GUI•`‰æŠÖ˜A‚Ìƒƒ\ƒbƒhWD
+        /// GUIæç”»é–¢é€£ã®ãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
         /// </summary>
         public static class GUI {
 
@@ -20,7 +20,7 @@ namespace nitou.EditorShared {
             #region Object Field
 
             /// <summary>
-            /// MonoBehaviourƒtƒ@ƒCƒ‹‚Ö‚ÌQÆ‚ğ•\¦‚·‚éD
+            /// MonoBehaviourãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®å‚ç…§ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             /// </summary>
             public static void MonoBehaviourField<T>(T target) where T : MonoBehaviour {
 
@@ -30,7 +30,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// Scriptable Objectƒtƒ@ƒCƒ‹‚Ö‚ÌQÆ‚ğ•\¦‚·‚éD
+            /// Scriptable Objectãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®å‚ç…§ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             /// </summary>
             public static void ScriptableObjectField<T>(T target) where T : ScriptableObject {
 
@@ -40,7 +40,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// PropertyField‚ğReadOnly‚Å•\¦‚·‚éD
+            /// PropertyFieldã‚’ReadOnlyã§è¡¨ç¤ºã™ã‚‹ï¼
             /// </summary>
             public static void ReadOnlyPropertyField(SerializedProperty property, params GUILayoutOption[] options) {
                 using (new EditorGUI.DisabledScope(true)) {
@@ -54,11 +54,11 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             #region Button
 
-            // [Ql]
-            //  zenn:  EditorWindow ‚Å TextField ‚Æ“¯‚¶•‚Ìƒ{ƒ^ƒ“‚ğ”z’u‚·‚é https://zenn.dev/kobi32768/articles/01f34751878fc8
+            // [å‚è€ƒ]
+            //  zenn:  EditorWindow ã§ TextField ã¨åŒã˜å¹…ã®ãƒœã‚¿ãƒ³ã‚’é…ç½®ã™ã‚‹ https://zenn.dev/kobi32768/articles/01f34751878fc8
 
             /// <summary>
-            /// GUI.Button‚ğƒCƒ“ƒfƒ“ƒg•t‚«‚Å•\¦‚·‚é
+            /// GUI.Buttonã‚’ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä»˜ãã§è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static bool FieldSizeButton(GUIContent content) {
                 Rect rect = EditorGUILayout.GetControlRect(true);
@@ -67,7 +67,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// GUI.Button‚ğƒCƒ“ƒfƒ“ƒg•t‚«‚Å•\¦‚·‚é
+            /// GUI.Buttonã‚’ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä»˜ãã§è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static bool IndentedButton(GUIContent content) {
                 var rect = EditorGUI.IndentedRect(EditorGUILayout.GetControlRect());
@@ -75,7 +75,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// GUI.Button‚ğƒCƒ“ƒfƒ“ƒg•t‚«‚Å•\¦‚·‚é
+            /// GUI.Buttonã‚’ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä»˜ãã§è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static bool IndentedButton(string content) =>
                 IndentedButton(new GUIContent(content));
@@ -96,15 +96,15 @@ namespace nitou.EditorShared {
             /// 
             /// </summary>
             public static void EnumToggles(SerializedProperty property) {
-                // Enum ‚ÌƒtƒB[ƒ‹ƒh‚ğƒgƒOƒ‹ƒ{ƒ^ƒ“‚Æ‚µ‚Ä•\¦
+                // Enum ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ã¨ã—ã¦è¡¨ç¤º
                 //using (new EditorGUILayout.PropertyScope(label, property)) {
 
-                    // Œ»İ‚ÌEnum‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾
+                    // ç¾åœ¨ã®Enumã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—
                     EditorGUI.BeginChangeCheck();
                     int value = property.enumValueIndex;
                     string[] enumNames = property.enumDisplayNames;
 
-                    // ƒgƒOƒ‹ƒ{ƒ^ƒ“‚ğ‰¡‚É•À‚×‚Ä•\¦
+                    // ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ã‚’æ¨ªã«ä¸¦ã¹ã¦è¡¨ç¤º
                     EditorGUILayout.BeginHorizontal();
                     for (int i = 0; i < enumNames.Length; i++) {
                         if (GUILayout.Toggle(value == i, enumNames[i], "Button")) {
@@ -113,7 +113,7 @@ namespace nitou.EditorShared {
                     }
                     EditorGUILayout.EndHorizontal();
 
-                    // ƒCƒ“ƒfƒbƒNƒX‚ª•ÏX‚³‚ê‚½ê‡AƒvƒƒpƒeƒB‚ÉV‚µ‚¢’l‚ğİ’è
+                    // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒå¤‰æ›´ã•ã‚ŒãŸå ´åˆã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«æ–°ã—ã„å€¤ã‚’è¨­å®š
                     if (EditorGUI.EndChangeCheck()) {
                         property.enumValueIndex = value;
                     }
@@ -126,7 +126,7 @@ namespace nitou.EditorShared {
             #region Decoration
 
             /// <summary>
-            /// dØ‚èü‚ğ•\¦‚·‚é
+            /// ä»•åˆ‡ã‚Šç·šã‚’è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static void HorizontalLine(Color color, int thickness = 1, int padding = 10, bool useIndentLevel = false) {
 
@@ -141,7 +141,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// dØ‚èü‚ğ•\¦‚·‚é
+            /// ä»•åˆ‡ã‚Šç·šã‚’è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static void HorizontalLine(int thickness = 1, int padding = 10, bool useIndentLevel = false) =>
                 HorizontalLine(EditorColors.ButtonBackgroundHover, thickness, padding, useIndentLevel);
@@ -157,16 +157,16 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             #region Foldout
 
-            // [Ql]
-            //  _: Unity ‚ÌƒGƒfƒBƒ^Šg’£‚Å FoldOut ‚ğ‚©‚Á‚±‚æ‚­‚·‚é‚Ì‚ğ‚â‚Á‚Ä‚İ‚½ https://tips.hecomi.com/entry/2016/10/15/004144 
+            // [å‚è€ƒ]
+            //  _: Unity ã®ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µã§ FoldOut ã‚’ã‹ã£ã“ã‚ˆãã™ã‚‹ã®ã‚’ã‚„ã£ã¦ã¿ãŸ https://tips.hecomi.com/entry/2016/10/15/004144 
             //  github: https://github.com/Unity-Technologies/MissilesPerfectMaster/blob/master/Assets/CinematicEffects/Common/Editor/EditorGUIHelper.cs
 
             /// <summary>
-            /// Foldout‰Â”\‚Èƒwƒbƒ_[‚ğ•\¦‚·‚é
+            /// Foldoutå¯èƒ½ãªãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹
             /// </summary>
             public static bool FoldoutHeader(string title, bool display) {
 
-                // ParticleSystem‚Åg—p‚³‚ê‚Ä‚¢‚éGUI Style
+                // ParticleSystemã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹GUI Style
                 var style = new GUIStyle("ShurikenModuleTitle") {
                     font = new GUIStyle(EditorStyles.label).font,
                     fontSize = 12,
@@ -175,19 +175,19 @@ namespace nitou.EditorShared {
                     contentOffset = new Vector2(20f, -2f),
                 };
 
-                // —Ìˆæ‚Ì•`‰æ
+                // é ˜åŸŸã®æç”»
                 var rect = GUILayoutUtility.GetRect(16f, 22f, style);
                 UnityEngine.GUI.Box(rect, title, style);
 
                 var e = Event.current;
 
-                // ‚Ì•`‰æ
+                // ã®æç”»
                 if (e.type == EventType.Repaint) {
                     var toggleRect = new Rect(rect.x + 4f, rect.y + 2f, 13f, 13f);
                     EditorStyles.foldout.Draw(toggleRect, false, false, display, false);
                 }
 
-                // fold‚ÌON/OFFØ‚è‘Ö‚¦
+                // foldã®ON/OFFåˆ‡ã‚Šæ›¿ãˆ
                 else if (e.type == EventType.MouseDown && rect.Contains(e.mousePosition)) {
                     display = !display;
                     e.Use();
@@ -228,7 +228,7 @@ namespace nitou.EditorShared {
             /// </summary>
             public class FoldoutGroupScope : UnityEngine.GUI.Scope {
 
-                // “à•”ƒXƒR[ƒv—v‘f
+                // å†…éƒ¨ã‚¹ã‚³ãƒ¼ãƒ—è¦ç´ 
                 private readonly EditorGUILayout.FadeGroupScope _fadeGroup;
                 private readonly EditorGUI.IndentLevelScope _indentScope;
                 private readonly EditorGUILayout.VerticalScope _verticalScope;
@@ -236,7 +236,7 @@ namespace nitou.EditorShared {
                 public bool Visible => _fadeGroup.visible;
 
                 /// <summary>
-                /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+                /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
                 /// </summary>
                 public FoldoutGroupScope(string headerTitle, AnimBool animBool, bool withBackdrop = false) {
 
@@ -251,7 +251,7 @@ namespace nitou.EditorShared {
                 }
 
                 /// <summary>
-                /// I—¹ˆ—
+                /// çµ‚äº†å‡¦ç†
                 /// </summary>
                 protected override void CloseScope() {
                     _fadeGroup?.Dispose();
@@ -279,7 +279,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// ‹æŠÔ‚ÌƒIƒ“ƒIƒtØ‚è‘Ö‚¦
+            /// åŒºé–“ã®ã‚ªãƒ³ã‚ªãƒ•åˆ‡ã‚Šæ›¿ãˆ
             /// </summary>
             static public bool DrawHeader(string text, string key, bool forceOn) {
                 bool state = EditorPrefs.GetBool(key, true);

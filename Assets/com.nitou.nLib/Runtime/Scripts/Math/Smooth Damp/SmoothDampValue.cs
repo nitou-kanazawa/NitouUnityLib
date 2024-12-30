@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚ç‚µƒeƒB: SmoothDamp‚ÅŠŠ‚ç‚©‚È’Ç]‚ğÀ‘•‚·‚é https://nekojara.city/unity-smooth-damp
-//  LIGHT11: Lerp‚ğ—p‚¢‚½ƒXƒ€[ƒWƒ“ƒO‚Ì–â‘è“_‚ÆMathf.SmoothDamp‚É‚æ‚é‰ğŒˆô https://light11.hatenadiary.com/entry/2021/06/01/203624
-//  _ : SmoothDamp‚ğ\‘¢‘Ì‰»‚µ‚Äg‚¢‚â‚·‚­‚·‚é https://tech.ftvoid.com/smooth-damp-struct
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã—ãƒ†ã‚£: SmoothDampã§æ»‘ã‚‰ã‹ãªè¿½å¾“ã‚’å®Ÿè£…ã™ã‚‹ https://nekojara.city/unity-smooth-damp
+//  LIGHT11: Lerpã‚’ç”¨ã„ãŸã‚¹ãƒ ãƒ¼ã‚¸ãƒ³ã‚°ã®å•é¡Œç‚¹ã¨Mathf.SmoothDampã«ã‚ˆã‚‹è§£æ±ºç­– https://light11.hatenadiary.com/entry/2021/06/01/203624
+//  _ : SmoothDampã‚’æ§‹é€ ä½“åŒ–ã—ã¦ä½¿ã„ã‚„ã™ãã™ã‚‹ https://tech.ftvoid.com/smooth-damp-struct
 
 namespace nitou {
 
@@ -12,8 +12,8 @@ namespace nitou {
     #region Float
 
     /// <summary>
-    /// ’l‚ğ–Ú•W’l‚ÉŠŠ‚ç‚©‚É’Ç]‚³‚¹‚é\‘¢‘Ì
-    /// i¦Mathf.SmoothDampj
+    /// å€¤ã‚’ç›®æ¨™å€¤ã«æ»‘ã‚‰ã‹ã«è¿½å¾“ã•ã›ã‚‹æ§‹é€ ä½“
+    /// ï¼ˆâ€»Mathf.SmoothDampï¼‰
     /// </summary>
     public class SmoothDampFloat : ISmoothDampValue<float>{
 
@@ -21,14 +21,14 @@ namespace nitou {
         private float _currentVelocity;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public SmoothDampFloat(float initialValue) {
             _current = initialValue;
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime) {
             _current = Mathf.SmoothDamp(
@@ -42,7 +42,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime, float maxSpeed) {
             _current = Mathf.SmoothDamp(
@@ -57,7 +57,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime, float maxSpeed, float deltaTime) {
             _current = Mathf.SmoothDamp(
@@ -73,7 +73,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •Ï”‚ğƒŠƒZƒbƒg‚·‚é
+        /// å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
         /// </summary>
         public void Reset(float value, float velocity) {
             _current = value;
@@ -82,8 +82,8 @@ namespace nitou {
     }
 
     /// <summary>
-    /// Šp“x‚ğ–Ú•W’l‚ÉŠŠ‚ç‚©‚É’Ç]‚³‚¹‚é\‘¢‘Ì
-    /// i¦Mathf.SmoothDampAnglej
+    /// è§’åº¦ã‚’ç›®æ¨™å€¤ã«æ»‘ã‚‰ã‹ã«è¿½å¾“ã•ã›ã‚‹æ§‹é€ ä½“
+    /// ï¼ˆâ€»Mathf.SmoothDampAngleï¼‰
     /// </summary>
     public class SmoothDampAngle : ISmoothDampValue<float>{
 
@@ -91,14 +91,14 @@ namespace nitou {
         private float _currentVelocity;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public SmoothDampAngle(float initialValue) {
             _current = initialValue;
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime) {
             _current = Mathf.SmoothDampAngle(
@@ -112,7 +112,7 @@ namespace nitou {
         }
         
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime, float maxSpeed) {
             _current = Mathf.SmoothDampAngle(
@@ -127,7 +127,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float GetNext(float target, float smoothTime, float maxSpeed, float deltaTime) {
             _current = Mathf.SmoothDampAngle(
@@ -149,8 +149,8 @@ namespace nitou {
     #region Vector2
 
     /// <summary>
-    /// ’l‚ğ–Ú•W’l‚ÉŠŠ‚ç‚©‚É’Ç]‚³‚¹‚é\‘¢‘Ì
-    /// i¦Mathf.SmoothDampj
+    /// å€¤ã‚’ç›®æ¨™å€¤ã«æ»‘ã‚‰ã‹ã«è¿½å¾“ã•ã›ã‚‹æ§‹é€ ä½“
+    /// ï¼ˆâ€»Mathf.SmoothDampï¼‰
     /// </summary>
     public class SmoothDampVector2 : ISmoothDampValue<Vector2>{
 
@@ -158,14 +158,14 @@ namespace nitou {
         private Vector2 _currentVelocity;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public SmoothDampVector2(Vector2 initialValue) {
             _current = initialValue;
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector2 GetNext(Vector2 target, float smoothTime) {
             _current = Vector2.SmoothDamp(
@@ -179,7 +179,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector2 GetNext(Vector2 target, float smoothTime, float maxSpeed) {
             _current = Vector2.SmoothDamp(
@@ -194,7 +194,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector2 GetNext(Vector2 target, float smoothTime, float maxSpeed, float deltaTime) {
             _current = Vector2.SmoothDamp(
@@ -210,7 +210,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •Ï”‚ğƒŠƒZƒbƒg‚·‚é
+        /// å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
         /// </summary>
         public void Reset(Vector2 value, Vector2 velocity) {
             _current = value;
@@ -224,8 +224,8 @@ namespace nitou {
     #region Vector3
 
     /// <summary>
-    /// ’l‚ğ–Ú•W’l‚ÉŠŠ‚ç‚©‚É’Ç]‚³‚¹‚é\‘¢‘Ì
-    /// i¦Mathf.SmoothDampj
+    /// å€¤ã‚’ç›®æ¨™å€¤ã«æ»‘ã‚‰ã‹ã«è¿½å¾“ã•ã›ã‚‹æ§‹é€ ä½“
+    /// ï¼ˆâ€»Mathf.SmoothDampï¼‰
     /// </summary>
     public class SmoothDampVector3 : ISmoothDampValue<Vector3> {
 
@@ -233,14 +233,14 @@ namespace nitou {
         private Vector3 _currentVelocity;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public SmoothDampVector3(Vector3 initialValue) {
             _current = initialValue;
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector3 GetNext(Vector3 target, float smoothTime, float maxSpeed, float deltaTime) {
             _current = Vector3.SmoothDamp(
@@ -256,7 +256,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector3 GetNext(Vector3 target, float smoothTime, float maxSpeed) {
             _current = Vector3.SmoothDamp(
@@ -271,7 +271,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector3 GetNext(Vector3 target, float smoothTime) {
             _current = Vector3.SmoothDamp(

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -7,81 +7,81 @@ using UnityEngine;
 using UniRx;
 using System.Runtime.Serialization;
 
-// [Ql]
-//  qiita: UniTask Ver2, UniTaskAsyncEnumerable‚Ü‚Æ‚ß https://qiita.com/toRisouP/items/8f66fd952eaffeaf3107
-//  _: UniTask‚ªƒpƒ[ƒAƒbƒvIwUniTask v2x‚ğg‚¨‚¤I https://hackmd.io/@-xLrSnFfROOeIeRnENCWcQ/HkVAMY5Sd
-//  note: UniTask‚É‘P‹Ê—áŠO‚ğ“Š‚°‚æ‚¤ICancellationToken.ThrowIfCancellationRequested() https://note.com/sandbox9/n/nff7ab030c9dd
+// [å‚è€ƒ]
+//  qiita: UniTask Ver2, UniTaskAsyncEnumerableã¾ã¨ã‚ https://qiita.com/toRisouP/items/8f66fd952eaffeaf3107
+//  _: UniTaskãŒãƒ‘ãƒ¯ãƒ¼ã‚¢ãƒƒãƒ—ï¼ã€UniTask v2ã€ã‚’ä½¿ãŠã†ï¼ https://hackmd.io/@-xLrSnFfROOeIeRnENCWcQ/HkVAMY5Sd
+//  note: UniTaskã«å–„ç‰ä¾‹å¤–ã‚’æŠ•ã’ã‚ˆã†ï¼CancellationToken.ThrowIfCancellationRequested() https://note.com/sandbox9/n/nff7ab030c9dd
 
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// UniTask‚É‘Î‰‚µ‚½ƒVƒ“ƒvƒ‹‚ÈƒXƒe[ƒgƒ}ƒVƒ“D
+    /// UniTaskã«å¯¾å¿œã—ãŸã‚·ãƒ³ãƒ—ãƒ«ãªã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ï¼
     /// </summary>
     public partial class AwaitableStateMachine<TContext, TEvent> : IDisposable {
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚Ìˆ—ƒtƒF[ƒY
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã®å‡¦ç†ãƒ•ã‚§ãƒ¼ã‚º
         /// </summary>
         public enum ProcessPhase {
-            Idle,   // ’â~’†
+            Idle,   // åœæ­¢ä¸­
             Enter,  // 
             Update,
             Exit,
         }
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ª•Û‚µ‚Ä‚¢‚éƒRƒ“ƒeƒLƒXƒg
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ãŒä¿æŒã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
         /// </summary>
         public TContext Context { get; private set; }
 
 
         /// ----------------------------------------------------------------------------
-        // ƒXƒe[ƒgî•ñ
+        // ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±
 
         /// <summary>
-        /// Œ»İ‚ÌƒXƒe[ƒg
+        /// ç¾åœ¨ã®ã‚¹ãƒ†ãƒ¼ãƒˆ
         /// </summary>
         public State CurrentState { get; private set; }
 
         /// <summary>
-        /// ‘O‰ñ‚ÌƒXƒe[ƒg
+        /// å‰å›ã®ã‚¹ãƒ†ãƒ¼ãƒˆ
         /// </summary>
         public State PreviousState { get; private set; }
 
 
         /// ----------------------------------------------------------------------------
-        // ƒXƒe[ƒgƒ}ƒVƒ“‰Ò“­î•ñ
+        // ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ç¨¼åƒæƒ…å ±
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚Ì‰Ò“­ó‹µ
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã®ç¨¼åƒçŠ¶æ³
         /// </summary>
         public ProcessPhase CurrentPhase { get; private set; }
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ª‰Ò“­’†‚©‚Ç‚¤‚©
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ãŒç¨¼åƒä¸­ã‹ã©ã†ã‹
         /// </summary>
         public bool IsRunningPhase => CurrentPhase != ProcessPhase.Idle;
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ªXVˆ—’†‚©‚Ç‚¤‚©
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ãŒæ›´æ–°å‡¦ç†ä¸­ã‹ã©ã†ã‹
         /// </summary>
         public bool IsUpdating => CurrentPhase == ProcessPhase.Update;
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ªŠJnˆ—’†‚©‚Ç‚¤‚©
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ãŒé–‹å§‹å‡¦ç†ä¸­ã‹ã©ã†ã‹
         /// </summary>
         public bool IsEntering => CurrentPhase == ProcessPhase.Enter;
 
 
         /// ----------------------------------------------------------------------------
 
-        // “o˜^ƒXƒe[ƒg‚ÌƒŠƒXƒg
-        private readonly Dictionary<Type, State> _states = new();   // ¦Type‚ğƒL[‚Æ‚·‚é
+        // ç™»éŒ²ã‚¹ãƒ†ãƒ¼ãƒˆã®ãƒªã‚¹ãƒˆ
+        private readonly Dictionary<Type, State> _states = new();   // â€»Typeã‚’ã‚­ãƒ¼ã¨ã™ã‚‹
 
-        // ‘JˆÚƒŠƒNƒGƒXƒg
+        // é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆ
         private readonly Queue<State> _transitionsQueue = new();
 
-        // ƒLƒƒƒ“ƒZƒ‹—p
+        // ã‚­ãƒ£ãƒ³ã‚»ãƒ«ç”¨
         private CancellationTokenSource _cancellationTokenSource;
 
 
@@ -89,7 +89,7 @@ namespace nitou.DesignPattern {
         // Public Method 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public AwaitableStateMachine(TContext context) {
             if (context == null) {
@@ -102,7 +102,7 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
             Stop();
@@ -110,14 +110,14 @@ namespace nitou.DesignPattern {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒXƒe[ƒgƒ}ƒVƒ“‘€ìŒn
+        #region ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³æ“ä½œç³»
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ğÀs‚·‚é
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹
         /// </summary>
         public void Run() {
             if (IsRunningPhase) {
-                throw new InvalidOperationException("ƒXƒe[ƒgƒ}ƒVƒ“‚ÍA‹N“®’†‚Å‚·");
+                throw new InvalidOperationException("ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã¯ã€èµ·å‹•ä¸­ã§ã™");
             }
 
             _cancellationTokenSource = new();
@@ -126,7 +126,7 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// ƒXƒe[ƒgƒ}ƒVƒ“‚ğ’â~‚·‚é
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã‚’åœæ­¢ã™ã‚‹
         /// </summary>
         public void Stop() {
             _cancellationTokenSource?.Cancel();
@@ -137,14 +137,14 @@ namespace nitou.DesignPattern {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒXƒe[ƒg‘JˆÚƒe[ƒuƒ‹\’zŒn
+        #region ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»ãƒ†ãƒ¼ãƒ–ãƒ«æ§‹ç¯‰ç³»
 
         /// <summary>
-        /// ƒXƒe[ƒg‚ğ“o˜^‚·‚é
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆã‚’ç™»éŒ²ã™ã‚‹
         /// </summary>
         public void RegisterState(State state) {
             if (IsRunningPhase) {
-                throw new InvalidOperationException("ƒXƒe[ƒgƒ}ƒVƒ“‚ÍA‹N“®’†‚Å‚·");
+                throw new InvalidOperationException("ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã¯ã€èµ·å‹•ä¸­ã§ã™");
             }
 
             if (state == null) {
@@ -153,30 +153,30 @@ namespace nitou.DesignPattern {
 
             Type type = state.GetType();
             if (_states.ContainsKey(type)) {
-                // ã‘‚«“o˜^‚ğ‹–‚³‚È‚¢‚Ì‚Å—áŠO‚ğ“f‚­
-                throw new ArgumentException($"ƒXƒe[ƒg'{state.GetType().Name}'‚ÍAŠù‚ÉƒŠƒXƒg‚É“o˜^Ï‚İ‚Å‚·");
+                // ä¸Šæ›¸ãç™»éŒ²ã‚’è¨±ã•ãªã„ã®ã§ä¾‹å¤–ã‚’åã
+                throw new ArgumentException($"ã‚¹ãƒ†ãƒ¼ãƒˆ'{state.GetType().Name}'ã¯ã€æ—¢ã«ãƒªã‚¹ãƒˆã«ç™»éŒ²æ¸ˆã¿ã§ã™");
             }
 
-            // ƒŠƒXƒg‚Ö’Ç‰Á
+            // ãƒªã‚¹ãƒˆã¸è¿½åŠ 
             state.Init(this);
             _states.Add(type, state);
         }
 
         /// <summary>
-        /// ƒXƒe[ƒg‚ğ“o˜^‚·‚é
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆã‚’ç™»éŒ²ã™ã‚‹
         /// </summary>
         public void RegisterState<TState>() where TState : State, new() {
             if (IsRunningPhase) {
-                throw new InvalidOperationException("ƒXƒe[ƒgƒ}ƒVƒ“‚ÍA‹N“®’†‚Å‚·");
+                throw new InvalidOperationException("ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã¯ã€èµ·å‹•ä¸­ã§ã™");
             }
 
             Type type = typeof(TState);
             if (_states.ContainsKey(type)) {
-                // ã‘‚«“o˜^‚ğ‹–‚³‚È‚¢‚Ì‚Å—áŠO‚ğ“f‚­
-                throw new ArgumentException($"ƒXƒe[ƒg'{type}'‚ÍAŠù‚ÉƒŠƒXƒg‚É“o˜^Ï‚İ‚Å‚·");
+                // ä¸Šæ›¸ãç™»éŒ²ã‚’è¨±ã•ãªã„ã®ã§ä¾‹å¤–ã‚’åã
+                throw new ArgumentException($"ã‚¹ãƒ†ãƒ¼ãƒˆ'{type}'ã¯ã€æ—¢ã«ãƒªã‚¹ãƒˆã«ç™»éŒ²æ¸ˆã¿ã§ã™");
             }
 
-            // ƒŠƒXƒg‚Ö’Ç‰Á
+            // ãƒªã‚¹ãƒˆã¸è¿½åŠ 
             var state = new TState();
             state.Init(this);
             _states.Add(type, state);
@@ -185,13 +185,13 @@ namespace nitou.DesignPattern {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (ƒXƒe[ƒg‘JˆÚ)
+        // Public Method (ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»)
 
         /// <summary>
-        /// ‘JˆÚƒŠƒNƒGƒXƒg‚ğÏ‚Ş
+        /// é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ç©ã‚€
         /// </summary>
         public void EnqueueTransitionRequest<TState>() where TState : State {
-            // “o˜^ƒŠƒXƒg‚ÉŠÜ‚Ü‚ê‚éê‡C
+            // ç™»éŒ²ãƒªã‚¹ãƒˆã«å«ã¾ã‚Œã‚‹å ´åˆï¼Œ
             if (_states.TryGetValue(typeof(TState), out State state)) {
                 _transitionsQueue.Enqueue(state);
             } else {
@@ -200,12 +200,12 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg‚ª”­s‚³‚ê‚½‚Æ‚«‚Ì‘Î‰ˆ—
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãŒç™ºè¡Œã•ã‚ŒãŸã¨ãã®å¯¾å¿œå‡¦ç†
         /// </summary>
         public void OnReciveEvent(TEvent eventId) {
             if (!IsRunningPhase) return;
 
-            // Œ»İƒXƒe[ƒg‚Ì‘Î‰ƒƒ\ƒbƒh‚ğÀs
+            // ç¾åœ¨ã‚¹ãƒ†ãƒ¼ãƒˆã®å¯¾å¿œãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè¡Œ
             CurrentState?.HandleEvent(eventId);
         }
 
@@ -214,28 +214,28 @@ namespace nitou.DesignPattern {
         // Private Method
 
         /// <summary>
-        /// w’èƒXƒe[ƒg‚Ö‘JˆÚ‚·‚é
+        /// æŒ‡å®šã‚¹ãƒ†ãƒ¼ãƒˆã¸é·ç§»ã™ã‚‹
         /// </summary>
         private async UniTask ChangeState(State nextState) {
 
-            Debug_.Log($"Change State : [{CurrentState?.GetType().Name}]¨[{nextState?.GetType().Name}]", Colors.SkyBlue);
+            Debug_.Log($"Change State : [{CurrentState?.GetType().Name}]â†’[{nextState?.GetType().Name}]", Colors.SkyBlue);
 
-            // Œ»İƒXƒe[ƒg‚ÌI—¹ˆ—
+            // ç¾åœ¨ã‚¹ãƒ†ãƒ¼ãƒˆã®çµ‚äº†å‡¦ç†
             CurrentPhase = ProcessPhase.Exit;
             if (CurrentState != null) {
                 PreviousState = CurrentState;
                 CurrentState = null;
 
-                // I—¹ˆ—
+                // çµ‚äº†å‡¦ç†
                 await PreviousState.OnExit(toState: nextState);
             }
 
-            // VƒXƒe[ƒg‚ÌŠJnˆ—
+            // æ–°ã‚¹ãƒ†ãƒ¼ãƒˆã®é–‹å§‹å‡¦ç†
             CurrentPhase = ProcessPhase.Enter;
             if (nextState != null) {
                 CurrentState = nextState;
 
-                // ŠJnˆ—
+                // é–‹å§‹å‡¦ç†
                 await nextState.OnEnter(fromState: PreviousState);
             } else {
                 throw new Exception($"State: {nextState.GetType().Name} is not registered to state machine.");
@@ -243,19 +243,19 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// ‘JˆÚƒtƒ‰ƒO‚ğŠm”F‚µ‚Ä‘JˆÚæƒXƒe[ƒg‚ğ•Ô‚·
+        /// é·ç§»ãƒ•ãƒ©ã‚°ã‚’ç¢ºèªã—ã¦é·ç§»å…ˆã‚¹ãƒ†ãƒ¼ãƒˆã‚’è¿”ã™
         /// </summary>
         private State CheckTransitionRequests() {
-            // ‘JˆÚƒŠƒNƒGƒXƒg‚Ìæ“¾
-            CurrentState?.CheckExitTransition();     // ¦Œ»İƒXƒe[ƒg‘¤
+            // é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®å–å¾—
+            CurrentState?.CheckExitTransition();     // â€»ç¾åœ¨ã‚¹ãƒ†ãƒ¼ãƒˆå´
 
-            // ‘JˆÚƒŠƒNƒGƒXƒg‚ÌŒŸØ
+            // é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®æ¤œè¨¼
             while (_transitionsQueue.Count != 0) {
                 State nextState = _transitionsQueue.Dequeue();
                 if (nextState == null) continue;
 
-                // ‘JˆÚ‰Â”\‚©‚ÌŒŸØ
-                bool success = nextState.CheckEnterTransition(CurrentState);    // ¦VƒXƒe[ƒg‘¤
+                // é·ç§»å¯èƒ½ã‹ã®æ¤œè¨¼
+                bool success = nextState.CheckEnterTransition(CurrentState);    // â€»æ–°ã‚¹ãƒ†ãƒ¼ãƒˆå´
                 if (success) {
                     return nextState;
                 }
@@ -264,25 +264,25 @@ namespace nitou.DesignPattern {
         }
 
         /// <summary>
-        /// XVƒ‹[ƒv
+        /// æ›´æ–°ãƒ«ãƒ¼ãƒ—
         /// </summary>
         private async void UpdateLoop(CancellationToken token) {
 
-            // –ˆƒtƒŒ[ƒ€Ÿ‚ÌUpdate‚Ìƒ^ƒCƒ~ƒ“ƒO‚Ü‚Åawait‚·‚é
+            // æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ¬¡ã®Updateã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã¾ã§awaitã™ã‚‹
             await foreach (var _ in UniTaskAsyncEnumerable
                                .EveryUpdate()
                                .WithCancellation(token)) {
 
-                // ‘JˆÚƒŠƒNƒGƒXƒg‚ÌŠm”F
-                var nextState = CheckTransitionRequests();      // ‘JˆÚæ‚Ìæ“¾
-                _transitionsQueue.Clear();                      // ¦‘JˆÚƒŠƒNƒGƒXƒg‚ÍŠm”FŒã‚ÉƒNƒŠƒA
+                // é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®ç¢ºèª
+                var nextState = CheckTransitionRequests();      // é·ç§»å…ˆã®å–å¾—
+                _transitionsQueue.Clear();                      // â€»é·ç§»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã¯ç¢ºèªå¾Œã«ã‚¯ãƒªã‚¢
                 
-                // ƒXƒe[ƒg‘JˆÚ
+                // ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»
                 if (nextState != null) {
                     await ChangeState(nextState);
                 }
 
-                // ƒXƒe[ƒgXVˆ—
+                // ã‚¹ãƒ†ãƒ¼ãƒˆæ›´æ–°å‡¦ç†
                 CurrentPhase = ProcessPhase.Update;
                 CurrentState?.OnUpdate();
             }

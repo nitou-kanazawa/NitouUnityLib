@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-// [Ql]
-//  unity doqument: ‹N“®ƒGƒfƒBƒ^[ƒXƒNƒŠƒvƒgÀs https://docs.unity3d.com/ja/2019.4/Manual/RunningEditorCodeOnLaunch.html
+// [å‚è€ƒ]
+//  unity doqument: èµ·å‹•æ™‚ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ã‚¹ã‚¯ãƒªãƒ—ãƒˆå®Ÿè¡Œ https://docs.unity3d.com/ja/2019.4/Manual/RunningEditorCodeOnLaunch.html
 
 namespace nitou.Tools.ProjectWindow {
 
@@ -12,7 +12,7 @@ namespace nitou.Tools.ProjectWindow {
     internal class CustomFolder{
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^iÃ“Ij
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ˆé™çš„ï¼‰
         /// </summary>
         static CustomFolder() {
             //Debug.Log($"CustomFolder constructor");
@@ -22,27 +22,27 @@ namespace nitou.Tools.ProjectWindow {
         }
         
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_ƒAƒCƒRƒ“‚ğ•`‰æ‚·‚é
+        /// ãƒ•ã‚©ãƒ«ãƒ€ã‚¢ã‚¤ã‚³ãƒ³ã‚’æç”»ã™ã‚‹
         /// </summary>
         private static void DrawFolderIcon(string guid, Rect rect) {
             var path = AssetDatabase.GUIDToAssetPath(guid);
             var iconDictionary = IconDictionaryCreator._iconDictionary;
             var fileName = Path.GetFileName(path);
 
-            // •]‰¿
+            // è©•ä¾¡
             if (path == "" ||
                 Event.current.type != EventType.Repaint ||
                 !File.GetAttributes(path).HasFlag(FileAttributes.Directory)) {
                 return;
             }
 
-            // Icon‰æ‘œ‚Ìæ“¾
+            // Iconç”»åƒã®å–å¾—
             (bool isExist, Texture texture) = IconDictionaryCreator.GetIconTexture(fileName);
             if (!isExist ||texture == null) {
                 return;
             }
 
-            // Icon‰æ‘œ‚Ì”½‰f
+            // Iconç”»åƒã®åæ˜ 
             Rect imageRect;
             if (rect.height > 20) {
                 imageRect = new Rect(rect.x - 1, rect.y - 1, rect.width + 2, rect.width + 2);

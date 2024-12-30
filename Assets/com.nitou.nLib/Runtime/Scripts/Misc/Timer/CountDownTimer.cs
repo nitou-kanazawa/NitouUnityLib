@@ -1,16 +1,16 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-// [Ql]
-//  qiita: UniRx‚ÅƒJƒEƒ“ƒgƒ_ƒEƒ“ƒ^ƒCƒ}[‚ğì‚é https://qiita.com/toRisouP/items/581ffc0ddce7090b275b
-//  zenn: ƒIƒŒƒIƒŒUniRxƒ^ƒCƒ}[ https://zenn.dev/keisuke114/scraps/5581b16d793806
+// [å‚è€ƒ]
+//  qiita: UniRxã§ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ã‚¿ã‚¤ãƒãƒ¼ã‚’ä½œã‚‹ https://qiita.com/toRisouP/items/581ffc0ddce7090b275b
+//  zenn: ã‚ªãƒ¬ã‚ªãƒ¬UniRxã‚¿ã‚¤ãƒãƒ¼ https://zenn.dev/keisuke114/scraps/5581b16d793806
 
 namespace nitou {
 
     /// <summary>
-    /// ƒJƒEƒ“ƒgƒ_ƒEƒ“•û®‚Ìƒ^ƒCƒ}[
+    /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³æ–¹å¼ã®ã‚¿ã‚¤ãƒãƒ¼
     /// </summary>
     public class CountDownTimer : ITimer, IDisposable {
 
@@ -18,7 +18,7 @@ namespace nitou {
         private readonly Subject<Unit> _overSubject = new();
         private IDisposable _subscription = null;
 
-        private float _elapsedTime;           // ¦ÀŒvZ—p‚Ì•Ï”
+        private float _elapsedTime;           // â€»å®Ÿè¨ˆç®—ç”¨ã®å¤‰æ•°
 
         /// <summary>
         /// 
@@ -31,12 +31,12 @@ namespace nitou {
         public bool IsTimeOverd => _currentRP.Value <= 0f;
 
         /// <summary>
-        /// Œ»İ‚ÌŠÔ
+        /// ç¾åœ¨ã®æ™‚é–“
         /// </summary>
         public IReadOnlyReactiveProperty<int> Current => _currentRP;
 
         /// <summary>
-        /// I—¹’Ê’m
+        /// çµ‚äº†é€šçŸ¥
         /// </summary>
         public IObservable<Unit> OverObservable => _overSubject;
 
@@ -45,7 +45,7 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public CountDownTimer(int max) {
             if (max <= 0) throw new System.InvalidOperationException();
@@ -57,7 +57,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
             Stop();
@@ -68,7 +68,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (ƒ^ƒCƒ}[‘€ì)
+        // Public Method (ã‚¿ã‚¤ãƒãƒ¼æ“ä½œ)
 
         public void Start() {
             if (_subscription != null) {
@@ -80,14 +80,14 @@ namespace nitou {
                 return;
             }
 
-            // XVˆ—
+            // æ›´æ–°å‡¦ç†
             _subscription = Observable.EveryUpdate()
                 .Subscribe(_ => {
-                    // Time.deltaTime‚ÉŠî‚Ã‚¢‚ÄXV
+                    // Time.deltaTimeã«åŸºã¥ã„ã¦æ›´æ–°
                     _elapsedTime -= Time.deltaTime;
-                    _currentRP.Value = Mathf.CeilToInt(_elapsedTime);    // ¦³‚Ì–³ŒÀ‘å•ûŒü‚ÉØ‚èã‚°
+                    _currentRP.Value = Mathf.CeilToInt(_elapsedTime);    // â€»æ­£ã®ç„¡é™å¤§æ–¹å‘ã«åˆ‡ã‚Šä¸Šã’
 
-                    // c‚èŠÔ‚ª0‚É‚È‚Á‚½‚çTimeOverƒCƒxƒ“ƒg‚ğ”­s
+                    // æ®‹ã‚Šæ™‚é–“ãŒ0ã«ãªã£ãŸã‚‰TimeOverã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºè¡Œ
                     if(IsTimeOverd) {
                         _overSubject.OnNext(Unit.Default);
                         Stop();

@@ -1,31 +1,31 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  kan‚Ìƒƒ‚’ : ResourcesˆÈŠO‚©‚çƒAƒZƒbƒg‚ğƒ[ƒh‚·‚é•Ö—˜ƒNƒ‰ƒX https://kan-kikuchi.hatenablog.com/entry/NonResources
+// [å‚è€ƒ]
+//  kanã®ãƒ¡ãƒ¢å¸³: Resourcesä»¥å¤–ã‹ã‚‰ã‚¢ã‚»ãƒƒãƒˆã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ä¾¿åˆ©ã‚¯ãƒ©ã‚¹ https://kan-kikuchi.hatenablog.com/entry/NonResources
 
 namespace nitou.EditorShared {
 
     /// <summary>
-    /// <see cref="AssetDatabase"/>‚Ìƒ‰ƒbƒp[
+    /// <see cref="AssetDatabase"/>ã®ãƒ©ãƒƒãƒ‘ãƒ¼
     /// </summary>
     public static class NonResources {
 
         /// ----------------------------------------------------------------------------
-        // Method (’P‘Ìƒ[ƒh)
+        // Method (å˜ä½“ãƒ­ãƒ¼ãƒ‰)
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ÌƒAƒZƒbƒgƒpƒX(Šg’£q‚àŠÜ‚ß‚é)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹(æ‹¡å¼µå­ã‚‚å«ã‚ã‚‹)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static T Load<T>(string path) where T : Object {
             return AssetDatabase.LoadAssetAtPath<T>(path);
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ÌƒpƒX(Assets‚©‚çAŠg’£q‚àŠÜ‚ß‚é)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹(Assetsã‹ã‚‰ã€æ‹¡å¼µå­ã‚‚å«ã‚ã‚‹)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static T Load<T>(string assetName, string relativePath) where T : Object {
             return AssetDatabase.LoadAssetAtPath<T>($"{relativePath}/{assetName}");
@@ -38,18 +38,18 @@ namespace nitou.EditorShared {
 
 
         /// ----------------------------------------------------------------------------
-        // Method (•¡”ƒ[ƒh)
+        // Method (è¤‡æ•°ãƒ­ãƒ¼ãƒ‰)
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX(Assets‚©‚ç)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞB‘¶İ‚µ‚È‚¢ê‡‚Í‹ó‚ÌList‚ğ•Ô‚·
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹(Assetsã‹ã‚‰)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ç©ºã®Listã‚’è¿”ã™
         /// </summary>
         public static List<T> LoadAll<T>(string directoryPath) where T : Object {
             var assetList = new List<T>();
 
-            // w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚É“ü‚Á‚Ä‚¢‚é‘Sƒtƒ@ƒCƒ‹‚ğæ“¾(qƒfƒBƒŒƒNƒgƒŠ‚àŠÜ‚Ş)
+            // æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«å…¥ã£ã¦ã„ã‚‹å…¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—(å­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚‚å«ã‚€)
             string[] filePathArray = Directory.GetFiles(directoryPath, "*", SearchOption.AllDirectories);
 
-            // æ“¾‚µ‚½ƒtƒ@ƒCƒ‹‚Ì’†‚©‚çƒAƒZƒbƒg‚¾‚¯ƒŠƒXƒg‚É’Ç‰Á‚·‚é
+            // å–å¾—ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã‹ã‚‰ã‚¢ã‚»ãƒƒãƒˆã ã‘ãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹
             foreach (string filePath in filePathArray) {
                 T asset = Load<T>(filePath);
                 if (asset != null) {
@@ -61,7 +61,7 @@ namespace nitou.EditorShared {
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX(Assets‚©‚ç)‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞB‘¶İ‚µ‚È‚¢ê‡‚Í‹ó‚ÌList‚ğ•Ô‚·
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹(Assetsã‹ã‚‰)ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ã€‚å­˜åœ¨ã—ãªã„å ´åˆã¯ç©ºã®Listã‚’è¿”ã™
         /// </summary>
         public static List<T> LoadAll<T>(string relativePath, PackageFolderInfo packageInfo) where T : Object {
             return LoadAll<T>(GetDirectoryPathInPackage(relativePath, packageInfo));
@@ -79,9 +79,9 @@ namespace nitou.EditorShared {
 
             var fullRelativePath = $"{relativePath}/{assetName}";
 
-            // ”z•zæ‚Å‚ÌƒpƒX
+            // é…å¸ƒå…ˆã§ã®ãƒ‘ã‚¹
             var upmPath = $"Packages/{packageInfo.upmFolderName}/{fullRelativePath}";
-            // ŠJ”­ƒvƒƒWƒFƒNƒg“à‚Å‚ÌƒpƒX
+            // é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå†…ã§ã®ãƒ‘ã‚¹
             var normalPath = $"Assets/{packageInfo.normalFolderName}/{fullRelativePath}";
 
             // 
@@ -105,9 +105,9 @@ namespace nitou.EditorShared {
         /// 
         /// </summary>
         private static string GetDirectoryPathInPackage(string relativePath, PackageFolderInfo packageInfo) {
-            // ”z•zæ‚Å‚ÌƒpƒX
+            // é…å¸ƒå…ˆã§ã®ãƒ‘ã‚¹
             var upmPath = $"Packages/{packageInfo.upmFolderName}/{relativePath}";
-            // ŠJ”­ƒvƒƒWƒFƒNƒg“à‚Å‚ÌƒpƒX
+            // é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå†…ã§ã®ãƒ‘ã‚¹
             var normalPath = $"Assets/{packageInfo.normalFolderName}/{relativePath}";
 
             // 

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -8,19 +8,19 @@ namespace nitou.EditorShared {
 
     public class ProjectEditorSettingsProvider : SettingsProvider {
 
-        // [NOTE] İ’è‚ÌƒpƒX (¦‘æ1ŠK‘w‚ÍuPreferencesv‚É‚·‚é) 
+        // [NOTE] è¨­å®šã®ãƒ‘ã‚¹ (â€»ç¬¬1éšå±¤ã¯ã€ŒPreferencesã€ã«ã™ã‚‹) 
         private const string SettingPath = SettingsProviderKey.ProjectSettings +"Editor";
 
         private Editor _editor;
 
 
         /// <summary>
-        /// ‚±‚Ìƒƒ\ƒbƒh‚ªd—v‚Å‚·
-        /// “Æ©‚ÌSettingsProvider‚ğ•Ô‚·‚±‚Æ‚ÅAİ’è€–Ú‚ğ’Ç‰Á‚µ‚Ü‚·
+        /// ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒé‡è¦ã§ã™
+        /// ç‹¬è‡ªã®SettingsProviderã‚’è¿”ã™ã“ã¨ã§ã€è¨­å®šé …ç›®ã‚’è¿½åŠ ã—ã¾ã™
         /// </summary>
         [SettingsProvider]
         public static SettingsProvider CreateSettingProvider() {
-            // ¦‘æOˆø”‚Ìkeywords‚ÍAŒŸõ‚É‚±‚Ìİ’è€–Ú‚ğˆø‚Á‚©‚¯‚é‚½‚ß‚ÌƒL[ƒ[ƒh
+            // â€»ç¬¬ä¸‰å¼•æ•°ã®keywordsã¯ã€æ¤œç´¢æ™‚ã«ã“ã®è¨­å®šé …ç›®ã‚’å¼•ã£ã‹ã‘ã‚‹ãŸã‚ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
             return new ProjectEditorSettingsProvider(SettingPath, SettingsScope.Project, null);
         }
 
@@ -28,7 +28,7 @@ namespace nitou.EditorShared {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public ProjectEditorSettingsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords) : base(path, scopes, keywords) { }
 
@@ -39,24 +39,24 @@ namespace nitou.EditorShared {
 
             var preferences = ProjectEditorSettingsSO.instance;
 
-            // ¦ScriptableSingleton‚ğ•ÒW‰Â”\‚É‚·‚é
+            // â€»ScriptableSingletonã‚’ç·¨é›†å¯èƒ½ã«ã™ã‚‹
             preferences.hideFlags = HideFlags.HideAndDontSave & ~HideFlags.NotEditable;
 
-            // İ’èƒtƒ@ƒCƒ‹‚Ì•W€‚ÌƒCƒ“ƒXƒyƒNƒ^[‚ÌƒGƒfƒBƒ^‚ğ¶¬
+            // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ¨™æº–ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã®ã‚¨ãƒ‡ã‚£ã‚¿ã‚’ç”Ÿæˆ
             Editor.CreateCachedEditor(preferences, null, ref _editor);
         }
 
         /// <summary>
-        /// •`‰æˆ—D
+        /// æç”»å‡¦ç†ï¼
         /// </summary>
         public override void OnGUI(string searchContext) {
 
             EditorGUI.BeginChangeCheck();
 
-            // İ’èƒtƒ@ƒCƒ‹‚Ì•W€ƒCƒ“ƒXƒyƒNƒ^‚ğ•\¦
+            // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ¨™æº–ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã‚’è¡¨ç¤º
             _editor.OnInspectorGUI();
 
-            //EditorGUILayout.LabelField("ƒeƒXƒg‚¾‚æ");
+            //EditorGUILayout.LabelField("ãƒ†ã‚¹ãƒˆã ã‚ˆ");
 
             if (EditorGUI.EndChangeCheck()) {
                 ProjectEditorSettingsSO.instance.Save();

@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="RectTransform"/>‚Æ‚Ìd‚È‚è‚ğ”»’è‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// <see cref="RectTransform"/>ã¨ã®é‡ãªã‚Šã‚’åˆ¤å®šã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     public sealed class RectTransformOverlap : MonoBehaviour {
 

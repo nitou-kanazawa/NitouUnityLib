@@ -1,26 +1,26 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  hatena: EditorŠg’£‚Åg‚¦‚éUI‹@”\‚ÌŠT—v (GUI / GUILayout / EditorGUI / EditorGUILayout) https://yotiky.hatenablog.com/entry/unity_editorextension-guisummary
-//  zenn: Unity‚ÅƒR[ƒh‚©‚çGUI‚ğì‚é https://zenn.dev/kumas/books/325ed71592f6f5/viewer/0f1174
-//  LIGHT11: ƒGƒfƒBƒ^Šg’£ƒ`[ƒgƒV[ƒg https://light11.hatenadiary.com/entry/2018/07/08/134405
-//  qiita: ƒGƒfƒBƒ^Šg’£‚ÅdØ‚èü‚ğ•`‚­ https://qiita.com/Gok/items/96e8747269bf4a2a9cc5
+// [å‚è€ƒ]
+//  hatena: Editoræ‹¡å¼µã§ä½¿ãˆã‚‹UIæ©Ÿèƒ½ã®æ¦‚è¦ (GUI / GUILayout / EditorGUI / EditorGUILayout) https://yotiky.hatenablog.com/entry/unity_editorextension-guisummary
+//  zenn: Unityã§ã‚³ãƒ¼ãƒ‰ã‹ã‚‰GUIã‚’ä½œã‚‹ https://zenn.dev/kumas/books/325ed71592f6f5/viewer/0f1174
+//  LIGHT11: ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µãƒãƒ¼ãƒˆã‚·ãƒ¼ãƒˆ https://light11.hatenadiary.com/entry/2018/07/08/134405
+//  qiita: ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µã§ä»•åˆ‡ã‚Šç·šã‚’æã https://qiita.com/Gok/items/96e8747269bf4a2a9cc5
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•Ww’è‚ÅGameWindowã‚ÉGUI‚ğ•`‰æ‚·‚é‚½‚ß‚ÌUtilƒNƒ‰ƒX
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™æŒ‡å®šã§GameWindowä¸Šã«GUIã‚’æç”»ã™ã‚‹ãŸã‚ã®Utilã‚¯ãƒ©ã‚¹
         /// </summary>
         public static class ScreenGUI {
 
             private static readonly Texture2D _lineTexture;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
             /// </summary>
             static ScreenGUI() {
                 _lineTexture = new Texture2D(1, 1);
@@ -31,14 +31,14 @@ namespace nitou.EditorShared {
             #region Basic Method
 
             /// <summary>
-            /// ƒXƒNƒŠ[ƒ“À•W‚ğw’è‚µ‚Äƒ{ƒbƒNƒX‚ğ•\¦‚·‚éD
+            /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’æŒ‡å®šã—ã¦ãƒœãƒƒã‚¯ã‚¹ã‚’è¡¨ç¤ºã™ã‚‹ï¼
             /// </summary>
             public static void Box(Rect screenRect) {
                 UnityEngine.GUI.Box(Convetor.ScreenToGUI(screenRect), "");
             }
 
             /// <summary>
-            /// ƒXƒNƒŠ[ƒ“À•W‚ğw’è‚µ‚Ä•â•ü‚ğ•`‰æ‚·‚éD
+            /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’æŒ‡å®šã—ã¦è£œåŠ©ç·šã‚’æç”»ã™ã‚‹ï¼
             /// </summary>
             public static void AuxiliaryLine(Vector2 position, float width, Color color) {
 
@@ -53,26 +53,26 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// ƒXƒNƒŠ[ƒ“À•W‚ğw’è‚µ‚Äü•ª‚ğ•`‰æ‚·‚éD
+            /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’æŒ‡å®šã—ã¦ç·šåˆ†ã‚’æç”»ã™ã‚‹ï¼
             /// </summary>
             public static void Line(Vector2 screenPos1, Vector2 screenPos2, Color color, float width = 5f) {
 
-                // ƒXƒNƒŠ[ƒ“À•W‚ğGUIÀ•W‚É•ÏŠ·
+                // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’GUIåº§æ¨™ã«å¤‰æ›
                 var p1 = Convetor.ScreenToGUI(screenPos1);
                 var p2 = Convetor.ScreenToGUI(screenPos2);
 
-                // ü•İ’èiü•‚É‘Î‰‚·‚é‚Ì‚ÍƒGƒfƒBƒ^‚ÌHandles‚Ì‚İj
+                // ç·šå¹…è¨­å®šï¼ˆç·šå¹…ã«å¯¾å¿œã™ã‚‹ã®ã¯ã‚¨ãƒ‡ã‚£ã‚¿ã®Handlesã®ã¿ï¼‰
                 using (new HandleUtil.ColorScope(color)) {
                     Handles.DrawAAPolyLine(width, p1, p2);
                 }
             }
 
             /// <summary>
-            /// ƒXƒNƒŠ[ƒ“À•W‚ğw’è‚µ‚Äü•ª‚ğ•`‰æ‚·‚éD
+            /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’æŒ‡å®šã—ã¦ç·šåˆ†ã‚’æç”»ã™ã‚‹ï¼
             /// </summary>
             public static void Outline(Rect screenRect, Color color, float width = 5f) {
 
-                // ƒXƒNƒŠ[ƒ“À•W‚Ì‹éŒ`‚ğGUIÀ•W‚É•ÏŠ·
+                // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã®çŸ©å½¢ã‚’GUIåº§æ¨™ã«å¤‰æ›
                 var points = new Vector3[] {
                     Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMin)),
                     Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMax)),
@@ -81,7 +81,7 @@ namespace nitou.EditorShared {
                     Convetor.ScreenToGUI(new Vector2(screenRect.xMin, screenRect.yMin)),
                 };
 
-                // ‹éŒ`‚ÌŠe•Ó‚Éü‚ğ•`‰æ
+                // çŸ©å½¢ã®å„è¾ºã«ç·šã‚’æç”»
                 using (new HandleUtil.ColorScope(color)) {
                     Handles.DrawAAPolyLine(width, points);
                 }
@@ -93,7 +93,7 @@ namespace nitou.EditorShared {
             #region Label
 
             /// <summary>
-            /// GUI.Label()‚Ìƒ‰ƒbƒvƒƒ\ƒbƒh
+            /// GUI.Label()ã®ãƒ©ãƒƒãƒ—ãƒ¡ã‚½ãƒƒãƒ‰
             /// </summary>
             public static void Label(Vector2 screenPos, string text = "", 
                 int fontSize = 20, TextAnchor alignment = TextAnchor.LowerLeft, Color? color = null) {
@@ -102,14 +102,14 @@ namespace nitou.EditorShared {
                 Style.label.alignment = alignment;
                 Style.label.normal.textColor = color ?? Colors.White;
                 
-                // •`‰æ”ÍˆÍ
+                // æç”»ç¯„å›²
                 var size = Style.label.CalcSize(new GUIContent(text));
                 var rect = new Rect(screenPos - size, size *2f);
 
-                // ƒfƒoƒbƒO
+                // ãƒ‡ãƒãƒƒã‚°
                 //UnityEngine.GUI.Box(Convetor.ScreenToGUI(rect), "");
 
-                // ƒ‰ƒxƒ‹•`‰æ
+                // ãƒ©ãƒ™ãƒ«æç”»
                 UnityEngine.GUI.Label(Convetor.ScreenToGUI(rect), text, Style.label);
             }
 
@@ -123,13 +123,13 @@ namespace nitou.EditorShared {
             private static class Convetor {
 
                 /// <summary>
-                /// ƒXƒNƒŠ[ƒ“À•W‚©‚çGUIÀ•W‚Ö‚Ì•ÏŠ·D
+                /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‹ã‚‰GUIåº§æ¨™ã¸ã®å¤‰æ›ï¼
                 /// </summary>
                 public static Rect ScreenToGUI(Rect screenRect) {
-                    // ScreenÀ•WŒn
+                    // Screenåº§æ¨™ç³»
                     var screenPos = screenRect.position;
 
-                    // GUIÀ•WŒn
+                    // GUIåº§æ¨™ç³»
                     var guiPos = ScreenToGUI(screenPos);
                     var guiRect = new Rect(guiPos + (Vector2.down * screenRect.height), screenRect.size);
 
@@ -137,7 +137,7 @@ namespace nitou.EditorShared {
                 }
 
                 /// <summary>
-                /// ƒXƒNƒŠ[ƒ“À•W‚©‚çGUIÀ•W‚Ö‚Ì•ÏŠ·D
+                /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‹ã‚‰GUIåº§æ¨™ã¸ã®å¤‰æ›ï¼
                 /// </summary>
                 public static Vector2 ScreenToGUI(Vector2 screenPos) {
                     return new Vector2(screenPos.x, Screen.height - screenPos.y);
@@ -148,7 +148,7 @@ namespace nitou.EditorShared {
             /// ----------------------------------------------------------------------------
             private static class Style {
 
-                // ƒLƒƒƒbƒVƒ…
+                // ã‚­ãƒ£ãƒƒã‚·ãƒ¥
                 public readonly static GUIStyle borderLine;
                 public readonly static GUIStyle label;
                 public readonly static GUIStyle box;
@@ -156,18 +156,18 @@ namespace nitou.EditorShared {
 
                 static Style() {
 
-                    // •â•ü
+                    // è£œåŠ©ç·š
                     borderLine = new GUIStyle(UnityEngine.GUI.skin.box);
                     borderLine.normal.background = Texture2D.blackTexture;
-                    borderLine.normal.textColor = Color.clear;      // ¦”wŒi‚ğ“§–¾‚É‚·‚é
+                    borderLine.normal.textColor = Color.clear;      // â€»èƒŒæ™¯ã‚’é€æ˜ã«ã™ã‚‹
 
-                    // ƒ‰ƒxƒ‹
+                    // ãƒ©ãƒ™ãƒ«
                     label = new GUIStyle(UnityEngine.GUI.skin.label) { 
                         alignment = TextAnchor.LowerCenter,
                         fontSize = 10                        
                     };
 
-                    // ƒ{ƒbƒNƒX
+                    // ãƒœãƒƒã‚¯ã‚¹
                     box = new GUIStyle(UnityEngine.GUI.skin.box);
                     box.normal.background = Texture2D.grayTexture;
                 }

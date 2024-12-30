@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
+ï»¿using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityScreenNavigator.Runtime.Core.Page;
 
-// [NOTE] "USN_USE_ASYNC_METHODS"ƒVƒ“ƒ{ƒ‹‚ª•K—vD
+// [NOTE] "USN_USE_ASYNC_METHODS"ã‚·ãƒ³ãƒœãƒ«ãŒå¿…è¦ï¼
 
 namespace nitou.UI.PresentationFramework {
 
@@ -16,14 +16,14 @@ namespace nitou.UI.PresentationFramework {
         private TViewState _state;
 
         /// <summary>
-        /// ‰Šú‰»Ï‚İ‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–æ¸ˆã¿ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsInitialized => _isInitialized;
         private bool _isInitialized;
 
         /// <summary>
-        /// ‰Šú‰»ƒ^ƒCƒ~ƒ“ƒOD
-        /// i¦Initialize‚¾‚ÆViewState‚ª¶¬‚³‚ê‚Ä‚¢‚È‚¢‚Ì‚Å’ˆÓj
+        /// åˆæœŸåŒ–ã‚¿ã‚¤ãƒŸãƒ³ã‚°ï¼
+        /// ï¼ˆâ€»Initializeã ã¨ViewStateãŒç”Ÿæˆã•ã‚Œã¦ã„ãªã„ã®ã§æ³¨æ„ï¼‰
         /// </summary>
         protected virtual ViewInitializationTiming RootInitializationTiming => ViewInitializationTiming.BeforeFirstEnter;
 
@@ -32,7 +32,7 @@ namespace nitou.UI.PresentationFramework {
         // Public Method
 
         /// <summary>
-        /// View State‚Ìİ’è
+        /// View Stateã®è¨­å®š
         /// </summary>
         public void Setup(TViewState state) {
             _state = state;
@@ -47,7 +47,7 @@ namespace nitou.UI.PresentationFramework {
 
             await base.Initialize();
 
-            // RootView‚Ì‰Šú‰»ˆ—
+            // RootViewã®åˆæœŸåŒ–å‡¦ç†
             if (RootInitializationTiming == ViewInitializationTiming.Initialize && !_isInitialized) {
                 await root.InitializeAsync(_state);
                 _isInitialized = true;
@@ -59,7 +59,7 @@ namespace nitou.UI.PresentationFramework {
 
             await base.WillPushEnter();
 
-            // RootView‚Ì‰Šú‰»ˆ—
+            // RootViewã®åˆæœŸåŒ–å‡¦ç†
             if (RootInitializationTiming == ViewInitializationTiming.BeforeFirstEnter && !_isInitialized) {
                 await root.InitializeAsync(_state);
                 _isInitialized = true;

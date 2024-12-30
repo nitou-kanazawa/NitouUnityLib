@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  Hatena: Jsonƒtƒ@ƒCƒ‹‚ğ—˜—p‚µ‚½ƒZ[ƒu‹@”\‚ÌÀ‘• https://kiironomidori.hatenablog.com/entry/unity_save_json
+// [å‚è€ƒ]
+//  Hatena: Jsonãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆ©ç”¨ã—ãŸã‚»ãƒ¼ãƒ–æ©Ÿèƒ½ã®å®Ÿè£… https://kiironomidori.hatenablog.com/entry/unity_save_json
 
 namespace nitou.SaveSystem {
 
@@ -11,7 +11,7 @@ namespace nitou.SaveSystem {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public BasicDataService(bool encrypted) : base(encrypted){}
 
@@ -20,12 +20,12 @@ namespace nitou.SaveSystem {
         // Public Method
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ•Û‘¶‚·‚é
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹
         /// </summary>
         protected override string ToJson<T>(T data) => JsonUtility.ToJson(data, true);
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ“Ç‚İ‚Ş
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         protected override T FromJson<T>(string json) => JsonUtility.FromJson<T>(json);
     }

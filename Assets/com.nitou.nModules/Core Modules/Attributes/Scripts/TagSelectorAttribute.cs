@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -6,14 +6,14 @@ using UnityEditor;
 using Sirenix.OdinInspector.Editor;
 #endif
 
-// [Ql]
+// [å‚è€ƒ]
 //  odin: https://www.odininspector.com/documentation/sirenix.odininspector.editor.odinattributedrawer-1
-//  Using tags as a dropdown property in Unityfs inspector using PropertyDrawers https://www.brechtos.com/tagselectorattribute/
+//  Using tags as a dropdown property in Unityâ€™s inspector using PropertyDrawers https://www.brechtos.com/tagselectorattribute/
 
 namespace nitou.Inspector {
 
     /// <summary>
-    /// ƒ^ƒO‘I‘ğ—p‚Ìƒhƒƒbƒvƒ_ƒEƒ“‚ğ•\¦‚·‚éƒCƒ“ƒXƒyƒNƒ^‘®«D
+    /// ã‚¿ã‚°é¸æŠç”¨ã®ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿å±æ€§ï¼
     /// </summary>
    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false)]
     public class TagSelectorAttribute : Attribute {
@@ -26,12 +26,12 @@ namespace nitou.Inspector {
 
         protected override void DrawPropertyLayout(GUIContent label) {
 
-            // ƒfƒtƒHƒ‹ƒg
+            // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ
             if (this.Attribute.UseDefaultTagFieldDrawer) {
                 this.ValueEntry.SmartValue = EditorGUILayout.TagField(label, this.ValueEntry.SmartValue);
             } 
             
-            // ƒJƒXƒ^ƒ€
+            // ã‚«ã‚¹ã‚¿ãƒ 
             else {
                 //generate the taglist + custom tags
                 var tagList = new List<string>();

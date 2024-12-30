@@ -1,13 +1,13 @@
-
+ï»¿
 namespace nitou{
 
     /// <summary>
-    /// ³‹K‰»‚³‚ê‚½’l (0~1) ‚ÉŠî‚Ã‚¢‚Ä‹ì“®‚·‚éƒIƒuƒWƒFƒNƒg
+    /// æ­£è¦åŒ–ã•ã‚ŒãŸå€¤ (0~1) ã«åŸºã¥ã„ã¦é§†å‹•ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     public interface INormalizedValueTicker {
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½’l
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸå€¤
         /// </summary>
         public NormalizedValue Rate { get; set; }
     }

@@ -1,22 +1,22 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static UnityEngine.Mathf;
 using Random = UnityEngine.Random;
 
-// [Ql]
+// [å‚è€ƒ]
 //  UnityDocument: Random https://docs.unity3d.com/ja/2021.1/Manual/class-Random.html
-//  PG“ú: ƒŠƒXƒg‚©‚ç—v‘f‚ğƒ‰ƒ“ƒ_ƒ€‚ÉNŒÂæ“¾‚·‚é https://takap-tech.com/entry/2019/10/17/003706
+//  PGæ—¥èªŒ: ãƒªã‚¹ãƒˆã‹ã‚‰è¦ç´ ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«Nå€‹å–å¾—ã™ã‚‹ https://takap-tech.com/entry/2019/10/17/003706
 
 namespace nitou {
 
     /// <summary>
-    /// —”‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// ä¹±æ•°ã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class RandomUtil {
 
         /// ----------------------------------------------------------------------------
-        #region ”ÍˆÍ“à‚©‚ç‚Ì‘Io
+        #region ç¯„å›²å†…ã‹ã‚‰ã®é¸å‡º
 
         public static int Range(int min, int max) {
             return Random.Range(min, max);
@@ -31,7 +31,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 0~1‚Ì”ÍˆÍ“à‚Ì—”
+        /// 0~1ã®ç¯„å›²å†…ã®ä¹±æ•°
         /// </summary>
         public static float Range01() {
             return Random.value;
@@ -44,17 +44,17 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f“à‚©‚ç‚Ì‘I‘ğ
+        #region è¦ç´ å†…ã‹ã‚‰ã®é¸æŠ
 
         /// <summary>
-        /// ”CˆÓŒ^‚Ì‚Q’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚é
+        /// ä»»æ„å‹ã®ï¼’å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹
         /// </summary>
         public static T EitherOne<T>(T a, T b) {
             return RandomBool() ? a : b;
         }
 
         /// <summary>
-        /// ”CˆÓŒ^‚Ì‚R’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚é
+        /// ä»»æ„å‹ã®ï¼“å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹
         /// </summary>
         public static T WhichOne<T>(T a, T b, T c) {
             return Range(0, 3) switch {
@@ -66,7 +66,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒŠƒXƒg“à‚Ì’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚é
+        /// ãƒªã‚¹ãƒˆå†…ã®å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹
         /// </summary>
         public static T WhichOne<T>(this IReadOnlyList<T> list) {
             if (list.IsNullOrEmptyEnumerable()) throw new System.InvalidOperationException();
@@ -74,14 +74,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒŠƒXƒg“à‚Ì’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒªã‚¹ãƒˆå†…ã®å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static T WhichOne<T>(this IEnumerable<T> collection) {
             return collection.ElementAt(Range(0, collection.Count()));
         }
 
         /// <summary>
-        /// ƒŠƒXƒg“à‚Ì’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚é
+        /// ãƒªã‚¹ãƒˆå†…ã®å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹
         /// </summary>
         public static void RandomValueWithoutCurrent<T>(IReadOnlyList<T> list, ref int currentIndex) {
             if (list.Count < 1) {
@@ -97,18 +97,18 @@ namespace nitou {
                 index = Range(0, list.Count);
             } while (index == currentIndex);
 
-            // ƒCƒ“ƒfƒbƒNƒXXV
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æ›´æ–°
             currentIndex = index;
         }
 
 
 
         /// <summary>
-        /// ƒŠƒXƒg“à‚Ì’l‚©‚çƒ‰ƒ“ƒ_ƒ€‚Éæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒªã‚¹ãƒˆå†…ã®å€¤ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static IEnumerable<T> RandomValues<T>(this IReadOnlyList<T> collection, int num) {
             if (num > collection.Count) {
-                throw new System.ArgumentOutOfRangeException("ƒŠƒXƒg‚Ì—v‘f”‚æ‚èn‚ª‘å‚«‚¢‚Å‚·B");
+                throw new System.ArgumentOutOfRangeException("ãƒªã‚¹ãƒˆã®è¦ç´ æ•°ã‚ˆã‚ŠnãŒå¤§ãã„ã§ã™ã€‚");
             }
 
             var indexList = new List<int>(collection.Count);
@@ -127,10 +127,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region  ^‹U
+        #region  çœŸå½
 
         /// <summary>
-        /// boolŒ^‚Ì—”‚ğæ“¾‚·‚é
+        /// boolå‹ã®ä¹±æ•°ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool RandomBool() {
             return Random.Range(0, 2) == 0;
@@ -139,10 +139,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region À•W
+        #region åº§æ¨™
 
         /// <summary>
-        /// ‰~ã‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// å††ä¸Šã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector2 PointInCircle(float radius, float startDeg = 0.0f, float endDeg = 359.99999f) {
             float deg = Range(startDeg, endDeg);
@@ -154,7 +154,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‰~üã‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// å††å‘¨ä¸Šã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector2 PointInCircumference(float radius, float startDeg = 0.0f, float endDeg = 359.99999f) {
             float deg = Range(startDeg, endDeg);
@@ -164,7 +164,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// lŠpŒ`ã‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// å››è§’å½¢ä¸Šã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector2 PointInBox2D(float halfSizeX, float halfSizeY) {
             return new Vector2(
@@ -173,14 +173,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// lŠpŒ`ã‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// å››è§’å½¢ä¸Šã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector2 PointInBox2D(Vector2 halfSize) {
             return PointInBox2D(halfSize.x, halfSize.y);
         }
 
         /// <summary>
-        /// Boxã‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// Boxä¸Šã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 PointInBox(float halfSizeX, float halfSizeY, float halfSizeZ) {
             return new Vector3(
@@ -190,7 +190,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Box“à‚Ìƒ‰ƒ“ƒ_ƒ€‚È“_‚ğæ“¾‚·‚é
+        /// Boxå†…ã®ãƒ©ãƒ³ãƒ€ãƒ ãªç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 PointInBox(Vector3 halfSize) {
             return PointInBox(halfSize.x, halfSize.y, halfSize.z);
@@ -200,10 +200,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒJƒ‰[
+        #region ã‚«ãƒ©ãƒ¼
 
         /// <summary>
-        /// ƒ‰ƒ“ƒ_ƒ€‚ÈF‚ğ¶¬
+        /// ãƒ©ãƒ³ãƒ€ãƒ ãªè‰²ã‚’ç”Ÿæˆ
         /// </summary>
         public static Color Color(bool alpha = false) {
             return new Color(
@@ -214,7 +214,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ‰ƒ“ƒ_ƒ€‚ÈF‚ğ¶¬
+        /// ãƒ©ãƒ³ãƒ€ãƒ ãªè‰²ã‚’ç”Ÿæˆ
         /// </summary>
         public static Color Color(Vector2 red, Vector2 green, Vector2 blue, Vector2 alpha) {
             return new Color(

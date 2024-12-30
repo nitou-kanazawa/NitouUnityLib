@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -6,7 +6,7 @@ using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
 #endif
 
-// [éQçl]
+// [ÂèÇËÄÉ]
 //  _: Box Attributes - Simple attributes to more easily differentiate objects https://odininspector.com/community-tools/593/box-attributes-simple-attributes-to-more-easily-differentiate-objects
 
 namespace nitou.Inspector {

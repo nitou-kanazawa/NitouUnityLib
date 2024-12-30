@@ -1,19 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using nitou.DesignPattern.Pooling;
 
-// [Ql]
-//  Kan‚Ìƒƒ‚’ : ƒMƒYƒ‚‚Å–îˆóA‰~’ŒAƒJƒvƒZƒ‹A‰~AŒÊ‚ğ•`‰æo—ˆ‚é‚æ‚¤‚É‚·‚éGizmoExtensions https://kan-kikuchi.hatenablog.com/entry/GizmoExtensions
+// [å‚è€ƒ]
+//  Kanã®ãƒ¡ãƒ¢å¸³: ã‚®ã‚ºãƒ¢ã§çŸ¢å°ã€å††æŸ±ã€ã‚«ãƒ—ã‚»ãƒ«ã€å††ã€å¼§ã‚’æç”»å‡ºæ¥ã‚‹ã‚ˆã†ã«ã™ã‚‹GizmoExtensions https://kan-kikuchi.hatenablog.com/entry/GizmoExtensions
 
 namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer {
 
         /// <summary>
-        /// ‰~’Œ
+        /// å††æŸ±
         /// </summary>
         internal static class Cylinder {
 
             /// <summary>
-            /// ‰~Œ`‚ğ’è‹`‚·‚éƒpƒ‰ƒ[ƒ^
+            /// å††å½¢ã‚’å®šç¾©ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
             /// </summary>
             private struct DiscParam {
                 public float radius;
@@ -29,10 +29,10 @@ namespace nitou.DebugInternal {
 
 
             /// ----------------------------------------------------------------------------
-            #region •`‰æƒƒ\ƒbƒh
+            #region æç”»ãƒ¡ã‚½ãƒƒãƒ‰
 
             /// <summary>
-            /// ‰~’Œ‚ğ•`‰æ‚·‚é
+            /// å††æŸ±ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireCylinder(PlaneType type, Vector3 center, Quaternion rotation, float radius, float height,int discSegments = 20) {
 
@@ -61,7 +61,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‰~‚ğ•`‰æ‚·‚é
+            /// å††éŒã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireCone(PlaneType type, Vector3 center, Quaternion rotation, float radius, float height,int discSegments = 20) {
 
@@ -87,16 +87,16 @@ namespace nitou.DebugInternal {
             #region Private Method
 
             /// <summary>
-            /// ‰~’Œ‚Ì‘¤–Ê•”‚ğ•`‰æ‚·‚é
+            /// å††æŸ±ã®å´é¢éƒ¨ã‚’æç”»ã™ã‚‹
             /// </summary>
             private static void DrawWireCylinderOuterLines(PlaneType planeType, DiscParam upperDisc, DiscParam lowerDisc) {
                 if (upperDisc.segments != lowerDisc.segments) return;
 
-                // ƒŠƒXƒgæ“¾
+                // ãƒªã‚¹ãƒˆå–å¾—
                 var upperPoints = ListPool<Vector3>.New();
                 var lowerPoints = ListPool<Vector3>.New();
 
-                // À•WŒvZ
+                // åº§æ¨™è¨ˆç®—
                 MathUtil.CirclePoints(
                     radius: upperDisc.radius,
                     resultPoints: upperPoints,
@@ -114,20 +114,20 @@ namespace nitou.DebugInternal {
                     type: planeType
                 );
 
-                // •`‰æi¦ã‰º‰~‚ÌŠe“_‚ğŒ‹‚Ôü•ªj
+                // æç”»ï¼ˆâ€»ä¸Šä¸‹å††ã®å„ç‚¹ã‚’çµã¶ç·šåˆ†ï¼‰
                 Basic.DrawLineSet(upperPoints, lowerPoints);
 
-                // ƒŠƒXƒg‰ğ•ú
+                // ãƒªã‚¹ãƒˆè§£æ”¾
                 upperPoints.Free();
                 lowerPoints.Free();
             }
 
             /// <summary>
-            /// ‰~‚Ì‘¤–Ê•”‚ğ•`‰æ‚·‚é
+            /// å††éŒã®å´é¢éƒ¨ã‚’æç”»ã™ã‚‹
             /// </summary>
             private static void DrawWireConeOuterLines(PlaneType type, DiscParam lowerDisc, float height) {
 
-                // ƒŠƒXƒgæ“¾
+                // ãƒªã‚¹ãƒˆå–å¾—
                 var lowerPoints = ListPool<Vector3>.New();
 
                 var top = (lowerDisc.offset + height) * type.GetNormal();
@@ -140,22 +140,22 @@ namespace nitou.DebugInternal {
                     type: type
                 );
 
-                // •`‰æi¦’ê–Ê(‰~)‚ÌŠe“_‚©‚ç’¸“_‚Ö‚Ìü•ªj
+                // æç”»ï¼ˆâ€»åº•é¢(å††)ã®å„ç‚¹ã‹ã‚‰é ‚ç‚¹ã¸ã®ç·šåˆ†ï¼‰
                 lowerPoints.ForEach(p => Gizmos.DrawLine(p, top));
 
-                // ƒŠƒXƒg‰ğ•ú
+                // ãƒªã‚¹ãƒˆè§£æ”¾
                 lowerPoints.Free();
             }
 
             /// <summary>
-            /// ‰~”Õ‚ğ•`‰æ‚·‚é
+            /// å††ç›¤ã‚’æç”»ã™ã‚‹
             /// </summary>
             private static void DrawWireDisc(PlaneType planType, DiscParam disc) {
 
-                // ƒŠƒXƒgæ“¾
+                // ãƒªã‚¹ãƒˆå–å¾—
                 var points = ListPool<Vector3>.New();
 
-                // À•WŒvZ
+                // åº§æ¨™è¨ˆç®—
                 MathUtil.CirclePoints(
                     radius: disc.radius,
                     resultPoints: points,
@@ -165,10 +165,10 @@ namespace nitou.DebugInternal {
                     type: planType
                 );
 
-                // •`‰æ
+                // æç”»
                 Basic.DrawLines(points);
 
-                // ƒŠƒXƒg‰ğ•ú
+                // ãƒªã‚¹ãƒˆè§£æ”¾
                 points.Free();
             }
             #endregion

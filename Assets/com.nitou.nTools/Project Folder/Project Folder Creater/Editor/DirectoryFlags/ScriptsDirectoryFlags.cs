@@ -1,8 +1,8 @@
-
+ï»¿
 namespace nitou.Tools.ProjectWindow {
 
     /// <summary>
-    /// OutGame—p‚ÌƒXƒNƒŠƒvƒgƒtƒHƒ‹ƒ_\¬
+    /// OutGameç”¨ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ•ã‚©ãƒ«ãƒ€æ§‹æˆ
     /// </summary>
     [System.Serializable]
     public class ScriptsDirectoryFlags : IFlagContainer {

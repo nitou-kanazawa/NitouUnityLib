@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace nitou.UI.Components{
 
     /// <summary>
-    /// Interface of the UI that handles the gPointerh event.
+    /// Interface of the UI that handles the â€œPointerâ€ event.
     /// </summary>
     public interface IUIPointerable{
 

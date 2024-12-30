@@ -1,19 +1,19 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: DictionaryŒ^‚Ì•Ï”’è‹`‚ª‰¡‚É’·‚­‚È‚é‚Ì‚ª‹C‚É‚È‚é https://baba-s.hatenablog.com/entry/2014/02/12/105154#google_vignette
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Dictionaryå‹ã®å¤‰æ•°å®šç¾©ãŒæ¨ªã«é•·ããªã‚‹ã®ãŒæ°—ã«ãªã‚‹ https://baba-s.hatenablog.com/entry/2014/02/12/105154#google_vignette
 
 namespace nitou.EditorShared {
 
-    // [TODO] ‚¢‚¢Š´‚¶‚Ì‚QƒL[Dictionary‚ğ®”õ‚µ‚½‚¢ (2024.08.01)
+    // [TODO] ã„ã„æ„Ÿã˜ã®ï¼’ã‚­ãƒ¼Dictionaryã‚’æ•´å‚™ã—ãŸã„ (2024.08.01)
     // Rererence: https://www.foundations.unity.com/fundamentals/color-palette
 
     /// <summary>
-    /// UnityƒGƒfƒBƒ^‚Åg—p‚³‚ê‚Ä‚¢‚éƒJƒ‰[W
+    /// Unityã‚¨ãƒ‡ã‚£ã‚¿ã§ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã‚«ãƒ©ãƒ¼é›†
     /// </summary>
     public static class EditorColors {
 
@@ -21,19 +21,19 @@ namespace nitou.EditorShared {
         // Window Colors
 
         /// <summary>
-        /// ”wŒiF
+        /// èƒŒæ™¯è‰²
         /// </summary>
         public static Color DefaultBackground =>
             GetColor(EditorGUIUtility.isProSkin ? "#282828" : "#A5A5A5");
 
         /// <summary>
-        /// ”wŒiFi”ñƒAƒNƒeƒBƒuƒnƒCƒ‰ƒCƒgj
+        /// èƒŒæ™¯è‰²ï¼ˆéã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒã‚¤ãƒ©ã‚¤ãƒˆï¼‰
         /// </summary>
         public static Color HighlightBackgroundInactive =>
             GetColor(EditorGUIUtility.isProSkin ? "#4D4D4D" : "#AEAEAE");
 
         /// <summary>
-        /// ”wŒiFiƒnƒCƒ‰ƒCƒgj
+        /// èƒŒæ™¯è‰²ï¼ˆãƒã‚¤ãƒ©ã‚¤ãƒˆï¼‰
         /// </summary>
         public static Color HighlightBackground =>
             GetColor(EditorGUIUtility.isProSkin ? "#2C5D87" : "#3A72B0");
@@ -55,19 +55,19 @@ namespace nitou.EditorShared {
         // Button Colors
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“”wŒiF
+        /// ãƒœã‚¿ãƒ³èƒŒæ™¯è‰²
         /// </summary>
         public static Color ButtonBackground =>
             GetColor(EditorGUIUtility.isProSkin ? "#585858" : "#E4E4E4");
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“”wŒiFiƒzƒo[j
+        /// ãƒœã‚¿ãƒ³èƒŒæ™¯è‰²ï¼ˆãƒ›ãƒãƒ¼ï¼‰
         /// </summary>
         public static Color ButtonBackgroundHover =>
             GetColor(EditorGUIUtility.isProSkin ? "#676767" : "#ECECEC");
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“”wŒiFiƒNƒŠƒbƒNj
+        /// ãƒœã‚¿ãƒ³èƒŒæ™¯è‰²ï¼ˆã‚¯ãƒªãƒƒã‚¯ï¼‰
         /// </summary>
         public static Color ButtonBackgroundHoverPressedr =>
             GetColor(EditorGUIUtility.isProSkin ? "#4F657F" : "#B0D2FC");
@@ -77,25 +77,25 @@ namespace nitou.EditorShared {
         // Text Colors
 
         /// <summary>
-        /// ƒeƒLƒXƒgF
+        /// ãƒ†ã‚­ã‚¹ãƒˆè‰²
         /// </summary>
         public static Color DefaultText =>
             GetColor(EditorGUIUtility.isProSkin ? "#D2D2D2" : "#090909");
 
         /// <summary>
-        /// ƒeƒLƒXƒgFiƒGƒ‰[j
+        /// ãƒ†ã‚­ã‚¹ãƒˆè‰²ï¼ˆã‚¨ãƒ©ãƒ¼ï¼‰
         /// </summary>
         public static Color ErrorText =>
             GetColor(EditorGUIUtility.isProSkin ? "#D32222" : "#5A0000");
 
         /// <summary>
-        /// ƒeƒLƒXƒgFiŒxj
+        /// ãƒ†ã‚­ã‚¹ãƒˆè‰²ï¼ˆè­¦å‘Šï¼‰
         /// </summary>
         public static Color WarningText =>
             GetColor(EditorGUIUtility.isProSkin ? "#F4BC02" : "#333308");
 
         /// <summary>
-        /// ƒeƒLƒXƒgFiƒŠƒ“ƒNj
+        /// ãƒ†ã‚­ã‚¹ãƒˆè‰²ï¼ˆãƒªãƒ³ã‚¯ï¼‰
         /// </summary>
         public static Color LinkText =>
             GetColor(EditorGUIUtility.isProSkin ? "#4C7EFF" : "#4C7EFF");
@@ -314,7 +314,7 @@ namespace nitou.EditorShared {
             // Private Method
 
             /// <summary>
-            /// HTML‚©‚çRGBƒJƒ‰[‚Ö‚Ì•ÏŠ·
+            /// HTMLã‹ã‚‰RGBã‚«ãƒ©ãƒ¼ã¸ã®å¤‰æ›
             /// </summary>
         private static Color GetColor(string htmlColor) {
             if (!ColorUtility.TryParseHtmlString(htmlColor, out var color))

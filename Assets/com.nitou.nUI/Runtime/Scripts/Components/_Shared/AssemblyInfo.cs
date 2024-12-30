@@ -1,6 +1,6 @@
-using System.Runtime.CompilerServices;
+ï»¿using System.Runtime.CompilerServices;
 
-// [Ql]
-//  qiita: internal‚ÈŒ^‚âƒƒ“ƒo‚ÉƒAƒNƒZƒX‚·‚é‚É‚ÍA‘½•ª‚±‚ê‚ªˆê”Ô‘‚¢‚Æv‚¢‚Ü‚· https://qiita.com/mob-sakai/items/f3bbc0c45abc31ea7ac0#internalsvisibleto%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6internal%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
+// [å‚è€ƒ]
+//  qiita: internalãªå‹ã‚„ãƒ¡ãƒ³ãƒã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã«ã¯ã€å¤šåˆ†ã“ã‚ŒãŒä¸€ç•ªæ—©ã„ã¨æ€ã„ã¾ã™ https://qiita.com/mob-sakai/items/f3bbc0c45abc31ea7ac0#internalsvisibleto%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6internal%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
 
 [assembly: InternalsVisibleTo("Nitou.UI.ScreenSystem")]

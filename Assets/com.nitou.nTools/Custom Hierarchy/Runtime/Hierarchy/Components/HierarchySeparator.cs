@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.Tools.Hierarchy {
 
     /// <summary>
-    /// ƒqƒGƒ‰ƒ‹ƒL[‚ÉƒZƒpƒŒ[ƒ^‚ğ•`‰æ‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒgD
+    /// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼ã«ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã‚’æç”»ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼
     /// </summary>
     [AddComponentMenu("Nitou/Hierarchy Separator")]
     public sealed class HierarchySeparator : HierarchyObject { }

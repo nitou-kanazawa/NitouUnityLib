@@ -1,23 +1,23 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// ‰æ–Ê‚ÌüˆÍiƒXƒNƒŠ[ƒ“‚ÌƒpƒfƒBƒ“ƒO—Ìˆæj‚Ìƒ}ƒEƒX‚âƒ^ƒbƒ`‘€ì‚ğ–h~‚·‚é‚½‚ß‚Ì\‘¢‘Ì
+    /// ç”»é¢ã®å‘¨å›²ï¼ˆã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°é ˜åŸŸï¼‰ã®ãƒã‚¦ã‚¹ã‚„ã‚¿ãƒƒãƒæ“ä½œã‚’é˜²æ­¢ã™ã‚‹ãŸã‚ã®æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct ScreenDeadZone {
 
-        // ã•”‚ÌƒpƒfƒBƒ“ƒO•i‰æ–Ê‚‚³‚É‘Î‚·‚éŠ„‡j
+        // ä¸Šéƒ¨ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¹…ï¼ˆç”»é¢é«˜ã•ã«å¯¾ã™ã‚‹å‰²åˆï¼‰
         [Range(0f, 1f)] public float top;
 
-        // ‰º•”‚ÌƒpƒfƒBƒ“ƒO•i‰æ–Ê‚‚³‚É‘Î‚·‚éŠ„‡j
+        // ä¸‹éƒ¨ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¹…ï¼ˆç”»é¢é«˜ã•ã«å¯¾ã™ã‚‹å‰²åˆï¼‰
         [Range(0f, 1f)] public float bottom;
 
-        // ¶•”‚ÌƒpƒfƒBƒ“ƒO•i‰æ–Ê•‚É‘Î‚·‚éŠ„‡j
+        // å·¦éƒ¨ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¹…ï¼ˆç”»é¢å¹…ã«å¯¾ã™ã‚‹å‰²åˆï¼‰
         [Range(0f, 1f)] public float left;
 
-        // ‰E•”‚ÌƒpƒfƒBƒ“ƒO•i‰æ–Ê•‚É‘Î‚·‚éŠ„‡j
+        // å³éƒ¨ã®ãƒ‘ãƒ‡ã‚£ãƒ³ã‚°å¹…ï¼ˆç”»é¢å¹…ã«å¯¾ã™ã‚‹å‰²åˆï¼‰
         [Range(0f, 1f)] public float right;
 
         public float XMin => left * Screen.width;
@@ -36,7 +36,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ}ƒEƒXÀ•W‚ªƒfƒbƒhƒ][ƒ““à‚©‚Ç‚¤‚©
+        /// ãƒã‚¦ã‚¹åº§æ¨™ãŒãƒ‡ãƒƒãƒ‰ã‚¾ãƒ¼ãƒ³å†…ã‹ã©ã†ã‹
         /// </summary>
         public bool IsMouseInDeadZone() {
             Vector2 mousePosition = Input.mousePosition;
@@ -63,19 +63,19 @@ namespace nitou.EditorScripts {
     public class ScreenDeadZoneDrawer : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            // eƒvƒƒpƒeƒBiScreenDeadZonej‚Ìƒ‰ƒxƒ‹‚ğ•\¦
+            // è¦ªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼ˆScreenDeadZoneï¼‰ã®ãƒ©ãƒ™ãƒ«ã‚’è¡¨ç¤º
             EditorGUI.PrefixLabel(position, label);
 
-            // ƒCƒ“ƒfƒ“ƒg‚Ìİ’è
+            // ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã®è¨­å®š
             EditorGUI.indentLevel++;
 
-            // RectƒvƒƒpƒeƒB‚ğæ“¾
+            // Rectãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—
             SerializedProperty percentageProp = property.FindPropertyRelative("percentage");
 
-            // ŠeƒtƒB[ƒ‹ƒh‚ğ•\¦
+            // å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤º
             Rect rectField = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
 
-            // xMin, yMin, width, height ‚ğ‚»‚ê‚¼‚ê0.0`1.0‚Ì”ÍˆÍ“à‚ÅƒXƒ‰ƒCƒ_[•\¦
+            // xMin, yMin, width, height ã‚’ãã‚Œãã‚Œ0.0ï½1.0ã®ç¯„å›²å†…ã§ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼è¡¨ç¤º
             EditorGUI.Slider(new Rect(rectField.x, rectField.y, rectField.width, rectField.height), percentageProp.FindPropertyRelative("x"), 0.0f, 1.0f, "X Min");
             rectField.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.Slider(new Rect(rectField.x, rectField.y, rectField.width, rectField.height), percentageProp.FindPropertyRelative("y"), 0.0f, 1.0f, "Y Min");
@@ -84,12 +84,12 @@ namespace nitou.EditorScripts {
             rectField.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             EditorGUI.Slider(new Rect(rectField.x, rectField.y, rectField.width, rectField.height), percentageProp.FindPropertyRelative("height"), 0.0f, 1.0f, "Height");
 
-            // ƒCƒ“ƒfƒ“ƒg‚ğ–ß‚·
+            // ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’æˆ»ã™
             EditorGUI.indentLevel--;
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-            // 4‚Â‚ÌƒXƒ‰ƒCƒ_[‚Æ•W€‚ÌŠÔŠu•ª‚Ì‚‚³‚ğŒvZ
+            // 4ã¤ã®ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã¨æ¨™æº–ã®é–“éš”åˆ†ã®é«˜ã•ã‚’è¨ˆç®—
             return EditorGUIUtility.singleLineHeight * 5 + EditorGUIUtility.standardVerticalSpacing * 4;
         }
     }

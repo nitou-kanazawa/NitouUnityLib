@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 // [REF]
-//  qiita: 3DƒIƒuƒWƒFƒNƒg‚Ìc‘œˆ— https://qiita.com/madoramu_f/items/fada99645cd03fd7f515
-//  UnityIndies: ƒ}ƒeƒŠƒAƒ‹A—‰ğ‚µ‚Ä‚È‚¢‚Æ‚·‚®‚Éƒƒ‚ƒŠƒŠ[ƒN https://www.create-forever.games/unity-material-memory-leak/
-//  Hatena: Renderer.material‚Åæ“¾‚µ‚½ƒ}ƒeƒŠƒAƒ‹‚Í©•ª‚Å”jŠü‚µ‚È‚¢‚ÆƒŠ[ƒN‚·‚é˜b https://light11.hatenadiary.com/entry/2019/11/03/223241
+//  qiita: 3Dã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ®‹åƒå‡¦ç† https://qiita.com/madoramu_f/items/fada99645cd03fd7f515
+//  UnityIndies: ãƒãƒ†ãƒªã‚¢ãƒ«ã€ç†è§£ã—ã¦ãªã„ã¨ã™ãã«ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ https://www.create-forever.games/unity-material-memory-leak/
+//  Hatena: Renderer.materialã§å–å¾—ã—ãŸãƒãƒ†ãƒªã‚¢ãƒ«ã¯è‡ªåˆ†ã§ç ´æ£„ã—ãªã„ã¨ãƒªãƒ¼ã‚¯ã™ã‚‹è©± https://light11.hatenadiary.com/entry/2019/11/03/223241
 
 namespace nitou.MaterialControl {
 
     /// <summary>
-    /// ƒ}ƒeƒŠƒAƒ‹‚ÌƒvƒƒpƒeƒB‘€ì—pƒ‰ƒbƒp[ƒNƒ‰ƒXD
+    /// ãƒãƒ†ãƒªã‚¢ãƒ«ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ“ä½œç”¨ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹ï¼
     /// </summary>
     public abstract class MaterialHandler : IDisposable , INormalizedValueTicker{
 
@@ -19,7 +19,7 @@ namespace nitou.MaterialControl {
         private NormalizedValue _rate;
 
         /// <summary>
-        /// ƒ}ƒeƒŠƒAƒ‹•Ï”‚ğˆêŠ‡‘€ì‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒB
+        /// ãƒãƒ†ãƒªã‚¢ãƒ«å¤‰æ•°ã‚’ä¸€æ‹¬æ“ä½œã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         /// </summary>
         public NormalizedValue Rate {
             get => _rate;
@@ -30,7 +30,7 @@ namespace nitou.MaterialControl {
         }
 
         /// <summary>
-        /// ƒƒCƒ“ƒJƒ‰[
+        /// ãƒ¡ã‚¤ãƒ³ã‚«ãƒ©ãƒ¼
         /// </summary>
         public Color Color {
             get => _material.color;
@@ -42,18 +42,18 @@ namespace nitou.MaterialControl {
         // Public Method 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public MaterialHandler(Shader shader) {
             if (shader == null) throw new ArgumentNullException(nameof(shader));
 
-            // ƒ}ƒeƒŠƒAƒ‹¶¬
+            // ãƒãƒ†ãƒªã‚¢ãƒ«ç”Ÿæˆ
             _shader = shader;
             _material = new Material(_shader);
         }
 
         /// <summary>
-        /// I—¹ˆ—D
+        /// çµ‚äº†å‡¦ç†ï¼
         /// </summary>
         public void Dispose() {
             if (_material == null) return;
@@ -63,10 +63,10 @@ namespace nitou.MaterialControl {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Šî–{‘€ì)
+        // Public Method (åŸºæœ¬æ“ä½œ)
 
         /// <summary>
-        /// ƒŒƒ“ƒ_ƒ‰[‚Éƒ}ƒeƒŠƒAƒ‹‚ğ“K—p‚·‚éD
+        /// ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã«ãƒãƒ†ãƒªã‚¢ãƒ«ã‚’é©ç”¨ã™ã‚‹ï¼
         /// </summary>
         public void OnApplayMaterial(Renderer renderer) {
             if (renderer == null) throw new ArgumentNullException(nameof(renderer));
@@ -74,14 +74,14 @@ namespace nitou.MaterialControl {
         }
 
         /// <summary>
-        /// ƒeƒNƒXƒ`ƒƒ‚ğİ’è‚·‚éD
+        /// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’è¨­å®šã™ã‚‹ï¼
         /// </summary>
         public void SetMainTex(Texture texture) {
             _material.mainTexture = texture;
         }
 
         /// <summary>
-        /// ƒJƒ‰[‚ğİ’è‚·‚éD
+        /// ã‚«ãƒ©ãƒ¼ã‚’è¨­å®šã™ã‚‹ï¼
         /// </summary>
         public void SetMainColor(Color color) {
             _material.color = color;
@@ -92,7 +92,7 @@ namespace nitou.MaterialControl {
         // Protected Method 
 
         /// <summary>
-        /// ˆêŠ‡ƒvƒƒpƒeƒB‚ª•Ï‰»‚µ‚½‚Æ‚«‚Ìˆ—D
+        /// ä¸€æ‹¬ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå¤‰åŒ–ã—ãŸã¨ãã®å‡¦ç†ï¼
         /// </summary>
         protected virtual void OnRateChanged(float rate) { }
     }
@@ -101,7 +101,7 @@ namespace nitou.MaterialControl {
     public static partial class RendererExtensions {
 
         /// <summary>
-        /// ƒŒƒ“ƒ_ƒ‰[‚Éƒ}ƒeƒŠƒAƒ‹‚ğ“K—p‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ã«ãƒãƒ†ãƒªã‚¢ãƒ«ã‚’é©ç”¨ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetSharedMaterial(this Renderer self, MaterialHandler handler) {
             handler.OnApplayMaterial(self);

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 namespace nitou.UI {
@@ -12,7 +12,7 @@ namespace nitou.UI {
         // Public Method
 
         /// <summary>
-        /// UIƒLƒƒƒ“ƒoƒX‚ğ‚ÂGameObject‚ğ¶¬‚·‚éD
+        /// UIã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’æŒã¤GameObjectã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         public static Canvas CreateCanvas(string name, int sortingOrder = 0, bool needRayCaster = false) {
             var canvasObj = new GameObject(name);
@@ -28,7 +28,7 @@ namespace nitou.UI {
             //scaler.referenceResolution = ProjectSettingsSO.Instance.ReferenceResolution;
             scaler.referenceResolution = DEFAULT_RESOLUTION;
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-            scaler.matchWidthOrHeight = 1;          // ¦‰¡‰æ–ÊƒAƒvƒŠ‚ğ‘z’è
+            scaler.matchWidthOrHeight = 1;          // â€»æ¨ªç”»é¢ã‚¢ãƒ—ãƒªã‚’æƒ³å®š
             scaler.referencePixelsPerUnit = 100;
 
             // Graphics RayCaster
@@ -40,12 +40,12 @@ namespace nitou.UI {
         }
 
         /// <summary>
-        /// RectTransform‚Ìq—v‘f‚ğ¶¬‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// RectTransformã®å­è¦ç´ ã‚’ç”Ÿæˆã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static RectTransform CreateChildRect(this RectTransform parent, string name) {
             var rect = new GameObject(name).AddComponent<RectTransform>();
 
-            // ¦ƒfƒtƒHƒ‹ƒg‚Å‚Íe‚Æ“¯‚¶ƒTƒCƒY‚É‚µ‚Ä‚¨‚­
+            // â€»ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯è¦ªã¨åŒã˜ã‚µã‚¤ã‚ºã«ã—ã¦ãŠã
             rect.transform.SetParent(parent, false);
             rect.SetRectBasedOnParentEdiges(0, 0, 0, 0);
 

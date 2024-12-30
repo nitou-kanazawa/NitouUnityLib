@@ -1,4 +1,4 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.Networking;
 
@@ -7,28 +7,28 @@ namespace nitou.Networking{
     //public class TimeHttpClient {
     //    private readonly IHttpClient _httpClient;
 
-    //    // World Time API ‚ÌURL
+    //    // World Time API ã®URL
     //    internal const string WorldTimeApiUrl = "http://worldtimeapi.org/api/timezone/Etc/UTC";
 
     //    public TimeHttpClient(IHttpClient httpClient) {
     //        _httpClient = httpClient;
     //    }
 
-    //    // Œ»İ‚ğæ“¾‚·‚éƒƒ\ƒbƒhiƒp[ƒXƒƒ\ƒbƒh‚ğˆø”‚Å“n‚·j
+    //    // ç¾åœ¨æ™‚åˆ»ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å¼•æ•°ã§æ¸¡ã™ï¼‰
     //    public async UniTask<(HttpRequest.Result result, TimeResponse response)> GetCurrentTimeAsync(CancellationToken token, Func<string, TimeResponse> parseMethod) {
-    //        var request = new TimeHttpRequest();  // ƒŠƒNƒGƒXƒg‚ğì¬
-    //                                              // ƒp[ƒXƒƒ\ƒbƒh‚ğ“n‚µ‚ÄŒ»İ‚ğæ“¾
+    //        var request = new TimeHttpRequest();  // æ™‚åˆ»ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä½œæˆ
+    //                                              // ãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æ¸¡ã—ã¦ç¾åœ¨æ™‚åˆ»ã‚’å–å¾—
     //        var (result, response) = await timeClient.GetCurrentTimeAsync(
     //            cancellationToken,
-    //            responseData => JsonUtility.FromJson<TimeResponse>(responseData)  // JsonUtility ‚ğg—p‚µ‚Äƒp[ƒX
+    //            responseData => JsonUtility.FromJson<TimeResponse>(responseData)  // JsonUtility ã‚’ä½¿ç”¨ã—ã¦ãƒ‘ãƒ¼ã‚¹
     //        );
 
-    //        var (result, response) = await _httpClient.SendAsync(request, token, parseMethod);  // ƒp[ƒXƒƒ\ƒbƒh‚à“n‚·
+    //        var (result, response) = await _httpClient.SendAsync(request, token, parseMethod);  // ãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã‚‚æ¸¡ã™
     //        return (result, response);
     //    }
     //}
 
-    //// æ“¾—p‚ÌƒŠƒNƒGƒXƒgƒNƒ‰ƒX
+    //// æ™‚åˆ»å–å¾—ç”¨ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚¯ãƒ©ã‚¹
     //public class TimeHttpRequest : HttpRequest {
     //    public override string Path => TimeHttpClient.WorldTimeApiUrl;
     //}

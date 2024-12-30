@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO:@Vector3Int‚Ì‘ã“ü‚ğŠÈ—ª‰»‚·‚éDeconstruction@https://baba-s.hatenablog.com/entry/2019/09/03/230600
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°:ã€€Vector3Intã®ä»£å…¥ã‚’ç°¡ç•¥åŒ–ã™ã‚‹Deconstructionã€€https://baba-s.hatenablog.com/entry/2019/09/03/230600
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector3Int"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Vector3Int"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class Vector3IntExtensions     {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Vector3Int self, out int x, out int y, out int z) {
             x = self.x;

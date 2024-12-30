@@ -1,25 +1,25 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou
 {
     /// <summary>
-    /// ƒƒO‚Ì•ª—ŞD
+    /// ãƒ­ã‚°ã®åˆ†é¡ï¼
     /// </summary>
     public enum LogLevel
     {
-        // ŠJ”­’†‚Ì Debug —pƒƒO•\¦‚Ég—p
+        // é–‹ç™ºä¸­ã® Debug ç”¨ãƒ­ã‚°è¡¨ç¤ºã«ä½¿ç”¨
         Debug,
-        // ’Êí‚ÌƒƒO•\¦‚Ég—p
+        // é€šå¸¸ã®ãƒ­ã‚°è¡¨ç¤ºã«ä½¿ç”¨
         Info, 
-        // Œx•\¦‚Ég—p
+        // è­¦å‘Šè¡¨ç¤ºã«ä½¿ç”¨
         Warning,
-        // ƒGƒ‰[•\¦‚Ég—p
+        // ã‚¨ãƒ©ãƒ¼è¡¨ç¤ºã«ä½¿ç”¨
         Error,
     }
 
 
     /// <summary>
-    /// Logger —p‚Ìƒ^ƒOí—ŞB
+    /// Logger ç”¨ã®ã‚¿ã‚°ç¨®é¡ã€‚
     /// </summary>
     public enum LoggerTag {
         GENERAL,

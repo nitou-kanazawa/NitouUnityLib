@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [Ql]
-//  Hatena: Å¬‚ÆÅ‘å‚Ì’l‚ğŠÇ—‚·‚é\‘¢‘Ì‚ğì‚è‚½‚¢‚Ì https://www.urablog.xyz/entry/2017/06/14/094730
+// [å‚è€ƒ]
+//  Hatena: æœ€å°ã¨æœ€å¤§ã®å€¤ã‚’ç®¡ç†ã™ã‚‹æ§‹é€ ä½“ã‚’ä½œã‚ŠãŸã„ã® https://www.urablog.xyz/entry/2017/06/14/094730
 
 namespace nitou {
 
     /// <summary>
-    /// ”ÍˆÍ‚ğ<see cref="float"/>Œ^‚Å•\‚·\‘¢‘Ì
+    /// ç¯„å›²ã‚’<see cref="float"/>å‹ã§è¡¨ã™æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct RangeFloat : IRangeValue<float> {
@@ -28,17 +28,17 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ’†‰›’l
+        /// ä¸­å¤®å€¤
         /// </summary>
         public float Mid => _min + (_max - _min) / 2f;
 
         /// <summary>
-        /// ”ÍˆÍ‚Ì’·‚³
+        /// ç¯„å›²ã®é•·ã•
         /// </summary>
         public float Length => Mathf.Abs(_max - _min);
 
         /// <summary>
-        /// ”ÍˆÍ“à‚Ìƒ‰ƒ“ƒ_ƒ€‚È’l
+        /// ç¯„å›²å†…ã®ãƒ©ãƒ³ãƒ€ãƒ ãªå€¤
         /// </summary>
         public float Random => _min < _max ? UnityEngine.Random.Range(_min, _max) : _min;
 
@@ -47,43 +47,43 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public RangeFloat(float min, float max) {
             _min = min;
-            _max = Mathf.Max(min, max);     // ¦min‚ğŠî€‚Æ‚·‚é
+            _max = Mathf.Max(min, max);     // â€»minã‚’åŸºæº–ã¨ã™ã‚‹
         }
 
         /// <summary>
-        /// ’l‚ª”ÍˆÍ“à‚©’²‚×‚é
+        /// å€¤ãŒç¯„å›²å†…ã‹èª¿ã¹ã‚‹
         /// </summary>
         public bool Contains(float value) {
             return value.IsInRange(_min, _max);
         }
 
         /// <summary>
-        /// ƒpƒ‰ƒ[ƒ^ t (0~1)‚ÅüŒ`•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+        /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ t (0~1)ã§ç·šå½¢è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
         /// </summary>
         public float Lerp(float t) {
             return Mathf.Lerp(_min, _max, t);
         }
 
         /// <summary>
-        /// ƒpƒ‰ƒ[ƒ^ t ‚ÅüŒ`•âŠÔ‚µ‚½’l‚ğ•Ô‚·
+        /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ t ã§ç·šå½¢è£œé–“ã—ãŸå€¤ã‚’è¿”ã™
         /// </summary>
         public float LerpUnclamped(float t) {
             return Mathf.LerpUnclamped(_min, _max, t);
         }
 
         /// <summary>
-        /// ƒpƒ‰ƒ[ƒ^t‚ğæ“¾‚·‚é
+        /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿tã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public float InverseLerp(float value) {
             return Mathf.InverseLerp(_min, _max, value);
         }
 
         /// <summary>
-        /// ’l‚ğ”ÍˆÍ“à‚É§ŒÀ‚·‚é
+        /// å€¤ã‚’ç¯„å›²å†…ã«åˆ¶é™ã™ã‚‹
         /// </summary>
         public float Clamp(float value) {
             return Mathf.Clamp(value, _min, _max);
@@ -94,7 +94,7 @@ namespace nitou {
         // Static Method
 
         /// <summary>
-        /// ‘¼‚Ì”ÍˆÍ‚Ì’l‚ğŒ»İ‚Ì”ÍˆÍ‚ÉƒŠƒ}ƒbƒv‚µ‚Ü‚·B
+        /// ä»–ã®ç¯„å›²ã®å€¤ã‚’ç¾åœ¨ã®ç¯„å›²ã«ãƒªãƒãƒƒãƒ—ã—ã¾ã™ã€‚
         /// </summary>
         public static float Remap(float value, RangeFloat from, RangeFloat to) {
             float t = from.InverseLerp(value);
@@ -106,14 +106,14 @@ namespace nitou {
     public static partial class FloatExtensions {
 
         /// <summary>
-        /// ’l‚ğ”ÍˆÍ“à‚É§ŒÀ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ã‚’ç¯„å›²å†…ã«åˆ¶é™ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float Clamp(this float value, RangeFloat range) {
             return range.Clamp(value);
         }
 
         /// <summary>
-        /// ’l‚ª”ÍˆÍ“à‚É‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ãŒç¯„å›²å†…ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsInRange(this float value, RangeFloat range) {
             return range.Contains(value);
@@ -127,7 +127,7 @@ namespace nitou {
     public class RangeFloatEditor : RangeValueEditor {
 
         protected override void ValidateValue(SerializedProperty minProperty, SerializedProperty maxProperty) {
-            // ¬‚³‚¢”’l‚ğŠî€‚É‚µ‚ÄA‘å‚«‚¢”’l‚ª¬‚³‚¢”’l‚æ‚è¬‚³‚­‚È‚ç‚È‚¢‚æ‚¤‚É‚µ‚Ä‚İ‚æ‚¤B
+            // å°ã•ã„æ•°å€¤ã‚’åŸºæº–ã«ã—ã¦ã€å¤§ãã„æ•°å€¤ãŒå°ã•ã„æ•°å€¤ã‚ˆã‚Šå°ã•ããªã‚‰ãªã„ã‚ˆã†ã«ã—ã¦ã¿ã‚ˆã†ã€‚
             if (maxProperty.floatValue < minProperty.floatValue) {
                 minProperty.floatValue = maxProperty.floatValue;
             }

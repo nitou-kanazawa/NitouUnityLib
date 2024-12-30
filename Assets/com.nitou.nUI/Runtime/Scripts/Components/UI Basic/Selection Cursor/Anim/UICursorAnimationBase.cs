@@ -1,4 +1,4 @@
-using UniRx;
+ï»¿using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,18 +19,18 @@ namespace nitou.UI.Components {
             _cursor = GetComponent<UICursor>();
             if (_cursor == null) return;
 
-            // ƒoƒCƒ“ƒh
+            // ãƒã‚¤ãƒ³ãƒ‰
             _cursor.OnEnabled.Subscribe(_ => OnEnableAnimation()).AddTo(this);
             _cursor.OnDisabled.Subscribe(_ => OnDisableAnimation()).AddTo(this);
 
-            // ‰Šú‰»ˆ—
+            // åˆæœŸåŒ–å‡¦ç†
             InitializeInternal();
         }
 
         protected override void OnDestroy() {
             base.OnDestroy();
 
-            // I—¹ˆ—
+            // çµ‚äº†å‡¦ç†
             DisposeInternal();
         }
 
@@ -39,22 +39,22 @@ namespace nitou.UI.Components {
         // Protected Method
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         protected virtual void InitializeInternal() { }
 
         /// <summary>
-        /// ”ñ‘I‘ğ‚Ì’l‚ğ“K—p‚·‚é
+        /// éé¸æŠæ™‚ã®å€¤ã‚’é©ç”¨ã™ã‚‹
         /// </summary>
         protected abstract void OnEnableAnimation();
 
         /// <summary>
-        /// ‘I‘ğ‚Ì’l‚ğ“K—p‚·‚é
+        /// é¸æŠæ™‚ã®å€¤ã‚’é©ç”¨ã™ã‚‹
         /// </summary>
         protected abstract void OnDisableAnimation();
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         protected virtual void DisposeInternal() { }
     }

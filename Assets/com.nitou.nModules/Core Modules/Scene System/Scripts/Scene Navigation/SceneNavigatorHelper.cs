@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace nitou.SceneSystem{
@@ -6,7 +6,7 @@ namespace nitou.SceneSystem{
     public static class SceneNavigatorHelper{
 
         /// <summary>
-        /// ‘S‚Ä‚Ìƒrƒ‹ƒhƒV[ƒ“‚©‚çƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg‚ğ’T‚·
+        /// å…¨ã¦ã®ãƒ“ãƒ«ãƒ‰ã‚·ãƒ¼ãƒ³ã‹ã‚‰ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆã‚’æ¢ã™
         /// </summary>
         public static (Scene sceneThatContainsEntryPoint, ISceneEntryPoint firstEntryPoint) 
             FindFirstEntryPointInAllScenes() {
@@ -21,7 +21,7 @@ namespace nitou.SceneSystem{
                     continue;
                 }
 
-                // ¦•¡”‚ÌƒV[ƒ“‚ÅŒ©‚Â‚©‚Á‚½ê‡C
+                // â€»è¤‡æ•°ã®ã‚·ãƒ¼ãƒ³ã§è¦‹ã¤ã‹ã£ãŸå ´åˆï¼Œ
                 if (firstEntryPoint != null) {
                     Debug_.LogError("Multiple SceneEntryPoint found.");
                     continue;

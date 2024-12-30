@@ -1,21 +1,21 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace nitou.UI.PresentationFramework {
 
     /// <summary>
-    /// UI—v‘f‚ÌƒCƒ“ƒXƒ^ƒ“ƒXD
+    /// UIè¦ç´ ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ï¼
     /// </summary>
     public abstract class AppView<TState> : MonoBehaviour 
         where TState : AppViewState {
         
         /// <summary>
-        /// ‰Šú‰»‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         private bool _isInitialized;
 
         /// <summary>
-        /// ‰Šú‰»ˆ—D
+        /// åˆæœŸåŒ–å‡¦ç†ï¼
         /// </summary>
         public async UniTask InitializeAsync(TState state) {
             if (_isInitialized) return;
@@ -26,7 +26,7 @@ namespace nitou.UI.PresentationFramework {
         }
 
         /// <summary>
-        /// ‰Šú‰»ˆ— (¦”h¶ƒNƒ‰ƒX‚Å‚Ì’è‹`—p)D
+        /// åˆæœŸåŒ–å‡¦ç† (â€»æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ã§ã®å®šç¾©ç”¨)ï¼
         /// </summary>
         protected abstract UniTask Initialize(TState state);
     }

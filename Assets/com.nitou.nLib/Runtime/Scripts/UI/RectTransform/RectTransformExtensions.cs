@@ -1,30 +1,30 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: RectTransform‚ÌƒTƒCƒY‚ğƒXƒNƒŠƒvƒg‚©‚ç•ÏX‚·‚é https://nekojara.city/unity-rect-transform-size
-//  _: nGUI‚È‚Ç‚ÌRectTransform‚Ìwidth‚âheight‚È‚Ç‚Ì’l‚ğ•ÏX‚·‚é•û–@ https://nekosuko.jp/1792/
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: RectTransformã®ã‚µã‚¤ã‚ºã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰å¤‰æ›´ã™ã‚‹ https://nekojara.city/unity-rect-transform-size
+//  _: nGUIãªã©ã®RectTransformã®widthã‚„heightãªã©ã®å€¤ã‚’å¤‰æ›´ã™ã‚‹æ–¹æ³• https://nekosuko.jp/1792/
 //  Unity Forums: Best algorithm to clamp a UI window within the canvas? https://forum.unity.com/threads/best-algorithm-to-clamp-a-ui-window-within-the-canvas.314034/
-//  Hatena: RectTransform‚ÌƒXƒNƒŠ[ƒ“À•W‚ÌRect‚ğæ“¾‚·‚é https://hacchi-man.hatenablog.com/entry/2020/12/11/220000
+//  Hatena: RectTransformã®ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã®Rectã‚’å–å¾—ã™ã‚‹ https://hacchi-man.hatenablog.com/entry/2020/12/11/220000
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="RectTransform"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="RectTransform"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class RectTransformExtensions {
 
-        // [NOTE] RectTransform.GetCorners‚Í0:¶‰ºA1¶ãA2:‰EãA3:‰E‰º‚Ì‡‚Å“_‚ªŠi”[‚³‚ê‚é
+        // [NOTE] RectTransform.GetCornersã¯0:å·¦ä¸‹ã€1å·¦ä¸Šã€2:å³ä¸Šã€3:å³ä¸‹ã®é †ã§ç‚¹ãŒæ ¼ç´ã•ã‚Œã‚‹
 
-        // ŒvZ—p
+        // è¨ˆç®—ç”¨
         private static readonly Vector3[] _corners = new Vector3[4];
         private static readonly Vector3[] _corners2 = new Vector3[4];
 
-        // ’è”
+        // å®šæ•°
         private const int CORNER_COUNT = 4;
 
         /// <summary>
-        /// Rect‚ÌŠeƒR[ƒi[D
+        /// Rectã®å„ã‚³ãƒ¼ãƒŠãƒ¼ï¼
         /// </summary>
         public enum Corner {
             Min = 0,
@@ -35,21 +35,21 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region WORLDÀ•W
+        #region WORLDåº§æ¨™
 
         // Getter
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚ÌƒR[ƒi[ˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector3 GetWorldPosition(this RectTransform self, Corner corner = Corner.Min) {
             self.GetWorldCorners(_corners);
 
-            return _corners[(int)corner];  // ¦Z‚Í–³‹
+            return _corners[(int)corner];  // â€»Zã¯ç„¡è¦–
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚Ì’†SˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ä¸­å¿ƒä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector3 GetWorldCenterPosition(this RectTransform self) {
             self.GetWorldCorners(_corners);
@@ -58,7 +58,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚ÌƒTƒCƒY‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector3 GetWorldSize(this RectTransform self) {
             self.GetWorldCorners(_corners);
@@ -69,7 +69,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚ÌˆÊ’u‚ÆƒTƒCƒY‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ä½ç½®ã¨ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetWorldRect(this RectTransform self) {
             self.GetWorldCorners(_corners);
@@ -82,25 +82,25 @@ namespace nitou {
         // Setter
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚ÌƒR[ƒi[ˆÊ’u‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetWorldPosition(this RectTransform self, Vector3 worldPos, Corner corner = Corner.Min) {
-            // Œ»İ‚Ìƒ[ƒ‹ƒhÀ•W
+            // ç¾åœ¨ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™
             var currentWorldPos = self.GetWorldPosition(corner);
 
-            // ˆÊ’u‚Ì·•ª‚ğŒvZ‚µAƒ[ƒJƒ‹À•W‚É”½‰f
+            // ä½ç½®ã®å·®åˆ†ã‚’è¨ˆç®—ã—ã€ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã«åæ˜ 
             var delta = worldPos - currentWorldPos;
             self.localPosition += delta;
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚ÌƒR[ƒi[ˆÊ’u‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetWorldCenterPosition(this RectTransform self, Vector3 worldPos) {
-            // Œ»İ‚Ìƒ[ƒ‹ƒhÀ•W
+            // ç¾åœ¨ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™
             var currentWorldPos = self.GetWorldCenterPosition();
 
-            // ˆÊ’u‚Ì·•ª‚ğŒvZ‚µAƒ[ƒJƒ‹À•W‚É”½‰f
+            // ä½ç½®ã®å·®åˆ†ã‚’è¨ˆç®—ã—ã€ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã«åæ˜ 
             var delta = worldPos - currentWorldPos;
             self.localPosition += delta;
         }
@@ -108,16 +108,16 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region SCREENÀ•W
+        #region SCREENåº§æ¨™
 
-        // [Ql]
-        //  ƒeƒ‰ƒVƒ…[ƒ‹: Screen‚ÌÀ•W‚ÆWorldi3DjÀ•W‚Ì•ÏŠ·‚É‚Â‚¢‚Ä https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
-        //  LIGHT11: uGUI‚ÉƒAƒ‹ƒtƒ@•t‚«‚Ìƒ}ƒXƒN‚ğŠ|‚¯‚é https://light11.hatenadiary.com/entry/2019/04/24/232041
+        // [å‚è€ƒ]
+        //  ãƒ†ãƒ©ã‚·ãƒ¥ãƒ¼ãƒ«: Screenã®åº§æ¨™ã¨Worldï¼ˆ3Dï¼‰åº§æ¨™ã®å¤‰æ›ã«ã¤ã„ã¦ https://tsubakit1.hateblo.jp/entry/2016/03/01/020510
+        //  LIGHT11: uGUIã«ã‚¢ãƒ«ãƒ•ã‚¡ä»˜ãã®ãƒã‚¹ã‚¯ã‚’æ›ã‘ã‚‹ https://light11.hatenadiary.com/entry/2019/04/24/232041
 
         // Getter
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚Å‚ÌƒR[ƒi[ˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã§ã®ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 GetScreenPosition(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
@@ -126,33 +126,33 @@ namespace nitou {
                 return Vector2.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W ¨ ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ â†’ ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldPos = self.GetWorldPosition(corner);
             return canvas.GetScreenPosition(worldPos);
         }
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚Å‚ÌƒR[ƒi[ˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
-        /// iCanvas‚ğƒLƒƒƒbƒVƒ…‚µ‚È‚¢ê‡j
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã§ã®ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
+        /// ï¼ˆCanvasã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãªã„å ´åˆï¼‰
         /// </summary>
         public static Vector2 GetScreenPosition(this RectTransform self, Corner corner = Corner.Min) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒXæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹å–å¾—
             var canvas = self.GetBelongedCanvas();
             if (canvas == null) {
                 Debug_.LogWarning("Root Canvas does not exist. Please ensure the UI element is placed under a Canvas.");
                 return Vector2.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W¨ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™â†’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldPos = self.GetWorldPosition(corner);
             return canvas.GetScreenPosition(worldPos);
         }
 
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚Ì’†SˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ä¸­å¿ƒä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 GetScreenCenterPosition(this RectTransform self, ref Canvas canvas) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
@@ -161,60 +161,60 @@ namespace nitou {
                 return Vector2.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W¨ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™â†’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldCenter = self.GetWorldCenterPosition();
             return canvas.GetScreenPosition(worldCenter);
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚Å‚Ì’†SˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
-        /// iCanvas‚ğƒLƒƒƒbƒVƒ…‚µ‚È‚¢ê‡j
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã§ã®ä¸­å¿ƒä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
+        /// ï¼ˆCanvasã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ãªã„å ´åˆï¼‰
         /// </summary>
         public static Vector2 GetScreenCenterPosition(this RectTransform self) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒXæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹å–å¾—
             Canvas canvas = null;
             if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Vector2.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W¨ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™â†’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldCenter = self.GetWorldCenterPosition();
             return canvas.GetScreenPosition(worldCenter);
         }
 
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚Å‚ÌˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã§ã®ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetScreenRect(this RectTransform self, ref Canvas canvas) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒX‚Ìæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹ã®å–å¾—
             if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Rect.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W¨ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™â†’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldMin = self.GetWorldPosition(Corner.Min);
             var worldMax = self.GetWorldPosition(Corner.Max);
             return canvas.GetScreenRect(worldMin, worldMax);
         }
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚Å‚ÌˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã§ã®ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetScreenRect(this RectTransform self) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒX‚Ìæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹ã®å–å¾—
             Canvas canvas = null;
             if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Rect.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W¨ƒXƒNƒŠ[ƒ“À•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™â†’ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var worldMin = self.GetWorldPosition(Corner.Min);
             var worldMax = self.GetWorldPosition(Corner.Max);
             return canvas.GetScreenRect(worldMin, worldMax);
@@ -225,26 +225,26 @@ namespace nitou {
         /*
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚ÅƒR[ƒi[ˆÊ’u‚ğİ’è‚·‚éD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã§ã‚³ãƒ¼ãƒŠãƒ¼ä½ç½®ã‚’è¨­å®šã™ã‚‹ï¼
         /// </summary>
         public static void SetScreenPosition(this RectTransform self, Vector2 screenPos, ref Canvas canvas, Corner corner = Corner.Min) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒX‚Ìæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹ã®å–å¾—
             if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return;
             }
 
-            // ƒXƒNƒŠ[ƒ“À•W¨ƒ[ƒ‹ƒhÀ•W‚Ì•ÏŠ·
+            // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™â†’ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã®å¤‰æ›
             Vector3 worldPos = ScreenToWorldPosition(screenPos, canvas);
 
-            // ƒ[ƒ‹ƒhÀ•W‚ğƒ[ƒJƒ‹À•W‚É•ÏŠ·‚µARectTransform‚É”½‰f
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã«å¤‰æ›ã—ã€RectTransformã«åæ˜ 
             SetWorldPosition(self, worldPos, corner);
         }
 
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚ğƒ[ƒ‹ƒhÀ•W‚É•ÏŠ·‚·‚é“à•”ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã«å¤‰æ›ã™ã‚‹å†…éƒ¨ãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         private static Vector3 ScreenToWorldPosition(Vector2 screenPos, Canvas canvas) {
             Vector3 worldPos = Vector3.zero;
@@ -272,42 +272,42 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region VIEW PORTÀ•W
+        #region VIEW PORTåº§æ¨™
 
         /// <summary>
-        /// ƒrƒ…[ƒ|[ƒgÀ•WŒn‚Å‚ÌˆÊ’u‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ç³»ã§ã®ä½ç½®ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 GetViewportPos(this RectTransform self, ref Canvas canvas, Corner corner = Corner.Min) {
 
-            // ƒXƒNƒŠ[ƒ“À•W
+            // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             var screenPos = self.GetScreenPosition(ref canvas, corner);
 
-            // ƒrƒ…[ƒ|[ƒgÀ•W
+            // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™
             return new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
         }
 
         /// <summary>
-        /// ƒrƒ…[ƒ|[ƒgÀ•WŒn‚Å‚ÌˆÊ’u‚ÆƒTƒCƒY‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ç³»ã§ã®ä½ç½®ã¨ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetViewportRect(this RectTransform self, ref Canvas canvas, Camera camera = null) {
             if (self == null) throw new System.ArgumentNullException(nameof(self));
 
-            // ƒLƒƒƒ“ƒoƒX‚Ìæ“¾
+            // ã‚­ãƒ£ãƒ³ãƒã‚¹ã®å–å¾—
             if (!self.TryGetBelongedCanvasIfNull(ref canvas)) {
                 return Rect.zero;
             }
 
-            // ƒ[ƒ‹ƒhÀ•W ¨ ƒrƒ…[ƒ|[ƒgÀ•W
+            // ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ â†’ ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™
             var worldMin = self.GetWorldPosition(Corner.Min);
             var worldMax = self.GetWorldPosition(Corner.Max);
             return canvas.GetViewportRect(worldMin, worldMax);
 
-            //// ƒXƒNƒŠ[ƒ“À•W
+            //// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             //var screenRect = self.GetScreenRect(ref canvas);
 
             //Camera.main.WorldToViewportPoint
 
-            //// ƒrƒ…[ƒ|[ƒgÀ•W
+            //// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™
             //Debug_.Log($"[w:{screenRect.width}, h:{screenRect.height}] / [w:{Screen.width}, h:{Screen.height}]");
             //var viewportMin = new Vector2(screenRect.min.x / Screen.width, screenRect.min.y / Screen.height);
             //var viewportSize = new Vector2(screenRect.size.x / Screen.width, screenRect.size.y / Screen.height);
@@ -317,9 +317,9 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region RELATIVEÀ•W
+        #region RELATIVEåº§æ¨™
 
-        // [NOTE] RectUtils‚Éˆ—‚ğˆÚs
+        // [NOTE] RectUtilsã«å‡¦ç†ã‚’ç§»è¡Œ
  
         #endregion
 
@@ -333,10 +333,10 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒgæ“¾
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå–å¾—
 
         /// <summary>
-        /// eŠK‘w‚ğ‚½‚Ç‚Á‚ÄŠ‘®‚·‚é<see cref="Canvas"/>‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ªéšå±¤ã‚’ãŸã©ã£ã¦æ‰€å±ã™ã‚‹<see cref="Canvas"/>ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Canvas GetBelongedCanvas(this RectTransform self) {
             var currentTrans = self.transform;
@@ -350,7 +350,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// eŠK‘w‚ğ‚½‚Ç‚Á‚ÄŠ‘®‚·‚é<see cref="CanvasScaler"/>‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ªéšå±¤ã‚’ãŸã©ã£ã¦æ‰€å±ã™ã‚‹<see cref="CanvasScaler"/>ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static CanvasScaler GetBelongedCanvasScaler(this RectTransform self) {
             var canvas = self.GetBelongedCanvas();
@@ -360,7 +360,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// eŠK‘w‚ğ‚½‚Ç‚Á‚ÄŠ‘®‚·‚é<see cref="CanvasScaler"/>‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ªéšå±¤ã‚’ãŸã©ã£ã¦æ‰€å±ã™ã‚‹<see cref="CanvasScaler"/>ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         private static bool TryGetBelongedCanvasIfNull(this RectTransform self, ref Canvas canvas) {
             if (canvas == null) {
@@ -377,29 +377,29 @@ namespace nitou {
 
 
         // ----------------------------------------------------------------------------
-        #region d‚È‚è”»’è
+        #region é‡ãªã‚Šåˆ¤å®š
 
-        // [Ql]
-        //  kan‚Ìƒƒ‚’ : RectTransform‚ªd‚È‚Á‚Ä‚¢‚é‚©(Õ“Ë‚µ‚Ä‚¢‚é‚©)‚ğƒRƒ‰ƒCƒ_[‚ğg‚í‚È‚¢‚Å”»’è‚·‚éŠg’£ƒƒ\ƒbƒh https://kan-kikuchi.hatenablog.com/entry/RectTransform_IsOverlapping
-        //  Hatena: “Á’è‚ÌRectTransform‚Ì”ÍˆÍ“à‚©‚Ç‚¤‚©”»’è‚·‚é https://hacchi-man.hatenablog.com/entry/2020/05/09/220000
+        // [å‚è€ƒ]
+        //  kanã®ãƒ¡ãƒ¢å¸³: RectTransformãŒé‡ãªã£ã¦ã„ã‚‹ã‹(è¡çªã—ã¦ã„ã‚‹ã‹)ã‚’ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ã‚’ä½¿ã‚ãªã„ã§åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://kan-kikuchi.hatenablog.com/entry/RectTransform_IsOverlapping
+        //  Hatena: ç‰¹å®šã®RectTransformã®ç¯„å›²å†…ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹ https://hacchi-man.hatenablog.com/entry/2020/05/09/220000
 
         /// <summary>
-        /// ‘¼‚Ì<see cref="RectTransform"/>‚Æd‚È‚Á‚Ä‚¢‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ä»–ã®<see cref="RectTransform"/>ã¨é‡ãªã£ã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool Overlaps(this RectTransform self, RectTransform othrer) {
 
-            // ƒR[ƒi[À•W‚ğæ“¾
+            // ã‚³ãƒ¼ãƒŠãƒ¼åº§æ¨™ã‚’å–å¾—
             self.GetWorldCorners(_corners);
             othrer.GetWorldCorners(_corners2);
 
-            // ŠeƒR[ƒi[‚ğƒ`ƒFƒbƒN
+            // å„ã‚³ãƒ¼ãƒŠãƒ¼ã‚’ãƒã‚§ãƒƒã‚¯
             for (var i = 0; i < CORNER_COUNT; i++) {
 
-                //rect1‚ÌŠp‚ªrect2‚Ì“à•”‚É‚ ‚é‚©
+                //rect1ã®è§’ãŒrect2ã®å†…éƒ¨ã«ã‚ã‚‹ã‹
                 if (IsPointInsideRect(_corners[i], _corners2)) {
                     return true;
                 }
-                //rect2‚ÌŠp‚ªrect1‚Ì“à•”‚É‚ ‚é‚©
+                //rect2ã®è§’ãŒrect1ã®å†…éƒ¨ã«ã‚ã‚‹ã‹
                 if (IsPointInsideRect(_corners2[i], _corners)) {
                     return true;
                 }
@@ -408,30 +408,30 @@ namespace nitou {
             return false;
         }
 
-        // [Ql]
-        //  _: “_‚Ì‘½ŠpŒ`‚É‘Î‚·‚é“àŠO”»’è https://www.nttpc.co.jp/technology/number_algorithm.html
+        // [å‚è€ƒ]
+        //  _: ç‚¹ã®å¤šè§’å½¢ã«å¯¾ã™ã‚‹å†…å¤–åˆ¤å®š https://www.nttpc.co.jp/technology/number_algorithm.html
 
 
-        /// “_‚ªw’è‚³‚ê‚½Rect“à‚É‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// ç‚¹ãŒæŒ‡å®šã•ã‚ŒãŸRectå†…ã«å­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         private static bool IsPointInsideRect(Vector2 point, Vector3[] rectCorners) {
             var inside = false;
 
-            //rectCorners‚ÌŠe’¸“_‚É‘Î‚µ‚ÄApoint‚ªrect“à‚É‚ ‚é‚©‚ğŠm”F
+            //rectCornersã®å„é ‚ç‚¹ã«å¯¾ã—ã¦ã€pointãŒrectå†…ã«ã‚ã‚‹ã‹ã‚’ç¢ºèª
             for (int i = 0, j = 3; i < CORNER_COUNT; j = i++) {
 
-                // ŠeƒR[ƒi[‚ÌyÀ•W‚ªpoint‚ÌyÀ•W‚Æ”äŠr‚µ‚Ä‚Ç‚¿‚ç‚ÉˆÊ’u‚·‚é‚©
+                // å„ã‚³ãƒ¼ãƒŠãƒ¼ã®yåº§æ¨™ãŒpointã®yåº§æ¨™ã¨æ¯”è¼ƒã—ã¦ã©ã¡ã‚‰ã«ä½ç½®ã™ã‚‹ã‹
                 bool pointIsBetweenYOfCurrentAndPreviousCorners =
                     (rectCorners[i].y > point.y) != (rectCorners[j].y > point.y);
 
-                // point.x ‚ÌˆÊ’u‚ÆAi ‚Æ j ‚ÌƒR[ƒi[ŠÔ‚Ì’¼üã‚Ì x À•W‚ğ”äŠr
+                // point.x ã®ä½ç½®ã¨ã€i ã¨ j ã®ã‚³ãƒ¼ãƒŠãƒ¼é–“ã®ç›´ç·šä¸Šã® x åº§æ¨™ã‚’æ¯”è¼ƒ
                 float intersectionX = rectCorners[i].x +
                     (rectCorners[j].x - rectCorners[i].x) * (point.y - rectCorners[i].y) /
                     (rectCorners[j].y - rectCorners[i].y);
 
-                // à–¾•Ï”: point.x ‚ªAŒ»İ‚ÌƒR[ƒi[ŠÔ‚Ì’¼ü‚ğ‰¡Ø‚é‚©‚Ç‚¤‚©‚ğŠm”F
+                // èª¬æ˜å¤‰æ•°: point.x ãŒã€ç¾åœ¨ã®ã‚³ãƒ¼ãƒŠãƒ¼é–“ã®ç›´ç·šã‚’æ¨ªåˆ‡ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèª
                 bool pointIsLeftOfIntersection = point.x < intersectionX;
 
-                // ó‘Ô‚ÌXV
+                // çŠ¶æ…‹ã®æ›´æ–°
                 if (pointIsBetweenYOfCurrentAndPreviousCorners && pointIsLeftOfIntersection) {
                     inside = !inside;
                 }
@@ -452,13 +452,13 @@ namespace nitou {
 
 
         /// <summary>
-        /// ŒvZ—p‚Ì<see cref="Bounds"/>‚ğæ“¾‚·‚éD
+        /// è¨ˆç®—ç”¨ã®<see cref="Bounds"/>ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         private static Bounds GetBounds(this RectTransform self) {
             var min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
             var max = new Vector3(float.MinValue, float.MinValue, float.MinValue);
 
-            // Å¬AÅ‘å‚Ìæ“¾
+            // æœ€å°ã€æœ€å¤§ã®å–å¾—
             self.GetWorldCorners(_corners);
             for (var i = 0; i < CORNER_COUNT; i++) {
                 min = Vector3.Min(_corners[i], min);
@@ -468,7 +468,7 @@ namespace nitou {
             max.z = 0f;
             min.z = 0f;
 
-            // AABB‚ğ’è‹`
+            // AABBã‚’å®šç¾©
             var bounds = new Bounds(min, Vector3.zero);
             bounds.Encapsulate(max);
             return bounds;
@@ -478,52 +478,52 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ‚»‚Ì‘¼
+        #region ãã®ä»–
 
-        // ƒTƒCƒYİ’è
+        // ã‚µã‚¤ã‚ºè¨­å®š
 
         /// <summary>
-        /// Width‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Widthã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetWidth(this RectTransform self, float width) {
             self.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         }
 
         /// <summary>
-        /// Height‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Heightã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetHeight(this RectTransform self, float height) {
             self.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
 
         /// <summary>
-        /// ƒTƒCƒY‚ğw’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚µã‚¤ã‚ºã‚’æŒ‡å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetSize(this RectTransform self, Vector2 size) {
 
-            // e—v‘f‚ÌƒTƒCƒYæ“¾
+            // è¦ªè¦ç´ ã®ã‚µã‚¤ã‚ºå–å¾—
             var parent = self.parent as RectTransform;
             var parentSize = parent != null ? parent.rect.size : Vector2.zero;
 
-            // ©g‚ÌƒAƒ“ƒJ[ƒTƒCƒY‚ğŒvZ
+            // è‡ªèº«ã®ã‚¢ãƒ³ã‚«ãƒ¼ã‚µã‚¤ã‚ºã‚’è¨ˆç®—
             var anchorSize = parentSize * (self.anchorMax - self.anchorMin);
 
-            // “ü—ÍƒTƒCƒY‚©‚çƒAƒ“ƒJ[ƒTƒCƒY‚ğˆø‚¢‚½Œ‹‰Ê‚ª
-            // sizeDelta‚Éw’è‚·‚×‚«’l
+            // å…¥åŠ›ã‚µã‚¤ã‚ºã‹ã‚‰ã‚¢ãƒ³ã‚«ãƒ¼ã‚µã‚¤ã‚ºã‚’å¼•ã„ãŸçµæœãŒ
+            // sizeDeltaã«æŒ‡å®šã™ã¹ãå€¤
             self.sizeDelta = size - anchorSize;
         }
 
-        // ƒsƒ{ƒbƒgİ’è
+        // ãƒ”ãƒœãƒƒãƒˆè¨­å®š
 
         /// <summary>
-        /// ƒsƒ{ƒbƒgX‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ”ãƒœãƒƒãƒˆXã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetPivotX(this RectTransform self, float x) {
             self.pivot = new Vector2(Mathf.Clamp01(x), self.pivot.y);
         }
 
         /// <summary>
-        /// ƒsƒ{ƒbƒgY‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ”ãƒœãƒƒãƒˆYã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetPivotY(this RectTransform self, float y) {
             self.pivot = new Vector2(self.pivot.x, Mathf.Clamp01(y));

@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  github: MatthewMaker/DrawArrow.cs https://gist.github.com/MatthewMaker/5293052
 
 namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer {
 
         /// <summary>
-        /// –îˆó
+        /// çŸ¢å°
         /// </summary>
         internal static class Arrow {
 
@@ -20,15 +20,15 @@ namespace nitou.DebugInternal {
 
 
             /// ----------------------------------------------------------------------------
-            #region •`‰æƒƒ\ƒbƒh
+            #region æç”»ãƒ¡ã‚½ãƒƒãƒ‰
 
             /// <summary>
-            /// ˆÊ’uC•ûŒü‚ğw’è‚µ‚Ä–îˆó‚ğ•`‰æ‚·‚é
+            /// ä½ç½®ï¼Œæ–¹å‘ã‚’æŒ‡å®šã—ã¦çŸ¢å°ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawRayArrow(ArrowType type, Vector3 pos, Vector3 direction,
                 float arrowHeadLength = 0.08f, float arrowHeadAngle = 20.0f) {
 
-                // ’·‚³‚O‚È‚çI—¹
+                // é•·ã•ï¼ãªã‚‰çµ‚äº†
                 if (direction == Vector3.zero) return;
 
                 // Arrow shaft
@@ -45,7 +45,7 @@ namespace nitou.DebugInternal {
                     case ArrowType.Solid: {
                             float radius = 0.025f;
                             Cylinder.DrawWireCone(
-                                PlaneType.XY,   // ¦Z•ûŒü‚ğŠî€‚É‰ñ“]
+                                PlaneType.XY,   // â€»Zæ–¹å‘ã‚’åŸºæº–ã«å›è»¢
                                 pos + direction,
                                 Quaternion.LookRotation(direction),
                                 radius,
@@ -58,12 +58,12 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‚Q“_‚ğw’è‚µ‚Ä–îˆó‚ğ•`‰æ‚·‚é
+            /// ï¼’ç‚¹ã‚’æŒ‡å®šã—ã¦çŸ¢å°ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawLineArrow(ArrowType type, Vector3 from, Vector3 to,
                 float arrowHeadLength = 0.2f, float arrowHeadAngle = 20.0f) {
 
-                // ’·‚³‚O‚È‚çI—¹
+                // é•·ã•ï¼ãªã‚‰çµ‚äº†
                 if (Mathf.Approximately(Vector3.Distance(from, to), 0f)) return;
 
                 // Arrow shaft
@@ -81,7 +81,7 @@ namespace nitou.DebugInternal {
                     case ArrowType.Solid: {
                             float radius = 0.025f;
                             Cylinder.DrawWireCone(
-                                PlaneType.XY,   // ¦Z•ûŒü‚ğŠî€‚É‰ñ“]
+                                PlaneType.XY,   // â€»Zæ–¹å‘ã‚’åŸºæº–ã«å›è»¢
                                 from + direction,
                                 Quaternion.LookRotation(direction),
                                 radius,
@@ -100,7 +100,7 @@ namespace nitou.DebugInternal {
             // Private Method
 
             /// <summary>
-            /// –îˆóæ’[‚Ì‚Q•ûŒü‚ğŒvZ‚·‚é
+            /// çŸ¢å°å…ˆç«¯ã®ï¼’æ–¹å‘ã‚’è¨ˆç®—ã™ã‚‹
             /// </summary>
             private static (Vector3 right, Vector3 left) CalcArrowHeadDirection(Vector3 direction, float arrowHeadAngle) =>
                 (

@@ -1,16 +1,16 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [Ql]
-// @ƒRƒKƒlƒuƒƒO: Inspector ‚Å•Ï”‚ÉƒV[ƒ“ƒtƒ@ƒCƒ‹‚ğİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚éuSceneObjectv https://baba-s.hatenablog.com/entry/2017/11/14/110000
+// [å‚è€ƒ]
+// ã€€ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Inspector ã§å¤‰æ•°ã«ã‚·ãƒ¼ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã€ŒSceneObjectã€ https://baba-s.hatenablog.com/entry/2017/11/14/110000
 
 namespace nitou.SceneSystem {
 
     /// <summary>
-    /// ƒCƒ“ƒXƒyƒNƒ^[‚ÅƒV[ƒ“ƒtƒ@ƒCƒ‹‚ğİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+    /// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã§ã‚·ãƒ¼ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨­å®šã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
     /// </summary>
     [Serializable]
     public sealed class SceneObject {
@@ -56,12 +56,12 @@ namespace nitou.SceneSystem.EditorScripts {
         }
 
         /// <summary>
-        /// ‘ÎÛ‚ÌƒV[ƒ“ƒAƒZƒbƒg‚ğæ“¾‚·‚é
+        /// å¯¾è±¡ã®ã‚·ãƒ¼ãƒ³ã‚¢ã‚»ãƒƒãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         protected SceneAsset GetSceneObject(string sceneObjectName) {
             if (string.IsNullOrEmpty(sceneObjectName)) return null;
 
-            // BuildSettings‚ÉŠÜ‚Ü‚ê‚éƒV[ƒ“‚©‚çŒŸõ
+            // BuildSettingsã«å«ã¾ã‚Œã‚‹ã‚·ãƒ¼ãƒ³ã‹ã‚‰æ¤œç´¢
             for (int i = 0; i < EditorBuildSettings.scenes.Length; i++) {
                 EditorBuildSettingsScene scene = EditorBuildSettings.scenes[i];
                 if (scene.path.IndexOf(sceneObjectName) != -1) {

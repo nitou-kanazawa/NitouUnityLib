@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace nitou{
 
     /// <summary>
-    /// ¯•Ê‰Â”\‚ÈƒIƒuƒWƒFƒNƒgD
+    /// è­˜åˆ¥å¯èƒ½ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼
     /// </summary>
     public interface IIdentifiable{
         Guid guid { get; }

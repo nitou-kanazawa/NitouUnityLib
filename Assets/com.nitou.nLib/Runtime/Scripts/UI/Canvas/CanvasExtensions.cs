@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Canvas"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Canvas"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class CanvasExtensions {
 
         // ----------------------------------------------------------------------------
-        #region À•W
+        #region åº§æ¨™
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 GetScreenPosition(this Canvas canvas, Vector3 worldPos, Camera camera = null) {
 
-            // ƒXƒNƒŠ[ƒ“À•W
+            // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             return canvas.renderMode switch {
                 RenderMode.ScreenSpaceOverlay => worldPos,
                 RenderMode.ScreenSpaceCamera => RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPos),
@@ -25,12 +25,12 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒXƒNƒŠ[ƒ“À•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetScreenRect(this Canvas canvas, Vector3 worldMin, Vector3 worldMax, Camera camera = null) {
             Vector2 screenMin, screenMax;
 
-            // ƒXƒNƒŠ[ƒ“À•W
+            // ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™
             switch (canvas.renderMode) {
                 case RenderMode.ScreenSpaceOverlay:
                     screenMin = worldMin;
@@ -53,7 +53,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒrƒ…[ƒ|[ƒgÀ•W‚É•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ã«å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 GetViewportPosition(this Canvas canvas, Vector3 worldPos, Camera camera = null) {
             return canvas.renderMode switch {
@@ -65,12 +65,12 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒrƒ…[ƒ|[ƒgÀ•W‚É•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™ã«å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Rect GetViewportRect(this Canvas canvas, Vector3 worldMin, Vector3 worldMax, Camera camera = null) {
             Vector2 viewportMin, viewportMax;
 
-            // ƒrƒ…[ƒ|[ƒgÀ•W
+            // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™
             switch (canvas.renderMode) {
                 case RenderMode.ScreenSpaceOverlay:
                     (var screenMin, var screenMax) = (worldMin, worldMax);

@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 
-// [Ql]
-//  _: •b¨ŠÔ@•ÏŠ·ihh:mm:ss•ÏŠ·j https://frog-blend.hatenablog.com/entry/2023/10/03/115056
+// [å‚è€ƒ]
+//  _: ç§’â†’æ™‚é–“ã€€å¤‰æ›ï¼ˆhh:mm:sså¤‰æ›ï¼‰ https://frog-blend.hatenablog.com/entry/2023/10/03/115056
 
 namespace nitou {
 
-    // ¦‰¼À‘•
+    // â€»ä»®å®Ÿè£…
     public static class TimeUtil {
 
         public static TimeSpan SecondToTimeSpan(int second) {

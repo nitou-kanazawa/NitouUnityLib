@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  qiita: AssemblyDefinition.asmdef‚ğƒXƒNƒŠƒvƒg‚©‚çì¬‚·‚é https://qiita.com/im0039kp/items/b6ebc1e07b04e5dd9dc1
+// [å‚è€ƒ]
+//  qiita: AssemblyDefinition.asmdefã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ä½œæˆã™ã‚‹ https://qiita.com/im0039kp/items/b6ebc1e07b04e5dd9dc1
 
 namespace nitou.Tools.Assets {
 
@@ -18,7 +18,7 @@ namespace nitou.Tools.Assets {
             string text = JsonUtility.ToJson(json);
             string path = Path.Combine(Application.dataPath, $"{assetPath}/{name}.asmdef");
             File.WriteAllText(path, text);
-            Debug_.Log($"{assetPath}/{name}.asmdef ‚ğ¶¬‚µ‚Ü‚µ‚½D", Colors.Green);
+            Debug_.Log($"{assetPath}/{name}.asmdef ã‚’ç”Ÿæˆã—ã¾ã—ãŸï¼", Colors.Green);
 
             AssetDatabase.ImportAsset($"Assets/{assetPath}/{name}.asmdef", ImportAssetOptions.ForceUpdate);
         }

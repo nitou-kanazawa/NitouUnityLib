@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
+ï»¿using System.Threading.Tasks;
 
 namespace UnityScreenNavigator.Runtime.Core.Page {
 
     /// <summary>
-    /// PageƒvƒŒƒ[ƒ“ƒ^[‚ÌŠî’êƒNƒ‰ƒX
+    /// Pageãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class PagePresenter<TPage> : Presenter<TPage>, IPagePresenter 
         where TPage : Page {
@@ -11,7 +11,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         private TPage View { get; }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected PagePresenter(TPage view) : base(view) {
             View = view;
@@ -180,7 +180,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         // Protected Method
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         protected override void Initialize(TPage view) {
             // The lifecycle event of the view will be added with priority 0.
@@ -189,7 +189,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         protected override void Dispose(TPage view) {
             view.RemoveLifecycleEvent(this);

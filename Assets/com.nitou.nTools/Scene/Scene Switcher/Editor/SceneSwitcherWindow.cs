@@ -1,31 +1,31 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-// [Ql]
-//  ƒV[ƒ“‚ğŠÈ’P‚ÉØ‚è‘Ö‚¦‚éƒGƒfƒBƒ^Šg’£ https://tyfkda.github.io/blog/2021/07/15/unity-scene-switcher.html
-//  ƒV[ƒ“‚ğØ‚è‘Ö‚¦‚éƒ{ƒ^ƒ“‚ğ•\¦‚·‚éƒGƒfƒBƒ^Šg’£ https://kyoro-s.com/unity-13/
-//  Unity‚ªƒf[ƒ^‚ğ•Û‘¶‚·‚é‚½‚ß‚Ég‚¤ƒpƒX‚É‚Â‚¢‚Ä https://light11.hatenadiary.com/entry/2019/10/07/031405
+// [å‚è€ƒ]
+//  ã‚·ãƒ¼ãƒ³ã‚’ç°¡å˜ã«åˆ‡ã‚Šæ›¿ãˆã‚‹ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µ https://tyfkda.github.io/blog/2021/07/15/unity-scene-switcher.html
+//  ã‚·ãƒ¼ãƒ³ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µ https://kyoro-s.com/unity-13/
+//  UnityãŒãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹ãŸã‚ã«ä½¿ã†ãƒ‘ã‚¹ã«ã¤ã„ã¦ https://light11.hatenadiary.com/entry/2019/10/07/031405
 
 namespace nitou.Tools.SceneSystem {
 
     /// <summary>
-    /// •ÒW‚ÌƒV[ƒ“Ø‚è‘Ö‚¦‚ğ—eˆÕ‚É‚·‚é‚½‚ß‚ÌƒEƒCƒ“ƒhƒE
+    /// ç·¨é›†æ™‚ã®ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆã‚’å®¹æ˜“ã«ã™ã‚‹ãŸã‚ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦
     /// </summary>
     public class SceneSwitcherWindow : EditorWindow {
 
         // [NOTE]
-        //  ¦ƒ}ƒ‹ƒ`ƒV[ƒ“ƒGƒfƒBƒeƒBƒ“ƒO‚Í‘Î‰‚µ‚Ä‚¢‚È‚¢
+        //  â€»ãƒãƒ«ãƒã‚·ãƒ¼ãƒ³ã‚¨ãƒ‡ã‚£ãƒ†ã‚£ãƒ³ã‚°ã¯å¯¾å¿œã—ã¦ã„ãªã„
 
         private List<SceneAsset> _scenes;
 
-        // •`‰æ—p
+        // æç”»ç”¨
         private Vector2 _scrollPos;
 
-        // ƒf[ƒ^•Û‘¶æ
+        // ãƒ‡ãƒ¼ã‚¿ä¿å­˜å…ˆ
         private static string FilePath => $"{Application.persistentDataPath}/_sceneLauncher.sav";
 
 
@@ -59,20 +59,20 @@ namespace nitou.Tools.SceneSystem {
         private void DrawHeader() {
             using (new EditorGUILayout.HorizontalScope(GUI.skin.box)) {
 
-                // w’èƒV[ƒ“‚Ì’Ç‰Á
+                // æŒ‡å®šã‚·ãƒ¼ãƒ³ã®è¿½åŠ 
                 var sceneAsset = EditorGUILayout.ObjectField(null, typeof(SceneAsset), false) as SceneAsset;
                 if (sceneAsset != null && !_scenes.Contains(sceneAsset)) {
                     _scenes.Add(sceneAsset);
                     Save();
                 }
 
-                // Œ»İƒV[ƒ“‚Ì’Ç‰Á
+                // ç¾åœ¨ã‚·ãƒ¼ãƒ³ã®è¿½åŠ 
                 if (GUILayout.Button("Add current scene")) {
                     var scene = EditorSceneManager.GetActiveScene();
                     if (scene != null && scene.path != null &&
                         _scenes.Find(s => AssetDatabase.GetAssetPath(s) == scene.path) == null) {
 
-                        // ƒV[ƒ“ƒAƒZƒbƒg‚ğæ“¾
+                        // ã‚·ãƒ¼ãƒ³ã‚¢ã‚»ãƒƒãƒˆã‚’å–å¾—
                         var asset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
                         if (asset != null && !_scenes.Contains(asset)) {
                             _scenes.Add(asset);
@@ -87,7 +87,7 @@ namespace nitou.Tools.SceneSystem {
 
             using var scrollView = new EditorGUILayout.ScrollViewScope(_scrollPos); _scrollPos = scrollView.scrollPosition;
 
-            // ƒV[ƒ“ƒŠƒXƒg‚Ì•\¦
+            // ã‚·ãƒ¼ãƒ³ãƒªã‚¹ãƒˆã®è¡¨ç¤º
             for (var i = 0; i < _scenes.Count; ++i) {
 
                 var scene = _scenes[i];
@@ -102,16 +102,16 @@ namespace nitou.Tools.SceneSystem {
                         if (GUILayout.Button("O", GUILayout.Width(20))) {
                             EditorGUIUtility.PingObject(scene);
                         }
-                        if (GUILayout.Button(i > 0 ? "ª" : "@", GUILayout.Width(20)) && i > 0) {
+                        if (GUILayout.Button(i > 0 ? "â†‘" : "ã€€", GUILayout.Width(20)) && i > 0) {
                             _scenes[i] = _scenes[i - 1];
                             _scenes[i - 1] = scene;
                             Save();
                         }
 
-                        // ƒV[ƒ“ƒ{ƒ^ƒ“
+                        // ã‚·ãƒ¼ãƒ³ãƒœã‚¿ãƒ³
                         EditorGUI.BeginDisabledGroup(EditorApplication.isPlaying);
                         if (GUILayout.Button(Path.GetFileNameWithoutExtension(path))) {
-                            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {  // ¦•ÏX‚ª‚ ‚Á‚½ê‡‚É•Û‘¶‚·‚é‚©‚ÌŠm”F—p
+                            if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) {  // â€»å¤‰æ›´ãŒã‚ã£ãŸå ´åˆã«ä¿å­˜ã™ã‚‹ã‹ã®ç¢ºèªç”¨
                                 EditorSceneManager.OpenScene(path);
                             }
                         }
@@ -126,7 +126,7 @@ namespace nitou.Tools.SceneSystem {
         // Private Method
 
         /// <summary>
-        /// İ’èƒf[ƒ^‚Ì•Û‘¶
+        /// è¨­å®šãƒ‡ãƒ¼ã‚¿ã®ä¿å­˜
         /// </summary>
         private void Save() {
             var guids = new List<string>();
@@ -141,7 +141,7 @@ namespace nitou.Tools.SceneSystem {
         }
 
         /// <summary>
-        /// İ’èƒf[ƒ^‚Ì“Ç‚İ‚İ
+        /// è¨­å®šãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
         /// </summary>
         private void Load() {
             _scenes.Clear();

@@ -1,14 +1,14 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  _: How can I get a Box Collider's "corners" (vertices) positions? https://gamedev.stackexchange.com/questions/128833/how-can-i-get-a-box-colliders-corners-vertices-positions
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="BoxCollider"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="BoxCollider"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class BoxColliderExtensions {
 
@@ -16,14 +16,14 @@ namespace nitou {
         // 
 
         /// <summary>
-        /// ƒOƒ[ƒoƒ‹À•W‚É•ÏŠ·‚µ‚½ƒRƒ‰ƒCƒ_[’†SÀ•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚°ãƒ­ãƒ¼ãƒãƒ«åº§æ¨™ã«å¤‰æ›ã—ãŸã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒåº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 GetWorldCenter(this BoxCollider box) {
             return box.transform.TransformPoint(box.center);
         }
 
         /// <summary>
-        /// eŠK‘w‚ğl—¶‚µ‚½ƒXƒP[ƒ‹‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªéšå±¤ã‚’è€ƒæ…®ã—ãŸã‚¹ã‚±ãƒ¼ãƒ«ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 GetScaledSize(this BoxCollider box) {
             return Vector3.Scale(box.transform.lossyScale, box.size);
@@ -34,27 +34,27 @@ namespace nitou {
 
 
         /// <summary>
-        /// “_‚ª<see cref="BoxCollider"/>‚Ì“à•”‚ÉŠÜ‚Ü‚ê‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ç‚¹ãŒ<see cref="BoxCollider"/>ã®å†…éƒ¨ã«å«ã¾ã‚Œã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(this BoxCollider box, Vector3 point) {
 
             var localPoint = box.transform.InverseTransformPoint(point);
             var scaledHalfSize = box.GetScaledSize().Half();
 
-            // ‘S‚Ä‚Ì²‚Å‹«ŠE“à‚É‚ ‚ê‚ÎA“_‚ÍBoxCollider“à•”‚É‚ ‚é
+            // å…¨ã¦ã®è»¸ã§å¢ƒç•Œå†…ã«ã‚ã‚Œã°ã€ç‚¹ã¯BoxColliderå†…éƒ¨ã«ã‚ã‚‹
             return (Mathf.Abs(localPoint.x) <= scaledHalfSize.x)
                 && (Mathf.Abs(localPoint.y) <= scaledHalfSize.y)
                 && (Mathf.Abs(localPoint.z) <= scaledHalfSize.z);
         }
 
         /// <summary>
-        /// ‹…‚ª<see cref="BoxCollider"/>‚Ì“à•”‚ÉŠ®‘S‚ÉŠÜ‚Ü‚ê‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// çƒãŒ<see cref="BoxCollider"/>ã®å†…éƒ¨ã«å®Œå…¨ã«å«ã¾ã‚Œã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(BoxCollider box, SphereCollider sphere) {
             float radius = sphere.GetScaledRadius();
             Vector3 center = sphere.transform.TransformPoint(sphere.center);
 
-            // BOXŠe–Ê‚Æ‚Ì‹——£‚Å”»’è
+            // BOXå„é¢ã¨ã®è·é›¢ã§åˆ¤å®š
             var planes = box.GetPlanes();
             foreach (var plane in planes) {
                 if (plane.GetDistanceToPoint(center) < -radius) {
@@ -69,7 +69,7 @@ namespace nitou {
         #region MyRegion
 
         /// <summary>
-        /// Å‚à’·‚¢•ûŒü‚ğ’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// æœ€ã‚‚é•·ã„æ–¹å‘ã‚’èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Axis GetLongestAxis(this BoxCollider box) {
             var scale = box.GetScaledSize();
@@ -85,7 +85,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ‰ƒCƒ_[’†S‚©‚çŠe²•ûŒü(x,y,z)‚Ì‹«ŠEÀ•W
+        /// ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒã‹ã‚‰å„è»¸æ–¹å‘(x,y,z)ã®å¢ƒç•Œåº§æ¨™
         /// </summary>
         public static (Vector3 vx, Vector3 vy, Vector3 vz) GetAxisBoundPoints(this BoxCollider box) {
 
@@ -99,7 +99,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ‰ƒCƒ_[’†S‚©‚çŠe²•ûŒü(x,y,z)‚Ì‹«ŠEÀ•W
+        /// ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒã‹ã‚‰å„è»¸æ–¹å‘(x,y,z)ã®å¢ƒç•Œåº§æ¨™
         /// </summary>
         public static (Vector3 positive, Vector3 negative) GetAxisBoundPoints(this BoxCollider box, Axis axis) {
 
@@ -117,14 +117,14 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’¸“_/ü/–Ê‚Ìæ“¾
+        #region é ‚ç‚¹/ç·š/é¢ã®å–å¾—
 
-        // [Ql]
-        //  qiita: Unity‚ÌBoxCollider‚Ì’¸“_‚ğæ“¾‚·‚éƒXƒNƒŠƒvƒg https://qiita.com/RYUMAGE/items/dae74abaf2b7888dcbfa
-        //  qiita: BoxCollider‚ÌŠe–Ê‚ğPlane‚Æ‚µ‚Äæ“¾‚·‚éƒXƒNƒŠƒvƒg https://qiita.com/RYUMAGE/items/8fc826825ef27e178225
+        // [å‚è€ƒ]
+        //  qiita: Unityã®BoxColliderã®é ‚ç‚¹ã‚’å–å¾—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆ https://qiita.com/RYUMAGE/items/dae74abaf2b7888dcbfa
+        //  qiita: BoxColliderã®å„é¢ã‚’Planeã¨ã—ã¦å–å¾—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆ https://qiita.com/RYUMAGE/items/8fc826825ef27e178225
 
         /// <summary>
-        /// <see cref="BoxCollider"/> ‚Ì‚W’¸“_‚Ìƒ[ƒ‹ƒhÀ•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="BoxCollider"/> ã®ï¼˜é ‚ç‚¹ã®ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3[] GetVertices(this BoxCollider box) {
 
@@ -151,7 +151,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <see cref="BoxCollider"/> ‚Ì6–Ê‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="BoxCollider"/> ã®6é¢ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Plane[] GetPlanes(this BoxCollider box) {
 
@@ -172,14 +172,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <see cref="BoxCollider"/> ‚Ìü•ª‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="BoxCollider"/> ã®ç·šåˆ†ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static LineSegment3[] GetLines(this BoxCollider box, Axis axis) {
 
             var vertices = box.GetVertices();
             var lines = new List<LineSegment3>();
 
-            // ‘g‚İ‡‚í‚¹‚Ì”z—ñ (¦GetVertices()‚Ì—v‘f‡‚ÉŠî‚Ã‚­)
+            // çµ„ã¿åˆã‚ã›ã®é…åˆ— (â€»GetVertices()ã®è¦ç´ é †ã«åŸºã¥ã)
             (int i, int j)[] indexPairs = axis switch {
                 Axis.X => new (int, int)[] { (0, 1), (3, 2), (5, 4), (6, 7) },
                 Axis.Y => new (int, int)[] { (2, 1), (3, 0), (4, 7), (5, 6) },
@@ -187,7 +187,7 @@ namespace nitou {
                 _ => throw new System.NotImplementedException()
             };
 
-            // LineSeqment3‚É•ÏŠ·
+            // LineSeqment3ã«å¤‰æ›
             return indexPairs
                 .Select(index => new LineSegment3(vertices[index.i], vertices[index.j]))
                 .ToArray();
@@ -196,7 +196,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ’¸“_ / ü / –Ê‚Ìæ“¾
+        // é ‚ç‚¹ / ç·š / é¢ã®å–å¾—
 
         /// <summary>
         /// Gets the closest plane to a given point.

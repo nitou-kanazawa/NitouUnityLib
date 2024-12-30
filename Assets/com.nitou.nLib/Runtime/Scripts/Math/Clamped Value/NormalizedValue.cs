@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -6,7 +6,7 @@ using UnityEditor;
 namespace nitou {
 
     /// <summary>
-    /// ³‹K‰»‚³‚ê‚½’li’lˆæ‚O`‚Pj‚ğˆµ‚¤‚½‚ß‚Ì\‘¢‘Ì
+    /// æ­£è¦åŒ–ã•ã‚ŒãŸå€¤ï¼ˆå€¤åŸŸï¼ï½ï¼‘ï¼‰ã‚’æ‰±ã†ãŸã‚ã®æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct NormalizedValue {
@@ -14,7 +14,7 @@ namespace nitou {
         [SerializeField] float _value;
 
         /// <summary>
-        /// ’li0`1‚Ì”ÍˆÍjB
+        /// å€¤ï¼ˆ0ï½1ã®ç¯„å›²ï¼‰ã€‚
         /// </summary>
         public float Value {
             get => _value;
@@ -22,21 +22,21 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public NormalizedValue(float value) {
             _value = Mathf.Clamp01(value);
         }
 
         /// <summary>
-        /// floatŒ^‚Ö‚ÌˆÃ–Ù‚Ì•ÏŠ·
+        /// floatå‹ã¸ã®æš—é»™ã®å¤‰æ›
         /// </summary>
         public static implicit operator float(NormalizedValue normalizedValue) {
             return normalizedValue.Value;
         }
 
         /// <summary>
-        /// floatŒ^‚©‚ç‚ÌˆÃ–Ù‚Ì•ÏŠ·
+        /// floatå‹ã‹ã‚‰ã®æš—é»™ã®å¤‰æ›
         /// </summary>
         public static implicit operator NormalizedValue(float value) {
             return new NormalizedValue(value);

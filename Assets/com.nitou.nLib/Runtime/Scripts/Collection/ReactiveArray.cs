@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
@@ -9,7 +9,7 @@ using UniRx;
 namespace nitou {
 
     /// <summary>
-    /// ”z—ñ‚Ì—v‘f‚Ì•ÏX‚âˆÚ“®‚ğƒŠƒAƒNƒeƒBƒu‚ÉŠÄ‹‚Å‚«‚é ReactiveArray ƒNƒ‰ƒX
+    /// é…åˆ—ã®è¦ç´ ã®å¤‰æ›´ã‚„ç§»å‹•ã‚’ãƒªã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ç›£è¦–ã§ãã‚‹ ReactiveArray ã‚¯ãƒ©ã‚¹
     /// </summary>
     public sealed class ReactiveArray<T> : IDisposable, IEnumerable<T>, IEnumerable {
 
@@ -22,7 +22,7 @@ namespace nitou {
         [NonSerialized] Subject<CollectionMoveEvent<T>> _collectionMove = null;
 
         /// <summary>
-        /// ƒCƒ“ƒfƒNƒT
+        /// ã‚¤ãƒ³ãƒ‡ã‚¯ã‚µ
         /// </summary>
         public T this[int index] {
             get => GetItem(index);
@@ -30,7 +30,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f”D
+        /// è¦ç´ æ•°ï¼
         /// </summary>
         public int Length => _items.Length;
 
@@ -58,7 +58,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
             if (!_isDisposed) {
@@ -70,7 +70,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’èƒCƒ“ƒfƒbƒNƒX‚Ì—v‘f‚ğæ“¾‚·‚éD
+        /// æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public T GetItem(int index) {
             if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
@@ -79,7 +79,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’èƒCƒ“ƒfƒbƒNƒX‚É—v‘f‚ğİ’è‚·‚éD
+        /// æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã«è¦ç´ ã‚’è¨­å®šã™ã‚‹ï¼
         /// </summary>
         public void SetItem(int index, T value) {
             if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
@@ -88,12 +88,12 @@ namespace nitou {
             var oldValue = _items[index];
             _items[index] = value;
 
-            // ƒCƒxƒ“ƒg’Ê’m
+            // ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
             _collectionReplace?.OnNext(new CollectionReplaceEvent<T>(index, oldValue, value));
         }
 
         /// <summary>
-        /// —v‘f‚ğˆÚ“®‚·‚éD
+        /// è¦ç´ ã‚’ç§»å‹•ã™ã‚‹ï¼
         /// </summary>
         public void Move(int oldIndex, int newIndex) {
             if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
@@ -102,7 +102,7 @@ namespace nitou {
             }
 
             var item = _items[oldIndex];
-            // ”z—ñ“à‚Ì—v‘f‚ğƒVƒtƒg
+            // é…åˆ—å†…ã®è¦ç´ ã‚’ã‚·ãƒ•ãƒˆ
             if (oldIndex < newIndex) {
                 for (int i = oldIndex; i < newIndex; i++) {
                     _items[i] = _items[i + 1];
@@ -115,7 +115,7 @@ namespace nitou {
 
             _items[newIndex] = item;
 
-            // Move ƒCƒxƒ“ƒg‚ğ”­s
+            // Move ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºè¡Œ
             _collectionMove?.OnNext(new CollectionMoveEvent<T>(oldIndex, newIndex, item));
         }
 
@@ -144,7 +144,7 @@ namespace nitou {
         // Public Method (Enumerable)
 
         /// <summary>
-        /// ”z—ñ‚Ì—ñ‹“‚ğƒTƒ|[ƒg‚·‚é‚½‚ß‚Ì IEnumerable<T> ‚ÌÀ‘•
+        /// é…åˆ—ã®åˆ—æŒ™ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ãŸã‚ã® IEnumerable<T> ã®å®Ÿè£…
         /// </summary>
         public IEnumerator<T> GetEnumerator() {
             if (_isDisposed) throw new ObjectDisposedException(nameof(ReactiveArray<T>));
@@ -152,7 +152,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ”ñƒWƒFƒlƒŠƒbƒN IEnumerable ‚ÌÀ‘•
+        /// éã‚¸ã‚§ãƒãƒªãƒƒã‚¯ IEnumerable ã®å®Ÿè£…
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();

@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.Tools.Hierarchy{
     using nitou.Tools.Shared;
 
     /// <summary>
-    /// ƒpƒbƒP[ƒW‚ÌŠeíİ’è‚ğŠÇ—‚·‚éÃ“IƒNƒ‰ƒX
+    /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å„ç¨®è¨­å®šã‚’ç®¡ç†ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     internal static class ModuleInfo{
 

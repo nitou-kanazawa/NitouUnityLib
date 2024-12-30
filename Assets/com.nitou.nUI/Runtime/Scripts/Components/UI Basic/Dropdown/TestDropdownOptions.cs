@@ -1,13 +1,13 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
 using TMPro;
 
 namespace nitou.UI.Demo {
 
     public enum MyType {
-        ModeA,Å@ModeB,Å@ModeC,Å@ModeD,
+        ModeA,„ÄÄModeB,„ÄÄModeC,„ÄÄModeD,
     }
 
-    // îhê∂ÉNÉâÉX
+    // Ê¥æÁîü„ÇØ„É©„Çπ
     public sealed class TestDropdownOptions : DropdownEnumOptions<MyType> {}
 }

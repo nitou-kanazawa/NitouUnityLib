@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// •\¦E”ñ•\¦‚ÌØ‚è‘Ö‚¦‚ª‰Â”\‚ÈUI
+    /// è¡¨ç¤ºãƒ»éè¡¨ç¤ºã®åˆ‡ã‚Šæ›¿ãˆãŒå¯èƒ½ãªUI
     /// </summary>
     [RequireComponent(typeof(CanvasGroup))]
     [DisallowMultipleComponent]
@@ -30,7 +30,7 @@ namespace nitou.UI.Components {
                 _canvasGroup = gameObject.GetOrAddComponent<CanvasGroup>();
             }
 
-            // ”ñ•\¦ó‘Ô
+            // éè¡¨ç¤ºçŠ¶æ…‹
             if (_hideOnAwake) {
                 DOHide(0f);
             }

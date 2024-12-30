@@ -1,41 +1,41 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
 // [REF]
-//  Hatena Blog: Action, Func, PredicateƒfƒŠƒQ[ƒg‚ğg‚Á‚Ä‚İ‚½ https://oooomincrypto.hatenadiary.jp/entry/2022/04/24/201149
-//  JojoBase: Šg’£ƒƒ\ƒbƒh‚Íì‚Á‚Ä’™‚ß‚Ä‚¨‚­‚Æ•Ö—˜‚Å‚· https://johobase.com/custom-extension-methods-list/#i-5
-//  JojoBase: ƒRƒŒƒNƒVƒ‡ƒ“‚ÌŠg’£ƒƒ\ƒbƒh Collection Extensions https://johobase.com/collection-extensions-methods-list/
-//  qiita: ‚ ‚é‚Æ‚¿‚å‚Á‚Æ•Ö—˜‚ÈŠg’£ƒƒ\ƒbƒhĞ‰î https://qiita.com/s_mino_ri/items/0fd2e2b3cebb7a62ad46
+//  Hatena Blog: Action, Func, Predicateãƒ‡ãƒªã‚²ãƒ¼ãƒˆã‚’ä½¿ã£ã¦ã¿ãŸ https://oooomincrypto.hatenadiary.jp/entry/2022/04/24/201149
+//  JojoBase: æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã¯ä½œã£ã¦è²¯ã‚ã¦ãŠãã¨ä¾¿åˆ©ã§ã™ https://johobase.com/custom-extension-methods-list/#i-5
+//  JojoBase: ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ Collection Extensions https://johobase.com/collection-extensions-methods-list/
+//  qiita: ã‚ã‚‹ã¨ã¡ã‚‡ã£ã¨ä¾¿åˆ©ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ç´¹ä»‹ https://qiita.com/s_mino_ri/items/0fd2e2b3cebb7a62ad46
 
 namespace nitou {
 
     /// <summary>
-    /// Collection‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// Collectionã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class CollectionExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì”»’è
+        #region è¦ç´ ã®åˆ¤å®š
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ“‚ª‹ó‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãŒç©ºã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsEmpty(this ICollection self) {
             return self.Count == 0;
         }
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ“‚ªNull‚Ü‚½‚Í‹ó‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãŒNullã¾ãŸã¯ç©ºã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsNullOrEmpty(this ICollection self) {
             return self == null || self.Count == 0;
         }
 
         /// <summary>
-        /// w’è‚µ‚½—v‘f‚ª‘S‚ÄƒRƒŒƒNƒVƒ‡ƒ““à‚É‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã—ãŸè¦ç´ ãŒå…¨ã¦ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool ContainsAll<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -47,7 +47,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¡”‚Ì—v‘f‚Ì‚¢‚¸‚ê‚©‚ªƒRƒŒƒNƒVƒ‡ƒ“‚ÉŠi”[‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¤‡æ•°ã®è¦ç´ ã®ã„ãšã‚Œã‹ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool ContainsAny<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -61,17 +61,17 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f”‚Ì”»’è
+        #region è¦ç´ æ•°ã®åˆ¤å®š
 
         /// <summary>
-        /// w’èƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍ“à‚É‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒç¯„å›²å†…ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsInRange<T>(this int index, IReadOnlyCollection<T> collection) {
             return 0 <= index && index < collection.Count;
         }
 
         /// <summary>
-        /// w’èƒCƒ“ƒfƒbƒNƒX‚ª”ÍˆÍŠO‚É‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãŒç¯„å›²å¤–ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsOutRange<T>(this int index, IReadOnlyCollection<T> collection) {
             return !index.IsInRange(collection);
@@ -81,10 +81,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì’Ç‰Á
+        #region è¦ç´ ã®è¿½åŠ 
 
         /// <summary>
-        /// w’è‚µ‚½ˆ—ğŒ‚ğ–‚½‚·ê‡‚É—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã—ãŸå‡¦ç†æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool AddIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
             if (predicate(item)) {
@@ -95,7 +95,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f‚ªNull‚Ìê‡‚ÉƒRƒŒƒNƒVƒ‡ƒ“‚É’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ãŒNullã®å ´åˆã«ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool AddIfNotNull<T>(this ICollection<T> self, T item) where T : class {
             if (item != null) {
@@ -106,7 +106,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f‚ªƒRƒŒƒNƒVƒ‡ƒ““à‚ÉŠÜ‚Ü‚ê‚È‚¯‚ê‚Î’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã«å«ã¾ã‚Œãªã‘ã‚Œã°è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool AddIfNotContains<T>(this ICollection<T> self, T item) {
             if (!self.Contains(item)) {
@@ -117,7 +117,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘fŒQ‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ç¾¤ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddRange<T>(this ICollection<T> self, params T[] items) {
             foreach (var item in items) {
@@ -126,7 +126,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’èƒRƒŒƒNƒVƒ‡ƒ“‚©‚ç‘¶İ‚µ‚È‚¢—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh.
+        /// æŒ‡å®šã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‹ã‚‰å­˜åœ¨ã—ãªã„è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰.
         /// </summary>
         public static void AddRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, params T[] items) {
             foreach (var item in items) {
@@ -135,7 +135,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f‚ªƒRƒŒƒNƒVƒ‡ƒ““à‚ÉŠÜ‚Ü‚ê‚È‚¯‚ê‚Î’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã«å«ã¾ã‚Œãªã‘ã‚Œã°è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, IEnumerable<T> items) {
             foreach (var item in items) {
@@ -144,7 +144,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f‚ªƒRƒŒƒNƒVƒ‡ƒ““à‚ÉŠÜ‚Ü‚ê‚È‚¯‚ê‚Î’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã«å«ã¾ã‚Œãªã‘ã‚Œã°è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddRangeIfNotContains<T>(this ICollection<T> self, params T[] items) {
             foreach (var item in items) {
@@ -153,7 +153,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f‚ªƒRƒŒƒNƒVƒ‡ƒ““à‚ÉŠÜ‚Ü‚ê‚È‚¯‚ê‚Î’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ ãŒã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã«å«ã¾ã‚Œãªã‘ã‚Œã°è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddRangeIfNotContains<T>(this ICollection<T> self, IEnumerable<T> items) {
             foreach (var item in items) {
@@ -165,10 +165,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ìíœ
+        #region è¦ç´ ã®å‰Šé™¤
 
         /// <summary>
-        /// w’è‚µ‚½ˆ—ğŒ‚ğ–‚½‚·ê‡‚É—v‘f‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã—ãŸå‡¦ç†æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«è¦ç´ ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void RemoveIf<T>(this ICollection<T> self, Predicate<T> predicate, T item) {
             if (predicate(item)) {
@@ -177,7 +177,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¡”‚Ì—v‘f‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¤‡æ•°ã®è¦ç´ ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void RemoveRange<T>(this ICollection<T> self, params T[] items) {
             foreach (T item in items) {
@@ -186,7 +186,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¡”‚Ì—v‘f‚Ì‚»‚ê‚¼‚ê‚É‘Î‚µ‚Äw’è‚µ‚½ğŒ‚ğ–‚½‚·ê‡‚Éíœ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è¤‡æ•°ã®è¦ç´ ã®ãã‚Œãã‚Œã«å¯¾ã—ã¦æŒ‡å®šã—ãŸæ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void RemoveRangeIf<T>(this ICollection<T> self, Predicate<T> predicate, params T[] items) {
             foreach (T item in items) {

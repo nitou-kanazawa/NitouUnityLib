@@ -1,23 +1,23 @@
-
+ï»¿
 namespace nitou{
 
     /// <summary>
-    /// ƒ^ƒCƒ}[‚ÌŠî–{‘€ì‚ğ’è‹`‚µ‚½ƒCƒ“ƒ^[ƒtƒF[ƒX
+    /// ã‚¿ã‚¤ãƒãƒ¼ã®åŸºæœ¬æ“ä½œã‚’å®šç¾©ã—ãŸã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     /// </summary>
     public interface ITimer {
 
         /// <summary>
-        /// ŠJn‚·‚é
+        /// é–‹å§‹ã™ã‚‹
         /// </summary>
         public void Start();
         
         /// <summary>
-        /// ’â~‚·‚é
+        /// åœæ­¢ã™ã‚‹
         /// </summary>
         public void Stop();
 
         /// <summary>
-        /// ƒŠƒZƒbƒg‚·‚é
+        /// ãƒªã‚»ãƒƒãƒˆã™ã‚‹
         /// </summary>
         public void Reset();
     }

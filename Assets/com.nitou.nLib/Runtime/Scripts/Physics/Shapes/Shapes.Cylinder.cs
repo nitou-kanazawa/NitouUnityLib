@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
     public partial class Shapes {
 
         /// <summary>
-        /// ‰~’Œ‚ÌŒ`ó‚ğ•\‚·ƒCƒ“ƒXƒ^ƒ“ƒX
+        /// å††æŸ±ã®å½¢çŠ¶ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         /// </summary>
         [System.Serializable]
         public class Cylinder : Volume {
 
             /// <summary>
-            /// ”¼Œa
+            /// åŠå¾„
             /// </summary>
             public float radius = 0.5f;
 
             /// <summary>
-            /// ‚‚³
+            /// é«˜ã•
             /// </summary>
             public float height = 1.5f;
 

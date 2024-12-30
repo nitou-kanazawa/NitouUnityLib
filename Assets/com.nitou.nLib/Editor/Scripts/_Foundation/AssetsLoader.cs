@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,15 +9,15 @@ namespace nitou.EditorShared {
     using nitou.Shared;
 
     /// <summary>
-    /// <see cref="Resources"/>ƒ‰ƒCƒN‚É”ñResourcesƒtƒHƒ‹ƒ_‚ÌƒAƒZƒbƒg‚ğ“Ç‚İ‚Ş‚½‚ß‚ÌƒNƒ‰ƒXi¦AssetDatabase‚Ìƒ‰ƒbƒp[j
+    /// <see cref="Resources"/>ãƒ©ã‚¤ã‚¯ã«éResourcesãƒ•ã‚©ãƒ«ãƒ€ã®ã‚¢ã‚»ãƒƒãƒˆã‚’èª­ã¿è¾¼ã‚€ãŸã‚ã®ã‚¯ãƒ©ã‚¹ï¼ˆâ€»AssetDatabaseã®ãƒ©ãƒƒãƒ‘ãƒ¼ï¼‰
     /// </summary>
     public class AssetsLoader {
 
         /// ----------------------------------------------------------------------------
-        #region Public Method (’P‘Ìƒ[ƒh)
+        #region Public Method (å˜ä½“ãƒ­ãƒ¼ãƒ‰)
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ÌƒAƒZƒbƒgƒpƒX(Šg’£q‚àŠÜ‚ß‚é)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹(æ‹¡å¼µå­ã‚‚å«ã‚ã‚‹)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static T Load<T>(AssetPath assetPath)
             where T : Object {
@@ -25,14 +25,14 @@ namespace nitou.EditorShared {
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ÌƒAƒZƒbƒgƒpƒX(Šg’£q‚àŠÜ‚ß‚é)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹(æ‹¡å¼µå­ã‚‚å«ã‚ã‚‹)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static Object Load(AssetPath assetPath) {
             return Load<Object>(assetPath);
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚ÌƒAƒZƒbƒgƒpƒX(Šg’£q‚àŠÜ‚ß‚é)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹(æ‹¡å¼µå­ã‚‚å«ã‚ã‚‹)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static T Load<T>(PackageDirectoryPath packagePath, string relativePath, string fileName)
             where T : Object {
@@ -44,10 +44,10 @@ namespace nitou.EditorShared {
 
 
         /// ----------------------------------------------------------------------------
-        #region Public Method (•¡”ƒ[ƒh)
+        #region Public Method (è¤‡æ•°ãƒ­ãƒ¼ãƒ‰)
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX(Assets‚©‚ç)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD‘¶İ‚µ‚È‚¢ê‡‚Í‹ó‚ÌList‚ğ•Ô‚·D
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹(Assetsã‹ã‚‰)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼å­˜åœ¨ã—ãªã„å ´åˆã¯ç©ºã®Listã‚’è¿”ã™ï¼
         /// </summary>
         public static List<T> LoadAll<T>(AssetPath directoryPath) where T : Object {
 
@@ -60,7 +60,7 @@ namespace nitou.EditorShared {
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌƒpƒX(Assets‚©‚ç)‚ÆŒ^‚ğİ’è‚µAObject‚ğ“Ç‚İ‚ŞD‘¶İ‚µ‚È‚¢ê‡‚Í‹ó‚ÌList‚ğ•Ô‚·D
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ã‚¹(Assetsã‹ã‚‰)ã¨å‹ã‚’è¨­å®šã—ã€Objectã‚’èª­ã¿è¾¼ã‚€ï¼å­˜åœ¨ã—ãªã„å ´åˆã¯ç©ºã®Listã‚’è¿”ã™ï¼
         /// </summary>
         public static List<Object> LoadAll(AssetPath directoryPath) {
             return LoadAll<Object>(directoryPath);
@@ -84,10 +84,10 @@ namespace nitou.EditorShared {
 
         private static List<T> LoadAll_Internal<T>(string directoryPath) where T : Object {
 
-            // w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚É“ü‚Á‚Ä‚¢‚é‘Sƒtƒ@ƒCƒ‹‚ğæ“¾(qƒfƒBƒŒƒNƒgƒŠ‚àŠÜ‚Ş)
+            // æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«å…¥ã£ã¦ã„ã‚‹å…¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å–å¾—(å­ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚‚å«ã‚€)
             var filePaths = Directory.EnumerateFiles(directoryPath, "*", SearchOption.AllDirectories);
 
-            // æ“¾‚µ‚½ƒtƒ@ƒCƒ‹‚Ì’†‚©‚çƒAƒZƒbƒg‚¾‚¯ƒŠƒXƒg‚É’Ç‰Á‚·‚é
+            // å–å¾—ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã‹ã‚‰ã‚¢ã‚»ãƒƒãƒˆã ã‘ãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹
             var assetList = new List<T>();
             foreach (string filePath in filePaths) {
                 T asset = AssetDatabase.LoadAssetAtPath<T>(filePath);

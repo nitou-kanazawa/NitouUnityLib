@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-// [Ql]
-//  PG“ú: Šî–{Œ^‚É”ÍˆÍƒ`ƒFƒbƒN‹@”\‚ğ’Ç‰Á‚·‚é https://takap-tech.com/entry/2020/06/20/232208#IsInRangemin-max%E5%A4%89%E6%95%B0%E5%80%A4%E3%81%8C-min--max-%E3%81%AE%E7%AF%84%E5%9B%B2%E5%86%85%E3%81%8B%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B
+// [å‚è€ƒ]
+//  PGæ—¥èªŒ: åŸºæœ¬å‹ã«ç¯„å›²ãƒã‚§ãƒƒã‚¯æ©Ÿèƒ½ã‚’è¿½åŠ ã™ã‚‹ https://takap-tech.com/entry/2020/06/20/232208#IsInRangemin-max%E5%A4%89%E6%95%B0%E5%80%A4%E3%81%8C-min--max-%E3%81%AE%E7%AF%84%E5%9B%B2%E5%86%85%E3%81%8B%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B
 
 namespace nitou {
 
     /// <summary>
-    /// Generic‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// Genericã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class GenericExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì”»’è
+        #region å€¤ã®åˆ¤å®š
 
         /// <summary>
-        /// ’l‚ª”ÍˆÍ“à‚É‚ ‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ãŒç¯„å›²å†…ã«ã‚ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsInRange<T>(this T value, T min, T max) where T : IComparable {
@@ -27,10 +27,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ìæ“¾
+        #region å€¤ã®å–å¾—
 
         /// <summary>
-        /// ¬‚³‚¢•û‚Ì’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å°ã•ã„æ–¹ã®å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetSmaller<T>(this T value, T min) where T : IComparable<T> {
@@ -38,7 +38,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘å‚«‚¢•û‚Ì’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å¤§ãã„æ–¹ã®å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T GetLarger<T>(this T value, T max) where T : IComparable<T> {

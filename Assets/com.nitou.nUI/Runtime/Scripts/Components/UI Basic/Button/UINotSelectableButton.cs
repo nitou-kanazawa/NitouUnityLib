@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// ‘I‘ğó‘Ô‚É‚È‚ç‚È‚¢“Æ©ƒ{ƒ^ƒ“UI
+    /// é¸æŠçŠ¶æ…‹ã«ãªã‚‰ãªã„ç‹¬è‡ªãƒœã‚¿ãƒ³UI
     /// </summary>
     [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "UI NotSelectable Button")]
     public class UINotSelectableButton : UIBehaviour, 
@@ -17,7 +17,7 @@ namespace nitou.UI.Components {
         private Subject<Unit> _onClickSubject = new();
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚³‚ê‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnSubmited => _onClickSubject;
 
@@ -35,7 +35,7 @@ namespace nitou.UI.Components {
         // Interface Method
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData) {
-            // ¶ƒNƒŠƒbƒN‚Ì‚İ
+            // å·¦ã‚¯ãƒªãƒƒã‚¯ã®ã¿
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Press();

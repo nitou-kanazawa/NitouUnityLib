@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Sirenix.OdinInspector;
 
 // [REF]
-//  qiita: 3DƒIƒuƒWƒFƒNƒg‚Ìc‘œˆ— https://qiita.com/madoramu_f/items/fada99645cd03fd7f515
-//  UnityIndies: ƒ}ƒeƒŠƒAƒ‹A—‰ğ‚µ‚Ä‚È‚¢‚Æ‚·‚®‚Éƒƒ‚ƒŠƒŠ[ƒN https://www.create-forever.games/unity-material-memory-leak/
+//  qiita: 3Dã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æ®‹åƒå‡¦ç† https://qiita.com/madoramu_f/items/fada99645cd03fd7f515
+//  UnityIndies: ãƒãƒ†ãƒªã‚¢ãƒ«ã€ç†è§£ã—ã¦ãªã„ã¨ã™ãã«ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ https://www.create-forever.games/unity-material-memory-leak/
 
 namespace nitou.MaterialControl {
 
     /// <summary>
-    /// ƒ}ƒeƒŠƒAƒ‹‚Ì‘€ì‚ğs‚¤ƒRƒ“ƒ|[ƒlƒ“ƒgD
+    /// ãƒãƒ†ãƒªã‚¢ãƒ«ã®æ“ä½œã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼
     /// </summary>
     public abstract class MaterialController<T> : MonoBehaviour, INormalizedValueTicker
         where T : MaterialHandler {
@@ -26,12 +26,12 @@ namespace nitou.MaterialControl {
         [SerializeField, Indent] NormalizedValue _rate;
 
         /// <summary>
-        /// ‘ÎÛƒ}ƒeƒŠƒAƒ‹D
+        /// å¯¾è±¡ãƒãƒ†ãƒªã‚¢ãƒ«ï¼
         /// </summary>
         public T Handler => _handler;
 
         /// <summary>
-        /// ƒ}ƒeƒŠƒAƒ‹•Ï”‚ğˆêŠ‡‘€ì‚·‚é‚½‚ß‚ÌƒvƒƒpƒeƒBD
+        /// ãƒãƒ†ãƒªã‚¢ãƒ«å¤‰æ•°ã‚’ä¸€æ‹¬æ“ä½œã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ï¼
         /// </summary>
         public NormalizedValue Rate {
             get => _rate;
@@ -71,12 +71,12 @@ namespace nitou.MaterialControl {
         // Protected Method 
 
         /// <summary>
-        /// ƒnƒ“ƒhƒ‰[‚ğ¶¬‚·‚éD
+        /// ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         protected abstract T CreateHandler(Shader shader);
 
         /// <summary>
-        /// ‘ÎÛƒVƒF[ƒ_[‚ğæ“¾‚·‚éD
+        /// å¯¾è±¡ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         protected abstract Shader FindShader();
     }

@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace nitou.UI.Components{
 
     /// <summary>
-    /// "ValueChange"ƒCƒxƒ“ƒg‚ğˆµ‚¤UI‚Å‚ ‚é‚±‚Æ‚ğ¦‚·ƒCƒ“ƒ^[ƒtƒF[ƒXD
+    /// "ValueChange"ã‚¤ãƒ™ãƒ³ãƒˆã‚’æ‰±ã†UIã§ã‚ã‚‹ã“ã¨ã‚’ç¤ºã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ï¼
     /// </summary>
     public interface IUIValueChangeable<TValue>{
 
         /// <summary>
-        /// ’l‚ª•Ï‰»‚µ‚½‚ÌƒCƒxƒ“ƒg’Ê’mD
+        /// å€¤ãŒå¤‰åŒ–ã—ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥ï¼
         /// </summary>
         public IObservable<TValue> OnValueChanged { get; }
 

@@ -1,12 +1,12 @@
-
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: Œõü‚ğ•\Œ»‚·‚éRay\‘¢‘Ì‚Ìg‚¢•û https://nekojara.city/unity-ray-struct
+ï»¿
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: å…‰ç·šã‚’è¡¨ç¾ã™ã‚‹Rayæ§‹é€ ä½“ã®ä½¿ã„æ–¹ https://nekojara.city/unity-ray-struct
 //  
 
 namespace nitou {
 
     /// <summary>
-    /// RayŒ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// Rayå‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class RayExtensions {
 

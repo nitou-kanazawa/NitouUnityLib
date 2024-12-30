@@ -1,13 +1,13 @@
-
+ï»¿
 namespace nitou {
 
     /// <summary>
-    /// UnityEditor‚ÌToolbarƒƒjƒ…[‚ÉŠÖ‚·‚é’è‹`
+    /// UnityEditorã®Toolbarãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«é–¢ã™ã‚‹å®šç¾©
     /// </summary>
     public static class ToolBarMenu {
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static class Prefix {
 
             /// <summary>
@@ -21,7 +21,7 @@ namespace nitou {
             public const string EditorTool = "Tools/Nitou/";
 
             /// <summary>
-            /// ŠJ”­’†‚ÌƒfƒoƒbƒOƒRƒ}ƒ“ƒh‚È‚Ç—p‚Ìƒ^ƒO
+            /// é–‹ç™ºä¸­ã®ãƒ‡ãƒãƒƒã‚°ã‚³ãƒãƒ³ãƒ‰ãªã©ç”¨ã®ã‚¿ã‚°
             /// </summary>
             public const string Develop = "Develop/";
 
@@ -31,7 +31,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // •\¦‡
+        // è¡¨ç¤ºé †
         public static class Order {
             public const int VeryEarly = 100;
             public const int Early = 50;

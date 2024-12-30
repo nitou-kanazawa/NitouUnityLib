@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using nitou;
 
 namespace UnityScreenNavigator.Runtime.Core.Sheet {
 
     /// <summary>
-    /// <see cref="Sheet"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Sheet"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class SheetExtensions {
 
         /// <summary>
-        /// CanvasGroup‚Ìinterctableİ’è‚ğs‚¤Šg’£ƒƒ\ƒbƒh
+        /// CanvasGroupã®interctableè¨­å®šã‚’è¡Œã†æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetInteractable(this Sheet sheet, bool value) {
             var canvasGroup = sheet.GetOrAddComponent<CanvasGroup>();

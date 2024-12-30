@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
 using System;
 
-// [Ql]
-//  zenn: uGUI‚ÌImage‚ÉBaseMeshEffect‚ÅƒOƒ‰ƒf[ƒVƒ‡ƒ“‚ğ‚©‚¯‚Ä‚İ‚é https://zenn.dev/happy_elements/articles/44cded89f622d7
+// [å‚è€ƒ]
+//  zenn: uGUIã®Imageã«BaseMeshEffectã§ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã‹ã‘ã¦ã¿ã‚‹ https://zenn.dev/happy_elements/articles/44cded89f622d7
 
 namespace nitou.UI {
 

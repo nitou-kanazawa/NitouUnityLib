@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 
 namespace nitou.Tools.ProjectWindow{
@@ -16,7 +16,7 @@ namespace nitou.Tools.ProjectWindow{
                 AssetDatabase.CreateFolder(_parentFolderPath, _parentFolderName);
             }
 
-            // ƒtƒ‰ƒO‚ÉŠî‚Ã‚¢‚ÄƒTƒuƒtƒHƒ‹ƒ_‚ğì¬
+            // ãƒ•ãƒ©ã‚°ã«åŸºã¥ã„ã¦ã‚µãƒ–ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œæˆ
             foreach (var flagName in flags.GetFlagNames()) {
                 if (flags.GetFlagValue(flagName)) {
                     CreateFolder(parentFolder, flagName);
@@ -41,7 +41,7 @@ namespace nitou.Tools.ProjectWindow{
         }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_‚Ìƒtƒ‹ƒpƒX‚ğæ“¾
+        /// ãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ•ãƒ«ãƒ‘ã‚¹ã‚’å–å¾—
         /// </summary>
         public static string GetFullPath(string assetPath) {
             return Path.Combine(Directory.GetParent(Application.dataPath).FullName, assetPath);

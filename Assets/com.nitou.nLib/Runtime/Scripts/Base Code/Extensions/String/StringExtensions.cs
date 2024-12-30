@@ -1,49 +1,49 @@
-using System;
+ï»¿using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: w’è‚³‚ê‚½•¶š—ñ‚ª“d˜b”Ô†‚©‚Ç‚¤‚©‚ğ•Ô‚·ŠÖ” https://baba-s.hatenablog.com/entry/2014/11/10/110048
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒé›»è©±ç•ªå·ã‹ã©ã†ã‹ã‚’è¿”ã™é–¢æ•° https://baba-s.hatenablog.com/entry/2014/11/10/110048
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="string"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="string"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class StringExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚Ì”»’è
+        #region æ–‡å­—åˆ—ã®åˆ¤å®š
 
         /// <summary>
-        /// •¶š—ñ‚ª Null‚à‚µ‚­‚Í‹ó ‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒ Nullã‚‚ã—ãã¯ç©º ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsNullOrEmpty(this string self) =>
             string.IsNullOrEmpty(self);
 
         /// <summary>
-        /// •¶š—ñ‚ª Null/‹ó•¶š/‹ó”’•¶š ‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒ Null/ç©ºæ–‡å­—/ç©ºç™½æ–‡å­— ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsNullOrWhiteSpace(this string self) =>
             string.IsNullOrWhiteSpace(self);
 
 
         /// <summary>
-        /// w’è‚³‚ê‚½‚¢‚¸‚ê‚©‚Ì•¶š—ñ‚ğŠÜ‚Ş‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æŒ‡å®šã•ã‚ŒãŸã„ãšã‚Œã‹ã®æ–‡å­—åˆ—ã‚’å«ã‚€ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IncludeAny(this string self, params string[] list) =>
         list.Any(c => self.Contains(c));
 
         /// <summary>
-        /// •¶š—ñ‚ªw’è‚³‚ê‚½‚¢‚¸‚ê‚©‚Ì•¶š—ñ‚Æ“™‚µ‚¢‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒæŒ‡å®šã•ã‚ŒãŸã„ãšã‚Œã‹ã®æ–‡å­—åˆ—ã¨ç­‰ã—ã„ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsAny(this string self, params string[] values) =>
             values.Any(c => c == self);
 
 
         /// <summary>
-        /// •¶š—ñ‚ªƒ[ƒ‹ƒAƒhƒŒƒX‚©‚Ç‚¤‚©‚ğ•Ô‚µ‚Ü‚·
+        /// æ–‡å­—åˆ—ãŒãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‹ã©ã†ã‹ã‚’è¿”ã—ã¾ã™
         /// </summary>
         public static bool IsMailAddress(this string self) {
             if (string.IsNullOrEmpty(self)) { return false; }
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¶š—ñ‚ª“d˜b”Ô†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒé›»è©±ç•ªå·ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsPhoneNumber(this string self) {
             if (string.IsNullOrEmpty(self)) { return false; }
@@ -68,7 +68,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¶š—ñ‚ª—X•Ö”Ô†‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒéƒµä¾¿ç•ªå·ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsZipCode(this string self) {
             if (string.IsNullOrEmpty(self)) { return false; }
@@ -81,7 +81,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¶š—ñ‚ª URL ‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+        /// æ–‡å­—åˆ—ãŒ URL ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public static bool IsUrl(this string self) {
             if (string.IsNullOrEmpty(self)) { return false; }
@@ -95,7 +95,7 @@ namespace nitou {
         // ----- 
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ“—v‘f‚Éd•¡‚ª‚ ‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³è¦ç´ ã«é‡è¤‡ãŒã‚ã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool ContainsDuplicate(this IEnumerable<string> self) =>
             self.GroupBy(i => i).SelectMany(g => g.Skip(1)).Any();
@@ -104,10 +104,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚ÌC³
+        #region æ–‡å­—åˆ—ã®ä¿®æ­£
 
         /// <summary>
-        /// •¶š—ñ‚©‚ç‹ó”’•¶š‚ğíœ‚·‚é
+        /// æ–‡å­—åˆ—ã‹ã‚‰ç©ºç™½æ–‡å­—ã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
         public static string WithoutSpace(this string self) =>
             String.Concat(self.Where(c => !Char.IsWhiteSpace(c)));

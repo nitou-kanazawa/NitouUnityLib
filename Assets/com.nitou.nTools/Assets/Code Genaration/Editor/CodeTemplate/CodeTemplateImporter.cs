@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -6,23 +6,23 @@ using UnityEditor.AssetImporters;
 
 namespace nitou.Tools.CodeGeneration{
 
-    [ScriptedImporter(1, "cstmp")]   // ¦ƒo[ƒWƒ‡ƒ“”Ô†‚ÆŠg’£q‚ğw’è
+    [ScriptedImporter(1, "cstmp")]   // â€»ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã¨æ‹¡å¼µå­ã‚’æŒ‡å®š
     public class CodeTemplateImporter : ScriptedImporter {
 
         public override void OnImportAsset(AssetImportContext ctx) {
 
-            // ƒCƒ“ƒ|[ƒg‘ÎÛ‚Ìƒtƒ@ƒCƒ‹ƒpƒX
+            // ã‚¤ãƒ³ãƒãƒ¼ãƒˆå¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
             string filePath = ctx.assetPath;
             string fileName = PathUtils.GetFileName(filePath);
 
-            // ƒAƒZƒbƒg‚ğƒCƒ“ƒ|[ƒg‚·‚éˆ—i—á: ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Ì“à—e‚ğ“Ç‚İ‚Şj
+            // ã‚¢ã‚»ãƒƒãƒˆã‚’ã‚¤ãƒ³ãƒãƒ¼ãƒˆã™ã‚‹å‡¦ç†ï¼ˆä¾‹: ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å†…å®¹ã‚’èª­ã¿è¾¼ã‚€ï¼‰
             string fileContent = System.IO.File.ReadAllText(filePath);
 
-            // “Ç‚İ‚ñ‚¾“à—e‚ğ•Û‚·‚é ScriptableObject ‚Ì¶¬
+            // èª­ã¿è¾¼ã‚“ã å†…å®¹ã‚’ä¿æŒã™ã‚‹ ScriptableObject ã®ç”Ÿæˆ
             CodeTemplateAsset asset = ScriptableObject.CreateInstance<CodeTemplateAsset>();
             asset.data = fileContent;
 
-            // ƒAƒZƒbƒg‚ğƒRƒ“ƒeƒLƒXƒg‚É“o˜^‚µAUnity‚É”F¯‚³‚¹‚é
+            // ã‚¢ã‚»ãƒƒãƒˆã‚’ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã«ç™»éŒ²ã—ã€Unityã«èªè­˜ã•ã›ã‚‹
             ctx.AddObjectToAsset(fileName, asset);
             ctx.SetMainObject(asset);
 

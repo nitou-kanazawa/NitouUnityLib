@@ -1,8 +1,8 @@
-
+ï»¿
 namespace nitou.EditorShared{
 
     /// <summary>
-    /// İ’èƒf[ƒ^‚ğ•\‚·ƒCƒ“ƒ^[ƒtƒF[ƒX
+    /// è¨­å®šãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     /// </summary>
     public interface ISettingsData{
 

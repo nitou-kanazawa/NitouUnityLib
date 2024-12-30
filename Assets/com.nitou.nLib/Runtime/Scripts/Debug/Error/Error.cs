@@ -1,8 +1,8 @@
-using System;
+ï»¿using System;
 using System.Runtime.CompilerServices;
 
-// [Ql]
-//  hatena: À‚ÍŠÖ”‚ğŒÄ‚Ño‚·‚Ì‚ÉƒRƒXƒg‚ª‚©‚©‚Á‚Ä‚½HI https://sat-box.hatenablog.jp/entry/2022/05/20/133607
+// [å‚è€ƒ]
+//  hatena: å®Ÿã¯é–¢æ•°ã‚’å‘¼ã³å‡ºã™ã®ã«ã‚³ã‚¹ãƒˆãŒã‹ã‹ã£ã¦ãŸï¼Ÿï¼ https://sat-box.hatenablog.jp/entry/2022/05/20/133607
 
 namespace nitou {
 

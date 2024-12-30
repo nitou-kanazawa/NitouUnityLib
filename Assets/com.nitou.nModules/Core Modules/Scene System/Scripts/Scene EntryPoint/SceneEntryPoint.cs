@@ -1,4 +1,4 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +8,7 @@ namespace nitou.SceneSystem {
     //using nitou.Sound;
 
     /// <summary>
-    /// ƒV[ƒ“ã‚Ö‚ÌQÆ‹N“_‚Æ‚È‚éƒIƒuƒWƒFƒNƒg
+    /// ã‚·ãƒ¼ãƒ³ä¸Šã¸ã®å‚ç…§èµ·ç‚¹ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     [DisallowMultipleComponent]
     public class SceneEntryPoint : MonoBehaviour, ISceneEntryPoint {
@@ -16,7 +16,7 @@ namespace nitou.SceneSystem {
         [EnumToggleButtons, HideLabel]
         [SerializeField] private SceneType _sceneType = SceneType.MainLevel;
 
-        // ƒJƒƒ‰
+        // ã‚«ãƒ¡ãƒ©
         [Title("Main Level Settings")]
         [ShowIf("@_sceneType", SceneType.MainLevel)]
         [SerializeField, Indent] Camera _sceneCamera;
@@ -49,7 +49,7 @@ namespace nitou.SceneSystem {
         #region Interface Method
 
         /// <summary>
-        /// ƒV[ƒ“‚ª“Ç‚İ‚Ü‚ê‚½‚Ìˆ—
+        /// ã‚·ãƒ¼ãƒ³ãŒèª­ã¿è¾¼ã¾ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         async UniTask ISceneEntryPoint.OnSceneLoadAsync() {
 
@@ -57,35 +57,35 @@ namespace nitou.SceneSystem {
                 _sceneCamera.gameObject.SetActive(false);
             }
 
-            // ŒÂ•Êˆ—
+            // å€‹åˆ¥å‡¦ç†
             //Debug_.Log("OnLoadInternal");
             await OnLoadInternal();
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ª‰ğ•ú‚³‚ê‚½‚Ìˆ—
+        /// ã‚·ãƒ¼ãƒ³ãŒè§£æ”¾ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         async UniTask ISceneEntryPoint.OnSceneUnloadAsync() {
             await OnUnloadInternal();
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈƒV[ƒ“‚Éİ’è‚³‚ê‚½‚Ìˆ—
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒ³ã«è¨­å®šã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         async UniTask ISceneEntryPoint.OnSceneActivateAsync() {
 
-            // ‹¤’Êˆ—
+            // å…±é€šå‡¦ç†
             switch (_sceneType) {
                 case SceneType.MainLevel:
 
-                    // ƒJƒƒ‰‚ÌØ‚è‘Ö‚¦
+                    // ã‚«ãƒ¡ãƒ©ã®åˆ‡ã‚Šæ›¿ãˆ
                     if (_sceneCamera != null) {
                         CameraUtil.DeactivateAllCamera();
                         _sceneCamera.gameObject.SetActive(true);
                         _sceneCamera.enabled = true;
                     }
 
-                    // BGMÄ¶
+                    // BGMå†ç”Ÿ
                     if (_bgmClip != null) {
                         //Sound.PlayBGM(_bgmClip);
                     }
@@ -102,19 +102,19 @@ namespace nitou.SceneSystem {
                     break;
             }
 
-            // ŒÂ•Êˆ—
+            // å€‹åˆ¥å‡¦ç†
             await OnActivateInternal();
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈƒV[ƒ“‚©‚ç‰ğœ‚³‚ê‚½‚Ìˆ—
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒ³ã‹ã‚‰è§£é™¤ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         async UniTask ISceneEntryPoint.OnSceneDeactivateAsync() {
 
-            // ‹¤’Êˆ—
+            // å…±é€šå‡¦ç†
 
 
-            // ŒÂ•Êˆ—
+            // å€‹åˆ¥å‡¦ç†
             await OnDeactivateInternal();
         }
 

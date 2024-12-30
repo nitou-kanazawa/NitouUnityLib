@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Modal;
@@ -18,7 +18,7 @@ namespace nitou.UI.PresentationFramework {
         // 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected ModalPresenter(TModal view) : base(view) { }
 
@@ -95,69 +95,69 @@ namespace nitou.UI.PresentationFramework {
 
 
         /// ----------------------------------------------------------------------------
-        // IModalLifecycleEvent Method (¦”h¶ƒNƒ‰ƒX‚Å‚ÌÄ’è‹`—p)
+        // IModalLifecycleEvent Method (â€»æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ã§ã®å†å®šç¾©ç”¨)
 
         /// <summary>
-        /// ƒ‚[ƒ_ƒ‹‚ªƒ[ƒh‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// ãƒ¢ãƒ¼ãƒ€ãƒ«ãŒãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewDidLoad(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Push‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª•\¦‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Pushé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒè¡¨ç¤ºã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewWillPushEnter(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Push‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª•\¦‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Pushé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒè¡¨ç¤ºã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual void ViewDidPushEnter(TModal view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// Push‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª”ñ•\¦‚É‚È‚é’¼‘O‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Pushé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒéè¡¨ç¤ºã«ãªã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewWillPushExit(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Push‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª”ñ•\¦‚É‚È‚Á‚½’¼Œã‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Pushé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒéè¡¨ç¤ºã«ãªã£ãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual void ViewDidPushExit(TModal view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// Pop‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª•\¦‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Popé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒè¡¨ç¤ºã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewWillPopEnter(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Pop‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª•\¦‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Popé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒè¡¨ç¤ºã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual void ViewDidPopEnter(TModal view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// Pop‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª”ñ•\¦‚É‚È‚é’¼‘O‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Popé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒéè¡¨ç¤ºã«ãªã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewWillPopExit(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// Pop‘JˆÚ‚É‚æ‚èƒ‚[ƒ_ƒ‹‚ª”ñ•\¦‚É‚È‚Á‚½’¼Œã‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// Popé·ç§»ã«ã‚ˆã‚Šãƒ¢ãƒ¼ãƒ€ãƒ«ãŒéè¡¨ç¤ºã«ãªã£ãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual void ViewDidPopExit(TModal view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// ƒ‚[ƒ_ƒ‹‚ªƒŠƒŠ[ƒX‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚éˆ—
+        /// ãƒ¢ãƒ¼ãƒ€ãƒ«ãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹å‡¦ç†
         /// </summary>
         protected virtual Task ViewWillDestroy(TModal view, TRootViewState viewState) {
             return Task.CompletedTask;

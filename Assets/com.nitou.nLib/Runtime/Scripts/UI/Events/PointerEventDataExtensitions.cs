@@ -1,24 +1,24 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// [Ql]
-// Hatena: EventSystems‚©‚çó‚¯æ‚Á‚½À•W‚ğRectTransform.localPosition‚Éİ’è‚·‚é•û–@ https://appleorbit.hatenablog.com/entry/2015/10/23/000403
+// [å‚è€ƒ]
+// Hatena: EventSystemsã‹ã‚‰å—ã‘å–ã£ãŸåº§æ¨™ã‚’RectTransform.localPositionã«è¨­å®šã™ã‚‹æ–¹æ³• https://appleorbit.hatenablog.com/entry/2015/10/23/000403
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="PointerEventData"/>‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// <see cref="PointerEventData"/>ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class PointerEventDataExtensitions {
 
         /// ----------------------------------------------------------------------------
-        // À•W‚Ìæ“¾
+        // åº§æ¨™ã®å–å¾—
 
         /// <summary>
-        /// À•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
-        /// ¦Canvas‚ÌRenderMode.WorldSpace‚Í”ñ‘Î‰
+        /// åº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
+        /// â€»Canvasã®RenderMode.WorldSpaceã¯éå¯¾å¿œ
         /// </summary>
         public static Vector2 GetScreenSpaceLocalPosition(this PointerEventData self, RectTransform parentRect) {
             var screenPosition = self.position;
@@ -32,8 +32,8 @@ namespace nitou {
         }
 
         /// <summary>
-        /// À•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
-        /// ¦Canvas‚ÌRenderMode.WorldSpace‚Í”ñ‘Î‰
+        /// åº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
+        /// â€»Canvasã®RenderMode.WorldSpaceã¯éå¯¾å¿œ
         /// </summary>
         public static Vector2 GetScreenSpacePosition(this PointerEventData self, RectTransform parentRect) {
             var screenPosition = self.position;
@@ -51,7 +51,7 @@ namespace nitou {
         // 
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg”­¶’n“_‚ÌDropdownArea‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿåœ°ç‚¹ã®DropdownAreaã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryGetRaycastArea<T>(this PointerEventData self, out T comonent) 
             where T : Component {
@@ -59,7 +59,7 @@ namespace nitou {
             var results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(self, results);
 
-            // ¦Å‚àã‚É‚ ‚é‚à‚Ì‚ğæ“¾‚·‚é
+            // â€»æœ€ã‚‚ä¸Šã«ã‚ã‚‹ã‚‚ã®ã‚’å–å¾—ã™ã‚‹
             comonent = results
                 .Select(x => x.gameObject.GetComponent<T>())
                 .FirstOrDefault(x => x != null);

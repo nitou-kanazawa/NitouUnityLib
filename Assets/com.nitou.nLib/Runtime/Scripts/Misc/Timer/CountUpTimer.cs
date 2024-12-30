@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 
-// [Ql]
-//  _: Mathf‚ÌØ‚èã‚°AØ‚èÌ‚ÄA‹ô”ŠÛ‚ßBg‚¢•ª‚¯‚ª‘å–‚æ‚Ë https://ekulabo.com/mathf-round
+// [å‚è€ƒ]
+//  _: Mathfã®åˆ‡ã‚Šä¸Šã’ã€åˆ‡ã‚Šæ¨ã¦ã€å¶æ•°ä¸¸ã‚ã€‚ä½¿ã„åˆ†ã‘ãŒå¤§äº‹ã‚ˆã­ https://ekulabo.com/mathf-round
 
 namespace nitou {
 
     /// <summary>
-    /// ƒJƒEƒ“ƒgƒAƒbƒv•û®‚Ìƒ^ƒCƒ}[
+    /// ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—æ–¹å¼ã®ã‚¿ã‚¤ãƒãƒ¼
     /// </summary>
     public class CountUpTimer : ITimer, IDisposable {
 
         private readonly ReactiveProperty<int> _currentRP;
         private IDisposable _subscription = null;
 
-        private float _elapsedTime;           // ¦ÀŒvZ—p‚Ì•Ï”
+        private float _elapsedTime;           // â€»å®Ÿè¨ˆç®—ç”¨ã®å¤‰æ•°
                 
         /// <summary>
-        /// Œ»İ‚ÌŠÔ
+        /// ç¾åœ¨ã®æ™‚é–“
         /// </summary>
         public IReadOnlyReactiveProperty<int> Current => _currentRP;
 
@@ -27,7 +27,7 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public CountUpTimer() {
             _elapsedTime = 0;
@@ -35,7 +35,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
             Stop();
@@ -45,7 +45,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (ƒ^ƒCƒ}[‘€ì)
+        // Public Method (ã‚¿ã‚¤ãƒãƒ¼æ“ä½œ)
         
         public void Start() {
             if (_subscription != null) {
@@ -53,12 +53,12 @@ namespace nitou {
                 return;
             }
 
-            // XVˆ—
+            // æ›´æ–°å‡¦ç†
             _subscription = Observable.EveryUpdate()
                 .Subscribe(_ => {
-                    // Time.deltaTime‚ÉŠî‚Ã‚¢‚ÄXV
+                    // Time.deltaTimeã«åŸºã¥ã„ã¦æ›´æ–°
                     _elapsedTime += Time.deltaTime;
-                    _currentRP.Value = Mathf.FloorToInt(_elapsedTime); // ¦•‰‚Ì–³ŒÀ‘å•ûŒü‚ÉØ‚è‰º‚°
+                    _currentRP.Value = Mathf.FloorToInt(_elapsedTime); // â€»è² ã®ç„¡é™å¤§æ–¹å‘ã«åˆ‡ã‚Šä¸‹ã’
                 });
         }
 

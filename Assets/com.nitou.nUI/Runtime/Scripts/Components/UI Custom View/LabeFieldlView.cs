@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 using Sirenix.OdinInspector;
 
 namespace nitou.UI.Component{
 
     /// <summary>
-    /// ƒVƒ“ƒvƒ‹‚Èƒ‰ƒxƒ‹‚Æ–{•¶‚ğ‚ÂView
+    /// ã‚·ãƒ³ãƒ—ãƒ«ãªãƒ©ãƒ™ãƒ«ã¨æœ¬æ–‡ã‚’æŒã¤View
     /// </summary>
     [DisallowMultipleComponent]
     public class LabeFieldlView : MonoBehaviour{
@@ -18,7 +18,7 @@ namespace nitou.UI.Component{
         // Public Method
 
         /// <summary>
-        /// ƒ‰ƒxƒ‹‚ğİ’è‚·‚é
+        /// ãƒ©ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetLabel(string label) {
             if (label == null) return;
@@ -26,7 +26,7 @@ namespace nitou.UI.Component{
         }
 
         /// <summary>
-        /// –{•¶‚ğİ’è‚·‚é
+        /// æœ¬æ–‡ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetValue(string value) {
             if (value == null) return;

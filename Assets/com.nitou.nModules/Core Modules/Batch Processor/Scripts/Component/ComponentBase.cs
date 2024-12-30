@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.BachProcessor{
 
     /// <summary>
-    /// ƒoƒbƒ`ˆ—‘ÎÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgŠî’êƒNƒ‰ƒXD
+    /// ãƒãƒƒãƒå‡¦ç†å¯¾è±¡ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåŸºåº•ã‚¯ãƒ©ã‚¹ï¼
     /// Register this class with a class that inherits from <see cref="SystemBase{TComponent, TSystem}"/> for usage.
     /// </summary>
     public abstract class ComponentBase : MonoBehaviour, IComponentIndex{

@@ -1,16 +1,16 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-// [Ql]
-//  qiita: –ˆ‰ñg‚¤•¡”‚ÌƒtƒHƒ‹ƒ_‚ğƒƒ“ƒNƒŠƒbƒN‚Åì¬‚·‚é•û–@ https://qiita.com/OKsaiyowa/items/f7b2d331526e2a6938b1
+// [å‚è€ƒ]
+//  qiita: æ¯å›ä½¿ã†è¤‡æ•°ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’ãƒ¯ãƒ³ã‚¯ãƒªãƒƒã‚¯ã§ä½œæˆã™ã‚‹æ–¹æ³• https://qiita.com/OKsaiyowa/items/f7b2d331526e2a6938b1
 
 namespace nitou.Tools.ProjectWindow {
     using nitou.EditorShared;
 
     /// <summary>
-    /// w’èƒtƒHƒ‹ƒ_’¼‰º‚É‹óƒtƒHƒ‹ƒ_‚ğ¶¬‚·‚é
+    /// æŒ‡å®šãƒ•ã‚©ãƒ«ãƒ€ç›´ä¸‹ã«ç©ºãƒ•ã‚©ãƒ«ãƒ€ã‚’ç”Ÿæˆã™ã‚‹
     /// </summary>
     public static class BasicFolderCreater {
 
@@ -30,7 +30,7 @@ namespace nitou.Tools.ProjectWindow {
                 return;
             }
 
-            // ƒAƒZƒbƒgƒf[ƒ^—pƒtƒHƒ‹ƒ_
+            // ã‚¢ã‚»ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ç”¨ãƒ•ã‚©ãƒ«ãƒ€
             CreateFolder(parentFolder, "Animations");
             CreateFolder(parentFolder, "Audios");
             CreateFolder(parentFolder, "Textures");
@@ -51,7 +51,7 @@ namespace nitou.Tools.ProjectWindow {
                 return;
             }
 
-            // ƒR[ƒh—pƒtƒHƒ‹ƒ_
+            // ã‚³ãƒ¼ãƒ‰ç”¨ãƒ•ã‚©ãƒ«ãƒ€
             CreateFolder(parentFolder, "_Composition");
             CreateFolder(parentFolder, "Entity");
             CreateFolder(parentFolder, "UseCase");
@@ -63,7 +63,7 @@ namespace nitou.Tools.ProjectWindow {
         }
 
         /// <summary>
-        /// ƒrƒ‹ƒhƒf[ƒ^—p‚ÌƒtƒHƒ‹ƒ_‚ğ¶¬‚·‚é
+        /// ãƒ“ãƒ«ãƒ‰ãƒ‡ãƒ¼ã‚¿ç”¨ã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’ç”Ÿæˆã™ã‚‹
         /// </summary>
         [MenuItem(ToolBarMenu.Prefix.EditorTool + "Project Window/Create Build Folder")]
         public static void CreateBuildFolder() {
@@ -81,7 +81,7 @@ namespace nitou.Tools.ProjectWindow {
                 Directory.CreateDirectory(fullPath);
             }
 
-            // ¦«ƒtƒHƒ‹ƒ_XV‚ğUnity‘¤‚Ö”½‰f‚·‚é‚½‚ßÀs
+            // â€»â†“ãƒ•ã‚©ãƒ«ãƒ€æ›´æ–°ã‚’Unityå´ã¸åæ˜ ã™ã‚‹ãŸã‚å®Ÿè¡Œ
             AssetDatabase.ImportAsset(fullPath);
         }
 

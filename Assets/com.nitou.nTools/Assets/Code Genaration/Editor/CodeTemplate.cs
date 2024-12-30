@@ -1,4 +1,4 @@
-using System.IO;
+ï»¿using System.IO;
 using UnityEngine;
 
 namespace nitou.Tools
@@ -15,9 +15,9 @@ namespace nitou.Tools
 
         public static string FromFile(string templatePath) {
 
-            // ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+            // ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿
             if (!File.Exists(templatePath)) {
-                Debug.LogError($"ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: {templatePath}");
+                Debug.LogError($"ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: {templatePath}");
                 return null;
             }
 

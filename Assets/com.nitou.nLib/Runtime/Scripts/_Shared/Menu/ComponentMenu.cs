@@ -1,13 +1,13 @@
-
+ï»¿
 namespace nitou {
 
     /// <summary>
-    /// "Component Menu"‚ÌŠeí’è‹`D
+    /// "Component Menu"ã®å„ç¨®å®šç¾©ï¼
     /// </summary>
     public static partial class ComponentMenu {
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static partial class Prefix {
 
             // Default Category
@@ -27,14 +27,14 @@ namespace nitou {
 
         
         /// ----------------------------------------------------------------------------
-        // Ú”ö«
+        // æ¥å°¾è¾
         public static partial class Suffix {
 
         }
 
 
         /// ----------------------------------------------------------------------------
-        // •\¦‡
+        // è¡¨ç¤ºé †
         public static class Order {
 
             public const int EventChannel = 0;

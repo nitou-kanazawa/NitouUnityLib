@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine.UI;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Toggle"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Toggle"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class ToggleExtensions {
 
         /// ----------------------------------------------------------------------------
-        // ƒCƒxƒ“ƒg‚Ì“o˜^
+        // ã‚¤ãƒ™ãƒ³ãƒˆã®ç™»éŒ²
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg“o˜^‚ğŠÈ—ª‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²ã‚’ç°¡ç•¥åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static IDisposable SetOnValueChangedDestination(this Toggle self, Action<bool> onValueChanged) {
             return self.onValueChanged

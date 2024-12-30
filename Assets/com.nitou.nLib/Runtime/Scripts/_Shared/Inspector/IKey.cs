@@ -1,8 +1,8 @@
-
+ï»¿
 namespace nitou {
 
     /// <summary>
-    /// Inspector ‚Å•p”É‚Ég—p‚·‚éƒL[ƒ[ƒhW (¦‚ ‚­‚Ü‚Åƒ^ƒCƒvƒ~ƒX–h~—p)
+    /// Inspector ã§é »ç¹ã«ä½¿ç”¨ã™ã‚‹ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰é›† (â€»ã‚ãã¾ã§ã‚¿ã‚¤ãƒ—ãƒŸã‚¹é˜²æ­¢ç”¨)
     /// </summary>
     public static partial class IKey {
 
@@ -31,17 +31,17 @@ namespace nitou {
         public static class Button {
 
             /// <summary>
-            /// ƒƒCƒ“
+            /// ãƒ¡ã‚¤ãƒ³
             /// </summary>
             public const string MAIN = "Main Buttons";
 
             /// <summary>
-            /// ƒTƒu
+            /// ã‚µãƒ–
             /// </summary>
             public const string SUB = "SUB Buttons";
 
             /// <summary>
-            /// ƒRƒ“ƒ|[ƒlƒ“ƒg
+            /// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
             /// </summary>
             public const string CONTROL = "Control Buttons";
 

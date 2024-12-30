@@ -1,25 +1,25 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  Docswell: AssetPostprocessorŠ®‘S‚É—‰ğ‚µ‚½ https://www.docswell.com/s/henjiganai/5714J5-AssetPostprocessor#p8
-//  qiita: ƒGƒfƒBƒ^[Šg’£‚ÅA“Ç‚İ‚ŞƒAƒZƒbƒg‚ÌƒpƒX‚ğƒn[ƒhƒR[ƒh‚µ‚È‚¢‚½‚ß‚É https://qiita.com/tsukimi_neko/items/3d57e3808acb88e11c39
-//  @¨ i¦AssetPostprocessor‚ÍUnity.ObjectH‚ğe‚É‚½‚È‚¢‚½‚ßCƒVƒŠƒAƒ‰ƒCƒY‘ÎÛŠO‚İ‚½‚¢j
+// [å‚è€ƒ]
+//  Docswell: AssetPostprocessorå®Œå…¨ã«ç†è§£ã—ãŸ https://www.docswell.com/s/henjiganai/5714J5-AssetPostprocessor#p8
+//  qiita: ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼æ‹¡å¼µã§ã€èª­ã¿è¾¼ã‚€ã‚¢ã‚»ãƒƒãƒˆã®ãƒ‘ã‚¹ã‚’ãƒãƒ¼ãƒ‰ã‚³ãƒ¼ãƒ‰ã—ãªã„ãŸã‚ã« https://qiita.com/tsukimi_neko/items/3d57e3808acb88e11c39
+//  ã€€â†’ ï¼ˆâ€»AssetPostprocessorã¯Unity.Objectï¼Ÿã‚’è¦ªã«æŒãŸãªã„ãŸã‚ï¼Œã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºå¯¾è±¡å¤–ã¿ãŸã„ï¼‰
 
 namespace nitou.Tools.ProjectWindow {
     using nitou.Tools.Shared;
     using nitou.EditorShared;
 
     /// <summary>
-    /// ƒtƒHƒ‹ƒ_ƒAƒCƒRƒ“‰æ‘œ‚ğŠÇ—‚·‚éDictionay‚ğ¶¬‚·‚é
+    /// ãƒ•ã‚©ãƒ«ãƒ€ã‚¢ã‚¤ã‚³ãƒ³ç”»åƒã‚’ç®¡ç†ã™ã‚‹Dictionayã‚’ç”Ÿæˆã™ã‚‹
     /// </summary>
     internal class IconDictionaryCreator : AssetPostprocessor {
 
-        // ƒŠƒ\[ƒXî•ñ
+        // ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±
         private const string relativeFolderPath = "Project Folder/Project Folder Icon/Icons";
         internal static Dictionary<string, Texture> _iconDictionary;
 
@@ -28,7 +28,7 @@ namespace nitou.Tools.ProjectWindow {
         // Internal Method
 
         /// <summary>
-        /// Dictionary‚Ì¶¬
+        /// Dictionaryã®ç”Ÿæˆ
         /// </summary>
         internal static void BuildDictionary() {
 
@@ -38,16 +38,16 @@ namespace nitou.Tools.ProjectWindow {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒL[‚É‘Î‰‚·‚éƒAƒCƒRƒ“‰æ‘œ‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹ã‚¢ã‚¤ã‚³ãƒ³ç”»åƒã‚’å–å¾—ã™ã‚‹
         /// </summary>
         internal static (bool isExist, Texture texture) GetIconTexture(string fileNameKey) {
 
-            // ƒtƒ@ƒCƒ‹–¼‚ªŠ®‘Sˆê’v‚Ìê‡
+            // ãƒ•ã‚¡ã‚¤ãƒ«åãŒå®Œå…¨ä¸€è‡´ã®å ´åˆ
             if (_iconDictionary.ContainsKey(fileNameKey)) {
                 return (true, _iconDictionary[fileNameKey]);
             }
 
-            // ³‹K•\Œ»‘Î‰ (¦‚Æ‚è‚ ‚¦‚¸Œˆ‚ß‘Å‚¿‚ÌÀ‘•)
+            // æ­£è¦è¡¨ç¾å¯¾å¿œ (â€»ã¨ã‚Šã‚ãˆãšæ±ºã‚æ‰“ã¡ã®å®Ÿè£…)
             if (fileNameKey[0] == '_' && fileNameKey.Length > 1) {
                 fileNameKey = fileNameKey.Substring(1);
                 if (_iconDictionary.ContainsKey(fileNameKey))

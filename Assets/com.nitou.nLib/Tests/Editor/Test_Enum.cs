@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
 // [REF]
-//  qiita: Unity Test Runner‚Ìg‚¢•û‚ğ—‰ğ‚·‚é https://qiita.com/riekure/items/b0f89280ecfcfa626f7b
+//  qiita: Unity Test Runnerã®ä½¿ã„æ–¹ã‚’ç†è§£ã™ã‚‹ https://qiita.com/riekure/items/b0f89280ecfcfa626f7b
 
 namespace nitou.Tests {
 

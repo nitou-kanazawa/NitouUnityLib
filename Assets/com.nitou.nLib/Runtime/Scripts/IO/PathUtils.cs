@@ -1,39 +1,39 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-// [Ql]
-//  qiita: C#(Unity)‚Å‚Ìƒtƒ@ƒCƒ‹ƒpƒX‚Ìæ“¾ https://qiita.com/oishihiroaki/items/1a082f3bb32f2e3d88a0
-//  ‚Í‚È‚¿‚é: â‘ÎƒpƒX‚ğAssets/~‚É•ÏŠ·‚·‚é https://www.hanachiru-blog.com/entry/2018/10/12/204022
-//  _ : ƒtƒ‹ƒpƒX‚ğAssetsƒpƒX‚É•ÏŠ·‚·‚é•û–@ https://mizutanikirin.net/unity-assetspath
+// [å‚è€ƒ]
+//  qiita: C#(Unity)ã§ã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã®å–å¾— https://qiita.com/oishihiroaki/items/1a082f3bb32f2e3d88a0
+//  ã¯ãªã¡ã‚‹: çµ¶å¯¾ãƒ‘ã‚¹ã‚’Assets/~ã«å¤‰æ›ã™ã‚‹ https://www.hanachiru-blog.com/entry/2018/10/12/204022
+//  _ : ãƒ•ãƒ«ãƒ‘ã‚¹ã‚’Assetsãƒ‘ã‚¹ã«å¤‰æ›ã™ã‚‹æ–¹æ³• https://mizutanikirin.net/unity-assetspath
 
 namespace nitou {
 
     /// <summary>
-    /// ƒpƒXæ“¾‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// ãƒ‘ã‚¹å–å¾—ã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class PathUtils {
 
         /// --------------------------------------------------------------------
-        // æ“¾
+        // å–å¾—
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒpƒX‚©‚çƒtƒ@ƒCƒ‹–¼‚ğæ“¾‚·‚é
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‹ã‚‰ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetFileName(string filePath) =>
             System.IO.Path.GetFileName(filePath);
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹ƒpƒX‚©‚çŠg’£q‚ğæ“¾‚·‚é
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‹ã‚‰æ‹¡å¼µå­ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetExtension(string filePath) =>
             System.IO.Path.GetExtension(filePath);
 
         /// <summary>
-        /// w’è‚µ‚½ƒtƒHƒ‹ƒ_“à‚Ì‘Sƒtƒ@ƒCƒ‹ƒpƒX‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸãƒ•ã‚©ãƒ«ãƒ€å†…ã®å…¨ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string[] GetFilesInFolder(string folderPath) {
             return System.IO.Directory.GetFiles(folderPath, "*");
@@ -41,28 +41,28 @@ namespace nitou {
 
 
         /// --------------------------------------------------------------------
-        #region ƒpƒX‚Ì•ÏŠ·istringŠg’£ƒƒ\ƒbƒhj
+        #region ãƒ‘ã‚¹ã®å¤‰æ›ï¼ˆstringæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼‰
 
         /// <summary>
-        /// ƒtƒ‹ƒpƒX‚ğƒAƒZƒbƒgˆÈ‰ºƒpƒX(Assets/..)‚É•ÏŠ·‚·‚é
+        /// ãƒ•ãƒ«ãƒ‘ã‚¹ã‚’ã‚¢ã‚»ãƒƒãƒˆä»¥ä¸‹ãƒ‘ã‚¹(Assets/..)ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static string ToAssetsPath(this string fullPath) {
-            // "Assets/"ˆÊ’u‚ğæ“¾
+            // "Assets/"ä½ç½®ã‚’å–å¾—
             int startIndex = fullPath.IndexOf("Assets/", System.StringComparison.Ordinal);
             if (startIndex == -1) {
                 startIndex = fullPath.IndexOf("Assets\\", System.StringComparison.Ordinal);
             }
 
-            // ¦ŠÜ‚Ü‚ê‚È‚¢ê‡‚ÍC‹ó•¶š‚ğ•Ô‚·
+            // â€»å«ã¾ã‚Œãªã„å ´åˆã¯ï¼Œç©ºæ–‡å­—ã‚’è¿”ã™
             if (startIndex == -1) return "";
 
-            // ‰ÁHŒãƒpƒX‚ğ•Ô‚·
+            // åŠ å·¥å¾Œãƒ‘ã‚¹ã‚’è¿”ã™
             string assetPath = fullPath.Substring(startIndex);
             return assetPath;
         }
 
         /// <summary>
-        /// •¶š—ñ‚Ì”z—ñ‚ğ 1 ‚Â‚ÌƒpƒX‚ÉŒ‹‡‚µ‚Ü‚·
+        /// æ–‡å­—åˆ—ã®é…åˆ—ã‚’ 1 ã¤ã®ãƒ‘ã‚¹ã«çµåˆã—ã¾ã™
         /// </summary>
         public static string Combine(params string[] paths) {
             return paths
@@ -88,17 +88,17 @@ namespace nitou {
 #if UNITY_EDITOR
 
         /// <summary>
-        /// ‘I‘ğ’†‚ÌƒAƒZƒbƒg‚ÌƒpƒX‚ğæ“¾‚·‚é
+        /// é¸æŠä¸­ã®ã‚¢ã‚»ãƒƒãƒˆã®ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetSelectedAssetPath() =>
             AssetDatabase.GetAssetPath(Selection.activeInstanceID);
 
 
         /// --------------------------------------------------------------------
-        #region ƒpƒX‚Ì•ÏŠ·istringŠg’£ƒƒ\ƒbƒhj
+        #region ãƒ‘ã‚¹ã®å¤‰æ›ï¼ˆstringæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼‰
 
         /// <summary>
-        /// ƒAƒZƒbƒgƒpƒX‚ğæ“¾‚·‚é
+        /// ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetAssetPath(this ScriptableObject scriptableObject) {
             var mono = MonoScript.FromScriptableObject(scriptableObject);
@@ -106,7 +106,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒAƒZƒbƒg‚ÌeƒtƒHƒ‹ƒ_ƒpƒX‚ğæ“¾‚·‚é
+        /// ã‚¢ã‚»ãƒƒãƒˆã®è¦ªãƒ•ã‚©ãƒ«ãƒ€ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetAssetParentFolderPath(this ScriptableObject scriptableObject, int n = 1) {
             var filePath = scriptableObject.GetAssetPath();
@@ -120,22 +120,22 @@ namespace nitou {
         // 
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_‚ÌƒAƒZƒbƒgƒpƒX‚ğŒŸõ‚µ‚Äæ“¾‚·‚é
+        /// ãƒ•ã‚©ãƒ«ãƒ€ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹ã‚’æ¤œç´¢ã—ã¦å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetFolderPath(string folderName, string parentFolderName) {
 
-            // ¦‘Sƒtƒ@ƒCƒ‹‚ğŒŸõ‚·‚éÀ‘•‚È‚Ì‚É’ˆÓ
+            // â€»å…¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¤œç´¢ã™ã‚‹å®Ÿè£…ãªã®ã«æ³¨æ„
             string[] guids = AssetDatabase.FindAssets(folderName);
             foreach (var guid in guids) {
 
-                // ‘ÎÛƒtƒHƒ‹ƒ_î•ñ
+                // å¯¾è±¡ãƒ•ã‚©ãƒ«ãƒ€æƒ…å ±
                 var folderPath = AssetDatabase.GUIDToAssetPath(guid);
 
-                // eƒtƒHƒ‹ƒ_î•ñ
+                // è¦ªãƒ•ã‚©ãƒ«ãƒ€æƒ…å ±
                 var parentFolderPath = System.IO.Path.GetDirectoryName(folderPath);
                 var parentFolder = System.IO.Path.GetFileName(parentFolderPath);
 
-                // eƒtƒHƒ‹ƒ_‚Ü‚Åˆê’v‚µ‚Ä‚¢‚é‚È‚çCŠm’è‚Æ‚·‚é
+                // è¦ªãƒ•ã‚©ãƒ«ãƒ€ã¾ã§ä¸€è‡´ã—ã¦ã„ã‚‹ãªã‚‰ï¼Œç¢ºå®šã¨ã™ã‚‹
                 if (parentFolder == parentFolderName) {
                     return folderPath;
                 }

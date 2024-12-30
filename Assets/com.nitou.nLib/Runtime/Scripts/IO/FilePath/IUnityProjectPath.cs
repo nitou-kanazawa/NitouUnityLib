@@ -1,8 +1,8 @@
-
+﻿
 namespace nitou {
 
     /// <summary>
-    /// UnityProject���̃f�[�^�A�܂��̓f�B���N�g�����w���p�X�̃C���^�[�t�F�[�X
+    /// UnityProject内のデータ、またはディレクトリを指すパスのインターフェース
     /// </summary>
     public interface IUnityProjectPath{
 

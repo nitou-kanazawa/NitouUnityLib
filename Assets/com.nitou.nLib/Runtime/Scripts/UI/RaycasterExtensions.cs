@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +8,13 @@ namespace nitou{
     using nitou.DesignPattern.Pooling;
 
     /// <summary>
-    /// RaycasterŠÖ˜A‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// Raycasteré–¢é€£ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class RaycasterExtensions {
 
         /// <summary>
-        /// Raycast‚ÌŠg’£ƒƒ\ƒbƒhD
-        /// i–ˆ‰ñƒŠƒXƒg‚ğ¶¬‚·‚é‚½‚ßAŠî–{“I‚É‚Íˆø”‚ÉƒŠƒXƒg‚ğó‚¯æ‚é’Êí”Å‚ğg—p‚·‚éDj
+        /// Raycastã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
+        /// ï¼ˆæ¯å›ãƒªã‚¹ãƒˆã‚’ç”Ÿæˆã™ã‚‹ãŸã‚ã€åŸºæœ¬çš„ã«ã¯å¼•æ•°ã«ãƒªã‚¹ãƒˆã‚’å—ã‘å–ã‚‹é€šå¸¸ç‰ˆã‚’ä½¿ç”¨ã™ã‚‹ï¼ï¼‰
         /// </summary>
         public static List<RaycastResult> Raycast(this BaseRaycaster self, PointerEventData pointerEventData) {
             List<RaycastResult> results = new();
@@ -23,7 +23,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒXƒNƒŠ[ƒ“À•W‚ÉUI‚ª‚ ‚é‚©‚Ç‚¤‚©’²‚×‚é
+        /// æŒ‡å®šã—ãŸã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã«UIãŒã‚ã‚‹ã‹ã©ã†ã‹èª¿ã¹ã‚‹
         /// </summary>
         public static bool OverlapUI(this IEnumerable<GraphicRaycaster> raycasters, PointerEventData pointerEventData) {
 
@@ -31,7 +31,7 @@ namespace nitou{
             bool isOverlap = false;
 
             try {
-                // ŠeRaycaster‚Åd‚È‚è”»’è‚ğs‚¤
+                // å„Raycasterã§é‡ãªã‚Šåˆ¤å®šã‚’è¡Œã†
                 foreach (var raycaster in raycasters.WithoutNull()) {
                     raycaster.Raycast(pointerEventData, results);
                     if (results.Count > 0) {
@@ -46,7 +46,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// w’è‚µ‚½Raycaster‚Ì’†‚©‚çAd‚È‚è‚Ì‚ ‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸRaycasterã®ä¸­ã‹ã‚‰ã€é‡ãªã‚Šã®ã‚ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static T GetOverlapComponent<T>(this IEnumerable<BaseRaycaster> raycasters, PointerEventData pointerEventData)
             where T : class {
@@ -59,19 +59,19 @@ namespace nitou{
                     raycaster.Raycast(pointerEventData, results);
                     if (results.IsEmpty()) continue;
 
-                    // Å‰‚ÉŒ©‚Â‚©‚Á‚½d‚È‚è‚Ì‚ ‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
+                    // æœ€åˆã«è¦‹ã¤ã‹ã£ãŸé‡ãªã‚Šã®ã‚ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
                     target = results.FirstOrDefault(r => r.gameObject.GetComponent<T>() != null).gameObject?.GetComponent<T>();
-                    if (target != null) break; // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªŒ©‚Â‚©‚Á‚½‚çƒ‹[ƒv‚ğI—¹
+                    if (target != null) break; // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¦‹ã¤ã‹ã£ãŸã‚‰ãƒ«ãƒ¼ãƒ—ã‚’çµ‚äº†
                 }
             } finally {
                 results.Free();
             }
 
-            return target; // Œ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡‚ÍƒfƒtƒHƒ‹ƒg’l‚ğ•Ô‚·
+            return target; // è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’è¿”ã™
         }
 
         /// <summary>
-        /// GraphicRaycaster‚ÌƒŠƒXƒg‚©‚çDragƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B
+        /// GraphicRaycasterã®ãƒªã‚¹ãƒˆã‹ã‚‰Dragã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static T GetDragAtPosition<T>(this IEnumerable<BaseRaycaster> raycasters, PointerEventData pointerEventData) {
             return raycasters
@@ -88,18 +88,18 @@ namespace nitou{
 
 
         /// <summary>
-        /// <see cref="GraphicRaycaster"/>‚ğCanvas‚ÌsortingOrder‡‚Éƒ\[ƒg‚·‚é
+        /// <see cref="GraphicRaycaster"/>ã‚’Canvasã®sortingOrderé †ã«ã‚½ãƒ¼ãƒˆã™ã‚‹
         /// </summary>
         public static IEnumerable<GraphicRaycaster> OrderBySortingOrder(this IEnumerable<GraphicRaycaster> raycasters) {
             return raycasters
-                // SortingOrder‚Å¸‡‚Éƒ\[ƒg
+                // SortingOrderã§æ˜‡é †ã«ã‚½ãƒ¼ãƒˆ
                 .OrderBy(raycaster =>  raycaster.sortOrderPriority);
         }
     }
 
 
     /// <summary>
-    /// <see cref="RaycastResult"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="RaycastResult"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class RaycastResultExtensions {
 

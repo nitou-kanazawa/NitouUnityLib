@@ -1,43 +1,43 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  _: Unity‚ÅLayerMask‚ğ‘€ì‚·‚é•û–@FX https://12px.com/blog/2021/11/layermask/
-//  Hatena: •¨—‰‰ZAÕ“Ë”»’èAƒRƒ‰ƒCƒ_[‚ÌŒŸo‚È‚Ç‚Åg‚¤LayerMask‚É‚Â‚¢‚Ä https://indie-game-creation-with-unity.hatenablog.com/entry/layer-mask
+// [å‚è€ƒ]
+//  _: Unityã§LayerMaskã‚’æ“ä½œã™ã‚‹æ–¹æ³•è‰²ã€… https://12px.com/blog/2021/11/layermask/
+//  Hatena: ç‰©ç†æ¼”ç®—ã€è¡çªåˆ¤å®šã€ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ã®æ¤œå‡ºãªã©ã§ä½¿ã†LayerMaskã«ã¤ã„ã¦ https://indie-game-creation-with-unity.hatenablog.com/entry/layer-mask
 
 namespace nitou {
 
     /// <summary>
-    /// LayerMask‚ÉÃ“Iƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚éƒNƒ‰ƒX
+    /// LayerMaskã«é™çš„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class LayerMaskUtil {
 
         /// ----------------------------------------------------------------------------
-        // Public Method@(LayerMAsk‚Ì¶¬)
+        // Public Methodã€€(LayerMAskã®ç”Ÿæˆ)
 
         /// <summary>
-        /// ‘S‚Ä“ü‚Á‚½LayerMask
+        /// å…¨ã¦å…¥ã£ãŸLayerMask
         /// </summary>
         public static LayerMask AllIn => -1;
 
         /// <summary>
-        /// ‹ó‚ÌLayerMask
+        /// ç©ºã®LayerMask
         /// </summary>
         public static LayerMask Empty => 1;
 
         /// <summary>
-        /// “Á’èƒŒƒCƒ„[‚Ì‚İ“ü‚Á‚½LayerMask
+        /// ç‰¹å®šãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã¿å…¥ã£ãŸLayerMask
         /// </summary>
         public static LayerMask Only(int layer) => 1 << layer;
 
         /// <summary>
-        /// “Á’èƒŒƒCƒ„[‚Ì‚İ“ü‚Á‚½LayerMask
+        /// ç‰¹å®šãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã¿å…¥ã£ãŸLayerMask
         /// </summary>
         public static LayerMask Only(string layerName) => 1 << LayerMask.NameToLayer(layerName);
 
         /// <summary>
-        /// "Default"‚Ì‚İ“ü‚Á‚½LayerMask
+        /// "Default"ã®ã¿å…¥ã£ãŸLayerMask
         /// </summary>
-        public static LayerMask OnlyDefault() => Only("Default");   // ¦0‚Å‚à‰Â
+        public static LayerMask OnlyDefault() => Only("Default");   // â€»0ã§ã‚‚å¯
 
     }
 

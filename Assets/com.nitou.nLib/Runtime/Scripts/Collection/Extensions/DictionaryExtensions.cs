@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using System.Collections.Generic;
 
-// [Ql]
-//  qiita: Dictionary‚ÌŠg’£ƒƒ\ƒbƒh 36‘I https://qiita.com/soi/items/6ce0e0ddefdd062c026a
-//  ƒRƒKƒlƒuƒƒO: Dictionary‚ğforeach‚Åg‚¤‚Ì‹Lq‚ğŠÈ—ª‰»‚·‚éDeconstruction https://baba-s.hatenablog.com/entry/2019/09/03/231000
+// [å‚è€ƒ]
+//  qiita: Dictionaryã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ 36é¸ https://qiita.com/soi/items/6ce0e0ddefdd062c026a
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Dictionaryã‚’foreachã§ä½¿ã†æ™‚ã®è¨˜è¿°ã‚’ç°¡ç•¥åŒ–ã™ã‚‹Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/231000
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Dictionary{TKey, TValue}"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Dictionary{TKey, TValue}"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class DictionaryExtensions {
 
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> self, out TKey key, out TValue value) {
             key = self.Key;
@@ -25,16 +25,16 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // —v‘f‚Ì’Ç‰Á
+        // è¦ç´ ã®è¿½åŠ 
 
         /// <summary>
-        /// <see cref="KeyValuePair{TKey, TValue}"/>‚Æ‚µ‚Ä—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="KeyValuePair{TKey, TValue}"/>ã¨ã—ã¦è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void Add<TKey, TValue>(this IDictionary<TKey, TValue> dict, KeyValuePair<TKey, TValue> pair)
             => dict.Add(pair.Key, pair.Value);
 
         /// <summary>
-        /// <see cref="KeyValuePair{TKey, TValue}"/>‚Æ‚µ‚Ä•¡”‚Ì—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="KeyValuePair{TKey, TValue}"/>ã¨ã—ã¦è¤‡æ•°ã®è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> dict, IEnumerable<KeyValuePair<TKey, TValue>> pairs) {
             foreach (var kv in pairs) {
@@ -43,7 +43,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚Ì‚İ—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ãªã„å ´åˆã®ã¿è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryAdd<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value) {
             if (!dict.ContainsKey(key)) {
@@ -55,7 +55,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚Ì‚İ—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ãªã„å ´åˆã®ã¿è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryAdd<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, Func<TKey, TValue> valueFactory) {
             if (!dict.ContainsKey(key)) {
@@ -67,23 +67,23 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚ÉV‹K—v‘f‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ãªã„å ´åˆã«æ–°è¦è¦ç´ ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryAddNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) where TValue : new()
             => dict.TryAdd(key, _ => new TValue());
 
         /// <summary>
-        /// ƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚ÉƒfƒtƒHƒ‹ƒg’l‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ãªã„å ´åˆã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryAddDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key)
             => dict.TryAdd(key, default(TValue));
 
 
         /// ----------------------------------------------------------------------------
-        // —v‘f‚Ìíœ
+        // è¦ç´ ã®å‰Šé™¤
 
         /// <summary>
-        /// value‚ğw’è‚µ‚Ä—v‘f‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// valueã‚’æŒ‡å®šã—ã¦è¦ç´ ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void RemoveByValue<TKey, TValue>(this IDictionary<TKey, TValue> dict, TValue value) {
             var removeKeys = dict
@@ -98,10 +98,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // —v‘f‚Ìæ“¾
+        // è¦ç´ ã®å–å¾—
 
         /// <summary>
-        /// w’è‚µ‚½ƒL[Ši”[‚³‚ê‚¢‚éê‡‚Í‚»‚Ì’lC‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg’l‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸã‚­ãƒ¼æ ¼ç´ã•ã‚Œã„ã‚‹å ´åˆã¯ãã®å€¤ï¼Œãªã‘ã‚Œã°ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> self, TKey key) {
             return self.TryGetValue(key, out TValue result) ? result : default;
@@ -124,7 +124,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒL[Ši”[‚³‚ê‚¢‚éê‡‚Í‚»‚Ì’lC‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg’l‚ğ’Ç‰Á‚µ‚Äæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸã‚­ãƒ¼æ ¼ç´ã•ã‚Œã„ã‚‹å ´åˆã¯ãã®å€¤ï¼Œãªã‘ã‚Œã°ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’è¿½åŠ ã—ã¦å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static TValue GetValueOrAddNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) where TValue : new() {
             dict.TryAddNew(key);
@@ -132,7 +132,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒL[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚ÉƒfƒtƒHƒ‹ƒg’l‚ğ’Ç‰Á‚µ‚Äæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚­ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ãªã„å ´åˆã«ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’è¿½åŠ ã—ã¦å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static TValue GetValueOrAddDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key) {
             dict.TryAddDefault(key);
@@ -141,10 +141,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ‚»‚Ì‘¼
+        // ãã®ä»–
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒL[‚ªŠi”[‚³‚ê‚Ä‚¢‚éê‡‚Éaction‚ğŒÄ‚Ño‚·Šg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚­ãƒ¼ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹å ´åˆã«actionã‚’å‘¼ã³å‡ºã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SafeCall<TKey, TValue>(this IDictionary<TKey, TValue> self, TKey key, Action<TValue> action) {
             if (!self.ContainsKey(key)) {

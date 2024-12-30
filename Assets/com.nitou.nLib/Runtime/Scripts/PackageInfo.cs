@@ -1,19 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.Shared{
 
     /// <summary>
-    /// ƒpƒbƒP[ƒW‚ÌŠeíİ’è‚ğŠÇ—‚·‚éÃ“IƒNƒ‰ƒX
+    /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å„ç¨®è¨­å®šã‚’ç®¡ç†ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     internal static class PackageInfo {
 
         /// <summary>
-        /// ƒpƒbƒP[ƒW‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒX
+        /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹
         /// </summary>
         internal static readonly PackageDirectoryPath packagePath = null;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         static PackageInfo() {
             packagePath = new PackageDirectoryPath("com.nitou.nLib");

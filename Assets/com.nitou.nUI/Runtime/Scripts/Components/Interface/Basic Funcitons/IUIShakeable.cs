@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 
 namespace nitou.UI.Components{
 
     /// <summary>
-    /// Interface of the UI that handles the gShakeh event.
+    /// Interface of the UI that handles the â€œShakeâ€ event.
     /// </summary>
     public interface IUIShakeable : IUIComponent {
 

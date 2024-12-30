@@ -1,4 +1,4 @@
-
+﻿
 namespace nitou {
 
     public interface IResetable {

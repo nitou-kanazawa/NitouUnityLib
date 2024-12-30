@@ -1,14 +1,14 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: ƒo[ƒWƒ‡ƒ“”Ô†‚ğŠÇ—‚·‚é\‘¢‘Ì‚Ì—á
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã‚’ç®¡ç†ã™ã‚‹æ§‹é€ ä½“ã®ä¾‹
 
 namespace nitou {
 
     /// <summary>
-    /// ƒvƒƒWƒFƒNƒg‚Ìƒo[ƒWƒ‡ƒ“”Ô†‚ğŠÇ—‚·‚é\‘¢‘Ì
+    /// ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·ã‚’ç®¡ç†ã™ã‚‹æ§‹é€ ä½“
     /// </summary>
     public readonly struct VersionNumber {
 
@@ -23,7 +23,7 @@ namespace nitou {
         // Public Methord
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public VersionNumber(string version) {
 
@@ -39,7 +39,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public VersionNumber(int major, int minor, int patch) {
             Major = major;
@@ -49,14 +49,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ˆÃ–Ù“IƒLƒƒƒXƒg
+        /// æš—é»™çš„ã‚­ãƒ£ã‚¹ãƒˆ
         /// </summary>
         public static implicit operator string(in VersionNumber versionNumber) {
             return versionNumber._version;
         }
 
         /// <summary>
-        /// •¶š—ñ‚Ö‚Ì•ÏŠ·
+        /// æ–‡å­—åˆ—ã¸ã®å¤‰æ›
         /// </summary>
         public override string ToString() {
             return _version;

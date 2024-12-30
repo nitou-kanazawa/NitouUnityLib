@@ -1,8 +1,8 @@
-
+ï»¿
 namespace nitou.GameSystem {
 
     /// <summary>
-    /// Œ‹‰Êƒf[ƒ^‚ÌŠî’êƒNƒ‰ƒX
+    /// çµæœãƒ‡ãƒ¼ã‚¿ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class ProcessResult {
         public bool IsSuccess() => this is CompleteResult;
@@ -10,12 +10,12 @@ namespace nitou.GameSystem {
     }
 
     /// <summary>
-    /// ¬Œ÷‚ÌŒ‹‰Êƒf[ƒ^
+    /// æˆåŠŸæ™‚ã®çµæœãƒ‡ãƒ¼ã‚¿
     /// </summary>
     public class CompleteResult : ProcessResult { }
 
     /// <summary>
-    /// ƒLƒƒƒ“ƒZƒ‹‚ÌŒ‹‰Êƒf[ƒ^
+    /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«æ™‚ã®çµæœãƒ‡ãƒ¼ã‚¿
     /// </summary>
     public class CancelResult : ProcessResult {
 

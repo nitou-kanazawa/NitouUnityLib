@@ -1,4 +1,4 @@
-
+﻿
 namespace nitou.EditorShared{
 
     internal static class SettingsProviderKey{

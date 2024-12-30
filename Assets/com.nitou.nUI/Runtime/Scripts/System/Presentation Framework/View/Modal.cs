@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
+ï»¿using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityScreenNavigator.Runtime.Core.Modal;
 
-// [NOTE] "USN_USE_ASYNC_METHODS"ƒVƒ“ƒ{ƒ‹‚ª•K—vD
+// [NOTE] "USN_USE_ASYNC_METHODS"ã‚·ãƒ³ãƒœãƒ«ãŒå¿…è¦ï¼
 
 namespace nitou.UI.PresentationFramework {
 
@@ -16,13 +16,13 @@ namespace nitou.UI.PresentationFramework {
         private TViewState _state;
 
         /// <summary>
-        /// ‰Šú‰»Ï‚İ‚©‚Ç‚¤‚©D
+        /// åˆæœŸåŒ–æ¸ˆã¿ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsInitialized => _isInitialized;
         private bool _isInitialized;
 
         /// <summary>
-        /// ‰Šú‰»‚Ìƒ^ƒCƒ~ƒ“ƒOD
+        /// åˆæœŸåŒ–ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ï¼
         /// </summary>
         protected virtual ViewInitializationTiming RootInitializationTiming => ViewInitializationTiming.BeforeFirstEnter;
 
@@ -31,7 +31,7 @@ namespace nitou.UI.PresentationFramework {
         // Public Method
 
         /// <summary>
-        /// View State‚Ìİ’èD
+        /// View Stateã®è¨­å®šï¼
         /// </summary>
         public void Setup(TViewState state) {
             Assert.IsNotNull(root);
@@ -47,7 +47,7 @@ namespace nitou.UI.PresentationFramework {
 
             await base.Initialize();
 
-            // RootView‚Ì‰Šú‰»ˆ—
+            // RootViewã®åˆæœŸåŒ–å‡¦ç†
             if (RootInitializationTiming == ViewInitializationTiming.Initialize && !_isInitialized) {
                 await root.InitializeAsync(_state);
                 _isInitialized = true;
@@ -59,7 +59,7 @@ namespace nitou.UI.PresentationFramework {
 
             await base.WillPushEnter();
 
-            // RootView‚Ì‰Šú‰»ˆ—
+            // RootViewã®åˆæœŸåŒ–å‡¦ç†
             if (RootInitializationTiming == ViewInitializationTiming.BeforeFirstEnter && !_isInitialized) {
                 await root.InitializeAsync(_state);
                 _isInitialized = true;

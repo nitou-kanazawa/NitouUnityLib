@@ -1,11 +1,11 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace nitou.RichText {
 
     /// <summary>
-    /// XML•¶š—ñ‚ÉRichTextƒ^ƒO‚ğ‘}“ü‚·‚é
+    /// XMLæ–‡å­—åˆ—ã«RichTextã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
     /// </summary>
     public static class XmlTextDecorator {
 
@@ -45,7 +45,7 @@ namespace nitou.RichText {
     public static class ColorExtensions {
 
         /// <summary>
-        /// ƒJƒ‰[‚ğ•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ãƒ©ãƒ¼ã‚’å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static string ToHtmlString(this Color color) {
             return $"#{ColorUtility.ToHtmlStringRGB(color)}";

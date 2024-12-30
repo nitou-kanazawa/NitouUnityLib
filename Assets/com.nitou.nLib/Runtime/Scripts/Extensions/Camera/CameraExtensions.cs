@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using UnityEngine;
 
-// [Ql] 
+// [å‚è€ƒ] 
 //  Unity Forums: Handles.Label with constant size (not scale based on distance to camera) 
 
 namespace nitou {
 
     /// <summary>
-    /// Camera‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// Cameraã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class CameraExtensions {
 
         /// <summary>
-        /// ƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éAudioListener‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹AudioListenerã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static AudioListener GetOrAddAudioListener(this Camera self) {
             if (self == null) {
@@ -23,7 +23,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒ[ƒ‹ƒhÀ•W‚ªƒJƒƒ‰”ÍˆÍ“à‚Éû‚Ü‚Á‚Ä‚¢‚é‚©’²‚×‚é
+        /// æŒ‡å®šã—ãŸãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ãŒã‚«ãƒ¡ãƒ©ç¯„å›²å†…ã«åã¾ã£ã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹
         /// </summary>
         public static bool ContaineWorldPosition(this Camera self, Vector3 position, float distance) {
             Vector3 screenPos = self.WorldToScreenPoint(position);

@@ -1,19 +1,19 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: Vector2 ‚Ì‘ã“ü‚ğŠÈ—ª‰»‚·‚é Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230900
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Vector2 ã®ä»£å…¥ã‚’ç°¡ç•¥åŒ–ã™ã‚‹ Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230900
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector2"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Vector2"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class Vector2Extensions {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Vector2 self, out float x, out float y) {
             x = self.x;
@@ -22,17 +22,17 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ìæ“¾
+        #region å€¤ã®å–å¾—
 
         /// <summary>
-        /// Å‘å‚Ì—v‘f‚Ì’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æœ€å¤§ã®è¦ç´ ã®å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float MaxElement(this Vector2 self) {
             return Mathf.Max(self.x, self.y);
         }
 
         /// <summary>
-        /// Å¬‚Ì—v‘f‚Ì’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æœ€å°ã®è¦ç´ ã®å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float MixElement(this Vector2 self) {
             return Mathf.Min(self.x, self.y);
@@ -41,10 +41,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ŠÈˆÕŒvZ
+        // ç°¡æ˜“è¨ˆç®—
 
         /// <summary>
-        /// Šp“x‚ğŒvZ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è§’åº¦ã‚’è¨ˆç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float Angle(this Vector2 self, Vector2 other) {
             return Vector2.Angle(self, other);
@@ -67,16 +67,16 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ŠÈˆÕŒvZ
+        // ç°¡æ˜“è¨ˆç®—
 
         /// <summary>
-        /// ”¼•ª‚Ì’l‚ğ•Ô‚·
+        /// åŠåˆ†ã®å€¤ã‚’è¿”ã™
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 Half(this Vector2 self) => self * 0.5f;
 
         /// <summary>
-        /// ‚Q”{‚Ì’l‚ğ•Ô‚·
+        /// ï¼’å€ã®å€¤ã‚’è¿”ã™
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 Twice(this Vector2 self) => self * 2f;

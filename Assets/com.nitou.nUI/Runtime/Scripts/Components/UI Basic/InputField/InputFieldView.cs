@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -7,13 +7,13 @@ namespace nitou.UI{
 
     public abstract class InputFieldView<T> : MonoBehaviour, IDataHolder<T>{
 
-        // [NOTE] ‹ï‘Ì“I‚ÈƒRƒ“ƒ|[ƒlƒ“ƒg‚ÆRP‚Ì•R‚Ã‚¯‚Í”h¶ƒNƒ‰ƒX‘¤‚Ås‚¤D
+        // [NOTE] å…·ä½“çš„ãªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨RPã®ç´ã¥ã‘ã¯æ´¾ç”Ÿã‚¯ãƒ©ã‚¹å´ã§è¡Œã†ï¼
 
 
         protected readonly ReactiveProperty<T> _valueRP = new();
 
         /// <summary>
-        /// ’l‚ªXV‚³‚ê‚½‚Æ‚«‚É’Ê’m‚·‚éObservableD
+        /// å€¤ãŒæ›´æ–°ã•ã‚ŒãŸã¨ãã«é€šçŸ¥ã™ã‚‹Observableï¼
         /// </summary>
         public IObservable<T> OnValueChanged => _valueRP;
 
@@ -34,7 +34,7 @@ namespace nitou.UI{
         }
 
         public virtual void SetValue(T newValue) {
-            // ¦•K—v‚É‰‚¶‚ÄƒoƒŠƒf[ƒVƒ‡ƒ““™‚ğ’Ç‰Á‚·‚éD
+            // â€»å¿…è¦ã«å¿œã˜ã¦ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ç­‰ã‚’è¿½åŠ ã™ã‚‹ï¼
             _valueRP.Value = newValue;
         }
 

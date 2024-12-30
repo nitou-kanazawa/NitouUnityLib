@@ -1,25 +1,25 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 
 // [REF]
-//  qiita: Unity‚Å“Æ©‚Ìİ’è‚ÌUI‚ğ’ñ‹Ÿ‚Å‚«‚éSettingsProvider‚ÌĞ‰î‚Æİ’èƒtƒ@ƒCƒ‹‚Ì•Û‘¶‚É‚Â‚¢‚Ä https://qiita.com/sune2/items/a88cdee6e9a86652137c
+//  qiita: Unityã§ç‹¬è‡ªã®è¨­å®šã®UIã‚’æä¾›ã§ãã‚‹SettingsProviderã®ç´¹ä»‹ã¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ä¿å­˜ã«ã¤ã„ã¦ https://qiita.com/sune2/items/a88cdee6e9a86652137c
 
 namespace nitou.EditorShared {
 
     public class PreferencesProvider : SettingsProvider{
 
-        // İ’è‚ÌƒpƒX (¦‘æ1ŠK‘w‚ÍuPreferencesv‚É‚·‚é)
+        // è¨­å®šã®ãƒ‘ã‚¹ (â€»ç¬¬1éšå±¤ã¯ã€ŒPreferencesã€ã«ã™ã‚‹)
         private const string SettingPath = SettingsProviderKey.Preference + "My Preferences";
 
         private Editor _editor;
 
 
         /// <summary>
-        /// ‚±‚Ìƒƒ\ƒbƒh‚ªd—v‚Å‚·
-        /// “Æ©‚ÌSettingsProvider‚ğ•Ô‚·‚±‚Æ‚ÅAİ’è€–Ú‚ğ’Ç‰Á‚µ‚Ü‚·
+        /// ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒé‡è¦ã§ã™
+        /// ç‹¬è‡ªã®SettingsProviderã‚’è¿”ã™ã“ã¨ã§ã€è¨­å®šé …ç›®ã‚’è¿½åŠ ã—ã¾ã™
         /// </summary>
         [SettingsProvider]
         public static SettingsProvider CreateSettingProvider() {
@@ -30,7 +30,7 @@ namespace nitou.EditorShared {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public PreferencesProvider(string path, SettingsScope scopes, IEnumerable<string> keywords) : base(path, scopes, keywords) {}
 
@@ -41,24 +41,24 @@ namespace nitou.EditorShared {
 
             var preferences = PreferencesSO.instance;
             
-            // ¦ScriptableSingleton‚ğ•ÒW‰Â”\‚É‚·‚é
+            // â€»ScriptableSingletonã‚’ç·¨é›†å¯èƒ½ã«ã™ã‚‹
             preferences.hideFlags = HideFlags.HideAndDontSave & ~HideFlags.NotEditable;
 
-            // İ’èƒtƒ@ƒCƒ‹‚Ì•W€‚ÌƒCƒ“ƒXƒyƒNƒ^[‚ÌƒGƒfƒBƒ^‚ğ¶¬
+            // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ¨™æº–ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã®ã‚¨ãƒ‡ã‚£ã‚¿ã‚’ç”Ÿæˆ
             Editor.CreateCachedEditor(preferences, null, ref _editor);
         }
 
         /// <summary>
-        /// •`‰æˆ—D
+        /// æç”»å‡¦ç†ï¼
         /// </summary>
         public override void OnGUI(string searchContext) {
 
             EditorGUI.BeginChangeCheck();
 
-            // İ’èƒtƒ@ƒCƒ‹‚Ì•W€ƒCƒ“ƒXƒyƒNƒ^‚ğ•\¦
+            // è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®æ¨™æº–ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã‚’è¡¨ç¤º
             _editor.OnInspectorGUI();
 
-            //EditorGUILayout.LabelField("ƒeƒXƒg‚¾‚æ");
+            //EditorGUILayout.LabelField("ãƒ†ã‚¹ãƒˆã ã‚ˆ");
 
             if (EditorGUI.EndChangeCheck()) {
                 PreferencesSO.instance.Save();

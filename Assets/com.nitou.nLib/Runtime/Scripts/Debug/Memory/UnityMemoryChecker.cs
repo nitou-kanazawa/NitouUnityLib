@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Profiling;
 
 // [REF]
-//  note: ƒƒ‚ƒŠŽg—p—Ê‚ðl‚¦‚é https://note.com/extrier/n/n2b55ba09856f
-//  ƒRƒKƒlƒuƒƒO: Unity ‚ªŠm•Û‚µ‚½ƒƒ‚ƒŠ‚ÌŽg—pó‹µiUnity ‚ÌŽg—pƒƒ‚ƒŠj‚ðŽæ“¾‚·‚éƒXƒNƒŠƒvƒg https://baba-s.hatenablog.com/entry/2019/03/26/084000#google_vignette
+//  note: ãƒ¡ãƒ¢ãƒªä½¿ç”¨é‡ã‚’è€ƒãˆã‚‹ https://note.com/extrier/n/n2b55ba09856f
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Unity ãŒç¢ºä¿ã—ãŸãƒ¡ãƒ¢ãƒªã®ä½¿ç”¨çŠ¶æ³ï¼ˆUnity ã®ä½¿ç”¨ãƒ¡ãƒ¢ãƒªï¼‰ã‚’å–å¾—ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆ https://baba-s.hatenablog.com/entry/2019/03/26/084000#google_vignette
 //  UniDoc: Profiler https://docs.unity3d.com/ja/2023.2/ScriptReference/Profiling.Profiler.html
-//  UniDoc: Memory Profiler ƒ‚ƒWƒ…[ƒ‹ https://docs.unity3d.com/ja/current/Manual/ProfilerMemory.html
+//  UniDoc: Memory Profiler ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ« https://docs.unity3d.com/ja/current/Manual/ProfilerMemory.html
 
 namespace nitou {
 
@@ -21,13 +21,13 @@ namespace nitou {
 
 
         public void Update() {
-            // Unity ‚É‚æ‚Á‚ÄŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ
+            // Unity ã«ã‚ˆã£ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ¡ãƒ¢ãƒª
             Used = (Profiler.GetTotalAllocatedMemoryLong() >> 10) / 1024f;
 
-            // —\–ñÏ‚Ý‚¾‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ
+            // äºˆç´„æ¸ˆã¿ã ãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ãªã„ãƒ¡ãƒ¢ãƒª
             Unused = (Profiler.GetTotalUnusedReservedMemoryLong() >> 10) / 1024f;
 
-            // Unity ‚ªŒ»Ý‚¨‚æ‚Ñ«—ˆ‚ÌŠ„‚è“–‚Ä‚Ì‚½‚ß‚ÉŠm•Û‚µ‚Ä‚¢‚é‘ƒƒ‚ƒŠ
+            // Unity ãŒç¾åœ¨ãŠã‚ˆã³å°†æ¥ã®å‰²ã‚Šå½“ã¦ã®ãŸã‚ã«ç¢ºä¿ã—ã¦ã„ã‚‹ç·ãƒ¡ãƒ¢ãƒª
             Total = (Profiler.GetTotalReservedMemoryLong() >> 10) / 1024f;
 
             UsedText = Used.ToString("0.0") + " MB";

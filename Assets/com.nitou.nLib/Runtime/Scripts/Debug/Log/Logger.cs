@@ -1,4 +1,4 @@
-using System.IO;
+Ôªøusing System.IO;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 
@@ -10,7 +10,7 @@ namespace nitou {
         
         private static bool _isLoggingEnabled = true;
 
-        // åªç›ÇÃLogLevel
+        // ÁèæÂú®„ÅÆLogLevel
         internal static LogLevel CurrentLogLevel { get; private set; } = LogLevel.Debug;
 
 

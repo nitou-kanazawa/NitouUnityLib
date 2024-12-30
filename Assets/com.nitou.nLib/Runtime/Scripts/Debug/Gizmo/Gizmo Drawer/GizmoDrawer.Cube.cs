@@ -1,19 +1,19 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer {
 
         /// <summary>
-        /// ’¼•û‘Ì
+        /// ç›´æ–¹ä½“
         /// </summary>
         internal static class Cube {
 
             /// ----------------------------------------------------------------------------
-            #region •`‰æƒƒ\ƒbƒh
+            #region æç”»ãƒ¡ã‚½ãƒƒãƒ‰
 
             /// <summary>
-            /// ƒƒCƒ„[ƒLƒ…[ƒu‚ğ•`‰æ‚·‚é
+            /// ãƒ¯ã‚¤ãƒ¤ãƒ¼ã‚­ãƒ¥ãƒ¼ãƒ–ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireCube(Vector3 center, Quaternion rotation, Vector3 size) {
 
@@ -28,7 +28,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ƒLƒ…[ƒu‚ğ•`‰æ‚·‚é
+            /// ã‚­ãƒ¥ãƒ¼ãƒ–ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawCube(Vector3 center, Quaternion rotation, Vector3 size) {
 

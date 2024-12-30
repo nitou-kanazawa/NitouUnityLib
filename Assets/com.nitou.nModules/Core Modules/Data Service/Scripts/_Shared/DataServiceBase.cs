@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
 
 // [REF]
-//  youtube: ƒf[ƒ^‚Ì‰i‘±‰» - ‚æ‚­‚ ‚éŠÔˆá‚¢‚ğ‰ñ”ğ‚µ‚È‚ª‚çƒQ[ƒ€‚Ìó‘Ô‚ğ•Û‘¶‚¨‚æ‚Ñƒ[ƒh | Unity ƒ`ƒ…[ƒgƒŠƒAƒ‹ https://www.youtube.com/watch?v=mntS45g8OK4&t=240s
-//  qiita: ‚¢‚¢Š´‚¶‚ÌUnity—pƒZ[ƒuƒf[ƒ^ŠÇ—ƒNƒ‰ƒX https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
+//  youtube: ãƒ‡ãƒ¼ã‚¿ã®æ°¸ç¶šåŒ– - ã‚ˆãã‚ã‚‹é–“é•ã„ã‚’å›é¿ã—ãªãŒã‚‰ã‚²ãƒ¼ãƒ ã®çŠ¶æ…‹ã‚’ä¿å­˜ãŠã‚ˆã³ãƒ­ãƒ¼ãƒ‰ | Unity ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ« https://www.youtube.com/watch?v=mntS45g8OK4&t=240s
+//  qiita: ã„ã„æ„Ÿã˜ã®Unityç”¨ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ç®¡ç†ã‚¯ãƒ©ã‚¹ https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
 
 namespace nitou.SaveSystem {
     using nitou.SaveSystem.Utils;
@@ -15,15 +15,15 @@ namespace nitou.SaveSystem {
     /// </summary>
     public abstract class DataServiceBase : IDataService {
 
-        // ƒpƒX
+        // ãƒ‘ã‚¹
         private static readonly string fullPath = $"{ Application.persistentDataPath }";
         private static readonly string extension = "dat";
 
-        // ˆÃ†‰»
+        // æš—å·åŒ–
         public readonly bool encrypted;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public DataServiceBase(bool encrypted) {
             this.encrypted = encrypted;
@@ -34,7 +34,7 @@ namespace nitou.SaveSystem {
         // Public Method
 
         /// <summary>
-        /// w’è‚µ‚½ƒpƒX‚Éƒf[ƒ^‚ğ•Û‘¶‚·‚éD
+        /// æŒ‡å®šã—ãŸãƒ‘ã‚¹ã«ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹ï¼
         /// </summary>
         public bool SaveData<T>(string key, T data) {
 
@@ -45,7 +45,7 @@ namespace nitou.SaveSystem {
                     File.Delete(filePath);
                 }
 
-                // ƒf[ƒ^‚Ì•Û‘¶
+                // ãƒ‡ãƒ¼ã‚¿ã®ä¿å­˜
                 if (encrypted) {
                     string json = ToJson<T>(data);
 
@@ -68,7 +68,7 @@ namespace nitou.SaveSystem {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒpƒX‚©‚çƒf[ƒ^‚ğ“Ç‚İ‚ŞD
+        /// æŒ‡å®šã—ãŸãƒ‘ã‚¹ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public T LoadData<T>(string key) {
 
@@ -79,7 +79,7 @@ namespace nitou.SaveSystem {
             }
 
             try {
-                // ƒf[ƒ^‚Ì“Ç‚İ‚İ
+                // ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
                 T data = default;
                 if (encrypted) {
                     byte[] byteData = null;
@@ -99,7 +99,7 @@ namespace nitou.SaveSystem {
                 return data;
 
             } catch (Exception e) {
-                // ƒtƒ@ƒCƒ‹‚ª“Ç‚İæ‚ê‚È‚¢/Œ`®‚ªˆÙ‚È‚éê‡,
+                // ãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿å–ã‚Œãªã„/å½¢å¼ãŒç•°ãªã‚‹å ´åˆ,
                 Debug_.LogError($"Failed to load data due to: {e.Message} {e.StackTrace}");
                 throw e;
             }
@@ -108,7 +108,7 @@ namespace nitou.SaveSystem {
 
 
         /// ----------------------------------------------------------------------------
-        // Protected Method (•ÏŠ·ƒƒ\ƒbƒh)
+        // Protected Method (å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰)
 
         protected abstract string ToJson<T>(T data);
 

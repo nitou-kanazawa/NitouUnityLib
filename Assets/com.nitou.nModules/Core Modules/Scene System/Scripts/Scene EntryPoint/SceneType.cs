@@ -1,39 +1,39 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.SceneSystem{
 
     public enum SceneType {
 
         /// <summary>
-        /// ƒvƒŒƒCƒ„[‚ª‘®‚·‚éƒƒCƒ“‚ÌƒŒƒxƒ‹
+        /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå±ã™ã‚‹ãƒ¡ã‚¤ãƒ³ã®ãƒ¬ãƒ™ãƒ«
         /// </summary>
         MainLevel,
         
         /// <summary>
-        /// •t‰Á“I‚ÈƒŒƒxƒ‹
+        /// ä»˜åŠ çš„ãªãƒ¬ãƒ™ãƒ«
         /// </summary>
         SubLevel,
 
         /// <summary>
-        /// ‚»‚Ì‘¼
+        /// ãã®ä»–
         /// </summary>
         Other,
     }
 
 
     /// <summary>
-    /// <see cref="SceneType"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="SceneType"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class SceneTypeExtensions {
 
         /// <summary>
-        /// ƒŒƒxƒ‹‚©‚Ç‚¤‚©
+        /// ãƒ¬ãƒ™ãƒ«ã‹ã©ã†ã‹
         /// </summary>
         public static bool IsLevel(this SceneType type) => 
             (type == SceneType.MainLevel) || (type == SceneType.SubLevel);
 
         /// <summary>
-        /// ƒ^ƒCƒv‚É‘Î‰‚µ‚½ƒJƒ‰[‚Ö•ÏŠ·‚·‚é
+        /// ã‚¿ã‚¤ãƒ—ã«å¯¾å¿œã—ãŸã‚«ãƒ©ãƒ¼ã¸å¤‰æ›ã™ã‚‹
         /// </summary>
         public static Color ToColor(this SceneType type) {
             return type switch {

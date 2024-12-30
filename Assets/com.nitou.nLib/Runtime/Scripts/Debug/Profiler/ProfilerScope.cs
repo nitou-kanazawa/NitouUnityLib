@@ -1,6 +1,6 @@
-using UnityEngine.Profiling;
+ï»¿using UnityEngine.Profiling;
 
-// [Ql]
+// [å‚è€ƒ]
 //  Unity Document: Profiler.BeginSample https://docs.unity3d.com/ja/current/ScriptReference/Profiling.Profiler.BeginSample.html
 
 namespace nitou {

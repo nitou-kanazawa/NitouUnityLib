@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using nitou;
@@ -6,12 +6,12 @@ using nitou;
 namespace UniRx {
 
     /// <summary>
-    /// ReactiveDictionaryŠg’£ƒƒ\ƒbƒh.
+    /// ReactiveDictionaryæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰.
     /// </summary>
     public static class ReactiveDictionaryExtensions {
 
         /// <summary>
-        /// •ÏX‚ª‚ ‚Á‚½‚±‚Æ‚ğ’Ê’m‚·‚éObservable.
+        /// å¤‰æ›´ãŒã‚ã£ãŸã“ã¨ã‚’é€šçŸ¥ã™ã‚‹Observable.
         /// </summary>
         public static IObservable<Unit> ObserveAnyChanged<TKey, TValue>(this ReactiveDictionary<TKey, TValue> self) {
             return Observable.Merge(
@@ -25,7 +25,7 @@ namespace UniRx {
         }
 
         /// <summary>
-        /// ’†g‚¾‚¯‚ğ‘S‚Ä“ü‚ê‘Ö‚¦‚é.
+        /// ä¸­èº«ã ã‘ã‚’å…¨ã¦å…¥ã‚Œæ›¿ãˆã‚‹.
         /// </summary>
         public static void Set<TKey, TValue>(this ReactiveDictionary<TKey, TValue> self, IEnumerable<TValue> source, Func<TValue, TKey> selector) {
             HashSet<TKey> activeKeys = new HashSet<TKey>();
@@ -36,7 +36,7 @@ namespace UniRx {
                 self[key] = value;
             }
 
-            //ƒAƒNƒeƒBƒuƒŠƒXƒg‚É“ü‚Á‚Ä‚¢‚È‚¢ƒAƒCƒeƒ€‚ğœŠO.
+            //ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒªã‚¹ãƒˆã«å…¥ã£ã¦ã„ãªã„ã‚¢ã‚¤ãƒ†ãƒ ã‚’é™¤å¤–.
             TKey[] removeKeys = self.Keys
                     .Where(key => !activeKeys.Contains(key))
                     .ToArray();
@@ -46,7 +46,7 @@ namespace UniRx {
         }
 
         /// <summary>
-        /// ’†g‚¾‚¯‚ğ‘S‚Ä“ü‚ê‘Ö‚¦‚é.
+        /// ä¸­èº«ã ã‘ã‚’å…¨ã¦å…¥ã‚Œæ›¿ãˆã‚‹.
         /// </summary>
         public static void Set<TKey, TValue, TRValue>(this ReactiveDictionary<TKey, TRValue> self, IEnumerable<TValue> source, Func<TValue, TKey> selector)
                 where TRValue : IReactiveProperty<TValue>, new() {
@@ -56,14 +56,14 @@ namespace UniRx {
                 TKey key = selector(value);
                 activeKeys.Add(key);
 
-                //value‚ª‘¶İ‚µ‚È‚¢ê‡AV‚µ‚­¶¬.
+                //valueãŒå­˜åœ¨ã—ãªã„å ´åˆã€æ–°ã—ãç”Ÿæˆ.
                 if (!self.ContainsKey(key))
                     self[key] = new TRValue();
                 self[key].Value = value;
                 self[key] = self[key];
             }
 
-            //ƒAƒNƒeƒBƒuƒŠƒXƒg‚É“ü‚Á‚Ä‚¢‚È‚¢ƒAƒCƒeƒ€‚ğœŠO.
+            //ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒªã‚¹ãƒˆã«å…¥ã£ã¦ã„ãªã„ã‚¢ã‚¤ãƒ†ãƒ ã‚’é™¤å¤–.
             TKey[] removeKeys = self.Keys
                     .Where(key => !activeKeys.Contains(key))
                     .ToArray();

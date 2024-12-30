@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
@@ -20,9 +20,9 @@ namespace nitou.Tools.Demo {
         public static void Open() {
 
             var names = new[]{
-                "ƒtƒVƒMƒ_ƒl",
-                "ƒtƒVƒMƒ\ƒE",
-                "ƒtƒVƒMƒoƒi",
+                "ãƒ•ã‚·ã‚®ãƒ€ãƒ",
+                "ãƒ•ã‚·ã‚®ã‚½ã‚¦",
+                "ãƒ•ã‚·ã‚®ãƒãƒŠ",
             };
 
             var dataArray = names

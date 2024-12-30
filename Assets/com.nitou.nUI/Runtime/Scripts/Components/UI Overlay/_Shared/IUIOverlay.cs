@@ -1,33 +1,33 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace nitou.UI.Overlay{
 
     /// <summary>
-    /// ƒI[ƒo[ƒŒƒC‰æ–Ê‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXD
+    /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ç”»é¢ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ï¼
     /// </summary>
     public interface IUIOverlay{
 
         /// <summary>
-        /// Progress: 1¨0‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 1â†’0ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         public UniTask OpenAsync(float duration = 1f);
 
         /// <summary>
-        /// Progress: 0¨1‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 0â†’1ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         public UniTask CloseAsync(float duration = 1f);
     }
 
 
     /// <summary>
-    /// <see cref="IUIOverlay"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="IUIOverlay"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class IUIOverlayExtensions {
 
         /// <summary>
-        /// Progress: 0¨1¨0‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 0â†’1â†’0ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         public static async UniTask PlayAllAsync(this IUIOverlay overlay, 
             float closeDuration = 0.5f, float waitDuration = 1f, float openDuration = 0.5f,

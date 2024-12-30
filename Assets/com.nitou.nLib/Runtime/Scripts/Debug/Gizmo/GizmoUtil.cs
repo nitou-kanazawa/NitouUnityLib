@@ -1,20 +1,20 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 // [REF]
-//  _: Gizmos‚Å•½–Ê‚ğ•`‰æ‚·‚é https://nyama41.hatenablog.com/entry/draw_gizmos_plane
+//  _: Gizmosã§å¹³é¢ã‚’æç”»ã™ã‚‹ https://nyama41.hatenablog.com/entry/draw_gizmos_plane
 
 namespace nitou {
     public partial class GizmoUtil {
 
         /// <summary>
-        /// Gizmo‚É<see cref="Color"/>‚ğ“K—p‚·‚éƒXƒR[ƒv
+        /// Gizmoã«<see cref="Color"/>ã‚’é©ç”¨ã™ã‚‹ã‚¹ã‚³ãƒ¼ãƒ—
         /// </summary>
         public struct ColorScope : System.IDisposable {
 
             private readonly Color _oldColor;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public ColorScope(Color color) {
                 _oldColor = Gizmos.color;
@@ -22,7 +22,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             public void Dispose() {
                 Gizmos.color = _oldColor;
@@ -31,14 +31,14 @@ namespace nitou {
 
 
         /// <summary>
-        /// Gizmo‚É<see cref="Matrix4x4"/>‚ğ“K—p‚·‚éƒXƒR[ƒv
+        /// Gizmoã«<see cref="Matrix4x4"/>ã‚’é©ç”¨ã™ã‚‹ã‚¹ã‚³ãƒ¼ãƒ—
         /// </summary>
         public struct MatrixScope : System.IDisposable {
 
             private readonly Matrix4x4 _oldMatrix;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public MatrixScope(Matrix4x4 matrix) {
                 _oldMatrix = Gizmos.matrix;
@@ -46,7 +46,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             public void Dispose() {
                 Gizmos.matrix = _oldMatrix;

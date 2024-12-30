@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 // [REF]
-//  qiita: Unity‚ÅƒT[ƒrƒXƒƒP[ƒ^[(ServiceLocator)‚ğŠˆ—p‚·‚é https://qiita.com/ozaki_shinya/items/9eb0f827caa6a4108888
-//  Hatena: ServiceLocator‚ÆDependencyInjectionƒpƒ^[ƒ“‚ÆDIContainer https://www.nuits.jp/entry/servicelocator-vs-dependencyinjection
+//  qiita: Unityã§ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ã‚±ãƒ¼ã‚¿ãƒ¼(ServiceLocator)ã‚’æ´»ç”¨ã™ã‚‹ https://qiita.com/ozaki_shinya/items/9eb0f827caa6a4108888
+//  Hatena: ServiceLocatorã¨DependencyInjectionãƒ‘ã‚¿ãƒ¼ãƒ³ã¨DIContainer https://www.nuits.jp/entry/servicelocator-vs-dependencyinjection
 
 namespace nitou.DesignPattern {
 
     /// <summary>
-    /// ƒVƒ“ƒvƒ‹‚ÈÀ‘•‚ÌƒT[ƒrƒXƒƒP[ƒ^D
+    /// ã‚·ãƒ³ãƒ—ãƒ«ãªå®Ÿè£…ã®ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ã‚±ãƒ¼ã‚¿ï¼
     /// </summary>
     public static class ServiceLocator {
 

@@ -1,18 +1,18 @@
-using System;
+ï»¿using System;
 using UnityEngine.EventSystems;
 
-// [Ql]
-//  qiita: EventTrigger ‚ÌƒCƒxƒ“ƒg“o˜^‚ğŠÈŒ‰‚É‘‚¯‚éŠg’£ƒƒ\ƒbƒh https://qiita.com/Yamara/items/42b18a402c5bda132f37
+// [å‚è€ƒ]
+//  qiita: EventTrigger ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²ã‚’ç°¡æ½”ã«æ›¸ã‘ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://qiita.com/Yamara/items/42b18a402c5bda132f37
 
 namespace nitou {
 
     /// <summary>
-    /// EventTrigger‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// EventTriggerã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class EventTriggerExtensions {
 
         /// <summary>
-        /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static EventTrigger.Entry AddListener(this EventTrigger trigger, EventTriggerType type, Action<BaseEventData> action) {
             var entry = new EventTrigger.Entry();
@@ -23,7 +23,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static EventTrigger.Entry AddPointerListener(this EventTrigger trigger, EventTriggerType type, Action<PointerEventData> action) {
             var entry = new EventTrigger.Entry();
@@ -34,7 +34,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static EventTrigger.Entry AddAxisListener(this EventTrigger trigger, EventTriggerType type, Action<AxisEventData> action) {
             var entry = new EventTrigger.Entry();
@@ -45,7 +45,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static EventTrigger.Entry AddListener<T>(this EventTrigger trigger, EventTriggerType type, Action<T> action) where T : BaseEventData {
             var entry = new EventTrigger.Entry();
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool RemoveListener(this EventTrigger trigger, EventTrigger.Entry entry) {
             if (trigger.triggers.Contains(entry)) {

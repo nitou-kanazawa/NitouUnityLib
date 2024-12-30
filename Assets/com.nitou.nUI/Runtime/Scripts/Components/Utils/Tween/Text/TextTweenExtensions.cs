@@ -1,21 +1,21 @@
-using System;
+ï»¿using System;
 using UnityEngine.UI;
 
-// [Ql]
-//  qiita: DOTween‚ÅƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚ÌƒAƒjƒ[ƒVƒ‡ƒ“ https://qiita.com/RyotaMurohoshi/items/f7312e802f7698e42cd0
+// [å‚è€ƒ]
+//  qiita: DOTweenã§ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ https://qiita.com/RyotaMurohoshi/items/f7312e802f7698e42cd0
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// Text‚ÌTweenƒ‰ƒCƒuƒ‰ƒŠƒNƒ‰ƒX
+    /// Textã®Tweenãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class TextTweenExtensions {
 
         /// --------------------------------------------------------------------
-        #region •¶š—ñ‚ÌTween
+        #region æ–‡å­—åˆ—ã®Tween
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextInt(this Text self, int startValue, int endValue, float duration, Func<int, string> convertor) {
             return DOTween.To(
@@ -27,14 +27,14 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextInt(this Text self, int startValue, int endValue, float duration) {
             return TextTweenExtensions.DOTextInt(self, startValue, endValue, duration, it => it.ToString());
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextFloat(this Text self, float startValue, float endValue, float duration, Func<float, string> convertor) {
             return DOTween.To(
@@ -46,7 +46,7 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextFloat(this Text self, float startValue, float endValue, float duration) {
             return TextTweenExtensions.DOTextFloat(self, startValue, endValue, duration, it => it.ToString());

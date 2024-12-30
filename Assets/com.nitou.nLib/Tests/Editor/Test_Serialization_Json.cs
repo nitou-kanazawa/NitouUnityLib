@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using nitou.Serialization;
@@ -8,7 +8,7 @@ namespace nitou.Tests {
     public class Test_Serialization_Json {
 
         [Test]
-        public void ƒRƒŒƒNƒVƒ‡ƒ“‚ğJson‚É•ÏŠ·‚Å‚«‚é() {
+        public void ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’Jsonã«å¤‰æ›ã§ãã‚‹() {
 
             // int
             var intList = new List<int> { 1, 2, 3 };
@@ -25,7 +25,7 @@ namespace nitou.Tests {
         }
 
         [Test]
-        public void Dictionary‚ğJson‚É•ÏŠ·‚Å‚«‚é() {
+        public void Dictionaryã‚’Jsonã«å¤‰æ›ã§ãã‚‹() {
             var dictionary = new Dictionary<string, int>
             {
                 { "key1", 10 },
@@ -35,7 +35,7 @@ namespace nitou.Tests {
             string json = JsonHelper.ToJson(dictionary);
             Debug_.Log(json, Colors.Orange);
 
-            // ƒ‰ƒbƒvŒ`®‚ğl—¶‚µ‚½ƒAƒT[ƒVƒ‡ƒ“
+            // ãƒ©ãƒƒãƒ—å½¢å¼ã‚’è€ƒæ…®ã—ãŸã‚¢ã‚µãƒ¼ã‚·ãƒ§ãƒ³
             Assert.IsTrue(json.Contains("\"Key\":\"key1\""));
             Assert.IsTrue(json.Contains("\"Value\":10"));
             Assert.IsTrue(json.Contains("\"Key\":\"key2\""));
@@ -43,7 +43,7 @@ namespace nitou.Tests {
         }
 
         [Test]
-        public void Json‚ğ”z—ñ‚É•ÏŠ·‚Å‚«‚é() {
+        public void Jsonã‚’é…åˆ—ã«å¤‰æ›ã§ãã‚‹() {
             string json = "{\"items\":[1,2,3]}";
             int[] result = JsonHelper.FromJsonArray<int>(json);
 
@@ -54,7 +54,7 @@ namespace nitou.Tests {
         }
 
         [Test]
-        public void Json‚ğƒŠƒXƒg‚É•ÏŠ·‚Å‚«‚é() {
+        public void Jsonã‚’ãƒªã‚¹ãƒˆã«å¤‰æ›ã§ãã‚‹() {
             string json = "{\"items\":[\"a\",\"b\",\"c\"]}";
             List<string> result = JsonHelper.FromJsonList<string>(json);
 

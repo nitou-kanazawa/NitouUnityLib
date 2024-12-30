@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;

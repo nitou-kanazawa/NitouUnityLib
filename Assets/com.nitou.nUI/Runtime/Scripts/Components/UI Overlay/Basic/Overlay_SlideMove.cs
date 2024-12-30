@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
@@ -25,21 +25,21 @@ namespace nitou.UI.Overlay {
 
 
         protected override void Initialize() {
-            // ‰ŠúˆÊ’u
+            // åˆæœŸä½ç½®
             _leftOpenPos = _leftSide.position;
             _rightOpenPos = _rightSide.position;
 
-            // –Ú“IˆÊ’u
+            // ç›®çš„ä½ç½®
             _leftClosedPos = _leftOpenPos + Vector3.right * MoveDelta;
             _rightClosedPos = _rightOpenPos + Vector3.left * MoveDelta;
         }
 
 
         /// ----------------------------------------------------------------------------
-        // Public Methord (‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“)
+        // Public Methord (é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³)
 
         /// <summary>
-        /// Progress: 1¨0‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 1â†’0ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         protected override UniTask OpenInternal(float duration) {
             _tween?.Kill();
@@ -52,7 +52,7 @@ namespace nitou.UI.Overlay {
         }
 
         /// <summary>
-        /// Progress: 0¨1‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 0â†’1ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         protected override UniTask CloseInternal(float duration) {
             _tween?.Kill();

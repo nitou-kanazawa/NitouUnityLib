@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -9,14 +9,14 @@ namespace nitou.EditorShared{
         #region Color Scope
 
         /// <summary>
-        /// Handles.colorİ’è‚ğƒXƒR[ƒv‚ÅŠÇ—‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+        /// Handles.colorè¨­å®šã‚’ã‚¹ã‚³ãƒ¼ãƒ—ã§ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
         /// </summary>
         public sealed class ColorScope : System.IDisposable {
 
             private readonly Color _oldColor;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public ColorScope(Color color) {
                 _oldColor = Handles.color;
@@ -24,7 +24,7 @@ namespace nitou.EditorShared{
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             public void Dispose() {
                 Handles.color = _oldColor;

@@ -1,43 +1,43 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Bounds"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Bounds"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class BoundsExtensions {
 
         /// <summary>
-        /// Bounds ‚Ì‘S’¸“_‚ğæ“¾‚µ‚Ü‚·B
+        /// Bounds ã®å…¨é ‚ç‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="bounds">‘ÎÛ‚Ì Bounds</param>
-        /// <returns>‘S8’¸“_‚Ì”z—ñ</returns>
+        /// <param name="bounds">å¯¾è±¡ã® Bounds</param>
+        /// <returns>å…¨8é ‚ç‚¹ã®é…åˆ—</returns>
         public static Vector3[] GetCorners(this Bounds bounds) {
             Vector3[] corners = new Vector3[8];
-            corners[0] = bounds.min; // ¶‰º‰œ
-            corners[1] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z); // ¶‰ºè‘O
-            corners[2] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z); // ¶ã‰œ
-            corners[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z); // ¶ãè‘O
-            corners[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z); // ‰E‰º‰œ
-            corners[5] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z); // ‰E‰ºè‘O
-            corners[6] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z); // ‰Eã‰œ
-            corners[7] = bounds.max; // ‰Eãè‘O
+            corners[0] = bounds.min; // å·¦ä¸‹å¥¥
+            corners[1] = new Vector3(bounds.min.x, bounds.min.y, bounds.max.z); // å·¦ä¸‹æ‰‹å‰
+            corners[2] = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z); // å·¦ä¸Šå¥¥
+            corners[3] = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z); // å·¦ä¸Šæ‰‹å‰
+            corners[4] = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z); // å³ä¸‹å¥¥
+            corners[5] = new Vector3(bounds.max.x, bounds.min.y, bounds.max.z); // å³ä¸‹æ‰‹å‰
+            corners[6] = new Vector3(bounds.max.x, bounds.max.y, bounds.min.z); // å³ä¸Šå¥¥
+            corners[7] = bounds.max; // å³ä¸Šæ‰‹å‰
             return corners;
         }
 
         /// <summary>
-        /// ‘¼‚Ì<see cref="Bounds"/>‚ª”ÍˆÍ“à‚ÉŠ®‘S‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©Šm”F‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ä»–ã®<see cref="Bounds"/>ãŒç¯„å›²å†…ã«å®Œå…¨ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool Contains(this Bounds self, Bounds other) {
 
-            // AABB‚Ì“àŠO”»’è
+            // AABBã®å†…å¤–åˆ¤å®š
             return self.Contains(other.min) && self.Contains(other.max);
         }
 
         /// <summary>
-        /// —¼Ò‚ğŠÜ‚ŞBounds‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// ä¸¡è€…ã‚’å«ã‚€Boundsã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Bounds Union(this Bounds a, Bounds b) {
             // Calculate the minimum and maximum corners of the union bounds
@@ -53,7 +53,7 @@ namespace nitou {
         #region Gizmos
 
         /// <summary>
-        /// Gizmo‚ğ•\¦‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Gizmoã‚’è¡¨ç¤ºã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void DrawGizmo(this Bounds self, Color color) {
             using (new GizmoUtil.ColorScope(color)) {
@@ -62,7 +62,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Gizmo‚ğ•\¦‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Gizmoã‚’è¡¨ç¤ºã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void DrawGizmo(this Bounds self) => DrawGizmo(self, Colors.Green);
         #endregion

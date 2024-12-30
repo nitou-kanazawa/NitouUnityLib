@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
     public static partial class Shapes {
 
         /// <summary>
-        /// ‹…‘Ì‚ÌŒ`ó‚ğ•\‚·ƒCƒ“ƒXƒ^ƒ“ƒX
+        /// çƒä½“ã®å½¢çŠ¶ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         /// </summary>
         [System.Serializable]
         public class Sphere : Volume{
 
             /// <summary>
-            /// ”¼Œa
+            /// åŠå¾„
             /// </summary>
             public float radius = 1f;
 
@@ -19,7 +19,7 @@ namespace nitou {
             // Public Method
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Sphere(Vector3 position, Quaternion rotation, float radius)
                 : base(position, rotation) {
@@ -27,7 +27,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Sphere(Transform transform, float radius)
                 : base(transform) {
@@ -35,7 +35,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             private Sphere() { }
 

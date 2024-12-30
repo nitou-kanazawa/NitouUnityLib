@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="List{T}"/>‚ğŒø—¦“I‚ÉÄ—˜—p‚·‚é‚½‚ß‚ÌÃ“IƒNƒ‰ƒX
+    /// <see cref="List{T}"/>ã‚’åŠ¹ç‡çš„ã«å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class ListPool<T> {
 
         // [MEMO]
-        // Å‘åŠi”[”‚ğİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚é‚±‚Æ‚àŒŸ“¢‚·‚×‚«
+        // æœ€å¤§æ ¼ç´æ•°ã‚’è¨­å®šã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã“ã¨ã‚‚æ¤œè¨ã™ã¹ã
 
         private static readonly object @lock = new ();
         private static readonly Stack<List<T>> free = new ();
         private static readonly HashSet<List<T>> busy = new ();
 
         /// <summary>
-        /// ƒŠƒXƒg‚ğæ“¾‚·‚éD
+        /// ãƒªã‚¹ãƒˆã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static List<T> New() {
             lock (@lock) {
@@ -33,7 +33,7 @@ namespace nitou.DesignPattern.Pooling {
         }
 
         /// <summary>
-        /// g—pÏ‚İ‚ÌƒŠƒXƒg‚ğƒv[ƒ‹‚É–ß‚·D
+        /// ä½¿ç”¨æ¸ˆã¿ã®ãƒªã‚¹ãƒˆã‚’ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™ï¼
         /// </summary>
         public static void Free(List<T> list) {
             lock (@lock) {

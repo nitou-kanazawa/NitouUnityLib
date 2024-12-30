@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  qiita: Šp“x‚ğˆµ‚¤‚Æ‚«‚Ífloat‚¶‚á‚È‚­‚Äê—p‚ÌAngle\‘¢‘Ì‚ğ—pˆÓ‚·‚é‚Æ’»‚é https://qiita.com/yutorisan/items/63679fc1babb142e5b01
+// [å‚è€ƒ]
+//  qiita: è§’åº¦ã‚’æ‰±ã†ã¨ãã¯floatã˜ã‚ƒãªãã¦å°‚ç”¨ã®Angleæ§‹é€ ä½“ã‚’ç”¨æ„ã™ã‚‹ã¨æ—ã‚‹ https://qiita.com/yutorisan/items/63679fc1babb142e5b01
 
 namespace nitou {
 
     /// <summary>
-    /// Šp“xî•ñ‚ğˆµ‚¤\‘¢‘Ì
+    /// è§’åº¦æƒ…å ±ã‚’æ‰±ã†æ§‹é€ ä½“
     /// </summary>
     public struct Angle : IEquatable<Angle>, IComparable<Angle> {
 
         /// <summary>
-        /// ³‹K‰»‚µ‚Ä‚¢‚È‚¢Šp“x‚Ì—İÏ’l
+        /// æ­£è¦åŒ–ã—ã¦ã„ãªã„è§’åº¦ã®ç´¯ç©å€¤
         /// </summary>
         private readonly float _totalDegree;
 
@@ -22,17 +22,17 @@ namespace nitou {
         #region Properity
 
         /// <summary>
-        /// ³‹K‰»‚µ‚Ä‚¢‚È‚¢Šp“x’l[degree]
+        /// æ­£è¦åŒ–ã—ã¦ã„ãªã„è§’åº¦å€¤[degree]
         /// </summary>
         public float TotalDegree => _totalDegree;
 
         /// <summary>
-        /// ³‹K‰»‚µ‚Ä‚¢‚È‚¢Šp“x’l[rad]
+        /// æ­£è¦åŒ–ã—ã¦ã„ãªã„è§’åº¦å€¤[rad]
         /// </summary>
         public float TotalRadian => DegToRad(TotalDegree);
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½Šp“x’l(-180 &lt; angle &lt;= 180)[degree]
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦å€¤(-180 &lt; angle &lt;= 180)[degree]
         /// </summary>
         public float NormalizedDegree {
             get {
@@ -44,12 +44,12 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½Šp“x’l‚ğƒ‰ƒWƒAƒ“(-ƒÎ &lt; rad &lt; ƒÎ)‚Åæ“¾‚µ‚Ü‚·B
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦å€¤ã‚’ãƒ©ã‚¸ã‚¢ãƒ³(-Ï€ &lt; rad &lt; Ï€)ã§å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public float NormalizedRadian => DegToRad(NormalizedDegree);
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½Šp“x’l(0 &lt;= angle &lt; 360)‚ğæ“¾‚µ‚Ü‚·B
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦å€¤(0 &lt;= angle &lt; 360)ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public float PositiveNormalizedDegree {
             get {
@@ -59,28 +59,28 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½Šp“x’l‚ğƒ‰ƒWƒAƒ“(0 &lt;= rad &lt; 2ƒÎ)‚Åæ“¾‚µ‚Ü‚·B
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦å€¤ã‚’ãƒ©ã‚¸ã‚¢ãƒ³(0 &lt;= rad &lt; 2Ï€)ã§å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public float PositiveNormalizedRadian => DegToRad(PositiveNormalizedDegree);
 
         /// <summary>
-        /// Šp“x‚ª‰½ü‚µ‚Ä‚¢‚é‚©‚ğæ“¾‚µ‚Ü‚·B
-        /// —áF370‹¨1ü, -1085‹¨-3ü
+        /// è§’åº¦ãŒä½•å‘¨ã—ã¦ã„ã‚‹ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
+        /// ä¾‹ï¼š370Â°â†’1å‘¨, -1085Â°â†’-3å‘¨
         /// </summary>
         public int Lap => ((int)_totalDegree) / 360;
 
         /// <summary>
-        /// 1üˆÈã‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©(360‹ˆÈãA‚à‚µ‚­‚Í-360‹ˆÈ‰º‚©‚Ç‚¤‚©)‚ğæ“¾‚µ‚Ü‚·B
+        /// 1å‘¨ä»¥ä¸Šã—ã¦ã„ã‚‹ã‹ã©ã†ã‹(360Â°ä»¥ä¸Šã€ã‚‚ã—ãã¯-360Â°ä»¥ä¸‹ã‹ã©ã†ã‹)ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool IsCircled => Lap != 0;
 
         /// <summary>
-        /// 360‚Ì”{”‚ÌŠp“x‚Å‚ ‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B
+        /// 360ã®å€æ•°ã®è§’åº¦ã§ã‚ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool IsTrueCircle => IsCircled && _totalDegree % 360 == 0;
 
         /// <summary>
-        /// ³‚ÌŠp“x‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B
+        /// æ­£ã®è§’åº¦ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public bool IsPositive => _totalDegree >= 0;
         #endregion
@@ -90,19 +90,19 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// Šp“x‚ğ“x”–@‚Åw’è‚µ‚ÄAV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚éD
+        /// è§’åº¦ã‚’åº¦æ•°æ³•ã§æŒ‡å®šã—ã¦ã€æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ï¼
         /// </summary>
-        /// <param name="angle">“x”–@‚ÌŠp“x</param>
+        /// <param name="angle">åº¦æ•°æ³•ã®è§’åº¦</param>
         /// <exception cref="NotFiniteNumberException"/>
         private Angle(float angle) {
             _totalDegree = ArithmeticCheck(() => angle);
         }
 
         /// <summary>
-        /// ü‰ñ”‚ÆŠp“x‚ğw’è‚µ‚ÄAV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚éD
+        /// å‘¨å›æ•°ã¨è§’åº¦ã‚’æŒ‡å®šã—ã¦ã€æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ï¼
         /// </summary>
-        /// <param name="lap">ü‰ñ”</param>
-        /// <param name="angle">“x”–@‚ÌŠp“x</param>
+        /// <param name="lap">å‘¨å›æ•°</param>
+        /// <param name="angle">åº¦æ•°æ³•ã®è§’åº¦</param>
         /// <exception cref="NotFiniteNumberException"/>
         /// <exception cref="OverflowException"/>
         private Angle(int lap, float angle) {
@@ -113,46 +113,46 @@ namespace nitou {
         // Static Method
 
         /// <summary>
-        /// “x”–@‚Ì’l‚ğg—p‚µ‚ÄV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// åº¦æ•°æ³•ã®å€¤ã‚’ä½¿ç”¨ã—ã¦æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="degree">“x”–@‚ÌŠp“x(‹)</param>
+        /// <param name="degree">åº¦æ•°æ³•ã®è§’åº¦(Â°)</param>
         /// <returns></returns>
         /// <exception cref="NotFiniteNumberException"/>
         public static Angle FromDegree(float degree) => new Angle(degree);
 
         /// <summary>
-        /// ü‰ñ”‚ÆŠp“x‚ğw’è‚µ‚ÄAV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// å‘¨å›æ•°ã¨è§’åº¦ã‚’æŒ‡å®šã—ã¦ã€æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="lap">ü‰ñ”</param>
-        /// <param name="degree">“x”–@‚ÌŠp“x(‹)</param>
+        /// <param name="lap">å‘¨å›æ•°</param>
+        /// <param name="degree">åº¦æ•°æ³•ã®è§’åº¦(Â°)</param>
         /// <returns></returns>
         /// <exception cref="NotFiniteNumberException"/>
         public static Angle FromDegree(int lap, float degree) => new Angle(lap, degree);
 
         /// <summary>
-        /// ŒÊ“x–@‚Ì’l‚ğg—p‚µ‚ÄV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// å¼§åº¦æ³•ã®å€¤ã‚’ä½¿ç”¨ã—ã¦æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="radian">ŒÊ“x–@‚ÌŠp“x(rad)</param>
+        /// <param name="radian">å¼§åº¦æ³•ã®è§’åº¦(rad)</param>
         /// <returns></returns>
         /// <exception cref="NotFiniteNumberException"/>
         public static Angle FromRadian(float radian) => new Angle(RadToDeg(radian));
 
         /// <summary>
-        /// ü‰ñ”‚ÆŠp“x‚ğw’è‚µ‚ÄAV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// å‘¨å›æ•°ã¨è§’åº¦ã‚’æŒ‡å®šã—ã¦ã€æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
-        /// <param name="lap">ü‰ñ”</param>
-        /// <param name="radian">ŒÊ“x–@‚ÌŠp“x(rad)</param>
+        /// <param name="lap">å‘¨å›æ•°</param>
+        /// <param name="radian">å¼§åº¦æ³•ã®è§’åº¦(rad)</param>
         /// <returns></returns>
         /// <exception cref="NotFiniteNumberException"/>
         public static Angle FromRadian(int lap, float radian) => new Angle(lap, RadToDeg(radian));
 
         /// <summary>
-        /// Šp“x0‹‚ÌV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// è§’åº¦0Â°ã®æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static Angle Zero => new Angle(0);
 
         /// <summary>
-        /// Šp“x360‹‚ÌV‹KƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚µ‚Ü‚·B
+        /// è§’åº¦360Â°ã®æ–°è¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public static Angle Round => new Angle(360);
 
@@ -169,39 +169,39 @@ namespace nitou {
 
         public override int GetHashCode() => -1748791360 + _totalDegree.GetHashCode();
 
-        public override string ToString() => $"{Lap}x + {_totalDegree - Lap * 360}‹";
+        public override string ToString() => $"{Lap}x + {_totalDegree - Lap * 360}Â°";
 
         public int CompareTo(Angle other) => _totalDegree.CompareTo(other._totalDegree);
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½Šp“x(-180‹ &lt; degree &lt;= 180‹)‚ğæ“¾‚µ‚Ü‚·B
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦(-180Â° &lt; degree &lt;= 180Â°)ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         public Angle Normalize() => new Angle(NormalizedDegree);
 
         /// <summary>
-        /// ³‚Ì’l‚Å³‹K‰»‚³‚ê‚½Šp“x(0‹ &lt;= degree &lt; 360‹)‚ğæ“¾‚µ‚Ü‚·B
+        /// æ­£ã®å€¤ã§æ­£è¦åŒ–ã•ã‚ŒãŸè§’åº¦(0Â° &lt;= degree &lt; 360Â°)ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         public Angle PositiveNormalize() => new Angle(PositiveNormalizedDegree);
 
         /// <summary>
-        /// •ûŒü‚ğ”½“]‚³‚¹‚½Šp“x‚ğæ“¾‚µ‚Ü‚·B
-        /// —áF90‹¨-270‹, -450‹¨630‹
+        /// æ–¹å‘ã‚’åè»¢ã•ã›ãŸè§’åº¦ã‚’å–å¾—ã—ã¾ã™ã€‚
+        /// ä¾‹ï¼š90Â°â†’-270Â°, -450Â°â†’630Â°
         /// </summary>
         /// <returns></returns>
         public Angle Reverse() {
-            //ƒ[ƒ‚È‚çƒ[ƒ
+            //ã‚¼ãƒ­ãªã‚‰ã‚¼ãƒ­
             if (this == Zero) return Zero;
-            //^‰~‚Ìê‡‚Í^‹t‚É‚·‚é
+            //çœŸå††ã®å ´åˆã¯çœŸé€†ã«ã™ã‚‹
             if (IsTrueCircle) return new Angle(-Lap, 0);
-            if (IsCircled) { //1üˆÈã‚µ‚Ä‚¢‚é
+            if (IsCircled) { //1å‘¨ä»¥ä¸Šã—ã¦ã„ã‚‹
                 if (IsPositive) { //360~
                     return new Angle(-Lap, NormalizedDegree - 360);
                 } else { //~-360
                     return new Angle(-Lap, NormalizedDegree + 360);
                 }
-            } else { //1ü‚µ‚Ä‚¢‚È‚¢
+            } else { //1å‘¨ã—ã¦ã„ãªã„
                 if (IsPositive) { //0~360
                     return new Angle(_totalDegree - 360);
                 } else { //-360~0
@@ -211,13 +211,13 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •„†‚ğ”½“]‚³‚¹‚½Šp“x‚ğæ“¾‚µ‚Ü‚·B
+        /// ç¬¦å·ã‚’åè»¢ã•ã›ãŸè§’åº¦ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         public Angle SignReverse() => new Angle(-_totalDegree);
 
         /// <summary>
-        /// Šp“x‚Ìâ‘Î’l‚ğæ“¾‚µ‚Ü‚·B
+        /// è§’åº¦ã®çµ¶å¯¾å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         /// <returns></returns>
         public Angle Absolute() => IsPositive ? this : SignReverse();
@@ -262,12 +262,12 @@ namespace nitou {
         // Static Method
 
         /// <summary>
-        /// ‰‰ZŒ‹‰Ê‚ª”’l‚Å‚ ‚é‚©‚ğŠm‚©‚ß‚é
+        /// æ¼”ç®—çµæœãŒæ•°å€¤ã§ã‚ã‚‹ã‹ã‚’ç¢ºã‹ã‚ã‚‹
         /// </summary>
         private static float ArithmeticCheck(Func<float> func) {
             var ans = func();
-            if (float.IsInfinity(ans)) throw new NotFiniteNumberException("‰‰Z‚ÌŒ‹‰ÊAŠp“x‚ª³‚Ì–³ŒÀ‘å‚Ü‚½‚Í•‰‚Ì–³ŒÀ‘å‚É‚È‚è‚Ü‚µ‚½");
-            if (float.IsNaN(ans)) throw new NotFiniteNumberException("‰‰Z‚ÌŒ‹‰ÊAŠp“x‚ªNaN‚É‚È‚è‚Ü‚µ‚½");
+            if (float.IsInfinity(ans)) throw new NotFiniteNumberException("æ¼”ç®—ã®çµæœã€è§’åº¦ãŒæ­£ã®ç„¡é™å¤§ã¾ãŸã¯è² ã®ç„¡é™å¤§ã«ãªã‚Šã¾ã—ãŸ");
+            if (float.IsNaN(ans)) throw new NotFiniteNumberException("æ¼”ç®—ã®çµæœã€è§’åº¦ãŒNaNã«ãªã‚Šã¾ã—ãŸ");
             return ans;
         }
 

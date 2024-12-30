@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -11,17 +11,17 @@ namespace nitou {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 
-            // ’l‚Ìæ“¾
+            // å€¤ã®å–å¾—
             var minProperty = property.FindPropertyRelative("_min");
             var maxProperty = property.FindPropertyRelative("_max");
             ValidateValue(minProperty, maxProperty);
 
             label = EditorGUI.BeginProperty(position, label, property);
 
-            // ƒvƒƒpƒeƒB‚Ì–¼‘O•”•ª‚ğ•\¦
+            // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®åå‰éƒ¨åˆ†ã‚’è¡¨ç¤º
             Rect contentPosition = EditorGUI.PrefixLabel(position, label);
 
-            // Min‚ÆMax‚Ì2‚Â‚ÌƒvƒƒpƒeƒB‚ğ•\¦‚·‚é‚Ì‚ÅAc‚è‚ÌƒtƒB[ƒ‹ƒh‚ğ”¼•ª‚±B
+            // Minã¨Maxã®2ã¤ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤ºã™ã‚‹ã®ã§ã€æ®‹ã‚Šã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’åŠåˆ†ã“ã€‚
             contentPosition.width /= 2.0f;
 
             EditorGUIUtility.labelWidth = 45f;

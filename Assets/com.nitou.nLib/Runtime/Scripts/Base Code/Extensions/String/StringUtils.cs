@@ -1,27 +1,27 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 // [REF]
-//  qiita: ƒpƒXƒ[ƒh‚Ì‚æ‚¤‚Èƒ‰ƒ“ƒ_ƒ€‚È•¶š—ñ‚ğ¶¬‚µ‚Ä•Ô‚·ŠÖ” https://baba-s.hatenablog.com/entry/2015/07/07/000000
+//  qiita: ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®ã‚ˆã†ãªãƒ©ãƒ³ãƒ€ãƒ ãªæ–‡å­—åˆ—ã‚’ç”Ÿæˆã—ã¦è¿”ã™é–¢æ•° https://baba-s.hatenablog.com/entry/2015/07/07/000000
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="string"/>Œ^‚Ì”Ä—pƒƒ\ƒbƒhWD
+    /// <see cref="string"/>å‹ã®æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class StringUtils {
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚Ö‚Ì•ÏŠ·
+        #region æ–‡å­—åˆ—ã¸ã®å¤‰æ›
 
         public static string ToFloatText(this float self) {
             return self.ToString("0.00");
         }
 
         public static string ToFloatText(this float self, int decimalPlaces = 2) {
-            // ¬”“_ˆÈ‰º‚ÌŒ…”‚ÉŠî‚Ã‚¢‚ÄƒtƒH[ƒ}ƒbƒg
+            // å°æ•°ç‚¹ä»¥ä¸‹ã®æ¡æ•°ã«åŸºã¥ã„ã¦ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
             string format = "0." + new string('0', decimalPlaces);
             return self.ToString(format);
         }
@@ -29,12 +29,12 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚Ì¶¬
+        #region æ–‡å­—åˆ—ã®ç”Ÿæˆ
 
         private const string PASSWORD_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz";
         
         /// <summary>
-        /// ŠÈˆÕ“I‚ÈƒpƒXƒ[ƒh‚ğ¶¬‚·‚éD
+        /// ç°¡æ˜“çš„ãªãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         public static string GeneratePassword(int length) {
             var sb = new System.Text.StringBuilder(length);
@@ -53,18 +53,18 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚Ì¶¬
+        #region æ–‡å­—åˆ—ã®ç”Ÿæˆ
         
         // UniquName
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ““à‚Åd•¡‚µ‚È‚¢–¼‘O‚ğæ“¾‚·‚éD
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã§é‡è¤‡ã—ãªã„åå‰ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static string GetUniqueName(string baseName, IEnumerable<string> existingNames, Func<string, int, string> selector) {
             string newName = baseName;
             int suffix = 1;
 
-            // d•¡‚ª‚ ‚éê‡‚ÍÚ”ö«‚ğ•t‚¯‚ÄˆêˆÓ‚Ì–¼‘O‚ğ¶¬
+            // é‡è¤‡ãŒã‚ã‚‹å ´åˆã¯æ¥å°¾è¾ã‚’ä»˜ã‘ã¦ä¸€æ„ã®åå‰ã‚’ç”Ÿæˆ
             while (existingNames.Contains(newName)) {
                 newName = selector(baseName, suffix);
                 suffix++;
@@ -74,19 +74,19 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ““à‚Åd•¡‚µ‚È‚¢–¼‘O‚ğæ“¾‚·‚éD
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã§é‡è¤‡ã—ãªã„åå‰ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static string GetUniqueName(string baseName, IEnumerable<string> existingNames) {
             return GetUniqueName(baseName, existingNames, (baseName, index) => $"{baseName}({index})");
         }
 
         /// <summary>
-        /// ƒRƒŒƒNƒVƒ‡ƒ““à‚Åd•¡‚µ‚È‚¢ƒRƒs[ƒIƒuƒWƒFƒNƒg–¼‚ğæ“¾‚·‚éD
+        /// ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³å†…ã§é‡è¤‡ã—ãªã„ã‚³ãƒ”ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static string GetUniqueCopyDataName(string baseName, IEnumerable<string> existingNames) {
             string newName = GetCopyDataName(baseName);
 
-            // d•¡‚ª‚ ‚éê‡‚ÉˆêˆÓ‚ÌƒRƒs[–¼‚ğ¶¬
+            // é‡è¤‡ãŒã‚ã‚‹å ´åˆã«ä¸€æ„ã®ã‚³ãƒ”ãƒ¼åã‚’ç”Ÿæˆ
             while (existingNames.Contains(newName)) {
                 newName = GetCopyDataName(newName);
             }
@@ -111,18 +111,18 @@ namespace nitou {
             Match match = Regex.Match(baseName, pattern);
 
             if (match.Success) {
-                //  "_cpy(no)" ‚Ìê‡
+                //  "_cpy(no)" ã®å ´åˆ
                 if (match.Groups[1].Success && int.TryParse(match.Groups[1].Value, out int number)) {
                     // set incremented number
                     number++;
                     baseName = Regex.Replace(baseName, pattern, $"_cpy({number})");
                 }
-                // "_cpy" ‚Ìê‡
+                // "_cpy" ã®å ´åˆ
                 else {
                     baseName = baseName + "(1)";
                 }
             } else {
-                // "_cpy" ‚Å‚È‚¢ê‡A"_cpy" ‚ğ’Ç‰Á
+                // "_cpy" ã§ãªã„å ´åˆã€"_cpy" ã‚’è¿½åŠ 
                 baseName += "_cpy";
             }
 
@@ -136,7 +136,7 @@ namespace nitou {
     public static class ParseUtils {
 
         /// ----------------------------------------------------------------------------
-        #region •¶š—ñ‚Ì¶¬
+        #region æ–‡å­—åˆ—ã®ç”Ÿæˆ
 
         public static float FloatOrZero(string text) {
             return float.TryParse(text, out var result) ? result : 0f;

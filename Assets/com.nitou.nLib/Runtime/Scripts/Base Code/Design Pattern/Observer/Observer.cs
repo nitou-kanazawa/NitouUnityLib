@@ -1,34 +1,34 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  qiita: ì‚è‚È‚ª‚ç—‰ğ‚·‚éUniRx https://qiita.com/mattak/items/106dfd0974653aa06fbc#5-observable
+// [å‚è€ƒ]
+//  qiita: ä½œã‚ŠãªãŒã‚‰ç†è§£ã™ã‚‹UniRx https://qiita.com/mattak/items/106dfd0974653aa06fbc#5-observable
 
 namespace nitou.DesignPattern.Observer {
 
-    // ŠÄ‹Ò
+    // ç›£è¦–è€…
     public interface IObserver<T> {
 
-        // ƒf[ƒ^‚ª—ˆ‚½
+        // ãƒ‡ãƒ¼ã‚¿ãŒæ¥ãŸ
         void OnNext(T value);
 
-        // ƒGƒ‰[‚ª—ˆ‚½
+        // ã‚¨ãƒ©ãƒ¼ãŒæ¥ãŸ
         void OnError(Exception error);
 
-        // ƒf[ƒ^‚Í‚à‚¤—ˆ‚È‚¢
+        // ãƒ‡ãƒ¼ã‚¿ã¯ã‚‚ã†æ¥ãªã„
         void OnComplete();
     }
 
-    // ŠÄ‹‰Â”\‚Å‚ ‚é‚±‚Æ‚ğ¦‚·
+    // ç›£è¦–å¯èƒ½ã§ã‚ã‚‹ã“ã¨ã‚’ç¤ºã™
     public interface IObservable<T> {
 
-        // ŠÄ‹Ò‚ªw“Ç‚·‚é
+        // ç›£è¦–è€…ãŒè³¼èª­ã™ã‚‹
         IDisposable Subscribe(IObserver<T> observer);
     }
 
 
-    // ŠÄ‹‘ÎÛ
+    // ç›£è¦–å¯¾è±¡
     public interface ISubject<T> : IObserver<T>, IObservable<T> { }
 
 
@@ -66,7 +66,7 @@ namespace nitou.DesignPattern.Observer {
         #region IObservable
         public IDisposable Subscribe(IObserver<T> observer) {
             this.observers.Add(observer);
-            // w“ÇŠÇ—‚Ìclass‚ğ•Ô‚·
+            // è³¼èª­ç®¡ç†ã®classã‚’è¿”ã™
             return new Subscription(this, observer);
         }
         #endregion
@@ -76,7 +76,7 @@ namespace nitou.DesignPattern.Observer {
         }
 
 
-        // w“ÇŠÇ—‚ğ‚·‚éclass. Dispose()‚ğŒÄ‚Ô‚±‚Æ‚Åw“Ç‚ğ‚â‚ß‚é
+        // è³¼èª­ç®¡ç†ã‚’ã™ã‚‹class. Dispose()ã‚’å‘¼ã¶ã“ã¨ã§è³¼èª­ã‚’ã‚„ã‚ã‚‹
         class Subscription : IDisposable {
 
             private IObserver<T> _observer;
@@ -96,7 +96,7 @@ namespace nitou.DesignPattern.Observer {
 
     public class Observable<T> : IObservable<T> {
 
-        // ˆ—“à—e‚ğƒfƒŠƒQ[ƒg‚Å•Û‚·‚é‚½‚ßCCold‚ÈU‚é•‘‚¢‚ğ‚·‚é
+        // å‡¦ç†å†…å®¹ã‚’ãƒ‡ãƒªã‚²ãƒ¼ãƒˆã§ä¿æŒã™ã‚‹ãŸã‚ï¼ŒColdãªæŒ¯ã‚‹èˆã„ã‚’ã™ã‚‹
         private Func<IObserver<T>, IDisposable> creator;
 
 
@@ -105,11 +105,11 @@ namespace nitou.DesignPattern.Observer {
         }
 
         public IDisposable Subscribe(IObserver<T> observer) {
-            // Subscribe‚µ‚½uŠÔ‚ÉŠÖ”‚ğÀs‚·‚é‚Ì‚ª“Á’¥
+            // Subscribeã—ãŸç¬é–“ã«é–¢æ•°ã‚’å®Ÿè¡Œã™ã‚‹ã®ãŒç‰¹å¾´
             return this.creator(observer);
         }
 
-        // Observable‚ğ’¼Ú“n‚µ‚½‚­‚È‚¢‚½‚ßACreateƒƒ\ƒbƒh‚ğì‚Á‚Ä‚¨‚­.
+        // Observableã‚’ç›´æ¥æ¸¡ã—ãŸããªã„ãŸã‚ã€Createãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½œã£ã¦ãŠã.
         public static IObservable<T> Create(Func<IObserver<T>, IDisposable> creator) {
             return new Observable<T>(creator);
         }
@@ -149,12 +149,12 @@ namespace nitou.DesignPattern.Observer {
     }
 
 
-    // w“Ç‰ğœ‚·‚é‚Â‚à‚è‚ª‚È‚¢‚Æ‚«‚É•Ô‚· Disposable
+    // è³¼èª­è§£é™¤ã™ã‚‹ã¤ã‚‚ã‚ŠãŒãªã„ã¨ãã«è¿”ã™ Disposable
     public class EmptyDisposable : IDisposable {
         public void Dispose() { }
     }
 
-    // •¡”‚Ìu“Ç‚ğ‚¢‚Á‚Ø‚ñ‚É‰ğœ‚·‚é‚½‚ß‚Ì Disposable
+    // è¤‡æ•°ã®è¬›èª­ã‚’ã„ã£ãºã‚“ã«è§£é™¤ã™ã‚‹ãŸã‚ã® Disposable
     public class CollectionDisposable : IDisposable {
         
         private IList<IDisposable> _disposables;
@@ -182,9 +182,9 @@ namespace nitou.DesignPattern.Observer {
 
                 var observable = Observable<string>.Create(observer => {
 
-                    // ƒlƒ^‚ª‰ñ“šo—ˆ‚½‚çˆ¬‚Á‚Ä’ñ‹Ÿ
-                    Debug.Log("ƒlƒ^‚ğ‰ğ“€‚µ‚Ü‚·");
-                    observer.OnNext("‚Ô‚è");
+                    // ãƒã‚¿ãŒå›ç­”å‡ºæ¥ãŸã‚‰æ¡ã£ã¦æä¾›
+                    Debug.Log("ãƒã‚¿ã‚’è§£å‡ã—ã¾ã™");
+                    observer.OnNext("ã¶ã‚Š");
                     observer.OnComplete();
                     return new EmptyDisposable();
                 });

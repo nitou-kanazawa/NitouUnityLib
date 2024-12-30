@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  UnityDocument: Rect https://docs.unity3d.com/ja/2023.2/ScriptReference/Rect.html
-//  ƒRƒKƒlƒuƒƒO: Rect ‚Ì‘ã“ü‚ğŠÈ—ª‰»‚·‚é Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230100#google_vignette
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Rect ã®ä»£å…¥ã‚’ç°¡ç•¥åŒ–ã™ã‚‹ Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230100#google_vignette
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rect"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Rect"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class RectExtensions {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Rect self, out Vector2 position, out Vector2 size) {
             position = self.position;
@@ -20,7 +20,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct( this Rect self, out float x, out float y, out float width, out float height) {
             x = self.x;
@@ -235,7 +235,7 @@ namespace nitou {
         #region Expand
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯L‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Expand(this Rect rect, float left, float right, float top, float bottom) {
             return new Rect(
@@ -246,7 +246,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯L‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Expand(this Rect rect, float horizontal, float vertical) {
             return new Rect(
@@ -257,7 +257,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯L‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Expand(this Rect rect, float expand) {
             return new Rect(
@@ -268,7 +268,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ¶‰E•ûŒü‚É‚»‚ê‚¼‚êw’è’l‚¾‚¯L‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// å·¦å³æ–¹å‘ã«ãã‚Œãã‚ŒæŒ‡å®šå€¤ã ã‘åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect ExpandX(this Rect rect, float value) {
             rect.xMin -= value;
@@ -277,7 +277,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ã‰º•ûŒü‚É‚»‚ê‚¼‚êw’è’l‚¾‚¯L‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// ä¸Šä¸‹æ–¹å‘ã«ãã‚Œãã‚ŒæŒ‡å®šå€¤ã ã‘åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect ExpandY(this Rect rect, float value) {
             rect.yMin -= value;
@@ -286,7 +286,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’èÀ•W‚ğŠÜ‚Ş‚æ‚¤‚ÉL‚°‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šåº§æ¨™ã‚’å«ã‚€ã‚ˆã†ã«åºƒã’ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect ExpandTo(this Rect rect, Vector2 pos) {
             if (!rect.Contains(pos)) {
@@ -304,7 +304,7 @@ namespace nitou {
         #region Padding
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯k¬‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘ç¸®å°ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Padding(this Rect rect, float left, float right, float top, float bottom) {
             return new Rect(
@@ -315,7 +315,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯k¬‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘ç¸®å°ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Padding(this Rect rect, float horizontal, float vertical) {
             return new Rect(
@@ -326,7 +326,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯k¬‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘ç¸®å°ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Padding(this Rect rect, float padding) {
             return new Rect(
@@ -337,7 +337,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S•ûŒü‚Éw’è’l‚¾‚¯k¬‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨æ–¹å‘ã«æŒ‡å®šå€¤ã ã‘ç¸®å°ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect Padding(this Rect rect, Padding padding) {
             return new Rect(
@@ -396,7 +396,7 @@ namespace nitou {
         #region Split
 
         /// <summary>
-        /// ¶”¼•ª‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å·¦åŠåˆ†ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect LeftHalf(this Rect rect) {
             rect.width /= 2;
@@ -404,7 +404,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‰E”¼•ª‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å³åŠåˆ†ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect RightHalf(this Rect rect) {
             rect.width /= 2;
@@ -413,7 +413,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ã”¼•ª‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ä¸ŠåŠåˆ†ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect TopHalf(this Rect rect) {
             rect.height /= 2;
@@ -421,7 +421,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‰º”¼•ª‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ä¸‹åŠåˆ†ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect BottomHalf(this Rect rect) {
             rect.height /= 2;
@@ -431,14 +431,14 @@ namespace nitou {
 
 
         /// <summary>
-        /// …•½•ûŒü‚Éw’è”‚Å•ªŠ„‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æ°´å¹³æ–¹å‘ã«æŒ‡å®šæ•°ã§åˆ†å‰²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect[] HorizontalSplit(this Rect rect, int count, float padding = 2f) {
             if (count < 1) throw new System.InvalidOperationException("");
 
             var rects = new Rect[count];
 
-            float totalPadding = padding * (count - 1);   // ¦—v‘fŠÔ‚ÌŒ„ŠÔ
+            float totalPadding = padding * (count - 1);   // â€»è¦ç´ é–“ã®éš™é–“
             float width = (rect.width - totalPadding) / count;
             for (int i = 0; i < count; i++) {
                 rects[i] = new Rect(
@@ -451,7 +451,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚’¼•ûŒü‚Éw’è”‚Å•ªŠ„‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å‚ç›´æ–¹å‘ã«æŒ‡å®šæ•°ã§åˆ†å‰²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Rect[] VerticalSplit(this Rect rect, int count, float padding = 2f) {
             if (count < 1) throw new System.InvalidOperationException("");
@@ -490,7 +490,7 @@ namespace nitou {
         #region String
 
         /// <summary>
-        /// x,y‚Ì’lˆæ‚ğ¦‚·•¶š—ñ‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// x,yã®å€¤åŸŸã‚’ç¤ºã™æ–‡å­—åˆ—ã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static string ToStringAsRange(this Rect rect) {
             return string.Format(

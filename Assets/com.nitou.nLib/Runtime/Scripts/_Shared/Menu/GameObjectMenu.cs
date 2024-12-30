@@ -1,28 +1,28 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// "Create Asset Menu"—p‚ÌŠeí’è‹`
+    /// "Create Asset Menu"ç”¨ã®å„ç¨®å®šç¾©
     /// </summary>
     public static class GameObjectMenu {
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static class Prefix {
 
             /// <summary>
-            /// ƒ_ƒ~[ƒIƒuƒWƒFƒNƒg
+            /// ãƒ€ãƒŸãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
             /// </summary>
             public const string DammyObject = "GameObject/Dammy Object/";
 
             /// <summary>
-            /// ƒV[ƒ“ŠÖ˜A
+            /// ã‚·ãƒ¼ãƒ³é–¢é€£
             /// </summary>
             public const string SceneSystem = "GameObject/Scene System/";
 
             /// <summary>
-            /// ƒAƒjƒ[ƒVƒ‡ƒ“ŠÖ˜A
+            /// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–¢é€£
             /// </summary>
             public const string Animation = "GameObject/Animation/";
 
@@ -35,14 +35,14 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Ú”ö«
+        // æ¥å°¾è¾
         public static class Suffix {
 
         }
 
 
         /// ----------------------------------------------------------------------------
-        // •\¦‡
+        // è¡¨ç¤ºé †
         public static class Order {
 
             public const int DammyObject = 0;

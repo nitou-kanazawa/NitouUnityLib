@@ -1,21 +1,21 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-// [Ql]
-//  PG“ú : Vector3(\‘¢‘Ì)‚É©•ª©g‚Ì’l‚ğ•ÏX‚·‚éŠg’£ƒƒ\ƒbƒh‚ğ’è‹`‚·‚é https://takap-tech.com/entry/2022/12/24/175039
-//  ƒRƒKƒlƒuƒƒO:@Vector3 ‚Ì‘ã“ü‚ğŠÈ—ª‰»‚·‚é Deconstruction@https://baba-s.hatenablog.com/entry/2019/09/03/230700
+// [å‚è€ƒ]
+//  PGæ—¥èªŒ : Vector3(æ§‹é€ ä½“)ã«è‡ªåˆ†è‡ªèº«ã®å€¤ã‚’å¤‰æ›´ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹ https://takap-tech.com/entry/2022/12/24/175039
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°:ã€€Vector3 ã®ä»£å…¥ã‚’ç°¡ç•¥åŒ–ã™ã‚‹ Deconstructionã€€https://baba-s.hatenablog.com/entry/2019/09/03/230700
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Vector3"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Vector3"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class Vector3Extensions {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Vector3 self, out float x, out float y, out float z) {
             x = self.x;
@@ -24,14 +24,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Vector2‚Ö‚Ì•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Vector2ã¸ã®å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector2 ToVector2(this Vector3 self) {
                 return new Vector2(self.x, self.y);
             }
 
         /// <summary>
-        /// —v‘f“¯m‚ÌŠ„‚èZ‚ğs‚¤Šg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ åŒå£«ã®å‰²ã‚Šç®—ã‚’è¡Œã†æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector3 Divide(this Vector3 self, Vector3 other) {
             return new Vector3(
@@ -42,7 +42,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// —v‘f“¯m‚ÌŠ„‚èZ‚ğs‚¤Šg’£ƒƒ\ƒbƒhD
+        /// è¦ç´ åŒå£«ã®å‰²ã‚Šç®—ã‚’è¡Œã†æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static Vector3 Divide(this Vector3 self, Vector3 other, float defaultValue) {
             return new Vector3(
@@ -54,27 +54,27 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì”»’è
+        #region è¦ç´ ã®åˆ¤å®š
 
         /// <summary>
-        /// Å‘å‚Ì—v‘f‚Ì’l‚ğæ“¾‚·‚é
+        /// æœ€å¤§ã®è¦ç´ ã®å€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static float MaxElement(this Vector3 self) {
             return Mathf.Max(self.x, self.y, self.z);
         }
 
         /// <summary>
-        /// Å¬‚Ì—v‘f‚Ì’l‚ğæ“¾‚·‚é
+        /// æœ€å°ã®è¦ç´ ã®å€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static float MinElement(this Vector3 self) {
             return Mathf.Min(self.x, self.y, self.z);
         }
 
         /// <summary>
-        /// Å‘å‚Ì—v‘f‚Ì²‚ğæ“¾‚·‚é
+        /// æœ€å¤§ã®è¦ç´ ã®è»¸ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Axis MaxAxis(this Vector3 self) {
-            // [NOTE] ’l‚ª“™‚µ‚¢ê‡‚Í(x , y , z)‚Ì‡‚Å—Dæ‚³‚ê‚é
+            // [NOTE] å€¤ãŒç­‰ã—ã„å ´åˆã¯(x , y , z)ã®é †ã§å„ªå…ˆã•ã‚Œã‚‹
             if (self.x >= self.y && self.x >= self.z) {
                 return Axis.X;
             } else if (self.y >= self.x && self.y >= self.z) {
@@ -85,10 +85,10 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å¬‚Ì—v‘f‚Ì²‚ğæ“¾‚·‚é
+        /// æœ€å°ã®è¦ç´ ã®è»¸ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Axis MinAxis(this Vector3 self) {
-            // [NOTE] ’l‚ª“™‚µ‚¢ê‡‚Í(x > y > z)‚Ì‡‚Å—Dæ‚³‚ê‚é
+            // [NOTE] å€¤ãŒç­‰ã—ã„å ´åˆã¯(x > y > z)ã®é †ã§å„ªå…ˆã•ã‚Œã‚‹
             if (self.x <= self.y && self.x <= self.z) {
                 return Axis.X;
             } else if (self.y <= self.x && self.y <= self.z) {
@@ -101,46 +101,46 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì•ÏŠ· 
+        #region å€¤ã®å¤‰æ› 
 
         /// <summary>
-        /// X’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Xå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 WithX(this Vector3 self, float x) => new Vector3(x, self.y, self.z);
 
         /// <summary>
-        /// Y’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Yå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 WithY(this Vector3 self, float y) => new Vector3(self.x, y, self.z);
 
         /// <summary>
-        /// Z’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Zå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 WithZ(this Vector3 self, float z) => new Vector3(self.x, self.y, z);
 
         // ------ 
 
         /// <summary>
-        /// X’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Xå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 KeepX(this Vector3 self) => new Vector3(self.x, 0, 0);
 
         /// <summary>
-        /// Y’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Yå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 KeepY(this Vector3 self) => new Vector3(0, self.y, 0);
 
         /// <summary>
-        /// Z’l‚Ì‚İ•ÏX‚µ‚½’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// Zå€¤ã®ã¿å¤‰æ›´ã—ãŸå€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 KeepZ(this Vector3 self) => new Vector3(0, 0, self.z);
 
         /// <summary>
-        /// Vector3‚Ìx, y, z‚Ì‚¤‚¿Å‘å‚Ì—v‘f‚Ì‚İ‚ğ•Û‚µA‘¼‚Ì—v‘f‚ğ0‚É‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Vector3ã®x, y, zã®ã†ã¡æœ€å¤§ã®è¦ç´ ã®ã¿ã‚’ä¿æŒã—ã€ä»–ã®è¦ç´ ã‚’0ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 KeepMax(this Vector3 self) {
 
-            // Å‘å‚Ì’l‚ğ‚Â—v‘f‚Ì‚İ•Û
+            // æœ€å¤§ã®å€¤ã‚’æŒã¤è¦ç´ ã®ã¿ä¿æŒ
             if (self.x >= self.y && self.x >= self.z) {
                 return self.KeepX();
             } else if (self.y >= self.x && self.y >= self.z) {
@@ -151,11 +151,11 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Vector3‚Ìx, y, z‚Ì‚¤‚¿Å¬‚Ì—v‘f‚Ì‚İ‚ğ•Û‚µA‘¼‚Ì—v‘f‚ğ0‚É‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Vector3ã®x, y, zã®ã†ã¡æœ€å°ã®è¦ç´ ã®ã¿ã‚’ä¿æŒã—ã€ä»–ã®è¦ç´ ã‚’0ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 KeepMin(this Vector3 self) {
 
-            // Å‘å‚Ì’l‚ğ‚Â—v‘f‚Ì‚İ•Û
+            // æœ€å¤§ã®å€¤ã‚’æŒã¤è¦ç´ ã®ã¿ä¿æŒ
             if (self.x <= self.y && self.x <= self.z) {
                 return self.KeepX();
             } else if (self.y <= self.x && self.y <= self.z) {
@@ -170,28 +170,28 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì•ÏŠ· 
+        #region å€¤ã®å¤‰æ› 
 
         /// <summary>
-        /// ‘S‚Ä‚Ì—v‘f‚ğ³‚Ì’l‚É‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨ã¦ã®è¦ç´ ã‚’æ­£ã®å€¤ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 Positate(this Vector3 self) => new Vector3(Mathf.Abs(self.x), Mathf.Abs(self.y), Mathf.Abs(self.z));
 
         /// <summary>
-        /// ‘S‚Ä‚Ì—v‘f‚ğ•‰‚Ì’l‚É‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨ã¦ã®è¦ç´ ã‚’è² ã®å€¤ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 Negate(this Vector3 self) => new Vector3(Mathf.Abs(self.x), Mathf.Abs(self.y), Mathf.Abs(self.z));
 
         // -----
 
         /// <summary>
-        /// ”¼•ª‚Ì’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// åŠåˆ†ã®å€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 Half(this Vector3 self) => self * 0.5f;
 
         /// <summary>
-        /// ‚Q”{‚Ì’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// ï¼’å€ã®å€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector3 Twice(this Vector3 self) => self * 2f;
@@ -202,30 +202,30 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ’l‚Ì‰ÁZ
+        // å€¤ã®åŠ ç®—
 
         /// <summary>
-        /// X’l‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Xå€¤ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddX(ref this Vector3 self, float x) => self.x += x;
 
         /// <summary>
-        /// Y’l‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Yå€¤ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddY(ref this Vector3 self, float y) => self.y += y;
 
         /// <summary>
-        /// Z’l‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Zå€¤ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddZ(ref this Vector3 self, float z) => self.z += z;
 
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì•ÏŠ·
+        #region å€¤ã®å¤‰æ›
 
         /// <summary>
-        /// ‘S‚Ä‚Ì—v‘f‚ğw’è‚Ì”ÍˆÍ“à‚ÉClamp‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨ã¦ã®è¦ç´ ã‚’æŒ‡å®šã®ç¯„å›²å†…ã«Clampã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 Clamp(this Vector3 self, float min, float max) {
             return new Vector3(
@@ -235,14 +235,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <see cref="Vector3.ClampMagnitude(Vector3, float)"/>‚ÌŠg’£ƒƒ\ƒbƒh
+        /// <see cref="Vector3.ClampMagnitude(Vector3, float)"/>ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 ClampMagnitude(this Vector3 self, float maxLength) {
             return Vector3.ClampMagnitude(self, maxLength);
         }
 
         /// <summary>
-        /// <see cref="Vector3.ClampMagnitude(Vector3, float)"/>‚ÌŠg’£ƒƒ\ƒbƒh
+        /// <see cref="Vector3.ClampMagnitude(Vector3, float)"/>ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 ClampMagnitude01(this Vector3 self) {
             return Vector3.ClampMagnitude(self, 1);
@@ -254,7 +254,7 @@ namespace nitou {
 
 
         public static Vector3 FindMinVector(IEnumerable<Vector3> ptList) {
-            // LINQ‚ğg—p‚µ‚ÄÅ¬‚ÌƒxƒNƒgƒ‹‚ğŒ©‚Â‚¯‚é
+            // LINQã‚’ä½¿ç”¨ã—ã¦æœ€å°ã®ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¦‹ã¤ã‘ã‚‹
             return ptList.Aggregate((minVec, nextVec) => Vector3.Min(minVec, nextVec));
         }
     }

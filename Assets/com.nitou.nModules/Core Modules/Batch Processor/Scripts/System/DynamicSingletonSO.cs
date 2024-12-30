@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  Unity Forums: Do I need to destroy Instantiated ScriptableObjects not used anymore? https://forum.unity.com/threads/do-i-need-to-destroy-instantiated-scriptableobjects-not-used-anymore.1488063/
 
-// [ƒƒ‚]
-//  EUnityEngine.Object‚©‚ç”h¶‚µ‚½ƒIƒuƒWƒFƒNƒg‚Í©•ª‚Å”jŠü‚·‚é•K—v‚ª‚ ‚é. (Texture2D, Mesh, GameObject, etc)
+// [ãƒ¡ãƒ¢]
+//  ãƒ»UnityEngine.Objectã‹ã‚‰æ´¾ç”Ÿã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯è‡ªåˆ†ã§ç ´æ£„ã™ã‚‹å¿…è¦ãŒã‚ã‚‹. (Texture2D, Mesh, GameObject, etc)
 
 namespace nitou.BachProcessor {
 
@@ -16,7 +16,7 @@ namespace nitou.BachProcessor {
         private static T _instance;
 
         /// <summary>
-        /// ƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬Ï‚İ‚©‚Ç‚¤‚©.
+        /// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆæ¸ˆã¿ã‹ã©ã†ã‹.
         /// [NOTE] When accessing the component at a time when it might be destroyed, like OnDestroy, always check for the existence of the object.
         /// </summary>
         protected static bool IsCreated => _instance != null;
@@ -42,7 +42,7 @@ namespace nitou.BachProcessor {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“I—¹‚Ìˆ—
+        /// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†æ™‚ã®å‡¦ç†
         /// </summary>
         private void OnQuit() {
             Application.quitting -= OnQuit;

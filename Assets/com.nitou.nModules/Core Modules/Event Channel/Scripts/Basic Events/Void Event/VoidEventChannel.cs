@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// <see cref="void"/>Œ^‚ÌƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹
+    /// <see cref="void"/>å‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«
     /// </summary>
     [CreateAssetMenu(
         fileName = "Event_Void",

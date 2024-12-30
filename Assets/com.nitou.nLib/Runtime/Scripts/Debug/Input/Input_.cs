@@ -1,12 +1,12 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-// [TODO] ���΂ɎG������̂ł����������[�X�P�[�X���������Ă���C������ (2024.08.01)
+// [TODO] 流石に雑すぎるのでもう少しユースケースを検討してから修正する (2024.08.01)
 
 namespace nitou{
 
     /// <summary>
-    /// �e�X�g�R�[�h�p�̓��͊֐���񋟂���ÓI�N���X
+    /// テストコード用の入力関数を提供する静的クラス
     /// </summary>
     public static class Input_{
 

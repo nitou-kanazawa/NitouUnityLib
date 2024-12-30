@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -70,7 +70,7 @@ namespace nitou.GameSystem {
                 _state.Value != ProcessState.Paused)
                 throw new InvalidOperationException($"Invalid state transition: {nameof(IProcess.Cancel)} can only be called from {ProcessState.Running} or {ProcessState.Paused}.");
 
-            OnCancel(cancelResult); // ƒ‰ƒCƒtƒTƒCƒNƒ‹ƒCƒxƒ“ƒg
+            OnCancel(cancelResult); // ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«ã‚¤ãƒ™ãƒ³ãƒˆ
             _state.Value = ProcessState.Cancelled;
 
             _completionSource.TrySetResult(cancelResult ?? new CancelResult("Default Reason"));
@@ -99,7 +99,7 @@ namespace nitou.GameSystem {
         protected virtual void OnDispose() { }
 
         /// <summary>
-        /// ƒvƒƒZƒXŠ®—¹ƒCƒxƒ“ƒg‚Ì”­‰Îi¦”h¶ƒNƒ‰ƒX—pj
+        /// ãƒ—ãƒ­ã‚»ã‚¹å®Œäº†ã‚¤ãƒ™ãƒ³ãƒˆã®ç™ºç«ï¼ˆâ€»æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ç”¨ï¼‰
         /// </summary>
         protected void TriggerComplete(CompleteResult result) {
             if (_state.Value != ProcessState.Running)

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace nitou.Tools.TodoTask {
 
     /// <summary>
-    /// <see cref="TodoTask"/>‚ÌƒRƒ“ƒeƒi
+    /// <see cref="TodoTask"/>ã®ã‚³ãƒ³ãƒ†ãƒŠ
     /// </summary>
     public interface ITaskRepository {
 

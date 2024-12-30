@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="Array"/>‚ğŒø—¦“I‚ÉÄ—˜—p‚·‚é‚½‚ß‚ÌÃ“IƒNƒ‰ƒX
+    /// <see cref="Array"/>ã‚’åŠ¹ç‡çš„ã«å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class ArrayPool<T> {
 
@@ -14,7 +14,7 @@ namespace nitou.DesignPattern.Pooling {
         private static readonly HashSet<T[]> busy = new();
 
         /// <summary>
-        /// w’è‚µ‚½’·‚³‚Ì”z—ñ‚ğæ“¾‚·‚éD
+        /// æŒ‡å®šã—ãŸé•·ã•ã®é…åˆ—ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static T[] New(int length) {
             lock (@lock) {
@@ -35,7 +35,7 @@ namespace nitou.DesignPattern.Pooling {
         }
 
         /// <summary>
-        /// g—pÏ‚İ‚Ì”z—ñ‚ğƒv[ƒ‹‚É–ß‚·D
+        /// ä½¿ç”¨æ¸ˆã¿ã®é…åˆ—ã‚’ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™ï¼
         /// </summary>
         public static void Free(T[] array) {
             lock (@lock) {

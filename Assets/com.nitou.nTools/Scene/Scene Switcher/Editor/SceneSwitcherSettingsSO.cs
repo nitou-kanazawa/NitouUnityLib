@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+Ôªø#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -12,7 +12,7 @@ namespace nitou.Tools.SceneSystem{
 
 
         /// <summary>
-        /// ÉfÅ[É^Çï€ë∂Ç∑ÇÈ
+        /// „Éá„Éº„Çø„Çí‰øùÂ≠ò„Åô„Çã
         /// </summary>
         public void Save() => base.Save(saveAsText: true);
     }

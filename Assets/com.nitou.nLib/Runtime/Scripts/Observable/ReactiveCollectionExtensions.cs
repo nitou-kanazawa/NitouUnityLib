@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using nitou;
@@ -6,12 +6,12 @@ using nitou;
 namespace UniRx {
 
     /// <summary>
-    /// <see cref="ReactiveCollection{T}"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="ReactiveCollection{T}"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class ReactiveCollectionExtensions {
 
         /// <summary>
-        /// •ÏX‚ª‚ ‚Á‚½‚±‚Æ‚ğ’Ê’m‚·‚éObservable‚ğ•Ô‚·.
+        /// å¤‰æ›´ãŒã‚ã£ãŸã“ã¨ã‚’é€šçŸ¥ã™ã‚‹Observableã‚’è¿”ã™.
         /// </summary>
         public static IObservable<Unit> ObserveAnyChanged<T>(this ReactiveCollection<T> self) {
             return Observable.Merge(
@@ -26,7 +26,7 @@ namespace UniRx {
         }
 
         /// <summary>
-        /// ’†g‚¾‚¯‚ğ‘S‚Ä“ü‚ê‘Ö‚¦‚éŠg’£ƒƒ\ƒbƒh.
+        /// ä¸­èº«ã ã‘ã‚’å…¨ã¦å…¥ã‚Œæ›¿ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰.
         /// </summary>
         public static ReactiveCollection<T> Set<T>(this ReactiveCollection<T> self, IList<T> source) {
             int before = self.Count;
@@ -51,18 +51,18 @@ namespace UniRx {
         }
 
         /// <summary>
-        /// ’†g‚ğ“¯Šú‚³‚¹‚éŠg’£ƒƒ\ƒbƒhD
-        /// ³í‚É’Ç‰Á/íœ‚ÌƒCƒxƒ“ƒg”­‰Î‚ª”­‰Î‚³‚ê‚é‚ªC—v‘f‚Ì‡˜‚Íl—¶‚µ‚È‚¢D
+        /// ä¸­èº«ã‚’åŒæœŸã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
+        /// æ­£å¸¸ã«è¿½åŠ /å‰Šé™¤ã®ã‚¤ãƒ™ãƒ³ãƒˆç™ºç«ãŒç™ºç«ã•ã‚Œã‚‹ãŒï¼Œè¦ç´ ã®é †åºã¯è€ƒæ…®ã—ãªã„ï¼
         /// </summary>
         public static void SynchronizeWith<T>(this ReactiveCollection<T> self, IEnumerable<T> source) {
-            // —v‘f‚Ìíœ
+            // è¦ç´ ã®å‰Šé™¤
             self.RemoveAll(x => !source.Contains(x));
-            // —v‘f‚Ì’Ç‰Á
+            // è¦ç´ ã®è¿½åŠ 
             self.AddRangeIfNotContains(source);
         }
 
         /// <summary>
-        /// ğŒƒ}ƒbƒ`‚·‚éƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh.
+        /// æ¡ä»¶ãƒãƒƒãƒã™ã‚‹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰.
         /// </summary>
         public static int FindIndex<T>(this ReactiveCollection<T> self, Predicate<T> match) {
             for (int i = 0; i < self.Count; i++) {

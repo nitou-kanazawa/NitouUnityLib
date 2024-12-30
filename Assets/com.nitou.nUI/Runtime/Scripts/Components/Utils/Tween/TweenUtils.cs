@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: DOTween‚ÅTime.timeScale‚ğ–³‹‚·‚é•û–@ https://baba-s.hatenablog.com/entry/2016/11/17/100000#google_vignette
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: DOTweenã§Time.timeScaleã‚’ç„¡è¦–ã™ã‚‹æ–¹æ³• https://baba-s.hatenablog.com/entry/2016/11/17/100000#google_vignette
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// <see cref="Tween"/>‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// <see cref="Tween"/>ã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class TweenUtils{
 
         /// <summary>
-        /// SetUpdate(true)‚Ì“œˆß\•¶.
+        /// SetUpdate(true)ã®ç³–è¡£æ§‹æ–‡.
         /// </summary>
         public static T IgnoreTimeScale<T>(this T t) 
             where T : Tween {

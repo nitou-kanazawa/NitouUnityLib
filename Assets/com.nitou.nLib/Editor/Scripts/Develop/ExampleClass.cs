@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: https://baba-s.hatenablog.com/entry/2015/04/26/120413#google_vignette
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: https://baba-s.hatenablog.com/entry/2015/04/26/120413#google_vignette
 
 namespace nitou.EditorScripts.Internal {
 

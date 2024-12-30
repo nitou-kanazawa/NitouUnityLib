@@ -1,19 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Sirenix.OdinInspector;
 
-// [Ql]
-//  youtube: Devlog 2bƒXƒNƒŠƒvƒ^ƒuƒ‹ƒIƒuƒWƒFƒNƒg‚ğg‚Á‚½ƒQ[ƒ€ƒA[ƒLƒeƒNƒ`ƒƒ https://www.youtube.com/watch?v=WLDgtRNK2VE
+// [å‚è€ƒ]
+//  youtube: Devlog 2ï½œã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ–ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ãŸã‚²ãƒ¼ãƒ ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ https://www.youtube.com/watch?v=WLDgtRNK2VE
 
 namespace nitou.EventChannel.Shared {
 
     /// <summary>
-    /// ƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹—p‚Ì‚½‚½‚«‘ä‚Æ‚È‚éScriptable Object
+    /// ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«ç”¨ã®ãŸãŸãå°ã¨ãªã‚‹Scriptable Object
     /// </summary>
     public abstract class EventChannel : ScriptableObject {
 
 #if UNITY_EDITOR
 #pragma warning disable 0414
-        // à–¾•¶
+        // èª¬æ˜æ–‡
         [Multiline]
         [SerializeField] private string _description = default;
 #pragma warning restore 0414
@@ -25,7 +25,7 @@ namespace nitou.EventChannel.Shared {
         // Public Method
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg‚Ì”­‰Î
+        /// ã‚¤ãƒ™ãƒ³ãƒˆã®ç™ºç«
         /// </summary>
         [Button("Raise")]
         public void RaiseEvent() => OnEventRaised.Invoke();
@@ -33,13 +33,13 @@ namespace nitou.EventChannel.Shared {
 
 
     /// <summary>
-    /// ƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹—p‚Ì‚½‚½‚«‘ä‚Æ‚È‚éScriptable Object
+    /// ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«ç”¨ã®ãŸãŸãå°ã¨ãªã‚‹Scriptable Object
     /// </summary>
     public abstract class EventChannel<TData> : ScriptableObject {
 
 #if UNITY_EDITOR
 #pragma warning disable 0414
-        // à–¾•¶
+        // èª¬æ˜æ–‡
         [Multiline]
         [SerializeField] private string _description = default;
 #pragma warning restore 0414
@@ -51,7 +51,7 @@ namespace nitou.EventChannel.Shared {
         // Public Method
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg‚Ì”­‰Î
+        /// ã‚¤ãƒ™ãƒ³ãƒˆã®ç™ºç«
         /// </summary>
         [Button("Raise")]
         public void RaiseEvent(TData value) {

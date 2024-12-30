@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
             var settings = HierarchySettingsSO.instance;
             if (!settings.ShowSeparator) return;
 
-            // �Ώۗ̈�
+            // 対象領域
             var rect = new Rect {y = selectionRect.y, width = selectionRect.width + selectionRect.x, height = 1, x = 0};
             EditorGUI.DrawRect(rect, settings.SeparatorColor);
 

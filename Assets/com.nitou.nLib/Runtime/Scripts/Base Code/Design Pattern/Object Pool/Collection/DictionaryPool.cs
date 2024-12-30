@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="Dictionary{TKey, TValue}"/>‚ğŒø—¦“I‚ÉÄ—˜—p‚·‚é‚½‚ß‚ÌÃ“IƒNƒ‰ƒX
+    /// <see cref="Dictionary{TKey, TValue}"/>ã‚’åŠ¹ç‡çš„ã«å†åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class DictionaryPool<TKey, TValue> {
 

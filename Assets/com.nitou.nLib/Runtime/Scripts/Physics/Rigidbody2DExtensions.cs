@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  PG“ú: RigidBody2D‚ÉAddExplosionForce‚ğ’Ç‰Á‚·‚é https://takap-tech.com/entry/2023/11/29/004251
+// [å‚è€ƒ]
+//  PGæ—¥èªŒ: RigidBody2Dã«AddExplosionForceã‚’è¿½åŠ ã™ã‚‹ https://takap-tech.com/entry/2023/11/29/004251
 
 namespace nitou {
 
     /// <summary>
-    /// Rigidbody2D‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// Rigidbody2Dã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class Rigidbody2DExtensions {
 
         /// <summary>
-        /// w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚É”š”­‚·‚é—Í‚ğ‰Á‚¦‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«çˆ†ç™ºã™ã‚‹åŠ›ã‚’åŠ ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddExplosionForce(this Rigidbody2D self, float explosionForce,
             in Vector2 explosionPosition, float explosionRadius,
@@ -34,7 +34,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚É”š”­‚·‚é—Í‚ğ‰Á‚¦‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«çˆ†ç™ºã™ã‚‹åŠ›ã‚’åŠ ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddExplosionForce(this Rigidbody2D self, float explosionForce,
             in Vector3 explosionPosition, float explosionRadius, float upwardsModifier) {
@@ -43,7 +43,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚É”š”­‚·‚é—Í‚ğ‰Á‚¦‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«çˆ†ç™ºã™ã‚‹åŠ›ã‚’åŠ ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddExplosionForce(this Rigidbody2D self, float explosionForce,
             in Vector3 explosionPosition, float explosionRadius) {

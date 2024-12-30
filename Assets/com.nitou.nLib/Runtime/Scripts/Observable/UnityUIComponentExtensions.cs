@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
@@ -6,8 +6,8 @@ using TMPro;
 using nitou;
 
 // [REF]
-//  qiita: UniRx“ü–å@~ ƒf[ƒ^ƒoƒCƒ“ƒfƒBƒ“ƒO‚ÆUnityƒCƒxƒ“ƒgŠÖ”‚Ìw“Ç ~ https://qiita.com/su10/items/6d7fd792d4b553454a4f
-//  Hatena: UniRx: SubscribeWithState ‚Í Subscribe ‚æ‚èŒø—¦‚ª‚æ‚¢ https://noriok.hatenadiary.jp/entry/2018/09/17/144930
+//  qiita: UniRxå…¥é–€ã€€~ ãƒ‡ãƒ¼ã‚¿ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¨Unityã‚¤ãƒ™ãƒ³ãƒˆé–¢æ•°ã®è³¼èª­ ~ https://qiita.com/su10/items/6d7fd792d4b553454a4f
+//  Hatena: UniRx: SubscribeWithState ã¯ Subscribe ã‚ˆã‚ŠåŠ¹ç‡ãŒã‚ˆã„ https://noriok.hatenadiary.jp/entry/2018/09/17/144930
 
 namespace UniRx {
 
@@ -67,35 +67,35 @@ namespace UniRx {
 
 
         /// <summary>
-        /// <see cref="TMP_InputField"/>‚Æ‚Ì‘o•ûŒüƒoƒCƒ“ƒfƒBƒ“ƒOD
+        /// <see cref="TMP_InputField"/>ã¨ã®åŒæ–¹å‘ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ï¼
         /// </summary>
         public static void BindToInputField(this IReactiveProperty<string> property, TMP_InputField inputField,
             ICollection<IDisposable> disposables) {
 
-            // Model ¨ View
+            // Model â†’ View
             property.SubscribeWithState(inputField, (x, i) => i.text = x).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             inputField.OnEndEditAsObservable().SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
         }
 
         /// <summary>
-        /// •ÏŠ·ˆ—‚ğw’è‚µ‚½<see cref="TMP_InputField"/>‚Æ‚Ì‘o•ûŒüƒoƒCƒ“ƒfƒBƒ“ƒOD
+        /// å¤‰æ›å‡¦ç†ã‚’æŒ‡å®šã—ãŸ<see cref="TMP_InputField"/>ã¨ã®åŒæ–¹å‘ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ï¼
         /// </summary>
         public static void BindToInputField<T>(this IReactiveProperty<T> property, TMP_InputField inputField,
             ICollection<IDisposable> disposables,
             Func<string, T> parseFunc, Func<T, string> formatFunc) {
 
-            // Model ¨ View
+            // Model â†’ View
             property.SubscribeWithState2(inputField, formatFunc, (x, i, f) => i.text = f(x)).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             inputField.OnEndEditAsObservable()
                 .Subscribe(value => {
                     try {
                         property.Value = parseFunc(value);
                     } catch {
-                        // •ÏŠ·¸”s‚É“ü—ÍƒtƒB[ƒ‹ƒh‚ğƒŠƒZƒbƒg
+                        // å¤‰æ›å¤±æ•—æ™‚ã«å…¥åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒªã‚»ãƒƒãƒˆ
                         inputField.text = formatFunc(property.Value);
                     }
                 })
@@ -134,22 +134,22 @@ namespace UniRx {
         /// </summary>
         public static void BindToSlider(this IReactiveProperty<float> property, Slider slider, ICollection<IDisposable> disposables) {
 
-            // Model ¨ View
+            // Model â†’ View
             property.SubscribeWithState(slider, (x, s) => s.value = x).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             slider.OnValueChangedAsObservable()
                 .SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
         }
 
         /// <summary>
-        /// ReactiveProperty‚ÆSlider‚Ì‘o•ûŒüƒoƒCƒ“ƒfƒBƒ“ƒO‚ğs‚¢‚Ü‚·iboolŒ^—pjB
+        /// ReactivePropertyã¨Sliderã®åŒæ–¹å‘ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã„ã¾ã™ï¼ˆboolå‹ç”¨ï¼‰ã€‚
         /// </summary>
         public static void BindToSlider(this IReactiveProperty<bool> reactiveProperty, Slider slider, ICollection<IDisposable> disposables) {
-            // Model ¨ View
+            // Model â†’ View
             reactiveProperty.SubscribeWithState(slider, (value, s) => s.value = value ? 1f : 0f).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             slider.OnValueChangedAsObservable()
                   .SubscribeWithState(reactiveProperty, (value, p) => p.Value = value >= 0.5f).AddTo(disposables);
         }
@@ -164,10 +164,10 @@ namespace UniRx {
         /// </summary>
         public static void BindToToggle(this IReactiveProperty<bool> property, Toggle toggle, ICollection<IDisposable> disposables) {
 
-            // Model ¨ View
+            // Model â†’ View
             property.SubscribeWithState(toggle, (x, t) => t.isOn = x).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             toggle.OnValueChangedAsObservable()
                 .SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
         }
@@ -195,10 +195,10 @@ namespace UniRx {
         /// </summary>
         public static void BindToDropdown(this IReactiveProperty<int> property, TMP_Dropdown dropdown, ICollection<IDisposable> disposables) {
 
-            // Model ¨ View
+            // Model â†’ View
             property.SubscribeWithState(dropdown, (x, d) => d.value = x).AddTo(disposables);
 
-            // View ¨ Model
+            // View â†’ Model
             dropdown.OnValueChangedAsObservable()
                 .SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
         }

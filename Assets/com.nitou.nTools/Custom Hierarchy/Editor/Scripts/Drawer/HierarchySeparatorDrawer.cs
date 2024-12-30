@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -14,15 +14,15 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         
         public override void OnGUI(int instanceID, Rect selectionRect) {
 
-            // GameObjectæ“¾
+            // GameObjectå–å¾—
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
             if (!gameObject.TryGetComponent<HierarchySeparator>(out _)) return;
 
-            // ”wŒi•`‰æ
+            // èƒŒæ™¯æç”»
             DrawBackground(instanceID, selectionRect);
 
-            // ŒÅ—L•`‰æ
+            // å›ºæœ‰æç”»
             var lineRect = selectionRect.AddY(selectionRect.height * 0.5f).AddXMax(14f).SetHeight(1f);
             EditorGUI.DrawRect(lineRect, SeparatorColor);
         }

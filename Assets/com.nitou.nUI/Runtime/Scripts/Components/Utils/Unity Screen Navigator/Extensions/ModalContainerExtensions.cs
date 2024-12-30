@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Reflection;
 using Cysharp.Threading.Tasks;
 using UniRx;
@@ -7,26 +7,26 @@ using UnityEngine;
 namespace UnityScreenNavigator.Runtime.Core.Modal{
 
     /// <summary>
-    /// <see cref="ModalContainer"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="ModalContainer"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class ModalContainerExtensions {
 
         /// <summary>
-        /// ƒRƒ“ƒeƒi‚ª‹ó‚©‚Ç‚¤‚©D
+        /// ã‚³ãƒ³ãƒ†ãƒŠãŒç©ºã‹ã©ã†ã‹ï¼
         /// </summary>
         public static bool IsEmpty(this ModalContainer container) {
             return container.Modals.Count == 0;
         }
 
         /// <summary>
-        /// ƒRƒ“ƒeƒi‚É<see cref="Modal"/>‚ğPush‚·‚éD
+        /// ã‚³ãƒ³ãƒ†ãƒŠã«<see cref="Modal"/>ã‚’Pushã™ã‚‹ï¼
         /// </summary>
-        /// <returns>Push‚³‚ê‚½ƒ‚[ƒ_ƒ‹</returns>
+        /// <returns>Pushã•ã‚ŒãŸãƒ¢ãƒ¼ãƒ€ãƒ«</returns>
         public async static UniTask<TModal> PushModal<TModal>(this ModalContainer self,
             string resourceKey, bool playAnimation, string modalId = null, bool loadAsync = true,
             Action<(string modalId, TModal modal)> onLoad = null) where TModal: Modal{
 
-            // Modal‚Ì’Ç‰Á
+            // Modalã®è¿½åŠ 
             TModal modal = null;
             await self.Push<TModal>(resourceKey, playAnimation, modalId, loadAsync,
                 x => {
@@ -39,10 +39,10 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Modal‚Ìæ“¾)
+        // Public Method (Modalã®å–å¾—)
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈModal‚ğæ“¾‚·‚éD
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªModalã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static Modal GetActiveModal(this ModalContainer container) {
             if (container.Modals.Count <= 0) return null;
@@ -52,7 +52,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈModal‚ğæ“¾‚·‚éD
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªModalã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static bool TryGetActiveModal(this ModalContainer container, out Modal modal) {
             modal = container.GetActiveModal();
@@ -60,7 +60,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈModal‚ğæ“¾‚·‚éD
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªModalã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static Modal GetPreviousModal(this ModalContainer container) {
             if (container.Modals.Count <= 1) return null;
@@ -74,7 +74,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal{
         // Public Method ()
 
         /// <summary>
-        /// ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚ÅƒRƒ“ƒeƒiƒL[•Ï”‚ğ‘‚«Š·‚¦‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚³ãƒ³ãƒ†ãƒŠã‚­ãƒ¼å¤‰æ•°ã‚’æ›¸ãæ›ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetContainerKey(this ModalContainer container, string key) {
             var fieldInfo = container.GetType()

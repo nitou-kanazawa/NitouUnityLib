@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  qiita: Unity5‚ÌGUIƒNƒ‰ƒX‚É’Ç‰Á‚³‚ê‚½Scope‚É‚Â‚¢‚Ä https://qiita.com/kyusyukeigo/items/4642ae85d6ff075acf31
-//  hatena: EditorWindow‚Åg‚¦‚éScopeˆê—— https://hacchi-man.hatenablog.com/entry/2019/12/20/002444
+// [å‚è€ƒ]
+//  qiita: Unity5ã®GUIã‚¯ãƒ©ã‚¹ã«è¿½åŠ ã•ã‚ŒãŸScopeã«ã¤ã„ã¦ https://qiita.com/kyusyukeigo/items/4642ae85d6ff075acf31
+//  hatena: EditorWindowã§ä½¿ãˆã‚‹Scopeä¸€è¦§ https://hacchi-man.hatenablog.com/entry/2019/12/20/002444
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
@@ -13,14 +13,14 @@ namespace nitou.EditorShared {
         #region Color Scope
 
         /// <summary>
-        /// GUI.colorİ’è‚ğƒXƒR[ƒv‚ÅŠÇ—‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+        /// GUI.colorè¨­å®šã‚’ã‚¹ã‚³ãƒ¼ãƒ—ã§ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
         /// </summary>
         public sealed class GUIColorScope : UnityEngine.GUI.Scope {
 
             private readonly Color _oldColor;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public GUIColorScope(Color color) {
                 _oldColor = UnityEngine.GUI.color;
@@ -28,7 +28,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             protected override void CloseScope() {
                 UnityEngine.GUI.color = _oldColor;
@@ -37,14 +37,14 @@ namespace nitou.EditorShared {
 
 
         /// <summary>
-        /// GUI.backgroundColor‚ğİ’è‚ğƒXƒR[ƒv‚ÅŠÇ—‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+        /// GUI.backgroundColorã‚’è¨­å®šã‚’ã‚¹ã‚³ãƒ¼ãƒ—ã§ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
         /// </summary>
         public sealed class GUIBackgroundColorScope : UnityEngine.GUI.Scope {
 
             private readonly Color _oldColor;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public GUIBackgroundColorScope(Color color) {
                 _oldColor = UnityEngine.GUI.backgroundColor;
@@ -52,7 +52,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             protected override void CloseScope() {
                 UnityEngine.GUI.backgroundColor = _oldColor;
@@ -61,14 +61,14 @@ namespace nitou.EditorShared {
 
 
         /// <summary>
-        /// GUI.backgroundColor‚ğİ’è‚ğƒXƒR[ƒv‚ÅŠÇ—‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+        /// GUI.backgroundColorã‚’è¨­å®šã‚’ã‚¹ã‚³ãƒ¼ãƒ—ã§ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
         /// </summary>
         public sealed class GUIContentColorScope : UnityEngine.GUI.Scope {
 
             private readonly Color _oldColor;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public GUIContentColorScope(Color color) {
                 _oldColor = UnityEngine.GUI.contentColor;
@@ -76,7 +76,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             protected override void CloseScope() {
                 UnityEngine.GUI.contentColor = _oldColor;
@@ -89,22 +89,22 @@ namespace nitou.EditorShared {
         #region Indent Scope
 
         /// <summary>
-        /// ƒCƒ“ƒfƒ“ƒgİ’è‚ğƒXƒR[ƒv‚ÅŠÇ—‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX
+        /// ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆè¨­å®šã‚’ã‚¹ã‚³ãƒ¼ãƒ—ã§ç®¡ç†ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹
         /// </summary>
         public sealed class IndentScope : UnityEngine.GUI.Scope {
 
             private readonly int _oldIndentLevel;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public IndentScope() {
                 _oldIndentLevel = EditorGUI.indentLevel;
-                EditorGUI.indentLevel++;    // ¦ƒCƒ“ƒfƒ“ƒg‚ğ‚Ğ‚Æ‚Âã‚°‚é
+                EditorGUI.indentLevel++;    // â€»ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’ã²ã¨ã¤ä¸Šã’ã‚‹
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public IndentScope(int indentLevel) {
                 _oldIndentLevel = EditorGUI.indentLevel;
@@ -112,7 +112,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             protected override void CloseScope() {
                 EditorGUI.indentLevel = _oldIndentLevel;
@@ -132,7 +132,7 @@ namespace nitou.EditorShared {
             private readonly bool _oldEnabled;
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public EnableScope(bool enabled) {
                 _oldEnabled = UnityEngine.GUI.enabled;
@@ -140,7 +140,7 @@ namespace nitou.EditorShared {
             }
 
             /// <summary>
-            /// I—¹ˆ—
+            /// çµ‚äº†å‡¦ç†
             /// </summary>
             protected override void CloseScope() {
                 UnityEngine.GUI.enabled = _oldEnabled;
@@ -154,7 +154,7 @@ namespace nitou.EditorShared {
         #region Misc
 
         /// <summary>
-        /// “¯Ÿ•ÏŠ·s—ñ‚ğİ’è‚·‚éƒXƒR[ƒv
+        /// åŒæ¬¡å¤‰æ›è¡Œåˆ—ã‚’è¨­å®šã™ã‚‹ã‚¹ã‚³ãƒ¼ãƒ—
         /// </summary>
         public class RotateScope : UnityEngine.GUI.Scope {
 

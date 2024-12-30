@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EditorShared{
 
     /// <summary>
-    /// ŠJ”­—p‚ÌƒGƒfƒBƒ^ƒEƒCƒ“ƒhƒE
+    /// é–‹ç™ºç”¨ã®ã‚¨ãƒ‡ã‚£ã‚¿ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦
     /// </summary>
     public interface IDevelopEditorWindow {
 

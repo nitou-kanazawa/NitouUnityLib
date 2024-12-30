@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +10,7 @@ namespace nitou.Tools.PumlGenerator {
         
         private const string MenuPath = "Assets/Create/PlantUML/";
 
-        // ƒŠƒ\[ƒXî•ñ
+        // ãƒªã‚½ãƒ¼ã‚¹æƒ…å ±
         private const string RelativeFolderPath = "Assets/Plant UML/Editor/Templates";
 
 
@@ -43,7 +43,7 @@ namespace nitou.Tools.PumlGenerator {
         private static string GetTemplatePath(string templateName) {
 
 
-            // ƒeƒ“ƒvƒŒ[ƒg‚ÌƒpƒX‚ğ•Ô‚·Bƒ†[ƒU[‚ª“Æ©‚Ìƒeƒ“ƒvƒŒ[ƒg‚ğ’Ç‰Á‚Å‚«‚é‚æ‚¤‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğİ’è
+            // ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ãƒ‘ã‚¹ã‚’è¿”ã™ã€‚ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒç‹¬è‡ªã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’è¿½åŠ ã§ãã‚‹ã‚ˆã†ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’è¨­å®š
             return Path.Combine(PackageInfo.PackagePath.ToProjectPath(), RelativeFolderPath, templateName);
         }
 
@@ -51,11 +51,11 @@ namespace nitou.Tools.PumlGenerator {
         /// 
         /// </summary>
         private static string GetSelectedFolderPath(string fileName) {
-            // ‘I‘ğ’†‚ÌƒtƒHƒ‹ƒ_‚ÌƒpƒX‚ğæ“¾
+            // é¸æŠä¸­ã®ãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ‘ã‚¹ã‚’å–å¾—
             string folderPath = AssetDatabase.GetAssetPath(Selection.activeObject);
 
             if (string.IsNullOrEmpty(folderPath) || !AssetDatabase.IsValidFolder(folderPath)) {
-                folderPath = "Assets"; // ƒfƒtƒHƒ‹ƒg‚ÌƒtƒHƒ‹ƒ_
+                folderPath = "Assets"; // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚©ãƒ«ãƒ€
             }
 
             return Path.Combine(folderPath, fileName);

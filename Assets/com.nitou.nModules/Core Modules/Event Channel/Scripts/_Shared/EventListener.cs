@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou.EventChannel.Shared {
 
 
     /// <summary>
-    /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ÌŠî’êƒNƒ‰ƒX
+    /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class EventListener<TChannel> : MonoBehaviour
         where TChannel : EventChannel {
@@ -15,7 +15,7 @@ namespace nitou.EventChannel.Shared {
         public event System.Action OnEventRaised = delegate { };
 
         /// <summary>
-        /// ƒ`ƒƒƒ“ƒlƒ‹‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
+        /// ãƒãƒ£ãƒ³ãƒãƒ«ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         public bool HaveChannel => Channel != null;
 
@@ -38,14 +38,14 @@ namespace nitou.EventChannel.Shared {
         // Public Method
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg”­‰Î‚ÌƒŒƒXƒ|ƒ“ƒX
+        /// ã‚¤ãƒ™ãƒ³ãƒˆç™ºç«æ™‚ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹
         /// </summary>
         public void Respond() => OnEventRaised.Invoke();
     }
 
 
     /// <summary>
-    /// ƒCƒxƒ“ƒgƒŠƒXƒi[‚ÌŠî’êƒNƒ‰ƒX
+    /// ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class EventListener<TData, TChannel> : MonoBehaviour
         where TChannel : EventChannel<TData> {
@@ -55,7 +55,7 @@ namespace nitou.EventChannel.Shared {
         public event System.Action<TData> OnEventRaised = delegate { };
 
         /// <summary>
-        /// ƒ`ƒƒƒ“ƒlƒ‹‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
+        /// ãƒãƒ£ãƒ³ãƒãƒ«ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         public bool HaveChannel => Channel != null;
 
@@ -78,9 +78,9 @@ namespace nitou.EventChannel.Shared {
         // Public Method
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg”­‰Î‚ÌƒŒƒXƒ|ƒ“ƒX
+        /// ã‚¤ãƒ™ãƒ³ãƒˆç™ºç«æ™‚ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹
         /// </summary>
-        public void Respond(TData value) => OnEventRaised.Invoke(value);     // ¦nullƒ`ƒFƒbƒN‚ÍChannel‘¤‚Ås‚¤
+        public void Respond(TData value) => OnEventRaised.Invoke(value);     // â€»nullãƒã‚§ãƒƒã‚¯ã¯Channelå´ã§è¡Œã†
     }
 
 }

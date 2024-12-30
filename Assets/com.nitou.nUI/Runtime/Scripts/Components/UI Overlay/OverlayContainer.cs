@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.Overlay {
 
     /// <summary>
-    /// ƒI[ƒo[ƒŒƒC‚ğŠÇ—‚·‚é
+    /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public sealed class OverlayContainer : MonoBehaviour {
 
@@ -22,7 +22,7 @@ namespace nitou.UI.Overlay {
         // Public Method
 
         /// <summary>
-        /// ƒI[ƒo[ƒŒƒC‚ğ“Ç‚İ‚Ş
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         public void Load<TOverlay>(string resourceKey) 
             where TOverlay : OverlayBase {

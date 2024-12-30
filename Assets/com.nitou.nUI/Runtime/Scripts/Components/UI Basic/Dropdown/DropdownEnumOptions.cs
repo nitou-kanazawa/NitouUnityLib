@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using UniRx;
 using UnityEngine;
@@ -18,11 +18,11 @@ namespace nitou.UI {
         private ReactiveProperty<TEnum> _currentRP = new();
 
         /// <summary>
-        /// ’l‚Ì•Ï‰»‚ğ’Ê’m‚·‚éObservable
+        /// å€¤ã®å¤‰åŒ–ã‚’é€šçŸ¥ã™ã‚‹Observable
         /// </summary>
         public IObservable<TEnum> OnValueChanged => _currentRP;
 
-        // ‘S—v‘f
+        // å…¨è¦ç´ 
         private static readonly TEnum[] enumValues = (TEnum[])Enum.GetValues(typeof(TEnum));
 
         private static int GetEnumIndex(TEnum type) {
@@ -36,7 +36,7 @@ namespace nitou.UI {
         protected void Start() {
             Setup();
 
-            // View‚ÌXV
+            // Viewã®æ›´æ–°
             _dropdown.onValueChanged.AsObservable()
                 .Subscribe(index => {
                     if (index.IsInRange(enumValues))
@@ -46,7 +46,7 @@ namespace nitou.UI {
                 })
                 .AddTo(this);
 
-            // RP‚ÌXV
+            // RPã®æ›´æ–°
             _currentRP
                 .Subscribe(type => {
                     _dropdown.value = GetEnumIndex(type);
@@ -68,14 +68,14 @@ namespace nitou.UI {
         // Private Method
 
         /// <summary>
-        /// ƒQƒbƒ^D
+        /// ã‚²ãƒƒã‚¿ï¼
         /// </summary>
         public TEnum GetValue() {
             return _currentRP.Value;
         }
 
         /// <summary>
-        /// ƒZƒbƒ^D
+        /// ã‚»ãƒƒã‚¿ï¼
         /// </summary>
         public void SetValue(TEnum type) {
             _currentRP.Value = type;
@@ -87,11 +87,11 @@ namespace nitou.UI {
         private void Setup() {
             OnValidate();
 
-            // Enum‚Ì–¼‘OƒŠƒXƒg‚ğæ“¾‚µ‚ÄDropdown‚ÌƒIƒvƒVƒ‡ƒ“‚Éİ’è
+            // Enumã®åå‰ãƒªã‚¹ãƒˆã‚’å–å¾—ã—ã¦Dropdownã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«è¨­å®š
             _dropdown.options.Clear();
             _dropdown.options.AddRange(enumValues.Select(name => new TMP_Dropdown.OptionData(name.ToString())));
 
-            // ‰Šú‘I‘ğ‚ğÅ‰‚Ì€–Ú‚Éİ’è
+            // åˆæœŸé¸æŠã‚’æœ€åˆã®é …ç›®ã«è¨­å®š
             _dropdown.value = GetEnumIndex(_currentRP.Value);
             _dropdown.RefreshShownValue();
         }

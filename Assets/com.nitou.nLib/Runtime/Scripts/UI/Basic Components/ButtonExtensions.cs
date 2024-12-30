@@ -1,42 +1,42 @@
-using System;
+ï»¿using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 //using UniRx;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: uGUI ‚ÅƒXƒNƒŠƒvƒg‚©‚çƒ{ƒ^ƒ“‚ğ‰Ÿ‚·•û–@ https://baba-s.hatenablog.com/entry/2018/01/03/110100
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: uGUI ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ãƒœã‚¿ãƒ³ã‚’æŠ¼ã™æ–¹æ³• https://baba-s.hatenablog.com/entry/2018/01/03/110100
 //  UnityQuesion: How to trigger a button click from script https://answers.unity.com/questions/945299/how-to-trigger-a-button-click-from-script.html
-//  Hatena: ƒ{ƒ^ƒ“‚ğ 1‰ñ‚¾‚¯Às‚·‚é‚æ‚¤‚É‚·‚é Šg’£ƒƒ\ƒbƒh https://hacchi-man.hatenablog.com/entry/2020/12/12/220000
+//  Hatena: ãƒœã‚¿ãƒ³ã‚’ 1å›ã ã‘å®Ÿè¡Œã™ã‚‹ã‚ˆã†ã«ã™ã‚‹ æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://hacchi-man.hatenablog.com/entry/2020/12/12/220000
 
 namespace nitou {
 
     /// <summary>
-    /// Button‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// Buttonã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class ButtonExtensions {
 
         /// ----------------------------------------------------------------------------
-        // ƒ{ƒ^ƒ“‚ÌÀs
+        // ãƒœã‚¿ãƒ³ã®å®Ÿè¡Œ
 
         /// <summary>
-        /// w’è‚µ‚½ƒ{ƒ^ƒ“ƒCƒxƒ“ƒg‚ğÀs‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸãƒœã‚¿ãƒ³ã‚¤ãƒ™ãƒ³ãƒˆã‚’å®Ÿè¡Œã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void Execute<T>(this Button @this, ExecuteEvents.EventFunction<T> eventFunctor)
             where T : IEventSystemHandler {
 
             ExecuteEvents.Execute(
                     target: @this.gameObject,
-                    eventData: new PointerEventData(EventSystem.current),   // ¦current‚ÅŒ»İ‚ÌƒCƒxƒ“ƒgƒVƒXƒeƒ€‚ğæ“¾‚Å‚«‚é
+                    eventData: new PointerEventData(EventSystem.current),   // â€»currentã§ç¾åœ¨ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚·ã‚¹ãƒ†ãƒ ã‚’å–å¾—ã§ãã‚‹
                     functor: eventFunctor
                 );
         }
 
 
         /// ----------------------------------------------------------------------------
-        // ƒCƒxƒ“ƒg‚Ì“o˜^
+        // ã‚¤ãƒ™ãƒ³ãƒˆã®ç™»éŒ²
 
         /// <summary>
-        /// ƒCƒxƒ“ƒg‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         //public static IDisposable SetOnClickDestination(this Button @this, Action onClick) {
         //    return @this.onClick
@@ -46,12 +46,12 @@ namespace nitou {
         //}
 
         /// <summary>
-        /// ‚P‰ñ‚¾‚¯Às‚³‚¹‚éƒCƒxƒ“ƒg‚ğ“o˜^‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ï¼‘å›ã ã‘å®Ÿè¡Œã•ã›ã‚‹ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™»éŒ²ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void OneShot(this Button self, Action action) {
             self.onClick.AddListener(() => {
                 action?.Invoke();
-                self.onClick.RemoveAllListeners();     // ¦‘SÁ‹‚Å‚ ‚é‚±‚Æ‚É’ˆÓ
+                self.onClick.RemoveAllListeners();     // â€»å…¨æ¶ˆå»ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„
             });
         }
     }

@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 // [REF] 
-//  LIGHT11: ƒV[ƒ“‚Ìƒ[ƒh‚Æ‰Šú‰»ƒ^ƒCƒ~ƒ“ƒO‚ğ‚¿‚á‚ñ‚Æ—‰ğ‚·‚é https://light11.hatenadiary.com/entry/2022/02/24/202754
+//  LIGHT11: ã‚·ãƒ¼ãƒ³ã®ãƒ­ãƒ¼ãƒ‰ã¨åˆæœŸåŒ–ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’ã¡ã‚ƒã‚“ã¨ç†è§£ã™ã‚‹ https://light11.hatenadiary.com/entry/2022/02/24/202754
 
 namespace nitou.SceneSystem{
 
     /// <summary>
-    /// ƒV[ƒ““Ç‚İ‚İ‚ğŠÇ—‚·‚éƒNƒ‰ƒXD
+    /// ã‚·ãƒ¼ãƒ³èª­ã¿è¾¼ã¿ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹ï¼
     /// </summary>
     internal class SceneHandleManager : IInitializeOnEnterPlayMode {
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public SceneHandleManager() {
             SceneInitialization.Register(this);

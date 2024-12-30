@@ -1,10 +1,10 @@
-using System.IO;
+ï»¿using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  qiita: ‚¢‚¢Š´‚¶‚ÌUnity—pƒZ[ƒuƒf[ƒ^ŠÇ—ƒNƒ‰ƒX https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
+// [å‚è€ƒ]
+//  qiita: ã„ã„æ„Ÿã˜ã®Unityç”¨ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ç®¡ç†ã‚¯ãƒ©ã‚¹ https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
 
 namespace nitou.SaveSystem {
     using nitou.SaveSystem.Utils;

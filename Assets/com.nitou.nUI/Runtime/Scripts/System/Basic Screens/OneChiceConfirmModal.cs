@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -9,7 +9,7 @@ namespace nitou.UI.BasicScreens {
     using nitou.UI.Components;
 
     /// <summary>
-    /// ‚P‘I‘ğˆ‚ÌŠm”Fƒ‚[ƒ_ƒ‹
+    /// ï¼‘é¸æŠè‚¢ã®ç¢ºèªãƒ¢ãƒ¼ãƒ€ãƒ«
     /// </summary>
     public class OneChiceConfirmModal : ConfirmModalBase {
   

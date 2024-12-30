@@ -1,8 +1,8 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 
 // [REF]
-//  qiita: ‘¼‚ÌƒNƒ‰ƒX‚ª‰Šú‰»‚³‚ê‚é‚Ü‚Å‘Ò‚Â - UniTaskCompletionSource‚Ìg—p—á https://qiita.com/watabe_h/items/e3ccd749142cb37616e2
+//  qiita: ä»–ã®ã‚¯ãƒ©ã‚¹ãŒåˆæœŸåŒ–ã•ã‚Œã‚‹ã¾ã§å¾…ã¤ - UniTaskCompletionSourceã®ä½¿ç”¨ä¾‹ https://qiita.com/watabe_h/items/e3ccd749142cb37616e2
 
 namespace nitou {
 
@@ -29,7 +29,7 @@ namespace nitou {
 		}
 
 		/// <summary>
-		/// ’l‚ğİ’è‚·‚éD
+		/// å€¤ã‚’è¨­å®šã™ã‚‹ï¼
 		/// </summary>
 		public bool TrySet(T content) {
 			return _completionSource.TrySetResult(content);

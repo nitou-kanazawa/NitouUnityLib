@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEditor;
 using Sirenix.Utilities;
@@ -15,7 +15,7 @@ namespace nitou.DataManagement {
     public static class GUIUtils {
 
         /// <summary>
-        /// ‘I‘ğƒ{ƒ^ƒ“‚ÌƒŠƒXƒg
+        /// é¸æŠãƒœã‚¿ãƒ³ã®ãƒªã‚¹ãƒˆ
         /// </summary>
         public static bool SelectButonList(ref Type selectedType, Type[] typesToDisplay) {
 
@@ -36,14 +36,14 @@ namespace nitou.DataManagement {
         }
 
         /// <summary>
-        /// ‘I‘ğƒ{ƒ^ƒ“
+        /// é¸æŠãƒœã‚¿ãƒ³
         /// </summary>
         public static bool SelectButton(Rect rect, string name, bool selected) {
 
-            // ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚ç"true"‚ğ•Ô‚·
+            // ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‚‰"true"ã‚’è¿”ã™
             if (GUI.Button(rect, GUIContent.none, GUIStyle.none)) return true;
 
-            // ƒ{ƒ^ƒ“•\¦‚ÌÄ’²®
+            // ãƒœã‚¿ãƒ³è¡¨ç¤ºã®å†èª¿æ•´
             if (Event.current.type == EventType.Repaint) {
                 var style = new GUIStyle(EditorStyles.miniButtonMid);
                 style.stretchHeight = true;

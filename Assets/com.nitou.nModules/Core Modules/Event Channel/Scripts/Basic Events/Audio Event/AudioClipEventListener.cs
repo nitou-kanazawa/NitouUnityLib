@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// AudioClipŒ^‚ÌƒCƒxƒ“ƒgƒŠƒXƒi[ 
+    /// AudioClipå‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼ 
     /// </summary>
     [AddComponentMenu(
         ComponentMenu.Prefix.EventChannel + "AudioClip Event Listener"

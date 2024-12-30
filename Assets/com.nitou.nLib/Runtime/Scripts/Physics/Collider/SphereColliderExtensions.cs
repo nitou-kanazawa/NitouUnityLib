@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="SphereCollider"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="SphereCollider"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class SphereColliderExtensions {
 
@@ -12,17 +12,17 @@ namespace nitou {
         // 
 
         /// <summary>
-        /// ƒOƒ[ƒoƒ‹À•W‚É•ÏŠ·‚µ‚½ƒRƒ‰ƒCƒ_[’†SÀ•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚°ãƒ­ãƒ¼ãƒãƒ«åº§æ¨™ã«å¤‰æ›ã—ãŸã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒåº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 GetWorldCenter(this SphereCollider self) {
             return self.transform.TransformPoint(self.center);
         }
 
         /// <summary>
-        /// eŠK‘w‚ğl—¶‚µ‚½”¼Œa‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªéšå±¤ã‚’è€ƒæ…®ã—ãŸåŠå¾„ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float GetScaledRadius(this SphereCollider sphere) {
-            // (¦SphereƒRƒ‰ƒCƒ_[‚Íí‚É‹…Œ`‚ğˆÛ‚µ‚ÄC”¼Œa‚ÉŠe²‚ÌÅ‘åƒXƒP[ƒ‹‚ª“K—p‚³‚ê‚é)
+            // (â€»Sphereã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ã¯å¸¸ã«çƒå½¢ã‚’ç¶­æŒã—ã¦ï¼ŒåŠå¾„ã«å„è»¸ã®æœ€å¤§ã‚¹ã‚±ãƒ¼ãƒ«ãŒé©ç”¨ã•ã‚Œã‚‹)
             return sphere.radius * MathUtil.Max(sphere.transform.lossyScale);
         }
 
@@ -31,7 +31,7 @@ namespace nitou {
 
 
         /// <summary>
-        /// w’èÀ•W‚ª<see cref="SphereCollider"/>‚Ì“à•”‚ÉŠÜ‚Ü‚ê‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šåº§æ¨™ãŒ<see cref="SphereCollider"/>ã®å†…éƒ¨ã«å«ã¾ã‚Œã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(this SphereCollider sphere, Vector3 point) {
 

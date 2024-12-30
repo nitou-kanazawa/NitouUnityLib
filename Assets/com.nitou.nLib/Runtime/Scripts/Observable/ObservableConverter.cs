@@ -1,26 +1,26 @@
-using System;
+ï»¿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
 // [REF]
-//  qiita: UniTask‚ğCancellationToken‚ğw’è‚µ‚È‚ª‚çToObservable‚·‚éƒƒ‚ https://qiita.com/toRisouP/items/8ec18d73d9e8c5169587
-//  _: ”ñ“¯ŠúƒR[ƒ‹ƒoƒbƒNŠÖ”ƒpƒ^[ƒ“ https://developer.aiming-inc.com/csharp/unity-csharp-async-callback-patterns/
-//  _: UniRx‚Å‰Û‘è‚¾‚Á‚½Rx‚Æasync/await‚Ì˜AŒg‚ªR3‚Å‚ÍŠy‚É‚È‚Á‚½Œ https://developer.aiming-inc.com/csharp/post-10773/
+//  qiita: UniTaskã‚’CancellationTokenã‚’æŒ‡å®šã—ãªãŒã‚‰ToObservableã™ã‚‹ãƒ¡ãƒ¢ https://qiita.com/toRisouP/items/8ec18d73d9e8c5169587
+//  _: éåŒæœŸã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ãƒ‘ã‚¿ãƒ¼ãƒ³ https://developer.aiming-inc.com/csharp/unity-csharp-async-callback-patterns/
+//  _: UniRxã§èª²é¡Œã ã£ãŸRxã¨async/awaitã®é€£æºãŒR3ã§ã¯æ¥½ã«ãªã£ãŸä»¶ https://developer.aiming-inc.com/csharp/post-10773/
 
 namespace nitou {
 
     public static class ObservableConverter {
 
         /// <summary>
-        /// UniTask.ToObservable() ‚ğ<see cref="CancellationToken"/>‚ğw’è‚µ‚Äs‚¤‚½‚ß‚Ìƒƒ\ƒbƒhD
+        /// UniTask.ToObservable() ã‚’<see cref="CancellationToken"/>ã‚’æŒ‡å®šã—ã¦è¡Œã†ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IObservable<T> FromUniTask<T>(Func<CancellationToken, UniTask<T>> func) {
 
             return Observable.Create<T>(observer => {
 
-                // [NOTE] ŠO•”‚É“n‚·cd‚ÅUniTask‚ğ’â~‚³‚¹‚é.
+                // [NOTE] å¤–éƒ¨ã«æ¸¡ã™cdã§UniTaskã‚’åœæ­¢ã•ã›ã‚‹.
                 var cd = new CancellationDisposable();
 
                 UniTask.Void(async () => {
@@ -36,13 +36,13 @@ namespace nitou {
         }
 
         /// <summary>
-        /// UniTask.ToObservable() ‚ğ<see cref="CancellationToken"/>‚ğw’è‚µ‚Äs‚¤‚½‚ß‚Ìƒƒ\ƒbƒhD
+        /// UniTask.ToObservable() ã‚’<see cref="CancellationToken"/>ã‚’æŒ‡å®šã—ã¦è¡Œã†ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IObservable<Unit> FromUniTask(Func<CancellationToken, UniTask> func) {
 
             return Observable.Create<Unit>(observer => {
 
-                // [NOTE] ŠO•”‚É“n‚·cd‚ÅUniTask‚ğ’â~‚³‚¹‚é.
+                // [NOTE] å¤–éƒ¨ã«æ¸¡ã™cdã§UniTaskã‚’åœæ­¢ã•ã›ã‚‹.
                 var cd = new CancellationDisposable();
 
                 UniTask.Void(async () => {

@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// Interface of the UI that handles the gSelecth event.
+    /// Interface of the UI that handles the â€œSelectâ€ event.
     /// </summary>
     public interface IUISelectable : IUIComponent {
 

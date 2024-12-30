@@ -1,4 +1,4 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -6,17 +6,17 @@ using UnityEngine;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// •\¦E”ñ•\¦‚ÌØ‚è‘Ö‚¦‚ª‰Â”\‚ÈŠî–{UID
+    /// è¡¨ç¤ºãƒ»éè¡¨ç¤ºã®åˆ‡ã‚Šæ›¿ãˆãŒå¯èƒ½ãªåŸºæœ¬UIï¼
     /// </summary>
     public interface IHideableView {
 
         /// <summary>
-        /// •\¦ó‘Ô‚É‘JˆÚ‚·‚éD
+        /// è¡¨ç¤ºçŠ¶æ…‹ã«é·ç§»ã™ã‚‹ï¼
         /// </summary>
         public Tweener DOShow(float duration);
 
         /// <summary>
-        /// ”ñ•\¦ó‘Ô‚É‘JˆÚ‚·‚éD
+        /// éè¡¨ç¤ºçŠ¶æ…‹ã«é·ç§»ã™ã‚‹ï¼
         /// </summary>
         public Tweener DOHide(float duration);
     }

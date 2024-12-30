@@ -1,11 +1,11 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
 namespace nitou.EditorScripts{
 
     /// <summary>
-    /// <see cref="EditorWindow"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="EditorWindow"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class EditorWindowExtensions{
 

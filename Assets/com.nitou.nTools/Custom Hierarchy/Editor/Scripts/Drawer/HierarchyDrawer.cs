@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -6,11 +6,11 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
     using nitou.EditorShared;
 
     /// <summary>
-    /// ƒqƒGƒ‰ƒ‹ƒL[ƒhƒƒ[‚ÌŠî’êƒNƒ‰ƒX
+    /// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼ãƒ‰ãƒ­ãƒ¯ãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class HierarchyDrawer {
 
-        // ¦HierarchyItemCallback‚Æ‚µ‚Ä“o˜^‚·‚é
+        // â€»HierarchyItemCallbackã¨ã—ã¦ç™»éŒ²ã™ã‚‹
         public abstract void OnGUI(int instanceID, Rect selectionRect);
 
 

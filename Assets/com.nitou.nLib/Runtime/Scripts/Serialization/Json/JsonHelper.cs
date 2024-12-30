@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 
-// [Ql]
-//  PG“ú: JsonUtility‚Å”z—ñ‚ÆƒŠƒXƒg‚ğˆ—‚·‚é https://takap-tech.com/entry/2021/02/02/222406
-//  ƒRƒKƒlƒuƒƒO: Dictionary‚ğJsonUtility‚Å•ÏŠ·‚Å‚«‚é‚æ‚¤‚É‚·‚éƒNƒ‰ƒX https://baba-s.hatenablog.com/entry/2020/11/20/080300
+// [å‚è€ƒ]
+//  PGæ—¥èªŒ: JsonUtilityã§é…åˆ—ã¨ãƒªã‚¹ãƒˆã‚’å‡¦ç†ã™ã‚‹ https://takap-tech.com/entry/2021/02/02/222406
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Dictionaryã‚’JsonUtilityã§å¤‰æ›ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã‚¯ãƒ©ã‚¹ https://baba-s.hatenablog.com/entry/2020/11/20/080300
 
 namespace nitou.Serialization {
 
     /// <summary>
-    /// <see cref="JsonUtility"/>‚É‹@”\‚ğ’Ç‰Á‚µ‚½”Ä—pƒƒ\ƒbƒhWD
+    /// <see cref="JsonUtility"/>ã«æ©Ÿèƒ½ã‚’è¿½åŠ ã—ãŸæ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class JsonHelper {
 
@@ -19,7 +19,7 @@ namespace nitou.Serialization {
         #region Collection
 
         /// <summary>
-        /// ”z—ñ‚Ü‚½‚ÍƒŠƒXƒg‚ğ JSON ‚É•ÏŠ·‚·‚éD
+        /// é…åˆ—ã¾ãŸã¯ãƒªã‚¹ãƒˆã‚’ JSON ã«å¤‰æ›ã™ã‚‹ï¼
         /// </summary>
         public static string ToJson<T>(IEnumerable<T> collection, bool prettyPrint = false) {
             var wrapper = new Wrapper<T>();
@@ -28,7 +28,7 @@ namespace nitou.Serialization {
         }
 
         /// <summary>
-        /// Dictionary ‚ğ JSON ‚É•ÏŠ·‚·‚éD
+        /// Dictionary ã‚’ JSON ã«å¤‰æ›ã™ã‚‹ï¼
         /// </summary>
         public static string ToJson<TKey, TValue>(Dictionary<TKey, TValue> dictionary, bool prettyPrint = false) {
             var wrapper = new Wrapper<SerializableKeyValuePair<TKey, TValue>> {
@@ -40,7 +40,7 @@ namespace nitou.Serialization {
         }
 
         /// <summary>
-        /// JSON ‚ğ”z—ñ‚É•ÏŠ·‚·‚éD
+        /// JSON ã‚’é…åˆ—ã«å¤‰æ›ã™ã‚‹ï¼
         /// </summary>
         public static T[] FromJsonArray<T>(string json) {
             try {
@@ -54,7 +54,7 @@ namespace nitou.Serialization {
         }
 
         /// <summary>
-        /// JSON ‚ğƒŠƒXƒg‚É•ÏŠ·‚µ‚Ü‚·
+        /// JSON ã‚’ãƒªã‚¹ãƒˆã«å¤‰æ›ã—ã¾ã™
         /// </summary>
         public static List<T> FromJsonList<T>(string json) {
             try {
@@ -73,7 +73,7 @@ namespace nitou.Serialization {
         /// ----------------------------------------------------------------------------
         #region File
 
-        // JSON‚ğw’èƒpƒX‚É•Û‘¶
+        // JSONã‚’æŒ‡å®šãƒ‘ã‚¹ã«ä¿å­˜
         public static void SaveToFile(string filePath, string json) {
             try {
                 File.WriteAllText(filePath, json);
@@ -83,7 +83,7 @@ namespace nitou.Serialization {
             }
         }
 
-        // w’èƒpƒX‚©‚çJSON‚ğ“Ç‚İ‚İ
+        // æŒ‡å®šãƒ‘ã‚¹ã‹ã‚‰JSONã‚’èª­ã¿è¾¼ã¿
         public static string LoadFromFile(string filePath) {
             try {
                 if (!File.Exists(filePath)) {

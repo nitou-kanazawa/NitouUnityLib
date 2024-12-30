@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 
-// [TODO]@2”N‹ß‚­ƒƒ“ƒeƒiƒ“ƒX‚³‚ê‚Ä‚È‚¢‚Ì‚ÅC“®ìŒŸØ‚©‚çæ‚è‘g‚Ş (2024.08.01)
+// [TODO]ã€€2å¹´è¿‘ããƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ã•ã‚Œã¦ãªã„ã®ã§ï¼Œå‹•ä½œæ¤œè¨¼ã‹ã‚‰å–ã‚Šçµ„ã‚€ (2024.08.01)
 
 namespace nitou {
 
     /// <summary>
-    /// ”z—ñ‚É‘Î‚·‚é”Ä—p‹@”\‚ğ’ñ‹Ÿ‚·‚éƒ‰ƒCƒuƒ‰ƒŠ
+    /// é…åˆ—ã«å¯¾ã™ã‚‹æ±ç”¨æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
     /// </summary>
     public static partial class MultiDimensionArrayUtils {
 
         /// ----------------------------------------------------------------------------
-        // ”z—ñ‚Ì¶¬
+        // é…åˆ—ã®ç”Ÿæˆ
 
         /// <summary>
-        /// ‰Šú’l‚ğw’è‚µ‚Ä2ŸŒ³”z—ñ‚ğ¶¬
+        /// åˆæœŸå€¤ã‚’æŒ‡å®šã—ã¦2æ¬¡å…ƒé…åˆ—ã‚’ç”Ÿæˆ
         /// </summary>
         public static T[,] Make2dArray<T>(T value, int xnum = 10, int ynum = 10) {
             var array = Enumerable.Repeat(value, ynum * xnum).ToArray();
@@ -25,18 +25,18 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // “ü—Í”z—ñsrc‚©‚ç‚ÌV‹K”z—ñ¶¬
+        // å…¥åŠ›é…åˆ—srcã‹ã‚‰ã®æ–°è¦é…åˆ—ç”Ÿæˆ
 
         /// <summary>
-        /// w’è‚µ‚½2ŸŒ³”z—ñ‚ğ•¡»‚·‚é
+        /// æŒ‡å®šã—ãŸ2æ¬¡å…ƒé…åˆ—ã‚’è¤‡è£½ã™ã‚‹
         /// </summary>
         public static T[,] Clone<T>(T[,] src) {
-            // ”z—ñ€”õ
+            // é…åˆ—æº–å‚™
             int ynum = src.GetLength(0);
             int xnum = src.GetLength(1);
             var dest = new T[ynum, xnum];
 
-            // ’l‘}“ü
+            // å€¤æŒ¿å…¥
             for (int y = 0; y < ynum; ++y) {
                 for (int x = 0; x < xnum; ++x) {
                     dest[y, x] = src[y, x];
@@ -46,10 +46,10 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½2ŸŒ³”z—ñ‚ÌˆÊ’u (x, y) ‚©‚ç (w to h) ‚Ì”ÍˆÍ‚ğØ‚èæ‚é
+        /// æŒ‡å®šã—ãŸ2æ¬¡å…ƒé…åˆ—ã®ä½ç½® (x, y) ã‹ã‚‰ (w to h) ã®ç¯„å›²ã‚’åˆ‡ã‚Šå–ã‚‹
         /// </summary>
         public static T[,] Cut<T>(T[,] src, int xID, int yID, int dx, int dy) {
-            // —v‘f”‚ÌŒŸØ
+            // è¦ç´ æ•°ã®æ¤œè¨¼
             int ynum = src.GetLength(0);
             int xnum = src.GetLength(1);
             if (xID < 0 || xID > xnum || yID < 0 || yID > ynum) {
@@ -60,10 +60,10 @@ namespace nitou {
                 throw new ArgumentException(string.Format("Invalid parameter. w={0}, h={1}", dx, dy));
             }
 
-            // ƒRƒs[æ‚Ì”z—ñ‚Ì‘å‚«‚³
+            // ã‚³ãƒ”ãƒ¼å…ˆã®é…åˆ—ã®å¤§ãã•
             int rh = yID + dy <= ynum ? dy : dy - (yID + dy - ynum);
             int rw = xID + dx <= xnum ? dx : dx - (xID + dx - xnum);
-            // Œ³‚Ì‘å‚«‚³‚©‚çƒRƒs[
+            // å…ƒã®å¤§ãã•ã‹ã‚‰ã‚³ãƒ”ãƒ¼
             var map = new T[rh, rw];
             for (int my = 0, _y = yID; my < rh; my++, _y++) {
                 for (int mx = 0, _x = xID; mx < rw; mx++, _x++) {
@@ -74,11 +74,11 @@ namespace nitou {
         }
 
         /// <summary>
-        /// “ü—Í”z—ñ‚ÌüˆÍ‚Éƒ}[ƒWƒ“‚ğ’Ç‰Á‚µ‚½”z—ñ‚ğ¶¬
-        /// (¦’Ç‰Á—Ìˆæ‚Í(T)‚Ì‰Šú’l‚É‚È‚é)
+        /// å…¥åŠ›é…åˆ—ã®å‘¨å›²ã«ãƒãƒ¼ã‚¸ãƒ³ã‚’è¿½åŠ ã—ãŸé…åˆ—ã‚’ç”Ÿæˆ
+        /// (â€»è¿½åŠ é ˜åŸŸã¯(T)ã®åˆæœŸå€¤ã«ãªã‚‹)
         /// </summary>
         public static T[,] AddMargin<T>(T[,] src, int margin) {
-            // —v‘f”‚ÌŒŸØ
+            // è¦ç´ æ•°ã®æ¤œè¨¼
             int ynum = src.GetLength(0);
             int xnum = src.GetLength(1);
             if (margin == 0) {
@@ -96,18 +96,18 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ”z—ñŒ`®EƒTƒCƒY‚Ì•ÏŠ·
+        // é…åˆ—å½¢å¼ãƒ»ã‚µã‚¤ã‚ºã®å¤‰æ›
 
         /// <summary>
-        /// w’è‚µ‚½2ŸŒ³”z—ñ‚ğ1ŸŒ³”z—ñ‚É•ÏŠ·‚·‚é
+        /// æŒ‡å®šã—ãŸ2æ¬¡å…ƒé…åˆ—ã‚’1æ¬¡å…ƒé…åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static T[] To1dArray<T>(T[,] src) {
-            // ”z—ñ€”õ -----
+            // é…åˆ—æº–å‚™ -----
             int rowNum = src.GetLength(0);
             int colNum = src.GetLength(1);
             var dest = new T[colNum * rowNum];
 
-            // ’l‘}“ü -----
+            // å€¤æŒ¿å…¥ -----
             for (int r = 0, i = 0; r < rowNum; ++r) {
                 for (int c = 0; c < colNum; ++c, ++i) {
                     dest[i] = src[r, c];
@@ -117,16 +117,16 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½3ŸŒ³”z—ñ‚ğ1ŸŒ³”z—ñ‚É•ÏŠ·‚·‚é
+        /// æŒ‡å®šã—ãŸ3æ¬¡å…ƒé…åˆ—ã‚’1æ¬¡å…ƒé…åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static T[] To1dArray<T>(T[,,] src) {
-            // ”z—ñ€”õ -----
+            // é…åˆ—æº–å‚™ -----
             int xnum = src.GetLength(0);
             int ynum = src.GetLength(1);
             int znum = src.GetLength(2);
 
             var dest = new T[xnum * ynum * znum];
-            // ’l‘}“ü -----
+            // å€¤æŒ¿å…¥ -----
             for (int x = 0, i = 0; x < xnum; ++x) {
                 for (int y = 0; y < ynum; ++y) {
                     for (int z = 0; z < znum; ++z, ++i) {
@@ -138,8 +138,8 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½1ŸŒ³”z—ñ‚ğ2ŸŒ³”z—ñ‚É•ÏŠ·‚·‚é
-        /// (¦”ÍˆÍ‚ğ’´‚¦‚é•ª‚ÍØ‚èÌ‚ÄA•s‘«‚µ‚Ä‚¢‚é•ª‚Í(T)‚Ì‰Šú’l‚É‚È‚é)
+        /// æŒ‡å®šã—ãŸ1æ¬¡å…ƒé…åˆ—ã‚’2æ¬¡å…ƒé…åˆ—ã«å¤‰æ›ã™ã‚‹
+        /// (â€»ç¯„å›²ã‚’è¶…ãˆã‚‹åˆ†ã¯åˆ‡ã‚Šæ¨ã¦ã€ä¸è¶³ã—ã¦ã„ã‚‹åˆ†ã¯(T)ã®åˆæœŸå€¤ã«ãªã‚‹)
         /// </summary>
         public static T[,] To2dArray<T>(T[] src, int xnum, int ynum) {
             var dest = new T[ynum, xnum];
@@ -157,8 +157,8 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½1ŸŒ³”z—ñ‚ğ3ŸŒ³”z—ñ‚É•ÏŠ·‚·‚é
-        /// (¦”ÍˆÍ‚ğ’´‚¦‚é•ª‚ÍØ‚èÌ‚ÄA•s‘«‚µ‚Ä‚¢‚é•ª‚Í(T)‚Ì‰Šú’l‚É‚È‚é)
+        /// æŒ‡å®šã—ãŸ1æ¬¡å…ƒé…åˆ—ã‚’3æ¬¡å…ƒé…åˆ—ã«å¤‰æ›ã™ã‚‹
+        /// (â€»ç¯„å›²ã‚’è¶…ãˆã‚‹åˆ†ã¯åˆ‡ã‚Šæ¨ã¦ã€ä¸è¶³ã—ã¦ã„ã‚‹åˆ†ã¯(T)ã®åˆæœŸå€¤ã«ãªã‚‹)
         /// </summary>
         public static T[,,] To3dArray<T>(T[] src, int xnum, int ynum, int znum) {
             var dest = new T[xnum, ynum, znum];
@@ -178,10 +178,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒfƒoƒbƒOˆ—
+        // ãƒ‡ãƒãƒƒã‚°å‡¦ç†
 
         /// <summary>
-        /// ydebug—pz w’è‚µ‚½”z—ñ‚Ì“à—e‚ğ•¶š—ñ‚É•ÏŠ·‚·‚é
+        /// ã€debugç”¨ã€‘ æŒ‡å®šã—ãŸé…åˆ—ã®å†…å®¹ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static string ToStringByDebug<T>(T[,] src) {
             var a = new StringBuilder();
@@ -200,11 +200,11 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ydebug—pz w’è‚µ‚½”z—ñ‚Ì“à—e‚ğ•¶š—ñ‚É•ÏŠ·‚·‚é
+        /// ã€debugç”¨ã€‘ æŒ‡å®šã—ãŸé…åˆ—ã®å†…å®¹ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static string ToStringByDebug<T>(T[,,] src, Func<T, bool> evaluate = null) {
             var a = new StringBuilder();
-            var b = new StringBuilder();    // ‚Ps•¶‚ğŠi”[
+            var b = new StringBuilder();    // ï¼‘è¡Œæ–‡ã‚’æ ¼ç´
 
             int ymax = src.GetLength(0);
             int xmax = src.GetLength(1);
@@ -222,7 +222,7 @@ namespace nitou {
                     
                     for (int iz = 0; iz < zmax; iz++) {
 
-                        // ’l‚Ì’Ç‰Á
+                        // å€¤ã®è¿½åŠ 
                         var value = src[ix, iy, iz];
                         if (evaluate != null && evaluate(value)) {
                             b.Append($" <color=cyan>{value}</color>,");
@@ -244,7 +244,7 @@ namespace nitou {
 
 
     /// <summary>
-    /// ”z—ñ‚É‘Î‚·‚éŠg’£‹@”\‚ğ’ñ‹Ÿ‚·‚é
+    /// é…åˆ—ã«å¯¾ã™ã‚‹æ‹¡å¼µæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹
     /// </summary>
     public static class MultiDimeArrayExtension {
 
@@ -275,7 +275,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ”z—ñ‚Ì•ª‰ğ
+        // é…åˆ—ã®åˆ†è§£
 
         public static void Deconstruct<T>(this IList<T> self, out T first, out IList<T> rest) {
             first = self.Count > 0 ? self[0] : default(T);

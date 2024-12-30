@@ -1,17 +1,17 @@
-namespace nitou.SaveSystem{
+ï»¿namespace nitou.SaveSystem{
 
     /// <summary>
-    /// ƒf[ƒ^‚Ì•Û‘¶E“Ç‚İ‚İ‚ÌÀˆ—‚ğ’S‚¤ƒCƒ“ƒ^[ƒtƒF[ƒXD
+    /// ãƒ‡ãƒ¼ã‚¿ã®ä¿å­˜ãƒ»èª­ã¿è¾¼ã¿ã®å®Ÿå‡¦ç†ã‚’æ‹…ã†ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ï¼
     /// </summary>
     public interface IDataService{
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ•Û‘¶‚·‚éD
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹ï¼
         /// </summary>
         bool SaveData<T>(string key, T data);
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ“Ç‚İ‚ŞD
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         T LoadData<T>(string key);
     }

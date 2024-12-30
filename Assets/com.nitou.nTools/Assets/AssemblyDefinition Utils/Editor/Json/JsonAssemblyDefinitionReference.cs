@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace nitou.Tools.Assets {
 
     /// <summary>
-    /// Assembly Definition Referencei.asmrefj‚ÌJSON‚ğ•\‚·ƒNƒ‰ƒX
+    /// Assembly Definition Referenceï¼ˆ.asmrefï¼‰ã®JSONã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹
     /// </summary>
     [Serializable]
     public sealed class JsonAssemblyDefinitionReference {

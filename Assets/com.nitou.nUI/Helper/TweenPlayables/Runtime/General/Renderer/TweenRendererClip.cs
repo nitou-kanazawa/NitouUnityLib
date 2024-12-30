@@ -1,4 +1,4 @@
-namespace nitou.TweenPlayables
+﻿namespace nitou.TweenPlayables
 {
     public class TweenRendererClip : TweenAnimationClip<TweenRendererBehaviour> { }
 }

@@ -1,14 +1,14 @@
-
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: ƒXƒNƒŠƒvƒg‚ÌÀs‡˜‚ğ§Œä‚·‚é https://nekojara.city/unity-script-execution-order
-//  ƒeƒ‰ƒVƒ…[ƒ‹: ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒCƒxƒ“ƒgÀs‡‚É‚Â‚¢‚Ä‚ÌTips https://tsubakit1.hateblo.jp/entry/2017/02/05/003714
+ï»¿
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: ã‚¹ã‚¯ãƒªãƒ—ãƒˆã®å®Ÿè¡Œé †åºã‚’åˆ¶å¾¡ã™ã‚‹ https://nekojara.city/unity-script-execution-order
+//  ãƒ†ãƒ©ã‚·ãƒ¥ãƒ¼ãƒ«: ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¤ãƒ™ãƒ³ãƒˆå®Ÿè¡Œé †ã«ã¤ã„ã¦ã®Tips https://tsubakit1.hateblo.jp/entry/2017/02/05/003714
 
 namespace nitou {
 
     public static partial class GameConfigs{
 
         /// <summary>
-        /// ExecutionOrder‚ğw’è‚·‚é‚½‚ß‚ÌÃ“IƒNƒ‰ƒXi¦ƒI[ƒ_[’l‚Ìİ’è‚ÉŠÖ‚µ‚Ä‚Í–Íõ’†j
+        /// ExecutionOrderã‚’æŒ‡å®šã™ã‚‹ãŸã‚ã®é™çš„ã‚¯ãƒ©ã‚¹ï¼ˆâ€»ã‚ªãƒ¼ãƒ€ãƒ¼å€¤ã®è¨­å®šã«é–¢ã—ã¦ã¯æ¨¡ç´¢ä¸­ï¼‰
         /// </summary>
         public static class ExecutionOrder {
 

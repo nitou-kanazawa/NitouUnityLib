@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// Šî–{‹@”\‚Ì‚İ‚Ì“Æ©ƒXƒ‰ƒCƒ_[UI
+    /// åŸºæœ¬æ©Ÿèƒ½ã®ã¿ã®ç‹¬è‡ªã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼UI
     /// </summary>
     [AddComponentMenu(menuName: ComponentMenu.Prefix.UIComponents + "UI Slider")]
     public class UISlider : Slider, IUISlider {
@@ -22,17 +22,17 @@ namespace nitou.UI.Components {
         // Properity
 
         /// <summary>
-        /// ’l‚ªXV‚³‚ê‚½‚É’Ê’m‚³‚ê‚éObservableD
+        /// å€¤ãŒæ›´æ–°ã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã•ã‚Œã‚‹Observableï¼
         /// </summary>
         public IObservable<float> OnValuChanged => base.onValueChanged.AsObservable();
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚É’Ê’m‚³‚ê‚éObservableD
+        /// é¸æŠã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã•ã‚Œã‚‹Observableï¼
         /// </summary>
         public IObservable<Unit> OnSelected => _onSelectSubject;
 
         /// <summary>
-        /// ”ñ‘I‘ğ‚³‚ê‚½‚É’Ê’m‚³‚ê‚éObservableD
+        /// éé¸æŠã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã•ã‚Œã‚‹Observableï¼
         /// </summary>
         public IObservable<Unit> OnDeselected => _onDeselectSubject;
 
@@ -53,7 +53,7 @@ namespace nitou.UI.Components {
 
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// é¸æŠã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public override void OnSelect(BaseEventData eventData) {
             base.OnSelect(eventData);
@@ -61,7 +61,7 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// é¸æŠã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public override void OnDeselect(BaseEventData eventData) {
             base.OnDeselect(eventData);

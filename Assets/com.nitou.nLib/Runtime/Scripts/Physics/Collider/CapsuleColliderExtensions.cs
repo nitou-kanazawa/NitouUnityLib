@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="CapsuleCollider"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="CapsuleCollider"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class CapsuleColliderExtensions {
 
@@ -11,21 +11,21 @@ namespace nitou {
         // 
 
         /// <summary>
-        /// ƒOƒ[ƒoƒ‹À•W‚É•ÏŠ·‚µ‚½ƒRƒ‰ƒCƒ_[’†SÀ•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚°ãƒ­ãƒ¼ãƒãƒ«åº§æ¨™ã«å¤‰æ›ã—ãŸã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒåº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 GetWorldCenter(this CapsuleCollider self) {
             return self.transform.TransformPoint(self.center);
         }
 
         /// <summary>
-        /// eŠK‘w‚ğl—¶‚µ‚½”¼Œa‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªéšå±¤ã‚’è€ƒæ…®ã—ãŸåŠå¾„ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float GetScaledRadius(this CapsuleCollider capsule) {
             return capsule.radius * Mathf.Max(capsule.transform.lossyScale.x, capsule.transform.lossyScale.z);
         }
 
         /// <summary>
-        /// eŠK‘w‚ğl—¶‚µ‚½‚‚³‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªéšå±¤ã‚’è€ƒæ…®ã—ãŸé«˜ã•ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float GetScaledHeight(this CapsuleCollider capsule) {
             return capsule.height * capsule.transform.lossyScale.y;
@@ -35,31 +35,31 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// w’èÀ•W‚ª<see cref="CapsuleCollider"/>‚Ì“à•”‚ÉŠÜ‚Ü‚ê‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šåº§æ¨™ãŒ<see cref="CapsuleCollider"/>ã®å†…éƒ¨ã«å«ã¾ã‚Œã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(this CapsuleCollider capsule, Vector3 point) {
 
-            // “_‚ğƒ[ƒJƒ‹À•W‚É•ÏŠ·
+            // ç‚¹ã‚’ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã«å¤‰æ›
             var localPoint = capsule.transform.InverseTransformPoint(point);
 
-            // ƒXƒP[ƒ‹‚ğl—¶‚µ‚½ƒJƒvƒZƒ‹‚Ì”¼Œa‚Æ‚‚³
+            // ã‚¹ã‚±ãƒ¼ãƒ«ã‚’è€ƒæ…®ã—ãŸã‚«ãƒ—ã‚»ãƒ«ã®åŠå¾„ã¨é«˜ã•
             float radius = capsule.GetScaledRadius();
             float height = capsule.GetScaledHeight();
 
-            // ƒJƒvƒZƒ‹‚Ì’†S‚Æ²•ûŒü
+            // ã‚«ãƒ—ã‚»ãƒ«ã®ä¸­å¿ƒã¨è»¸æ–¹å‘
             Vector3 center = capsule.center;
             Vector3 axis = capsule.GetAxisVector();
 
-            // ƒJƒvƒZƒ‹‚Ì—¼’[‚Ì‹…‘Ì‚Ì’†S‚ğŒvZ
+            // ã‚«ãƒ—ã‚»ãƒ«ã®ä¸¡ç«¯ã®çƒä½“ã®ä¸­å¿ƒã‚’è¨ˆç®—
             Vector3 point1 = center - axis * (height * 0.5f - radius);
             Vector3 point2 = center + axis * (height * 0.5f - radius);
 
-            // “_‚ª‹…‘Ì‚Ì“à•”‚É‚ ‚é‚©‚ğƒ`ƒFƒbƒN
+            // ç‚¹ãŒçƒä½“ã®å†…éƒ¨ã«ã‚ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
             if (Vector3.Distance(localPoint, point1) <= radius || Vector3.Distance(localPoint, point2) <= radius) {
                 return true;
             }
 
-            // “_‚ªƒVƒŠƒ“ƒ_[•”•ª‚Ì“à•”‚É‚ ‚é‚©‚ğƒ`ƒFƒbƒN
+            // ç‚¹ãŒã‚·ãƒªãƒ³ãƒ€ãƒ¼éƒ¨åˆ†ã®å†…éƒ¨ã«ã‚ã‚‹ã‹ã‚’ãƒã‚§ãƒƒã‚¯
             Vector3 projection = Vector3.Project(localPoint - point1, axis);
             if (projection.magnitude <= (height - radius * 2) && Vector3.Distance(localPoint, point1 + projection) <= radius) {
                 return true;
@@ -73,7 +73,7 @@ namespace nitou {
         // Public Method (Axis)
 
         /// <summary>
-        /// <see cref="CapsuleCollider"/> ‚Ì²‚ğæ“¾‚·‚é
+        /// <see cref="CapsuleCollider"/> ã®è»¸ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Axis GetAxis(this CapsuleCollider capsule) {
             return capsule.direction switch {
@@ -85,7 +85,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <see cref="CapsuleCollider"/> ‚Ì²‚É‘Î‰‚·‚é <see cref="Vector3"/> ‚ğæ“¾‚·‚é
+        /// <see cref="CapsuleCollider"/> ã®è»¸ã«å¯¾å¿œã™ã‚‹ <see cref="Vector3"/> ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 GetAxisVector(this CapsuleCollider capsule) {
             return capsule.direction switch {

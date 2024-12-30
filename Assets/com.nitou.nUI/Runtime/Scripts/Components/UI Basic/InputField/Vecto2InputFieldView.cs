@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 using TMPro;
@@ -8,7 +8,7 @@ using System.Globalization;
 namespace nitou.UI {
 
     /// <summary>
-    /// <see cref="Vector2"/>‚Ì“ü—Í‚ğó‚¯•t‚¯‚é‚½‚ß‚ÌViewD
+    /// <see cref="Vector2"/>ã®å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ã‚‹ãŸã‚ã®Viewï¼
     /// </summary>
     public sealed class Vecto2InputFieldView : InputFieldView<Vector2> {
 
@@ -24,10 +24,10 @@ namespace nitou.UI {
         // LifeCycle Events
 
         private void Awake() {
-            // ViewModel‚ÌŠÄ‹
+            // ViewModelã®ç›£è¦–
             _valueRP.Subscribe(v => ApplyValue(v)).AddTo(this);
 
-            // View‚ÌŠÄ‹
+            // Viewã®ç›£è¦–
             Observable.Merge(
                 _xInputField.onEndEdit.AsObservable().AsUnitObservable(),
                 _yInputField.onEndEdit.AsObservable().AsUnitObservable()
@@ -44,17 +44,17 @@ namespace nitou.UI {
             Vector2 currentValue = _valueRP.Value;
             Vector2? parsedValue = TryParseValue();
 
-            // ƒp[ƒX‚ª¬Œ÷‚µ‚½ê‡‚Ì‚İReactiveProperty‚É”½‰f
+            // ãƒ‘ãƒ¼ã‚¹ãŒæˆåŠŸã—ãŸå ´åˆã®ã¿ReactivePropertyã«åæ˜ 
             if (parsedValue.HasValue) {
                 _valueRP.Value = parsedValue.Value;
             } else {
-                // ƒp[ƒX‚É¸”s‚µ‚½ê‡‚ÍŒ³‚Ì’l‚ğÄ“K—p
+                // ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆã¯å…ƒã®å€¤ã‚’å†é©ç”¨
                 ApplyValue(currentValue);
             }
         }
 
         /// <summary>
-        /// View‚©‚ç’l‚ğ“Ç‚İæ‚éD
+        /// Viewã‹ã‚‰å€¤ã‚’èª­ã¿å–ã‚‹ï¼
         /// </summary>
         private Vector2? TryParseValue() {
 
@@ -62,17 +62,17 @@ namespace nitou.UI {
             bool xParsed = float.TryParse(_xInputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out var x);
             bool yParsed = float.TryParse(_yInputField.text, NumberStyles.Float, CultureInfo.InvariantCulture, out var y);
 
-            // ‘S‚Ä‚Ìƒp[ƒX‚ª¬Œ÷‚µ‚½ê‡‚É‚Ì‚İ’l‚ğ•Ô‚·
+            // å…¨ã¦ã®ãƒ‘ãƒ¼ã‚¹ãŒæˆåŠŸã—ãŸå ´åˆã«ã®ã¿å€¤ã‚’è¿”ã™
             if (xParsed && yParsed) {
                 return new Vector2(x, y);
             }
 
-            // ‚¢‚¸‚ê‚©‚Ìƒp[ƒX‚É¸”s‚µ‚½ê‡‚Ínull‚ğ•Ô‚·
+            // ã„ãšã‚Œã‹ã®ãƒ‘ãƒ¼ã‚¹ã«å¤±æ•—ã—ãŸå ´åˆã¯nullã‚’è¿”ã™
             return null;
         }
 
         /// <summary>
-        /// View‚É’l‚ğ“K—p‚·‚éD
+        /// Viewã«å€¤ã‚’é©ç”¨ã™ã‚‹ï¼
         /// </summary>
         private void ApplyValue(Vector2 value) {
             _xInputField.text = value.x.ToFloatText(_decimalPlaces);

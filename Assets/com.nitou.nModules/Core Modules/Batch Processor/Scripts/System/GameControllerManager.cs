@@ -1,12 +1,12 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 
-// [Ql]
+// [å‚è€ƒ]
 //  github: unity3d-jp/Project_TCC https://github.com/unity3d-jp/Project_TCC
-//  ‚Í‚È‚¿‚é: PlayerLoop‚ğg‚Á‚Ä–ˆƒtƒŒ[ƒ€Às‚³‚ê‚éŠÖ”‚ğ’Ç‰Á‚·‚é https://www.hanachiru-blog.com/entry/2021/08/23/120000
+//  ã¯ãªã¡ã‚‹: PlayerLoopã‚’ä½¿ã£ã¦æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å®Ÿè¡Œã•ã‚Œã‚‹é–¢æ•°ã‚’è¿½åŠ ã™ã‚‹ https://www.hanachiru-blog.com/entry/2021/08/23/120000
 
 namespace nitou.BachProcessor {
 
@@ -74,7 +74,7 @@ namespace nitou.BachProcessor {
             var earlyUpdateSystem = new PlayerLoopSystem { updateDelegate = earlyUpdate, type = typeof(GameControllerManager) };
             var postUpdateSystem = new PlayerLoopSystem() { updateDelegate = postUpdate, type = typeof(GameControllerManager) };
 
-            // ¦‘ÎÛƒCƒ“ƒfƒbƒNƒX‚ğŒŸõ‚µC–Ø\‘¢‚É‘}“ü‚·‚é
+            // â€»å¯¾è±¡ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’æ¤œç´¢ã—ï¼Œæœ¨æ§‹é€ ã«æŒ¿å…¥ã™ã‚‹
             var index = Array.FindIndex(loopSystem.subSystemList, c => c.type == timing);
             var list = new List<PlayerLoopSystem>(loopSystem.subSystemList[index].subSystemList);
             list.Insert(0, earlyUpdateSystem);
@@ -110,7 +110,7 @@ namespace nitou.BachProcessor {
             _updates.Clear();
             _lateUpdates.Clear();
 
-            // PlayerLoop‚ÉƒR[ƒ‹ƒoƒbƒN“o˜^
+            // PlayerLoopã«ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ç™»éŒ²
             var loop = PlayerLoop.GetCurrentPlayerLoop();
             GameControllerManager.RegisterCallback(ref loop, type, OnUpdate, OnLateUpdate);
             PlayerLoop.SetPlayerLoop(loop);
@@ -122,7 +122,7 @@ namespace nitou.BachProcessor {
         private void OnDestroy() {
             var timing = GetTimingType(Timing);
 
-            // PlayerLoop‚©‚çƒR[ƒ‹ƒoƒbƒN“o˜^‰ğœ
+            // PlayerLoopã‹ã‚‰ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ç™»éŒ²è§£é™¤
             var loop = PlayerLoop.GetCurrentPlayerLoop();
             GameControllerManager.UnregisterCallback(ref loop, timing);
             PlayerLoop.SetPlayerLoop(loop);

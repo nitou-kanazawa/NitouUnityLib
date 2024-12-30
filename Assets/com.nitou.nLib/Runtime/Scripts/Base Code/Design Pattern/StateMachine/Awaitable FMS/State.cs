@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,17 +10,17 @@ namespace nitou.DesignPattern {
     public partial class AwaitableStateMachine<TContext, TEvent> {
 
         /// <summary>
-        /// ƒXƒe[ƒgŠî’êƒNƒ‰ƒX
+        /// ã‚¹ãƒ†ãƒ¼ãƒˆåŸºåº•ã‚¯ãƒ©ã‚¹
         /// </summary>
         public abstract class State {
 
             /// <summary>
-            /// ‚±‚ÌƒXƒe[ƒg‚ªŠ‘®‚·‚éƒXƒe[ƒgƒ}ƒVƒ“
+            /// ã“ã®ã‚¹ãƒ†ãƒ¼ãƒˆãŒæ‰€å±ã™ã‚‹ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³
             /// </summary>
             public AwaitableStateMachine<TContext,TEvent> StateMachine { get; protected set; }
 
             /// <summary>
-            /// ‚±‚ÌƒXƒe[ƒg‚ªŠ‘®‚·‚éƒXƒe[ƒgƒ}ƒVƒ“‚ª‚Á‚Ä‚¢‚éƒRƒ“ƒeƒLƒXƒg
+            /// ã“ã®ã‚¹ãƒ†ãƒ¼ãƒˆãŒæ‰€å±ã™ã‚‹ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ãŒæŒã£ã¦ã„ã‚‹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
             /// </summary>
             public TContext Context { get; protected set; }
 
@@ -28,11 +28,11 @@ namespace nitou.DesignPattern {
             /// ----------------------------------------------------------------------------
 
             /// <summary>
-            /// ƒXƒe[ƒg‰Šú‰»ˆ—
+            /// ã‚¹ãƒ†ãƒ¼ãƒˆåˆæœŸåŒ–å‡¦ç†
             /// </summary>
             internal void Init(AwaitableStateMachine<TContext, TEvent> stateMachine) {
 
-                // ƒRƒ“ƒ|[ƒlƒ“ƒg
+                // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
                 StateMachine = stateMachine ?? throw new ArgumentNullException(nameof(stateMachine));
                 Context = stateMachine.Context;
 
@@ -40,13 +40,13 @@ namespace nitou.DesignPattern {
             }
 
             /// <summary>
-            /// ”h¶ƒNƒ‰ƒX—p‚Ì‰Šú‰»ˆ—
+            /// æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ç”¨ã®åˆæœŸåŒ–å‡¦ç†
             /// </summary>
             protected virtual void OnInit() { }
 
 
             /// ----------------------------------------------------------------------------
-            // Public Method (ƒXƒe[ƒg‘JˆÚğŒ)
+            // Public Method (ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»æ¡ä»¶)
 
             /// <summary>
             /// Checks if the required conditions to exit this state are true. If so it returns the desired state (null otherwise). After this the state machine will
@@ -54,7 +54,7 @@ namespace nitou.DesignPattern {
             /// </summary>
             public virtual void CheckExitTransition() {
 
-                // [ˆ—‚Ìˆê—á]
+                // [å‡¦ç†ã®ä¸€ä¾‹]
                 //if (conditionA) {
                 //    EnqueueTransition<TargetStateA>();
                 //} else if (conditionB) {
@@ -70,26 +70,26 @@ namespace nitou.DesignPattern {
 
 
             /// ----------------------------------------------------------------------------
-            // Public Method (ƒCƒxƒ“ƒgˆ—)
+            // Public Method (ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†)
 
             /// <summary>
-            /// ƒCƒxƒ“ƒg‚ğó‚¯æ‚Á‚½‚Æ‚«‚Ì‘Î‰ˆ—
+            /// ã‚¤ãƒ™ãƒ³ãƒˆã‚’å—ã‘å–ã£ãŸã¨ãã®å¯¾å¿œå‡¦ç†
             /// </summary>
             public virtual void HandleEvent(TEvent eventId) {}
 
 
             /// ----------------------------------------------------------------------------
-            // Public Method (ƒXƒe[ƒg‘JˆÚˆ—)
+            // Public Method (ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»å‡¦ç†)
 
             /// <summary>
-            /// ƒXƒe[ƒgŠJnˆ—
+            /// ã‚¹ãƒ†ãƒ¼ãƒˆé–‹å§‹å‡¦ç†
             /// </summary>
             public virtual async UniTask OnEnter(State fromState) {
                 await UniTask.Yield();
             }
 
             /// <summary>
-            /// ƒXƒe[ƒgI—¹ˆ—
+            /// ã‚¹ãƒ†ãƒ¼ãƒˆçµ‚äº†å‡¦ç†
             /// </summary>
             public virtual async UniTask OnExit(State toState) {
                 await UniTask.Yield();
@@ -97,10 +97,10 @@ namespace nitou.DesignPattern {
 
 
             /// ----------------------------------------------------------------------------
-            // Public Method (ƒXƒe[ƒgXVˆ—)
+            // Public Method (ã‚¹ãƒ†ãƒ¼ãƒˆæ›´æ–°å‡¦ç†)
 
             /// <summary>
-            /// ƒXƒe[ƒgXVˆ—
+            /// ã‚¹ãƒ†ãƒ¼ãƒˆæ›´æ–°å‡¦ç†
             /// </summary>
             public virtual void OnUpdate() {
             }

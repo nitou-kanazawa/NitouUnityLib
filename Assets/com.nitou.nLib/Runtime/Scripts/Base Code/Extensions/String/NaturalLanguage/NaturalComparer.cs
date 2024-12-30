@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-// [Ql]
-//  qiita: C# ©‘R‡‚Å•¶š—ñ‚ğƒ\[ƒg‚·‚é https://qiita.com/tomochan154/items/1a3048f2cd9755233b4f
+// [å‚è€ƒ]
+//  qiita: C# è‡ªç„¶é †ã§æ–‡å­—åˆ—ã‚’ã‚½ãƒ¼ãƒˆã™ã‚‹ https://qiita.com/tomochan154/items/1a3048f2cd9755233b4f
 
 namespace nitou.NaturalLanguage {
 
@@ -13,99 +13,99 @@ namespace nitou.NaturalLanguage {
     #region Enum
 
     /// <summary>
-    /// ƒ\[ƒg•ûŒü
+    /// ã‚½ãƒ¼ãƒˆæ–¹å‘
     /// </summary>
     public enum NaturalSortOrder : int {
 
-        /// <summary>‚È‚µ</summary>
+        /// <summary>ãªã—</summary>
         None,
 
-        /// <summary>¸‡</summary>
+        /// <summary>æ˜‡é †</summary>
         Ascending = 1,
         
-        /// <summary>~‡</summary>
+        /// <summary>é™é †</summary>
         Descending = 2,
     }
         
     /// <summary>
-    /// ©‘R‡‚Ì”äŠrƒIƒvƒVƒ‡ƒ“
+    /// è‡ªç„¶é †ã®æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³
     /// </summary>
     [Flags()]
     public enum NaturalComparerOptions {
 
-        /// <summary>ƒAƒ‰ƒrƒA”šB</summary>
+        /// <summary>ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã€‚</summary>
         Number = 0x1,
         
-        /// <summary>ASCIIƒ[ƒ}”šB</summary>
+        /// <summary>ASCIIãƒ­ãƒ¼ãƒæ•°å­—ã€‚</summary>
         RomanNumber = 0x2,
         
-        /// <summary>“ú–{Œêƒ[ƒ}”šB</summary>
+        /// <summary>æ—¥æœ¬èªãƒ­ãƒ¼ãƒæ•°å­—ã€‚</summary>
         JpRomanNumber = 0x4,
         
-        /// <summary>“ú–{ŒêŠÛ”šB</summary>
+        /// <summary>æ—¥æœ¬èªä¸¸æ•°å­—ã€‚</summary>
         CircleNumber = 0x8,
         
-        /// <summary>“ú–{ŒêŠ¿”šB</summary>
+        /// <summary>æ—¥æœ¬èªæ¼¢æ•°å­—ã€‚</summary>
         KanjiNumber = 0x10,
         
-        /// <summary>‚·‚×‚Ä‚Ì”šB</summary>
+        /// <summary>ã™ã¹ã¦ã®æ•°å­—ã€‚</summary>
         NumberAll = Number | RomanNumber | JpRomanNumber | CircleNumber | KanjiNumber,
 
         // --- 
 
-        /// <summary>‹ó”’•¶š‚Ì‘¶İ‚ğ–³‹B</summary>
+        /// <summary>ç©ºç™½æ–‡å­—ã®å­˜åœ¨ã‚’ç„¡è¦–ã€‚</summary>
         IgnoreSpace = 0x10000,
         
-        /// <summary>”š•\Œ»‚Ìˆá‚¢‚ğ–³‹B</summary>
+        /// <summary>æ•°å­—è¡¨ç¾ã®é•ã„ã‚’ç„¡è¦–ã€‚</summary>
         IgnoreNumber = 0x20000,
         
-        /// <summary>‘SŠp”¼Šp‚Ìˆá‚¢‚ğ–³‹B</summary>
+        /// <summary>å…¨è§’åŠè§’ã®é•ã„ã‚’ç„¡è¦–ã€‚</summary>
         IgnoreWide = 0x40000,
         
-        /// <summary>‘å•¶š¬•¶š‚Ìˆá‚¢‚ğ–³‹B</summary>
+        /// <summary>å¤§æ–‡å­—å°æ–‡å­—ã®é•ã„ã‚’ç„¡è¦–ã€‚</summary>
         IgnoreCase = 0x80000,
         
-        /// <summary>ƒJƒ^ƒJƒi‚Ğ‚ç‚ª‚È‚Ìˆá‚¢‚ğ–³‹B</summary>
+        /// <summary>ã‚«ã‚¿ã‚«ãƒŠã²ã‚‰ãŒãªã®é•ã„ã‚’ç„¡è¦–ã€‚</summary>
         IgnoreKana = 0x100000,
         
-        /// <summary>‚·‚×‚Ä‚Ì–³‹ğŒB</summary>
+        /// <summary>ã™ã¹ã¦ã®ç„¡è¦–æ¡ä»¶ã€‚</summary>
         IgnoreAll = IgnoreSpace | IgnoreNumber | IgnoreWide | IgnoreCase | IgnoreKana,
 
         // ---
         
-        /// <summary>Šù’è‚Ì”äŠrƒIƒvƒVƒ‡ƒ“B</summary>
+        /// <summary>æ—¢å®šã®æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã€‚</summary>
         Default = NumberAll | IgnoreSpace | IgnoreNumber | IgnoreWide | IgnoreCase,
     }
     #endregion
 
 
     /// <summary>
-    /// ©‘RŒ¾Œê‚Ìƒ\[ƒg‹@”\‚ğ’ñ‹Ÿ‚·‚éƒNƒ‰ƒX
+    /// è‡ªç„¶è¨€èªã®ã‚½ãƒ¼ãƒˆæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public class NaturalComparer : IComparer<string>, IComparer {
 
         /// ----------------------------------------------------------------------------
         #region Inner Definition
 
-        /// <summary>”š•\Œ»•¶š‚Ìí—ŞB</summary>
+        /// <summary>æ•°å­—è¡¨ç¾æ–‡å­—ã®ç¨®é¡ã€‚</summary>
         private enum CharTypes : uint {
             
-            /// <summary>‚È‚µB</summary>
+            /// <summary>ãªã—ã€‚</summary>
             None = 0x0,
 
-            /// <summary>ƒAƒ‰ƒrƒA”šB</summary>
+            /// <summary>ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã€‚</summary>
             Number = 0x1,
             
-            /// <summary>ASCIIƒ[ƒ}”šB</summary>
+            /// <summary>ASCIIãƒ­ãƒ¼ãƒæ•°å­—ã€‚</summary>
             RomanNumber = 0x2,
             
-            /// <summary>“ú–{Œêƒ[ƒ}”šB</summary>
+            /// <summary>æ—¥æœ¬èªãƒ­ãƒ¼ãƒæ•°å­—ã€‚</summary>
             JpRomanNumber = 0x4,
             
-            /// <summary>“ú–{ŒêŠÛ”šB</summary>
+            /// <summary>æ—¥æœ¬èªä¸¸æ•°å­—ã€‚</summary>
             CircleNumber = 0x8,
             
-            /// <summary>“ú–{ŒêŠ¿”šB</summary>
+            /// <summary>æ—¥æœ¬èªæ¼¢æ•°å­—ã€‚</summary>
             KanjiNumber = 0x10,
         }
         #endregion
@@ -114,16 +114,16 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region Field
 
-        /// <summary>ƒ\[ƒg‚Ì•ûŒü‚ğ•\‚· intB</summary>
+        /// <summary>ã‚½ãƒ¼ãƒˆã®æ–¹å‘ã‚’è¡¨ã™ intã€‚</summary>
         private int _order;
         
-        /// <summary>©‘R‡‚Ì”äŠrƒIƒvƒVƒ‡ƒ“‚ğ•\‚· <see cref="NaturalComparerOptions"/>B</summary>
+        /// <summary>è‡ªç„¶é †ã®æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’è¡¨ã™ <see cref="NaturalComparerOptions"/>ã€‚</summary>
         private NaturalComparerOptions _options;
         
-        /// <summary>œŠO•¶š‚ğ•\‚· char[]B</summary>
+        /// <summary>é™¤å¤–æ–‡å­—ã‚’è¡¨ã™ char[]ã€‚</summary>
         private char[] _ignoreCharacter;
         
-        /// <summary>”äŠrƒIƒvƒVƒ‡ƒ“‚ğ‘g‚İ‡‚í‚¹‚½œŠO•¶š‚ğ•\‚· char[]B</summary>
+        /// <summary>æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’çµ„ã¿åˆã‚ã›ãŸé™¤å¤–æ–‡å­—ã‚’è¡¨ã™ char[]ã€‚</summary>
         private char[] _ignoreTable;
         #endregion
 
@@ -132,39 +132,39 @@ namespace nitou.NaturalLanguage {
         #region Constructor
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public NaturalComparer()
             : this(NaturalSortOrder.Ascending, NaturalComparerOptions.Default, new char[0]) {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
-        /// <param name="order">ƒ\[ƒg•ûŒü‚ğ•\‚· <see cref="NaturalSortOrder"/>B</param>
+        /// <param name="order">ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’è¡¨ã™ <see cref="NaturalSortOrder"/>ã€‚</param>
         public NaturalComparer(NaturalSortOrder order)
             : this(order, NaturalComparerOptions.Default, new char[0]) {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
-        /// <param name="order">ƒ\[ƒg•ûŒü‚ğ•\‚· <see cref="NaturalSortOrder"/>B</param>
-        /// <param name="options">”äŠr•û–@‚ğ•\‚· <see cref="NaturalComparerOptions"/>B</param>        
+        /// <param name="order">ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’è¡¨ã™ <see cref="NaturalSortOrder"/>ã€‚</param>
+        /// <param name="options">æ¯”è¼ƒæ–¹æ³•ã‚’è¡¨ã™ <see cref="NaturalComparerOptions"/>ã€‚</param>        
         public NaturalComparer(NaturalSortOrder order, NaturalComparerOptions options)
             : this(order, NaturalComparerOptions.Default, new char[0]) {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
-        /// <param name="order">ƒ\[ƒg•ûŒü‚ğ•\‚· <see cref="NaturalSortOrder"/>B</param>
-        /// <param name="options">”äŠr•û–@‚ğ•\‚· <see cref="NaturalComparerOptions"/>B</param>
-        /// <param name="ignoreCharacter">–³‹‚·‚é•¶š‚ğ•\‚· char[]B</param>
+        /// <param name="order">ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’è¡¨ã™ <see cref="NaturalSortOrder"/>ã€‚</param>
+        /// <param name="options">æ¯”è¼ƒæ–¹æ³•ã‚’è¡¨ã™ <see cref="NaturalComparerOptions"/>ã€‚</param>
+        /// <param name="ignoreCharacter">ç„¡è¦–ã™ã‚‹æ–‡å­—ã‚’è¡¨ã™ char[]ã€‚</param>
         public NaturalComparer(NaturalSortOrder order, NaturalComparerOptions options, char[] ignoreCharacter) {
             this.SortOrder = order;
             _ignoreCharacter = ignoreCharacter;
-            this.Options = options;                 // ÅŒã‚ÉÀs‚·‚é•K—v‚ª‚ ‚é
+            this.Options = options;                 // æœ€å¾Œã«å®Ÿè¡Œã™ã‚‹å¿…è¦ãŒã‚ã‚‹
         }
 
         #endregion
@@ -174,7 +174,7 @@ namespace nitou.NaturalLanguage {
         #region Property
 
         /// <summary>
-        /// ƒ\[ƒg•ûŒü‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B
+        /// ã‚½ãƒ¼ãƒˆæ–¹å‘ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public virtual NaturalSortOrder SortOrder {
             get {
@@ -202,7 +202,7 @@ namespace nitou.NaturalLanguage {
             }
         }
 
-        /// <summary>©‘R‡‚Ì”äŠrƒIƒvƒVƒ‡ƒ“‚ğæ“¾‚Ü‚½‚Íİ’è‚µ‚Ü‚·B</summary>
+        /// <summary>è‡ªç„¶é †ã®æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’å–å¾—ã¾ãŸã¯è¨­å®šã—ã¾ã™ã€‚</summary>
         public virtual NaturalComparerOptions Options {
             get { return _options; }
             set {
@@ -211,7 +211,7 @@ namespace nitou.NaturalLanguage {
                     _ignoreTable = new char[_ignoreCharacter.Length + 3];
                     _ignoreCharacter.CopyTo(_ignoreTable, 0);
                     _ignoreTable[_ignoreTable.Length - 3] = ' ';
-                    _ignoreTable[_ignoreTable.Length - 2] = '@';
+                    _ignoreTable[_ignoreTable.Length - 2] = 'ã€€';
                     _ignoreTable[_ignoreTable.Length - 1] = '\t';
                 } else {
                     _ignoreTable = _ignoreCharacter;
@@ -219,27 +219,27 @@ namespace nitou.NaturalLanguage {
             }
         }
 
-        /// <summary>‹ó”’•¶š‚Ì‘¶İ‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+        /// <summary>ç©ºç™½æ–‡å­—ã®å­˜åœ¨ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
         protected virtual bool IgnoreSpace {
             get { return ((_options & NaturalComparerOptions.IgnoreSpace) == NaturalComparerOptions.IgnoreSpace); }
         }
 
-        /// <summary>”š•\Œ»‚Ìˆá‚¢‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+        /// <summary>æ•°å­—è¡¨ç¾ã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
         protected virtual bool IgnoreNumber {
             get { return ((_options & NaturalComparerOptions.IgnoreNumber) == NaturalComparerOptions.IgnoreNumber); }
         }
 
-        /// <summary>‘SŠp”¼Šp‚Ìˆá‚¢‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+        /// <summary>å…¨è§’åŠè§’ã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
         protected virtual bool IgnoreWide {
             get { return ((_options & NaturalComparerOptions.IgnoreWide) == NaturalComparerOptions.IgnoreWide); }
         }
 
-        /// <summary>‘å•¶š¬•¶š‚Ìˆá‚¢‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+        /// <summary>å¤§æ–‡å­—å°æ–‡å­—ã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
         protected virtual bool IgnoreCase {
             get { return ((_options & NaturalComparerOptions.IgnoreCase) == NaturalComparerOptions.IgnoreCase); }
         }
 
-        /// <summary>ƒJƒ^ƒJƒi‚Ğ‚ç‚ª‚È‚Ìˆá‚¢‚ğ–³‹‚·‚é‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+        /// <summary>ã‚«ã‚¿ã‚«ãƒŠã²ã‚‰ãŒãªã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹ã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
         protected virtual bool IgnoreKana {
             get { return ((_options & NaturalComparerOptions.IgnoreKana) == NaturalComparerOptions.IgnoreKana); }
         }
@@ -250,46 +250,46 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region Method
 
-        /// <summary>ƒIƒuƒWƒFƒNƒg‚Ì‘å¬ŠÖŒW‚ğ”äŠr‚µ‚Ü‚·B</summary>
-        /// <param name="s1">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· stringB</param>
-        /// <param name="s2">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· stringB</param>
+        /// <summary>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¤§å°é–¢ä¿‚ã‚’æ¯”è¼ƒã—ã¾ã™ã€‚</summary>
+        /// <param name="s1">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ stringã€‚</param>
+        /// <param name="s2">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ stringã€‚</param>
         /// <returns>
         /// <list type="table">
-        ///   <item><term>0 ‚æ‚è¬‚³‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è¬‚³‚¢B</description></item>
-        ///   <item><term>0</term><description><paramref name="s1"/> ‚Æ <paramref name="s2"/> ‚Í“™‚µ‚¢B</description></item>
-        ///   <item><term>0 ‚æ‚è‘å‚«‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è‘å‚«‚¢B</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå°ã•ã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå°ã•ã„ã€‚</description></item>
+        ///   <item><term>0</term><description><paramref name="s1"/> ã¨ <paramref name="s2"/> ã¯ç­‰ã—ã„ã€‚</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå¤§ãã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå¤§ãã„ã€‚</description></item>
         /// </list>
         /// </returns>
         public int Compare(string s1, string s2) {
             return LocalCompare(s1, s2) * _order;
         }
 
-        /// <summary>ƒIƒuƒWƒFƒNƒg‚Ì‘å¬ŠÖŒW‚ğ”äŠr‚µ‚Ü‚·B</summary>
-        /// <param name="s1">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· objectB</param>
-        /// <param name="s2">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· objectB</param>
+        /// <summary>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¤§å°é–¢ä¿‚ã‚’æ¯”è¼ƒã—ã¾ã™ã€‚</summary>
+        /// <param name="s1">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ objectã€‚</param>
+        /// <param name="s2">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ objectã€‚</param>
         /// <returns>
         /// <list type="table">
-        ///   <item><term>0 ‚æ‚è¬‚³‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è¬‚³‚¢B</description></item>
-        ///   <item><term>0</term><description><paramref name="s1"/> ‚Æ <paramref name="s2"/> ‚Í“™‚µ‚¢B</description></item>
-        ///   <item><term>0 ‚æ‚è‘å‚«‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è‘å‚«‚¢B</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå°ã•ã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå°ã•ã„ã€‚</description></item>
+        ///   <item><term>0</term><description><paramref name="s1"/> ã¨ <paramref name="s2"/> ã¯ç­‰ã—ã„ã€‚</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå¤§ãã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå¤§ãã„ã€‚</description></item>
         /// </list>
         /// </returns>
         int IComparer.Compare(object s1, object s2) {
             return LocalCompare(s1 as string, s2 as string) * _order;
         }
 
-        /// <summary>ƒIƒuƒWƒFƒNƒg‚Ì‘å¬ŠÖŒW‚ğ”äŠr‚µ‚Ü‚·B</summary>
-        /// <param name="s1">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· stringB</param>
-        /// <param name="s2">”äŠr‘ÎÛ‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\‚· stringB</param>
+        /// <summary>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¤§å°é–¢ä¿‚ã‚’æ¯”è¼ƒã—ã¾ã™ã€‚</summary>
+        /// <param name="s1">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ stringã€‚</param>
+        /// <param name="s2">æ¯”è¼ƒå¯¾è±¡ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ã™ stringã€‚</param>
         /// <returns>
         /// <list type="table">
-        ///   <item><term>0 ‚æ‚è¬‚³‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è¬‚³‚¢B</description></item>
-        ///   <item><term>0</term><description><paramref name="s1"/> ‚Æ <paramref name="s2"/> ‚Í“™‚µ‚¢B</description></item>
-        ///   <item><term>0 ‚æ‚è‘å‚«‚¢</term><description><paramref name="s1"/> ‚ª <paramref name="s2"/> ‚æ‚è‘å‚«‚¢B</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå°ã•ã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå°ã•ã„ã€‚</description></item>
+        ///   <item><term>0</term><description><paramref name="s1"/> ã¨ <paramref name="s2"/> ã¯ç­‰ã—ã„ã€‚</description></item>
+        ///   <item><term>0 ã‚ˆã‚Šå¤§ãã„</term><description><paramref name="s1"/> ãŒ <paramref name="s2"/> ã‚ˆã‚Šå¤§ãã„ã€‚</description></item>
         /// </list>
         /// </returns>
         protected virtual int LocalCompare(string s1, string s2) {
-            // ‚¢‚¸‚ê‚©‚ª null ‚à‚µ‚­‚Í‹ó•¶š‚Å‚ ‚ê‚Î”äŠrI—¹
+            // ã„ãšã‚Œã‹ãŒ null ã‚‚ã—ãã¯ç©ºæ–‡å­—ã§ã‚ã‚Œã°æ¯”è¼ƒçµ‚äº†
             if (string.IsNullOrEmpty(s1)) {
                 return string.IsNullOrEmpty(s2) ? 0 : -1;
             } else if (string.IsNullOrEmpty(s2)) {
@@ -307,7 +307,7 @@ namespace nitou.NaturalLanguage {
             s1 = ConvertChar(s1);
             s2 = ConvertChar(s2);
 
-            // œŠO•¶š‚ğ“Ç‚İ”ò‚Î‚·
+            // é™¤å¤–æ–‡å­—ã‚’èª­ã¿é£›ã°ã™
             if (_ignoreTable.Length > 0) {
                 SkipIgnoreCharacter(s1, ref p1);
                 SkipIgnoreCharacter(s1, ref p2);
@@ -319,7 +319,7 @@ namespace nitou.NaturalLanguage {
                 c1 = s1[p1];
                 c2 = s2[p2];
 
-                // —¼•û‚Æ‚à‰½‚ç‚©‚Ì”š‚Ìê‡
+                // ä¸¡æ–¹ã¨ã‚‚ä½•ã‚‰ã‹ã®æ•°å­—ã®å ´åˆ
                 if ((this.IgnoreNumber || (this.IgnoreNumber == false && t1 == t2)) && t1 != CharTypes.None && t2 != CharTypes.None) {
                     int i1 = p1;
                     int i2 = p2;
@@ -344,11 +344,11 @@ namespace nitou.NaturalLanguage {
                         p2++;
                     }
                 }
-                // ‚¢‚¸‚ê‚©‚ª”š‚Ìê‡
+                // ã„ãšã‚Œã‹ãŒæ•°å­—ã®å ´åˆ
                 else if ((t1 != CharTypes.None || t2 != CharTypes.None) && t1 != CharTypes.RomanNumber && t2 != CharTypes.RomanNumber) {
                     return (t1 != CharTypes.None) ? 1 : -1;
                 }
-                // ”š‚Å‚È‚¢ê‡‚Í•¶šƒR[ƒh‚ğ”äŠr‚·‚é
+                // æ•°å­—ã§ãªã„å ´åˆã¯æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æ¯”è¼ƒã™ã‚‹
                 else {
                     int diff = CompareChar(s1[p1], s2[p2]);
                     if (diff != 0) {
@@ -358,14 +358,14 @@ namespace nitou.NaturalLanguage {
                     p2++;
                 }
 
-                // œŠO•¶š‚ğ“Ç‚İ”ò‚Î‚·
+                // é™¤å¤–æ–‡å­—ã‚’èª­ã¿é£›ã°ã™
                 if (_ignoreTable.Length > 0) {
                     SkipIgnoreCharacter(s1, ref p1);
                     SkipIgnoreCharacter(s2, ref p2);
                 }
             }
 
-            // ‹¤’Ê•”•ª‚ªˆê’v‚µ‚Ä‚¢‚éê‡‚ÍAc‚è‚Ì•¶š—ñ’·‚Å‘å¬ŠÖŒW‚ğŒˆ‚ß‚é
+            // å…±é€šéƒ¨åˆ†ãŒä¸€è‡´ã—ã¦ã„ã‚‹å ´åˆã¯ã€æ®‹ã‚Šã®æ–‡å­—åˆ—é•·ã§å¤§å°é–¢ä¿‚ã‚’æ±ºã‚ã‚‹
             if (p1 >= s1.Length) {
                 return (p2 >= s2.Length) ? 0 : -1;
             } else {
@@ -373,9 +373,9 @@ namespace nitou.NaturalLanguage {
             }
         }
 
-        /// <summary>œŠO•¶š‚ğ“Ç‚İ”ò‚Î‚µ‚Ü‚·B</summary>
-        /// <param name="source">‘ÎÛ‚Ì•¶š—ñ‚ğ•\‚· stringB</param>
-        /// <param name="pos">ŠJnˆÊ’u‚ğ•\‚· intB</param>
+        /// <summary>é™¤å¤–æ–‡å­—ã‚’èª­ã¿é£›ã°ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’è¡¨ã™ stringã€‚</param>
+        /// <param name="pos">é–‹å§‹ä½ç½®ã‚’è¡¨ã™ intã€‚</param>
         private void SkipIgnoreCharacter(string source, ref int pos) {
             for (; pos < source.Length; pos++) {
                 if (Array.IndexOf<char>(_ignoreTable, source[pos]) == -1) {
@@ -384,27 +384,27 @@ namespace nitou.NaturalLanguage {
             }
         }
 
-        /// <summary>•¶š‚Ìí—Ş‚ğæ“¾‚µ‚Ü‚·B</summary>
-        /// <param name="c">æ“¾‘ÎÛ‚Ì•¶š‚ğ•\‚· charB</param>
-        /// <param name="back">’¼‘O‚Ì•¶š‚ğ•\‚· charB</param>
-        /// <param name="state">’¼‘O‚Ì•¶š‚Ìí—Ş‚ğ•\‚· <see cref="CharTypes"/>B</param>
-        /// <returns>æ“¾‚µ‚½•¶š‚Ìí—Ş‚ğ•\‚· <see cref="CharTypes"/>B</returns>
+        /// <summary>æ–‡å­—ã®ç¨®é¡ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
+        /// <param name="c">å–å¾—å¯¾è±¡ã®æ–‡å­—ã‚’è¡¨ã™ charã€‚</param>
+        /// <param name="back">ç›´å‰ã®æ–‡å­—ã‚’è¡¨ã™ charã€‚</param>
+        /// <param name="state">ç›´å‰ã®æ–‡å­—ã®ç¨®é¡ã‚’è¡¨ã™ <see cref="CharTypes"/>ã€‚</param>
+        /// <returns>å–å¾—ã—ãŸæ–‡å­—ã®ç¨®é¡ã‚’è¡¨ã™ <see cref="CharTypes"/>ã€‚</returns>
         private CharTypes GetCharType(char c, char back, CharTypes state) {
-            // ASCIIƒAƒ‰ƒrƒA”š (0`9)
+            // ASCIIã‚¢ãƒ©ãƒ“ã‚¢æ•°å­— (0ï½9)
             if (c >= '0' && c <= '9') {
                 return CharTypes.Number;
             }
-            // “ú–{ŒêƒAƒ‰ƒrƒA”š (‚O`‚X)
-            else if (c >= '‚O' && c <= '‚X') {
+            // æ—¥æœ¬èªã‚¢ãƒ©ãƒ“ã‚¢æ•°å­— (ï¼ï½ï¼™)
+            else if (c >= 'ï¼' && c <= 'ï¼™') {
                 return CharTypes.Number;
             }
-            // “ú–{ŒêŠÛ”š (‡@`‡S)
-            else if (c >= '‡@' && c <= '‡S') {
+            // æ—¥æœ¬èªä¸¸æ•°å­— (â‘ ï½â‘³)
+            else if (c >= 'â‘ ' && c <= 'â‘³') {
                 return CharTypes.CircleNumber;
             }
-            // ASCII‰p‘å•¶š (A`Z)
+            // ASCIIè‹±å¤§æ–‡å­— (Aï½Z)
             else if (c >= 'A' && c <= 'Z') {
-                // ASCIIƒ[ƒ}”š (I,V,X,L,C,D,M)
+                // ASCIIãƒ­ãƒ¼ãƒæ•°å­— (I,V,X,L,C,D,M)
                 if (back < 'A' || back > 'Z') {
                     switch (c) {
                         case 'I':
@@ -418,9 +418,9 @@ namespace nitou.NaturalLanguage {
                     }
                 }
             }
-            // ASCII‰p¬•¶š (a`z)
+            // ASCIIè‹±å°æ–‡å­— (aï½z)
             else if (c >= 'a' && c <= 'z') {
-                // ASCIIƒ[ƒ}”š (i,v,x,l,c,d,m)
+                // ASCIIãƒ­ãƒ¼ãƒæ•°å­— (i,v,x,l,c,d,m)
                 if ((back < 'A' || back > 'Z') && (back < 'a' || back > 'z')) {
                     switch (c) {
                         case 'i':
@@ -434,86 +434,86 @@ namespace nitou.NaturalLanguage {
                     }
                 }
             }
-            // “ú–{Œê‰p‘å•¶š (‚``‚y)
-            else if (c >= '‚`' && c <= '‚y') {
-                // “ú–{Œêƒ[ƒ}”š (‚h,‚u,‚w,‚k,‚b,‚c,‚l)
-                if (back < '‚`' || back > '‚y') {
+            // æ—¥æœ¬èªè‹±å¤§æ–‡å­— (ï¼¡ï½ï¼º)
+            else if (c >= 'ï¼¡' && c <= 'ï¼º') {
+                // æ—¥æœ¬èªãƒ­ãƒ¼ãƒæ•°å­— (ï¼©,ï¼¶,ï¼¸,ï¼¬,ï¼£,ï¼¤,ï¼­)
+                if (back < 'ï¼¡' || back > 'ï¼º') {
                     switch (c) {
-                        case '‚h':
-                        case '‚u':
-                        case '‚w':
-                        case '‚k':
-                        case '‚b':
-                        case '‚c':
-                        case '‚l':
+                        case 'ï¼©':
+                        case 'ï¼¶':
+                        case 'ï¼¸':
+                        case 'ï¼¬':
+                        case 'ï¼£':
+                        case 'ï¼¤':
+                        case 'ï¼­':
                             return CharTypes.RomanNumber;
                     }
                 }
             }
-            // “ú–{Œê‰p¬•¶š (‚`‚š)
-            else if (c >= '‚' && c <= '‚š') {
-                // “ú–{Œêƒ[ƒ}”š (ú@,úD,úI,‚Œ,‚ƒ,‚„,‚)
-                if ((back < '‚`' || back > '‚y') && (back < '‚' || back > '‚š')) {
+            // æ—¥æœ¬èªè‹±å°æ–‡å­— (ï½ï½ï½š)
+            else if (c >= 'ï½' && c <= 'ï½š') {
+                // æ—¥æœ¬èªãƒ­ãƒ¼ãƒæ•°å­— (â…°,â…´,â…¹,ï½Œ,ï½ƒ,ï½„,ï½)
+                if ((back < 'ï¼¡' || back > 'ï¼º') && (back < 'ï½' || back > 'ï½š')) {
                     switch (c) {
-                        case 'ú@':
-                        case 'úD':
-                        case 'úI':
-                        case '‚Œ':
-                        case '‚ƒ':
-                        case '‚„':
-                        case '‚':
+                        case 'â…°':
+                        case 'â…´':
+                        case 'â…¹':
+                        case 'ï½Œ':
+                        case 'ï½ƒ':
+                        case 'ï½„':
+                        case 'ï½':
                             return CharTypes.RomanNumber;
                     }
                 }
             }
-            // ƒ[ƒ}”š
+            // ãƒ­ãƒ¼ãƒæ•°å­—
             else if (c >= 0x2160 && c <= 0x217F) {
                 return CharTypes.JpRomanNumber;
             } else {
-                // “ú–{ŒêŠ¿”š
+                // æ—¥æœ¬èªæ¼¢æ•°å­—
                 if (state == CharTypes.KanjiNumber) {
                     switch (c) {
-                        case 'Z':
-                        case 'ˆê':
-                        case '“ñ':
-                        case 'O':
-                        case 'l':
-                        case 'ŒÜ':
-                        case '˜Z':
-                        case 'µ':
-                        case '”ª':
-                        case '‹ã':
-                        case '\':
-                        case '•S':
-                        case 'ç':
-                        case '–œ':
-                        case '‰­':
-                        case '’›':
-                        case '‹':
-                        case 'ˆë':
-                        case '“ó':
-                        case 'Q':
-                        case 'E':
+                        case 'ã€‡':
+                        case 'ä¸€':
+                        case 'äºŒ':
+                        case 'ä¸‰':
+                        case 'å››':
+                        case 'äº”':
+                        case 'å…­':
+                        case 'ä¸ƒ':
+                        case 'å…«':
+                        case 'ä¹':
+                        case 'å':
+                        case 'ç™¾':
+                        case 'åƒ':
+                        case 'ä¸‡':
+                        case 'å„„':
+                        case 'å…†':
+                        case 'äº¬':
+                        case 'å£±':
+                        case 'å¼':
+                        case 'å‚':
+                        case 'æ‹¾':
                             return CharTypes.KanjiNumber;
                     }
                 } else {
                     switch (c) {
-                        case 'Z':
-                        case 'ˆê':
-                        case '“ñ':
-                        case 'O':
-                        case 'l':
-                        case 'ŒÜ':
-                        case '˜Z':
-                        case 'µ':
-                        case '”ª':
-                        case '‹ã':
-                        case '\':
-                        case '•S':
-                        case 'ç':
-                        case 'ˆë':
-                        case '“ó':
-                        case 'Q':
+                        case 'ã€‡':
+                        case 'ä¸€':
+                        case 'äºŒ':
+                        case 'ä¸‰':
+                        case 'å››':
+                        case 'äº”':
+                        case 'å…­':
+                        case 'ä¸ƒ':
+                        case 'å…«':
+                        case 'ä¹':
+                        case 'å':
+                        case 'ç™¾':
+                        case 'åƒ':
+                        case 'å£±':
+                        case 'å¼':
+                        case 'å‚':
                             return CharTypes.KanjiNumber;
                     }
                 }
@@ -522,23 +522,23 @@ namespace nitou.NaturalLanguage {
             return CharTypes.None;
         }
 
-        /// <summary>”äŠrƒIƒvƒVƒ‡ƒ“‚É‡‚í‚¹‚Ä•¶š‚ğ•ÏŠ·‚µ‚Ü‚·B</summary>
-        /// <param name="source">•ÏŠ·‚·‚é•¶š‚ğ•\‚· stringB</param>
-        /// <returns>•ÏŠ·Œ‹‰Ê‚Ì•¶š‚ğ•\‚· stringB</returns>
+        /// <summary>æ¯”è¼ƒã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«åˆã‚ã›ã¦æ–‡å­—ã‚’å¤‰æ›ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¤‰æ›ã™ã‚‹æ–‡å­—ã‚’è¡¨ã™ stringã€‚</param>
+        /// <returns>å¤‰æ›çµæœã®æ–‡å­—ã‚’è¡¨ã™ stringã€‚</returns>
         private string ConvertChar(string source) {
             StringBuilder buffer = new StringBuilder(source);
 
-            // ‘SŠp”¼Šp‚Ìˆá‚¢‚ğ–³‹‚·‚é
+            // å…¨è§’åŠè§’ã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹
             if (this.IgnoreWide) {
                 ConvertHalf(buffer);
             }
 
-            // ‘å•¶š¬•¶š‚Ìˆá‚¢‚ğ–³‹‚·‚é
+            // å¤§æ–‡å­—å°æ–‡å­—ã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹
             if (this.IgnoreCase) {
                 ConvertUpperCase(buffer);
             }
 
-            // ƒJƒ^ƒJƒi‚Ğ‚ç‚ª‚È‚Ìˆá‚¢‚ğ–³‹‚·‚é
+            // ã‚«ã‚¿ã‚«ãƒŠã²ã‚‰ãŒãªã®é•ã„ã‚’ç„¡è¦–ã™ã‚‹
             if (this.IgnoreKana) {
                 ConvertKatakana(buffer);
             }
@@ -546,89 +546,89 @@ namespace nitou.NaturalLanguage {
             return buffer.ToString();
         }
 
-        /// <summary>‘SŠp‚ğ”¼Šp‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-        /// <param name="source">•ÏŠ·Œ³‚Ì•¶š—ñ‚ğ•\‚· <see cref="StringBuilder"/>B</param>
+        /// <summary>å…¨è§’ã‚’åŠè§’ã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¤‰æ›å…ƒã®æ–‡å­—åˆ—ã‚’è¡¨ã™ <see cref="StringBuilder"/>ã€‚</param>
         private void ConvertHalf(StringBuilder source) {
             for (int i = 0; i < source.Length; i++) {
-                if (source[i] >= 'I' && source[i] <= '`') {
-                    source[i] = (char)(source[i] - 'I' + '!');
+                if (source[i] >= 'ï¼' && source[i] <= 'ï½') {
+                    source[i] = (char)(source[i] - 'ï¼' + '!');
                 } else {
                     switch (source[i]) {
-                        case 'A': source[i] = '¤'; break;
-                        case 'B': source[i] = '¡'; break;
-                        case 'q': source[i] = '<'; break;
-                        case 'r': source[i] = '>'; break;
-                        case 's': source[i] = '<'; break;
-                        case 't': source[i] = '>'; break;
-                        case 'u': source[i] = '¢'; break;
-                        case 'v': source[i] = '£'; break;
-                        case 'w': source[i] = '¢'; break;
-                        case 'x': source[i] = '£'; break;
-                        case 'y': source[i] = '['; break;
-                        case 'z': source[i] = ']'; break;
-                        case 'k': source[i] = '['; break;
-                        case 'l': source[i] = ']'; break;
+                        case 'ã€': source[i] = 'ï½¤'; break;
+                        case 'ã€‚': source[i] = 'ï½¡'; break;
+                        case 'ã€ˆ': source[i] = '<'; break;
+                        case 'ã€‰': source[i] = '>'; break;
+                        case 'ã€Š': source[i] = '<'; break;
+                        case 'ã€‹': source[i] = '>'; break;
+                        case 'ã€Œ': source[i] = 'ï½¢'; break;
+                        case 'ã€': source[i] = 'ï½£'; break;
+                        case 'ã€': source[i] = 'ï½¢'; break;
+                        case 'ã€': source[i] = 'ï½£'; break;
+                        case 'ã€': source[i] = '['; break;
+                        case 'ã€‘': source[i] = ']'; break;
+                        case 'ã€”': source[i] = '['; break;
+                        case 'ã€•': source[i] = ']'; break;
                     }
                 }
             }
         }
 
-        /// <summary>¬•¶š‚ğ‘å•¶š‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-        /// <param name="source">•ÏŠ·Œ³‚Ì•¶š—ñ‚ğ•\‚· <see cref="StringBuilder"/>B</param>
+        /// <summary>å°æ–‡å­—ã‚’å¤§æ–‡å­—ã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¤‰æ›å…ƒã®æ–‡å­—åˆ—ã‚’è¡¨ã™ <see cref="StringBuilder"/>ã€‚</param>
         private void ConvertUpperCase(StringBuilder source) {
             for (int i = 0; i < source.Length; i++) {
-                if ((source[i] >= 'a' && source[i] <= 'z') && (source[i] >= '‚' && source[i] <= '‚š')) {
+                if ((source[i] >= 'a' && source[i] <= 'z') && (source[i] >= 'ï½' && source[i] <= 'ï½š')) {
                     source[i] = char.ToUpper(source[i], CultureInfo.InvariantCulture);
                 }
             }
         }
 
-        /// <summary>‚Ğ‚ç‚ª‚È‚ğƒJƒ^ƒJƒi‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-        /// <param name="source">•ÏŠ·Œ³‚Ì•¶š—ñ‚ğ•\‚· <see cref="StringBuilder"/>B</param>
+        /// <summary>ã²ã‚‰ãŒãªã‚’ã‚«ã‚¿ã‚«ãƒŠã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¤‰æ›å…ƒã®æ–‡å­—åˆ—ã‚’è¡¨ã™ <see cref="StringBuilder"/>ã€‚</param>
         private void ConvertKatakana(StringBuilder source) {
             for (int i = 0; i < source.Length; i++) {
-                if (source[i] >= '‚Ÿ' && source[i] <= 'U') {
-                    source[i] = (char)(source[i] + 'ƒ@' - '‚Ÿ');
-                } else if (source[i] >= '¦' && source[i] <= 'ß') {
+                if (source[i] >= 'ã' && source[i] <= 'ã‚') {
+                    source[i] = (char)(source[i] + 'ã‚¡' - 'ã');
+                } else if (source[i] >= 'ï½¦' && source[i] <= 'ï¾Ÿ') {
                     bool replaced = false;
 
                     if (i + 1 < source.Length) {
                         replaced = true;
 
                         switch (source[i + 1]) {
-                            case 'Ş':
+                            case 'ï¾':
                                 switch (source[i]) {
-                                    case '¶': source[i] = 'ƒK'; break;
-                                    case '·': source[i] = 'ƒM'; break;
-                                    case '¸': source[i] = 'ƒO'; break;
-                                    case '¹': source[i] = 'ƒQ'; break;
-                                    case 'º': source[i] = 'ƒS'; break;
-                                    case '»': source[i] = 'ƒU'; break;
-                                    case '¼': source[i] = 'ƒW'; break;
-                                    case '½': source[i] = 'ƒY'; break;
-                                    case '¾': source[i] = 'ƒ['; break;
-                                    case '¿': source[i] = 'ƒ]'; break;
-                                    case 'À': source[i] = 'ƒ_'; break;
-                                    case 'Á': source[i] = 'ƒa'; break;
-                                    case 'Â': source[i] = 'ƒd'; break;
-                                    case 'Ã': source[i] = 'ƒf'; break;
-                                    case 'Ä': source[i] = 'ƒh'; break;
-                                    case 'Ê': source[i] = 'ƒo'; break;
-                                    case 'Ë': source[i] = 'ƒr'; break;
-                                    case 'Ì': source[i] = 'ƒu'; break;
-                                    case 'Í': source[i] = 'ƒx'; break;
-                                    case 'Î': source[i] = 'ƒ{'; break;
-                                    case '³': source[i] = 'ƒ”'; break;
+                                    case 'ï½¶': source[i] = 'ã‚¬'; break;
+                                    case 'ï½·': source[i] = 'ã‚®'; break;
+                                    case 'ï½¸': source[i] = 'ã‚°'; break;
+                                    case 'ï½¹': source[i] = 'ã‚²'; break;
+                                    case 'ï½º': source[i] = 'ã‚´'; break;
+                                    case 'ï½»': source[i] = 'ã‚¶'; break;
+                                    case 'ï½¼': source[i] = 'ã‚¸'; break;
+                                    case 'ï½½': source[i] = 'ã‚º'; break;
+                                    case 'ï½¾': source[i] = 'ã‚¼'; break;
+                                    case 'ï½¿': source[i] = 'ã‚¾'; break;
+                                    case 'ï¾€': source[i] = 'ãƒ€'; break;
+                                    case 'ï¾': source[i] = 'ãƒ‚'; break;
+                                    case 'ï¾‚': source[i] = 'ãƒ…'; break;
+                                    case 'ï¾ƒ': source[i] = 'ãƒ‡'; break;
+                                    case 'ï¾„': source[i] = 'ãƒ‰'; break;
+                                    case 'ï¾Š': source[i] = 'ãƒ'; break;
+                                    case 'ï¾‹': source[i] = 'ãƒ“'; break;
+                                    case 'ï¾Œ': source[i] = 'ãƒ–'; break;
+                                    case 'ï¾': source[i] = 'ãƒ™'; break;
+                                    case 'ï¾': source[i] = 'ãƒœ'; break;
+                                    case 'ï½³': source[i] = 'ãƒ´'; break;
                                     default: replaced = false; break;
                                 }
                                 break;
-                            case 'ß':
+                            case 'ï¾Ÿ':
                                 switch (source[i]) {
-                                    case 'Ê': source[i] = 'ƒp'; break;
-                                    case 'Ë': source[i] = 'ƒs'; break;
-                                    case 'Ì': source[i] = 'ƒv'; break;
-                                    case 'Í': source[i] = 'ƒy'; break;
-                                    case 'Î': source[i] = 'ƒ|'; break;
+                                    case 'ï¾Š': source[i] = 'ãƒ‘'; break;
+                                    case 'ï¾‹': source[i] = 'ãƒ”'; break;
+                                    case 'ï¾Œ': source[i] = 'ãƒ—'; break;
+                                    case 'ï¾': source[i] = 'ãƒš'; break;
+                                    case 'ï¾': source[i] = 'ãƒ'; break;
                                     default: replaced = false; break;
                                 }
                                 break;
@@ -644,76 +644,76 @@ namespace nitou.NaturalLanguage {
 
                     if (replaced == false) {
                         switch (source[i]) {
-                            case '¦': source[i] = 'ƒ’'; break;
-                            case '§': source[i] = 'ƒ@'; break;
-                            case '¨': source[i] = 'ƒB'; break;
-                            case '©': source[i] = 'ƒD'; break;
-                            case 'ª': source[i] = 'ƒF'; break;
-                            case '«': source[i] = 'ƒH'; break;
-                            case '¬': source[i] = 'ƒƒ'; break;
-                            case '­': source[i] = 'ƒ…'; break;
-                            case '®': source[i] = 'ƒ‡'; break;
-                            case '¯': source[i] = 'ƒb'; break;
-                            case '°': source[i] = '['; break;
-                            case '±': source[i] = 'ƒA'; break;
-                            case '²': source[i] = 'ƒC'; break;
-                            case '³': source[i] = 'ƒE'; break;
-                            case '´': source[i] = 'ƒG'; break;
-                            case 'µ': source[i] = 'ƒI'; break;
-                            case '¶': source[i] = 'ƒJ'; break;
-                            case '·': source[i] = 'ƒL'; break;
-                            case '¸': source[i] = 'ƒN'; break;
-                            case '¹': source[i] = 'ƒP'; break;
-                            case 'º': source[i] = 'ƒR'; break;
-                            case '»': source[i] = 'ƒT'; break;
-                            case '¼': source[i] = 'ƒV'; break;
-                            case '½': source[i] = 'ƒX'; break;
-                            case '¾': source[i] = 'ƒZ'; break;
-                            case '¿': source[i] = 'ƒ\'; break;
-                            case 'À': source[i] = 'ƒ^'; break;
-                            case 'Á': source[i] = 'ƒ`'; break;
-                            case 'Â': source[i] = 'ƒc'; break;
-                            case 'Ã': source[i] = 'ƒe'; break;
-                            case 'Ä': source[i] = 'ƒg'; break;
-                            case 'Å': source[i] = 'ƒi'; break;
-                            case 'Æ': source[i] = 'ƒj'; break;
-                            case 'Ç': source[i] = 'ƒk'; break;
-                            case 'È': source[i] = 'ƒl'; break;
-                            case 'É': source[i] = 'ƒm'; break;
-                            case 'Ê': source[i] = 'ƒn'; break;
-                            case 'Ë': source[i] = 'ƒq'; break;
-                            case 'Ì': source[i] = 'ƒt'; break;
-                            case 'Í': source[i] = 'ƒw'; break;
-                            case 'Î': source[i] = 'ƒz'; break;
-                            case 'Ï': source[i] = 'ƒ}'; break;
-                            case 'Ğ': source[i] = 'ƒ~'; break;
-                            case 'Ñ': source[i] = 'ƒ€'; break;
-                            case 'Ò': source[i] = 'ƒ'; break;
-                            case 'Ó': source[i] = 'ƒ‚'; break;
-                            case 'Ô': source[i] = 'ƒ„'; break;
-                            case 'Õ': source[i] = 'ƒ†'; break;
-                            case 'Ö': source[i] = 'ƒˆ'; break;
-                            case '×': source[i] = 'ƒ‰'; break;
-                            case 'Ø': source[i] = 'ƒŠ'; break;
-                            case 'Ù': source[i] = 'ƒ‹'; break;
-                            case 'Ú': source[i] = 'ƒŒ'; break;
-                            case 'Û': source[i] = 'ƒ'; break;
-                            case 'Ü': source[i] = 'ƒ'; break;
-                            case 'İ': source[i] = 'ƒ“'; break;
-                            case 'Ş': source[i] = 'J'; break;
-                            case 'ß': source[i] = 'K'; break;
+                            case 'ï½¦': source[i] = 'ãƒ²'; break;
+                            case 'ï½§': source[i] = 'ã‚¡'; break;
+                            case 'ï½¨': source[i] = 'ã‚£'; break;
+                            case 'ï½©': source[i] = 'ã‚¥'; break;
+                            case 'ï½ª': source[i] = 'ã‚§'; break;
+                            case 'ï½«': source[i] = 'ã‚©'; break;
+                            case 'ï½¬': source[i] = 'ãƒ£'; break;
+                            case 'ï½­': source[i] = 'ãƒ¥'; break;
+                            case 'ï½®': source[i] = 'ãƒ§'; break;
+                            case 'ï½¯': source[i] = 'ãƒƒ'; break;
+                            case 'ï½°': source[i] = 'ãƒ¼'; break;
+                            case 'ï½±': source[i] = 'ã‚¢'; break;
+                            case 'ï½²': source[i] = 'ã‚¤'; break;
+                            case 'ï½³': source[i] = 'ã‚¦'; break;
+                            case 'ï½´': source[i] = 'ã‚¨'; break;
+                            case 'ï½µ': source[i] = 'ã‚ª'; break;
+                            case 'ï½¶': source[i] = 'ã‚«'; break;
+                            case 'ï½·': source[i] = 'ã‚­'; break;
+                            case 'ï½¸': source[i] = 'ã‚¯'; break;
+                            case 'ï½¹': source[i] = 'ã‚±'; break;
+                            case 'ï½º': source[i] = 'ã‚³'; break;
+                            case 'ï½»': source[i] = 'ã‚µ'; break;
+                            case 'ï½¼': source[i] = 'ã‚·'; break;
+                            case 'ï½½': source[i] = 'ã‚¹'; break;
+                            case 'ï½¾': source[i] = 'ã‚»'; break;
+                            case 'ï½¿': source[i] = 'ã‚½'; break;
+                            case 'ï¾€': source[i] = 'ã‚¿'; break;
+                            case 'ï¾': source[i] = 'ãƒ'; break;
+                            case 'ï¾‚': source[i] = 'ãƒ„'; break;
+                            case 'ï¾ƒ': source[i] = 'ãƒ†'; break;
+                            case 'ï¾„': source[i] = 'ãƒˆ'; break;
+                            case 'ï¾…': source[i] = 'ãƒŠ'; break;
+                            case 'ï¾†': source[i] = 'ãƒ‹'; break;
+                            case 'ï¾‡': source[i] = 'ãƒŒ'; break;
+                            case 'ï¾ˆ': source[i] = 'ãƒ'; break;
+                            case 'ï¾‰': source[i] = 'ãƒ'; break;
+                            case 'ï¾Š': source[i] = 'ãƒ'; break;
+                            case 'ï¾‹': source[i] = 'ãƒ’'; break;
+                            case 'ï¾Œ': source[i] = 'ãƒ•'; break;
+                            case 'ï¾': source[i] = 'ãƒ˜'; break;
+                            case 'ï¾': source[i] = 'ãƒ›'; break;
+                            case 'ï¾': source[i] = 'ãƒ'; break;
+                            case 'ï¾': source[i] = 'ãƒŸ'; break;
+                            case 'ï¾‘': source[i] = 'ãƒ '; break;
+                            case 'ï¾’': source[i] = 'ãƒ¡'; break;
+                            case 'ï¾“': source[i] = 'ãƒ¢'; break;
+                            case 'ï¾”': source[i] = 'ãƒ¤'; break;
+                            case 'ï¾•': source[i] = 'ãƒ¦'; break;
+                            case 'ï¾–': source[i] = 'ãƒ¨'; break;
+                            case 'ï¾—': source[i] = 'ãƒ©'; break;
+                            case 'ï¾˜': source[i] = 'ãƒª'; break;
+                            case 'ï¾™': source[i] = 'ãƒ«'; break;
+                            case 'ï¾š': source[i] = 'ãƒ¬'; break;
+                            case 'ï¾›': source[i] = 'ãƒ­'; break;
+                            case 'ï¾œ': source[i] = 'ãƒ¯'; break;
+                            case 'ï¾': source[i] = 'ãƒ³'; break;
+                            case 'ï¾': source[i] = 'ã‚›'; break;
+                            case 'ï¾Ÿ': source[i] = 'ã‚œ'; break;
                         }
                     }
                 }
             }
         }
 
-        /// <summary>•¶š—ñ“à‚Ì”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
-        /// <param name="source">‘ÎÛ‚Ì•¶š—ñ‚ğ•\‚· stringB</param>
-        /// <param name="type">ŠJn•¶š‚Ìí—Ş‚ğ•\‚· <see cref="CharTypes"/>B</param>
-        /// <param name="pos">ŠJnˆÊ’u‚ğ•\‚· intB</param>
-        /// <param name="value">æ“¾‚µ‚½”’l‚ğ•\‚· longB</param>
-        /// <returns>”’l‚ğæ“¾o—ˆ‚½ê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+        /// <summary>æ–‡å­—åˆ—å†…ã®æ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
+        /// <param name="source">å¯¾è±¡ã®æ–‡å­—åˆ—ã‚’è¡¨ã™ stringã€‚</param>
+        /// <param name="type">é–‹å§‹æ–‡å­—ã®ç¨®é¡ã‚’è¡¨ã™ <see cref="CharTypes"/>ã€‚</param>
+        /// <param name="pos">é–‹å§‹ä½ç½®ã‚’è¡¨ã™ intã€‚</param>
+        /// <param name="value">å–å¾—ã—ãŸæ•°å€¤ã‚’è¡¨ã™ longã€‚</param>
+        /// <returns>æ•°å€¤ã‚’å–å¾—å‡ºæ¥ãŸå ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
         private bool GetNumber(string source, CharTypes type, ref int pos, out long value) {
             INumberComverter number = null;
 
@@ -741,13 +741,13 @@ namespace nitou.NaturalLanguage {
             return (number.IsError == false);
         }
 
-        /// <summary>2‚Â‚Ì•¶šƒR[ƒh‚ğ”äŠr‚µ‚Ü‚·B</summary>
-        /// <param name="c1">”äŠr‚·‚é•¶š‚ğ•\‚· charB</param>
-        /// <param name="c2">”äŠr‚·‚é•¶š‚ğ•\‚· charB</param>
-        /// <returns>2‚Â‚Ì•¶šƒR[ƒh‚Ì‘å¬ŠÖŒW‚ğ•\‚· intB</returns>
+        /// <summary>2ã¤ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã‚’æ¯”è¼ƒã—ã¾ã™ã€‚</summary>
+        /// <param name="c1">æ¯”è¼ƒã™ã‚‹æ–‡å­—ã‚’è¡¨ã™ charã€‚</param>
+        /// <param name="c2">æ¯”è¼ƒã™ã‚‹æ–‡å­—ã‚’è¡¨ã™ charã€‚</param>
+        /// <returns>2ã¤ã®æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®å¤§å°é–¢ä¿‚ã‚’è¡¨ã™ intã€‚</returns>
         private int CompareChar(char c1, char c2) {
-            // ‘O’†ŒãAã’†‰º‚Ì®—ñ‚ğl—¶‚·‚é
-            string list = "ã‘O’†‰ºŒã";
+            // å‰ä¸­å¾Œã€ä¸Šä¸­ä¸‹ã®æ•´åˆ—ã‚’è€ƒæ…®ã™ã‚‹
+            string list = "ä¸Šå‰ä¸­ä¸‹å¾Œ";
             int p1 = list.IndexOf(c1);
             int p2 = list.IndexOf(c2);
 
@@ -764,22 +764,22 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region INumberComverter
 
-        /// <summary>”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
+        /// <summary>æ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
         private interface INumberComverter {
             #region Property
 
             /// <summary>
-            /// ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B
+            /// ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚
             /// </summary>
             bool IsError { get; }
 
             /// <summary>
-            /// ”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B
+            /// æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚
             /// </summary>
             long Value { get; }
 
             /// <summary>
-            /// ”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B
+            /// æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚
             /// </summary>
             int Length { get; }
 
@@ -788,10 +788,10 @@ namespace nitou.NaturalLanguage {
             #region Method
 
             /// <summary>
-            /// ”š‚ğ’Ç‰Á‚µ‚Ü‚·B
+            /// æ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚
             /// </summary>
-            /// <param name="number">”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <param name="number">æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             bool AddChar(char number);
 
             #endregion
@@ -803,39 +803,39 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region NumberConverter
 
-        /// <summary>ƒAƒ‰ƒrƒA”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
-        /// <remarks>ASCII‚Æ“ú–{Œê‚Ì¬İ‚Í‹–‚µ‚Ü‚¹‚ñB</remarks>
+        /// <summary>ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
+        /// <remarks>ASCIIã¨æ—¥æœ¬èªã®æ··åœ¨ã¯è¨±ã—ã¾ã›ã‚“ã€‚</remarks>
         private class NumberConverter : INumberComverter {
             #region Field
 
-            /// <summary>”’l‘S‘Ì‚Ì’·‚³‚ğ•\‚· intB</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®é•·ã•ã‚’è¡¨ã™ intã€‚</summary>
             private int _length;
-            /// <summary>ƒAƒ‰ƒrƒA”š‚Ì 0 ‚ğ•\‚· charB</summary>
+            /// <summary>ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã® 0 ã‚’è¡¨ã™ charã€‚</summary>
             private char _numberZero;
-            /// <summary>ƒAƒ‰ƒrƒA”š‚Ì 9 ‚ğ•\‚· charB</summary>
+            /// <summary>ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã® 9 ã‚’è¡¨ã™ charã€‚</summary>
             private char _numberNine;
-            /// <summary>•ÏŠ·Œ‹‰Ê‚Ì”’l‚ğ•\‚· longB</summary>
+            /// <summary>å¤‰æ›çµæœã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</summary>
             private long _value;
-            /// <summary>ƒJƒ“ƒ}‹æØ‚è‚Ì”’l‚©‚Ç‚¤‚©‚ğ•\‚· boolB</summary>
+            /// <summary>ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã®æ•°å€¤ã‹ã©ã†ã‹ã‚’è¡¨ã™ boolã€‚</summary>
             private bool _isComma;
-            /// <summary>æ“ª‚©‚ç˜A‘±‚µ‚½ƒAƒ‰ƒrƒA”š‚Ì•¶š”‚ğ•\‚· intB</summary>
+            /// <summary>å…ˆé ­ã‹ã‚‰é€£ç¶šã—ãŸã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã®æ–‡å­—æ•°ã‚’è¡¨ã™ intã€‚</summary>
             private int _numberCount;
-            /// <summary>ƒJƒ“ƒ}‹æØ‚èˆÈ~‚ÌƒAƒ‰ƒrƒA”š‚Ì•¶š”‚ğ•\‚· intB</summary>
+            /// <summary>ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šä»¥é™ã®ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã®æ–‡å­—æ•°ã‚’è¡¨ã™ intã€‚</summary>
             private int _commaLength;
 
             #endregion
 
             #region Constructor
 
-            /// <summary>ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B</summary>
-            /// <param name="number">‚P•¶š–Ú‚Ì”š‚ğ•\‚· charB</param>
+            /// <summary>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚</summary>
+            /// <param name="number">ï¼‘æ–‡å­—ç›®ã®æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
             public NumberConverter(char number) {
                 if (number >= '0' && number <= '9') {
                     _numberZero = '0';
                     _numberNine = '9';
                 } else {
-                    _numberZero = '‚O';
-                    _numberNine = '‚X';
+                    _numberZero = 'ï¼';
+                    _numberNine = 'ï¼™';
                 }
 
                 _length = 1;
@@ -847,17 +847,17 @@ namespace nitou.NaturalLanguage {
 
             #region Property
 
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public bool IsError {
                 get { return false; }
             }
 
-            /// <summary>”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public long Value {
                 get { return _value; }
             }
 
-            /// <summary>”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public int Length {
                 get { return _length; }
             }
@@ -866,11 +866,11 @@ namespace nitou.NaturalLanguage {
 
             #region Method
 
-            /// <summary>”š‚ğ’Ç‰Á‚µ‚Ü‚·B</summary>
-            /// <param name="number">”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>æ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚</summary>
+            /// <param name="number">æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             public bool AddChar(char number) {
-                // 1•¶š–Ú‚Ì”š‚Æ“¯í‚ÌƒAƒ‰ƒrƒA”š‚©‚Ç‚¤‚©
+                // 1æ–‡å­—ç›®ã®æ•°å­—ã¨åŒç¨®ã®ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ã‹ã©ã†ã‹
                 if (number >= _numberZero && number <= _numberNine) {
                     if (_isComma) {
                         _commaLength++;
@@ -884,14 +884,14 @@ namespace nitou.NaturalLanguage {
 
                     _value = _value * 10 + (number - _numberZero);
                 }
-                // 3Œ…‹æØ‚è‚ÌƒJƒ“ƒ}‚©‚Ç‚¤‚©
+                // 3æ¡åŒºåˆ‡ã‚Šã®ã‚«ãƒ³ãƒã‹ã©ã†ã‹
                 else if (_numberZero - number == 4) {
                     if (_isComma == false && _numberCount > 3) {
                         return false;
                     }
                     _commaLength = 0;
                 }
-                // ƒAƒ‰ƒrƒA”šˆÈŠO‚Ì•¶š‚ªŒ©‚Â‚©‚Á‚½‚çI—¹
+                // ã‚¢ãƒ©ãƒ“ã‚¢æ•°å­—ä»¥å¤–ã®æ–‡å­—ãŒè¦‹ã¤ã‹ã£ãŸã‚‰çµ‚äº†
                 else {
                     return false;
                 }
@@ -909,39 +909,39 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region RomanNumberConverter
 
-        /// <summary>‰pš•\Œ»‚Ìƒ[ƒ}”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
-        /// <remarks>‘å•¶š‚Æ¬•¶šAASCII‚Æ“ú–{Œê‚Ì¬İ‚Í‹–‚µ‚Ü‚¹‚ñB</remarks>
+        /// <summary>è‹±å­—è¡¨ç¾ã®ãƒ­ãƒ¼ãƒæ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
+        /// <remarks>å¤§æ–‡å­—ã¨å°æ–‡å­—ã€ASCIIã¨æ—¥æœ¬èªã®æ··åœ¨ã¯è¨±ã—ã¾ã›ã‚“ã€‚</remarks>
         private class RomanNumberConverter : INumberComverter {
             #region Field
 
-            /// <summary>”’l‘S‘Ì‚Ì’·‚³‚ğ•\‚· intB</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®é•·ã•ã‚’è¡¨ã™ intã€‚</summary>
             private int _length;
-            /// <summary>ƒAƒ‹ƒtƒ@ƒxƒbƒg‚Ì A ‚ğ•\‚· charB</summary>
+            /// <summary>ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã® A ã‚’è¡¨ã™ charã€‚</summary>
             private char _alphaA;
-            /// <summary>–¢Šm’è‚Ì”š‚ğ•\‚· longB</summary>
+            /// <summary>æœªç¢ºå®šã®æ•°å­—ã‚’è¡¨ã™ longã€‚</summary>
             private long _number;
-            /// <summary>•ÏŠ·Œ‹‰Ê‚Ì”’l‚ğ•\‚· longB</summary>
+            /// <summary>å¤‰æ›çµæœã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</summary>
             private long _value;
-            /// <summary>Œ»İ’PˆÊ‚ğ•\‚· longB</summary>
+            /// <summary>ç¾åœ¨å˜ä½ã‚’è¡¨ã™ longã€‚</summary>
             private long _max;
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğ•\‚· boolB</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’è¡¨ã™ boolã€‚</summary>
             private bool _isError;
 
             #endregion
 
             #region Constructor
 
-            /// <summary>ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B</summary>
-            /// <param name="alpha">‚P•¶š–Ú‚Ì‰pš‚ğ•\‚· charB</param>
+            /// <summary>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚</summary>
+            /// <param name="alpha">ï¼‘æ–‡å­—ç›®ã®è‹±å­—ã‚’è¡¨ã™ charã€‚</param>
             public RomanNumberConverter(char alpha) {
                 if (alpha >= 'A' && alpha <= 'Z') {
                     _alphaA = 'A';
                 } else if (alpha >= 'a' && alpha <= 'z') {
                     _alphaA = 'a';
-                } else if (alpha >= '‚`' && alpha <= '‚y') {
-                    _alphaA = '‚`';
-                } else if (alpha >= '‚' && alpha <= '‚š') {
-                    _alphaA = '‚';
+                } else if (alpha >= 'ï¼¡' && alpha <= 'ï¼º') {
+                    _alphaA = 'ï¼¡';
+                } else if (alpha >= 'ï½' && alpha <= 'ï½š') {
+                    _alphaA = 'ï½';
                 }
 
                 _length = 1;
@@ -953,17 +953,17 @@ namespace nitou.NaturalLanguage {
 
             #region Property
 
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public bool IsError {
                 get { return _isError; }
             }
 
-            /// <summary>”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public long Value {
                 get { return _value + _number; }
             }
 
-            /// <summary>”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public int Length {
                 get { return _length; }
             }
@@ -972,18 +972,18 @@ namespace nitou.NaturalLanguage {
 
             #region Method
 
-            /// <summary>ƒ[ƒ}”š‚ğ’Ç‰Á‚µ‚Ü‚·B</summary>
-            /// <param name="roman">ƒ[ƒ}”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>ãƒ­ãƒ¼ãƒæ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚</summary>
+            /// <param name="roman">ãƒ­ãƒ¼ãƒæ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             public bool AddChar(char roman) {
                 long value = Parse(roman);
 
-                // ƒ[ƒ}”šˆÈŠO‚Ì•¶š‚ªŒ©‚Â‚©‚Á‚½‚çI—¹
+                // ãƒ­ãƒ¼ãƒæ•°å­—ä»¥å¤–ã®æ–‡å­—ãŒè¦‹ã¤ã‹ã£ãŸã‚‰çµ‚äº†
                 if (value == 0) {
                     _isError = IsAlpha(roman);
                     return false;
                 }
-                // IV IX ‚È‚Ç‚ÌŒ¸Z‘¥•\‹L
+                // IV IX ãªã©ã®æ¸›ç®—å‰‡è¡¨è¨˜
                 else if (value > _max) {
                     long mag = value / _max;
                     if (mag == 5 || mag == 10) {
@@ -995,13 +995,13 @@ namespace nitou.NaturalLanguage {
                         return false;
                     }
                 }
-                // VI XI ‚È‚Ç‰ÁZ‘¥•\‹L
+                // VI XI ãªã©åŠ ç®—å‰‡è¡¨è¨˜
                 else if (value < _max) {
                     _value += _number;
                     _number = value;
                     _max = value;
                 }
-                // II XX ‚È‚Ç“¯‚¶”š‚ÌŒJ‚è•Ô‚µ
+                // II XX ãªã©åŒã˜æ•°å­—ã®ç¹°ã‚Šè¿”ã—
                 else {
                     _number += value;
                 }
@@ -1010,9 +1010,9 @@ namespace nitou.NaturalLanguage {
                 return true;
             }
 
-            /// <summary>ƒ[ƒ}”š‚ğ”’l‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-            /// <param name="alpha">1 •¶š‚Ìƒ[ƒ}”š‚ğ•\‚· charB</param>
-            /// <returns>•ÏŠ·Œã‚Ì”’l‚ğ•\‚· longB</returns>
+            /// <summary>ãƒ­ãƒ¼ãƒæ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+            /// <param name="alpha">1 æ–‡å­—ã®ãƒ­ãƒ¼ãƒæ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>å¤‰æ›å¾Œã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</returns>
             protected long Parse(char alpha) {
                 switch (alpha - _alphaA) {
                     case 08: return 1;      // I
@@ -1027,11 +1027,11 @@ namespace nitou.NaturalLanguage {
                 return 0;
             }
 
-            /// <summary>w’è‚Ì•¶š‚ª‰pš‚©‚Ç‚¤‚©‚ğ”»’è‚µ‚Ü‚·B</summary>
-            /// <param name="alpha">ŒŸ¸‘ÎÛ‚Ì•¶š‚ğ•\‚· charB</param>
-            /// <returns>w’è‚Ì•¶š‚ª‰pš‚¾‚Á‚½ê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>æŒ‡å®šã®æ–‡å­—ãŒè‹±å­—ã‹ã©ã†ã‹ã‚’åˆ¤å®šã—ã¾ã™ã€‚</summary>
+            /// <param name="alpha">æ¤œæŸ»å¯¾è±¡ã®æ–‡å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æŒ‡å®šã®æ–‡å­—ãŒè‹±å­—ã ã£ãŸå ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             protected bool IsAlpha(char alpha) {
-                return ((alpha >= 'A' && alpha <= 'Z') || (alpha >= 'a' && alpha <= 'z') || (alpha >= '‚`' && alpha <= '‚y') || (alpha >= '‚' && alpha <= '‚š'));
+                return ((alpha >= 'A' && alpha <= 'Z') || (alpha >= 'a' && alpha <= 'z') || (alpha >= 'ï¼¡' && alpha <= 'ï¼º') || (alpha >= 'ï½' && alpha <= 'ï½š'));
             }
 
             #endregion
@@ -1043,37 +1043,37 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region JpRomanNumberConverter
 
-        /// <summary>‘SŠpƒ[ƒ}”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
+        /// <summary>å…¨è§’ãƒ­ãƒ¼ãƒæ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
         private class JpRomanNumberConverter : INumberComverter {
             #region Field
 
-            /// <summary>”’l‘S‘Ì‚Ì’·‚³‚ğ•\‚· intB</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®é•·ã•ã‚’è¡¨ã™ intã€‚</summary>
             private int _length;
-            /// <summary>2•¶šˆÈã‚Ì‘g‚İ‡‚í‚¹‚ª‰Â”\‚©‚Ç‚¤‚©‚ğ•\‚· boolB</summary>
+            /// <summary>2æ–‡å­—ä»¥ä¸Šã®çµ„ã¿åˆã‚ã›ãŒå¯èƒ½ã‹ã©ã†ã‹ã‚’è¡¨ã™ boolã€‚</summary>
             private bool _isMultiChar;
-            /// <summary>ƒ[ƒ}”š‚Ì 1 ‚ğ•\‚· charB</summary>
+            /// <summary>ãƒ­ãƒ¼ãƒæ•°å­—ã® 1 ã‚’è¡¨ã™ charã€‚</summary>
             private char _romanOne;
-            /// <summary>–¢Šm’è‚Ì”š‚ğ•\‚· longB</summary>
+            /// <summary>æœªç¢ºå®šã®æ•°å­—ã‚’è¡¨ã™ longã€‚</summary>
             private long _number;
-            /// <summary>•ÏŠ·Œ‹‰Ê‚Ì”’l‚ğ•\‚· longB</summary>
+            /// <summary>å¤‰æ›çµæœã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</summary>
             private long _value;
-            /// <summary>Œ»İ’PˆÊ‚ğ•\‚· longB</summary>
+            /// <summary>ç¾åœ¨å˜ä½ã‚’è¡¨ã™ longã€‚</summary>
             private long _max;
 
             #endregion
 
             #region Constructor
 
-            /// <summary>ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B</summary>
-            /// <param name="roman">‚P•¶š–Ú‚Ìƒ[ƒ}”š‚ğ•\‚· charB</param>
+            /// <summary>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚</summary>
+            /// <param name="roman">ï¼‘æ–‡å­—ç›®ã®ãƒ­ãƒ¼ãƒæ•°å­—ã‚’è¡¨ã™ charã€‚</param>
             public JpRomanNumberConverter(char roman) {
                 _length = 1;
 
-                // ‘SŠpƒ[ƒ}”š(‡T`XII,L,C,D,M)
+                // å…¨è§’ãƒ­ãƒ¼ãƒæ•°å­—(â… ï½XII,L,C,D,M)
                 if (roman >= 0x2160 && roman <= 0x216F) {
                     _romanOne = (char)0x2160;
                 }
-                // ‘SŠpƒ[ƒ}”š(ú@`xii,l,c,d,m)
+                // å…¨è§’ãƒ­ãƒ¼ãƒæ•°å­—(â…°ï½xii,l,c,d,m)
                 else if (roman >= 0x2170 && roman <= 0x217F) {
                     _romanOne = (char)0x2170;
                 }
@@ -1093,17 +1093,17 @@ namespace nitou.NaturalLanguage {
 
             #region Property
 
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public bool IsError {
                 get { return false; }
             }
 
-            /// <summary>”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public long Value {
                 get { return _value + _number; }
             }
 
-            /// <summary>”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public int Length {
                 get { return _length; }
             }
@@ -1112,9 +1112,9 @@ namespace nitou.NaturalLanguage {
 
             #region Method
 
-            /// <summary>”š‚ğ’Ç‰Á‚µ‚Ü‚·B</summary>
-            /// <param name="roman">”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>æ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚</summary>
+            /// <param name="roman">æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             public bool AddChar(char roman) {
                 if (_isMultiChar == false) {
                     return false;
@@ -1122,11 +1122,11 @@ namespace nitou.NaturalLanguage {
 
                 long value = Parse(roman);
 
-                // ƒ[ƒ}”šˆÈŠO‚Ì•¶š‚ªŒ©‚Â‚©‚Á‚½‚çI—¹
+                // ãƒ­ãƒ¼ãƒæ•°å­—ä»¥å¤–ã®æ–‡å­—ãŒè¦‹ã¤ã‹ã£ãŸã‚‰çµ‚äº†
                 if (value == 0) {
                     return false;
                 }
-                // IV IX ‚È‚Ç‚ÌŒ¸Z‘¥•\‹L
+                // IV IX ãªã©ã®æ¸›ç®—å‰‡è¡¨è¨˜
                 else if (value > _max) {
                     long mag = value / _max;
                     if (mag == 5 || mag == 10) {
@@ -1137,13 +1137,13 @@ namespace nitou.NaturalLanguage {
                         return false;
                     }
                 }
-                // VI XI ‚È‚Ç‰ÁZ‘¥•\‹L
+                // VI XI ãªã©åŠ ç®—å‰‡è¡¨è¨˜
                 else if (value < _max) {
                     _value += _number;
                     _number = value;
                     _max = value;
                 }
-                // II XX ‚È‚Ç“¯‚¶”š‚ÌŒJ‚è•Ô‚µ
+                // II XX ãªã©åŒã˜æ•°å­—ã®ç¹°ã‚Šè¿”ã—
                 else {
                     _number += value;
                 }
@@ -1152,9 +1152,9 @@ namespace nitou.NaturalLanguage {
                 return true;
             }
 
-            /// <summary>ƒ[ƒ}”š‚ğ”’l‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-            /// <param name="roman">1 •¶š‚Ìƒ[ƒ}”š‚ğ•\‚· charB</param>
-            /// <returns>•ÏŠ·Œã‚Ì”’l‚ğ•\‚· longB</returns>
+            /// <summary>ãƒ­ãƒ¼ãƒæ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+            /// <param name="roman">1 æ–‡å­—ã®ãƒ­ãƒ¼ãƒæ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>å¤‰æ›å¾Œã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</returns>
             protected long Parse(char roman) {
                 switch (roman - _romanOne) {
                     case 0x0: return 1;     // I
@@ -1178,41 +1178,41 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region CircleNumberConverter
 
-        /// <summary>ŠÛ”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
+        /// <summary>ä¸¸æ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
         private class CircleNumberConverter : INumberComverter {
             #region Field
 
-            /// <summary>Œ»İ‚Ì”š‚ğ•\‚· longB</summary>
+            /// <summary>ç¾åœ¨ã®æ•°å­—ã‚’è¡¨ã™ longã€‚</summary>
             private long _number;
 
             #endregion
 
             #region Constructor
 
-            /// <summary>ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B</summary>
-            /// <param name="number">‚P•¶š–Ú‚Ì”š‚ğ•\‚· charB</param>
+            /// <summary>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚</summary>
+            /// <param name="number">ï¼‘æ–‡å­—ç›®ã®æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
             public CircleNumberConverter(char number) {
-                // ‡@`‡S
+                // â‘ ï½â‘³
                 if (number >= 0x2460 && number <= 0x2473) {
                     _number = number - 0x2460 + 1;
                 }
-                // (1)`(12)
+                // (1)ï½(12)
                 else if (number >= 0x2474 && number <= 0x2487) {
                     _number = number - 0x2474 + 1;
                 }
-                // 1.`20.
+                // 1.ï½20.
                 else if (number >= 0x2488 && number <= 0x249B) {
                     _number = number - 0x2488 + 1;
                 }
-                // ŠÛ•t‚«21`35
+                // ä¸¸ä»˜ã21ï½35
                 else if (number >= 0x3251 && number <= 0x325F) {
                     _number = number - 0x3251 + 21;
                 }
-                // {ˆê}`{\}
+                // {ä¸€}ï½{å}
                 else if (number >= 0x3220 && number <= 0x3229) {
                     _number = number - 0x3220 + 1;
                 }
-                // ŠÛ•t‚«ˆê`\
+                // ä¸¸ä»˜ãä¸€ï½å
                 else if (number >= 0x3280 && number <= 0x3289) {
                     _number = number - 0x3280 + 1;
                 }
@@ -1222,17 +1222,17 @@ namespace nitou.NaturalLanguage {
 
             #region Property
 
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public bool IsError {
                 get { return false; }
             }
 
-            /// <summary>”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public long Value {
                 get { return _number; }
             }
 
-            /// <summary>”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public int Length {
                 get { return 1; }
             }
@@ -1241,9 +1241,9 @@ namespace nitou.NaturalLanguage {
 
             #region Method
 
-            /// <summary>”š‚ğ’Ç‰Á‚µ‚Ü‚·B</summary>
-            /// <param name="number">”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>æ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚</summary>
+            /// <param name="number">æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             public bool AddChar(char number) {
                 return false;
             }
@@ -1257,31 +1257,31 @@ namespace nitou.NaturalLanguage {
         /// ----------------------------------------------------------------------------
         #region KanjiNumberConverter
 
-        /// <summary>Š¿”š‚ğ”’l‚Ö•ÏŠ·‚·‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B</summary>
+        /// <summary>æ¼¢æ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚</summary>
         private class KanjiNumberConverter : INumberComverter {
             #region Field
 
-            /// <summary>”’l‘S‘Ì‚Ì’·‚³‚ğ•\‚· intB</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®é•·ã•ã‚’è¡¨ã™ intã€‚</summary>
             private int _length;
-            /// <summary>ˆÊæ‚è‹L”–@‚©‚Ç‚¤‚©‚ğ•\‚· boolB</summary>
+            /// <summary>ä½å–ã‚Šè¨˜æ•°æ³•ã‹ã©ã†ã‹ã‚’è¡¨ã™ boolã€‚</summary>
             private bool _isNumeral;
-            /// <summary>’¼‘O‚Ì”š‚ğ•\‚· longB</summary>
+            /// <summary>ç›´å‰ã®æ•°å­—ã‚’è¡¨ã™ longã€‚</summary>
             private long _number;
-            /// <summary>1–œ–¢–‚Ì”’l‚ğ•\‚· longB</summary>
+            /// <summary>1ä¸‡æœªæº€ã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</summary>
             private long _value1;
-            /// <summary>•ÏŠ·Œ‹‰Ê‚Ì”’l‚ğ•\‚· longB</summary>
+            /// <summary>å¤‰æ›çµæœã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</summary>
             private long _value2;
-            /// <summary>1–œ–¢–‚ÌŒ»İ’PˆÊ‚ğ•\‚· longB</summary>
+            /// <summary>1ä¸‡æœªæº€ã®ç¾åœ¨å˜ä½ã‚’è¡¨ã™ longã€‚</summary>
             private long _unit1;
-            /// <summary>”’l‘S‘Ì‚ÌŒ»İ’PˆÊ‚ğ•\‚· longB</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®ç¾åœ¨å˜ä½ã‚’è¡¨ã™ longã€‚</summary>
             private long _unit2;
 
             #endregion
 
             #region Constructor
 
-            /// <summary>ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‰Šú‰»‚µ‚Ü‚·B</summary>
-            /// <param name="number">‚P•¶š–Ú‚Ì”š‚ğ•\‚· charB</param>
+            /// <summary>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’åˆæœŸåŒ–ã—ã¾ã™ã€‚</summary>
+            /// <param name="number">ï¼‘æ–‡å­—ç›®ã®æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
             public KanjiNumberConverter(char number) {
                 _length = 1;
                 long temp = Parse(number);
@@ -1298,17 +1298,17 @@ namespace nitou.NaturalLanguage {
 
             #region Property
 
-            /// <summary>ƒGƒ‰[‚ª”­¶‚µ‚½‚©‚Ç‚¤‚©‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‹ã©ã†ã‹ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public bool IsError {
                 get { return false; }
             }
 
-            /// <summary>”š‚©‚ç•ÏŠ·‚µ‚½”’l‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å­—ã‹ã‚‰å¤‰æ›ã—ãŸæ•°å€¤ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public long Value {
                 get { return _value2 + _value1 + _number; }
             }
 
-            /// <summary>”’l‘S‘Ì‚Ì•¶š”‚ğæ“¾‚µ‚Ü‚·B</summary>
+            /// <summary>æ•°å€¤å…¨ä½“ã®æ–‡å­—æ•°ã‚’å–å¾—ã—ã¾ã™ã€‚</summary>
             public int Length {
                 get { return _length; }
             }
@@ -1317,13 +1317,13 @@ namespace nitou.NaturalLanguage {
 
             #region Method
 
-            /// <summary>”š‚ğ’Ç‰Á‚µ‚Ü‚·B</summary>
-            /// <param name="kanji">”š‚ğ•\‚· charB</param>
-            /// <returns>”š‚Æ‚µ‚Ä¬—§‚·‚éê‡‚Í <see langword="true"/>A‚»‚êˆÈŠO‚Ìê‡‚Í <see langword="false"/>B</returns>
+            /// <summary>æ•°å­—ã‚’è¿½åŠ ã—ã¾ã™ã€‚</summary>
+            /// <param name="kanji">æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>æ•°å­—ã¨ã—ã¦æˆç«‹ã™ã‚‹å ´åˆã¯ <see langword="true"/>ã€ãã‚Œä»¥å¤–ã®å ´åˆã¯ <see langword="false"/>ã€‚</returns>
             public bool AddChar(char kanji) {
                 long value = Parse(kanji);
 
-                // 2•¶š–Ú‚Ì“à—e‚ÅˆÊæ‚è‹L”–@‚©‚Ç‚¤‚©‚ğŒˆ’è‚·‚é
+                // 2æ–‡å­—ç›®ã®å†…å®¹ã§ä½å–ã‚Šè¨˜æ•°æ³•ã‹ã©ã†ã‹ã‚’æ±ºå®šã™ã‚‹
                 if (_length == 1) {
                     _isNumeral = (_number + _value1 < 10 && value < 10);
                     if (_isNumeral) {
@@ -1346,14 +1346,14 @@ namespace nitou.NaturalLanguage {
                     return true;
                 } else {
                     if (value < 10) {
-                        // 9ˆÈ‰º‚ÌŠ¿”š‚ª˜A‘±‚µ‚½‚çƒGƒ‰[
+                        // 9ä»¥ä¸‹ã®æ¼¢æ•°å­—ãŒé€£ç¶šã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼
                         if (_number > 0) {
                             return false;
                         }
 
                         _number = value;
                     } else if (value <= 1000) {
-                        // ‘O•û‚æ‚è‘å‚«‚È’PˆÊ‚ªoŒ»‚µ‚½‚çƒGƒ‰[
+                        // å‰æ–¹ã‚ˆã‚Šå¤§ããªå˜ä½ãŒå‡ºç¾ã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼
                         if (_unit1 <= value) {
                             return false;
                         }
@@ -1362,7 +1362,7 @@ namespace nitou.NaturalLanguage {
                         _number = 0;
                         _unit1 = value;
                     } else {
-                        // ‘O•û‚æ‚è‘å‚«‚È’PˆÊ‚ªoŒ»‚µ‚½‚çƒGƒ‰[
+                        // å‰æ–¹ã‚ˆã‚Šå¤§ããªå˜ä½ãŒå‡ºç¾ã—ãŸã‚‰ã‚¨ãƒ©ãƒ¼
                         if (_unit2 <= value) {
                             return false;
                         }
@@ -1378,33 +1378,33 @@ namespace nitou.NaturalLanguage {
                 }
             }
 
-            /// <summary>Š¿”š‚ğ”’l‚Ö•ÏŠ·‚µ‚Ü‚·B</summary>
-            /// <param name="kanji">Š¿”š‚ğ•\‚· charB</param>
-            /// <returns>•ÏŠ·Œã‚Ì”’l‚ğ•\‚· longB</returns>
+            /// <summary>æ¼¢æ•°å­—ã‚’æ•°å€¤ã¸å¤‰æ›ã—ã¾ã™ã€‚</summary>
+            /// <param name="kanji">æ¼¢æ•°å­—ã‚’è¡¨ã™ charã€‚</param>
+            /// <returns>å¤‰æ›å¾Œã®æ•°å€¤ã‚’è¡¨ã™ longã€‚</returns>
             protected long Parse(char kanji) {
                 switch (kanji) {
-                    case 'Z': return 0;
-                    case 'ˆê': return 1;
-                    case '“ñ': return 2;
-                    case 'O': return 3;
-                    case 'l': return 4;
-                    case 'ŒÜ': return 5;
-                    case '˜Z': return 6;
-                    case 'µ': return 7;
-                    case '”ª': return 8;
-                    case '‹ã': return 9;
-                    case '\': return 10;
-                    case '•S': return 100;
-                    case 'ç': return 1000;
-                    case '–œ': return 10000;
-                    case '‰­': return 100000000;
-                    case '’›': return 1000000000000;
-                    case '‹': return 10000000000000000;
-                    case '—ë': return 0;
-                    case 'ˆë': return 1;
-                    case '“ó': return 2;
-                    case 'Q': return 3;
-                    case 'E': return 10;
+                    case 'ã€‡': return 0;
+                    case 'ä¸€': return 1;
+                    case 'äºŒ': return 2;
+                    case 'ä¸‰': return 3;
+                    case 'å››': return 4;
+                    case 'äº”': return 5;
+                    case 'å…­': return 6;
+                    case 'ä¸ƒ': return 7;
+                    case 'å…«': return 8;
+                    case 'ä¹': return 9;
+                    case 'å': return 10;
+                    case 'ç™¾': return 100;
+                    case 'åƒ': return 1000;
+                    case 'ä¸‡': return 10000;
+                    case 'å„„': return 100000000;
+                    case 'å…†': return 1000000000000;
+                    case 'äº¬': return 10000000000000000;
+                    case 'é›¶': return 0;
+                    case 'å£±': return 1;
+                    case 'å¼': return 2;
+                    case 'å‚': return 3;
+                    case 'æ‹¾': return 10;
                 }
 
                 return -1;

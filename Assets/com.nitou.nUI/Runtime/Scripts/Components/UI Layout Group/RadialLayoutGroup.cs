@@ -1,9 +1,9 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 // [REF]
-//  ƒRƒKƒlƒuƒƒO: uGUI ‚Å‰~Œ`‚ÌƒŒƒCƒAƒEƒg‚ğg—p‚Å‚«‚éuUnityRadialLayoutGroupvĞ‰î https://baba-s.hatenablog.com/entry/2020/02/26/090000
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: uGUI ã§å††å½¢ã®ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’ä½¿ç”¨ã§ãã‚‹ã€ŒUnityRadialLayoutGroupã€ç´¹ä»‹ https://baba-s.hatenablog.com/entry/2020/02/26/090000
 //  github: aillieo/UnityRadialLayoutGroup https://github.com/aillieo/UnityRadialLayoutGroup/tree/master
 
 namespace nitou.UI.Component {

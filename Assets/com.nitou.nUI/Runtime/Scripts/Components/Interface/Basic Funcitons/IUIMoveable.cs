@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using UnityEngine.EventSystems;
 
 namespace nitou.UI.Components{
 
     /// <summary>
-    /// Interface of the UI that handles the gMoveh event
+    /// Interface of the UI that handles the â€œMoveâ€ event
     /// </summary>
     public interface IUIMoveable : IUIComponent{
 

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using nitou.DesignPattern.Pooling;
@@ -7,15 +7,15 @@ namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer{
 
         /// <summary>
-        /// Šî–{}Œ`
+        /// åŸºæœ¬å›³å½¢
         /// </summary>
         internal static class Basic {
 
             /// ----------------------------------------------------------------------------
-            #region ü
+            #region ç·š
 
             /// <summary>
-            /// “_—ñã‚ÉÜ‚êü‚ğ•`‰æ‚·‚é
+            /// ç‚¹åˆ—ä¸Šã«æŠ˜ã‚Œç·šã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawLines(IReadOnlyList<Vector3> points) {
                 if (points == null || points.Count <= 1) return;
@@ -28,7 +28,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‚QƒOƒ‹[ƒv‚ÌŠe‘Î‰“_‚ğŒ‹‚Ôü‚ğ•`‰æ‚·‚é
+            /// ï¼’ã‚°ãƒ«ãƒ¼ãƒ—ã®å„å¯¾å¿œç‚¹ã‚’çµã¶ç·šã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawLineSet(IReadOnlyList<Vector3> points1, IReadOnlyList<Vector3> points2) {
                 if (points1 == null || points2 == null || points1.Count != points2.Count) return;
@@ -41,10 +41,10 @@ namespace nitou.DebugInternal {
 
 
             /// ----------------------------------------------------------------------------
-            #region ‰~ŒÊ
+            #region å††å¼§
 
             /// <summary>
-            /// ‰~ŒÊ‚ğ•`‰æ‚·‚é
+            /// å††å¼§ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireArc(float radius, float angle, int segments = 20) {
 
@@ -62,7 +62,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‰~ŒÊ‚ğ•`‰æ‚·‚é
+            /// å††å¼§ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireArc(Vector3 center, Quaternion rotation, float radius, float angle, int segments = 20) {
 
@@ -77,7 +77,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‰~ŒÊ‚ğ•`‰æ‚·‚é
+            /// å††å¼§ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireArc(Matrix4x4 matrix, float radius, float angle, int segments) {
 
@@ -87,10 +87,10 @@ namespace nitou.DebugInternal {
             }
 
 
-            // ¦«e‚Ì‰ñ“]‚ğl—¶
+            // â€»â†“è¦ªã®å›è»¢ã‚’è€ƒæ…®
 
             /// <summary>
-            /// ‰~ŒÊ‚ğ•`‰æ‚·‚é
+            /// å††å¼§ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireArc(Vector3 center, float radius, float angle, int segments, Quaternion rotation, Vector3 centerOfRotation) {
 
@@ -120,10 +120,10 @@ namespace nitou.DebugInternal {
 
 
             /// ----------------------------------------------------------------------------
-            #region ‰~
+            #region å††
 
             /// <summary>
-            /// ‰~‚ğ•`‰æ‚·‚é
+            /// å††ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawCircle(PlaneType type, float radius, int segments = 20) {
                 var points = ListPool<Vector3>.New();
@@ -135,7 +135,7 @@ namespace nitou.DebugInternal {
             }
 
             /// <summary>
-            /// ‰~‚ğ•`‰æ‚·‚é
+            /// å††ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawCircle(PlaneType type, Vector3 center, Quaternion rotation, float radius, int segments = 20) {
                 if (rotation.Equals(default)) {

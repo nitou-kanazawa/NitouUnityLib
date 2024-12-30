@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Pool;
 
-// [Ql]
-//  qiita: Unity•W€‚ÌObjectPool‚ğ”Ä—p“I‚Ég‚¤ƒNƒ‰ƒX‚Ìì¬ https://qiita.com/KeichiMizutani/items/ca46a40de02e87b3d8a8
+// [å‚è€ƒ]
+//  qiita: Unityæ¨™æº–ã®ObjectPoolã‚’æ±ç”¨çš„ã«ä½¿ã†ã‚¯ãƒ©ã‚¹ã®ä½œæˆ https://qiita.com/KeichiMizutani/items/ca46a40de02e87b3d8a8
 //  github: game-programming-patterns-demo https://github.com/Unity-Technologies/game-programming-patterns-demo
 
 namespace nitou.DesignPattern.Pooling{
 
     /// <summary>
-    /// ƒv[ƒ‹‚³‚ê‚éƒIƒuƒWƒFƒNƒg‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX
+    /// ãƒ—ãƒ¼ãƒ«ã•ã‚Œã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IPooledObject<T> where T : class {

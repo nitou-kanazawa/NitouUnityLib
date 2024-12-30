@@ -1,89 +1,89 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: TransformŒ^‚ÌˆÊ’u‚â‰ñ“]ŠpAƒTƒCƒY‚Ìİ’è‚ğŠy‚É‚·‚é https://baba-s.hatenablog.com/entry/2014/02/28/000000
-//  _:  Transform‚ÉƒŠƒZƒbƒgˆ—‚ğ’Ç‰Á‚µ‚Ä‚İ‚é https://ookumaneko.wordpress.com/2015/10/01/unity%E3%83%A1%E3%83%A2-transform%E3%81%AB%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E5%87%A6%E7%90%86%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/#:~:text=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%97%E3%81%9F%E3%81%84%E6%99%82,%E5%80%A4%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E5%87%BA%E6%9D%A5%E3%81%BE%E3%81%99%E3%80%82
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Transformå‹ã®ä½ç½®ã‚„å›è»¢è§’ã€ã‚µã‚¤ã‚ºã®è¨­å®šã‚’æ¥½ã«ã™ã‚‹ https://baba-s.hatenablog.com/entry/2014/02/28/000000
+//  _:  Transformã«ãƒªã‚»ãƒƒãƒˆå‡¦ç†ã‚’è¿½åŠ ã—ã¦ã¿ã‚‹ https://ookumaneko.wordpress.com/2015/10/01/unity%E3%83%A1%E3%83%A2-transform%E3%81%AB%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E5%87%A6%E7%90%86%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/#:~:text=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E3%81%97%E3%81%9F%E3%81%84%E6%99%82,%E5%80%A4%E3%82%92%E3%83%AA%E3%82%BB%E3%83%83%E3%83%88%E5%87%BA%E6%9D%A5%E3%81%BE%E3%81%99%E3%80%82
 //  github: BreadcrumbsUnityCsReference/Editor/Mono/GameObjectUtility.bindings.cs https://github.com/Unity-Technologies/UnityCsReference/blob/master/Editor/Mono/GameObjectUtility.bindings.cs#L75
 
 namespace nitou {
 
     /// <summary>
-    /// GameObject‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// GameObjectã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class TransformExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region ˆÊ’u‚Ìİ’è
+        #region ä½ç½®ã®è¨­å®š
 
         /// <summary>
-        /// XÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Xåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetPositionX(this Transform self, float x) =>
             self.position = new Vector3(x, self.position.y, self.position.z);
 
         /// <summary>
-        /// YÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Yåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetPositionY(this Transform self, float y) =>
             self.position = new Vector3(self.position.x, y, self.position.z);
 
         /// <summary>
-        /// ZÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Zåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetPositionZ(this Transform self, float z) =>
             self.position = new Vector3(self.position.x, self.position.y, z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌXÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Xåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLocalPositionX(this Transform self, float x) =>
             self.localPosition = new Vector3(x, self.localPosition.y, self.localPosition.z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌYÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Yåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLocalPositionY(this Transform self, float y) =>
             self.localPosition = new Vector3(self.localPosition.x, y, self.localPosition.z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌZÀ•W‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Zåº§æ¨™ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLocalPositionZ(this Transform self, float z) =>
             self.localPosition = new Vector3(self.localPosition.x, self.localPosition.y, z);
 
 
         /// <summary>
-        /// XÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Xåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddPositionX(this Transform self, float x) =>
             self.SetPositionX(x + self.position.x);
 
         /// <summary>
-        /// YÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Yåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddPositionY(this Transform self, float y) =>
             self.SetPositionY(y + self.position.y);
 
         /// <summary>
-        /// ZÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Zåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddPositionZ(this Transform self, float z) =>
             self.SetPositionZ(z + self.position.z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌXÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Xåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddLocalPositionX(this Transform self, float x) =>
             self.SetLocalPositionX(x + self.localPosition.x);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌYÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Yåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddLocalPositionY(this Transform self, float y) =>
             self.SetLocalPositionY(y + self.localPosition.y);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌZÀ•W‚É‰ÁZ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Zåº§æ¨™ã«åŠ ç®—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void AddLocalPositionZ(this Transform self, float z) =>
             self.SetLocalPositionZ(z + self.localPosition.z);
@@ -91,77 +91,77 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Šp“x‚Ìİ’è
+        #region è§’åº¦ã®è¨­å®š
 
         /// <summary>
-        /// X²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleX(this Transform self, float x) =>
             self.eulerAngles = new Vector3(x, self.eulerAngles.y, self.eulerAngles.z);
 
         /// <summary>
-        /// Y²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleY(this Transform self, float y) =>
             self.eulerAngles = new Vector3(self.eulerAngles.x, y, self.eulerAngles.z);
 
         /// <summary>
-        /// Z²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleZ(this Transform self, float z) =>
             self.eulerAngles = new Vector3(self.eulerAngles.x, self.eulerAngles.y, z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleX(this Transform self, float x) =>
             self.localEulerAngles = new Vector3(x, self.localEulerAngles.y, self.localEulerAngles.z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌY²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleY(this Transform self, float y) =>
             self.localEulerAngles = new Vector3(self.localEulerAngles.x, y, self.localEulerAngles.z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌZ²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleZ(this Transform self, float z) =>
             self.localEulerAngles = new Vector3(self.localEulerAngles.x, self.localEulerAngles.y, z);
 
 
         /// <summary>
-        /// X²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleX(this Transform self, float x) =>
             self.SetEulerAngleX(self.eulerAngles.x + x);
 
         /// <summary>
-        /// Y²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleY(this Transform self, float y) =>
             self.SetEulerAngleY(self.eulerAngles.y + y);
 
         /// <summary>
-        /// Z²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleZ(this Transform self, float z) =>
             self.SetEulerAngleZ(self.eulerAngles.z + z);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleX(this Transform self, float x) =>
             self.SetLocalEulerAngleX(self.localEulerAngles.x + x);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌY²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleY(this Transform self, float y) =>
             self.SetLocalEulerAngleY(self.localEulerAngles.y + y);
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleZ(this Transform self, float z) =>
             self.SetLocalEulerAngleZ(self.localEulerAngles.z + z);
@@ -169,41 +169,41 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒXƒP[ƒ‹‚Ìİ’è
+        #region ã‚¹ã‚±ãƒ¼ãƒ«ã®è¨­å®š
 
         /// <summary>
-        /// X²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleX(this Transform self, float x) =>
             self.localScale = new Vector3(x, self.localScale.y, self.localScale.z);
 
         /// <summary>
-        /// Y²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleY(this Transform self, float y) =>
             self.localScale = new Vector3(self.localScale.x, y, self.localScale.z);
 
         /// <summary>
-        /// Z²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleZ(this Transform self, float z) =>
             self.localScale = new Vector3(self.localScale.x, self.localScale.y, z);
 
 
         /// <summary>
-        /// X²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleX(this Transform self, float x) =>
             self.SetLocalScaleX(self.localScale.x + x);
 
         /// <summary>
-        /// Y²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleY(this Transform self, float y) =>
             self.SetLocalScaleY(self.localScale.y + y);
 
         /// <summary>
-        /// Z²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleZ(this Transform self, float z) =>
             self.SetLocalScaleZ(self.localScale.z + z);
@@ -211,7 +211,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region eqŠÖŒW
+        #region è¦ªå­é–¢ä¿‚
 
         /// <summary>
         /// Makes the given game objects children of the transform.
@@ -236,10 +236,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ‰Šú‰»
+        #region åˆæœŸåŒ–
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌÀ•WC‰ñ“]CƒXƒP[ƒ‹‚ğ‰Šú‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®åº§æ¨™ï¼Œå›è»¢ï¼Œã‚¹ã‚±ãƒ¼ãƒ«ã‚’åˆæœŸåŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void ResetLocal(this Transform self) {
             self.ResetLocalPositionAndRotation();
@@ -247,7 +247,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// À•WC‰ñ“]CƒXƒP[ƒ‹‚ğ‰Šú‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// åº§æ¨™ï¼Œå›è»¢ï¼Œã‚¹ã‚±ãƒ¼ãƒ«ã‚’åˆæœŸåŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void ResetWorld(this Transform self) {
             self.ResetWorldPositionAndRotation();
@@ -255,7 +255,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌÀ•WC‰ñ“]‚ğ‰Šú‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®åº§æ¨™ï¼Œå›è»¢ã‚’åˆæœŸåŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void ResetLocalPositionAndRotation(this Transform self) {
 #if UNITY_2021_3_OR_NEWER
@@ -267,7 +267,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌÀ•WC‰ñ“]‚ğ‰Šú‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®åº§æ¨™ï¼Œå›è»¢ã‚’åˆæœŸåŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void ResetWorldPositionAndRotation(this Transform self) {
 #if UNITY_2021_3_OR_NEWER
@@ -282,7 +282,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ü•Óî•ñ
+        // å‘¨è¾ºæƒ…å ±
         
         /// <summary>
         /// Get the direction vector towards a specified position.
@@ -317,7 +317,7 @@ namespace nitou {
 
         
         /// <summary>
-        /// Get rotation towards a specified direction. (¦YÀ•W‚Í–³‹)
+        /// Get rotation towards a specified direction. (â€»Yåº§æ¨™ã¯ç„¡è¦–)
         /// </summary>
         public static Quaternion GetYawRotationToPosition(this Transform self, Vector3 position) {
             var delta = position - self.position;
@@ -359,17 +359,17 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ‚»‚Ì‘¼
+        // ãã®ä»–
 
         /// <summary>
-        /// w’è‚µ‚½•ûŒü‚ğŒü‚©‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸæ–¹å‘ã‚’å‘ã‹ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void LookDirection(this Transform self, Vector3 direction) {
             self.LookAt(self.position + direction);
         }
 
         /// <summary>
-        /// ‘S‚Ä‚Ìq—v‘f‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨ã¦ã®å­è¦ç´ ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void DestroyAllChildren(this Transform self) {
             foreach (Transform child in self) {

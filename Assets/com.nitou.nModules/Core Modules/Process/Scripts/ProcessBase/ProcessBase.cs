@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 
-// [Ql]
-//  qiita: 2022”NŒ»İ‚É‚¨‚¯‚éUniRx‚Ìg‚¢‚İ‚¿ https://qiita.com/toRisouP/items/af7d32846ab99f493d92
+// [å‚è€ƒ]
+//  qiita: 2022å¹´ç¾åœ¨ã«ãŠã‘ã‚‹UniRxã®ä½¿ã„ã¿ã¡ https://qiita.com/toRisouP/items/af7d32846ab99f493d92
 
 namespace nitou.GameSystem {
     using nitou.DesignPattern;
 
     /// <summary>
-    /// ƒvƒƒZƒX‚ÌŠî’êƒNƒ‰ƒXD
+    /// ãƒ—ãƒ­ã‚»ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹ï¼
     /// </summary>
     public abstract class ProcessBase /*: IProcess*/ {
 
@@ -22,7 +22,7 @@ namespace nitou.GameSystem {
         private ProcessResult _resultData = null;
 
         /// <summary>
-        /// I—¹‚Ì’Ê’mD
+        /// çµ‚äº†æ™‚ã®é€šçŸ¥ï¼
         /// </summary>
         public UniTask<ProcessResult> ProcessFinished => _finishedSource.Task;
 
@@ -31,17 +31,17 @@ namespace nitou.GameSystem {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public ProcessBase() {
 
-            // ‘JˆÚƒe[ƒuƒ‹
+            // é·ç§»ãƒ†ãƒ¼ãƒ–ãƒ«
             _stateMachine = new ImtStateMachine<ProcessBase, StateEvent>(this);
             {
-                // ƒ|[ƒY
+                // ãƒãƒ¼ã‚º
                 _stateMachine.AddTransition<RunningState, PauseState>(StateEvent.Pause);
                 _stateMachine.AddTransition<PauseState, RunningState>(StateEvent.UnPause);
-                // I—¹
+                // çµ‚äº†
                 _stateMachine.AddTransition<RunningState, EndState>(StateEvent.Complete);
                 _stateMachine.AddTransition<PauseState, EndState>(StateEvent.Complete);
                 _stateMachine.AddTransition<RunningState, EndState>(StateEvent.Cancel);
@@ -50,7 +50,7 @@ namespace nitou.GameSystem {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public virtual void Dispose() {
             _disposable?.Dispose();
@@ -59,13 +59,13 @@ namespace nitou.GameSystem {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (ŠO•”‘€ì)
+        // Public Method (å¤–éƒ¨æ“ä½œ)
 
         public void Run() {
             _stateMachine.SetStartState<RunningState>();
             _stateMachine.Update();
 
-            // XVˆ—
+            // æ›´æ–°å‡¦ç†
             _disposable = Observable.EveryUpdate().Subscribe(_ => _stateMachine.Update());
         }
         public void Pause() => _stateMachine.SendEvent(StateEvent.Pause);
@@ -73,7 +73,7 @@ namespace nitou.GameSystem {
         public void Cancel(CancelResult cancelResult) {
             _stateMachine.SendEvent(StateEvent.Cancel);
 
-            // Œ‹‰Êƒf[ƒ^‚ÌŠi”[
+            // çµæœãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´
             _resultData = cancelResult ?? new CancelResult();
         }
 
@@ -88,12 +88,12 @@ namespace nitou.GameSystem {
         protected virtual void OnEnd() { }
 
         /// <summary>
-        /// ƒvƒƒZƒXŠ®—¹ƒCƒxƒ“ƒg‚Ì”­‰Îi¦”h¶ƒNƒ‰ƒX—pj
+        /// ãƒ—ãƒ­ã‚»ã‚¹å®Œäº†ã‚¤ãƒ™ãƒ³ãƒˆã®ç™ºç«ï¼ˆâ€»æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ç”¨ï¼‰
         /// </summary>
         protected void TriggerComplete(CompleteResult result) {
             _stateMachine.SendEvent(StateEvent.Complete);
 
-            // Œ‹‰Êƒf[ƒ^‚ÌŠi”[
+            // çµæœãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´
             _resultData = result;
         }
 
@@ -101,12 +101,12 @@ namespace nitou.GameSystem {
         /// ----------------------------------------------------------------------------
         #region Inner State
 
-        // ‘JˆÚƒCƒxƒ“ƒg        
+        // é·ç§»ã‚¤ãƒ™ãƒ³ãƒˆ        
         private enum StateEvent {
-            // ƒ|[ƒY
+            // ãƒãƒ¼ã‚º
             Pause,
             UnPause,
-            // I—¹
+            // çµ‚äº†
             Complete,
             Cancel,
         }
@@ -114,7 +114,7 @@ namespace nitou.GameSystem {
         private abstract class StateBase : ImtStateMachine<ProcessBase, StateEvent>.State { }
 
         /// <summary>
-        /// ÀsƒXƒe[ƒg
+        /// å®Ÿè¡Œã‚¹ãƒ†ãƒ¼ãƒˆ
         /// </summary>
         private sealed class RunningState : StateBase {
             private bool isFirstEnter = true;
@@ -129,7 +129,7 @@ namespace nitou.GameSystem {
         }
 
         /// <summary>
-        /// ƒ|[ƒYƒXƒe[ƒg
+        /// ãƒãƒ¼ã‚ºã‚¹ãƒ†ãƒ¼ãƒˆ
         /// </summary>
         private sealed class PauseState : StateBase {
             protected override void Enter() {
@@ -141,12 +141,12 @@ namespace nitou.GameSystem {
         }
 
         /// <summary>
-        /// I—¹ƒXƒe[ƒg
+        /// çµ‚äº†ã‚¹ãƒ†ãƒ¼ãƒˆ
         /// </summary>
         private sealed class EndState : StateBase {
             protected override void Enter() {
                 Context.OnEnd();
-                // I—¹’Ê’m
+                // çµ‚äº†é€šçŸ¥
                 Debug_.Log($" Result : {Context._resultData.GetType()}", Colors.Orange);
                 Context._finishedSource.TrySetResult(Context._resultData);
             }

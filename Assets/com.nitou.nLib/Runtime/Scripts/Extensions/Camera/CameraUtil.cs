@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou {
@@ -6,14 +6,14 @@ namespace nitou {
     public static class CameraUtil {
 
         /// <summary>
-        /// “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚Ì<see cref="Camera">ƒJƒƒ‰</see>‚ğ”ñƒAƒNƒeƒBƒuó‘Ô‚Éİ’è‚·‚é
+        /// ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®<see cref="Camera">ã‚«ãƒ¡ãƒ©</see>ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã«è¨­å®šã™ã‚‹
         /// </summary>
         public static void DeactivateAllCamera() {
             Camera.allCameras.ForEach(c => c.gameObject.SetActive(false));
         }
 
         /// <summary>
-        /// “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚Ì<see cref="AudioListener">ƒI[ƒfƒBƒIƒŠƒXƒi[</see>‚ğ”ñƒAƒNƒeƒBƒuó‘Ô‚Éİ’è‚·‚é
+        /// ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®<see cref="AudioListener">ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒªã‚¹ãƒŠãƒ¼</see>ã‚’éã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã«è¨­å®šã™ã‚‹
         /// </summary>
         public static void DeactivateAllAudioListeners() {
             Camera.allCameras.ForEach(x => x.GetOrAddAudioListener().enabled = false);

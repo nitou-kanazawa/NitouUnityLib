@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -6,7 +6,7 @@ namespace nitou.Tools.Hierarchy{
     using nitou.EditorShared;
 
     /// <summary>
-    /// Editor‚ÅQÆ‚·‚éƒvƒƒWƒFƒNƒgŒÅ—L‚Ìİ’èƒf[ƒ^
+    /// Editorã§å‚ç…§ã™ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå›ºæœ‰ã®è¨­å®šãƒ‡ãƒ¼ã‚¿
     /// </summary>
     [FilePath(
         "ProjectSettings/HierarchySettingsSO.asset",
@@ -39,7 +39,7 @@ namespace nitou.Tools.Hierarchy{
         public Color OddRowColor => oddRowColor;
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ•Û‘¶‚·‚é
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹
         /// </summary>
         public void Save() => Save(true);
     }

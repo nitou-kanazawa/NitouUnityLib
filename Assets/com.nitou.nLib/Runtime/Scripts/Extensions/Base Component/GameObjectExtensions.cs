@@ -1,23 +1,23 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: GetComponentsInChildren‚Å©•ª©g‚ğŠÜ‚Ü‚È‚¢‚æ‚¤‚É‚·‚éŠg’£ƒƒ\ƒbƒh https://baba-s.hatenablog.com/entry/2014/06/05/220224
-//  qiita: ‚¿‚å‚Á‚Æ‚¾‚¯•Ö—˜‚É‚È‚é‚©‚à‚µ‚ê‚È‚¢Šg’£ƒƒ\ƒbƒhW https://qiita.com/tanikura/items/ed5d56ebbfcad19c488d
-//  kan‚Ìƒƒ‚’ : Šg’£ƒƒ\ƒbƒh‚Æ‚ÍA‘S‚Ä‚ÌqƒIƒuƒWƒFƒNƒg‚ÉƒŒƒCƒ„[‚Æƒ}ƒeƒŠƒAƒ‹İ’è‚ğs‚Á‚Ä‚İ‚é https://kan-kikuchi.hatenablog.com/entry/GameObjectExtension
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: GetComponentsInChildrenã§è‡ªåˆ†è‡ªèº«ã‚’å«ã¾ãªã„ã‚ˆã†ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://baba-s.hatenablog.com/entry/2014/06/05/220224
+//  qiita: ã¡ã‚‡ã£ã¨ã ã‘ä¾¿åˆ©ã«ãªã‚‹ã‹ã‚‚ã—ã‚Œãªã„æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›† https://qiita.com/tanikura/items/ed5d56ebbfcad19c488d
+//  kanã®ãƒ¡ãƒ¢å¸³: æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã¨ã¯ã€å…¨ã¦ã®å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ãƒãƒ†ãƒªã‚¢ãƒ«è¨­å®šã‚’è¡Œã£ã¦ã¿ã‚‹ https://kan-kikuchi.hatenablog.com/entry/GameObjectExtension
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="GameObject"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="GameObject"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class GameObjectExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒg (—L–³)
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ (æœ‰ç„¡)
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool HasComponent<T>(this GameObject self)
             where T : Component {
@@ -25,14 +25,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool HasComponent(this GameObject self, System.Type type) {
             return self.GetComponent(type) != null;
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool HasComponents<T1, T2>(this GameObject self)
             where T1 : Component where T2 : Component{
@@ -43,10 +43,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒg (íœ)
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ (å‰Šé™¤)
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject RemoveComponent<T>(this GameObject self)
             where T : Component {
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject RemoveComponents<T1, T2>(this GameObject self)
             where T1 : Component where T2 : Component {
@@ -66,7 +66,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject RemoveComponents<T1, T2, T3>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component {
@@ -76,7 +76,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject RemoveComponents<T1, T2, T3, T4>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component where T4 : Component {
@@ -86,7 +86,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S‚Ä‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å…¨ã¦ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject RemoveAllComponents(this GameObject self) {
             foreach (var component in self.GetComponents<Component>()) {
@@ -101,10 +101,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒg (’Ç‰Á)
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ (è¿½åŠ )
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject AddComponents<T1, T2>(this GameObject self)
             where T1 : Component where T2 : Component {
@@ -114,7 +114,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject AddComponents<T1, T2, T3>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component {
@@ -124,7 +124,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject AddComponents<T1, T2, T3, T4>(this GameObject self)
             where T1 : Component where T2 : Component where T3 : Component where T4 : Component {
@@ -134,11 +134,11 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject AddComponentIfNotExists<T>(this GameObject self)
             where T : Component {
-            // ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‘¶İ‚µ‚È‚¢ê‡‚Ì‚İ’Ç‰Á
+            // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå­˜åœ¨ã—ãªã„å ´åˆã®ã¿è¿½åŠ 
             if (!self.HasComponent<T>()) {
                 self.AddComponent<T>();
             }
@@ -148,10 +148,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒgiæ“¾j
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼ˆå–å¾—ï¼‰
 
         /// <summary>
-        /// ‘ÎÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Âê‡‚Í‚»‚ê‚ğæ“¾‚µC‚È‚¯‚ê‚Î’Ç‰Á‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// å¯¾è±¡ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæŒã¤å ´åˆã¯ãã‚Œã‚’å–å¾—ã—ï¼Œãªã‘ã‚Œã°è¿½åŠ ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static T GetOrAddComponent<T>(this GameObject self)
             where T : Component {
@@ -160,7 +160,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ©•ª©g‚ğŠÜ‚Ü‚È‚¢GetComponentsInChaidren‚ÌŠg’£ƒƒ\ƒbƒh
+        /// è‡ªåˆ†è‡ªèº«ã‚’å«ã¾ãªã„GetComponentsInChaidrenã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static T[] GetComponentsInChildrenWithoutSelf<T>(this GameObject self)
             where T : Component {
@@ -168,11 +168,11 @@ namespace nitou {
         }
 
         /// <summary>
-        /// GetComponentInChaildren‚ÌŠg’£ƒƒ\ƒbƒh
+        /// GetComponentInChaildrenã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool TryGetComponentInChildren<T>(this GameObject self, out T component)
             where T : Component {
-            // q—v‘f‚©‚çw’èƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+            // å­è¦ç´ ã‹ã‚‰æŒ‡å®šã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
             component = self.GetComponentInChildren<T>();
             return component != null;
         }
@@ -192,11 +192,11 @@ namespace nitou {
 
             foreach(var entry in entryComponents) {
 
-                // ’¼Ú“I‚ÈeqŠÖŒW‚É‚È‚¢ê‡‚ÍŸ‚Ö
+                // ç›´æ¥çš„ãªè¦ªå­é–¢ä¿‚ã«ãªã„å ´åˆã¯æ¬¡ã¸
                 if (!self.transform.IsChildOf(entry.transform) && !entry.transform.IsChildOf(self.transform))
                     continue;
 
-                // entry‚ğ‹N“_‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Tõ
+                // entryã‚’èµ·ç‚¹ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ¢ç´¢
                 if (entry.gameObject.TryGetComponentInChildren<T2>(out var targetComponent)) {
                     return targetComponent;
                 } 
@@ -217,10 +217,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒRƒ“ƒ|[ƒlƒ“ƒgi—LŒøó‘Ôj
+        #region ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼ˆæœ‰åŠ¹çŠ¶æ…‹ï¼‰
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—LŒø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject EnableComponent<T>(this GameObject self)where T : Behaviour {
             if (self.HasComponent<T>()) {
@@ -230,7 +230,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½•¡”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—LŒø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸè¤‡æ•°ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject EnableComponents<T1, T2>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour {
@@ -240,7 +240,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½3‚Â‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—LŒø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸ3ã¤ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject EnableComponents<T1, T2, T3>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour {
@@ -250,7 +250,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½4‚Â‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—LŒø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸ4ã¤ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject EnableComponents<T1, T2, T3, T4>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour where T4 : Behaviour {
@@ -260,7 +260,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ”ñ—LŒø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’éæœ‰åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DisableComponent<T>(this GameObject self) where T : Behaviour {
             if (self.HasComponent<T>()) {
@@ -270,7 +270,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½•¡”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ–³Œø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸè¤‡æ•°ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç„¡åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DisableComponents<T1, T2>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour {
@@ -280,7 +280,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½3‚Â‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ–³Œø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸ3ã¤ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç„¡åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DisableComponents<T1, T2, T3>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour {
@@ -290,7 +290,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½4‚Â‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ–³Œø‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã•ã‚ŒãŸ4ã¤ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç„¡åŠ¹åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DisableComponents<T1, T2, T3, T4>(this GameObject self)
             where T1 : Behaviour where T2 : Behaviour where T3 : Behaviour where T4 : Behaviour {
@@ -302,38 +302,38 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region •¡»
+        #region è¤‡è£½
 
         /// <summary>
-        /// ‘ÎÛ‚ÌGameObject‚ğ•¡»(¶¬)‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// å¯¾è±¡ã®GameObjectã‚’è¤‡è£½(ç”Ÿæˆ)ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject Instantiate(this GameObject self) {
             return Object.Instantiate(self);
         }
 
         /// <summary>
-        /// ¶¬Œã‚Ée‚Æ‚È‚éTransform‚ğw’è‚µ‚ÄA‘ÎÛ‚ÌGameObject‚ğ•¡»(¶¬)‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// ç”Ÿæˆå¾Œã«è¦ªã¨ãªã‚‹Transformã‚’æŒ‡å®šã—ã¦ã€å¯¾è±¡ã®GameObjectã‚’è¤‡è£½(ç”Ÿæˆ)ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject Instantiate(this GameObject self, Transform parent) {
             return Object.Instantiate(self, parent);
         }
 
         /// <summary>
-        /// ¶¬Œã‚ÌÀ•W‹y‚Ñp¨‚ğw’è‚µ‚ÄA‘ÎÛ‚ÌGameObject‚ğ•¡»(¶¬)‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// ç”Ÿæˆå¾Œã®åº§æ¨™åŠã³å§¿å‹¢ã‚’æŒ‡å®šã—ã¦ã€å¯¾è±¡ã®GameObjectã‚’è¤‡è£½(ç”Ÿæˆ)ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject Instantiate(this GameObject self, Vector3 pos, Quaternion rot) {
             return Object.Instantiate(self, pos, rot);
         }
 
         /// <summary>
-        /// ¶¬Œã‚Ée‚Æ‚È‚éTransformA‚Ü‚½¶¬Œã‚ÌÀ•W‹y‚Ñp¨‚ğw’è‚µ‚ÄA‘ÎÛ‚ÌGameObject‚ğ•¡»(¶¬)‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// ç”Ÿæˆå¾Œã«è¦ªã¨ãªã‚‹Transformã€ã¾ãŸç”Ÿæˆå¾Œã®åº§æ¨™åŠã³å§¿å‹¢ã‚’æŒ‡å®šã—ã¦ã€å¯¾è±¡ã®GameObjectã‚’è¤‡è£½(ç”Ÿæˆ)ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject Instantiate(this GameObject self, Vector3 pos, Quaternion rot, Transform parent) {
             return Object.Instantiate(self, pos, rot, parent);
         }
 
         /// <summary>
-        /// ¶¬Œã‚Ée‚Æ‚È‚éTransformA‚Ü‚½¶¬Œã‚Ìƒ[ƒJƒ‹À•W‚ğw’è‚µ‚ÄA‘ÎÛ‚ÌGameObject‚ğ•¡»(¶¬)‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒh
+        /// ç”Ÿæˆå¾Œã«è¦ªã¨ãªã‚‹Transformã€ã¾ãŸç”Ÿæˆå¾Œã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã‚’æŒ‡å®šã—ã¦ã€å¯¾è±¡ã®GameObjectã‚’è¤‡è£½(ç”Ÿæˆ)ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject InstantiateWithLocalPosition(this GameObject self, Transform parent, Vector3 localPos) {
             var instance = Object.Instantiate(self, parent);
@@ -344,24 +344,24 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ”jŠü
+        #region ç ´æ£„
 
         /// <summary>
-        /// Destroy‚ÌŠg’£ƒƒ\ƒbƒh
+        /// Destroyã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void Destroy(this GameObject self) {
             Object.Destroy(self);
         }
 
         /// <summary>
-        /// DestroyImmediate‚ÌŠg’£ƒƒ\ƒbƒh
+        /// DestroyImmediateã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void DestroyImmediate(this GameObject self) {
             Object.DestroyImmediate(self);
         }
 
         /// <summary>
-        /// qƒIƒuƒWƒFƒNƒg‚ğ‚·‚×‚Ä”j‰ó‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã™ã¹ã¦ç ´å£Šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DestroyAllChildren(this GameObject self) {
             foreach (Transform child in self.transform) {
@@ -371,7 +371,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// DontDestroyOnLoad‚ÌŠg’£ƒƒ\ƒbƒh
+        /// DontDestroyOnLoadã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject DontDestroyOnLoad(this GameObject self) {
             Object.DontDestroyOnLoad(self);
@@ -381,12 +381,12 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒAƒNƒeƒBƒuó‘Ô
+        // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹
 
         /*
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒuó‘Ô‚ÌØ‚è‘Ö‚¦İ’è‚ğs‚¤Šg’£ƒƒ\ƒbƒh
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã®åˆ‡ã‚Šæ›¿ãˆè¨­å®šã‚’è¡Œã†æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static System.IDisposable SetActiveSelfSource(this GameObject self, System.IObservable<bool> source, bool invert = false) {
             return source
@@ -401,10 +401,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒŒƒCƒ„[
+        // ãƒ¬ã‚¤ãƒ¤ãƒ¼
 
         /// <summary>
-        /// ‘ÎÛ‚ÌƒŒƒCƒ„[‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğ’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// å¯¾è±¡ã®ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsInLayerMask(this GameObject self, LayerMask layerMask) {
             int objLayerMask = (1 << self.layer);
@@ -412,26 +412,26 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒŒƒCƒ„[‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLayer(this GameObject self, string layerName) {
             self.layer = LayerMask.NameToLayer(layerName);
         }
 
         /// <summary>
-        /// ƒŒƒCƒ„[‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLayerRecursively(this GameObject self, int layer) {
             self.layer = layer;
 
-            // q‚ÌƒŒƒCƒ„[‚É‚àİ’è‚·‚é
+            // å­ã®ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«ã‚‚è¨­å®šã™ã‚‹
             foreach (Transform childTransform in self.transform) {
                 SetLayerRecursively(childTransform.gameObject, layer);
             }
         }
 
         /// <summary>
-        /// ƒŒƒCƒ„[‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetLayerRecursively(this GameObject self, string layerName) {
             self.SetLayerRecursively(LayerMask.NameToLayer(layerName));
@@ -439,13 +439,13 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒ^ƒO
+        // ã‚¿ã‚°
 
         /// <summary>
-        /// w’è‚µ‚½ƒ^ƒOŒQ‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸã‚¿ã‚°ç¾¤ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool ContainTag(this GameObject self, in string[] tagArray) {
-            // ¦ƒ^ƒO‚ªŠÜ‚Ü‚ê‚È‚¢ê‡Ctrue‚ğ•Ô‚·
+            // â€»ã‚¿ã‚°ãŒå«ã¾ã‚Œãªã„å ´åˆï¼Œtrueã‚’è¿”ã™
             if (tagArray == null || tagArray.Length == 0) return true;
 
             for (var i = 0; i < tagArray.Length; i++) {
@@ -457,26 +457,26 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒ}ƒeƒŠƒAƒ‹
+        // ãƒãƒ†ãƒªã‚¢ãƒ«
 
         /// <summary>
-        /// ƒ}ƒeƒŠƒAƒ‹İ’è
+        /// ãƒãƒ†ãƒªã‚¢ãƒ«è¨­å®š
         /// </summary>
-        /// <param name="needSetChildrens">q‚É‚àƒ}ƒeƒŠƒAƒ‹İ’è‚ğs‚¤‚©</param>
+        /// <param name="needSetChildrens">å­ã«ã‚‚ãƒãƒ†ãƒªã‚¢ãƒ«è¨­å®šã‚’è¡Œã†ã‹</param>
         public static void SetMaterial(this GameObject gameObject, Material setMaterial, bool needSetChildrens = true) {
             if (gameObject == null) {
                 return;
             }
 
-            //ƒŒƒ“ƒ_ƒ‰[‚ª‚ ‚ê‚Î‚»‚Ìƒ}ƒeƒŠƒAƒ‹‚ğ•ÏX
+            //ãƒ¬ãƒ³ãƒ€ãƒ©ãƒ¼ãŒã‚ã‚Œã°ãã®ãƒãƒ†ãƒªã‚¢ãƒ«ã‚’å¤‰æ›´
             if (gameObject.GetComponent<Renderer>()) {
                 gameObject.GetComponent<Renderer>().material = setMaterial;
             }
 
-            //q‚Éİ’è‚·‚é•K—v‚ª‚È‚¢ê‡‚Í‚±‚±‚ÅI—¹
+            //å­ã«è¨­å®šã™ã‚‹å¿…è¦ãŒãªã„å ´åˆã¯ã“ã“ã§çµ‚äº†
             if (!needSetChildrens) return;
 
-            //q‚Ìƒ}ƒeƒŠƒAƒ‹‚É‚àİ’è‚·‚é
+            //å­ã®ãƒãƒ†ãƒªã‚¢ãƒ«ã«ã‚‚è¨­å®šã™ã‚‹
             foreach (Transform childTransform in gameObject.transform) {
                 SetMaterial(childTransform.gameObject, setMaterial, needSetChildrens);
             }

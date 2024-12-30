@@ -1,7 +1,7 @@
-namespace nitou.UI.PresentationFramework {
+ï»¿namespace nitou.UI.PresentationFramework {
     
     /// <summary>
-    /// View‚Ì‰Šú‰»ƒ^ƒCƒ~ƒ“ƒO
+    /// Viewã®åˆæœŸåŒ–ã‚¿ã‚¤ãƒŸãƒ³ã‚°
     /// </summary>
     public enum ViewInitializationTiming {
         Initialize,

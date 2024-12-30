@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace nitou.Tools.Hierarchy {
     internal static class HierarchyObjectCreationMenu {
 
         /// <summary>
-        /// ƒwƒbƒ_[‚Ì¶¬
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ã®ç”Ÿæˆ
         /// </summary>
         [MenuItem(
             GameObjectMenu.Prefix.DammyObject + "Header", 
@@ -24,7 +24,7 @@ namespace nitou.Tools.Hierarchy {
         }
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_‚Ì¶¬
+        /// ãƒ•ã‚©ãƒ«ãƒ€ã®ç”Ÿæˆ
         /// </summary>
         [MenuItem(
             GameObjectMenu.Prefix.DammyObject + "Folder",
@@ -41,7 +41,7 @@ namespace nitou.Tools.Hierarchy {
         }
 
         /// <summary>
-        /// ƒZƒpƒŒ[ƒ^‚Ì¶¬
+        /// ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã®ç”Ÿæˆ
         /// </summary>
         [MenuItem(
             GameObjectMenu.Prefix.DammyObject + "Separator",

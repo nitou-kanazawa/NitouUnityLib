@@ -1,15 +1,15 @@
-using UniRx;
+ï»¿using UniRx;
 using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Subject{T}"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Subject{T}"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class SubjectUtils {
 
         /// <summary>
-        /// <see cref="Subject{T}.OnCompleted"/>‚ğ”­s‚·‚éI—¹ˆ—D
+        /// <see cref="Subject{T}.OnCompleted"/>ã‚’ç™ºè¡Œã™ã‚‹çµ‚äº†å‡¦ç†ï¼
         /// </summary>
         public static void DisposeSubject<T>(ref Subject<T> subject) {
 

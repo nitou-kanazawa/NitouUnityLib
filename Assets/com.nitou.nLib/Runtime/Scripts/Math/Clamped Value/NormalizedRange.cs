@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -6,7 +6,7 @@ using UnityEditor;
 namespace nitou {
 
     /// <summary>
-    /// 0`1‚Ì”ÍˆÍ‚Ì³‹K‰»‚³‚ê‚½Å¬’l‚ÆÅ‘å’l‚ğˆµ‚¤‚½‚ß‚Ì\‘¢‘ÌB
+    /// 0ï½1ã®ç¯„å›²ã®æ­£è¦åŒ–ã•ã‚ŒãŸæœ€å°å€¤ã¨æœ€å¤§å€¤ã‚’æ‰±ã†ãŸã‚ã®æ§‹é€ ä½“ã€‚
     /// </summary>
     [System.Serializable]
     public struct NormalizedRange {
@@ -18,7 +18,7 @@ namespace nitou {
         private float _maxValue;
 
         /// <summary>
-        /// Å¬’li0`1‚Ì”ÍˆÍjB
+        /// æœ€å°å€¤ï¼ˆ0ï½1ã®ç¯„å›²ï¼‰ã€‚
         /// </summary>
         public float Min {
             get => _minValue;
@@ -26,7 +26,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‘å’li0`1‚Ì”ÍˆÍjB
+        /// æœ€å¤§å€¤ï¼ˆ0ï½1ã®ç¯„å›²ï¼‰ã€‚
         /// </summary>
         public float Max {
             get => _maxValue;
@@ -34,7 +34,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^BÅ¬’l‚ÆÅ‘å’l‚ğ0`1‚Ì”ÍˆÍ‚É³‹K‰»‚µ‚Äİ’è‚µ‚Ü‚·B
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€‚æœ€å°å€¤ã¨æœ€å¤§å€¤ã‚’0ï½1ã®ç¯„å›²ã«æ­£è¦åŒ–ã—ã¦è¨­å®šã—ã¾ã™ã€‚
         /// </summary>
         public NormalizedRange(float minValue, float maxValue) {
             _minValue = Mathf.Clamp01(minValue);
@@ -42,7 +42,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚±‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì’l‚ğ•¶š—ñ‚Æ‚µ‚Ä•Ô‚µ‚Ü‚·B
+        /// ã“ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å€¤ã‚’æ–‡å­—åˆ—ã¨ã—ã¦è¿”ã—ã¾ã™ã€‚
         /// </summary>
         public override string ToString() {
             return $"Min: {_minValue:0.00}, Max: {_maxValue:0.00}";
@@ -57,12 +57,12 @@ namespace nitou.EditorScripts {
     public class NormalizedRangePropertyDrawer : PropertyDrawer {
 
         /// <summary>
-        /// ƒvƒƒpƒeƒB‚ÌGUI‚ğ•`‰æ‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®GUIã‚’æç”»ã—ã¾ã™ã€‚
         /// </summary>
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-            // ƒvƒƒpƒeƒB‚ÌƒXƒR[ƒv‚ğİ’è
+            // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚¹ã‚³ãƒ¼ãƒ—ã‚’è¨­å®š
             using (new EditorGUI.PropertyScope(position, label, property)) {
-                // "_minValue"‚Æ"_maxValue"ƒvƒƒpƒeƒB‚ğæ“¾
+                // "_minValue"ã¨"_maxValue"ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å–å¾—
                 SerializedProperty minValueProperty = property.FindPropertyRelative("_minValue");
                 SerializedProperty maxValueProperty = property.FindPropertyRelative("_maxValue");
 
@@ -70,10 +70,10 @@ namespace nitou.EditorScripts {
                     float minValue = minValueProperty.floatValue;
                     float maxValue = maxValueProperty.floatValue;
 
-                    // MinMaxSlider‚Å’l‚ğ“ü—Í
+                    // MinMaxSliderã§å€¤ã‚’å…¥åŠ›
                     EditorGUI.MinMaxSlider(position, label, ref minValue, ref maxValue, 0f, 1f);
 
-                    // “ü—Í‚³‚ê‚½’l‚ğClamp‚µ‚Ä”½‰f
+                    // å…¥åŠ›ã•ã‚ŒãŸå€¤ã‚’Clampã—ã¦åæ˜ 
                     minValueProperty.floatValue = Mathf.Clamp01(minValue);
                     maxValueProperty.floatValue = Mathf.Clamp01(maxValue);
                 } else {
@@ -83,7 +83,7 @@ namespace nitou.EditorScripts {
         }
 
         /// <summary>
-        /// ƒvƒƒpƒeƒB‚Ì‚‚³‚ğæ“¾‚µ‚Ü‚·B
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®é«˜ã•ã‚’å–å¾—ã—ã¾ã™ã€‚
         /// </summary>
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
             return EditorGUIUtility.singleLineHeight;

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 
 namespace nitou.Networking {
 
@@ -9,7 +9,7 @@ namespace nitou.Networking {
     }
 
     /// <summary>
-    /// ƒŒƒXƒ|ƒ“ƒX‚ÌŠî’êƒNƒ‰ƒX
+    /// ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class HttpResponse {
         public HttpResponseStatus status;

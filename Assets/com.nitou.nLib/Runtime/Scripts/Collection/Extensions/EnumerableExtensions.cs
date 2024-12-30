@@ -1,25 +1,25 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 // [REF]
-//  qiita: .NET 9‚ÅLINQ‚É’Ç‰Á‚³‚ê‚½ƒƒ\ƒbƒh https://qiita.com/RyotaMurohoshi/items/595b87e1db93768d0d44
+//  qiita: .NET 9ã§LINQã«è¿½åŠ ã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ https://qiita.com/RyotaMurohoshi/items/595b87e1db93768d0d44
 // _: IEnumerable.IsNullOrEmpty https://csharpvbcomparer.blogspot.com/2014/04/tips-ienumerable-isnullorempty.html
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="IEnumerable"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="IEnumerable"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class EnumerableExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì”»’è
+        #region è¦ç´ ã®åˆ¤å®š
 
         /// <summary>
-        /// Null,‚Ü‚½‚Í‹ó‚©‚Ç‚¤‚©’²‚×‚éŠg’£ƒƒ\ƒbƒhD
+        /// Null,ã¾ãŸã¯ç©ºã‹ã©ã†ã‹èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsNullOrEmptyEnumerable<T>(this IEnumerable<T> source) {
             return source == null || !source.Any();
@@ -28,17 +28,17 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì•ÏŠ·
+        #region è¦ç´ ã®å¤‰æ›
 
         /// <summary>
-        /// null‚ğœ‚¢‚½ƒV[ƒPƒ“ƒX‚É•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// nullã‚’é™¤ã„ãŸã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã«å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IEnumerable<T> WithoutNull<T>(this IEnumerable<T> source) where T : class {
             return source.Where(item => item != null);
         }
 
         /// <summary>
-        /// Še—v‘f‚ÉƒCƒ“ƒfƒbƒNƒX‚ğ•t—^‚µ‚½ƒV[ƒPƒ“ƒX‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// å„è¦ç´ ã«ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ä»˜ä¸ã—ãŸã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IEnumerable<(T item, int index)> Index<T>(this IEnumerable<T> source) {
             return source.Select((item, index) => (item, index));
@@ -47,10 +47,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì‘–¸
+        #region è¦ç´ ã®èµ°æŸ»
 
         /// <summary>
-        /// IEnumerable‚ÌŠe—v‘f‚É‘Î‚µ‚ÄAw’è‚³‚ê‚½ˆ—‚ğÀs‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// IEnumerableã®å„è¦ç´ ã«å¯¾ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T, int> action) {
             foreach ((var item, var index) in source.Index()) {
@@ -60,7 +60,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// IEnumerable‚ÌŠe—v‘f‚É‘Î‚µ‚ÄAw’è‚³‚ê‚½ˆ—‚ğÀs‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// IEnumerableã®å„è¦ç´ ã«å¯¾ã—ã¦ã€æŒ‡å®šã•ã‚ŒãŸå‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action) {
             foreach (var item in source) {
@@ -72,10 +72,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ìæ“¾
+        #region è¦ç´ ã®å–å¾—
 
         /// <summary>
-        /// w’è—v‘f‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhDƒV[ƒPƒ“ƒX‚ÉŠÜ‚Ü‚ê‚È‚¢ê‡‚Í-1‚ğ•Ô‚·D
+        /// æŒ‡å®šè¦ç´ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã«å«ã¾ã‚Œãªã„å ´åˆã¯-1ã‚’è¿”ã™ï¼
         /// </summary>
         public static int IndexOf<T>(this IEnumerable<T> source, T value) {
             if (source == null) throw new ArgumentNullException(nameof(source));
@@ -90,11 +90,11 @@ namespace nitou {
                 index++;
             }
 
-            return -1; // Œ©‚Â‚©‚ç‚È‚¢ê‡
+            return -1; // è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆ
         }
 
         /// <summary>
-        /// w’è—v‘f‚ÌƒCƒ“ƒfƒbƒNƒX‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhDƒV[ƒPƒ“ƒX‚ÉŠÜ‚Ü‚ê‚È‚¢ê‡‚Í-1‚ğ•Ô‚·D
+        /// æŒ‡å®šè¦ç´ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã«å«ã¾ã‚Œãªã„å ´åˆã¯-1ã‚’è¿”ã™ï¼
         /// </summary>
         public static int IndexOf<T>(this IEnumerable<T> source, Func<T, bool> predicate) {
             if (source == null) throw new ArgumentNullException(nameof(source));
@@ -108,12 +108,12 @@ namespace nitou {
                 index++;
             }
 
-            return -1; // ğŒ‚É‡’v‚·‚é—v‘f‚ª‚È‚¢ê‡
+            return -1; // æ¡ä»¶ã«åˆè‡´ã™ã‚‹è¦ç´ ãŒãªã„å ´åˆ
         }
 
 
         /// <summary>
-        /// ğŒ‚ÉŠî‚Ã‚¢‚ÄÅ¬‚Ì—v‘f‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æ¡ä»¶ã«åŸºã¥ã„ã¦æœ€å°ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static T MinBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector)
             where TKey : IComparable<TKey> {
@@ -126,7 +126,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ğŒ‚ÉŠî‚Ã‚¢‚ÄÅ‘å‚Ì—v‘f‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æ¡ä»¶ã«åŸºã¥ã„ã¦æœ€å¤§ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static T MaxBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> selector)
             where TKey : IComparable<TKey> {
@@ -139,7 +139,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‘å’l‚ÆÅ¬’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æœ€å¤§å€¤ã¨æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static (T min, T max) MinMax<T>(this IEnumerable<T> source)
             where T : IComparable<T> {
@@ -148,7 +148,7 @@ namespace nitou {
             using (var enumerator = source.GetEnumerator()) {
                 if (!enumerator.MoveNext()) throw new InvalidOperationException("Sequence contains no elements");
 
-                // ‰Šú’l
+                // åˆæœŸå€¤
                 T min = enumerator.Current;
                 T max = enumerator.Current;
 
@@ -166,7 +166,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‘å’l‚ÆÅ¬’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æœ€å¤§å€¤ã¨æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static (TResult min, TResult max) MinMax<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
             where TResult : IComparable<TResult> {
@@ -176,7 +176,7 @@ namespace nitou {
             using (var enumerator = source.GetEnumerator()) {
                 if (!enumerator.MoveNext()) throw new InvalidOperationException("Sequence contains no elements");
 
-                // ‰Šú’l
+                // åˆæœŸå€¤
                 TResult minValue = selector(enumerator.Current);
                 TResult maxValue = selector(enumerator.Current);
 
@@ -196,7 +196,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‘å’l‚ÆÅ¬’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æœ€å¤§å€¤ã¨æœ€å°å€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static (T min, T max) MinMax<T>(this IEnumerable<T> source, Func<T, T, bool> isGreaterThan) {
             if (source is null) throw new System.ArgumentNullException(nameof(source));
@@ -205,7 +205,7 @@ namespace nitou {
             using (var enumerator = source.GetEnumerator()) {
                 if (!enumerator.MoveNext()) throw new InvalidOperationException("Sequence contains no elements");
 
-                // ‰Šú’l
+                // åˆæœŸå€¤
                 T min = enumerator.Current;
                 T max = enumerator.Current;
 
@@ -227,10 +227,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region  •¶š—ñ‚Ö‚Ì•ÏŠ·
+        #region  æ–‡å­—åˆ—ã¸ã®å¤‰æ›
 
         /// <summary>
-        /// CsvŒ`®‚Ì•¶š—ñ‚É•ÏŠ·‚µ‚Ü‚·B
+        /// Csvå½¢å¼ã®æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¾ã™ã€‚
         /// </summary>
         public static string ToCsvText(this IEnumerable<string> source, char separator = ',') {
             if (source == null) return null;
@@ -240,10 +240,10 @@ namespace nitou {
                 string val = v;
                 if (v.Contains("\"") || v.Contains("\n")) {
                     if (v.Contains("\"")) {
-                        // ƒ_ƒuƒ‹ƒNƒH[ƒg‚ª‚ ‚éê‡‚Íƒ_ƒuƒ‹ƒNƒH[ƒg‚ğ‚Q‚Â‚Éd‚Ë‚éB(" => "")
+                        // ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆãŒã‚ã‚‹å ´åˆã¯ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã‚’ï¼’ã¤ã«é‡ã­ã‚‹ã€‚(" => "")
                         val = val.Replace("\"", "\"\"");
                     }
-                    // ƒ_ƒuƒ‹ƒNƒH[ƒg‚Ü‚½‚Í‰üs‚ª‚ ‚éê‡‚Íƒ_ƒuƒ‹ƒNƒH[ƒg‚ÅˆÍ‚ŞB
+                    // ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã¾ãŸã¯æ”¹è¡ŒãŒã‚ã‚‹å ´åˆã¯ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã§å›²ã‚€ã€‚
                     val = $"\"{val}\"";
                 }
                 csv.AppendFormat("{0}{1}", val, separator);

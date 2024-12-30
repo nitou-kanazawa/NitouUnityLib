@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou.BachProcessor {
@@ -13,7 +13,7 @@ namespace nitou.BachProcessor {
         where TSystem : SystemBase<TComponent, TSystem> {
 
         /// <summary>
-        /// ‘ÎÛƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒŠƒXƒg
+        /// å¯¾è±¡ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒªã‚¹ãƒˆ
         /// </summary>
         protected List<TComponent> Components { get; private set; } = new();
 
@@ -51,7 +51,7 @@ namespace nitou.BachProcessor {
         // Protected MEthod
 
         /// <summary>
-        /// ‘S‚Ä‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ“o˜^‰ğœ‚·‚é
+        /// å…¨ã¦ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç™»éŒ²è§£é™¤ã™ã‚‹
         /// </summary>
         protected void UnregisterAllComponents() {
             // Unregister all components.
@@ -62,7 +62,7 @@ namespace nitou.BachProcessor {
         }
 
         /// <summary>
-        /// ƒVƒXƒeƒ€‚ÌƒCƒ“ƒXƒ^ƒ“ƒX¶¬‚ÌƒR[ƒ‹ƒoƒbƒN
+        /// ã‚·ã‚¹ãƒ†ãƒ ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”Ÿæˆæ™‚ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
         /// </summary>
         protected override void OnCreate(UpdateTiming timing) {
             // register callbacks. e.g. EarlyUpdate, PostUpdate.
@@ -95,7 +95,7 @@ namespace nitou.BachProcessor {
             var index = Components.Count;
             Components.Add(component);
 
-            // ƒCƒ“ƒfƒbƒNƒXXV
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æ›´æ–°
             ((IComponentIndex)component).Index = index;
 
             // Notify the derived class of the added component's number
@@ -114,7 +114,7 @@ namespace nitou.BachProcessor {
             // Do nothing if the component doesn't exist
             if (removeIndex == -1) return;
 
-            // ƒCƒ“ƒfƒbƒNƒXXV
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æ›´æ–°
             var lastIndex = Components.Count - 1;
             var overwriteComponent = (IComponentIndex)Components[lastIndex];
             overwriteComponent.Index = removeIndex;

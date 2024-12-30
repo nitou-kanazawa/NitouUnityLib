@@ -1,15 +1,15 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// Interface of the UI that handles the gSubmith event.
+    /// Interface of the UI that handles the â€œSubmitâ€ event.
     /// </summary>
     public interface IUISubmitable : IUIComponent {
 
         /// <summary>
-        /// Œˆ’è“ü—Í‚³‚ê‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// æ±ºå®šå…¥åŠ›ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnSubmited { get; }
     }

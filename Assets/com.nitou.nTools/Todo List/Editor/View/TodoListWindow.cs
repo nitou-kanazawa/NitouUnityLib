@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -35,7 +35,7 @@ namespace nitou.Tools.TodoTask {
 
             EditorGUILayout.LabelField(tabs[selectedTab], EditorStyles.boldLabel);
 
-            // ƒXƒNƒ[ƒ‹ƒrƒ…[‚ÌŠJn
+            // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒ“ãƒ¥ãƒ¼ã®é–‹å§‹
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Height(200));
 
             for (int i = 0; i < activeController.Tasks.Count; i++) {
@@ -51,11 +51,11 @@ namespace nitou.Tools.TodoTask {
                 EditorGUILayout.EndHorizontal();
             }
 
-            EditorGUILayout.EndScrollView(); // ƒXƒNƒ[ƒ‹ƒrƒ…[‚ÌI—¹
+            EditorGUILayout.EndScrollView(); // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒ“ãƒ¥ãƒ¼ã®çµ‚äº†
 
-            GUILayout.FlexibleSpace(); // ƒEƒCƒ“ƒhƒE‚Ìc‚èƒXƒy[ƒX‚ğ‹ó‚¯‚é
+            GUILayout.FlexibleSpace(); // ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®æ®‹ã‚Šã‚¹ãƒšãƒ¼ã‚¹ã‚’ç©ºã‘ã‚‹
 
-            // V‚µ‚¢ƒ^ƒXƒN‚Ì’Ç‰Á‚Æ•Û‘¶ƒ{ƒ^ƒ“‚ğ‰º•”‚É”z’u
+            // æ–°ã—ã„ã‚¿ã‚¹ã‚¯ã®è¿½åŠ ã¨ä¿å­˜ãƒœã‚¿ãƒ³ã‚’ä¸‹éƒ¨ã«é…ç½®
             EditorGUILayout.BeginHorizontal();
             newTaskName = EditorGUILayout.TextField(newTaskName);
 

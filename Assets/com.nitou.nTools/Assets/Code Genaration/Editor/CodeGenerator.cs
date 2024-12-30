@@ -1,50 +1,50 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  LIGHT11: ƒXƒNƒŠƒvƒg‚©‚çƒXƒNƒŠƒvƒgƒtƒ@ƒCƒ‹(.cs)‚ğ¶¬‚·‚é https://light11.hatenadiary.com/entry/2018/03/22/191516
+// [å‚è€ƒ]
+//  LIGHT11: ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ•ã‚¡ã‚¤ãƒ«(.cs)ã‚’ç”Ÿæˆã™ã‚‹ https://light11.hatenadiary.com/entry/2018/03/22/191516
 
 namespace nitou.Tools.CodeGeneration{
 
     /// <summary>
-    /// ƒR[ƒh¶¬ŠÖ˜A‚Ìƒƒ\ƒbƒh‚ğ’ñ‹Ÿ‚·‚éƒNƒ‰ƒX
+    /// ã‚³ãƒ¼ãƒ‰ç”Ÿæˆé–¢é€£ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æä¾›ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class CodeGenerator{
 
 
-        // ’è”
+        // å®šæ•°
         private const string CLASS_KEY = "#CLASSNAME#";
         private const string NAMESPACE_KEY = "#CLASSNAME#";
         private const string FILE_PATH_KEY = "#NAMESPACE#";
 
         /// <summary>
-        /// ƒR[ƒh‚ğ¶¬‚µAw’è‚³‚ê‚½ƒfƒBƒŒƒNƒgƒŠ‚Éƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä•Û‘¶‚µ‚Ü‚·B
+        /// ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆã—ã€æŒ‡å®šã•ã‚ŒãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦ä¿å­˜ã—ã¾ã™ã€‚
         /// </summary>
         public static void GenerateClass(string templatePath, string outputDirectory, CodeInfo codeInfo) {
             var templateCode = CodeTemplate.FromFile(templatePath);
             if (templateCode == null) return;
 
-            // ƒeƒ“ƒvƒŒ[ƒg“à‚Ì’uŠ·
+            // ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆå†…ã®ç½®æ›
             var code = templateCode
                 .Replace(CLASS_KEY, codeInfo.className)
                 .Replace(NAMESPACE_KEY, codeInfo.namespaceName);
                 //.Replace(FILE_PATH_KEY, filePath);
 
-            // o—ÍƒfƒBƒŒƒNƒgƒŠ‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬
+            // å‡ºåŠ›ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ä½œæˆ
             if (!Directory.Exists(outputDirectory)) {
                 Directory.CreateDirectory(outputDirectory);
             }
 
-            // ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğŒˆ’è‚µ‚Ä‘‚«‚İ
+            // ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æ±ºå®šã—ã¦æ›¸ãè¾¼ã¿
             string fileName = Path.Combine(outputDirectory, $"{codeInfo.className}.cs");
             File.WriteAllText(fileName, code);
 
-            // AssetDatabase‚ğƒŠƒtƒŒƒbƒVƒ…‚µ‚ÄUnity‚Éƒtƒ@ƒCƒ‹‚ğ”F¯‚³‚¹‚é
+            // AssetDatabaseã‚’ãƒªãƒ•ãƒ¬ãƒƒã‚·ãƒ¥ã—ã¦Unityã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èªè­˜ã•ã›ã‚‹
             AssetDatabase.Refresh();
 
-            Debug.Log($"ƒNƒ‰ƒX¶¬Š®—¹: {fileName}");
+            Debug.Log($"ã‚¯ãƒ©ã‚¹ç”Ÿæˆå®Œäº†: {fileName}");
         }
     }
 }

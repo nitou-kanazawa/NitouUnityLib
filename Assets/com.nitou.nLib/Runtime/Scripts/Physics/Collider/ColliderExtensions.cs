@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Collider"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Collider"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class ColliderExtensions{
 
         /// ----------------------------------------------------------------------------
-        #region Setter (ƒƒ\ƒbƒhƒ`ƒF[ƒ“—p)
+        #region Setter (ãƒ¡ã‚½ãƒƒãƒ‰ãƒã‚§ãƒ¼ãƒ³ç”¨)
 
         /// <summary>
-        /// <see cref="Collider.isTrigger"/>‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="Collider.isTrigger"/>ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static TCollider SetTrigger<TCollider>(this TCollider self, bool isTrigger) 
             where TCollider : Collider{
@@ -23,7 +23,7 @@ namespace nitou{
 
 
         /// <summary>
-        /// <see cref="Collider.material"/>‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="Collider.material"/>ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
 #if UNITY_6000_0_OR_NEWER
         public static TCollider SetMaterial<TCollider>(this TCollider self, PhysicsMaterial material)
@@ -49,7 +49,7 @@ namespace nitou{
         #region Center Position
 
         /// <summary>
-        /// ƒOƒ[ƒoƒ‹À•W‚É•ÏŠ·‚µ‚½ƒRƒ‰ƒCƒ_[’†SÀ•W‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚°ãƒ­ãƒ¼ãƒãƒ«åº§æ¨™ã«å¤‰æ›ã—ãŸã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ä¸­å¿ƒåº§æ¨™ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector3 GetWorldCenter(this Collider self) {        
             if(self is BoxCollider box)  return box.GetWorldCenter();

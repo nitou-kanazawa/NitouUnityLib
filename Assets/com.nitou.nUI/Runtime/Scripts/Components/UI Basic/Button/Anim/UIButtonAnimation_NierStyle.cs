@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -48,7 +48,7 @@ namespace nitou.UI.Components {
 
                 .Join(_rect.DOSizeDeltaWithCurrentAnchers(new Vector2(600, 60), _duration * 1.5f))
                 .Join(_outlineImage.rectTransform.DOScaleX(0, _duration * 1.5f))
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale()
                 .SetLink(gameObject);
 
@@ -68,7 +68,7 @@ namespace nitou.UI.Components {
                 .Join(_iconImage.DOColor(_rollOverColor, _duration).SetEase(_easing))
                 .Join(_text.DOColor(_rollOverColor, _duration).SetEase(_easing))
 
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale()
                 .SetLink(gameObject);
 
@@ -76,7 +76,7 @@ namespace nitou.UI.Components {
             _clickTween?.Kill();
             _clickTween = DOTween.Sequence()
                 .Join(_rect.DOSizeDeltaWithCurrentAnchers(new Vector2(450, 60), _duration))
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale()
                 .SetLink(gameObject);
 
@@ -96,7 +96,7 @@ namespace nitou.UI.Components {
                 .Join(_iconImage.DOColor(_normalColor, _duration).SetEase(_easing))
                 .Join(_text.DOColor(_normalColor, _duration).SetEase(_easing))
 
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale()
                 .SetLink(gameObject);
         }
@@ -108,9 +108,9 @@ namespace nitou.UI.Components {
         private void ApplySettings() {
 
             // 
-            _rect.SetPivotX(0f);    // ¦ƒNƒŠƒbƒN‚É‰E‚ÉL‚Î‚·‚Ì‚ÅCpivotX‚ğ¶‚Éİ’è
+            _rect.SetPivotX(0f);    // â€»ã‚¯ãƒªãƒƒã‚¯æ™‚ã«å³ã«ä¼¸ã°ã™ã®ã§ï¼ŒpivotXã‚’å·¦ã«è¨­å®š
 
-            // “–‚½‚è”»’è
+            // å½“ãŸã‚Šåˆ¤å®š
             _backdropImage.raycastTarget = true;
 
             // 
@@ -120,7 +120,7 @@ namespace nitou.UI.Components {
 
             // 
             _outlineImage.raycastTarget = false;
-            _outlineImage.rectTransform.SetPivotX(1f);      // ¦ƒNƒŠƒbƒN‚É‰E‚Ék‚ß‚é‚Ì‚ÅCpivotX‚ğ‰E‚Éİ’è
+            _outlineImage.rectTransform.SetPivotX(1f);      // â€»ã‚¯ãƒªãƒƒã‚¯æ™‚ã«å³ã«ç¸®ã‚ã‚‹ã®ã§ï¼ŒpivotXã‚’å³ã«è¨­å®š
             _outlineImage.SetAlpha(0f);
 
             // 

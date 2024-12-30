@@ -1,20 +1,20 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 // [REF]
-//  ƒRƒKƒlƒuƒƒO: ”z—ñ‚âƒŠƒXƒg‚Ì•ª‰ğ‘ã“ü‚ğ‰Â”\‚É‚·‚é Deconstruct https://baba-s.hatenablog.com/entry/2019/09/12/085000#google_vignette
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: é…åˆ—ã‚„ãƒªã‚¹ãƒˆã®åˆ†è§£ä»£å…¥ã‚’å¯èƒ½ã«ã™ã‚‹ Deconstruct https://baba-s.hatenablog.com/entry/2019/09/12/085000#google_vignette
 //  StackOverflow: Does C# 7 have array/enumerable destructuring? https://stackoverflow.com/questions/47815660/does-c-sharp-7-have-array-enumerable-destructuring
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="List{T}"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="List{T}"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class ListExtensions {
 
         /// <summary>
-        /// ÅŒã‚Ì—v‘f‚ğæ‚èo‚·Šg’£ƒƒ\ƒbƒhD—v‘f‚ª0‚È‚ç<see cref="InvalidOperationException">—áŠO</see>‚ğ“Š‚°‚éD
+        /// æœ€å¾Œã®è¦ç´ ã‚’å–ã‚Šå‡ºã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼è¦ç´ ãŒ0ãªã‚‰<see cref="InvalidOperationException">ä¾‹å¤–</see>ã‚’æŠ•ã’ã‚‹ï¼
         /// </summary>
         public static T PopLast<T>(this IList<T> list) {
             if (list.Count == 0) {
@@ -29,7 +29,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ŠY“–‚·‚é—v‘f‚ğ‘S‚Äíœ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è©²å½“ã™ã‚‹è¦ç´ ã‚’å…¨ã¦å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void RemoveAll<T>(this IList<T> self, Func<T, bool> predicate) {
             for (int i = self.Count - 1; i >= 0; i--) {
@@ -41,10 +41,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ì•ª‰ğ
+        #region è¦ç´ ã®åˆ†è§£
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct<T>(this IList<T> self,
             out T first, out IList<T> rest) {
@@ -53,7 +53,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct<T>(this IList<T> self,
             out T first, out T second, out IList<T> rest) {
@@ -63,7 +63,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct<T>(this IList<T> self,
             out T first, out T second, out T third, out IList<T> rest) {
@@ -74,7 +74,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct<T>(this IList<T> self,
             out T first, out T second, out T third, out T four, out IList<T> rest) {

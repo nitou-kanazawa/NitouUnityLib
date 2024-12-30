@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace nitou{
 
     /// <summary>
-    /// <see cref="IComparable"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="IComparable"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class ComparableExtensions{
 

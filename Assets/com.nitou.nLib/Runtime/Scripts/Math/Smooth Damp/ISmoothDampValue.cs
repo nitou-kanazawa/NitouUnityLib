@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou{
@@ -7,17 +7,17 @@ namespace nitou{
         where TValue : struct{
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public TValue GetNext(TValue target, float smoothTime);
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public TValue GetNext(TValue target, float smoothTime, float maxSpeed);
 
         /// <summary>
-        /// •½ŠŠ‰»‚³‚ê‚½’l‚ğæ“¾‚·‚é
+        /// å¹³æ»‘åŒ–ã•ã‚ŒãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public TValue GetNext(TValue target, float smoothTime, float maxSpeed, float deltaTime);
     }

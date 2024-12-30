@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Build;
 
 // [REF]
-//  ‚Í‚È‚¿‚é: Player Settings‚ÌScriptingDefineSymbols‚ğƒXƒNƒŠƒvƒg‚©‚çæ“¾Eİ’è‚·‚é•û–@ https://www.hanachiru-blog.com/entry/2024/06/03/120000
+//  ã¯ãªã¡ã‚‹: Player Settingsã®ScriptingDefineSymbolsã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰å–å¾—ãƒ»è¨­å®šã™ã‚‹æ–¹æ³• https://www.hanachiru-blog.com/entry/2024/06/03/120000
 
 namespace nitou.EditorScripts {
 
@@ -14,18 +14,18 @@ namespace nitou.EditorScripts {
     [InitializeOnLoad]
     internal static class DefineSymbolsSetter{
 
-        // ’è‹`‚µ‚½‚¢ƒVƒ“ƒ{ƒ‹
+        // å®šç¾©ã—ãŸã„ã‚·ãƒ³ãƒœãƒ«
         private const string SYMBOL_TO_DEFINE = "NLIB_PACKAGE_SYMBOL";
 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         static DefineSymbolsSetter() {
 
             var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
 
-            // ƒpƒbƒP[ƒW‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚½‚Æ‚«‚ÉÀs‚³‚ê‚éˆ—
+            // ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚ŒãŸã¨ãã«å®Ÿè¡Œã•ã‚Œã‚‹å‡¦ç†
             AddDefineSymbolsIfNeeded(buildTarget, SYMBOL_TO_DEFINE);
         }
 
@@ -34,22 +34,22 @@ namespace nitou.EditorScripts {
         // Private Method
 
         /// <summary>
-        /// ƒVƒ“ƒ{ƒ‹‚ğ’è‹`‚·‚é
+        /// ã‚·ãƒ³ãƒœãƒ«ã‚’å®šç¾©ã™ã‚‹
         /// </summary>
         private static void AddDefineSymbolsIfNeeded(NamedBuildTarget buildTarget, string symbol) {
 
-            // ƒrƒ‹ƒhƒ^[ƒQƒbƒg‚Ì’è‹`Ï‚İ‚ÌƒVƒ“ƒ{ƒ‹‚ğæ“¾
+            // ãƒ“ãƒ«ãƒ‰ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®å®šç¾©æ¸ˆã¿ã®ã‚·ãƒ³ãƒœãƒ«ã‚’å–å¾—
             string defines = PlayerSettings.GetScriptingDefineSymbols(buildTarget);
 
-            // ƒVƒ“ƒ{ƒ‹‚ª‚·‚Å‚É’è‹`‚³‚ê‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN
+            // ã‚·ãƒ³ãƒœãƒ«ãŒã™ã§ã«å®šç¾©ã•ã‚Œã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯
             if (!defines.Contains(symbol)) {
-                // ƒVƒ“ƒ{ƒ‹‚ª–¢’è‹`‚È‚ç’Ç‰Á
+                // ã‚·ãƒ³ãƒœãƒ«ãŒæœªå®šç¾©ãªã‚‰è¿½åŠ 
                 defines += ";" + symbol;
 
-                // ƒVƒ“ƒ{ƒ‹‚ğİ’è
+                // ã‚·ãƒ³ãƒœãƒ«ã‚’è¨­å®š
                 PlayerSettings.SetScriptingDefineSymbols(buildTarget, symbol);
 
-                // ƒfƒoƒbƒO—pƒƒO
+                // ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ­ã‚°
                 Debug.Log($"Added define symbol: {SYMBOL_TO_DEFINE}");
             } else {
                 //Debug.Log($"{SYMBOL_TO_DEFINE} is already defined.");

@@ -1,22 +1,22 @@
-using System.Threading;
+ï»¿using System.Threading;
 
 // [REF]
-//  Zenn: UniRx/UniTask‘å‘S https://zenn.dev/tmb/articles/e4fb3fe350852f
+//  Zenn: UniRx/UniTaskå¤§å…¨ https://zenn.dev/tmb/articles/e4fb3fe350852f
 
 namespace nitou {
 
     /// <summary>
-    /// CancellationTokenSourceƒCƒ“ƒXƒ^ƒ“ƒX‚ğ“ü‚ê‘Ö‚¦‚ÄŒJ‚è•Ô‚µg—p‚·‚é‚½‚ß‚Ìƒ‰ƒbƒp[D
+    /// CancellationTokenSourceã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å…¥ã‚Œæ›¿ãˆã¦ç¹°ã‚Šè¿”ã—ä½¿ç”¨ã™ã‚‹ãŸã‚ã®ãƒ©ãƒƒãƒ‘ãƒ¼ï¼
     /// </summary>
     public sealed class CancellationTokenHelper {
         
         /// <summary>
-        /// ƒ\[ƒX
+        /// ã‚½ãƒ¼ã‚¹
         /// </summary>
         public CancellationTokenSource Cts { get; private set; }
 
         /// <summary> 
-        /// ƒg[ƒNƒ“ 
+        /// ãƒˆãƒ¼ã‚¯ãƒ³ 
         /// </summary>
         public CancellationToken Token => Cts.Token;
 
@@ -25,21 +25,21 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public CancellationTokenHelper() {
             Reset();
         }
 
         /// <summary>
-        /// ƒfƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         ~CancellationTokenHelper() {
             Dispose();
         }
 
         /// <summary>
-        /// ƒŠƒZƒbƒgD
+        /// ãƒªã‚»ãƒƒãƒˆï¼
         /// </summary>
         public void Reset() {
             Dispose();
@@ -47,7 +47,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ”jŠüD
+        /// ç ´æ£„ï¼
         /// </summary>
         public void Dispose() {
             if (Cts != null) {

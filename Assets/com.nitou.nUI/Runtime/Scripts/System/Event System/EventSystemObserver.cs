@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UniRx;
@@ -11,19 +11,19 @@ namespace nitou.UI {
         private GameObject _lastSelected = null;
 
         /// <summary>
-        /// UI‚ªEventSystem‚É‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ì’Ê’m
+        /// UIãŒEventSystemã«é¸æŠã•ã‚ŒãŸã¨ãã®é€šçŸ¥
         /// </summary>
         public System.IObservable<Selectable> OnSelected => _onSelectableSelected;
 
 
         private void Start() {
 
-            // EventSystem‚ÌƒfƒtƒHƒ‹ƒgƒ‚ƒWƒ…[ƒ‹‚ğæ“¾
+            // EventSystemã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å–å¾—
             var eventSystem = EventSystem.current;
             if (eventSystem != null) {
                 Observable.EveryUpdate()
                     .Select(_ => eventSystem.currentSelectedGameObject)
-                    .Where(current => current != null && current != _lastSelected)  // ‘OƒtƒŒ[ƒ€‚ÆˆÙ‚È‚é‚¾‚¯
+                    .Where(current => current != null && current != _lastSelected)  // å‰ãƒ•ãƒ¬ãƒ¼ãƒ ã¨ç•°ãªã‚‹æ™‚ã ã‘
                     .Select(current => current.GetComponent<Selectable>())
                     .Subscribe(selectable => {
                         _lastSelected = eventSystem.currentSelectedGameObject;
@@ -32,10 +32,10 @@ namespace nitou.UI {
                     .AddTo(gameObject);
             }
 
-            // Selectable‚ª‘I‘ğ‚³‚ê‚½‚Ìˆ—
+            // SelectableãŒé¸æŠã•ã‚ŒãŸæ™‚ã®å‡¦ç†
             _onSelectableSelected.Subscribe(selectable => {
                 Debug.Log("Selected Selectable: " + selectable.name);
-                // ‚±‚±‚Éˆ—‚ğ’Ç‰Á‚·‚é
+                // ã“ã“ã«å‡¦ç†ã‚’è¿½åŠ ã™ã‚‹
             });
         }
 

@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace UnityScreenNavigator.Runtime.Core.Sheet {
 
     /// <summary>
-    /// <see cref="SheetContainer"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="SheetContainer"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class SheetContainerExtensions {
 
         /// <summary>
-        /// ƒRƒ“ƒeƒi‚ª‹ó‚©‚Ç‚¤‚©D
+        /// ã‚³ãƒ³ãƒ†ãƒŠãŒç©ºã‹ã©ã†ã‹ï¼
         /// </summary>
         public static bool IsEmpty(this SheetContainer container) {
             return container.Sheets.Count == 0;
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈƒV[ƒg‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©D
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒˆãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         public static bool HasActiveSheet(this SheetContainer container) {
             return container.ActiveSheet != null;

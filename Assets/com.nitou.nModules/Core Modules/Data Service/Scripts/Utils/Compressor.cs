@@ -1,15 +1,15 @@
-using System.IO;
+ï»¿using System.IO;
 using System.IO.Compression;
 
 namespace nitou.SaveSystem.Utils {
 
     /// <summary>
-    /// ƒoƒCƒiƒŠƒf[ƒ^‚ğgzipƒtƒH[ƒ}ƒbƒg‚É]‚Á‚Äˆ³kA‰ğ“€‚·‚éÃ“IƒNƒ‰ƒX
+    /// ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã‚’gzipãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¾“ã£ã¦åœ§ç¸®ã€è§£å‡ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class Compressor{
 
         /// <summary>
-        /// ƒf[ƒ^‚ğˆ³k‚·‚é
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’åœ§ç¸®ã™ã‚‹
         /// </summary>
         public static byte[] Compress(byte[] rawData) {
             byte[] result = null;
@@ -25,7 +25,7 @@ namespace nitou.SaveSystem.Utils {
         }
 
         /// <summary>
-        /// ƒf[ƒ^‚ğ‰ğ“€‚·‚é
+        /// ãƒ‡ãƒ¼ã‚¿ã‚’è§£å‡ã™ã‚‹
         /// </summary>
         public static byte[] Decompress(byte[] compressedData) {
             byte[] result = null;

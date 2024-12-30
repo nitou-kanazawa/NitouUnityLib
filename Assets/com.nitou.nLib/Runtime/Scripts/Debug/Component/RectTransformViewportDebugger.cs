@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Sirenix.OdinInspector;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,13 +8,13 @@ using nitou.EditorShared;
 namespace nitou.DebugInternal {
 
     /// <summary>
-    /// <see cref="RectTransform"/>‚ÌRect”ÍˆÍ‚ğViewportî•ñ‚Æ‚µ‚Ä‰Â‹‰»‚·‚éƒfƒoƒbƒO—pƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// <see cref="RectTransform"/>ã®Rectç¯„å›²ã‚’Viewportæƒ…å ±ã¨ã—ã¦å¯è¦–åŒ–ã™ã‚‹ãƒ‡ãƒãƒƒã‚°ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     [RequireComponent(typeof(RequireComponent))]
     internal class RectTransformViewportDebugger : DebugComponent<RectTransform> {
 
         /// <summary>
-        /// •`‰æƒ‚[ƒh
+        /// æç”»ãƒ¢ãƒ¼ãƒ‰
         /// </summary>
         public enum Mode {
             Screen,

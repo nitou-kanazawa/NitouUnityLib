@@ -1,4 +1,4 @@
-using UniRx;
+ï»¿using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,17 +19,17 @@ namespace nitou.UI.Components {
             _button = GetComponent<UIButton>();
             if (_button == null) return;
 
-            // ƒoƒCƒ“ƒh
+            // ãƒã‚¤ãƒ³ãƒ‰
             _button.OnDeselected.Subscribe(_ => OnDeselectAnimation()).AddTo(this);
             _button.OnSelected.Subscribe(_ => OnSelectAnimation()).AddTo(this);
             _button.OnSubmited.Subscribe(_ => OnClickAnimation()).AddTo(this);
 
-            // ‰Šú‰»ˆ—
+            // åˆæœŸåŒ–å‡¦ç†
             InitializeInternal();
         }
 
         protected override void OnDestroy() {
-            // I—¹ˆ—
+            // çµ‚äº†å‡¦ç†
             DisposeInternal();
 
             base.OnDestroy();
@@ -40,27 +40,27 @@ namespace nitou.UI.Components {
         // Protected Method
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         protected virtual void InitializeInternal() { }
 
         /// <summary>
-        /// ”ñ‘I‘ğ‚Ì’l‚ğ“K—p‚·‚é
+        /// éé¸æŠæ™‚ã®å€¤ã‚’é©ç”¨ã™ã‚‹
         /// </summary>
         protected abstract void OnDeselectAnimation();
 
         /// <summary>
-        /// ‘I‘ğ‚Ì’l‚ğ“K—p‚·‚é
+        /// é¸æŠæ™‚ã®å€¤ã‚’é©ç”¨ã™ã‚‹
         /// </summary>
         protected abstract void OnSelectAnimation();
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
+        /// ã‚¯ãƒªãƒƒã‚¯æ™‚ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         protected abstract void OnClickAnimation();
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         protected virtual void DisposeInternal() { }
     }

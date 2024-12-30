@@ -1,13 +1,13 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 
 // [REF]
-//  hatena: ƒGƒfƒBƒ^Šg’£‚ÅuManagerv“I‚È‚à‚Ì‚Ég‚¦‚éScriptableSingleton https://light11.hatenadiary.com/entry/2021/03/11/201303
+//  hatena: ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µã§ã€ŒManagerã€çš„ãªã‚‚ã®ã«ä½¿ãˆã‚‹ScriptableSingleton https://light11.hatenadiary.com/entry/2021/03/11/201303
 
 namespace nitou.EditorShared {
 
     /// <summary>
-    /// ƒGƒfƒBƒ^—p‚ÌƒvƒŠƒtƒ@ƒŒƒ“ƒXİ’èƒf[ƒ^D
+    /// ã‚¨ãƒ‡ã‚£ã‚¿ç”¨ã®ãƒ—ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹è¨­å®šãƒ‡ãƒ¼ã‚¿ï¼
     /// </summary>
     [FilePath(
         "MyPreferences.asset", 

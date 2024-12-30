@@ -1,21 +1,21 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  Document : ƒTƒ|[ƒg‚³‚ê‚éƒŠƒbƒ`ƒeƒLƒXƒgƒ^ƒO https://docs.unity3d.com/ja/2022.3/Manual/UIE-supported-tags.html
-//  _: TextMeshPro‚ÌƒŠƒbƒ`ƒeƒLƒXƒgƒ^ƒOˆê—— https://madnesslabo.net/utage/?page_id=12903
-//  _: TextMeshPro ‚Åg‚¦‚éƒŠƒbƒ`ƒeƒLƒXƒgƒ^ƒO‚Ü‚Æ‚ß https://www.midnightunity.net/textmeshpro-richtext-tags/#google_vignette
+// [å‚è€ƒ]
+//  Document : ã‚µãƒãƒ¼ãƒˆã•ã‚Œã‚‹ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆã‚¿ã‚° https://docs.unity3d.com/ja/2022.3/Manual/UIE-supported-tags.html
+//  _: TextMeshProã®ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆã‚¿ã‚°ä¸€è¦§ https://madnesslabo.net/utage/?page_id=12903
+//  _: TextMeshPro ã§ä½¿ãˆã‚‹ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆã‚¿ã‚°ã¾ã¨ã‚ https://www.midnightunity.net/textmeshpro-richtext-tags/#google_vignette
 
 namespace nitou.RichText {
 
     /// <summary>
-    /// •¶š—ñ‚ğƒŠƒbƒ`ƒeƒLƒXƒg‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒhW
+    /// æ–‡å­—åˆ—ã‚’ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class RichTextUtil {
 
         /// <summary>
-        /// ƒJƒ‰[ƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// ã‚«ãƒ©ãƒ¼ã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithColorTag(this string self, Color color) {
             return string.Format("<color=#{0:X2}{1:X2}{2:X2}>{3}</color>",
@@ -27,42 +27,42 @@ namespace nitou.RichText {
         }
 
         /// <summary>
-        /// ‘¾šƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// å¤ªå­—ã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithBoldTag(this string self) {
             return $"<b>{self}</b>";
         }
 
         /// <summary>
-        /// Î‘Ìƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// æ–œä½“ã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithItalicTag(this string self) {
             return $"<i>{self}</i>";
         }
 
         /// <summary>
-        /// ƒAƒ“ƒ_[ƒ‰ƒCƒ“ƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³ã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithUnderlineTag(this string self) {
             return $"<u>{self}</u>";
         }
 
         /// <summary>
-        /// æ‚èÁ‚µüƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// å–ã‚Šæ¶ˆã—ç·šã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithStrikethroughTag(this string self) {
             return $"<s>{self}</s>";
         }
 
         /// <summary>
-        /// ƒTƒCƒYƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// ã‚µã‚¤ã‚ºã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithSizeTag(this string self, int size) {
             return $"<size={size}>{self}</size>";
         }
 
         /// <summary>
-        /// ƒCƒ“ƒfƒ“ƒgƒ^ƒO‚ğ‘}“ü‚·‚é
+        /// ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚¿ã‚°ã‚’æŒ¿å…¥ã™ã‚‹
         /// </summary>
         public static string WithIndentTag(this string self, int charNum = 1) {
             return $"<indent={Mathf.Clamp(charNum, 1, 20)}em>{self}</indent>";

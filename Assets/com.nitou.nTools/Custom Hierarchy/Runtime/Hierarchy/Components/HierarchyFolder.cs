@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou.Tools.Hierarchy{
 
     /// <summary>
-    /// ƒqƒGƒ‰ƒ‹ƒL[‚ÉƒtƒHƒ‹ƒ_‚ğ•`‰æ‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒgD
+    /// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼ã«ãƒ•ã‚©ãƒ«ãƒ€ã‚’æç”»ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼
     /// </summary>
     [AddComponentMenu("Nitou/Hierarchy Folder")]
     public sealed class HierarchyFolder : HierarchyObject{

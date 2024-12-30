@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 
 namespace UnityScreenNavigator.Runtime.Core {
     using Page;
@@ -6,7 +6,7 @@ namespace UnityScreenNavigator.Runtime.Core {
     using Sheet;
 
     /// <summary>
-    /// ƒvƒŒƒ[ƒ“ƒ^[‚ğ•\‚·ƒCƒ“ƒ^[ƒtƒF[ƒX
+    /// ãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
     /// </summary>
     public interface IPresenter : IDisposable {
         bool IsDisposed { get; }

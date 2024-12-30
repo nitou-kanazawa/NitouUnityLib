@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -15,7 +15,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
         public override void OnGUI(int instanceID, Rect selectionRect) {
 
-            // ƒ‰ƒxƒ‹İ’è
+            // ãƒ©ãƒ™ãƒ«è¨­å®š
             if (labelStyle == null) {
                 labelStyle = new GUIStyle(EditorStyles.boldLabel) {
                     alignment = TextAnchor.MiddleCenter,
@@ -23,15 +23,15 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 };
             }
 
-            // GameObjectæ“¾
+            // GameObjectå–å¾—
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
             if (!gameObject.TryGetComponent<HierarchyHeader>(out _)) return;
 
-            // ”wŒi•`‰æ
+            // èƒŒæ™¯æç”»
             DrawBackground(instanceID, selectionRect);
 
-            // ŒÅ—L•`‰æ
+            // å›ºæœ‰æç”»
             var headerRect = selectionRect.AddXMax(14f).AddYMax(-1f);
             EditorGUI.DrawRect(headerRect, HeaderColor);
             EditorGUI.LabelField(headerRect, gameObject.name, labelStyle);

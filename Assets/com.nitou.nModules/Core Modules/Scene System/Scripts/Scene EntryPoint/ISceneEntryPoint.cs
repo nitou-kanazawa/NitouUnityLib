@@ -1,29 +1,29 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 
 namespace nitou.SceneSystem{
 
     /// <summary>
-    /// ŠeƒV[ƒ“‚É”z’u‚·‚é‹N“_ƒIƒuƒWƒFƒNƒg
+    /// å„ã‚·ãƒ¼ãƒ³ã«é…ç½®ã™ã‚‹èµ·ç‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     public interface ISceneEntryPoint {
 
         /// <summary>
-        /// ƒV[ƒ““Ç‚İ‚İ‚Ìˆ—
+        /// ã‚·ãƒ¼ãƒ³èª­ã¿è¾¼ã¿æ™‚ã®å‡¦ç†
         /// </summary>
         UniTask OnSceneLoadAsync();
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒuƒV[ƒ“‚Éİ’è‚³‚ê‚½‚Ìˆ—
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚·ãƒ¼ãƒ³ã«è¨­å®šã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         UniTask OnSceneActivateAsync();
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒuƒV[ƒ“‚©‚ç‰ğœ‚³‚ê‚½‚Ìˆ—
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚·ãƒ¼ãƒ³ã‹ã‚‰è§£é™¤ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
         /// </summary>
         UniTask OnSceneDeactivateAsync();
 
         /// <summary>
-        /// ƒV[ƒ“‰ğ•ú‚Ìˆ—
+        /// ã‚·ãƒ¼ãƒ³è§£æ”¾æ™‚ã®å‡¦ç†
         /// </summary>
         UniTask OnSceneUnloadAsync();
     }

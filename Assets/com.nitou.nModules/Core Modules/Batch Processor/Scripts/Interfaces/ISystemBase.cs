@@ -1,4 +1,4 @@
-
+﻿
 namespace nitou.BachProcessor{
     
     public interface ISystemBase{

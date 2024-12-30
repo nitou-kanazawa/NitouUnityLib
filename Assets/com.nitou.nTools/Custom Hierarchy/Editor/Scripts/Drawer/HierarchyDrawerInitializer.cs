@@ -1,11 +1,11 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System;
 using System.Linq;
 using UnityEditor;
 
-// [Ql]
-//  hatena: TypeCache‚ğg‚Á‚Äw’è‚µ‚½ƒAƒgƒŠƒrƒ…[ƒg‚ª•t‚¢‚Ä‚¢‚éŒ^‚ğ‚‘¬‚Éæ“¾‚·‚é https://light11.hatenadiary.com/entry/2021/04/26/202054
-//  ‚Í‚È‚¿‚é: TypeCache‚ğ—p‚¢‚Ä"“Á’è‚Ì‘®«‚Åƒ}[ƒN‚³‚ê‚Ä‚¢‚éŒ^‚âƒƒ\ƒbƒh" ‚â "“Á’è‚ÌƒNƒ‰ƒX‚âƒCƒ“ƒ^[ƒtƒFƒCƒX‚©‚ç”h¶‚·‚éŒ^"‚É‘f‘‚­ƒAƒNƒZƒX‚·‚é https://www.hanachiru-blog.com/entry/2023/12/08/120000
+// [å‚è€ƒ]
+//  hatena: TypeCacheã‚’ä½¿ã£ã¦æŒ‡å®šã—ãŸã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆãŒä»˜ã„ã¦ã„ã‚‹å‹ã‚’é«˜é€Ÿã«å–å¾—ã™ã‚‹ https://light11.hatenadiary.com/entry/2021/04/26/202054
+//  ã¯ãªã¡ã‚‹: TypeCacheã‚’ç”¨ã„ã¦"ç‰¹å®šã®å±æ€§ã§ãƒãƒ¼ã‚¯ã•ã‚Œã¦ã„ã‚‹å‹ã‚„ãƒ¡ã‚½ãƒƒãƒ‰" ã‚„ "ç‰¹å®šã®ã‚¯ãƒ©ã‚¹ã‚„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã‹ã‚‰æ´¾ç”Ÿã™ã‚‹å‹"ã«ç´ æ—©ãã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ https://www.hanachiru-blog.com/entry/2023/12/08/120000
 
 namespace nitou.Tools.Hierarchy.EditorSctipts {
 
@@ -14,12 +14,12 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
         [InitializeOnLoadMethod]
         private static void Initialize() {
 
-            // w’è‚µ‚½Œ^‚ğŒp³‚Ü‚½‚Í‚Ü‚½‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚éŒ^‚ğæ“¾
+            // æŒ‡å®šã—ãŸå‹ã‚’ç¶™æ‰¿ã¾ãŸã¯ã¾ãŸã¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å‹ã‚’å–å¾—
             var drawers = TypeCache.GetTypesDerivedFrom<HierarchyDrawer>()
                 .Where(x => !x.IsAbstract)
                 .Select(x => (HierarchyDrawer)Activator.CreateInstance(x));
 
-            // ˆêŠ‡‚Å•`‰æˆ—‚ğ“o˜^
+            // ä¸€æ‹¬ã§æç”»å‡¦ç†ã‚’ç™»éŒ²
             foreach (var drawer in drawers) {
                 EditorApplication.hierarchyWindowItemOnGUI += drawer.OnGUI;
             }

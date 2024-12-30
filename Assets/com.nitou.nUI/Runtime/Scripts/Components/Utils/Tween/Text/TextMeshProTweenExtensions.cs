@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using TMPro;
 
-// [Ql]
-//  qiita: DOTween‚ÅƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚ÌƒAƒjƒ[ƒVƒ‡ƒ“ https://qiita.com/RyotaMurohoshi/items/f7312e802f7698e42cd0
-//  qiita: Unity1TŠÔƒQ[ƒ€ƒWƒƒƒ€ (‹t) ‚É‚ÄÀ‘•‚µ‚½‰‰o‚ğ‚Ü‚Æ‚ß‚é https://qiita.com/lycoris102/items/30c3faaa6904c441cd71
+// [å‚è€ƒ]
+//  qiita: DOTweenã§ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ https://qiita.com/RyotaMurohoshi/items/f7312e802f7698e42cd0
+//  qiita: Unity1é€±é–“ã‚²ãƒ¼ãƒ ã‚¸ãƒ£ãƒ  (é€†) ã«ã¦å®Ÿè£…ã—ãŸæ¼”å‡ºã‚’ã¾ã¨ã‚ã‚‹ https://qiita.com/lycoris102/items/30c3faaa6904c441cd71
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// TextMeshPro‚ÌTweenƒ‰ƒCƒuƒ‰ƒŠƒNƒ‰ƒX
+    /// TextMeshProã®Tweenãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class TextMeshProTweenExtension {
 
         /// --------------------------------------------------------------------
-        #region •¶š—ñ‚ÌTween
+        #region æ–‡å­—åˆ—ã®Tween
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextInt(this TextMeshProUGUI self, int startValue, int endValue, float duration, Func<int, string> convertor) {
             return DOTween.To(
@@ -28,14 +28,14 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextInt(this TextMeshProUGUI self, int startValue, int endValue, float duration) {
             return TextMeshProTweenExtension.DOTextInt(self, startValue, endValue, duration, it => it.ToString());
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextFloat(this TextMeshProUGUI self, float startValue, float endValue, float duration, Func<float, string> convertor) {
             return DOTween.To(
@@ -47,7 +47,7 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// ƒJƒEƒ“ƒgƒ_ƒEƒ“EƒJƒEƒ“ƒgƒAƒbƒv‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³ãƒ»ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOTextFloat(this TextMeshProUGUI self, float startValue, float endValue, float duration) {
             return TextMeshProTweenExtension.DOTextFloat(self, startValue, endValue, duration, it => it.ToString());
@@ -56,10 +56,10 @@ namespace DG.Tweening {
 
 
         /// --------------------------------------------------------------------
-        #region ‚»‚Ì‘¼‚ÌTween
+        #region ãã®ä»–ã®Tween
 
         /// <summary>
-        /// •¶šŠÔŠu‚ğTween‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æ–‡å­—é–“éš”ã‚’Tweenã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOCharacterSpace(this TextMeshProUGUI self, float endValue, float duration) {
             return DOTween.To(
@@ -71,7 +71,7 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// sŠÔŠu‚ğTween‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¡Œé–“éš”ã‚’Tweenã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOLineSpace(this TextMeshProUGUI self, float endValue, float duration) {
             return DOTween.To(

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Sheet;
@@ -18,7 +18,7 @@ namespace nitou.UI.PresentationFramework {
         // 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected SheetPresenter(TSheet view) : base(view) { }
 
@@ -75,44 +75,44 @@ namespace nitou.UI.PresentationFramework {
 
 
         /// ----------------------------------------------------------------------------
-        // LifecycleEvent (¦)
+        // LifecycleEvent (â€»)
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ªƒ[ƒh‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚é
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         protected virtual Task ViewDidLoad(TSheet view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ª•\¦‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚é
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒè¡¨ç¤ºã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         protected virtual Task ViewWillEnter(TSheet view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ª•\¦‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚é
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒè¡¨ç¤ºã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         protected virtual void ViewDidEnter(TSheet view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ª”ñ•\¦‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚é
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒéè¡¨ç¤ºã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         protected virtual Task ViewWillExit(TSheet view, TRootViewState viewState) {
             return Task.CompletedTask;
         }
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ª”ñ•\¦‚³‚ê‚½’¼Œã‚ÉŒÄ‚Î‚ê‚é
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒéè¡¨ç¤ºã•ã‚ŒãŸç›´å¾Œã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         protected virtual void ViewDidExit(TSheet view, TRootViewState viewState) {
         }
 
         /// <summary>
-        /// ‚±‚ÌƒV[ƒg‚ªƒŠƒŠ[ƒX‚³‚ê‚é’¼‘O‚ÉŒÄ‚Î‚ê‚é
-        /// i¦eƒy[ƒW‚ªpop‘JˆÚ‚·‚éê‡‚È‚Ç‚É‚ÍŒÄ‚Î‚ê‚È‚¢‚Ì‚Å’ˆÓIj
+        /// ã“ã®ã‚·ãƒ¼ãƒˆãŒãƒªãƒªãƒ¼ã‚¹ã•ã‚Œã‚‹ç›´å‰ã«å‘¼ã°ã‚Œã‚‹
+        /// ï¼ˆâ€»è¦ªãƒšãƒ¼ã‚¸ãŒpopé·ç§»ã™ã‚‹å ´åˆãªã©ã«ã¯å‘¼ã°ã‚Œãªã„ã®ã§æ³¨æ„ï¼ï¼‰
         /// </summary>
         protected virtual Task ViewWillDestroy(TSheet view, TRootViewState viewState) {
             return Task.CompletedTask;

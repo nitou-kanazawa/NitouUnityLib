@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System;
 using System.Linq;
 using System.Reflection;
@@ -7,8 +7,8 @@ using UnityEditor;
 using UnityEditorInternal;
 using Unity.CodeEditor;
 
-// [Ql]@
-//  ƒRƒKƒlƒuƒƒO: baba-s/Kogane.InspectorHeaderGUI https://github.com/baba-s/Kogane.InspectorHeaderGUI/blob/master/Editor/InspectorHeaderGUI.cs#L70
+// [å‚è€ƒ]ã€€
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: baba-s/Kogane.InspectorHeaderGUI https://github.com/baba-s/Kogane.InspectorHeaderGUI/blob/master/Editor/InspectorHeaderGUI.cs#L70
 
 namespace nitou.Tools.Inspector {
     using nitou.EditorShared;
@@ -45,7 +45,7 @@ namespace nitou.Tools.Inspector {
 
         private static readonly Type PROPERTY_EDITOR_TYPE = typeof(Editor).Assembly.GetType("UnityEditor.PropertyEditor");
 
-        // ƒAƒCƒRƒ“
+        // ã‚¢ã‚¤ã‚³ãƒ³
         private static readonly TextureData LOCK_TEXTURE = new("e46fc48e73c498149be679eb9513bef1");
         private static readonly TextureData UNLOCK_TEXTURE = new("3bc24d4385a34454cb8e67f037925c93");
         private static readonly TextureData DEBUG_TEXTURE = new("bad1644c13e0c694382f5b3d51bbeba7");
@@ -69,7 +69,7 @@ namespace nitou.Tools.Inspector {
         private static void OnGUI(Editor editor) {
 
             // [FIXME] 
-            // ƒ}ƒeƒŠƒAƒ‹‚ÌƒCƒ“ƒXƒyƒNƒ^‚É‚ÍƒJƒXƒ^ƒ€GUI‚ğ•\¦‚µ‚È‚¢
+            // ãƒãƒ†ãƒªã‚¢ãƒ«ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã«ã¯ã‚«ã‚¹ã‚¿ãƒ GUIã‚’è¡¨ç¤ºã—ãªã„
             if (editor.target is Material || editor.target is DefaultAsset) {
                 return;
             }
@@ -77,7 +77,7 @@ namespace nitou.Tools.Inspector {
             using (new EditorGUILayout.HorizontalScope())
             using (new EditorUtil.GUIContentColorScope(Colors.White)) {
 
-                // Šî–{‘€ìƒ{ƒ^ƒ“
+                // åŸºæœ¬æ“ä½œãƒœã‚¿ãƒ³
                 DrawLockButton();
                 DrawDebugButton();
                 DrawPingButton(editor.target);
@@ -99,7 +99,7 @@ namespace nitou.Tools.Inspector {
         #region Drawing Method
 
         /// <summary>
-        /// ƒƒbƒNƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// ãƒ­ãƒƒã‚¯ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private static void DrawLockButton() {
             using var enableScope = new EditorUtil.EnableScope(true);
@@ -114,7 +114,7 @@ namespace nitou.Tools.Inspector {
         }
 
         /// <summary>
-        /// ƒfƒoƒbƒOƒ‚[ƒhØ‚è‘Ö‚¦ƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰åˆ‡ã‚Šæ›¿ãˆãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private static void DrawDebugButton() {
             using var enableScope = new EditorUtil.EnableScope(true);
@@ -124,7 +124,7 @@ namespace nitou.Tools.Inspector {
 
             if (!GUILayout.Button(DEBUG_TEXTURE.GuiContent, EditorStyles.miniButtonMid)) return;
 
-            // Inspector‚Ìæ“¾
+            // Inspectorã®å–å¾—
             var editorWindowArray = Resources.FindObjectsOfTypeAll<EditorWindow>();
             var inspectorWindow = ArrayUtility.Find(editorWindowArray, x => x.GetType().Name == "InspectorWindow");
             if (inspectorWindow == null) return;
@@ -140,7 +140,7 @@ namespace nitou.Tools.Inspector {
             );
             Debug.Assert(propertyInfo != null, nameof(propertyInfo) + " != null");
 
-            // 1 ƒtƒŒ[ƒ€’x‚ç‚¹‚È‚¢‚ÆˆÈ‰º‚ÌƒGƒ‰[‚ª”­¶‚·‚é
+            // 1 ãƒ•ãƒ¬ãƒ¼ãƒ é…ã‚‰ã›ãªã„ã¨ä»¥ä¸‹ã®ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹
             // EndLayoutGroup: BeginLayoutGroup must be called first.
             EditorApplication.delayCall += () => {
                 propertyInfo.SetValue(inspectorWindow, isNormal ? InspectorMode.Debug : InspectorMode.Normal);
@@ -160,7 +160,7 @@ namespace nitou.Tools.Inspector {
         }
 
         /// <summary>
-        /// ƒvƒƒpƒeƒBƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private static void DrawPropertiesButton() {
             using var enableScope = new EditorUtil.EnableScope(true);
@@ -171,7 +171,7 @@ namespace nitou.Tools.Inspector {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“\•tƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è²¼ä»˜ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private static void DrawPasteComponentAsNew(Editor editor) {
             var enabled = editor.targets.All(x => x is GameObject);
@@ -190,7 +190,7 @@ namespace nitou.Tools.Inspector {
 
             if (GUILayout.Button(META_TEXTURE.GuiContent, EditorStyles.miniButtonMid)) {
                 if (!EditorSettings.projectGenerationUserExtensions.Contains("meta")) {
-                    Debug_.LogWarning("Project Settings ‚ÌuEditor > Additional extensions to includev‚É `meta` ‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢");
+                    Debug_.LogWarning("Project Settings ã®ã€ŒEditor > Additional extensions to includeã€ã« `meta` ã‚’è¿½åŠ ã—ã¦ãã ã•ã„");
                     return;
                 }
 
@@ -221,7 +221,7 @@ namespace nitou.Tools.Inspector {
                     try {
                         Process.Start(startInfo);
                     } catch (Win32Exception) {
-                        Debug_.LogError("Mac ‚Å‚±‚ÌƒRƒ}ƒ“ƒh‚ğg—p‚·‚éê‡‚Í Visual Studio Code ‚ÌƒRƒ}ƒ“ƒhƒpƒŒƒbƒg‚Å `Shell Command: Install code command in PATH` ‚ğÀs‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·");
+                        Debug_.LogError("Mac ã§ã“ã®ã‚³ãƒãƒ³ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ Visual Studio Code ã®ã‚³ãƒãƒ³ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆã§ `Shell Command: Install code command in PATH` ã‚’å®Ÿè¡Œã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™");
                     }
                 }
             }
@@ -249,7 +249,7 @@ namespace nitou.Tools.Inspector {
         // 
 
         /// <summary>
-        /// GUID‚ğ•\¦‚·‚é
+        /// GUIDã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         /// <param name="editor"></param>
         private static void DrawGuidLabel(Editor editor) {

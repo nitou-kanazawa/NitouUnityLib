@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 
-// [Ql]
-//  ƒ‰ƒCƒuƒhƒAƒuƒƒO: ƒWƒFƒlƒŠƒNƒXŒ^‚Ì”äŠr•û–@ http://templatecreate.blog.jp/archives/30579779.html
+// [å‚è€ƒ]
+//  ãƒ©ã‚¤ãƒ–ãƒ‰ã‚¢ãƒ–ãƒ­ã‚°: ã‚¸ã‚§ãƒãƒªã‚¯ã‚¹å‹ã®æ¯”è¼ƒæ–¹æ³• http://templatecreate.blog.jp/archives/30579779.html
 
 namespace nitou {
 
     /// <summary>
-    /// —ñ‹“Œ^‚Ì—v‘f‡‚ÉˆÓ–¡‚ğ‚½‚¹‚é‚½‚ß‚Ìƒ‰ƒbƒp[iNext,Previous‚Ö‚Ì‘JˆÚj
+    /// åˆ—æŒ™å‹ã®è¦ç´ é †ã«æ„å‘³ã‚’æŒãŸã›ã‚‹ãŸã‚ã®ãƒ©ãƒƒãƒ‘ãƒ¼ï¼ˆNext,Previousã¸ã®é·ç§»ï¼‰
     /// </summary>
     public class CountableEnum<T> where T : Enum {
         
-        private readonly Array _valueArray;  // ‘ÎÛ(—ñ‹“Œ^)‚Ì‘S—v‘f
-        private int _id;            // Œ»İ’l‚ÌƒCƒ“ƒfƒbƒNƒX
+        private readonly Array _valueArray;  // å¯¾è±¡(åˆ—æŒ™å‹)ã®å…¨è¦ç´ 
+        private int _id;            // ç¾åœ¨å€¤ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
 
 
         /// ----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ namespace nitou {
         public T Tail { get => Get(_valueArray.Length - 1); }
         public T Current { get => Get(_id); }
 
-        // ”»’è
+        // åˆ¤å®š
         public bool IsHead { get => Get(_id).Equals(Head); }
         public bool IsTail { get => Get(_id).Equals(Tail); }
 
@@ -31,27 +31,27 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public CountableEnum(T target) {
-            _valueArray = Enum.GetValues(target.GetType());      // —ñ‹“Œ^‚Ì‘S—v‘f
-            _id = GetId(target);                             // w’è—v‘f‚ÌƒCƒ“ƒfƒbƒNƒX
+            _valueArray = Enum.GetValues(target.GetType());      // åˆ—æŒ™å‹ã®å…¨è¦ç´ 
+            _id = GetId(target);                             // æŒ‡å®šè¦ç´ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
         }
 
-        // ”äŠr
+        // æ¯”è¼ƒ
         public bool Is(T target) => Get(_id).CompareTo(target) == 0;
 
-        // ‘JˆÚ
+        // é·ç§»
         public T MoveNext() {
-            _id = IsTail ? 0 : _id + 1;   // Ÿ‚Ì’l‚Éi‚ß‚é
+            _id = IsTail ? 0 : _id + 1;   // æ¬¡ã®å€¤ã«é€²ã‚ã‚‹
             return Current;
         }
         public T MovePrevious() {
-            _id = IsHead ? _valueArray.Length - 1 : _id - 1;   // ‘O‚Ì’l‚É–ß‚·
+            _id = IsHead ? _valueArray.Length - 1 : _id - 1;   // å‰ã®å€¤ã«æˆ»ã™
             return Current;
         }
 
-        // ƒfƒoƒbƒO
+        // ãƒ‡ãƒãƒƒã‚°
         public override string ToString() {
             return string.Format("type:{0} [{1}-{2}]  current:{3}", Type, Head, Tail, Get(_id));
         }

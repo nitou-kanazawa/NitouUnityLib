@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Pool;
 
-// [Ql]
-//  qiita: Unity•W€‚ÌObjectPool‚ğ”Ä—p“I‚Ég‚¤ƒNƒ‰ƒX‚Ìì¬ https://qiita.com/KeichiMizutani/items/ca46a40de02e87b3d8a8
+// [å‚è€ƒ]
+//  qiita: Unityæ¨™æº–ã®ObjectPoolã‚’æ±ç”¨çš„ã«ä½¿ã†ã‚¯ãƒ©ã‚¹ã®ä½œæˆ https://qiita.com/KeichiMizutani/items/ca46a40de02e87b3d8a8
 
 namespace nitou.DesignPattern.Pooling {
 

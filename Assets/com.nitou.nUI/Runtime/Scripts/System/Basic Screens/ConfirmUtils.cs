@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Modal;
@@ -8,7 +8,7 @@ namespace nitou.UI.BasicScreens {
     public static class ConfirmUtils {
 
         /// <summary>
-        /// ‚P‘I‘ğˆ‚ÌŠm”Fƒ‚[ƒ_ƒ‹‚ğ•\¦‚·‚é
+        /// ï¼‘é¸æŠè‚¢ã®ç¢ºèªãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public async static UniTask PushOneChoiceModalAsync(
             this ModalContainer container,
@@ -21,13 +21,13 @@ namespace nitou.UI.BasicScreens {
                 onLoad: x => {
                     var modal = x.modal;
 
-                    // ¦ƒNƒŠƒbƒN‚Ìˆ—
+                    // â€»ã‚¯ãƒªãƒƒã‚¯æ™‚ã®å‡¦ç†
                     void OnClick() {
                         isCliced = true;
                         container.Pop(true);
                     }
 
-                    // ƒoƒCƒ“ƒh
+                    // ãƒã‚¤ãƒ³ãƒ‰
                     modal.OnYesButtonClicked.Subscribe(_ => OnClick());
                 });
 
@@ -35,7 +35,7 @@ namespace nitou.UI.BasicScreens {
         }
 
         /// <summary>
-        /// ‚Q‘I‘ğˆ‚ÌŠm”Fƒ‚[ƒ_ƒ‹‚ğ•\¦‚·‚é
+        /// ï¼’é¸æŠè‚¢ã®ç¢ºèªãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public async static UniTask<bool> PushTwoChoiceModalAsync(
             this ModalContainer container,
@@ -49,7 +49,7 @@ namespace nitou.UI.BasicScreens {
                 onLoad: x => {
                     var modal = x.modal;
 
-                    // ¦ƒNƒŠƒbƒN‚Ìˆ—
+                    // â€»ã‚¯ãƒªãƒƒã‚¯æ™‚ã®å‡¦ç†
                     void OnClick(bool value) {
                         isCliced = true;
                         result = value;
@@ -57,7 +57,7 @@ namespace nitou.UI.BasicScreens {
                         container.Pop(true);
                     }
 
-                    // ƒoƒCƒ“ƒh
+                    // ãƒã‚¤ãƒ³ãƒ‰
                     modal.OnYesButtonClicked.Subscribe(_ => OnClick(true));
                     modal.OnNoButtonClicked.Subscribe(_ => OnClick(false));
                 });

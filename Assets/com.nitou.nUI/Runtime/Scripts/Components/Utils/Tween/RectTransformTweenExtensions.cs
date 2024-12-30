@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using nitou;
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: RectTransform‚ÌƒTƒCƒY‚ğƒXƒNƒŠƒvƒg‚©‚ç•ÏX‚·‚é https://nekojara.city/unity-rect-transform-size
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: RectTransformã®ã‚µã‚¤ã‚ºã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰å¤‰æ›´ã™ã‚‹ https://nekojara.city/unity-rect-transform-size
 
 namespace DG.Tweening{
 
     /// <summary>
-    /// RectTransform‚ÌTweenƒ‰ƒCƒuƒ‰ƒŠƒNƒ‰ƒX
+    /// RectTransformã®Tweenãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class RectTransformTweenExtensions{
 
         /// <summary>
-        /// ƒAƒ“ƒJ[‚ğŒÅ’è‚³‚¹‚ÄSizeDelta‚ğƒAƒjƒ[ƒVƒ‡ƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚¢ãƒ³ã‚«ãƒ¼ã‚’å›ºå®šã•ã›ã¦SizeDeltaã‚’ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOSizeDeltaWithCurrentAnchers(this RectTransform self, Vector2 endValue, float duration) {
             return DOTween.To(

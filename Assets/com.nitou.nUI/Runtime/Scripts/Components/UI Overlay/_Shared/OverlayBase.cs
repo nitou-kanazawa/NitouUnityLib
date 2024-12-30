@@ -1,11 +1,11 @@
-using System.Threading;
+ï»¿using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace nitou.UI.Overlay {
 
     /// <summary>
-    /// ƒI[ƒoƒŒƒC‚ÌŠî’êƒNƒ‰ƒX
+    /// ã‚ªãƒ¼ãƒãƒ¬ã‚¤ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(CanvasGroup))]
@@ -20,17 +20,17 @@ namespace nitou.UI.Overlay {
         protected CanvasGroup _canvasGroup;
 
         /// <summary>
-        /// ‘JˆÚó‘ÔD
+        /// é·ç§»çŠ¶æ…‹ï¼
         /// </summary>
         public State OverlayState { get; private set; } = State.Transition;
 
         /// <summary>
-        /// ŠWŠG‚ª•Â‚¶‚½ó‘Ô‚©‚Ç‚¤‚©
+        /// è“‹çµµãŒé–‰ã˜ãŸçŠ¶æ…‹ã‹ã©ã†ã‹
         /// </summary>
         public bool IsClose => OverlayState is State.Close;
 
         /// <summary>
-        /// ŠWŠG‚ª•Â‚¶‚½ó‘Ô‚©‚Ç‚¤‚©
+        /// è“‹çµµãŒé–‰ã˜ãŸçŠ¶æ…‹ã‹ã©ã†ã‹
         /// </summary>
         public bool IsOpen => OverlayState is State.Open;
 
@@ -43,7 +43,7 @@ namespace nitou.UI.Overlay {
 
             Initialize();
 
-            // ‰Šúó‘Ô‚ğ”ñ“¯Šú‚Åİ’è
+            // åˆæœŸçŠ¶æ…‹ã‚’éåŒæœŸã§è¨­å®š
             await OpenInternal(0f);
             OverlayState = State.Open;
         }
@@ -56,10 +56,10 @@ namespace nitou.UI.Overlay {
         // Public Methord
 
         /// <summary>
-        /// Progress: 1¨0‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 1â†’0ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         public async UniTask OpenAsync(float duration = 1f) {
-            // ¦Š®‘S‚É•Â‚¶‚½ó‹µ‚Å‚È‚¯‚ê‚ÎI—¹
+            // â€»å®Œå…¨ã«é–‰ã˜ãŸçŠ¶æ³ã§ãªã‘ã‚Œã°çµ‚äº†
             if (!IsClose) return;
 
             OverlayState = State.Transition;
@@ -68,10 +68,10 @@ namespace nitou.UI.Overlay {
         }
 
         /// <summary>
-        /// Progress: 0¨1‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 0â†’1ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         public async UniTask CloseAsync(float duration = 1f) {
-            // ¦Š®‘S‚ÉŠJ‚¢‚½ó‹µ‚Å‚È‚¯‚ê‚ÎI—¹
+            // â€»å®Œå…¨ã«é–‹ã„ãŸçŠ¶æ³ã§ãªã‘ã‚Œã°çµ‚äº†
             if (!IsOpen) return;
 
             OverlayState = State.Transition;
@@ -81,7 +81,7 @@ namespace nitou.UI.Overlay {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Methord (‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“)
+        // Public Methord (é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³)
 
         protected abstract UniTask OpenInternal(float duration);
 

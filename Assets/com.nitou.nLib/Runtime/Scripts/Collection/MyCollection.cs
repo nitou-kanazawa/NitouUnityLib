@@ -1,7 +1,7 @@
-using System.Collections.ObjectModel;
+ï»¿using System.Collections.ObjectModel;
 
-// [Ql]
-//  _: Collection<T>‚Ìg—p—p“r‚ÆList‚Æ‚Ìˆá‚¢ https://note.dokeep.jp/post/csharp-collection-list/
+// [å‚è€ƒ]
+//  _: Collection<T>ã®ä½¿ç”¨ç”¨é€”ã¨Listã¨ã®é•ã„ https://note.dokeep.jp/post/csharp-collection-list/
 //  stack ovelrflow: Collection<T> class and it's use https://stackoverflow.com/questions/12069987/collectiont-class-and-its-use
 namespace nitou {
 

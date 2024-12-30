@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.AssetImporters;
@@ -10,7 +10,7 @@ namespace nitou.Tools.CodeGeneration{
 
 
         public override void OnInspectorGUI() {
-            // ƒCƒ“ƒ|[ƒg‚³‚ê‚½ƒAƒZƒbƒg‚ÌƒCƒ“ƒXƒyƒNƒ^‚ğ•\¦
+            // ã‚¤ãƒ³ãƒãƒ¼ãƒˆã•ã‚ŒãŸã‚¢ã‚»ãƒƒãƒˆã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã‚’è¡¨ç¤º
             var asset = (CodeTemplateAsset)target;
 
             EditorGUILayout.LabelField("File content:");

@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// <see cref="Color"/>Œ^‚ÌƒCƒxƒ“ƒgƒŠƒXƒi[
+    /// <see cref="Color"/>å‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠãƒ¼
     /// </summary>
     [AddComponentMenu(
         ComponentMenu.Prefix.EventChannel + "Color Event Listener"

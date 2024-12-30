@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI {
 
     /// <summary>
-    /// ‰æ–Êƒ^ƒCƒv
+    /// ç”»é¢ã‚¿ã‚¤ãƒ—
     /// </summary>
     public enum ScreenType {
         None,
@@ -36,7 +36,7 @@ namespace nitou.UI {
         #region Properity
 
         /// <summary>
-        /// ’Êí‰æ–Ê‚ÌƒRƒ“ƒeƒi
+        /// é€šå¸¸ç”»é¢ã®ã‚³ãƒ³ãƒ†ãƒŠ
         /// </summary>
         public PageContainer PageContainer {
             get => _pageContainer;
@@ -44,7 +44,7 @@ namespace nitou.UI {
         }
 
         /// <summary>
-        /// ƒ|ƒbƒvƒAƒbƒv‰æ–Ê‚ÌƒRƒ“ƒeƒi
+        /// ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ç”»é¢ã®ã‚³ãƒ³ãƒ†ãƒŠ
         /// </summary>
         public ModalContainer ModalContainer {
             get => _modalContainer;
@@ -52,7 +52,7 @@ namespace nitou.UI {
         }
 
         /// <summary>
-        /// ‘JˆÚ‰æ–Ê‚ÌƒRƒ“ƒeƒi
+        /// é·ç§»ç”»é¢ã®ã‚³ãƒ³ãƒ†ãƒŠ
         /// </summary>
         public ModalContainer OverlayContainer {
             get => _modalContainer;
@@ -61,7 +61,7 @@ namespace nitou.UI {
 
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚È‰æ–Êƒ^ƒCƒv
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªç”»é¢ã‚¿ã‚¤ãƒ—
         /// </summary>
         [Title("State Informatin")]
         [GUIColor(0f, 1f, 0.5f)]
@@ -69,29 +69,29 @@ namespace nitou.UI {
         public IReadOnlyReactiveProperty<ScreenType> CurrentType => _currentType;
 
         /// <summary>
-        /// Push‚³‚ê‚Ä‚¢‚éƒy[ƒW”
+        /// Pushã•ã‚Œã¦ã„ã‚‹ãƒšãƒ¼ã‚¸æ•°
         /// </summary>
         [ShowInInspector, ReadOnly, Indent]
         public int PageCount => (_pageContainer != null) ? _pageContainer.Pages.Count : 0;
 
         /// <summary>
-        /// Push‚³‚ê‚Ä‚¢‚éƒ‚[ƒ_ƒ‹”
+        /// Pushã•ã‚Œã¦ã„ã‚‹ãƒ¢ãƒ¼ãƒ€ãƒ«æ•°
         /// </summary>
         [ShowInInspector, ReadOnly, Indent]
         public int ModalCount => (_modalContainer != null) ? _modalContainer.Modals.Count : 0;
 
         /// <summary>
-        /// ƒy[ƒW‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©
+        /// ãƒšãƒ¼ã‚¸ãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         public bool ExistPage => PageCount >= 1;
 
         /// <summary>
-        /// ƒ‚[ƒ_ƒ‹‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©
+        /// ãƒ¢ãƒ¼ãƒ€ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         public bool ExistModal => ModalCount >= 1;
 
         /// <summary>
-        /// ‰æ–Ê‘JˆÚ’†‚©‚Ç‚¤‚©
+        /// ç”»é¢é·ç§»ä¸­ã‹ã©ã†ã‹
         /// </summary>
         public bool IsInTransition => _pageContainer.IsInTransition || _modalContainer.IsInTransition;
 
@@ -111,32 +111,32 @@ namespace nitou.UI {
         // Public Method (Push)
 
         /// <summary>
-        /// Page‚ğ’Ç‰Á‚µ‚ÄCXVˆ—‚ğs‚¤D
+        /// Pageã‚’è¿½åŠ ã—ã¦ï¼Œæ›´æ–°å‡¦ç†ã‚’è¡Œã†ï¼
         /// </summary>
         public async UniTask<TPage> PushPage<TPage>(string resourceKey, bool playAnimation,
             bool stack = true, string pageId = null, bool loadAsync = true,
             Action<(string pageId, TPage page)> onLoad = null) where TPage : Page {
 
             if (IsInTransition) {
-                Debug_.LogWarning("‘JˆÚ’†‚ÍPage‚ğPush‚Å‚«‚Ü‚¹‚ñD", Colors.Red);
+                Debug_.LogWarning("é·ç§»ä¸­ã¯Pageã‚’Pushã§ãã¾ã›ã‚“ï¼", Colors.Red);
                 return null;
             }
             if (ExistModal) {
-                Debug_.LogWarning("Modal‚ª•\¦‚³‚ê‚Ä‚¢‚é‚½‚ßCPage‚ğ’Ç‰Á‚Å‚«‚Ü‚¹‚ñ", Colors.Red);
+                Debug_.LogWarning("ModalãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ãŸã‚ï¼ŒPageã‚’è¿½åŠ ã§ãã¾ã›ã‚“", Colors.Red);
                 return null;
             }
 
-            // Page‚ª‚ ‚éê‡C
+            // PageãŒã‚ã‚‹å ´åˆï¼Œ
             if (ExistPage) {
                 _pageContainer.GetActivePage().SetInteractable(false);
             }
 
 
-            // Page‚Ì’Ç‰Á
+            // Pageã®è¿½åŠ 
             TPage page = await _pageContainer.PushPage<TPage>(resourceKey, playAnimation, stack, pageId, loadAsync, onLoad);
             page.SetInteractable(true);
 
-            // ƒXƒe[ƒgî•ñ‚ÌXV
+            // ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã®æ›´æ–°
             UpdateStateInfo();
 
             return page;
@@ -144,32 +144,32 @@ namespace nitou.UI {
 
 
         /// <summary>
-        /// ƒ‚[ƒ_ƒ‹‚ğPush‚·‚é
+        /// ãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’Pushã™ã‚‹
         /// </summary>
         public async UniTask<TModal> PushModal<TModal>(string resourceKey, bool playAnimation,
             string modalId = null, bool loadAsync = true,
             Action<(string modalId, TModal modal)> onLoad = null) where TModal : Modal {
 
             if (IsInTransition) {
-                Debug_.LogWarning("‘JˆÚ’†‚ÍModal‚ğPush‚Å‚«‚Ü‚¹‚ñD", Colors.Red);
+                Debug_.LogWarning("é·ç§»ä¸­ã¯Modalã‚’Pushã§ãã¾ã›ã‚“ï¼", Colors.Red);
                 return null;
             }
 
-            // Modal‚ª‚ ‚éê‡
+            // ModalãŒã‚ã‚‹å ´åˆ
             if (ExistModal) {
                 _modalContainer.GetActiveModal().SetInteractable(false);
             }
-            // Page‚ª‚ ‚éê‡
+            // PageãŒã‚ã‚‹å ´åˆ
             else if (ExistPage) {
                 _pageContainer.GetActivePage().SetInteractable(false);
             }
 
 
-            // Modal‚Ì’Ç‰Á
+            // Modalã®è¿½åŠ 
             TModal modal = await _modalContainer.PushModal<TModal>(resourceKey, playAnimation, modalId, loadAsync, onLoad);
             modal.SetInteractable(true);
 
-            // ƒXƒe[ƒgî•ñ‚ÌXV
+            // ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã®æ›´æ–°
             UpdateStateInfo();
 
             return modal;
@@ -180,30 +180,30 @@ namespace nitou.UI {
         // Public Method (Pop)
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚È<see cref="Page"/>‚ğƒ|ƒbƒv‚·‚é.
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãª<see cref="Page"/>ã‚’ãƒãƒƒãƒ—ã™ã‚‹.
         /// </summary>
         public async UniTask PopPage(bool playAnimation, int popCount = 1) {
             if (!ExistPage) return;
             if (popCount <= 0 || PageCount < popCount) return;
 
             if (IsInTransition) {
-                Debug_.LogWarning("‘JˆÚ’†‚ÍPop‘JˆÚ‚ğs‚¦‚Ü‚¹‚ñD", Colors.Red);
+                Debug_.LogWarning("é·ç§»ä¸­ã¯Popé·ç§»ã‚’è¡Œãˆã¾ã›ã‚“ï¼", Colors.Red);
                 return;
             }
             if (ExistModal) {
-                Debug_.LogWarning("Modal‚ª•\¦‚³‚ê‚Ä‚¢‚é‚½‚ßCPage‚ğíœ‚Å‚«‚Ü‚¹‚ñ", Colors.Red);
+                Debug_.LogWarning("ModalãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ãŸã‚ï¼ŒPageã‚’å‰Šé™¤ã§ãã¾ã›ã‚“", Colors.Red);
                 return;
             }
 
             _pageContainer.GetActivePage().SetInteractable(false);
 
-            // Page‚Ìíœ
+            // Pageã®å‰Šé™¤
             await _pageContainer.Pop(playAnimation, popCount);
 
-            // ƒXƒe[ƒgî•ñ‚ÌXV
+            // ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã®æ›´æ–°
             UpdateStateInfo();
 
-            // Selectableİ’è
+            // Selectableè¨­å®š
             if (ExistPage) {
                 var page = _pageContainer.GetActivePage();
                 page.SetInteractable(true);
@@ -211,33 +211,33 @@ namespace nitou.UI {
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚È<see cref="Modal"/>‚ğƒ|ƒbƒv‚·‚é.
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãª<see cref="Modal"/>ã‚’ãƒãƒƒãƒ—ã™ã‚‹.
         /// </summary>
         public async UniTask PopModal(bool playAnimation, int popCount = 1) {
             if (!ExistModal) return;
             if (popCount <= 0 || ModalCount < popCount) return;
 
             if (IsInTransition) {
-                Debug_.LogWarning("‘JˆÚ’†‚Íƒ‚[ƒ_ƒ‹‚ğPop‚Å‚«‚Ü‚¹‚ñD", Colors.Red);
+                Debug_.LogWarning("é·ç§»ä¸­ã¯ãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’Popã§ãã¾ã›ã‚“ï¼", Colors.Red);
                 return;
             }
 
-            // ‘I‘ğó‘Ô‚Ì‰ğœ
+            // é¸æŠçŠ¶æ…‹ã®è§£é™¤
             _modalContainer.GetActiveModal().SetInteractable(false);
 
-            // Modal‚Ìíœ
+            // Modalã®å‰Šé™¤
             await _modalContainer.Pop(playAnimation, popCount);
 
-            // ƒXƒe[ƒgî•ñ‚ÌXV
+            // ã‚¹ãƒ†ãƒ¼ãƒˆæƒ…å ±ã®æ›´æ–°
             UpdateStateInfo();
 
-            // ‚Ü‚¾ƒ‚[ƒ_ƒ‹‚ª‘¶İ‚·‚éê‡C
+            // ã¾ã ãƒ¢ãƒ¼ãƒ€ãƒ«ãŒå­˜åœ¨ã™ã‚‹å ´åˆï¼Œ
             if (ExistModal) {
-                Debug_.Log($"‚Ü‚¾ƒ‚[ƒ_ƒ‹‚Í‚ ‚é‚ºDname :{_modalContainer.GetActiveModal().name}");
+                Debug_.Log($"ã¾ã ãƒ¢ãƒ¼ãƒ€ãƒ«ã¯ã‚ã‚‹ãœï¼name :{_modalContainer.GetActiveModal().name}");
                 var modal = _modalContainer.GetActiveModal();
                 modal.SetInteractable(true);
             }
-            // ¦Modal‚©‚çPage‚É§Œä‚ª•Ï‚í‚Á‚½ê‡C
+            // â€»Modalã‹ã‚‰Pageã«åˆ¶å¾¡ãŒå¤‰ã‚ã£ãŸå ´åˆï¼Œ
             else if (ExistPage) {
                 Debug_.Log($"Switch controll [Modal => Page]", Colors.Orange);
                 var page = _pageContainer.GetActivePage();
@@ -246,12 +246,12 @@ namespace nitou.UI {
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚È‰æ–Ê‚ğƒ|ƒbƒv‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªç”»é¢ã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public async UniTask Pop(bool playAnimation) {
-            // ‘JˆÚ’†‚Ìê‡CƒGƒ‰[‚ğ“Š‚°‚é
+            // é·ç§»ä¸­ã®å ´åˆï¼Œã‚¨ãƒ©ãƒ¼ã‚’æŠ•ã’ã‚‹
             if (IsInTransition)
-                throw new InvalidOperationException("‘JˆÚ’†‚ÍPage/Modal‚ÌPop‚ğs‚¦‚Ü‚¹‚ñD");
+                throw new InvalidOperationException("é·ç§»ä¸­ã¯Page/Modalã®Popã‚’è¡Œãˆã¾ã›ã‚“ï¼");
 
             if (ExistModal) {
                 await PopModal(playAnimation);
@@ -260,12 +260,12 @@ namespace nitou.UI {
                 await PopPage(playAnimation);
 
             } else {
-                throw new InvalidOperationException("ƒRƒ“ƒeƒi‚ÉPage/Modal‚ª‘¶İ‚µ‚È‚¢‚½‚ßCPop‘JˆÚ‚ğs‚¦‚Ü‚¹‚ñ.");
+                throw new InvalidOperationException("ã‚³ãƒ³ãƒ†ãƒŠã«Page/ModalãŒå­˜åœ¨ã—ãªã„ãŸã‚ï¼ŒPopé·ç§»ã‚’è¡Œãˆã¾ã›ã‚“.");
             }
         }
 
         /// <summary>
-        /// ‘S‚Ä‚ÌPageCModal‚ğƒ|ƒbƒv‚·‚é
+        /// å…¨ã¦ã®Pageï¼ŒModalã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public async UniTask PopAll(bool playAnimation = false) {
             await PopModal(playAnimation, ModalCount);
@@ -277,7 +277,7 @@ namespace nitou.UI {
         // Private Method
 
         /// <summary>
-        /// ƒXƒ^ƒbƒNó‘Ô‚ÉŠî‚Ã‚¢‚ÄƒAƒNƒeƒBƒuƒ‚[ƒh‚ğXV‚·‚é
+        /// ã‚¹ã‚¿ãƒƒã‚¯çŠ¶æ…‹ã«åŸºã¥ã„ã¦ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãƒ¢ãƒ¼ãƒ‰ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         private void UpdateStateInfo() {
 

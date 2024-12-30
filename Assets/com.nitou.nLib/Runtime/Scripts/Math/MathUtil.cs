@@ -1,39 +1,39 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Mathf"/>‚É‘«‚è‚È‚¢‹@”\‚ğ’ñ‹Ÿ‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒNƒ‰ƒX
+    /// <see cref="Mathf"/>ã«è¶³ã‚Šãªã„æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class MathUtil{
 
         /// ----------------------------------------------------------------------------
-        #region —v‘f‚Ìæ“¾
+        #region è¦ç´ ã®å–å¾—
 
         /// <summary>
-        /// —v‘f‚ÌÅ‘å’l‚ğ•Ô‚·
+        /// è¦ç´ ã®æœ€å¤§å€¤ã‚’è¿”ã™
         /// </summary>
         public static float Max(Vector2 vector) {
             return Mathf.Max(vector.x, vector.y);
         }
 
         /// <summary>
-        /// —v‘f‚ÌÅ‘å’l‚ğ•Ô‚·
+        /// è¦ç´ ã®æœ€å¤§å€¤ã‚’è¿”ã™
         /// </summary>
         public static float Max(Vector3 vector) {
             return Mathf.Max(vector.x, vector.y, vector.z);
         }
 
         /// <summary>
-        /// —v‘f‚ÌÅ¬’l‚ğ•Ô‚·
+        /// è¦ç´ ã®æœ€å°å€¤ã‚’è¿”ã™
         /// </summary>
         public static float Min(Vector2 vector) {
             return Mathf.Min(vector.x, vector.y);
         }
 
         /// <summary>
-        /// —v‘f‚ÌÅ¬’l‚ğ•Ô‚·
+        /// è¦ç´ ã®æœ€å°å€¤ã‚’è¿”ã™
         /// </summary>
         public static float Min(Vector3 vector) {
             return Mathf.Min(vector.x, vector.y, vector.z);
@@ -42,12 +42,12 @@ namespace nitou{
 
 
         /// ----------------------------------------------------------------------------
-        #region ‰~Œ`À•W
+        #region å††å½¢åº§æ¨™
 
         private const int MIN_SEGMENT = 3;
 
         /// <summary>
-        /// ‰~ã‚ÌÀ•W‚ğæ“¾‚·‚é
+        /// å††ä¸Šã®åº§æ¨™ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static List<Vector3> CirclePoints(float radius, List<Vector3> resultPoints, int segments = 20, 
             Vector3 offset = default, bool isLoop = true,
@@ -56,10 +56,10 @@ namespace nitou{
             var pointCount = Mathf.Max(segments, MIN_SEGMENT);
             var deltaAngle = (Mathf.PI * 2) / pointCount;
 
-            // ¦360“x‚Ì“_‚àŠÜ‚ß‚½‚¢ê‡‚Í{‚P
+            // â€»360åº¦ã®ç‚¹ã‚‚å«ã‚ãŸã„å ´åˆã¯ï¼‹ï¼‘
             if (isLoop) pointCount++;
 
-            // “_—ñ‚Ì¶¬
+            // ç‚¹åˆ—ã®ç”Ÿæˆ
             resultPoints.Clear();
             for (int i = 0; i < pointCount; i++) {
                 resultPoints.Add(CirclePoint(radius, i * deltaAngle, type) + offset);
@@ -68,7 +68,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// ‰~ã‚ÌÀ•W‚ğæ“¾‚·‚é
+        /// å††ä¸Šã®åº§æ¨™ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 CirclePoint(float radius, float angle, PlaneType type = PlaneType.ZX) {
          return type switch {
@@ -91,31 +91,31 @@ namespace nitou{
 
 
         /// ----------------------------------------------------------------------------
-        #region Šp“x•ÏŠ·
+        #region è§’åº¦å¤‰æ›
 
         /// <summary>
-        /// 2ŸŒ³ƒxƒNƒgƒ‹‚©‚çŠp“x(radian)‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// 2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã‹ã‚‰è§’åº¦(radian)ã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float VectorToRad(this Vector2 vector) {
             return Mathf.Atan2(vector.y, vector.x);
         }
 
         /// <summary>
-        /// Šp“x(radian)‚©‚ç2ŸŒ³ƒxƒNƒgƒ‹‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è§’åº¦(radian)ã‹ã‚‰2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector2 RadToVector(this float radian) {
             return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
         }
 
         /// <summary>
-        /// 2ŸŒ³ƒxƒNƒgƒ‹‚©‚çŠp“x(degree)‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// 2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã‹ã‚‰è§’åº¦(degree)ã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static float VectorToDeg(this Vector2 vector) {
             return Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
         }
 
         /// <summary>
-        /// Šp“x(degree)‚©‚ç2ŸŒ³ƒxƒNƒgƒ‹‚Ö•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è§’åº¦(degree)ã‹ã‚‰2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã¸å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Vector2 DegToVector(this float degree) {
             return new Vector2(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad));
@@ -124,7 +124,7 @@ namespace nitou{
 
 
         /// <summary>
-        /// Œõü‚Æ“_‚ÌÅ‹ß–T“_‚ğæ“¾‚·‚é
+        /// å…‰ç·šã¨ç‚¹ã®æœ€è¿‘å‚ç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 FindClosestPointOnRay(Vector3 position, Vector3 direction, Vector3 targetPoint) {
             Vector3 fromRayToPoint = targetPoint - position;

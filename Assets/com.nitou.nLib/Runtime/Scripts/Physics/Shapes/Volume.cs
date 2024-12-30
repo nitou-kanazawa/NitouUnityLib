@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
     public static partial class Shapes {
 
         /// <summary>
-        /// Œ`ó‚ÌŠî’êƒNƒ‰ƒX
+        /// å½¢çŠ¶ã®åŸºåº•ã‚¯ãƒ©ã‚¹
         /// </summary>
         [System.Serializable]
         public abstract class Volume {
 
             /// <summary>
-            /// ƒ[ƒJƒ‹À•W
+            /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™
             /// </summary>
             public Vector3 position = Vector3.one;
 
             /// <summary>
-            /// ‰ñ“]iƒIƒCƒ‰[Špj
+            /// å›è»¢ï¼ˆã‚ªã‚¤ãƒ©ãƒ¼è§’ï¼‰
             /// </summary>
             public Vector3 eulerAngle = Vector3.zero;
 
@@ -24,22 +24,22 @@ namespace nitou {
             // Property
 
             /// <summary>
-            /// ‰ñ“]iƒNƒH[ƒ^ƒjƒIƒ“j
+            /// å›è»¢ï¼ˆã‚¯ã‚©ãƒ¼ã‚¿ãƒ‹ã‚ªãƒ³ï¼‰
             /// </summary>
             public Quaternion rotation => Quaternion.Euler(eulerAngle);
 
             /// <summary>
-            /// Šî€•ûŒüiX²j
+            /// åŸºæº–æ–¹å‘ï¼ˆXè»¸ï¼‰
             /// </summary>
             public Vector3 right => rotation * Vector3.right;
 
             /// <summary>
-            /// Šî€•ûŒüiY²j
+            /// åŸºæº–æ–¹å‘ï¼ˆYè»¸ï¼‰
             /// </summary>
             public Vector3 up => rotation * Vector3.up;
 
             /// <summary>
-            /// Šî€•ûŒüiZ²j
+            /// åŸºæº–æ–¹å‘ï¼ˆZè»¸ï¼‰
             /// </summary>
             public Vector3 forward => rotation * Vector3.forward;
 
@@ -48,7 +48,7 @@ namespace nitou {
             // Public Method
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Volume(Vector3 position, Quaternion rotation) {
                 this.position = position;
@@ -56,7 +56,7 @@ namespace nitou {
             }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Volume(Transform transform) {
                 this.position = transform.position;
@@ -70,14 +70,14 @@ namespace nitou {
             // Public Method
 
             /// <summary>
-            /// ƒ[ƒ‹ƒhÀ•WŒn‚Å‚ÌˆÊ’u‚ğæ“¾‚·‚é
+            /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ç³»ã§ã®ä½ç½®ã‚’å–å¾—ã™ã‚‹
             /// </summary>
             public Vector3 GetWorldPosition(Transform transform) {
                 return transform.TransformPoint(this.position);
             }
 
             /// <summary>
-            /// ƒ[ƒ‹ƒhÀ•WŒn‚Å‚Ì‰ñ“]‚ğæ“¾‚·‚é
+            /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ç³»ã§ã®å›è»¢ã‚’å–å¾—ã™ã‚‹
             /// </summary>
             public Quaternion GetWorldRotaion(Transform transform) {
                 return transform.rotation * Quaternion.Euler(this.eulerAngle);

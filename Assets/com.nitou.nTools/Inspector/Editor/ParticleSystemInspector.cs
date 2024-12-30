@@ -1,32 +1,32 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System;
 using UnityEditor;
 using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: ParticleSystem‚ÌInspector‚É"PlayEPause"‚È‚Ç‚Ìƒ{ƒ^ƒ“‚ğ’Ç‰Á‚·‚éƒGƒfƒBƒ^Šg’£ https://baba-s.hatenablog.com/entry/2022/02/22/090000
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: ParticleSystemã®Inspectorã«"Playãƒ»Pause"ãªã©ã®ãƒœã‚¿ãƒ³ã‚’è¿½åŠ ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µ https://baba-s.hatenablog.com/entry/2022/02/22/090000
 
 namespace nitou.Tools.Inspector {
     using nitou.EditorShared;
 
     /// <summary>
-    /// ParticleSystem‚ÌƒCƒ“ƒXƒyƒNƒ^[Šg’£
+    /// ParticleSystemã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼æ‹¡å¼µ
     /// </summary>
     [CustomEditor(typeof(ParticleSystem))]
     public sealed class ParticleSystemInspector : Editor {
         
-        // ƒIƒŠƒWƒiƒ‹‚ÌŠg’£ƒNƒ‰ƒX
+        // ã‚ªãƒªã‚¸ãƒŠãƒ«ã®æ‹¡å¼µã‚¯ãƒ©ã‚¹
         private static readonly Type BASE_EDITOR_TYPE = typeof(Editor)
             .Assembly
             .GetType("UnityEditor.ParticleSystemInspector");
 
         /// <summary>
-        /// ƒCƒ“ƒXƒyƒNƒ^•`‰æ
+        /// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿æç”»
         /// </summary>
         public override void OnInspectorGUI() {
 
             // -------------
-            // Šg’£•ª‚ÌƒCƒ“ƒXƒyƒNƒ^[•\¦
+            // æ‹¡å¼µåˆ†ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼è¡¨ç¤º
 
             var particleSystem = (ParticleSystem)target;
 
@@ -40,12 +40,12 @@ namespace nitou.Tools.Inspector {
                     DrawPauseButton(particleSystem);
                 }
                 
-                // ’â~
+                // åœæ­¢
                 if (GUILayout.Button("Stop")) {
                     particleSystem.Stop();
                 }
 
-                // ƒNƒŠƒA
+                // ã‚¯ãƒªã‚¢
                 if (GUILayout.Button("Clear")) {
                     particleSystem.Clear();
                 }
@@ -53,7 +53,7 @@ namespace nitou.Tools.Inspector {
 
 
             // -------------
-            // ƒIƒŠƒWƒiƒ‹‚ÌƒCƒ“ƒXƒyƒNƒ^[•\¦
+            // ã‚ªãƒªã‚¸ãƒŠãƒ«ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼è¡¨ç¤º
 
             var editor = CreateEditor(particleSystem, BASE_EDITOR_TYPE);
             editor.OnInspectorGUI();
@@ -61,7 +61,7 @@ namespace nitou.Tools.Inspector {
 
 
         /// <summary>
-        /// Ä¶ƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// å†ç”Ÿãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void DrawPlayButton(ParticleSystem particleSystem) {
             if (GUILayout.Button("Play")) {
@@ -70,7 +70,7 @@ namespace nitou.Tools.Inspector {
         }
 
         /// <summary>
-        /// ƒ|[ƒYƒ{ƒ^ƒ“‚ğ•\¦‚·‚é
+        /// ãƒãƒ¼ã‚ºãƒœã‚¿ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void DrawPauseButton(ParticleSystem particleSystem) {
             if (GUILayout.Button("Pause")) {

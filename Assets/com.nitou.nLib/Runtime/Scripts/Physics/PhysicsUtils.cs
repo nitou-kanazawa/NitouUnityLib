@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou{
 
     public static partial class PhysicsUtils{
 
         /// <summary>
-        /// <see cref="Shapes.Box"/>‚ÆŒğ·‚µ‚Ä‚¢‚é<see cref="Collider"/>‚ğ‘S‚Äæ“¾‚µ‚ÄƒLƒƒƒbƒVƒ…‚·‚é
+        /// <see cref="Shapes.Box"/>ã¨äº¤å·®ã—ã¦ã„ã‚‹<see cref="Collider"/>ã‚’å…¨ã¦å–å¾—ã—ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
         /// </summary>
         public static int OverlapBoxNonAlloc(Shapes.Box box, Collider[] results,int layerMask) {
 
@@ -18,7 +18,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// <see cref="Shapes.Box"/>‚ÆŒğ·‚µ‚Ä‚¢‚é<see cref="Collider"/>‚ğ‘S‚Äæ“¾‚µ‚ÄƒLƒƒƒbƒVƒ…‚·‚é
+        /// <see cref="Shapes.Box"/>ã¨äº¤å·®ã—ã¦ã„ã‚‹<see cref="Collider"/>ã‚’å…¨ã¦å–å¾—ã—ã¦ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
         /// </summary>
         public static int OverlapBoxNonAlloc(Transform trans, Shapes.Box box, Collider[] results, int layerMask) {
 

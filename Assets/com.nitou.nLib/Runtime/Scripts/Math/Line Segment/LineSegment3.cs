@@ -1,10 +1,10 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// ü•ª‚ğ•\‚·\‘¢‘Ì
+    /// ç·šåˆ†ã‚’è¡¨ã™æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct LineSegment3 {
@@ -17,21 +17,21 @@ namespace nitou {
         // Property
 
         /// <summary>
-        /// ’†“_
+        /// ä¸­ç‚¹
         /// </summary>
         public Vector3 Center => (start + end) * 0.5f;
 
         /// <summary>
-        /// •ûŒüƒxƒNƒgƒ‹
+        /// æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
         /// </summary>
         public Vector3 Vector => end - start;
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Šî–{ƒƒ\ƒbƒh)
+        // Public Method (åŸºæœ¬ãƒ¡ã‚½ãƒƒãƒ‰)
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public LineSegment3(Vector3 start, Vector3 end) {
             this.start = start;
@@ -39,28 +39,28 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¡»
+        /// è¤‡è£½
         /// </summary>
         public LineSegment3 Clone() {
             return new LineSegment3(start, end);
         }
 
         /// <summary>
-        /// •ûŒüƒxƒNƒgƒ‹
+        /// æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
         /// </summary>
         public float Distance() {
             return Vector3.Distance(start, end);
         }
 
         /// <summary>
-        /// ƒpƒ‰ƒ[ƒ^i0~1j‚ğw’è‚µ‚Äü•ªã‚Ì“_‚ğæ“¾‚·‚é
+        /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ï¼ˆ0~1ï¼‰ã‚’æŒ‡å®šã—ã¦ç·šåˆ†ä¸Šã®ç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector3 GetPoint(float t) {
             return Vector3.Lerp(start, end, t);
         }
 
         /// <summary>
-        /// •ªŠ„”‚ğw’è‚µ‚ÄAü•ªã‚Ì“_—ñ‚ğæ“¾‚·‚é
+        /// åˆ†å‰²æ•°ã‚’æŒ‡å®šã—ã¦ã€ç·šåˆ†ä¸Šã®ç‚¹åˆ—ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector3[] GetPoints(int num) {
             if (num <= 0) throw new System.InvalidOperationException("The number of divisions must be a positive integer greater than zero.");
@@ -69,7 +69,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚Q‚Â‚Ìü•ª‚ª•Às‚©”»’è‚·‚é
+        /// ï¼’ã¤ã®ç·šåˆ†ãŒä¸¦è¡Œã‹åˆ¤å®šã™ã‚‹
         /// </summary>
         public bool IsParallel(LineSegment3 other, float tolerance = 0.01f) {
             var cross = Vector3.Cross(this.Vector.normalized, other.Vector.normalized);
@@ -82,7 +82,7 @@ namespace nitou {
         public bool ContainsPoint(Vector3 point, float tolerance = 0.01f) {
             var toPoint = point - start;
             
-            // ¦ü•ª•ûŒü‚ğ–@ü‚Æ‚·‚é–Ê‚ÉË‰e
+            // â€»ç·šåˆ†æ–¹å‘ã‚’æ³•ç·šã¨ã™ã‚‹é¢ã«å°„å½±
             var projection = Vector3.Project(toPoint, this.Vector);
             
             // 
@@ -92,7 +92,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‹ß–T“_‚ğŒvZ‚·‚é
+        /// æœ€è¿‘å‚ç‚¹ã‚’è¨ˆç®—ã™ã‚‹
         /// </summary>
         public Vector3 GetNearestPoint(Vector3 point) {
             var lineVector = Vector;
@@ -152,7 +152,7 @@ namespace nitou {
 
 
     /// <summary>
-    /// <see cref="LineSegment3"/> ‚ÉŠÖ˜A‚µ‚½Šg’£ƒƒ\ƒbƒhW
+    /// <see cref="LineSegment3"/> ã«é–¢é€£ã—ãŸæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class LineSegment3Extensions {
 

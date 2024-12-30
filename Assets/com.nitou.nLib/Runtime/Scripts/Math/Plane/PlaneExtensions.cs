@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
+// [å‚è€ƒ]
 //  Document: Plane https://docs.unity3d.com/ja/2023.2/ScriptReference/Plane.html
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: •½–Ê‚ÌŒvZ‚ğŠy‚Å‚«‚éPlane\‘¢‘Ì‚Ìg‚¢•û https://nekojara.city/unity-plane-struct
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: å¹³é¢ã®è¨ˆç®—ã‚’æ¥½ã§ãã‚‹Planeæ§‹é€ ä½“ã®ä½¿ã„æ–¹ https://nekojara.city/unity-plane-struct
 
 namespace nitou {
 
     /// <summary>
-    /// •½–Ê
+    /// å¹³é¢
     /// </summary>
     public enum PlaneType {
         XY,
@@ -16,7 +16,7 @@ namespace nitou {
     }
 
     /// <summary>
-    /// <see cref="Plane"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Plane"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class PlaneExtensions {
 
@@ -28,17 +28,17 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒ‰ƒbƒv‚µ‚Ä‚¢‚é‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ãƒƒãƒ—ã—ã¦ã„ã‚‹ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsOverlapping(this Plane self, Vector3 position, float radius) {
             if (radius <= 0f) throw new System.InvalidOperationException("radius must be greater than 0.");
 
-            // ¦Plane.GetDistanceToPoint‚Í•„†•t‚«‹——£‚ğ•Ô‚·‚Ì‚ÅC‚Qæ‚Å”äŠr
+            // â€»Plane.GetDistanceToPointã¯ç¬¦å·ä»˜ãè·é›¢ã‚’è¿”ã™ã®ã§ï¼Œï¼’ä¹—ã§æ¯”è¼ƒ
             return Mathf.Pow(self.GetDistanceToPoint(position), 2) <= Mathf.Pow(radius, 2);
         }
 
         /// <summary>
-        /// ƒMƒYƒ‚‚ğ•\¦‚·‚é
+        /// ã‚®ã‚ºãƒ¢ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public static void DrawGizmo(this Plane self, Color color) {
             Gizmos_.DrawSphere(self.GetPosition(), 0.1f, color);
@@ -51,7 +51,7 @@ namespace nitou {
     public static class PlaneUtil {
 
         /// <summary>
-        /// •½–Ê‚É‘Î‰‚µ‚½–@üƒxƒNƒgƒ‹‚ğæ“¾‚·‚é
+        /// å¹³é¢ã«å¯¾å¿œã—ãŸæ³•ç·šãƒ™ã‚¯ãƒˆãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Vector3 GetNormal(this PlaneType type) {
             return type switch {

@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// <see cref="CanvasGroup"/>‚ÌTweenŠÖ˜A‚ÌŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="CanvasGroup"/>ã®Tweené–¢é€£ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class CanvasGrouopTweenExtensions {
 
@@ -11,14 +11,14 @@ namespace DG.Tweening {
         #region Fading Tweens
 
         /// <summary>
-        /// ƒtƒF[ƒhƒAƒEƒg‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeOut(this CanvasGroup self, float duration) {
             return self.DOFade(0.0F, duration);
         }
 
         /// <summary>
-        /// ƒtƒF[ƒhƒCƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeIn(this CanvasGroup canvasGroup, float duration) {
             return canvasGroup.DOFade(1.0F, duration);

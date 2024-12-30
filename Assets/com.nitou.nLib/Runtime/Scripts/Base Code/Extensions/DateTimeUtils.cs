@@ -1,7 +1,7 @@
-using System;
+ï»¿using System;
 using System.Globalization;
 
-// [Ql]
+// [å‚è€ƒ]
 //  LIGHT11: 
 
 namespace nitou {

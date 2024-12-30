@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace nitou.DesignPattern.Observer {
 
-    // Next‚Ì’l‚É‚æ‚Á‚Ä’Ê’m‚·‚é‚©‚µ‚È‚¢‚©‚ğ•ÏX‚·‚é
+    // Nextã®å€¤ã«ã‚ˆã£ã¦é€šçŸ¥ã™ã‚‹ã‹ã—ãªã„ã‹ã‚’å¤‰æ›´ã™ã‚‹
     public class WhereObservable<T> : IObservable<T> {
 
         private Func<T, bool> _operation;
@@ -18,7 +18,7 @@ namespace nitou.DesignPattern.Observer {
         public IDisposable Subscribe(IObserver<T> observer) {
             var disposable = this._observable.Subscribe(Observer<T>.Create(
                 next => {
-                    // next‚Ì’l‚É‚æ‚Á‚ÄAŸ‚Éˆ—‚ğ—¬‚·‚©‚Ç‚¤‚©‚ğŒˆ’è. operation‚Íbool‚ğ•Ô‹p‚·‚é
+                    // nextã®å€¤ã«ã‚ˆã£ã¦ã€æ¬¡ã«å‡¦ç†ã‚’æµã™ã‹ã©ã†ã‹ã‚’æ±ºå®š. operationã¯boolã‚’è¿”å´ã™ã‚‹
                     if (this._operation(next)) observer.OnNext(next);
                 },
                 error => observer.OnError(error),
@@ -29,7 +29,7 @@ namespace nitou.DesignPattern.Observer {
         }
     }
 
-    // Next‚Ì’l‚ğ•Ê‚Ì’l‚É•ÏX‚·‚é Operator
+    // Nextã®å€¤ã‚’åˆ¥ã®å€¤ã«å¤‰æ›´ã™ã‚‹ Operator
     public class SelectObservable<T1, T2> : IObservable<T2> {
         private Func<T1, T2> _operation;
         private IObservable<T1> _observable;
@@ -42,7 +42,7 @@ namespace nitou.DesignPattern.Observer {
         public IDisposable Subscribe(IObserver<T2> observer) {
             var disposable = this._observable.Subscribe(Observer<T1>.Create(
                 next => {
-                    // next‚Ì’l‚ğoperator‚É‚æ‚Á‚Ä•Ê‚Ì’l‚É•ÏX‚·‚é
+                    // nextã®å€¤ã‚’operatorã«ã‚ˆã£ã¦åˆ¥ã®å€¤ã«å¤‰æ›´ã™ã‚‹
                     var next2 = this._operation(next);
                     observer.OnNext(next2);
                 },
@@ -54,7 +54,7 @@ namespace nitou.DesignPattern.Observer {
         }
     }
 
-    // 1‚Â‚Ì’l‚ğó‚¯æ‚Á‚ÄANŒÂ(0ˆÈã)‚Ì’l‚ğ—¬‚· Observable
+    // 1ã¤ã®å€¤ã‚’å—ã‘å–ã£ã¦ã€Nå€‹(0ä»¥ä¸Š)ã®å€¤ã‚’æµã™ Observable
     public class SelectManyObservable<TNext1, TNext2> : IObservable<TNext2> {
         private Func<TNext1, IObservable<TNext2>> operation;
         private IObservable<TNext1> observable;
@@ -68,7 +68,7 @@ namespace nitou.DesignPattern.Observer {
             var disposables = new List<IDisposable>();
             var disposable1 = this.observable.Subscribe(Observer<TNext1>.Create(
                 next1 => {
-                    // next‚Ì’l‚ğ—¬‚·‚ÆAobservable‚ª‹A‚Á‚Ä‚­‚é. ‚»‚ê‚ğw“Ç‚µ‚ÄŸ‚Ö“`‚¦‚é
+                    // nextã®å€¤ã‚’æµã™ã¨ã€observableãŒå¸°ã£ã¦ãã‚‹. ãã‚Œã‚’è³¼èª­ã—ã¦æ¬¡ã¸ä¼ãˆã‚‹
                     var disposable2 = this.operation(next1).Subscribe(Observer<TNext2>.Create(
                             next2 => observer.OnNext(next2),
                             error => observer.OnError(error),
@@ -99,13 +99,13 @@ namespace nitou.DesignPattern.Observer {
             return new SelectObservable<TNext1, TNext2>(observable, operation);
         }
 
-        // ’l‚ğ1‚Âó‚¯æ‚Á‚ÄAIObservable‚É•ÏŠ·‚·‚é Operator
+        // å€¤ã‚’1ã¤å—ã‘å–ã£ã¦ã€IObservableã«å¤‰æ›ã™ã‚‹ Operator
         public static IObservable<TNext2> SelectMany<TNext1, TNext2>(
             this IObservable<TNext1> observable, Func<TNext1, IObservable<TNext2>> operation) {
             return new SelectManyObservable<TNext1, TNext2>(observable, operation);
         }
 
-        // ’l‚ğ1‚Âó‚¯æ‚Á‚ÄA•¡”‚Ì’l‚É•ªŠ„‚µ‚Ä—¬‚· Operator
+        // å€¤ã‚’1ã¤å—ã‘å–ã£ã¦ã€è¤‡æ•°ã®å€¤ã«åˆ†å‰²ã—ã¦æµã™ Operator
         public static IObservable<TNext2> SelectMany<TNext1, TNext2>(
             this IObservable<TNext1> observable, Func<TNext1, IEnumerable<TNext2>> operation) {
             return new SelectManyObservable<TNext1, TNext2>(observable, next1 => {

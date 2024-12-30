@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  Kan‚Ìƒƒ‚’ : ƒMƒYƒ‚‚Å–îˆóA‰~’ŒAƒJƒvƒZƒ‹A‰~AŒÊ‚ğ•`‰æo—ˆ‚é‚æ‚¤‚É‚·‚éGizmoExtensions https://kan-kikuchi.hatenablog.com/entry/GizmoExtensions
+// [å‚è€ƒ]
+//  Kanã®ãƒ¡ãƒ¢å¸³: ã‚®ã‚ºãƒ¢ã§çŸ¢å°ã€å††æŸ±ã€ã‚«ãƒ—ã‚»ãƒ«ã€å††ã€å¼§ã‚’æç”»å‡ºæ¥ã‚‹ã‚ˆã†ã«ã™ã‚‹GizmoExtensions https://kan-kikuchi.hatenablog.com/entry/GizmoExtensions
 
 namespace nitou.DebugInternal {
     internal static partial class GizmoDrawer {
 
         /// <summary>
-        /// ƒJƒvƒZƒ‹
+        /// ã‚«ãƒ—ã‚»ãƒ«
         /// </summary>
         internal static class Capcel {
 
             /// ----------------------------------------------------------------------------
-            #region •`‰æƒƒ\ƒbƒh
+            #region æç”»ãƒ¡ã‚½ãƒƒãƒ‰
 
             /// <summary>
-            /// ƒJƒvƒZƒ‹‚ğ•`‰æ‚·‚é
+            /// ã‚«ãƒ—ã‚»ãƒ«ã‚’æç”»ã™ã‚‹
             /// </summary>
             public static void DrawWireCapsule(Vector3 center, float radius, float height, Quaternion rotation = default) {
 

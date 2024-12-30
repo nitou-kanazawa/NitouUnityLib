@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 
 // [REF]
-// _: ƒtƒ@ƒCƒ‹EƒfƒBƒŒƒNƒgƒŠŠÖ˜Autil https://ameblo.jp/ka-neda/entry-12779824591.html
+// _: ãƒ•ã‚¡ã‚¤ãƒ«ãƒ»ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé–¢é€£util https://ameblo.jp/ka-neda/entry-12779824591.html
 
 namespace nitou {
     
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹‘€ì‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhWD
+    /// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class FileUtils {
 
         /// ----------------------------------------------------------------------------
-        #region ”»’è
+        #region åˆ¤å®š
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚Ì‘¶İƒ`ƒFƒbƒND
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯ï¼
         /// </summary>
         public static void ExistsWithExp(string path) {
             if (!File.Exists(path)) {
@@ -27,7 +27,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒtƒ@ƒCƒ‹‚Ì‘¶İƒ`ƒFƒbƒND
+        /// ãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯ï¼
         /// </summary>
         public static void ExistsWithExp(IEnumerable<string> paths) {
             paths.ForEach(ExistsWithExp);

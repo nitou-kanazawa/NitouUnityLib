@@ -1,9 +1,9 @@
-using System;
+ï»¿using System;
 
 namespace UnityScreenNavigator.Runtime.Core {
 
     /// <summary>
-    /// ƒvƒŒƒ[ƒ“ƒ^[Šî’êƒNƒ‰ƒX
+    /// ãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class Presenter<TView> : IDisposable {
 
@@ -18,7 +18,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         // Public Methord
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         public void Initialize() {
             if (IsInitialized) {
@@ -34,7 +34,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public virtual void Dispose() {
             if (!IsInitialized) return;
@@ -50,7 +50,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         // Protected Methord
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected Presenter(TView view) {
             View = view;
@@ -63,7 +63,7 @@ namespace UnityScreenNavigator.Runtime.Core {
 
 
     /// <summary>
-    /// ƒvƒŒƒ[ƒ“ƒ^[Šî’êƒNƒ‰ƒX
+    /// ãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class Presenter<TView, TDataSource> : IDisposable {
 
@@ -80,7 +80,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         // Public Methord
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         public void Initialize() {
             if (IsInitialized) {
@@ -96,7 +96,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public virtual void Dispose() {
             if (!IsInitialized) return;
@@ -112,7 +112,7 @@ namespace UnityScreenNavigator.Runtime.Core {
         // Protected Methord
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected Presenter(TView view, TDataSource dataSource) {
             View = view;

@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 
 // [REF]
-//  ƒRƒKƒlƒuƒƒO: DateTime ‚ğ‘ã“ü‚·‚é‚Ì‹Lq‚ğŠÈ—ª‰»‚·‚é Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230400
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: DateTime ã‚’ä»£å…¥ã™ã‚‹æ™‚ã®è¨˜è¿°ã‚’ç°¡ç•¥åŒ–ã™ã‚‹ Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230400
 
 namespace nitou
 {
     /// <summary>
-    /// <see cref="DateTime"/>Œ^‚É‘Î‚·‚é”Ä—p“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="DateTime"/>å‹ã«å¯¾ã™ã‚‹æ±ç”¨çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class DateTimeExtensions {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this DateTime self, out int year, out int month, out int day) {
             year = self.Year;

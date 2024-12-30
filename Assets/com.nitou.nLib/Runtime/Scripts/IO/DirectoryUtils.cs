@@ -1,24 +1,24 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
 // [REF]
-//  ƒRƒKƒlƒuƒƒO: ‹æØ‚è•¶š‚ÉƒXƒ‰ƒbƒVƒ…‚ğg—p‚µ‚Äw’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ“à‚Ìƒtƒ@ƒCƒ‹–¼‚ğ•Ô‚·ŠÖ” https://baba-s.hatenablog.com/entry/2015/07/29/100000
-//  _: C#ƒtƒ@ƒCƒ‹^ƒtƒHƒ‹ƒ_‘€ìpB‚·‚®‚Ég‚¦‚éƒTƒ“ƒvƒ‹ƒR[ƒh•t‚« https://resanaplaza.com/2024/02/23/%E3%80%90%E5%AE%9F%E8%B7%B5%E3%80%91c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%93%8D%E4%BD%9C%E8%A1%93%E3%80%82%E3%81%99%E3%81%90%E3%81%AB%E4%BD%BF%E3%81%88/#google_vignette
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: åŒºåˆ‡ã‚Šæ–‡å­—ã«ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã‚’ä½¿ç”¨ã—ã¦æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’è¿”ã™é–¢æ•° https://baba-s.hatenablog.com/entry/2015/07/29/100000
+//  _: C#ãƒ•ã‚¡ã‚¤ãƒ«ï¼ãƒ•ã‚©ãƒ«ãƒ€æ“ä½œè¡“ã€‚ã™ãã«ä½¿ãˆã‚‹ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰ä»˜ã https://resanaplaza.com/2024/02/23/%E3%80%90%E5%AE%9F%E8%B7%B5%E3%80%91c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%EF%BC%8F%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%93%8D%E4%BD%9C%E8%A1%93%E3%80%82%E3%81%99%E3%81%90%E3%81%AB%E4%BD%BF%E3%81%88/#google_vignette
 
 namespace nitou {
 
     /// <summary>
-    /// ƒfƒBƒŒƒNƒgƒŠ‘€ì‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhWD
+    /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ“ä½œã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static class DirectoryUtils {
 
         /// ----------------------------------------------------------------------------
-        #region ”»’è
+        #region åˆ¤å®š
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‘¶İƒ`ƒFƒbƒND
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå­˜åœ¨ãƒã‚§ãƒƒã‚¯ï¼
         /// </summary>
         public static void ExistsWithExp(string path) {
             if (!Directory.Exists(path)) {
@@ -27,7 +27,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‘¶İƒ`ƒFƒbƒND
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå­˜åœ¨ãƒã‚§ãƒƒã‚¯ï¼
         /// </summary>
         public static void ExistsWithExp(IEnumerable<string> paths) {
             paths.ForEach(ExistsWithExp);
@@ -51,16 +51,16 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ‘€ìiƒRƒs[j
+        #region æ“ä½œï¼ˆã‚³ãƒ”ãƒ¼ï¼‰
 
-        //// [REF] Microsoft Learn: ƒfƒBƒŒƒNƒgƒŠ‚ğƒRƒs[‚·‚é https://learn.microsoft.com/ja-jp/dotnet/standard/io/how-to-copy-directories
+        //// [REF] Microsoft Learn: ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹ https://learn.microsoft.com/ja-jp/dotnet/standard/io/how-to-copy-directories
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ğÄ‹A“I‚ÉƒRƒs[‚·‚éD
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ï¼
         /// </summary>
         public static void CopyDirectory(string sourceDir, string destDir) {
 
-            // ƒRƒs[æ‚ÌƒtƒHƒ‹ƒ_‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬‚·‚é
+            // ã‚³ãƒ”ãƒ¼å…ˆã®ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ä½œæˆã™ã‚‹
             if (!Directory.Exists(destDir)) {
                 Directory.CreateDirectory(destDir);
             }
@@ -71,8 +71,8 @@ namespace nitou {
                     string destFile = Path.Combine(destDir, Path.GetFileName(file));
                     File.Copy(file, destFile, true); 
                 } catch (Exception ex) {
-                    // ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÍƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Äˆ—‚ğŒp‘±‚·‚é
-                    Debug_.LogWarning("ƒtƒ@ƒCƒ‹‚ÌƒRƒs[’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½: " + ex.Message);
+                    // ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¦å‡¦ç†ã‚’ç¶™ç¶šã™ã‚‹
+                    Debug_.LogWarning("ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ: " + ex.Message);
                 }
             }
 
@@ -80,10 +80,10 @@ namespace nitou {
             foreach (string folder in Directory.GetDirectories(sourceDir)) {
                 try {
                     string destFolder = Path.Combine(destDir, Path.GetFileName(folder));
-                    CopyDirectory(folder, destFolder); // ƒTƒuƒtƒHƒ‹ƒ_‚ğÄ‹A“I‚ÉƒRƒs[‚·‚é
+                    CopyDirectory(folder, destFolder); // ã‚µãƒ–ãƒ•ã‚©ãƒ«ãƒ€ã‚’å†å¸°çš„ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹
                 } catch (Exception ex) {
-                    // ƒGƒ‰[‚ª”­¶‚µ‚½ê‡‚ÍƒGƒ‰[ƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Äˆ—‚ğŒp‘±‚·‚é
-                    Debug_.LogWarning("ƒtƒHƒ‹ƒ_‚ÌƒRƒs[’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½: " + ex.Message);
+                    // ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¦å‡¦ç†ã‚’ç¶™ç¶šã™ã‚‹
+                    Debug_.LogWarning("ãƒ•ã‚©ãƒ«ãƒ€ã®ã‚³ãƒ”ãƒ¼ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ: " + ex.Message);
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠŒŸõD
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ¤œç´¢ï¼
         /// </summary>
         public static List<string> Find(string directoryPath) {
             ExistsWithExp(directoryPath);
@@ -113,8 +113,8 @@ namespace nitou {
         //}
 
         /// <summary>
-        /// <para>w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ“à‚Ìƒtƒ@ƒCƒ‹‚Ì–¼‘O (ƒpƒX‚ğŠÜ‚Ş) ‚ğ•Ô‚µ‚Ü‚·</para>
-        /// <para>ƒpƒX‚Ì‹æØ‚è•¶š‚Íu\\v‚Å‚Í‚È‚­u/v‚Å‚·</para>
+        /// <para>æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ (ãƒ‘ã‚¹ã‚’å«ã‚€) ã‚’è¿”ã—ã¾ã™</para>
+        /// <para>ãƒ‘ã‚¹ã®åŒºåˆ‡ã‚Šæ–‡å­—ã¯ã€Œ\\ã€ã§ã¯ãªãã€Œ/ã€ã§ã™</para>
         /// </summary>
         public static string[] GetFiles(string path) {
             return Directory
@@ -124,8 +124,8 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <para>w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ“à‚Ìw’è‚µ‚½ŒŸõƒpƒ^[ƒ“‚Éˆê’v‚·‚éƒtƒ@ƒCƒ‹–¼ (ƒpƒX‚ğŠÜ‚Ş) ‚ğ•Ô‚µ‚Ü‚·</para>
-        /// <para>ƒpƒX‚Ì‹æØ‚è•¶š‚Íu\\v‚Å‚Í‚È‚­u/v‚Å‚·</para>
+        /// <para>æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå†…ã®æŒ‡å®šã—ãŸæ¤œç´¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ä¸€è‡´ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å (ãƒ‘ã‚¹ã‚’å«ã‚€) ã‚’è¿”ã—ã¾ã™</para>
+        /// <para>ãƒ‘ã‚¹ã®åŒºåˆ‡ã‚Šæ–‡å­—ã¯ã€Œ\\ã€ã§ã¯ãªãã€Œ/ã€ã§ã™</para>
         /// </summary>
         public static string[] GetFiles(string path, string searchPattern) {
             return Directory
@@ -135,9 +135,9 @@ namespace nitou {
         }
 
         /// <summary>
-        /// <para>w’è‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚Ì’†‚©‚çAw’è‚µ‚½ŒŸõƒpƒ^[ƒ“‚Éˆê’v‚µA</para>
-        /// <para>ƒTƒuƒfƒBƒŒƒNƒgƒŠ‚ğŒŸõ‚·‚é‚©‚Ç‚¤‚©‚ğŒˆ’è‚·‚é’l‚ğ‚Âƒtƒ@ƒCƒ‹–¼ (ƒpƒX‚ğŠÜ‚Ş) ‚ğ•Ô‚µ‚Ü‚·</para>
-        /// <para>ƒpƒX‚Ì‹æØ‚è•¶š‚Íu\\v‚Å‚Í‚È‚­u/v‚Å‚·</para>
+        /// <para>æŒ‡å®šã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä¸­ã‹ã‚‰ã€æŒ‡å®šã—ãŸæ¤œç´¢ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ä¸€è‡´ã—ã€</para>
+        /// <para>ã‚µãƒ–ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’æ¤œç´¢ã™ã‚‹ã‹ã©ã†ã‹ã‚’æ±ºå®šã™ã‚‹å€¤ã‚’æŒã¤ãƒ•ã‚¡ã‚¤ãƒ«å (ãƒ‘ã‚¹ã‚’å«ã‚€) ã‚’è¿”ã—ã¾ã™</para>
+        /// <para>ãƒ‘ã‚¹ã®åŒºåˆ‡ã‚Šæ–‡å­—ã¯ã€Œ\\ã€ã§ã¯ãªãã€Œ/ã€ã§ã™</para>
         /// </summary>
         public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption) {
             return Directory

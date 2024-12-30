@@ -1,17 +1,17 @@
-using System;
+ï»¿using System;
 
 // [REF]
-//  PG“ú: MessageBroker‚ğŠg’£‚·‚é(Pub/Sub‚ÌŒ^w’è) https://takap-tech.com/entry/2023/01/23/234127
+//  PGæ—¥èªŒ: MessageBrokerã‚’æ‹¡å¼µã™ã‚‹(Pub/Subã®å‹æŒ‡å®š) https://takap-tech.com/entry/2023/01/23/234127
 
 namespace UniRx {
 
     // [NOTE] 
-    //  ƒfƒtƒHƒ‹ƒg‚Ì IMessagePublisher/IMessageReceiver ‚ÍŒ^w’è‚ª‚Å‚«‚È‚¢Di¨‚Ç‚ñ‚ÈŒ^‚Å‚àˆµ‚¦‚Ä‚µ‚Ü‚¤j
-    //  ‚æ‚Á‚ÄŒ^w’è‚ª‰Â”\‚È Pub/Sub ‚ğ’Ç‰Á‚·‚éD
+    //  ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã® IMessagePublisher/IMessageReceiver ã¯å‹æŒ‡å®šãŒã§ããªã„ï¼ï¼ˆâ†’ã©ã‚“ãªå‹ã§ã‚‚æ‰±ãˆã¦ã—ã¾ã†ï¼‰
+    //  ã‚ˆã£ã¦å‹æŒ‡å®šãŒå¯èƒ½ãª Pub/Sub ã‚’è¿½åŠ ã™ã‚‹ï¼
 
 
     /// <summary>
-    /// –¾¦“I‚ÉŒ^‚ğw’è‚µ‚½PublisherD
+    /// æ˜ç¤ºçš„ã«å‹ã‚’æŒ‡å®šã—ãŸPublisherï¼
     /// </summary>
     public interface IMessagePublisher<T> {
 
@@ -22,7 +22,7 @@ namespace UniRx {
     }
 
     /// <summary>
-    /// –¾¦“I‚ÉŒ^‚ğw’è‚µ‚½ReceiverD
+    /// æ˜ç¤ºçš„ã«å‹ã‚’æŒ‡å®šã—ãŸReceiverï¼
     /// </summary>
     public interface IMessageReceiver<T> {
 
@@ -54,18 +54,18 @@ namespace UniRx {
         }
     }
 
-    // ’¼ÚSubscribe‚Å‚«‚é‚æ‚¤‚Éƒƒ\ƒbƒh‚ğ’Ç‰Á‚·‚é
+    // ç›´æ¥Subscribeã§ãã‚‹ã‚ˆã†ã«ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã™ã‚‹
     public static partial class IMessageReceiverExtensions {
 
         /// <summary>
-        /// ’¼Ú Subscribe ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ç›´æ¥ Subscribe ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IDisposable Subscribe<T>(this IMessageReceiver self, Action<T> action) {
             return self.Receive<T>().Subscribe(action);
         }
 
         /// <summary>
-        /// ’¼Ú Subscribe ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ç›´æ¥ Subscribe ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static IDisposable Subscribe<T>(this IMessageReceiver<T> self, Action<T> action) {
             return self.Receive().Subscribe(action);

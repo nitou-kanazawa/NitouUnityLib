@@ -1,8 +1,8 @@
-
+ï»¿
 namespace nitou.Networking {
 
     /// <summary>
-    /// ƒŠƒNƒGƒXƒg‚ÌŠî’êƒNƒ‰ƒX
+    /// ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class HttpRequest {
         
@@ -13,7 +13,7 @@ namespace nitou.Networking {
         #region Result
 
         /// <summary>
-        /// ’ÊM©‘Ì‚ª³í‚És‚í‚ê‚½‚©‚ÌŒ‹‰Ê
+        /// é€šä¿¡è‡ªä½“ãŒæ­£å¸¸ã«è¡Œã‚ã‚ŒãŸã‹ã®çµæœ
         /// </summary>
         public abstract record Result() {
             public bool IsSuccess() => this is Success;

@@ -1,38 +1,38 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using System.Collections.Generic;
 
-// [Ql]
-//  kan‚Ìƒƒ‚’ : enum‚Ì”Ä—p“I‚È•Ö—˜ƒƒ\ƒbƒh‚ğ‚Ü‚Æ‚ß‚½•Ö—˜ƒNƒ‰ƒX https://kan-kikuchi.hatenablog.com/entry/EnumUtility
-//  qiita: C# 7.3‚©‚çGeneric§–ñ‚ÉEnum‚ªg‚¦‚é‚æ‚¤‚È‚Á‚Ä•Ö—˜ https://qiita.com/m-otoguro/items/8b9fa888aed0733ca3a1
-//  note: Enum‚ğŠˆ—p‚·‚é•Ö—˜ŠÖ”‚Ü‚Æ‚ß https://note.com/projectmeme/n/nbbe8da48ba34
+// [å‚è€ƒ]
+//  kanã®ãƒ¡ãƒ¢å¸³: enumã®æ±ç”¨çš„ãªä¾¿åˆ©ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã¾ã¨ã‚ãŸä¾¿åˆ©ã‚¯ãƒ©ã‚¹ https://kan-kikuchi.hatenablog.com/entry/EnumUtility
+//  qiita: C# 7.3ã‹ã‚‰Genericåˆ¶ç´„ã«EnumãŒä½¿ãˆã‚‹ã‚ˆã†ãªã£ã¦ä¾¿åˆ© https://qiita.com/m-otoguro/items/8b9fa888aed0733ca3a1
+//  note: Enumã‚’æ´»ç”¨ã™ã‚‹ä¾¿åˆ©é–¢æ•°ã¾ã¨ã‚ https://note.com/projectmeme/n/nbbe8da48ba34
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Enum"/>Œ^‚É‘Î‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// <see cref="Enum"/>å‹ã«å¯¾ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class EnumUtil {
 
         /// --------------------------------------------------------------------
-        #region —v‘f‚Ìæ“¾
+        #region è¦ç´ ã®å–å¾—
 
         /// <summary>
-        /// €–Ú”‚ğæ“¾
+        /// é …ç›®æ•°ã‚’å–å¾—
         /// </summary>
         public static int Count<T>() where T : Enum {
             return Enum.GetValues(typeof(T)).Length;
         }
 
         /// <summary>
-        /// Å‰‚Ì—v‘f‚ğæ“¾‚·‚é
+        /// æœ€åˆã®è¦ç´ ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static T GetFirst<T>() where T : Enum {
             return (T)Enum.GetValues(typeof(T)).GetValue(0);
         }
 
         /// <summary>
-        /// ÅŒã‚Ì—v‘f‚ğæ“¾‚·‚é
+        /// æœ€å¾Œã®è¦ç´ ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static T GetLast<T>() where T : Enum {
             var array = Enum.GetValues(typeof(T));
@@ -40,7 +40,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Ÿ‚Ì—v‘f‚ğæ“¾‚·‚é
+        /// æ¬¡ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetNext<T>(T target, out T next) where T : Enum {
             var values = (T[])Enum.GetValues(typeof(T));
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘O‚Ì—v‘f‚ğæ“¾‚·‚é
+        /// å‰ã®è¦ç´ ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetPrevious<T>(T target, out T previous) where T : Enum {
             var values = (T[])Enum.GetValues(typeof(T));
@@ -67,13 +67,13 @@ namespace nitou {
                 return true;
             }
 
-            // Å‰‚Ì—v‘f‚Ìê‡‚ÍƒŠƒXƒg‚ÌÅŒã‚Ì—v‘f‚ğ•Ô‚·
+            // æœ€åˆã®è¦ç´ ã®å ´åˆã¯ãƒªã‚¹ãƒˆã®æœ€å¾Œã®è¦ç´ ã‚’è¿”ã™
             previous = values[values.Length - 1];
             return false;
         }
 
         /// <summary>
-        /// €–Ú‚ğƒ‰ƒ“ƒ_ƒ€‚Éˆê‚Âæ“¾
+        /// é …ç›®ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«ä¸€ã¤å–å¾—
         /// </summary>
         public static T GetRandom<T>() where T : Enum {
             int no = UnityEngine.Random.Range(0, Count<T>());
@@ -81,7 +81,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‘S‚Ä‚Ì€–Ú‚ª“ü‚Á‚½List‚ğæ“¾
+        /// å…¨ã¦ã®é …ç›®ãŒå…¥ã£ãŸListã‚’å–å¾—
         /// </summary>
         public static T[] GetAllInList<T>() where T : Enum {
             return (T[])Enum.GetValues(typeof(T));
@@ -90,17 +90,17 @@ namespace nitou {
 
 
         /// --------------------------------------------------------------------
-        #region —v‘f‚Ì•ÏŠ·
+        #region è¦ç´ ã®å¤‰æ›
 
         /// <summary>
-        /// “ü—Í‚³‚ê‚½•¶š—ñ‚Æ“¯‚¶€–Ú‚ğæ“¾
+        /// å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ã¨åŒã˜é …ç›®ã‚’å–å¾—
         /// </summary>
         public static T KeyToType<T>(string targetKey) where T : Enum {
             return (T)Enum.Parse(typeof(T), targetKey);
         }
 
         /// <summary>
-        /// “ü—Í‚³‚ê‚½”Ô†‚Ì€–Ú‚ğæ“¾
+        /// å…¥åŠ›ã•ã‚ŒãŸç•ªå·ã®é …ç›®ã‚’å–å¾—
         /// </summary>
         public static T NoToType<T>(int targetNo) where T : Enum {
             if (!Enum.IsDefined(typeof(T), targetNo)) {
@@ -112,10 +112,10 @@ namespace nitou {
 
 
         /// --------------------------------------------------------------------
-        #region —v‘f‚Ì”»’è
+        #region è¦ç´ ã®åˆ¤å®š
 
         /// <summary>
-        /// “ü—Í‚³‚ê‚½•¶š—ñ‚Ì€–Ú‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©
+        /// å…¥åŠ›ã•ã‚ŒãŸæ–‡å­—åˆ—ã®é …ç›®ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹
         /// </summary>
         public static bool ContainsKey<T>(string tagetKey) where T : Enum {
             foreach (T t in Enum.GetValues(typeof(T))) {
@@ -127,14 +127,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‰‚Ì—v‘f‚©‚Ç‚¤‚©
+        /// æœ€åˆã®è¦ç´ ã‹ã©ã†ã‹
         /// </summary>
         public static bool IsFirst<T>(T target) where T : Enum {
             return target.ToString() == (GetFirst<T>().ToString());
         }
 
         /// <summary>
-        /// ÅŒã‚Ì—v‘f‚©‚Ç‚¤‚©
+        /// æœ€å¾Œã®è¦ç´ ã‹ã©ã†ã‹
         /// </summary>
         public static bool IsLast<T>(T target) where T : Enum {
             return target.ToString() == (GetLast<T>().ToString());
@@ -143,10 +143,10 @@ namespace nitou {
 
 
         /// --------------------------------------------------------------------
-        #region ‚»‚Ì‘¼
+        #region ãã®ä»–
 
         /// <summary>
-        /// ‘S‚Ä‚Ì€–Ú‚É‘Î‚µ‚ÄƒfƒŠƒQ[ƒg‚ğÀs
+        /// å…¨ã¦ã®é …ç›®ã«å¯¾ã—ã¦ãƒ‡ãƒªã‚²ãƒ¼ãƒˆã‚’å®Ÿè¡Œ
         /// </summary>
         public static void ForEach<T>(Action<T> action) where T : Enum {
             foreach (T t in Enum.GetValues(typeof(T))) {

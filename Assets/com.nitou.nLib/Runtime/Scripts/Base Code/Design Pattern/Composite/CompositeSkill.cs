@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  qiita: Unity‚ÅŠw‚ÔƒfƒUƒCƒ“ƒpƒ^[ƒ“08: Composite ƒpƒ^[ƒ“ https://qiita.com/Cova8bitdot/items/1c57d856027a33e99eb0
-//  qiita: Compositeƒpƒ^[ƒ“ https://qiita.com/WestRiver/items/11c48ec3929322e296a7
+// [å‚è€ƒ]
+//  qiita: Unityã§å­¦ã¶ãƒ‡ã‚¶ã‚¤ãƒ³ãƒ‘ã‚¿ãƒ¼ãƒ³08: Composite ãƒ‘ã‚¿ãƒ¼ãƒ³ https://qiita.com/Cova8bitdot/items/1c57d856027a33e99eb0
+//  qiita: Compositeãƒ‘ã‚¿ãƒ¼ãƒ³ https://qiita.com/WestRiver/items/11c48ec3929322e296a7
 
 namespace nitou.DesignPattern.Demo {
 
@@ -76,7 +76,7 @@ namespace nitou.DesignPattern.Demo {
 
 
     /// <summary>
-    /// HPŠ®‘S‰ñ•œƒXƒLƒ‹
+    /// HPå®Œå…¨å›å¾©ã‚¹ã‚­ãƒ«
     /// </summary>
     public class FullHealSkill : ISkill {
         void ISkill.Invoke(Character[] targets) {
@@ -88,7 +88,7 @@ namespace nitou.DesignPattern.Demo {
     }
 
     /// <summary>
-    /// ó‘ÔˆÙí‰ñ•œƒXƒLƒ‹
+    /// çŠ¶æ…‹ç•°å¸¸å›å¾©ã‚¹ã‚­ãƒ«
     /// </summary>
     public class FullCure : ISkill {
         void ISkill.Invoke(Character[] targets) {
@@ -101,11 +101,11 @@ namespace nitou.DesignPattern.Demo {
 
 
     /// <summary>
-    /// Š®‘S‰ñ•œƒXƒLƒ‹
+    /// å®Œå…¨å›å¾©ã‚¹ã‚­ãƒ«
     /// </summary>
     public class PerfectHeal : CompositeSkill {
         public PerfectHeal() {
-            // Š®‘S‰ñ•œ = HP‘S‰ñ•œ + ‘Só‘ÔˆÙí‰ñ•œ
+            // å®Œå…¨å›å¾© = HPå…¨å›å¾© + å…¨çŠ¶æ…‹ç•°å¸¸å›å¾©
             list.Add(new FullHealSkill());
             list.Add(new FullCure());
         }

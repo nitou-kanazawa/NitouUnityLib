@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 
 
@@ -7,29 +7,29 @@ namespace nitou {
     public interface IActivatable {
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚Èó‘Ô‚©‚Ç‚¤‚©
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªçŠ¶æ…‹ã‹ã©ã†ã‹
         /// </summary>
         public bool IsActive { get; }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒuó‘Ô‚É‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã«ã™ã‚‹
         /// </summary>
         public void Activate();
 
         /// <summary>
-        /// ”ñƒAƒNƒeƒBƒuó‘Ô‚É‚·‚é
+        /// éã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã«ã™ã‚‹
         /// </summary>
         public void Deactivate();
     }
 
 
     /// <summary>
-    /// <see cref="IActivatable"/>Œ^‚ÌŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="IActivatable"/>å‹ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class ActivatableExtensions {
 
         /// <summary>
-        /// ‘S‚Ä‚ÌƒIƒuƒWƒFƒNƒg‚ªƒAƒNƒeƒBƒu‚©‚Ç‚¤‚©‚ğŠm”F‚·‚é
+        /// å…¨ã¦ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹
         /// </summary>
         public static bool AllActive(this IEnumerable<IActivatable> activatables) {
             return activatables.All(a => a.IsActive);

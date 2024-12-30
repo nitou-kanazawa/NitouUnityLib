@@ -1,16 +1,16 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="RawImage"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="RawImage"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class RawImageExtensions {
 
         /// <summary>
-        /// ƒeƒNƒXƒ`ƒƒƒTƒCƒY‚ÉŠî‚Ã‚¢‚Äw’è‚µ‚½ƒ‚[ƒh‚ÅƒAƒXƒyƒNƒg”ä‚ğİ’è‚·‚éD
+        /// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚µã‚¤ã‚ºã«åŸºã¥ã„ã¦æŒ‡å®šã—ãŸãƒ¢ãƒ¼ãƒ‰ã§ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã‚’è¨­å®šã™ã‚‹ï¼
         /// </summary>
         public static void SetAspectRatio(this RawImage self, AspectRatioFitter.AspectMode aspectMode) {
 

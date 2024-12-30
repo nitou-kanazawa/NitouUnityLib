@@ -1,11 +1,11 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
 
-// [Ql]
-//  qiita: Unity‚Å“Æ©‚Ìİ’è‚ÌUI‚ğ’ñ‹Ÿ‚Å‚«‚éSettingsProvider‚ÌĞ‰î‚Æİ’èƒtƒ@ƒCƒ‹‚Ì•Û‘¶‚É‚Â‚¢‚Ä https://qiita.com/sune2/items/a88cdee6e9a86652137c
+// [å‚è€ƒ]
+//  qiita: Unityã§ç‹¬è‡ªã®è¨­å®šã®UIã‚’æä¾›ã§ãã‚‹SettingsProviderã®ç´¹ä»‹ã¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ä¿å­˜ã«ã¤ã„ã¦ https://qiita.com/sune2/items/a88cdee6e9a86652137c
 
 namespace nitou.Tools.Hierarchy{
     using nitou.Tools.Shared;
@@ -18,18 +18,18 @@ namespace nitou.Tools.Hierarchy{
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public HierarchySettingsProvider(string path, SettingsScope scopes) : base(path, scopes) { }
 
         /// <summary>
-        /// ‚±‚Ìƒƒ\ƒbƒh‚ªd—v‚Å‚·
-        /// “Æ©‚ÌSettingsProvider‚ğ•Ô‚·‚±‚Æ‚ÅAİ’è€–Ú‚ğ’Ç‰Á‚µ‚Ü‚·
+        /// ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒé‡è¦ã§ã™
+        /// ç‹¬è‡ªã®SettingsProviderã‚’è¿”ã™ã“ã¨ã§ã€è¨­å®šé …ç›®ã‚’è¿½åŠ ã—ã¾ã™
         /// </summary>
         [SettingsProvider]
         public static SettingsProvider CreateSettingProvider() {
 
-            // ¦‘æOˆø”‚Ìkeywords‚ÍAŒŸõ‚É‚±‚Ìİ’è€–Ú‚ğˆø‚Á‚©‚¯‚é‚½‚ß‚ÌƒL[ƒ[ƒh
+            // â€»ç¬¬ä¸‰å¼•æ•°ã®keywordsã¯ã€æ¤œç´¢æ™‚ã«ã“ã®è¨­å®šé …ç›®ã‚’å¼•ã£ã‹ã‘ã‚‹ãŸã‚ã®ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰
             return new HierarchySettingsProvider(ModuleInfo.SettingsMenuPath, SettingsScope.Project) { 
                 label = "Hierarchy Settings",
                 keywords = new HashSet<string>(new[] { "Nitou, Inspector, Hierarchy" })
@@ -43,14 +43,14 @@ namespace nitou.Tools.Hierarchy{
 
             var preferences = HierarchySettingsSO.instance;
 
-            // ¦ScriptableSingleton‚ğ•ÒW‰Â”\‚É‚·‚é
+            // â€»ScriptableSingletonã‚’ç·¨é›†å¯èƒ½ã«ã™ã‚‹
             preferences.hideFlags = HideFlags.HideAndDontSave & ~HideFlags.NotEditable;
 
             _settings = new SerializedObject(preferences);
         }
 
         /// <summary>
-        /// GUI•`‰æD
+        /// GUIæç”»ï¼
         /// </summary>
         public override void OnGUI(string searchContext) {
 

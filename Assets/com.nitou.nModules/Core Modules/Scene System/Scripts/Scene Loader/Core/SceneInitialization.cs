@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,7 +10,7 @@ using UnityEditor;
 namespace nitou.SceneSystem{
 
     /// <summary>
-    /// “o˜^‚³‚ê‚½ƒNƒ‰ƒX‚Ì‰Šú‰»ˆ—‚ğs‚¤D
+    /// ç™»éŒ²ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–å‡¦ç†ã‚’è¡Œã†ï¼
     /// </summary>
     internal class SceneInitialization {
 

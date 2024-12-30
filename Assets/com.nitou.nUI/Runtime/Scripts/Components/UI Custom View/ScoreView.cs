@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// ƒXƒRƒA•\¦—p‚ÌUI
+    /// ã‚¹ã‚³ã‚¢è¡¨ç¤ºç”¨ã®UI
     /// </summary>
     [AddComponentMenu( ComponentMenu.Prefix.UIView + "Score View")]
     public class ScoreView : HideableView {
@@ -48,7 +48,7 @@ namespace nitou.UI.Components {
         // Public Method
 
         /// <summary>
-        /// ƒ‰ƒxƒ‹‚ğİ’è‚·‚é
+        /// ãƒ©ãƒ™ãƒ«ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetLabelText(string str) {
             if (_labelText == null) return;
@@ -56,7 +56,7 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ’PˆÊ‚ğİ’è‚·‚é
+        /// å˜ä½ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetUnitText(string str) {
             if (_unitText == null) return;
@@ -64,16 +64,16 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ƒXƒRƒA‚ğİ’è‚·‚é
+        /// ã‚¹ã‚³ã‚¢ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetScore(int value, bool animated = true) {
             if (_scoreText == null) return;
 
-            // ¦ÀÛ‚Ì’l‚ÍƒAƒjƒ[ƒVƒ‡ƒ“‘O‚ÉXV
+            // â€»å®Ÿéš›ã®å€¤ã¯ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‰ã«æ›´æ–°
             var start = _currentValue;
             _currentValue = value;       
 
-            // •\¦ˆ—
+            // è¡¨ç¤ºå‡¦ç†
             if (animated) {
                 _scoreTween?.Kill();
                 _scoreTween = _scoreText

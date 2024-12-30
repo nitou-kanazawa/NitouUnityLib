@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using Cysharp.Threading.Tasks;
 using UniRx;
 
@@ -19,32 +19,32 @@ namespace nitou.GameSystem {
     public interface IProcess : IDisposable{
 
         /// <summary>
-        /// Œ»İ‚ÌƒXƒe[ƒgD
+        /// ç¾åœ¨ã®ã‚¹ãƒ†ãƒ¼ãƒˆï¼
         /// </summary>
         public IReadOnlyReactiveProperty<ProcessState> State { get; }
 
         /// <summary>
-        /// I—¹‚Ì’Ê’mD
+        /// çµ‚äº†æ™‚ã®é€šçŸ¥ï¼
         /// </summary>
         public UniTask<ProcessResult> ProcessFinished { get; }
 
         /// <summary>
-        /// ŠJn‚·‚éD
+        /// é–‹å§‹ã™ã‚‹ï¼
         /// </summary>
         public void Run();
         
         /// <summary>
-        /// ƒ|[ƒY‚·‚éD
+        /// ãƒãƒ¼ã‚ºã™ã‚‹ï¼
         /// </summary>
         public void Pause();
 
         /// <summary>
-        /// ƒ|[ƒY‰ğœ‚·‚éD
+        /// ãƒãƒ¼ã‚ºè§£é™¤ã™ã‚‹ï¼
         /// </summary>
         public void UnPause();
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹‚·‚éD
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã™ã‚‹ï¼
         /// </summary>
         public void Cancel(CancelResult cancelResult = null);
     }

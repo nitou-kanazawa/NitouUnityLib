@@ -1,21 +1,21 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
-// [Ql]
-//  ƒQ[ƒ€UIƒlƒbƒg : DOTween‚Åì¬‚µ‚½ƒ‚[ƒVƒ‡ƒ“17ŒÂ‚ğŠÜ‚ŞƒvƒƒWƒFƒNƒg‚ğŒöŠJ https://game-ui.net/?p=975
-//  ƒRƒKƒlƒuƒƒO: Color ‚Ì‘ã“ü‚ğŠÈ—ª‰»‚·‚é Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230300
-//  _: Image‚ÌF‚»‚ê‚¼‚ê•ÏX‚·‚éŠg’£ https://hi-network.sakura.ne.jp/wp/2021/01/26/post-3660/
+// [å‚è€ƒ]
+//  ã‚²ãƒ¼ãƒ UIãƒãƒƒãƒˆ : DOTweenã§ä½œæˆã—ãŸãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³17å€‹ã‚’å«ã‚€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…¬é–‹ https://game-ui.net/?p=975
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Color ã®ä»£å…¥ã‚’ç°¡ç•¥åŒ–ã™ã‚‹ Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230300
+//  _: Imageã®è‰²ãã‚Œãã‚Œå¤‰æ›´ã™ã‚‹æ‹¡å¼µ https://hi-network.sakura.ne.jp/wp/2021/01/26/post-3660/
 
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Color"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Color"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class ColorExtensions {
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Color self, out float r, out float g, out float b) {
             r = self.r;
@@ -24,7 +24,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         public static void Deconstruct(this Color self, out float r, out float g, out float b, out float a) {
             r = self.r;
@@ -68,14 +68,14 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// ƒJƒ‰[‚ğ•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ãƒ©ãƒ¼ã‚’å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static string ToHtmlStringRGB(this Color color) {
             return $"#{ColorUtility.ToHtmlStringRGB(color)}";
         }
 
         /// <summary>
-        /// ƒJƒ‰[‚ğ•ÏŠ·‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚«ãƒ©ãƒ¼ã‚’å¤‰æ›ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static string ToHtmlStringRGBA(this Color color) {
             return $"#{ColorUtility.ToHtmlStringRGBA(color)}";
@@ -86,7 +86,7 @@ namespace nitou {
         #region Misc
 
         /// <summary>
-        /// ƒ¿’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Î±å€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetAlpha(this SpriteRenderer spriteRenderer, float alpha) {
             var color = spriteRenderer.color;
@@ -95,7 +95,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒ¿’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// Î±å€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetAlphasInChildren(this GameObject obj, float alpha) {
             var spriteRenderers = obj.GetComponentsInChildren<SpriteRenderer>();

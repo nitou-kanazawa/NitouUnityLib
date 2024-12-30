@@ -1,32 +1,32 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Graphic"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Graphic"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class GraphicExtentions{
 
         /// ----------------------------------------------------------------------------
-        #region ƒJƒ‰[İ’è
+        #region ã‚«ãƒ©ãƒ¼è¨­å®š
 
         /// <summary>
-        /// ƒJƒ‰[’l(0~1)‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚«ãƒ©ãƒ¼å€¤(0~1)ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetColor(this Graphic graphic, float r, float g, float b, float a) {
             graphic.color = new Color(r, g, b, a);
         }
 
         /// <summary>
-        /// ƒJƒ‰[’l(0~255)‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ã‚«ãƒ©ãƒ¼å€¤(0~255)ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetColor32(this Graphic graphic, byte r, byte g, byte b, byte a) {
             graphic.color = new Color32(r, g, b, a);
         }
 
         /// <summary>
-        /// RGB’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// RGBå€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetRGB(this Graphic graphic, float r, float g, float b) {
             var color = graphic.color;
@@ -37,7 +37,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// R’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Rå€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetR(this Graphic graphic, float r) {
             var color = graphic.color;
@@ -46,7 +46,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// G’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Gå€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetG(this Graphic graphic, float g) {
             var color = graphic.color;
@@ -55,7 +55,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// B’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Bå€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetB(this Graphic graphic, float b) {
             var color = graphic.color;
@@ -64,7 +64,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// ƒ¿’l‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Î±å€¤ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetAlpha(this Graphic graphic, float alpha) {
             var color = graphic.color;

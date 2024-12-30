@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -8,12 +8,12 @@ using UnityEditor.UIElements;
 using UnityEditor.SceneManagement;
 
 
-// [Ql]
-//  zenn: UXMLƒeƒ“ƒvƒŒ[ƒg‚ÅObjectField‚ğg‚¤‚Æ‚«‚Ìƒ^ƒCƒvw’è•û–@ https://zenn.dev/murnana/articles/unity-uielements-objectfield
+// [å‚è€ƒ]
+//  zenn: UXMLãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã§ObjectFieldã‚’ä½¿ã†ã¨ãã®ã‚¿ã‚¤ãƒ—æŒ‡å®šæ–¹æ³• https://zenn.dev/murnana/articles/unity-uielements-objectfield
 
 
 /// <summary>
-/// •ÒWì‹Æ‚ÌƒV[ƒ“Ø‚è‘Ö‚¦‹@”\‚ğ’ñ‹Ÿ‚·‚éEditorWindow
+/// ç·¨é›†ä½œæ¥­æ™‚ã®ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹EditorWindow
 /// </summary>
 public sealed class SceneSwitcherEditorWindow : EditorWindow {
 
@@ -52,7 +52,7 @@ public sealed class SceneSwitcherEditorWindow : EditorWindow {
 
         _rootVisualTreeAsset.CloneTree(rootVisualElement);
 
-        // Œ»İƒV[ƒ“‚Ì’Ç‰Á
+        // ç¾åœ¨ã‚·ãƒ¼ãƒ³ã®è¿½åŠ 
         var addButton = rootVisualElement.Q<Button>("add_current_btn");
         addButton.clicked += AddCurrentScene;
 
@@ -65,7 +65,7 @@ public sealed class SceneSwitcherEditorWindow : EditorWindow {
         var content = rootVisualElement.Q<VisualElement>("Content");
         content.Add(_scrollView);
 
-        // ‰ŠúƒŠƒXƒg‚Ì•\¦
+        // åˆæœŸãƒªã‚¹ãƒˆã®è¡¨ç¤º
         RefreshSceneList();
     }
 
@@ -80,7 +80,7 @@ public sealed class SceneSwitcherEditorWindow : EditorWindow {
         if (scene != null && scene.path != null &&
             _scenes.Find(s => AssetDatabase.GetAssetPath(s) == scene.path) == null) {
 
-            // ƒV[ƒ“ƒAƒZƒbƒg‚ğæ“¾
+            // ã‚·ãƒ¼ãƒ³ã‚¢ã‚»ãƒƒãƒˆã‚’å–å¾—
             var asset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
             if (asset != null && !_scenes.Contains(asset)) {
                 _scenes.Add(asset);
@@ -96,10 +96,10 @@ public sealed class SceneSwitcherEditorWindow : EditorWindow {
             var scene = _scenes[i];
             var path = AssetDatabase.GetAssetPath(scene);
 
-            // s—v‘f
+            // è¡Œè¦ç´ 
             var row = new VisualElement();
             row.style.flexDirection = FlexDirection.Row;
-            row.style.width = new StyleLength(new Length(100, LengthUnit.Percent));  // ‰¡•‚ğ100%‚Éİ’è
+            row.style.width = new StyleLength(new Length(100, LengthUnit.Percent));  // æ¨ªå¹…ã‚’100%ã«è¨­å®š
 
 
             var removeButton = new Button(() => {
@@ -124,7 +124,7 @@ public sealed class SceneSwitcherEditorWindow : EditorWindow {
                     Save();
                     RefreshSceneList();
                 }
-            }) { text = i > 0 ? "ª" : "@" };
+            }) { text = i > 0 ? "â†‘" : "ã€€" };
             moveUpButton.style.width = 20;
             row.Add(moveUpButton);
 

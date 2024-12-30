@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.Networking;
@@ -25,31 +25,31 @@ namespace nitou.Networking {
 
             using (var unityWebRequest = UnityWebRequest.Get(request.Path)) {
 
-                // ’ÊM‚ğ”ñ“¯Šú‚ÅÀs
+                // é€šä¿¡ã‚’éåŒæœŸã§å®Ÿè¡Œ
                 var operation = await unityWebRequest.SendWebRequest().ToUniTask(cancellationToken: token);
 
-                // ¸”si’ÊMƒGƒ‰[j
+                // å¤±æ•—æ™‚ï¼ˆé€šä¿¡ã‚¨ãƒ©ãƒ¼ï¼‰
                 if (operation.result == UnityWebRequest.Result.ConnectionError || operation.result == UnityWebRequest.Result.ProtocolError) {
                     return (new HttpRequest.Failed(), new T());
                 }
-                // ¬Œ÷
+                // æˆåŠŸæ™‚
                 else if (operation.result == UnityWebRequest.Result.Success) {
-                    // ƒŒƒXƒ|ƒ“ƒXƒf[ƒ^‚ğæ“¾
+                    // ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
                     var responseData = unityWebRequest.downloadHandler.text;
                     T response;
 
-                    // ˆø”‚Æ‚µ‚Ä“n‚³‚ê‚½ƒp[ƒXƒƒ\ƒbƒh‚ğ—˜—p‚µ‚ÄƒŒƒXƒ|ƒ“ƒXƒf[ƒ^‚ğˆ—
+                    // å¼•æ•°ã¨ã—ã¦æ¸¡ã•ã‚ŒãŸãƒ‘ãƒ¼ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’åˆ©ç”¨ã—ã¦ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚’å‡¦ç†
                     try {
                         response = parseMethod(responseData);
                     } catch (Exception ex) {
-                        // ƒp[ƒX¸”s‚ÌƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO
+                        // ãƒ‘ãƒ¼ã‚¹å¤±æ•—æ™‚ã®ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
                         UnityEngine.Debug.LogError($"Error parsing response: {ex.Message}");
                         return (new HttpRequest.Failed(), new T());
                     }
 
                     return (new HttpRequest.Success(), response);
                 }
-                // ƒLƒƒƒ“ƒZƒ‹
+                // ã‚­ãƒ£ãƒ³ã‚»ãƒ«æ™‚
                 return (new HttpRequest.Canceld(), new T());
             }
         }

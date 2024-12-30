@@ -1,17 +1,17 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: Line Renderer‚Å”jü‚ğ•`‰æ‚·‚é https://nekojara.city/unity-dashed-line
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: Line Rendererã§ç ´ç·šã‚’æç”»ã™ã‚‹ https://nekojara.city/unity-dashed-line
 
 namespace UnityEngine {
 
     /// <summary>
-    /// <see cref="LineRenderer"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="LineRenderer"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class LineRendererExtensions {
 
         /// <summary>
-        /// startColor, endColor‚ğˆêŠ‡‚Åİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// startColor, endColorã‚’ä¸€æ‹¬ã§è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetColor(this LineRenderer self, Color color) {
             self.startColor = color;
@@ -19,7 +19,7 @@ namespace UnityEngine {
         }
 
         /// <summary>
-        /// <see cref="LineRenderer.widthCurve"/>‚Éˆê’è•‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="LineRenderer.widthCurve"/>ã«ä¸€å®šå¹…ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetConstantWidth(this LineRenderer self, float width) {
             self.widthCurve = AnimationCurve.Constant(0, 1, width);
@@ -27,7 +27,7 @@ namespace UnityEngine {
 
 
         /// ----------------------------------------------------------------------------
-        // ¶¬
+        // ç”Ÿæˆ
 
         public static float CalculateLength(this LineRenderer self) {
             if (self == null || self.positionCount < 2) return 0f; 
@@ -40,7 +40,7 @@ namespace UnityEngine {
                     self.GetPosition(i + 1));
             }
 
-            // ¦ƒ‹[ƒv‚·‚éê‡‚ÍCÅ‰‚ÆÅŒã‚Ì’¸“_‚Ì‹——£‚à‰ÁZ‚·‚é
+            // â€»ãƒ«ãƒ¼ãƒ—ã™ã‚‹å ´åˆã¯ï¼Œæœ€åˆã¨æœ€å¾Œã®é ‚ç‚¹ã®è·é›¢ã‚‚åŠ ç®—ã™ã‚‹
             if (self.loop) {
                 totalLegth += Vector3.Distance(
                     self.GetPosition(0),

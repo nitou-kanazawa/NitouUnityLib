@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace nitou.DebugInternal{
 
     /// <summary>
-    /// <see cref="ScrollRect"/>‚ÌŠeƒvƒƒpƒeƒB‚ğ‰Â‹‰»‚·‚é‚½‚ß‚ÌƒfƒoƒbƒO—pƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// <see cref="ScrollRect"/>ã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å¯è¦–åŒ–ã™ã‚‹ãŸã‚ã®ãƒ‡ãƒãƒƒã‚°ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     [RequireComponent(typeof(ScrollRect))]
     internal class ScrollRectDebugger : DebugComponent<ScrollRect>{

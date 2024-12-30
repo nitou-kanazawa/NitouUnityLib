@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEngine;
 using UnityEditor;
@@ -8,7 +8,7 @@ namespace nitou.Tools.PumlGenerator {
     public static class PlantUmlGenerator {
         
         /// <summary>
-        /// Pumlƒtƒ@ƒCƒ‹‚ğ¶¬‚·‚éD
+        /// Pumlãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         public static void GenerateDiagram(string templatePath, string outputPath) {
             if (!File.Exists(templatePath)) {
@@ -18,12 +18,12 @@ namespace nitou.Tools.PumlGenerator {
 
             string templateContent = File.ReadAllText(templatePath);
 
-            // ¶¬ƒƒWƒbƒNFƒeƒ“ƒvƒŒ[ƒg‚Ì“à—e‚ğ‚à‚Æ‚ÉPlantUML‚ÌƒR[ƒh‚ğ¶¬
-            // ‚±‚±‚ÅA•K—v‚É‰‚¶‚Äƒeƒ“ƒvƒŒ[ƒg‚ÌƒvƒŒ[ƒXƒzƒ‹ƒ_[‚ğ’uŠ·‚µ‚ÄƒJƒXƒ^ƒ}ƒCƒY
-            string generatedContent = templateContent; // ƒvƒŒ[ƒXƒzƒ‹ƒ_[‚ğÀÛ‚Ì“à—e‚É’uŠ·‚·‚éˆ—‚ğ’Ç‰Á
+            // ç”Ÿæˆãƒ­ã‚¸ãƒƒã‚¯ï¼šãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®å†…å®¹ã‚’ã‚‚ã¨ã«PlantUMLã®ã‚³ãƒ¼ãƒ‰ã‚’ç”Ÿæˆ
+            // ã“ã“ã§ã€å¿…è¦ã«å¿œã˜ã¦ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’ç½®æ›ã—ã¦ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚º
+            string generatedContent = templateContent; // ãƒ—ãƒ¬ãƒ¼ã‚¹ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’å®Ÿéš›ã®å†…å®¹ã«ç½®æ›ã™ã‚‹å‡¦ç†ã‚’è¿½åŠ 
 
             File.WriteAllText(outputPath, generatedContent);
-            AssetDatabase.Refresh(); // ƒAƒZƒbƒgƒf[ƒ^ƒx[ƒX‚ğXV‚µ‚ÄV‚µ‚¢ƒtƒ@ƒCƒ‹‚ğ•\¦
+            AssetDatabase.Refresh(); // ã‚¢ã‚»ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ›´æ–°ã—ã¦æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¡¨ç¤º
 
             Debug.Log($"PlantUML diagram generated at: {outputPath}");
         }

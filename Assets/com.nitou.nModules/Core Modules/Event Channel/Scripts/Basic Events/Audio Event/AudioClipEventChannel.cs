@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel{
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// AudioClipŒ^‚ÌƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹
+    /// AudioClipå‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«
     /// </summary>
     [CreateAssetMenu(
         fileName = "Event_AudioClip",

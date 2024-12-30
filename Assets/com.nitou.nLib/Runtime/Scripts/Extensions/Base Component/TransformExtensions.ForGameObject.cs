@@ -1,66 +1,66 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// GameObjectŒ^‚ÌŠg’£ƒƒ\ƒbƒh‚ğŠÇ—‚·‚éƒNƒ‰ƒX
+    /// GameObjectå‹ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class GameObjectExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region ˆÊ’u‚Ìİ’è
+        #region ä½ç½®ã®è¨­å®š
 
         /// <summary>
-        /// ˆÊ’u‚ğİ’è‚µ‚Ü‚·
+        /// ä½ç½®ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetPosition(this GameObject self, Vector3 position) {
             self.transform.position = position;
         }
 
         /// <summary>
-        /// XÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// Xåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetPositionX(this GameObject self, float x) {
             self.transform.SetPositionX(x);
         }
 
         /// <summary>
-        /// YÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// Yåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetPositionY(this GameObject self, float y) {
             self.transform.SetPositionY(y);
         }
 
         /// <summary>
-        /// ZÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// Zåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetPositionZ(this GameObject self, float z) {
             self.transform.SetPositionZ(z);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌˆÊ’u‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ä½ç½®ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalPosition(this GameObject self, Vector3 localPosition) {
             self.transform.localPosition = localPosition;
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌXÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Xåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalPositionX(this GameObject self, float x) {
             self.transform.SetLocalPositionX(x);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌYÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Yåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalPositionY(this GameObject self, float y) {
             self.transform.SetLocalPositionY(y);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹‚ÌZÀ•W‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«ã®Zåº§æ¨™ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalPositionZ(this GameObject self, float z) {
             self.transform.SetLocalPositionZ(z);
@@ -68,42 +68,42 @@ namespace nitou {
 
 
         /// <summary>
-        /// XÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// Xåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddPositionX(this GameObject self, float x) {
             self.transform.AddPositionX(x);
         }
 
         /// <summary>
-        /// YÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// Yåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddPositionY(this GameObject self, float y) {
             self.transform.AddPositionY(y);
         }
 
         /// <summary>
-        /// ZÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// Zåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddPositionZ(this GameObject self, float z) {
             self.transform.AddPositionZ(z);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌXÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Xåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalPositionX(this GameObject self, float x) {
             self.transform.AddLocalPositionX(x);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌYÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Yåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalPositionY(this GameObject self, float y) {
             self.transform.AddLocalPositionY(y);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌZÀ•W‚É‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Zåº§æ¨™ã«åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalPositionZ(this GameObject self, float z) {
             self.transform.AddLocalPositionZ(z);
@@ -112,59 +112,59 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Šp“x‚Ìİ’è
+        #region è§’åº¦ã®è¨­å®š
 
         /// <summary>
-        /// ‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngle(this GameObject self, Vector3 eulerAngles) {
             self.transform.eulerAngles = eulerAngles;
         }
 
         /// <summary>
-        /// X²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleX(this GameObject self, float x) {
             self.transform.SetEulerAngleX(x);
         }
 
         /// <summary>
-        /// Y²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleY(this GameObject self, float y) {
             self.transform.SetEulerAngleY(y);
         }
 
         /// <summary>
-        /// Z²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetEulerAngleZ(this GameObject self, float z) {
             self.transform.SetEulerAngleZ(z);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngle(this GameObject self, Vector3 localEulerAngles) {
             self.transform.localEulerAngles = localEulerAngles;
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleX(this GameObject self, float x) {
             self.transform.SetLocalEulerAngleX(x);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌY²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleY(this GameObject self, float y) {
             self.transform.SetLocalEulerAngleY(y);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌZ²•ûŒü‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalEulerAngleZ(this GameObject self, float z) {
             self.transform.SetLocalEulerAngleZ(z);
@@ -172,42 +172,42 @@ namespace nitou {
 
 
         /// <summary>
-        /// X²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleX(this GameObject self, float x) {
             self.transform.AddEulerAngleX(x);
         }
 
         /// <summary>
-        /// Y²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleY(this GameObject self, float y) {
             self.transform.AddEulerAngleY(y);
         }
 
         /// <summary>
-        /// Z²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddEulerAngleZ(this GameObject self, float z) {
             self.transform.AddEulerAngleZ(z);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleX(this GameObject self, float x) {
             self.transform.AddLocalEulerAngleX(x);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌY²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Yè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleY(this GameObject self, float y) {
             self.transform.AddLocalEulerAngleY(y);
         }
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚ÌX²•ûŒü‚Ì‰ñ“]Šp‚ğ‰ÁZ‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®Xè»¸æ–¹å‘ã®å›è»¢è§’ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalEulerAngleZ(this GameObject self, float z) {
             self.transform.AddLocalEulerAngleZ(z);
@@ -216,31 +216,31 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ƒXƒP[ƒ‹‚Ìİ’è
+        #region ã‚¹ã‚±ãƒ¼ãƒ«ã®è¨­å®š
 
         /// <summary>
-        /// ƒ[ƒJƒ‹À•WŒn‚Ì‰ñ“]Šp‚ğİ’è‚µ‚Ü‚·
+        /// ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®å›è»¢è§’ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScale(this GameObject self, Vector3 localScale) {
             self.transform.localScale = localScale;
         }
 
         /// <summary>
-        /// X²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleX(this GameObject self, float x) {
             self.transform.SetLocalScaleX(x);
         }
 
         /// <summary>
-        /// Y²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleY(this GameObject self, float y) {
             self.transform.SetLocalScaleY(y);
         }
 
         /// <summary>
-        /// Z²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğİ’è‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’è¨­å®šã—ã¾ã™
         /// </summary>
         public static void SetLocalScaleZ(this GameObject self, float z) {
             self.transform.SetLocalScaleZ(z);
@@ -248,21 +248,21 @@ namespace nitou {
 
 
         /// <summary>
-        /// X²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Xè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleX(this GameObject self, float x) {
             self.transform.AddLocalScaleX(x);
         }
 
         /// <summary>
-        /// Y²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Yè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleY(this GameObject self, float y) {
             self.transform.AddLocalScaleY(y);
         }
 
         /// <summary>
-        /// Z²•ûŒü‚Ìƒ[ƒJƒ‹À•WŒn‚ÌƒXƒP[ƒŠƒ“ƒO’l‚ğ‰ÁZ‚µ‚Ü‚·
+        /// Zè»¸æ–¹å‘ã®ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ç³»ã®ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°å€¤ã‚’åŠ ç®—ã—ã¾ã™
         /// </summary>
         public static void AddLocalScaleZ(this GameObject self, float z) {
             self.transform.AddLocalScaleZ(z);
@@ -271,10 +271,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region eqŠÖŒW
+        #region è¦ªå­é–¢ä¿‚
 
         /// <summary>
-        /// eƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject SetParent(this GameObject self, Transform parent, bool worldPositionStays = true) {
             self.transform.SetParent(parent, worldPositionStays);
@@ -282,7 +282,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// eƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static GameObject SetParent(this GameObject self, GameObject parent, bool worldPositionStays = true) {
             self.transform.SetParent(parent.transform, worldPositionStays);
@@ -290,14 +290,14 @@ namespace nitou {
         }
 
         /// <summary>
-        /// eƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetParentAndAlign(this GameObject self, GameObject parent) {
             if (parent == null) return;
 
             self.transform.SetParent(parent.transform, false);
 
-            // e‚Æ“¯‚¶ƒŒƒCƒ„[‚ÆˆÊ’u‚ğ—^‚¦‚é (¦GameObjectUtility.SetParentAndAlign‚Æ“¯‚¶)
+            // è¦ªã¨åŒã˜ãƒ¬ã‚¤ãƒ¤ãƒ¼ã¨ä½ç½®ã‚’ä¸ãˆã‚‹ (â€»GameObjectUtility.SetParentAndAlignã¨åŒã˜)
             self.SetLayerRecursively(parent.layer);
 
             // 

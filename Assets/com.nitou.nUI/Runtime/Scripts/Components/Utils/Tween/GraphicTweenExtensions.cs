@@ -1,24 +1,24 @@
-using UnityEngine.UI;
+ï»¿using UnityEngine.UI;
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// <see cref="Graphic"/>‚ÌTweenŠÖ˜A‚ÌŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Graphic"/>ã®Tweené–¢é€£ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class GraphicTweenExtensions {
 
         /// --------------------------------------------------------------------
-        // oŒ»EÁ¸ƒAƒjƒ[ƒVƒ‡ƒ“
+        // å‡ºç¾ãƒ»æ¶ˆå¤±ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 
         /// <summary>
-        /// ƒtƒF[ƒhƒAƒEƒg‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeOut(this Graphic self, float duration) {
             return self.DOFade(0.0F, duration);
         }
 
         /// <summary>
-        /// ƒtƒF[ƒhƒCƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeIn(this Graphic canvasGroup, float duration) {
             return canvasGroup.DOFade(1.0F, duration);

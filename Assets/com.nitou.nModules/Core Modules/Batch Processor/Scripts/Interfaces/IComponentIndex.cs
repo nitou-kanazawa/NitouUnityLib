@@ -1,8 +1,8 @@
-
+﻿
 namespace nitou.BachProcessor{
 
     /// <summary>
-    /// �o�b�`�����̑ΏۃR���|�[�l���g�̃C���^�[�t�F�[�X
+    /// バッチ処理の対象コンポーネントのインターフェース
     /// </summary>
     public interface IComponentIndex{
 

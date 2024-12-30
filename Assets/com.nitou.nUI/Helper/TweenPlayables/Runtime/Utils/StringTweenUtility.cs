@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Random = UnityEngine.Random;
 
 namespace nitou.TweenPlayables {

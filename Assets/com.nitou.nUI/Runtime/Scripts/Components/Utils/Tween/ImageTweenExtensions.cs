@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using nitou;
@@ -6,12 +6,12 @@ using nitou;
 namespace DG.Tweening {
 
     /// <summary>
-    /// Image‚ÌTweenƒ‰ƒCƒuƒ‰ƒŠƒNƒ‰ƒXD”Ä—p“I‚ÈƒAƒjƒ[ƒVƒ‡ƒ“‚ğ’ñ‹Ÿ
+    /// Imageã®Tweenãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚¯ãƒ©ã‚¹ï¼æ±ç”¨çš„ãªã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æä¾›
     /// </summary>
     public static class ImageTweenExtensions {
 
         /// --------------------------------------------------------------------
-        // oŒ»EÁ¸ƒAƒjƒ[ƒVƒ‡ƒ“
+        // å‡ºç¾ãƒ»æ¶ˆå¤±ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 
         /// <summary>
         /// 
@@ -29,16 +29,16 @@ namespace DG.Tweening {
         /// </summary>
         public static Sequence DoFallApearenceWithShake(this Image image, float fallHeight = 50f, float duration = 0.5f, float afterScale = 0.95f, float offset = 10f) {
 
-            // ‰Šúó‘Ô
+            // åˆæœŸçŠ¶æ…‹
             var rect = image.rectTransform;
             var initPos = rect.anchoredPosition;
 
-            // ŠJnˆ—
+            // é–‹å§‹å‡¦ç†
             image.gameObject.SetActive(true);
             image.SetAlpha(0f);
             rect.anchoredPosition += new Vector2(0, fallHeight);
 
-            // ƒAƒjƒ[ƒVƒ‡ƒ“’è‹`
+            // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å®šç¾©
             var seq = DOTween.Sequence()
                 .Append(rect.DOAnchorPosY(initPos.y, duration).SetEase(Ease.OutQuart))
                 .Join(image.DOFade(1, duration * 0.5f))

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
@@ -8,12 +8,12 @@ using UniRx;
 namespace nitou {
 
     /// <summary>
-    /// ˆê’èŠÔŒo‰ß‚µ‚½—v‘f‚ğíœ‚·‚éƒRƒŒƒNƒVƒ‡ƒ“
+    /// ä¸€å®šæ™‚é–“çµŒéã—ãŸè¦ç´ ã‚’å‰Šé™¤ã™ã‚‹ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³
     /// </summary>
     public class TimedCollection<T> : IEnumerable<T>, IDisposable {
 
         /// <summary>
-        /// Ši”[—p‚Ìƒf[ƒ^ƒNƒ‰ƒX
+        /// æ ¼ç´ç”¨ã®ãƒ‡ãƒ¼ã‚¿ã‚¯ãƒ©ã‚¹
         /// </summary>
         private class TimedItem {
             public T Item { get; }
@@ -28,18 +28,18 @@ namespace nitou {
         private readonly List<TimedItem> _items = new();
         private readonly TimeSpan _timeout;
 
-        // “à•”ˆ——p
+        // å†…éƒ¨å‡¦ç†ç”¨
         private bool _isProcessing = false;
         private readonly Subject<T> _onItemRemoved = new();
         private CancellationTokenSource _cts;
 
         /// <summary>
-        /// Œ»İ‚Ì—v‘f”
+        /// ç¾åœ¨ã®è¦ç´ æ•°
         /// </summary>
         public int Count => _items.Count;
 
         /// <summary>
-        /// ƒf[ƒ^‚ªæ‚èœ‚©‚ê‚é‚Æ‚«‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// ãƒ‡ãƒ¼ã‚¿ãŒå–ã‚Šé™¤ã‹ã‚Œã‚‹ã¨ãã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<T> OnItemRemoved => _onItemRemoved;
 
@@ -56,18 +56,18 @@ namespace nitou {
         }
         
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
-            _cts.Cancel();  // ƒ^ƒXƒN‚ğƒLƒƒƒ“ƒZƒ‹
+            _cts.Cancel();  // ã‚¿ã‚¹ã‚¯ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«
             _cts.Dispose();
-            _onItemRemoved.OnCompleted(); // ƒXƒgƒŠ[ƒ€‚ÌŠ®—¹‚ğ’Ê’m
-            _onItemRemoved.Dispose(); // ƒŠƒ\[ƒX‚Ì‰ğ•ú
+            _onItemRemoved.OnCompleted(); // ã‚¹ãƒˆãƒªãƒ¼ãƒ ã®å®Œäº†ã‚’é€šçŸ¥
+            _onItemRemoved.Dispose(); // ãƒªã‚½ãƒ¼ã‚¹ã®è§£æ”¾
         }
 
 
         /// ----------------------------------------------------------------------------
-        // Private Method (ƒRƒŒƒNƒVƒ‡ƒ“‘€ì)
+        // Private Method (ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³æ“ä½œ)
 
         /// <summary>
         /// Add item.
@@ -89,7 +89,7 @@ namespace nitou {
             var timedItem = _items.Find(t => EqualityComparer<T>.Default.Equals(t.Item, item));
             if (timedItem != null) {
                 _items.Remove(timedItem);
-                _onItemRemoved.OnNext(timedItem.Item); // ƒAƒCƒeƒ€œŠO‚Ì’Ê’m
+                _onItemRemoved.OnNext(timedItem.Item); // ã‚¢ã‚¤ãƒ†ãƒ é™¤å¤–ã®é€šçŸ¥
                 return true;
             }
             return false;
@@ -118,11 +118,11 @@ namespace nitou {
                     var expiredItems = _items.FindAll(item => item.ExpirationTime <= now);
                     foreach (var expiredItem in expiredItems) {
                         _items.Remove(expiredItem);
-                        _onItemRemoved.OnNext(expiredItem.Item); // ƒAƒCƒeƒ€œŠO‚Ì’Ê’m
+                        _onItemRemoved.OnNext(expiredItem.Item); // ã‚¢ã‚¤ãƒ†ãƒ é™¤å¤–ã®é€šçŸ¥
                     }
                 }
             } catch (OperationCanceledException) {
-                // ƒ^ƒXƒN‚ªƒLƒƒƒ“ƒZƒ‹‚³‚ê‚½ê‡‚Ìˆ—
+                // ã‚¿ã‚¹ã‚¯ãŒã‚­ãƒ£ãƒ³ã‚»ãƒ«ã•ã‚ŒãŸå ´åˆã®å‡¦ç†
             } finally {
                 _isProcessing = false;
             }

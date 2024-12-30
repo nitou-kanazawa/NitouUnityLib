@@ -1,23 +1,23 @@
-
+ï»¿
 namespace nitou.Tools.Shared{
 
     /// <summary>
-    /// ƒpƒbƒP[ƒW‚ÌŠeíİ’è‚ğŠÇ—‚·‚éÃ“IƒNƒ‰ƒX
+    /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®å„ç¨®è¨­å®šã‚’ç®¡ç†ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     internal static class PackageInfo{
 
         /// <summary>
-        /// ƒpƒbƒP[ƒW‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒXD
+        /// ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹ï¼
         /// </summary>
         internal static readonly PackageDirectoryPath PackagePath = null;
 
         /// <summary>
-        /// ProjectSettings‚Ìƒƒjƒ…[ƒpƒXD
+        /// ProjectSettingsã®ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒ‘ã‚¹ï¼
         /// </summary>
         internal static readonly string SettingsMenuPath = "Project/Nitou Tools/";
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^D
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼
         /// </summary>
         static PackageInfo() {
             PackagePath = new PackageDirectoryPath("com.nitou.nTools");

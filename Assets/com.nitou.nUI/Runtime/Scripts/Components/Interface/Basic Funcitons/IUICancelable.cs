@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// Interface of the UI that handles the gCancelh event.
+    /// Interface of the UI that handles the â€œCancelâ€ event.
     /// </summary>
     public interface IUICancelable : IUIComponent {
 

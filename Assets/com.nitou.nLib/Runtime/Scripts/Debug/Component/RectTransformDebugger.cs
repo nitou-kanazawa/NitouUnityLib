@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using nitou.EditorShared;
 #endif
 
-// [Ql]
-// ‚Ë‚±‚¶‚á‚çƒVƒeƒB: RectTransform‚ÌƒTƒCƒY‚ğƒXƒNƒŠƒvƒg‚©‚ç•ÏX‚·‚é https://nekojara.city/unity-rect-transform-size
+// [å‚è€ƒ]
+// ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: RectTransformã®ã‚µã‚¤ã‚ºã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰å¤‰æ›´ã™ã‚‹ https://nekojara.city/unity-rect-transform-size
 
 namespace nitou.DebugInternal {
 
     /// <summary>
-    /// <see cref="RectTransform"/>‚ÌŠeƒvƒƒpƒeƒB‚ğ‰Â‹‰»‚·‚é‚½‚ß‚ÌƒfƒoƒbƒO—pƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// <see cref="RectTransform"/>ã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å¯è¦–åŒ–ã™ã‚‹ãŸã‚ã®ãƒ‡ãƒãƒƒã‚°ç”¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     [RequireComponent(typeof(RequireComponent))]
     internal class RectTransformDebugger : DebugComponent<RectTransform> {
@@ -52,10 +52,10 @@ namespace nitou.DebugInternal {
     [CustomEditor(typeof(RectTransformDebugger))]
     internal class RectTransformDebuggerEditor : Editor {
 
-        // ŒvZ—p
+        // è¨ˆç®—ç”¨
         private static readonly Vector3[] _corners = new Vector3[4];
 
-        // •`‰æ—p
+        // æç”»ç”¨
         private AnimBool _positionAnim;
         private AnimBool _localCornersAnim;
         private AnimBool _globalCornersAnim;
@@ -107,14 +107,14 @@ namespace nitou.DebugInternal {
         private void DrawRectSizeInfo(RectTransform rectTransform, ref Canvas canvas) {
             using (new EditorGUILayout.VerticalScope(Styles.box))
             using (new EditorGUI.DisabledScope(true)) {
-                // ƒrƒ…[ƒ|[ƒgÀ•W
+                // ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆåº§æ¨™
                 EditorGUILayout.Vector2Field("Viewport", rectTransform.GetViewportPos(ref canvas));
             }
 
         }
 
         /// <summary>
-        /// ˆÊ’uŠÖ˜A‚ÌƒvƒƒpƒeƒB
+        /// ä½ç½®é–¢é€£ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         /// </summary>
         private void DrawPoisitonProperty(RectTransform rectTrans) {
 
@@ -160,7 +160,7 @@ namespace nitou.DebugInternal {
         }
 
         /// <summary>
-        /// ƒTƒCƒYŠÖ˜A‚ÌƒvƒƒpƒeƒB
+        /// ã‚µã‚¤ã‚ºé–¢é€£ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         /// </summary>
         private void DrawSizeProperty(RectTransform rectTrans) {
             EditorUtil.GUI.HorizontalLine();
@@ -182,7 +182,7 @@ namespace nitou.DebugInternal {
         }
 
         /// <summary>
-        /// ƒAƒ“ƒJ[ŠÖ˜A‚ÌƒvƒƒpƒeƒB
+        /// ã‚¢ãƒ³ã‚«ãƒ¼é–¢é€£ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         /// </summary>
         private void DrawAnchorPivotProperty(RectTransform rectTrans) {
             EditorUtil.GUI.HorizontalLine();

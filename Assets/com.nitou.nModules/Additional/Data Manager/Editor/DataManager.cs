@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using UnityEditor;
 using Sirenix.OdinInspector.Editor;
@@ -9,16 +9,16 @@ using Sirenix.OdinInspector.Editor;
 namespace nitou.DataManagement {
 
     /// <summary>
-    /// "ManageableDataAttribute"‚ğ•t—^‚µ‚½ScriptableObject‚ğ•ÒW‚·‚éƒGƒfƒBƒ^ƒEƒCƒ“ƒhƒE
+    /// "ManageableDataAttribute"ã‚’ä»˜ä¸ã—ãŸScriptableObjectã‚’ç·¨é›†ã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦
     /// </summary>
     internal class DataManager : OdinMenuEditorWindow {
 
-        // ‘ÎÛ‚ÌŒ^î•ñ
+        // å¯¾è±¡ã®å‹æƒ…å ±
         private static Type[] typesToDisplay = TypeCache.GetTypesWithAttribute<ManageableDataAttribute>()
             .OrderBy(m => m.Name)
             .ToArray();
 
-        // ‘I‘ğ’†‚ÌŒ^
+        // é¸æŠä¸­ã®å‹
         private Type selectedType;
 
 
@@ -26,7 +26,7 @@ namespace nitou.DataManagement {
         // OdinEditor Method 
 
         /// <summary>
-        /// ƒEƒCƒ“ƒhƒE‚Ì•\¦
+        /// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®è¡¨ç¤º
         /// </summary>
         [MenuItem("Tools/Open/Data Manager")]
         private static void OpenEditor() => GetWindow<DataManager>();
@@ -36,9 +36,9 @@ namespace nitou.DataManagement {
 
             if (typesToDisplay.Length!=0) {
 
-                // Œ^‘I‘ğƒ{ƒ^ƒ“ƒŠƒXƒg‚Ì•\¦
+                // å‹é¸æŠãƒœã‚¿ãƒ³ãƒªã‚¹ãƒˆã®è¡¨ç¤º
                 if (GUIUtils.SelectButonList(ref selectedType, typesToDisplay))
-                    this.ForceMenuTreeRebuild();    // ¦ƒ{ƒ^ƒ“‰Ÿ‰º‚³‚ê‚½‚çÄ•`‰æ
+                    this.ForceMenuTreeRebuild();    // â€»ãƒœã‚¿ãƒ³æŠ¼ä¸‹ã•ã‚ŒãŸã‚‰å†æç”»
             }
 
             base.OnImGUI();
@@ -47,7 +47,7 @@ namespace nitou.DataManagement {
 
 
         /// <summary>
-        /// ƒƒjƒ…[‰æ–Ê‚Ì\’z
+        /// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã®æ§‹ç¯‰
         /// </summary>
         /// <returns></returns>
         protected override OdinMenuTree BuildMenuTree() {

@@ -1,21 +1,21 @@
-using System;
+ï»¿using System;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UniRx;
 
-// [Ql]
-//  qiita: ƒV[ƒ“‚Ì“Ç‚İ‚İƒCƒxƒ“ƒg‚ğIObservable‚É‚·‚é https://qiita.com/su10/items/93977e0b95449ec1b944
-//  qiita: UniRx‚ÌObservable.FromEvent‚ğg‚¤ https://qiita.com/ShirakawaMaru/items/4071aad0937ecbdc7fe9
+// [å‚è€ƒ]
+//  qiita: ã‚·ãƒ¼ãƒ³ã®èª­ã¿è¾¼ã¿ã‚¤ãƒ™ãƒ³ãƒˆã‚’IObservableã«ã™ã‚‹ https://qiita.com/su10/items/93977e0b95449ec1b944
+//  qiita: UniRxã®Observable.FromEventã‚’ä½¿ã† https://qiita.com/ShirakawaMaru/items/4071aad0937ecbdc7fe9
 
 namespace nitou.SceneSystem {
 
     /// <summary>
-    /// <see cref="SceneManager"/>‚ÌƒCƒxƒ“ƒg‚ğObserbable‚É•ÏŠ·‚·‚éƒ‰ƒCƒuƒ‰ƒŠ
+    /// <see cref="SceneManager"/>ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’Obserbableã«å¤‰æ›ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
     /// </summary>
     public static class ObservableSceneEvent {
 
         /// <summary>
-        /// "activeSceneChanged"ƒCƒxƒ“ƒg‚ğObservable‚É•ÏŠ·‚·‚é
+        /// "activeSceneChanged"ã‚¤ãƒ™ãƒ³ãƒˆã‚’Observableã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static IObservable<Tuple<Scene, Scene>> ActiveSceneChangedAsObservable() {
             return Observable.FromEvent<UnityAction<Scene, Scene>, Tuple<Scene, Scene>>(
@@ -25,7 +25,7 @@ namespace nitou.SceneSystem {
         }
 
         /// <summary>
-        /// "sceneLoaded"ƒCƒxƒ“ƒg‚ğObservable‚É•ÏŠ·‚·‚é
+        /// "sceneLoaded"ã‚¤ãƒ™ãƒ³ãƒˆã‚’Observableã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static IObservable<Tuple<Scene, LoadSceneMode>> SceneLoadedAsObservable() {
             return Observable.FromEvent<UnityAction<Scene, LoadSceneMode>, Tuple<Scene, LoadSceneMode>>(
@@ -35,7 +35,7 @@ namespace nitou.SceneSystem {
         }
 
         /// <summary>
-        /// "sceneUnloaded"ƒCƒxƒ“ƒg‚ğObservable‚É•ÏŠ·‚·‚é
+        /// "sceneUnloaded"ã‚¤ãƒ™ãƒ³ãƒˆã‚’Observableã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static IObservable<Scene> SceneUnloadedAsObservable() {
             return Observable.FromEvent<UnityAction<Scene>, Scene>(

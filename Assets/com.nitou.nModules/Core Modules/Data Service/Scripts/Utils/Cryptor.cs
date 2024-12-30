@@ -1,37 +1,37 @@
-using System.IO;
+ï»¿using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 
-// [Ql]
-//  qiita: ‚¢‚¢Š´‚¶‚ÌUnity—pƒZ[ƒuƒf[ƒ^ŠÇ—ƒNƒ‰ƒX https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
+// [å‚è€ƒ]
+//  qiita: ã„ã„æ„Ÿã˜ã®Unityç”¨ã‚»ãƒ¼ãƒ–ãƒ‡ãƒ¼ã‚¿ç®¡ç†ã‚¯ãƒ©ã‚¹ https://qiita.com/tocoteron/items/b865edaa0e3018cb5e55
 
 namespace nitou.SaveSystem.Utils {
 
     /// <summary>
-    /// ƒf[ƒ^‚ğAES‚ğ—p‚¢‚ÄˆÃ†‰»A•œ†‰»‚·‚éÃ“IƒNƒ‰ƒX
+    /// ãƒ‡ãƒ¼ã‚¿ã‚’AESã‚’ç”¨ã„ã¦æš—å·åŒ–ã€å¾©å·åŒ–ã™ã‚‹é™çš„ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class Cryptor {
 
         private static readonly int KEY_SIZE = 256;
         private static readonly int BLOCK_SIZE = 128;
 
-        // ˆÃ†‰»ƒL[E‰Šú‰»ƒxƒNƒgƒ‹
+        // æš—å·åŒ–ã‚­ãƒ¼ãƒ»åˆæœŸåŒ–ãƒ™ã‚¯ãƒˆãƒ«
         private static readonly string EncryptionKey = "0123456789ABCDEFGHIJKLMNOPQRSTUV";
         private static readonly string EncryptionIV = "0123456789ABCDEF";
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (ˆÃ†‰»)
+        // Public Method (æš—å·åŒ–)
 
         /// <summary>
-        /// ‹K’è‚Ìƒpƒ‰ƒ[ƒ^‚ğ—p‚¢‚ÄˆÃ†‰»‚·‚é
+        /// è¦å®šã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”¨ã„ã¦æš—å·åŒ–ã™ã‚‹
         /// </summary>
         public static byte[] Encrypt(byte[] rawData) {
             return Encrypt(rawData, EncryptionKey, EncryptionIV);
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ˆÃ†‰»ƒL[‚Æ‰Šú‰»ƒxƒNƒgƒ‹‚ğ—p‚¢‚ÄˆÃ†‰»‚·‚é
+        /// æŒ‡å®šã•ã‚ŒãŸæš—å·åŒ–ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ãƒˆãƒ«ã‚’ç”¨ã„ã¦æš—å·åŒ–ã™ã‚‹
         /// </summary>
         public static byte[] Encrypt(byte[] rawData, string key, string iv) {
             byte[] result = null;
@@ -54,17 +54,17 @@ namespace nitou.SaveSystem.Utils {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (•œ†‰»)
+        // Public Method (å¾©å·åŒ–)
 
         /// <summary>
-        /// ‹K’è‚Ìƒpƒ‰ƒ[ƒ^‚ğ—p‚¢‚Ä•œ†‰»‚·‚é
+        /// è¦å®šã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ç”¨ã„ã¦å¾©å·åŒ–ã™ã‚‹
         /// </summary>
         public static byte[] Decrypt(byte[] encryptedData) {
             return Decrypt(encryptedData, EncryptionKey, EncryptionIV);
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½ˆÃ†‰»ƒL[‚Æ‰Šú‰»ƒxƒNƒgƒ‹‚ğ—p‚¢‚Ä•œ†‰»‚·‚é
+        /// æŒ‡å®šã•ã‚ŒãŸæš—å·åŒ–ã‚­ãƒ¼ã¨åˆæœŸåŒ–ãƒ™ã‚¯ãƒˆãƒ«ã‚’ç”¨ã„ã¦å¾©å·åŒ–ã™ã‚‹
         /// </summary>
         public static byte[] Decrypt(byte[] encryptedData, string key, string iv) {
             byte[] result = null;
@@ -111,10 +111,10 @@ namespace nitou.SaveSystem.Utils {
 
         private static string PaddingString(string str, int len) {
 
-            // [’ˆÓ]
-            //  FromBase64String‚Å‚ÍA4‚Ì”{”‚Ì•¶š”‚µ‚©ó‚¯•t‚¯‚È‚¢‚ç‚µ‚¢
-            //  ‚»‚Ì‚½‚ß•¶š”‚ª4‚Ì”{”‚É‚È‚é‚æ‚¤‚ÉPadding‚µ‚Ä‚¢‚é
-            //  qiita: Convert.FromBase64String‚ªƒGƒ‰[‚É‚È‚é https://qiita.com/chanchanko/items/d2a23e8a569eea98d04f
+            // [æ³¨æ„]
+            //  FromBase64Stringã§ã¯ã€4ã®å€æ•°ã®æ–‡å­—æ•°ã—ã‹å—ã‘ä»˜ã‘ãªã„ã‚‰ã—ã„
+            //  ãã®ãŸã‚æ–‡å­—æ•°ãŒ4ã®å€æ•°ã«ãªã‚‹ã‚ˆã†ã«Paddingã—ã¦ã„ã‚‹
+            //  qiita: Convert.FromBase64StringãŒã‚¨ãƒ©ãƒ¼ã«ãªã‚‹ https://qiita.com/chanchanko/items/d2a23e8a569eea98d04f
 
             const char PaddingCharacter = '.';
 

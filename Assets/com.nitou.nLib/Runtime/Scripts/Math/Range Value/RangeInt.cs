@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -6,7 +6,7 @@ using UnityEditor;
 namespace nitou{
 
     /// <summary>
-    /// ”ÍˆÍ‚ğ<see cref="int"/>Œ^‚Å•\‚·\‘¢‘Ì
+    /// ç¯„å›²ã‚’<see cref="int"/>å‹ã§è¡¨ã™æ§‹é€ ä½“
     /// </summary>
     public class RangeInt : IRangeValue<int>{
 
@@ -24,17 +24,17 @@ namespace nitou{
         }
 
         /// <summary>
-        /// ’†‰›’l
+        /// ä¸­å¤®å€¤
         /// </summary>
         public int Mid => _min + (_max - _min) / 2;
 
         /// <summary>
-        /// ”ÍˆÍ‚Ì’·‚³
+        /// ç¯„å›²ã®é•·ã•
         /// </summary>
         public int Length => Mathf.Abs(_max - _min);
 
         /// <summary>
-        /// ”ÍˆÍ“à‚Ìƒ‰ƒ“ƒ_ƒ€‚È’l
+        /// ç¯„å›²å†…ã®ãƒ©ãƒ³ãƒ€ãƒ ãªå€¤
         /// </summary>
         public int Random => _min < _max ? UnityEngine.Random.Range(_min, _max+1) : _min;
 
@@ -43,7 +43,7 @@ namespace nitou{
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public RangeInt(int min, int max) {
             _min = min;
@@ -51,7 +51,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// ’l‚ª”ÍˆÍ“à‚©’²‚×‚é
+        /// å€¤ãŒç¯„å›²å†…ã‹èª¿ã¹ã‚‹
         /// </summary>
         public bool Contains(int value) {
             return GenericExtensions.IsInRange(value, _min, _max);
@@ -68,7 +68,7 @@ namespace nitou{
     public class RangeIntEditor : RangeValueEditor {
 
         protected override void ValidateValue(SerializedProperty minProperty, SerializedProperty maxProperty) {
-            // ¬‚³‚¢”’l‚ğŠî€‚É‚µ‚ÄA‘å‚«‚¢”’l‚ª¬‚³‚¢”’l‚æ‚è¬‚³‚­‚È‚ç‚È‚¢‚æ‚¤‚É‚µ‚Ä‚İ‚æ‚¤B
+            // å°ã•ã„æ•°å€¤ã‚’åŸºæº–ã«ã—ã¦ã€å¤§ãã„æ•°å€¤ãŒå°ã•ã„æ•°å€¤ã‚ˆã‚Šå°ã•ããªã‚‰ãªã„ã‚ˆã†ã«ã—ã¦ã¿ã‚ˆã†ã€‚
             if (maxProperty.floatValue < minProperty.floatValue) {
                 minProperty.floatValue = maxProperty.floatValue;
             }

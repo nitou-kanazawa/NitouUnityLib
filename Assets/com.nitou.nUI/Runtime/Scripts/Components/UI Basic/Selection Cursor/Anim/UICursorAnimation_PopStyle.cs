@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 
@@ -29,7 +29,7 @@ namespace nitou.UI.Components {
             _startScale = transform.localScale * _min;
             _endScale = transform.localScale* _max;
 
-            // ƒJ[ƒ\ƒ‹‚ªƒAƒNƒeƒBƒu‚È‚ç‘¦Ä¶
+            // ã‚«ãƒ¼ã‚½ãƒ«ãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚‰å³å†ç”Ÿ
             if (_cursor.isActiveAndEnabled) {
                 OnEnableAnimation();
             }

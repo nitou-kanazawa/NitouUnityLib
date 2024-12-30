@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -7,7 +7,7 @@ using UniRx;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// <see cref="Selectable"/>‚É“Æ©‹@”\‚ğ’Ç‰Á‚µ‚½Šî–{ƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// <see cref="Selectable"/>ã«ç‹¬è‡ªæ©Ÿèƒ½ã‚’è¿½åŠ ã—ãŸåŸºæœ¬ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     [DisallowMultipleComponent]
     public abstract class UISelectable : Selectable, 
@@ -29,17 +29,17 @@ namespace nitou.UI.Components {
         // Properity
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚É’Ê’m‚·‚éObservableD
+        /// é¸æŠã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã™ã‚‹Observableï¼
         /// </summary>
         public IObservable<Unit> OnSelected => _onSelectSubject;
 
         /// <summary>
-        /// ”ñ‘I‘ğ‚³‚ê‚½‚É’Ê’m‚·‚éObservableD
+        /// éé¸æŠã•ã‚ŒãŸæ™‚ã«é€šçŸ¥ã™ã‚‹Observableï¼
         /// </summary>
         public IObservable<Unit> OnDeselected => _onDeselectSubject;
 
         /// <summary>
-        /// ˆÚ“®“ü—Í‚ª“ü‚Á‚½‚É’Ê’m‚·‚éObservableD
+        /// ç§»å‹•å…¥åŠ›ãŒå…¥ã£ãŸæ™‚ã«é€šçŸ¥ã™ã‚‹Observableï¼
         /// </summary>
         public IObservable<MoveDirection> OnMoved => _onMoveSubject;
 
@@ -68,7 +68,7 @@ namespace nitou.UI.Components {
         // Interface Method
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// é¸æŠã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public override void OnSelect(BaseEventData eventData) {
             base.OnSelect(eventData);
@@ -78,7 +78,7 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ‘I‘ğ‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// é¸æŠã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public override void OnDeselect(BaseEventData eventData) {
             base.OnDeselect(eventData);
@@ -88,7 +88,7 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ˆÚ“®“ü—Í‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// ç§»å‹•å…¥åŠ›ã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public override void OnMove(AxisEventData eventData) {
 
@@ -117,7 +117,7 @@ namespace nitou.UI.Components {
         // Protected Method
 
         /// <summary>
-        /// ‘I‘ğƒJ[ƒ\ƒ‹‚ÌƒAƒNƒeƒBƒuó‘Ô‚ğİ’è‚·‚é 
+        /// é¸æŠã‚«ãƒ¼ã‚½ãƒ«ã®ã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã‚’è¨­å®šã™ã‚‹ 
         /// </summary>
         protected void SetCursorActivation(bool value) {
             if (_cursor == null) return;

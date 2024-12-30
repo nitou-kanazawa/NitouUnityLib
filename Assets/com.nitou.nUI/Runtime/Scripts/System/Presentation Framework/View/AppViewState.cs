@@ -1,19 +1,19 @@
-using System;
+ï»¿using System;
 
 namespace nitou.UI.PresentationFramework {
 
     /// <summary>
-    /// UI—v‘f‚Ìó‘Ô’lD
+    /// UIè¦ç´ ã®çŠ¶æ…‹å€¤ï¼
     /// </summary>
     public abstract class AppViewState : IDisposable {
 
         /// <summary>
-        /// I—¹ˆ—‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©D
+        /// çµ‚äº†å‡¦ç†ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         private bool _isDisposed;
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public void Dispose() {
             if (_isDisposed) throw new ObjectDisposedException(nameof(AppViewState));
@@ -23,7 +23,7 @@ namespace nitou.UI.PresentationFramework {
         }
 
         /// <summary>
-        /// I—¹ˆ— (¦”h¶ƒNƒ‰ƒX‚Å‚Ì’è‹`—p)
+        /// çµ‚äº†å‡¦ç† (â€»æ´¾ç”Ÿã‚¯ãƒ©ã‚¹ã§ã®å®šç¾©ç”¨)
         /// </summary>
         protected abstract void DisposeInternal();
     }

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -9,7 +9,7 @@ namespace nitou {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent content) {
 
-            // ¦–â‘è‚Ì‚ ‚éColorŒ^‚Ì‚İ—pˆÓ‚µ‚Ä‚¨‚­
+            // â€»å•é¡Œã®ã‚ã‚‹Colorå‹ã®ã¿ç”¨æ„ã—ã¦ãŠã
             if(property.propertyType == SerializedPropertyType.Color) {
                 property.colorValue = EditorGUI.ColorField(position, property.displayName, property.colorValue);
             }

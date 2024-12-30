@@ -1,24 +1,24 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// LayerMask‚ÌŠg’£ƒƒ\ƒbƒhƒNƒ‰ƒX
+    /// LayerMaskã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class LayerMaskExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region Layer‚Ì”»’è
+        #region Layerã®åˆ¤å®š
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(this LayerMask self, int layerId) {
             return ((1 << layerId) & self) != 0;
         }
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ªŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå«ã¾ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool Contains(this LayerMask self, string layerName) {
             return self.Contains(LayerMask.NameToLayer(layerName));
@@ -27,45 +27,45 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Layer‚Ì’Ç‰Á/íœ
+        #region Layerã®è¿½åŠ /å‰Šé™¤
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static LayerMask Add(this LayerMask self, LayerMask layerId) {
             return self | (1 << layerId);
         }
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ğ’Ç‰Á‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¿½åŠ ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static LayerMask Add(this LayerMask self, string layerName) {
             return self.Add(LayerMask.NameToLayer(layerName));
         }
 
         /// <summary>
-        /// LayerMask‚©‚çw’è‚µ‚½ƒŒƒCƒ„[‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã‹ã‚‰æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static LayerMask Remove(this LayerMask self, LayerMask layerId) {
             return self & ~(1 << layerId);
         }
 
         /// <summary>
-        /// LayerMask‚©‚çw’è‚µ‚½ƒŒƒCƒ„[‚ğíœ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// LayerMaskã‹ã‚‰æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’å‰Šé™¤ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static LayerMask Remove(this LayerMask self, string layerName) {
             return self.Remove(LayerMask.NameToLayer(layerName));
         }
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ğ’Ç‰Á/íœ‚ÌØ‚è‘Ö‚¦
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¿½åŠ /å‰Šé™¤ã®åˆ‡ã‚Šæ›¿ãˆ
         /// </summary>
         public static LayerMask Toggle(this LayerMask self, LayerMask layerId) {
             return self ^ (1 << layerId);
         }
 
         /// <summary>
-        /// LayerMask‚Éw’è‚µ‚½ƒŒƒCƒ„[‚ğ’Ç‰Á/íœ‚ÌØ‚è‘Ö‚¦
+        /// LayerMaskã«æŒ‡å®šã—ãŸãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’è¿½åŠ /å‰Šé™¤ã®åˆ‡ã‚Šæ›¿ãˆ
         /// </summary>
         public static LayerMask Toggle(this LayerMask self, string layerName) {
             return self.Toggle(LayerMask.NameToLayer(layerName));
@@ -74,13 +74,13 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ‚»‚Ì‘¼
+        #region ãã®ä»–
 
         /// <summary>
         /// 
         /// </summary>
         public static string ToBinaryString(this LayerMask self) {
-            // LayerMask ‚Ì’l‚ğæ“¾‚µA2i”‚Ì•¶š—ñ‚É•ÏŠ·‚·‚é
+            // LayerMask ã®å€¤ã‚’å–å¾—ã—ã€2é€²æ•°ã®æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
             return System.Convert.ToString(self.value, 2).PadLeft(32, '0');
         }
 

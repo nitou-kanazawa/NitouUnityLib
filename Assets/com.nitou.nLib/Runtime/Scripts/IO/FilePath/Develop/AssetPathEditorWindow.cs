@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -7,7 +7,7 @@ namespace nitou.EditorScripts{
 
     internal sealed class AssetPathEditorWindow : EditorWindow , IDevelopEditorWindow{
         
-        // ‘ÎÛ
+        // å¯¾è±¡
         [SerializeField] private AssetPath _assetPath;
         [SerializeField] private PackageDirectoryPath _packageDirectoryPath;
         private string _relativePath;
@@ -43,10 +43,10 @@ namespace nitou.EditorScripts{
 
             GUILayout.Label("Icon Button Example", EditorStyles.boldLabel);
 
-            // ƒAƒCƒRƒ“‚ğæ“¾
+            // ã‚¢ã‚¤ã‚³ãƒ³ã‚’å–å¾—
             GUIContent iconContent = EditorGUIUtility.IconContent("d_UnityEditor.SceneView");
 
-            // ƒAƒCƒRƒ“•t‚«‚Ìƒ{ƒ^ƒ“‚ğ•\¦
+            // ã‚¢ã‚¤ã‚³ãƒ³ä»˜ãã®ãƒœã‚¿ãƒ³ã‚’è¡¨ç¤º
             if (GUILayout.Button(iconContent, GUILayout.Width(40), GUILayout.Height(40))) {
                 Debug.Log("Icon Button Clicked");
             }
@@ -59,11 +59,11 @@ namespace nitou.EditorScripts{
         private void DrawAssetPathProperities() {
             using var scope = new EditorGUILayout.VerticalScope(GUI.skin.box);
 
-            // ‘Š‘ÎƒpƒX‚Ì•ÒWƒtƒB[ƒ‹ƒh
+            // ç›¸å¯¾ãƒ‘ã‚¹ã®ç·¨é›†ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
             EditorGUILayout.PropertyField(_relativePathProperty, new GUIContent("Relative Path"));
             _serializedObject.ApplyModifiedProperties();
 
-            // ƒvƒƒpƒeƒB‚Ì•Ï‰»‚ğ•\¦
+            // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å¤‰åŒ–ã‚’è¡¨ç¤º
             if (_assetPath != null) {
                 EditorGUILayout.LabelField("ToRelativePath", _assetPath.ToRelativePath());
                 EditorGUILayout.LabelField("ToProjectPath", _assetPath.ToProjectPath());
@@ -77,12 +77,12 @@ namespace nitou.EditorScripts{
         private void DrawPackagePathProperities() {
             using var scope = new EditorGUILayout.VerticalScope(GUI.skin.box);
 
-            // ‘Š‘ÎƒpƒX‚Ì•ÒWƒtƒB[ƒ‹ƒh
+            // ç›¸å¯¾ãƒ‘ã‚¹ã®ç·¨é›†ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
             _relativePath = EditorGUILayout.TextField(new GUIContent("Relative Path"), _relativePath);
 
 
 
-            // ƒvƒƒpƒeƒB‚Ì•Ï‰»‚ğ•\¦
+            // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å¤‰åŒ–ã‚’è¡¨ç¤º
             if (_assetPath != null) {
                 EditorGUILayout.LabelField("ToProjectPath", _packageDirectoryPath.ToProjectPath());
                 EditorGUILayout.LabelField("ToAbsolutePath", _packageDirectoryPath.ToAbsolutePath());

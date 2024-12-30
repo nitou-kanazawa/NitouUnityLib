@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UniRx;
 
@@ -33,10 +33,10 @@ namespace nitou {
         /// </summary>
         public static void BindTo<T>(this IReactiveProperty<T> property, IDataHolder<T> target, ICollection<IDisposable> disposables) {
 
-            // Property ¨ Target
+            // Property â†’ Target
             property.SubscribeWithState(target, (x, t) => t.SetValue(x)).AddTo(disposables);
 
-            // Targer ¨ Property
+            // Targer â†’ Property
             target.OnValueChanged.SubscribeWithState(property, (x, p) => p.Value = x).AddTo(disposables);
         }
     }

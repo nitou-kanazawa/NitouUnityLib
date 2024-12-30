@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: LineRenderer‚ÅDOFade‚ğg‚¦‚é‚æ‚¤‚É‚·‚éŠg’£ƒƒ\ƒbƒh https://baba-s.hatenablog.com/entry/2023/04/05/102559
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: LineRendererã§DOFadeã‚’ä½¿ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://baba-s.hatenablog.com/entry/2023/04/05/102559
 
 namespace DG.Tweening {
 
     /// <summary>
-    /// <see cref="LineRenderer"/>‚ÌTweenŠÖ˜A‚ÌŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="LineRenderer"/>ã®Tweené–¢é€£ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class LineRendererTweenExtensions {
 
@@ -14,7 +14,7 @@ namespace DG.Tweening {
         #region Fading Tweens
 
         /// <summary>
-        /// DOFade‚ÌŠg’£ƒƒ\ƒbƒh
+        /// DOFadeã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFade(this LineRenderer self, float endValue, float duration) {
 
@@ -32,13 +32,13 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// ƒtƒF[ƒhƒAƒEƒg‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeOut(this LineRenderer self, float duration) =>
             self.DOFade(0.0F, duration);
 
         /// <summary>
-        /// ƒtƒF[ƒhƒCƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOFadeIn(this LineRenderer self, float duration) =>
             self.DOFade(1.0F, duration);
@@ -48,7 +48,7 @@ namespace DG.Tweening {
         #region Parameter Tweens
 
         /// <summary>
-        /// <see cref="LineRenderer.widthMultiplier"/>‚ğƒAƒjƒ[ƒVƒ‡ƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="LineRenderer.widthMultiplier"/>ã‚’ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOParam_WidthMultiplier(this LineRenderer self, float endValue, float duration) {
             return DOTween.To(
@@ -59,7 +59,7 @@ namespace DG.Tweening {
         }
 
         /// <summary>
-        /// <see cref="LineRenderer.textureScale"/>‚ğƒAƒjƒ[ƒVƒ‡ƒ“‚³‚¹‚éŠg’£ƒƒ\ƒbƒh
+        /// <see cref="LineRenderer.textureScale"/>ã‚’ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã•ã›ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static Tweener DOParam_TextureScale(this LineRenderer self, Vector2 endValue, float duration) {
             return DOTween.To(

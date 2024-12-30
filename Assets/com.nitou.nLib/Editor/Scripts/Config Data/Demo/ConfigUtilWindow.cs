@@ -1,9 +1,9 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  LIGHT11: ƒGƒfƒBƒ^‚Åƒf[ƒ^‚ğ•Û‘¶‚·‚éêŠ‚Æ•Û‘¶•û–@‚Ü‚Æ‚ß
+// [å‚è€ƒ]
+//  LIGHT11: ã‚¨ãƒ‡ã‚£ã‚¿ã§ãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹å ´æ‰€ã¨ä¿å­˜æ–¹æ³•ã¾ã¨ã‚
 
 namespace nitou.ConfigManagement{
 
@@ -17,7 +17,7 @@ namespace nitou.ConfigManagement{
         }
 
         private void OnEnable() {
-            // •Û‘¶æ‚Ì‰ŠúƒpƒX‚ğæ“¾‚µ‚Ü‚·i—á: Application.persistentDataPathj
+            // ä¿å­˜å…ˆã®åˆæœŸãƒ‘ã‚¹ã‚’å–å¾—ã—ã¾ã™ï¼ˆä¾‹: Application.persistentDataPathï¼‰
             savePath = Application.persistentDataPath;
         }
 
@@ -34,12 +34,12 @@ namespace nitou.ConfigManagement{
         private void DrawDataPath(string label, string dataPath) {
             using var scope = new EditorGUILayout.HorizontalScope();
 
-            // Œ»İ‚Ì•Û‘¶ƒpƒX‚ğ•\¦
+            // ç¾åœ¨ã®ä¿å­˜ãƒ‘ã‚¹ã‚’è¡¨ç¤º
             EditorGUILayout.LabelField($"{label}:", dataPath);
 
             //EditorGUILayout.Space();
 
-            // ƒtƒHƒ‹ƒ_‚ğŠJ‚­ƒ{ƒ^ƒ“
+            // ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ããƒœã‚¿ãƒ³
             if (GUILayout.Button("Open")) {
                 EditorUtility.RevealInFinder(savePath);
             }

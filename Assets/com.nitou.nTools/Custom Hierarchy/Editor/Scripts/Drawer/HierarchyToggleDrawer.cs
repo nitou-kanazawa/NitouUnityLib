@@ -1,10 +1,10 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-// [Ql]
-//  _: Hierarchy ‚ÅƒIƒuƒWƒFƒNƒg‚ÌƒRƒ“ƒ|[ƒlƒ“ƒgˆê——‚ğƒAƒCƒRƒ“•\¦ https://www.midnightunity.net/unity-extension-hierarchy-show-components/
+// [å‚è€ƒ]
+//  _: Hierarchy ã§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆä¸€è¦§ã‚’ã‚¢ã‚¤ã‚³ãƒ³è¡¨ç¤º https://www.midnightunity.net/unity-extension-hierarchy-show-components/
 //  github : Alchemy/HierarchyToggleDrawer.cs https://github.com/AnnulusGames/Alchemy/blob/main/Alchemy/Assets/Alchemy/Editor/Hierarchy/HierarchyToggleDrawer.cs
 
 namespace nitou.Tools.Hierarchy.EditorSctipts {
@@ -25,23 +25,23 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
         public override void OnGUI(int instanceID, Rect selectionRect) {
             
-            // GameObjectæ“¾
+            // GameObjectå–å¾—
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (gameObject == null) return;
-            if (gameObject.TryGetComponent<HierarchyObject>(out _)) return;     // ¦ƒ_ƒ~[ƒIƒuƒWƒFƒNƒg‚Í‚Í‚¶‚­
+            if (gameObject.TryGetComponent<HierarchyObject>(out _)) return;     // â€»ãƒ€ãƒŸãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã¯ã˜ã
 
-            // İ’èƒf[ƒ^
+            // è¨­å®šãƒ‡ãƒ¼ã‚¿
             //var settings = nToolsSettings.GetOrCreateSettings();
             var settings = HierarchySettingsSO.instance;
 
 
-            // ƒgƒOƒ‹ƒ{ƒ^ƒ“
+            // ãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³
             if (settings.ShowHierarchyToggles) {
                 var rect = selectionRect;
-                rect.x = rect.xMax - RIGHT_OFFSET;  // ¦‰E’[‚É”z’u
+                rect.x = rect.xMax - RIGHT_OFFSET;  // â€»å³ç«¯ã«é…ç½®
                 rect.width = TOGGLE_SIZE;
 
-                // Activeó‘Ô‚Ì”½‰f
+                // ActiveçŠ¶æ…‹ã®åæ˜ 
                 var active = GUI.Toggle(rect, gameObject.activeSelf, string.Empty);
                 if (active != gameObject.activeSelf) {
                     Undo.RecordObject(gameObject, $"{(active ? "Activate" : "Deactivate")} GameObject '{gameObject.name}'");
@@ -50,22 +50,22 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 }
             }
 
-            // ƒAƒCƒRƒ“
+            // ã‚¢ã‚¤ã‚³ãƒ³
             if (settings.ShowComponentIcons) {
-                // •`‰æˆÊ’u
+                // æç”»ä½ç½®
                 var rect = selectionRect;
                 rect.x = rect.xMax - ((settings.ShowHierarchyToggles ? TOGGLE_SIZE : 0f) + RIGHT_OFFSET);
                 rect.y += 1f;
                 rect.width = ICON_SIZE;
                 rect.height = ICON_SIZE;
 
-                // ƒIƒuƒWƒFƒNƒg‚ªŠ‚µ‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒgˆê——‚ğæ“¾
+                // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæ‰€æŒã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆä¸€è¦§ã‚’å–å¾—
                 var components = gameObject.GetComponents<Component>()
-                    //.AsEnumerable()           // ¦Transform & RectTransform‚ğ•\¦‚·‚éê‡‚Í‚±‚Á‚¿
+                    //.AsEnumerable()           // â€»Transform & RectTransformã‚’è¡¨ç¤ºã™ã‚‹å ´åˆã¯ã“ã£ã¡
                     .Where(x => x is not Transform)
                     .Reverse();
 
-                // ƒAƒCƒRƒ“‚Ì•`‰æ
+                // ã‚¢ã‚¤ã‚³ãƒ³ã®æç”»
                 var existsScriptIcon = false;
                 foreach (var component in components) {
                     var image = AssetPreview.GetMiniThumbnail(component);

@@ -1,26 +1,26 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace nitou {
     
     /// <summary>
-    /// <see cref="Type"/>Œ^‚É‘Î‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// <see cref="Type"/>å‹ã«å¯¾ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class TypeUtil {
 
         /// ----------------------------------------------------------------------------
-        #region Œ^î•ñ
+        #region å‹æƒ…å ±
 
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ‚Á‚Ä‚¢‚é‚©Šm”F‚·‚é
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’æŒã£ã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹
         /// </summary>
         public static bool HasDefaultConstructor(Type type) {
             return type.GetConstructors().Any(t => t.GetParameters().Count() == 0);
         }
 
         /// <summary>
-        /// Šî’êƒNƒ‰ƒX‚âƒCƒ“ƒ^[ƒtƒF[ƒX‚ğæ“¾‚·‚é
+        /// åŸºåº•ã‚¯ãƒ©ã‚¹ã‚„ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static IEnumerable<Type> GetBaseClassesAndInterfaces(Type type, bool includeSelf = false) {
             if (includeSelf) yield return type;
@@ -42,10 +42,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ¶¬       
+        #region ç”Ÿæˆ       
         
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒg’l‚ğæ“¾‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã‚’å–å¾—ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static object GetDefaultValue(this Type self) {
             if (!self.IsValueType) return null;
@@ -53,7 +53,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒtƒHƒ‹ƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static object CreateDefaultInstance(Type type) {
             if (type == typeof(string)) return "";

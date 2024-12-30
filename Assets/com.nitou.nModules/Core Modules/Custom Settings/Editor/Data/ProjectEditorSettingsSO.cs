@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 namespace nitou.EditorShared {
 
     /// <summary>
-    /// Editor‚ÅQÆ‚·‚éƒvƒƒWƒFƒNƒgŒÅ—L‚Ìİ’èƒf[ƒ^D
+    /// Editorã§å‚ç…§ã™ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå›ºæœ‰ã®è¨­å®šãƒ‡ãƒ¼ã‚¿ï¼
     /// </summary>
     [UnityEditor.FilePath(
         relativePath: "ProjectSettings/MyProjectEditorSettings.asset",
@@ -32,7 +32,7 @@ namespace nitou.EditorShared {
     #region Hierarchy Settings
 
     /// <summary>
-    /// ƒqƒGƒ‰ƒ‹ƒL[‚ÉŠÖ‚·‚éİ’èƒf[ƒ^
+    /// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼ã«é–¢ã™ã‚‹è¨­å®šãƒ‡ãƒ¼ã‚¿
     /// </summary>
 
     [Serializable]
@@ -43,15 +43,15 @@ namespace nitou.EditorShared {
         /// </summary>
         public enum HierarchyObjectMode {
             /// <summary>
-            /// ’ÊíƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Äˆµ‚¤
+            /// é€šå¸¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦æ‰±ã†
             /// </summary>
             None = 0,
             /// <summary>
-            /// play mode‚Åíœ‚·‚é
+            /// play modeã§å‰Šé™¤ã™ã‚‹
             /// </summary>
             RemoveInPlayMode = 1,
             /// <summary>
-            /// ƒrƒ‹ƒh‚Éíœ‚·‚é
+            /// ãƒ“ãƒ«ãƒ‰æ™‚ã«å‰Šé™¤ã™ã‚‹
             /// </summary>
             RemoveInBuild = 2
         }
@@ -61,7 +61,7 @@ namespace nitou.EditorShared {
         [SerializeField] bool _showToggles;
         [SerializeField] bool _showComponentIcons;
 
-        // ƒvƒƒpƒeƒB
+        // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         public HierarchyObjectMode Mode => _hierarchyObjectMode;
         public bool ShowToggles => _showToggles;
         public bool ShowComponentIcons => _showComponentIcons;

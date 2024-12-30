@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using nitou;
 
 namespace UnityScreenNavigator.Runtime.Core.Page{
 
     /// <summary>
-    /// <see cref="Page"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Page"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class PageExtensions {
 
         /// <summary>
-        /// CanvasGroup‚Ìinterctableİ’è‚ğs‚¤Šg’£ƒƒ\ƒbƒh
+        /// CanvasGroupã®interctableè¨­å®šã‚’è¡Œã†æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetInteractable(this Page page, bool value) {
             var canvasGroup = page.GetOrAddComponent<CanvasGroup>();

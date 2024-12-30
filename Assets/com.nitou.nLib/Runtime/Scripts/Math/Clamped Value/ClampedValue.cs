@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [Ql]
-//  _: ƒtƒB[ƒ‹ƒh‚Ì’l‚È‚Ç‚ğƒCƒ“ƒXƒyƒNƒ^‚Å‰¡‚É•À‚×‚Ä•\¦‚·‚é   http://fantom1x.blog130.fc2.com/blog-entry-419.html
-//  LIGHT11: Serializable‚ÈƒNƒ‰ƒX‚É‚ÍƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ–Y‚ê‚¸‚Â‚¯‚æ‚¤‚Æ‚¢‚¤˜b https://light11.hatenadiary.com/entry/2022/12/26/191200
+// [å‚è€ƒ]
+//  _: ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å€¤ãªã©ã‚’ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã§æ¨ªã«ä¸¦ã¹ã¦è¡¨ç¤ºã™ã‚‹   http://fantom1x.blog130.fc2.com/blog-entry-419.html
+//  LIGHT11: Serializableãªã‚¯ãƒ©ã‚¹ã«ã¯ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å¿˜ã‚Œãšã¤ã‘ã‚ˆã†ã¨ã„ã†è©± https://light11.hatenadiary.com/entry/2022/12/26/191200
 
 namespace nitou {
 
     /// <summary>
-    /// Å‘åAÅ¬‚Ì”ÍˆÍ‚É§ŒÀ‚³‚ê‚é’l
+    /// æœ€å¤§ã€æœ€å°ã®ç¯„å›²ã«åˆ¶é™ã•ã‚Œã‚‹å€¤
     /// </summary>
     [System.Serializable]
     public class ClampedValue{
@@ -28,16 +28,16 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         private ClampedValue() { }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public ClampedValue(float min, float max, float value = 0) {
             _min = min;
-            _max = Mathf.Max(min,max);  // ¦min‚ğŠî€‚Æ‚·‚é
+            _max = Mathf.Max(min,max);  // â€»minã‚’åŸºæº–ã¨ã™ã‚‹
             Value = value;
         }
 
@@ -46,7 +46,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¶š—ñŒ`®‚ÅƒIƒuƒWƒFƒNƒg‚Ìó‘Ô‚ğ•Ô‚·
+        /// æ–‡å­—åˆ—å½¢å¼ã§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®çŠ¶æ…‹ã‚’è¿”ã™
         /// </summary>
         public override string ToString() {
             return $"(Min: {Min}, Max: {Max}, Value: {Value})";
@@ -73,16 +73,16 @@ namespace nitou.EditorScripts {
 
             //    EditorGUI.BeginProperty(position, label, property);
             using (var scope = new EditorGUI.PropertyScope(position, label, property)) {
-                //–¼‘O
+                //åå‰
                 Rect fieldRect = EditorGUI.PrefixLabel(position, label);
 
                 /*
-                //ƒ‰ƒxƒ‹
-                fieldRect.width *= 1f / 3f; //3‚Â•À‚×‚éê‡ (n ŒÂ‚Ì‚Æ‚«A1 / n)
+                //ãƒ©ãƒ™ãƒ«
+                fieldRect.width *= 1f / 3f; //3ã¤ä¸¦ã¹ã‚‹å ´åˆ (n å€‹ã®ã¨ãã€1 / n)
                 EditorGUI.indentLevel = 0;
-                EditorGUIUtility.labelWidth = 30f;  //ƒ‰ƒxƒ‹•(“K“–)
+                EditorGUIUtility.labelWidth = 30f;  //ãƒ©ãƒ™ãƒ«å¹…(é©å½“)
 
-                //Še—v‘f
+                //å„è¦ç´ 
                 //EditorGUI.PropertyField(fieldRect, minProperty, minContent);
                 GUI.Label(fieldRect, $"min: {minProperty.floatValue}");
 

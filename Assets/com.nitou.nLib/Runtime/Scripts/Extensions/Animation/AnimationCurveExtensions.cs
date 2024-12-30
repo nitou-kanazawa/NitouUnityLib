@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="AnimationCurve"/>‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="AnimationCurve"/>ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class AnimationCurveExtensions {
 
@@ -11,13 +11,13 @@ namespace nitou {
         #region Clamp
 
         /// <summary>
-        /// ’lic²j‚Ì”ÍˆÍ‚ğ§ŒÀ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ï¼ˆç¸¦è»¸ï¼‰ã®ç¯„å›²ã‚’åˆ¶é™ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static AnimationCurve ClampValue(this AnimationCurve curve, RangeFloat valueRange) {
             var keys = curve.keys;
             if (keys.Length <= 0) return curve;
 
-            // ’l‚ÌC³
+            // å€¤ã®ä¿®æ­£
             for (int i = 0; i < keys.Length; i++) {
                 keys[i].value = valueRange.Clamp(keys[i].value);
             }
@@ -27,13 +27,13 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ’lic²j‚Ì”ÍˆÍ‚ğ§ŒÀ‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ï¼ˆç¸¦è»¸ï¼‰ã®ç¯„å›²ã‚’åˆ¶é™ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static AnimationCurve ClampValue01(this AnimationCurve curve) {
             var keys = curve.keys;
             if (keys.Length <= 0) return curve;
 
-            // ’l‚ÌC³
+            // å€¤ã®ä¿®æ­£
             for (int i = 0; i < keys.Length; i++) {
                 keys[i].value = Mathf.Clamp01(keys[i].value);
             }
@@ -47,11 +47,11 @@ namespace nitou {
         /// ----------------------------------------------------------------------------
         #region Normalize
 
-        // [Ql]
-        //  LIGHT11: ³‹K‰»‚³‚ê‚½AnimationCurve‚Ì“ü—ÍƒtƒB[ƒ‹ƒh‚ğ•\¦‚·‚é https://light11.hatenadiary.com/entry/2019/10/08/012902
+        // [å‚è€ƒ]
+        //  LIGHT11: æ­£è¦åŒ–ã•ã‚ŒãŸAnimationCurveã®å…¥åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’è¡¨ç¤ºã™ã‚‹ https://light11.hatenadiary.com/entry/2019/10/08/012902
 
         /// <summary>
-        /// ŠÔi‰¡²j‚ğ³‹K‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æ™‚é–“ï¼ˆæ¨ªè»¸ï¼‰ã‚’æ­£è¦åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static AnimationCurve NormalizeTime(this AnimationCurve curve) {
             var keys = curve.keys;
@@ -62,7 +62,7 @@ namespace nitou {
             var range = maxTime - minTime;
             var timeScale = (range < 0.0001f) ? 1 : 1 / range;
 
-            // ’l‚ÌC³
+            // å€¤ã®ä¿®æ­£
             for (var i = 0; i < keys.Length; ++i) {
                 keys[i].time = (keys[i].time - minTime) * timeScale;
             }
@@ -72,7 +72,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ’lic²j‚ğ³‹K‰»‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// å€¤ï¼ˆç¸¦è»¸ï¼‰ã‚’æ­£è¦åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static AnimationCurve NormalizeValue(this AnimationCurve curve) {
             var keys = curve.keys;
@@ -91,7 +91,7 @@ namespace nitou {
                 }
             }
 
-            // ’l‚ÌC³
+            // å€¤ã®ä¿®æ­£
             for (var i = 0; i < keys.Length; ++i) {
                 keys[i].value = (keys[i].value - minValue) * valScale + valOffset;
             }
@@ -103,6 +103,6 @@ namespace nitou {
     }
 
 
-    // [TODO] ‚¢‚­‚Â‚©ƒvƒŠƒZƒbƒg“I‚Èƒƒ\ƒbƒh‚ğ®”õ‚·‚é (2024.08.01)
+    // [TODO] ã„ãã¤ã‹ãƒ—ãƒªã‚»ãƒƒãƒˆçš„ãªãƒ¡ã‚½ãƒƒãƒ‰ã‚’æ•´å‚™ã™ã‚‹ (2024.08.01)
     public static class AnimationCurveUtil { }
 }

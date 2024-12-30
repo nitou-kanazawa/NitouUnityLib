@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using JetBrains.Annotations;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: Dictionary‚ğJsonUtility‚Å•ÏŠ·‚Å‚«‚é‚æ‚¤‚É‚·‚éƒNƒ‰ƒX https://baba-s.hatenablog.com/entry/2020/11/20/080300
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: Dictionaryã‚’JsonUtilityã§å¤‰æ›ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ã‚¯ãƒ©ã‚¹ https://baba-s.hatenablog.com/entry/2020/11/20/080300
 
 namespace nitou.Serialization {
 

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,13 +11,13 @@ namespace nitou.Tools.Assets {
     using nitou.Tools.Shared;
 
     /// <summary>
-    /// Assembly Definition (.asmdef)‚ÌƒCƒ“ƒXƒyƒNƒ^[‚É‘€ìGUI‚ğ’Ç‰Á‚·‚éƒNƒ‰ƒX
+    /// Assembly Definition (.asmdef)ã®ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼ã«æ“ä½œGUIã‚’è¿½åŠ ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     [InitializeOnLoad]
     internal static class AssemblyDefinitionAssetHeaderGUI {
 
         /// <summary>
-        /// ƒ`ƒFƒbƒNƒEƒCƒ“ƒhƒE‚Ö‚Ì•\¦—pƒf[ƒ^
+        /// ãƒã‚§ãƒƒã‚¯ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã¸ã®è¡¨ç¤ºç”¨ãƒ‡ãƒ¼ã‚¿
         /// </summary>
         private sealed class Data : ICheckBoxWindowData {
 
@@ -28,7 +28,7 @@ namespace nitou.Tools.Assets {
             public bool IsChecked { get; set; }
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             public Data(string guid, string[] referenceGUIDArray) {
                 var assetPath = AssetDatabase.GUIDToAssetPath(guid);
@@ -50,7 +50,7 @@ namespace nitou.Tools.Assets {
         }
 
         /// <summary>
-        /// ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ÅQÆƒAƒZƒ“ƒuƒŠƒtƒ@ƒCƒ‹‚ğ•¡”‘I‘ğ‚Å‚«‚éƒEƒCƒ“ƒhƒE‚ğ•\¦
+        /// ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã§å‚ç…§ã‚¢ã‚»ãƒ³ãƒ–ãƒªãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¤‡æ•°é¸æŠã§ãã‚‹ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚’è¡¨ç¤º
         /// </summary>
         /// <param name="editor"></param>
         private static void OnGUI(Editor editor) {
@@ -62,21 +62,21 @@ namespace nitou.Tools.Assets {
             var jsonAssemblyDefinition = JsonUtility.FromJson<JsonAssemblyDefinition>(json);
 
 
-            // useGUIDs ‚ª–³Œø‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN
+            // useGUIDs ãŒç„¡åŠ¹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯
             bool useGUIDsDisabled = !jsonAssemblyDefinition.IsUseGUIDsEnabled();
 
-            // GUI‚Ì—LŒø/–³Œø‚ğİ’è
+            // GUIã®æœ‰åŠ¹/ç„¡åŠ¹ã‚’è¨­å®š
             GUI.enabled = !useGUIDsDisabled;
 
 
-            // ‘€ìƒ{ƒ^ƒ“
+            // æ“ä½œãƒœã‚¿ãƒ³
             if (GUILayout.Button("Select References")) {
 
                 var referenceGUIDArray = jsonAssemblyDefinition.references
                     .Select(x => x.Replace("GUID:", ""))
                     .ToArray();
 
-                // Project“à‚Ì‘Sasmdefƒtƒ@ƒCƒ‹
+                // Projectå†…ã®å…¨asmdefãƒ•ã‚¡ã‚¤ãƒ«
                 var dataArray = AssetDatabase
                         .FindAssets($"t:{nameof(AssemblyDefinitionAsset)}")
                         .Select(x => new Data(x, referenceGUIDArray))
@@ -91,7 +91,7 @@ namespace nitou.Tools.Assets {
                     onOk: OnOk
                 );
 
-                // ƒR[ƒ‹ƒoƒbƒN i¦asmdefƒtƒ@ƒCƒ‹‚ÌQÆî•ñ‚ğXVj
+                // ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ ï¼ˆâ€»asmdefãƒ•ã‚¡ã‚¤ãƒ«ã®å‚ç…§æƒ…å ±ã‚’æ›´æ–°ï¼‰
                 void OnOk(IReadOnlyList<ICheckBoxWindowData> _) {
                     var oldReferences = jsonAssemblyDefinition.references.ToArray();
 

@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Array"/>Œ^‚Ì”Ä—pƒƒ\ƒbƒhD
+    /// <see cref="Array"/>å‹ã®æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰ï¼
     /// </summary>
     public static partial class ArrayUtils {
 

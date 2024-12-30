@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 namespace nitou.Networking{
@@ -6,16 +6,16 @@ namespace nitou.Networking{
     [Serializable]
     public class TimeResponse : HttpResponse{
 
-        public string datetime;  // API‚©‚çæ“¾‚³‚ê‚é“ú‚ÌƒtƒH[ƒ}ƒbƒg
+        public string datetime;  // APIã‹ã‚‰å–å¾—ã•ã‚Œã‚‹æ—¥æ™‚ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ
         public string timezone;
         public string utc_offset;
 
-        // ‚±‚Ìƒƒ\ƒbƒh‚ÅƒŒƒXƒ|ƒ“ƒXƒf[ƒ^‚ğƒp[ƒX
+        // ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§ãƒ¬ã‚¹ãƒãƒ³ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ‘ãƒ¼ã‚¹
         public DateTime GetDateTime() {
             if (DateTime.TryParse(datetime, out DateTime parsedDateTime)) {
                 return parsedDateTime;
             }
-            return DateTime.MinValue;  // ƒp[ƒX¸”s‚ÌƒfƒtƒHƒ‹ƒg’l
+            return DateTime.MinValue;  // ãƒ‘ãƒ¼ã‚¹å¤±æ•—æ™‚ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤
         }
 
         public override string ToString() {

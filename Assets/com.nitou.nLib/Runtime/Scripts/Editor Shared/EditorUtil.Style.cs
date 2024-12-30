@@ -1,16 +1,16 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
-// [Ql]
-//  hatena: EditorWindow ‚Å GUIStyle ‚ğg‚¤Û‚Ì’ˆÓ https://hacchi-man.hatenablog.com/entry/2020/03/17/220000
-//  hatena: F•Ê‚Ì GUIStyle ‚ğƒLƒƒƒbƒVƒ…‚·‚éƒNƒ‰ƒX https://hacchi-man.hatenablog.com/entry/2020/08/16/220000
+// [å‚è€ƒ]
+//  hatena: EditorWindow ã§ GUIStyle ã‚’ä½¿ã†éš›ã®æ³¨æ„ https://hacchi-man.hatenablog.com/entry/2020/03/17/220000
+//  hatena: è‰²åˆ¥ã® GUIStyle ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹ã‚¯ãƒ©ã‚¹ https://hacchi-man.hatenablog.com/entry/2020/08/16/220000
 
 namespace nitou.EditorShared {
     public static partial class EditorUtil {
 
         /// <summary>
-        /// EditorŠg’£‚Åg—p‚·‚é”Ä—p“I‚È<see cref="GUIStyle"/>‚Ìƒ‰ƒCƒuƒ‰ƒŠ
+        /// Editoræ‹¡å¼µã§ä½¿ç”¨ã™ã‚‹æ±ç”¨çš„ãª<see cref="GUIStyle"/>ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
         /// </summary>
         public static partial class Styles {
 
@@ -19,7 +19,7 @@ namespace nitou.EditorShared {
             public static GUIStyle folderToggleHeader;
             public static GUIStyle headerCheckbox;
 
-            // ’è”
+            // å®šæ•°
             private const float HeadingSpace = 22.0f;
 
             // Text
@@ -27,7 +27,7 @@ namespace nitou.EditorShared {
 
 
             /// <summary>
-            /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+            /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
             /// </summary>
             static Styles(){
                 
@@ -49,7 +49,7 @@ namespace nitou.EditorShared {
 
                 headerCheckbox = new GUIStyle("ShurikenCheckMark");
 
-                // ƒeƒLƒXƒg
+                // ãƒ†ã‚­ã‚¹ãƒˆ
                 textArea = new GUIStyle(EditorStyles.textArea) {
                     wordWrap = false,
                 };

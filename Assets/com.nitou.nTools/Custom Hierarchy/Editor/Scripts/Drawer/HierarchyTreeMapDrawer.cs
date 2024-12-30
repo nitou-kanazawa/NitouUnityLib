@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -14,10 +14,10 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
         private static readonly Dictionary<string, Texture2D> TextureCached = new();
 
-        // ƒŠƒ\[ƒXƒpƒX
+        // ãƒªã‚½ãƒ¼ã‚¹ãƒ‘ã‚¹
         private static readonly string REATIVE_PATH = "Custom Hierarchy/Editor/Textures";
 
-        // ƒtƒ@ƒCƒ‹–¼
+        // ãƒ•ã‚¡ã‚¤ãƒ«å
         private static readonly string CURRENT_TEXTURE = "tree_map_current.png";
         private static readonly string LAST_TEXTURE = "tree_map_last.png";
         private static readonly string LEVEL_TEXTURE = "tree_map_level.png";
@@ -29,7 +29,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapCurrent), out var tex);
                 if (tex != null) return tex;
 
-                // Texture“Ç‚İ‚İ
+                // Textureèª­ã¿è¾¼ã¿
                 tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, CURRENT_TEXTURE);
                 TextureCached[nameof(TreeMapCurrent)] = tex;
                 return tex;
@@ -41,7 +41,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLast), out var tex);
                 if (tex != null) return tex;
 
-                // Texture“Ç‚İ‚İ
+                // Textureèª­ã¿è¾¼ã¿
                 tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LAST_TEXTURE);
                 TextureCached[nameof(TreeMapLast)] = tex;
                 return tex;
@@ -53,7 +53,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLevel), out var tex);
                 if (tex != null) return tex;
 
-                // Texture“Ç‚İ‚İ
+                // Textureèª­ã¿è¾¼ã¿
                 tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LEVEL_TEXTURE);
                 TextureCached[nameof(TreeMapLevel)] = tex;
                 return tex;
@@ -65,7 +65,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
                 TextureCached.TryGetValue(nameof(TreeMapLine), out var tex);
                 if (tex != null) return tex;
 
-                // Texture“Ç‚İ‚İ
+                // Textureèª­ã¿è¾¼ã¿
                 tex = AssetsLoader.Load<Texture2D>(PackageInfo.PackagePath, REATIVE_PATH, LINE_TEXTURE);
                 TextureCached[nameof(TreeMapLine)] = tex;
                 return tex;
@@ -74,7 +74,7 @@ namespace nitou.Tools.Hierarchy.EditorSctipts {
 
 
         /// <summary>
-        /// •`‰æˆ—
+        /// æç”»å‡¦ç†
         /// </summary>
         public override void OnGUI(int instanceID, Rect selectionRect) {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;

@@ -1,63 +1,63 @@
-
+ï»¿
 namespace nitou {
 
     /// <summary>
-    /// "Create Asset Menu"—p‚ÌŠeí’è‹`
+    /// "Create Asset Menu"ç”¨ã®å„ç¨®å®šç¾©
     /// </summary>
     public static class AssetMenu {
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static class Prefix {
 
             /// <summary>
-            /// ƒXƒNƒŠƒvƒ^ƒuƒ‹ƒIƒuƒWƒFƒNƒg
+            /// ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ–ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
             /// </summary>
             public const string ScriptableObject = "Scriptable Objects/";
 
             /// <summary>
-            /// ƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹
+            /// ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«
             /// </summary>
             public const string EventChannel = "Event Channel/";
             
             /// <summary>
-            /// ƒLƒƒƒ‰ƒNƒ^[ƒ‚ƒfƒ‹
+            /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒ¢ãƒ‡ãƒ«
             /// </summary>
             public const string ActorModelInfo = ScriptableObject + "Actor Model/";
 
             /// <summary>
-            /// ƒNƒŒƒWƒbƒgî•ñ
+            /// ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆæƒ…å ±
             /// </summary>
             public const string CreditInfo = ScriptableObject + "Credit Info/";
 
             /// <summary>
-            /// ƒV[ƒ“î•ñ
+            /// ã‚·ãƒ¼ãƒ³æƒ…å ±
             /// </summary>
             public const string SceneInfo = ScriptableObject + "Scene Info/";
 
             // ----- 
 
             /// <summary>
-            /// ƒAƒjƒ[ƒVƒ‡ƒ“ƒf[ƒ^
+            /// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‡ãƒ¼ã‚¿
             /// </summary>
             public const string AnimationData = "Animation Data/";
 
             /// <summary>
-            /// ƒLƒƒƒ‰ƒNƒ^[‘€ìŠÖ˜A
+            /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æ“ä½œé–¢é€£
             /// </summary>
             public const string CharacterControl = "Character Control/";
         }
 
 
         /// ----------------------------------------------------------------------------
-        // Ú”ö«
+        // æ¥å°¾è¾
         public static class Suffix {
 
         }
 
 
         /// ----------------------------------------------------------------------------
-        // •\¦‡
+        // è¡¨ç¤ºé †
         public static class Order {
             public const int VeryEarly = 100;
             public const int Early = 50;

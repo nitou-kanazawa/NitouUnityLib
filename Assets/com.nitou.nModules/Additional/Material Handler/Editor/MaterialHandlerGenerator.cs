@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -7,14 +7,14 @@ namespace nitou.MaterialControl.EditorScript {
     using nitou.EditorShared;
 
     /// <summary>
-    /// <see cref="MaterialHandler"/>‚ÌŒp³ƒNƒ‰ƒX‚ğ©“®¶¬‚·‚éƒGƒfƒBƒ^ƒEƒCƒ“ƒhƒED
+    /// <see cref="MaterialHandler"/>ã®ç¶™æ‰¿ã‚¯ãƒ©ã‚¹ã‚’è‡ªå‹•ç”Ÿæˆã™ã‚‹ã‚¨ãƒ‡ã‚£ã‚¿ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ï¼
     /// </summary>
     public class MaterialHandlerGenerator : EditorWindow {
 
         private Shader _shader;
         private string generatedClassText;
 
-        // “à•”ˆ——p
+        // å†…éƒ¨å‡¦ç†ç”¨
         private Vector2 _scrollPosition;
 
 
@@ -39,13 +39,13 @@ namespace nitou.MaterialControl.EditorScript {
                     EditorGUILayout.Space();
                     using (new EditorGUILayout.HorizontalScope()) {
 
-                        // PREVIEWƒ{ƒ^ƒ“
+                        // PREVIEWãƒœã‚¿ãƒ³
                         using (new EditorUtil.GUIBackgroundColorScope(Colors.GreenYellow)) {
                             if (GUILayout.Button("Generate Preview")) {
                                 generatedClassText = GenerateMaterialHandlerClassText(_shader);
                             }
                         }
-                        // CLEARƒ{ƒ^ƒ“
+                        // CLEARãƒœã‚¿ãƒ³
                         using (new EditorGUI.DisabledScope(generatedClassText.IsNullOrEmpty())) {
                             if (GUILayout.Button("Clear")) {
                                 generatedClassText = string.Empty;
@@ -54,18 +54,18 @@ namespace nitou.MaterialControl.EditorScript {
                     }
                 }
 
-                // PreviewƒeƒLƒXƒg•\¦
+                // Previewãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
                 if (!generatedClassText.IsNullOrEmpty()) {
                     EditorGUILayout.Space();
                     GUILayout.Label("Generated Class Preview", EditorStyles.boldLabel);
 
-                    // ƒeƒLƒXƒg•\¦‚ğƒXƒNƒ[ƒ‹‰Â”\‚É
+                    // ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºã‚’ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å¯èƒ½ã«
                     using (var scrollView = new EditorGUILayout.ScrollViewScope(_scrollPosition, GUILayout.Height(300))) {
                         _scrollPosition = scrollView.scrollPosition;
                         GUILayout.TextArea(generatedClassText, EditorUtil.Styles.textArea, GUILayout.ExpandHeight(true));
                     }
 
-                    // ƒtƒ@ƒCƒ‹o—Í
+                    // ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
                     EditorGUILayout.Space();
                     if (GUILayout.Button("Save Class")) {
                         SaveGeneratedClass(_shader, generatedClassText);
@@ -93,7 +93,7 @@ namespace nitou.MaterialControl.EditorScript {
             writer.WriteLine($"    public class {className} : {typeof(MaterialHandler).Name}");
             writer.WriteLine("    {");
 
-            // Field‚Ì‘‚«o‚µ
+            // Fieldã®æ›¸ãå‡ºã—
             int propertyCount = ShaderUtil.GetPropertyCount(shader);
             for (int i = 0; i < propertyCount; i++) {
                 string propertyName = ShaderUtil.GetPropertyName(shader, i);
@@ -103,7 +103,7 @@ namespace nitou.MaterialControl.EditorScript {
 
             writer.WriteLine("");
 
-            // Ÿ‚ÉƒvƒƒpƒeƒB‚ğ‘‚«o‚·
+            // æ¬¡ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ›¸ãå‡ºã™
             for (int i = 0; i < propertyCount; i++) {
                 string propertyName = ShaderUtil.GetPropertyName(shader, i);
                 string cleanPropertyName = propertyName.TrimStart('_');

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -8,14 +8,14 @@ using nitou.EditorShared;
 namespace nitou.DebugInternal {
 
 
-    // [Ql]
+    // [å‚è€ƒ]
     // Unity IssueTracker: Screen.width and Screen.height values in "OnEnable" function are incorrect https://issuetracker.unity3d.com/issues/screen-dot-width-and-screen-dot-height-values-in-onenable-function-are-incorrect
     // Search Issue Tracker:  https://issuetracker.unity3d.com/issues/screen-dot-width-slash-screen-dot-height-in-onenable-shows-inspector-window-size-when-the-component-is-enabled-by-a-toggle-in-inspector-window
 
     //[ExecuteAlways]
     internal class ScreenSizeDebugger : MonoBehaviour {
 
-        // ƒTƒCƒY‚Ì‹L˜^
+        // ã‚µã‚¤ã‚ºã®è¨˜éŒ²
         public Vector2 size_Update;
         public Vector2 size_OnEnable;
         public Vector2 size_OnDisable;
@@ -68,10 +68,10 @@ namespace nitou.DebugInternal {
             EditorUtil.GUI.HorizontalLine();
             // -------------------
 
-            // ƒCƒ“ƒXƒyƒNƒ^‚ª•\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚Ì‰ğ‘œ“x
+            // ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ç”»é¢ã®è§£åƒåº¦
             EditorGUILayout.LabelField("Current Resolution", $"{Screen.currentResolution.width} x {Screen.currentResolution.height} @ {Screen.currentResolution.refreshRate}Hz");
 
-            // “o˜^‚³‚ê‚Ä‚¢‚é‘S‚Ä‚Ì‰ğ‘œ“x
+            // ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å…¨ã¦ã®è§£åƒåº¦
             EditorGUILayout.LabelField("Supported Resolutions:");
             using (new EditorGUI.IndentLevelScope()) {
                 foreach (var resolution in Screen.resolutions) {

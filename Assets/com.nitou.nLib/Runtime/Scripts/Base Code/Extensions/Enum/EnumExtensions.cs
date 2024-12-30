@@ -1,14 +1,14 @@
-using System;
+ï»¿using System;
 
 namespace nitou {
 
     /// <summary>
-    /// —ñ‹“Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// åˆ—æŒ™å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class EnumExtensions {
 
         /// <summary>
-        /// w’è‚µ‚½’l‚Ì‚¢‚¸‚ê‚©‚Æˆê’v‚·‚é‚©Šm”F‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// æŒ‡å®šã—ãŸå€¤ã®ã„ãšã‚Œã‹ã¨ä¸€è‡´ã™ã‚‹ã‹ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsAnyOf<TEnum>(this TEnum value, params TEnum[] values)
             where TEnum : Enum {

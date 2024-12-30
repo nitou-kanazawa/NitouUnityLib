@@ -1,23 +1,23 @@
-
+ï»¿
 namespace nitou {
 
     /// <summary>
-    /// "Component Menu"‚ÌŠeí’è‹`D
+    /// "Component Menu"ã®å„ç¨®å®šç¾©ï¼
     /// </summary>
     public static partial class ComponentMenu {
 
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static partial class Prefix {
 
             /// <summary>
-            /// ƒJƒXƒ^ƒ€UI
+            /// ã‚«ã‚¹ã‚¿ãƒ UI
             /// </summary>
             public const string UIComponents = "UI/Components/";
 
             /// <summary>
-            /// ƒJƒXƒ^ƒ€UI
+            /// ã‚«ã‚¹ã‚¿ãƒ UI
             /// </summary>
             public const string UIView = "UI/View/";
         }

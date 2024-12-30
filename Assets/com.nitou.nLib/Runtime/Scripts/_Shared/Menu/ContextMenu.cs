@@ -1,4 +1,4 @@
-
+ï»¿
 namespace nitou{
 
     /// <summary>
@@ -6,11 +6,11 @@ namespace nitou{
     /// </summary>
     public static class ContextMenu{
 
-        /// MenuItem Attribute‚Å‚Ìw’è—p
+        /// MenuItem Attributeã§ã®æŒ‡å®šç”¨
 
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static class Prefix {
 
             public const string RigidBody = "CONTEXT/Rigidbody/";

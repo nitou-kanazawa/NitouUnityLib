@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
@@ -10,7 +10,7 @@ namespace nitou.UI.BasicScreens {
     using nitou.UI.Components;
 
     /// <summary>
-    /// ‚Q‘I‘ğˆ‚ÌŠm”Fƒ‚[ƒ_ƒ‹
+    /// ï¼’é¸æŠè‚¢ã®ç¢ºèªãƒ¢ãƒ¼ãƒ€ãƒ«
     /// </summary>
     public class TwoChoiceConfirmModal : ConfirmModalBase {
 
@@ -29,7 +29,7 @@ namespace nitou.UI.BasicScreens {
         // Public Method
 
         /// <summary>
-        /// ‚Ç‚¿‚ç‚©‚Ìƒ{ƒ^ƒ“‚ª‰Ÿ‰º‚³‚ê‚é‚Ì‚ğ‘Ò‹@‚·‚é‚·‚é
+        /// ã©ã¡ã‚‰ã‹ã®ãƒœã‚¿ãƒ³ãŒæŠ¼ä¸‹ã•ã‚Œã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹ã™ã‚‹
         /// </summary>
         public UniTask<bool> WaitUntilClicked() {
             return Observable.Merge(

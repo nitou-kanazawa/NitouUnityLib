@@ -1,0 +1,21 @@
+# [REF]
+# LIGHT11: Unityと文字コードと改行コード https://light11.hatenadiary.com/entry/2019/05/24/003422
+# qiita: Unityの文字化けを解消する！ https://qiita.com/kumi0708/items/2f8dd2fc2ccb673ff12b
+# _: EditorConfig for VSCode を使って Unity C# のコードを整える https://xrdnk.hateblo.jp/entry/2020/12/01/191152
+#
+
+# ルートの .editorconfig であることを宣言
+root = true
+
+###############################
+# Core EditorConfig Options   #
+###############################
+# All files
+[*]
+indent_style = space
+# Code files
+[*.{cs,csx,vb,vbx}]
+indent_size = 4
+charset = utf-8-bom           # ファイルのエンコーディングを UTF-8-bom に統一
+end_of_line = crlf            # 改行コードを LF に統一
+insert_final_newline = true   # ファイルの末尾に必ず改行を追加

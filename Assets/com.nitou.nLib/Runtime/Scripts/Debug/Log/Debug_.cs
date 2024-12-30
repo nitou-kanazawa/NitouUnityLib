@@ -1,15 +1,15 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using UnityEngine;
 
-// [Ql]
-//  qiita: UnityEditor‚Ì‚Ì‚İDebug.Log‚ğo‚·•û–@ https://qiita.com/toRisouP/items/d856d65dcc44916c487d
-//  zonn: Debug.Log‚ğ•Ö—˜‚É‚·‚é‚½‚ß‚ÉH•v‚µ‚Ä‚¢‚é‚±‚Æ https://zenn.dev/happy_elements/articles/38be21755773e0
-//  _: ColorŒ^•Ï”‚ğ‚à‚Æ‚ÉDebug.Log‚Ì•¶šF‚ğ•ÏX‚·‚é https://nmxi.hateblo.jp/entry/2019/02/24/235216
-//  kan‚Ìƒƒ‚’ : ConditionalAttribute‚Å•¡”‚ÌƒVƒ“ƒ{ƒ‹‚ÌAND‚âOR‚ğÀ‘•‚·‚é•û–@ https://kan-kikuchi.hatenablog.com/entry/ConditionalAttribute_AND_OR
-//  kan‚Ìƒƒ‚’ : ŠJ”­—pƒrƒ‹ƒh‚É—LŒø‚É‚È‚éDEVELOPMENT_BUILD‚ÆDEBUG‚Ìˆá‚¢ https://kan-kikuchi.hatenablog.com/entry/DEVELOPMENT_BUILD_DEBUG
+// [å‚è€ƒ]
+//  qiita: UnityEditorã®æ™‚ã®ã¿Debug.Logã‚’å‡ºã™æ–¹æ³• https://qiita.com/toRisouP/items/d856d65dcc44916c487d
+//  zonn: Debug.Logã‚’ä¾¿åˆ©ã«ã™ã‚‹ãŸã‚ã«å·¥å¤«ã—ã¦ã„ã‚‹ã“ã¨ https://zenn.dev/happy_elements/articles/38be21755773e0
+//  _: Colorå‹å¤‰æ•°ã‚’ã‚‚ã¨ã«Debug.Logã®æ–‡å­—è‰²ã‚’å¤‰æ›´ã™ã‚‹ https://nmxi.hateblo.jp/entry/2019/02/24/235216
+//  kanã®ãƒ¡ãƒ¢å¸³: ConditionalAttributeã§è¤‡æ•°ã®ã‚·ãƒ³ãƒœãƒ«ã®ANDã‚„ORã‚’å®Ÿè£…ã™ã‚‹æ–¹æ³• https://kan-kikuchi.hatenablog.com/entry/ConditionalAttribute_AND_OR
+//  kanã®ãƒ¡ãƒ¢å¸³: é–‹ç™ºç”¨ãƒ“ãƒ«ãƒ‰æ™‚ã«æœ‰åŠ¹ã«ãªã‚‹DEVELOPMENT_BUILDã¨DEBUGã®é•ã„ https://kan-kikuchi.hatenablog.com/entry/DEVELOPMENT_BUILD_DEBUG
 
 namespace nitou {
     using nitou.RichText;
@@ -17,27 +17,27 @@ namespace nitou {
     using Debug = UnityEngine.Debug;
 
     /// <summary>
-    /// Debug‚Ìƒ‰ƒbƒp[ƒNƒ‰ƒX
+    /// Debugã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static partial class Debug_ {
 
         /// ----------------------------------------------------------------------------
-        #region Public Method (Šî–{ƒƒO)
+        #region Public Method (åŸºæœ¬ãƒ­ã‚°)
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void Log(object o) => Debug.Log(FormatObject(o));
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void Log(object o, Color color) => Debug.Log(FormatObject(o).WithColorTag(color));
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void Log(params object[] messages) {
             var message = string.Join(',', messages.Select(FormatObject));
@@ -45,25 +45,25 @@ namespace nitou {
         }
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogWarningƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹LogWarningãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void LogWarning(object o) => Debug.LogWarning(FormatObject(o));
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogWarningƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹LogWarningãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void LogWarning(object o, Color color) => Debug.LogWarning(FormatObject(o).WithColorTag(color));
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogErrorƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹LogErrorãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void LogError(object o) => Debug.LogError(o);
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogWarningƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹LogWarningãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void LogError(object o, Color color) => Debug.LogError(FormatObject(o).WithColorTag(color));
@@ -72,24 +72,24 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Public Method (ƒRƒŒƒNƒVƒ‡ƒ“)
+        #region Public Method (ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³)
 
         private static readonly int MAX_ROW_NUM = 100;
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void ListLog<T>(IReadOnlyList<T> list) => Log(list.Convert<T>());
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void ListLog<T>(IReadOnlyList<T> list, Color color) => Log(list.Convert<T>(), color);
 
         /// <summary>
-        /// UnityEditorã‚Å‚Ì‚İÀs‚³‚ê‚éLogƒƒ\ƒbƒh
+        /// UnityEditorä¸Šã§ã®ã¿å®Ÿè¡Œã•ã‚Œã‚‹Logãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void DictLog<TKey, TValue>(IReadOnlyDictionary<TKey, TValue> dict) => Log(dict.Convert<TKey, TValue>());
@@ -98,10 +98,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region Private Method (•ÏŠ·ƒƒ\ƒbƒh)
+        #region Private Method (å¤‰æ›ãƒ¡ã‚½ãƒƒãƒ‰)
 
         /// <summary>
-        /// •¶š—ñ‚Ö‚Ì•ÏŠ·i¦nullC‹ó•¶š‚ª”»•Ê‚Å‚«‚éŒ`®j
+        /// æ–‡å­—åˆ—ã¸ã®å¤‰æ›ï¼ˆâ€»nullï¼Œç©ºæ–‡å­—ãŒåˆ¤åˆ¥ã§ãã‚‹å½¢å¼ï¼‰
         /// </summary>
         private static string FormatObject(object o) {
             if (o is null) {
@@ -114,7 +114,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒŠƒXƒg—v‘f‚ğ•¶š—ñ‚É•ÏŠ·‚·‚é
+        /// ãƒªã‚¹ãƒˆè¦ç´ ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         private static string Convert<T>(this IReadOnlyList<T> list) {
             if (list == null) return "(null)";
@@ -122,14 +122,14 @@ namespace nitou {
             var sb = new StringBuilder();
             sb.Append($"(The total number of elements is {list.Count})\n");
 
-            // •¶š—ñ‚Ö•ÏŠ·
+            // æ–‡å­—åˆ—ã¸å¤‰æ›
             for (int index = 0; index < list.Count; index++) {
-                // Å‘ås”‚ğ’´‚¦‚½ê‡C
+                // æœ€å¤§è¡Œæ•°ã‚’è¶…ãˆãŸå ´åˆï¼Œ
                 if (index >= MAX_ROW_NUM) {
                     sb.Append($"(+{list.Count - MAX_ROW_NUM} items has been omitted)");
                     break;
                 }
-                // —v‘f’Ç‰Á
+                // è¦ç´ è¿½åŠ 
                 var rowText = $"[ {index} ] = {list[index]}";
 #if UNITY_2022_1_OR_NEWER
                 sb.Append($"{rowText.WithIndentTag()} \n");
@@ -141,7 +141,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ƒfƒBƒNƒVƒ‡ƒiƒŠ—v‘f‚ğ•¶š—ñ‚É•ÏŠ·‚·‚é
+        /// ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªè¦ç´ ã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         private static string Convert<TKey, TValue>(this IReadOnlyDictionary<TKey, TValue> dict) {
             if (dict == null) return "(null)";
@@ -149,16 +149,16 @@ namespace nitou {
             var sb = new StringBuilder();
             sb.Append($"(The total number of elements is {dict.Count})\n");
 
-            // •¶š—ñ‚Ö•ÏŠ·
+            // æ–‡å­—åˆ—ã¸å¤‰æ›
             int index = 0;
             foreach ((var key, var value) in dict) {
-                // Å‘ås”‚ğ’´‚¦‚½ê‡C
+                // æœ€å¤§è¡Œæ•°ã‚’è¶…ãˆãŸå ´åˆï¼Œ
                 if (index >= MAX_ROW_NUM) {
                     sb.Append($"(+{dict.Count - MAX_ROW_NUM} items has been omitted)");
                     break;
                 }
 
-                // —v‘f’Ç‰Á
+                // è¦ç´ è¿½åŠ 
                 var rowText = $"[ {key} ] = {value}";
 #if UNITY_2022_1_OR_NEWER
                 sb.Append($"{rowText.WithIndentTag()} \n");
@@ -180,7 +180,7 @@ namespace nitou {
             var matches = reg.Matches(messageString);
             foreach (var match in matches.Reverse()) {
                 var tag = match.Groups["tag"].Value;
-                // HashCode‚ğ‚à‚Æ‚É‰½‚ç‚©‚ÌF‚ğæ“¾
+                // HashCodeã‚’ã‚‚ã¨ã«ä½•ã‚‰ã‹ã®è‰²ã‚’å–å¾—
                 var color = Colors.SelectFromManyColors(tag.GetHashCode());
                 sb.Insert(match.Index + match.Length, "</color></b>");
                 sb.Insert(match.Index, $"<b><color={Colors.ToRgbCode(color)}>");

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.Overlay {
 
     /// <summary>
-    /// ƒVƒ“ƒvƒ‹‚ÈƒtƒF[ƒhƒCƒ“EƒtƒF[ƒhƒAƒEƒg‚ÌŠWŠG
+    /// ã‚·ãƒ³ãƒ—ãƒ«ãªãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ãƒ»ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã®è“‹çµµ
     /// </summary>
     public class Overlay_SimpleFade : OverlayBase {
 
@@ -26,10 +26,10 @@ namespace nitou.UI.Overlay {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Methord (‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“)
+        // Public Methord (é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³)
 
         /// <summary>
-        /// Progress: 1¨0‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 1â†’0ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         protected override UniTask OpenInternal(float duration) {
             _tween?.Kill();
@@ -41,7 +41,7 @@ namespace nitou.UI.Overlay {
         }
 
         /// <summary>
-        /// Progress: 0¨1‚Ì‰æ–Ê‘JˆÚƒAƒjƒ[ƒVƒ‡ƒ“
+        /// Progress: 0â†’1ã®ç”»é¢é·ç§»ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
         /// </summary>
         protected override UniTask CloseInternal(float duration) {
             _tween?.Kill();

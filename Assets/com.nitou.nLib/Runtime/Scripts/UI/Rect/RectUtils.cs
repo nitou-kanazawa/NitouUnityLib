@@ -1,17 +1,17 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Rect"/>‚ÉŠÖ‚·‚é”Ä—pƒƒ\ƒbƒhW
+    /// <see cref="Rect"/>ã«é–¢ã™ã‚‹æ±ç”¨ãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class RectUtils {
 
         /// ----------------------------------------------------------------------------
-        // ‘Š‘ÎÀ•W
+        // ç›¸å¯¾åº§æ¨™
 
         /// <summary>
-        /// Šî€<see cref="Rect"/>‚É‘Î‚·‚é‘Š‘ÎˆÊ’u‚ğæ“¾‚·‚éD
+        /// åŸºæº–<see cref="Rect"/>ã«å¯¾ã™ã‚‹ç›¸å¯¾ä½ç½®ã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static Vector2 GetRelativePosition(Vector2 targetPos, Rect baseRect) {
             float x = (targetPos.x - baseRect.x) / baseRect.width;
@@ -20,7 +20,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Šî€<see cref="Rect"/>‚É‘Î‚·‚é‘Š‘ÎƒTƒCƒY‚ğæ“¾‚·‚éD
+        /// åŸºæº–<see cref="Rect"/>ã«å¯¾ã™ã‚‹ç›¸å¯¾ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static Vector2 GetRelativeSize(Vector2 targetSize, Rect baseRect) {
             float width = targetSize.x / baseRect.width;
@@ -29,7 +29,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Šî€<see cref="Rect"/>‚É‘Î‚·‚é‘Š‘ÎˆÊ’uEƒTƒCƒY‚ğæ“¾‚·‚éD
+        /// åŸºæº–<see cref="Rect"/>ã«å¯¾ã™ã‚‹ç›¸å¯¾ä½ç½®ãƒ»ã‚µã‚¤ã‚ºã‚’å–å¾—ã™ã‚‹ï¼
         /// </summary>
         public static Rect GetRelativeRect(Rect targetRect, Rect baseRect) {
             Vector2 position = GetRelativePosition(targetRect.min, baseRect);
@@ -42,7 +42,7 @@ namespace nitou {
         // Factory
 
         /// <summary>
-        /// ’†SˆÊ’u‚ÆƒTƒCƒY‚©‚ç<see cref="Rect"/>‚ğ¶¬‚·‚éD
+        /// ä¸­å¿ƒä½ç½®ã¨ã‚µã‚¤ã‚ºã‹ã‚‰<see cref="Rect"/>ã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         public static Rect CenterSizeRect(Vector2 center, Vector2 size) {
             float x = center.x - size.x / 2;
@@ -51,7 +51,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å¬EÅ‘å“_‚©‚çRect‚ğ¶¬‚·‚éD
+        /// æœ€å°ãƒ»æœ€å¤§ç‚¹ã‹ã‚‰Rectã‚’ç”Ÿæˆã™ã‚‹ï¼
         /// </summary>
         public static Rect MinMaxRect(Vector2 min, Vector2 max) {
             return Rect.MinMaxRect(min.x, min.y, max.x, max.y);

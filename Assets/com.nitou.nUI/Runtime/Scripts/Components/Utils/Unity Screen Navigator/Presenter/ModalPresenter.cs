@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Threading.Tasks;
 
 namespace UnityScreenNavigator.Runtime.Core.Modal {
 
     /// <summary>
-    /// ModalƒvƒŒƒ[ƒ“ƒ^[‚ÌŠî’êƒNƒ‰ƒX
+    /// Modalãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class ModalPresenter<TModal> : Presenter<TModal>, IModalPresenter 
         where TModal : Modal {
@@ -12,7 +12,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal {
         private TModal View { get; }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected ModalPresenter(TModal view) : base(view) {
             View = view;
@@ -182,7 +182,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal {
         // Protected Method
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         protected override void Initialize(TModal view) {
             // The lifecycle event of the view will be added with priority 0.
@@ -191,7 +191,7 @@ namespace UnityScreenNavigator.Runtime.Core.Modal {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         protected override void Dispose(TModal view) {
             view.RemoveLifecycleEvent(this);

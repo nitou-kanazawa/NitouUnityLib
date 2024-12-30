@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Playables;
 
 namespace nitou.BachProcessor {
 
     /// <summary>
-    /// XVƒ^ƒCƒ~ƒ“ƒO
+    /// æ›´æ–°ã‚¿ã‚¤ãƒŸãƒ³ã‚°
     /// </summary>
     public enum UpdateTiming : int {
         Update = 0,
@@ -20,12 +20,12 @@ namespace nitou.BachProcessor {
         where TSystem : UpdateTimingSingletonSO<TSystem> {
 
         /// <summary>
-        /// <see cref="UpdateTiming"/>‚ÌŠeƒ^ƒCƒ~ƒ“ƒO‚ğƒTƒ|[ƒg‚·‚é‚½‚ß‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+        /// <see cref="UpdateTiming"/>ã®å„ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
         /// </summary>
         private static readonly TSystem[] Instance = new TSystem[3];
 
         /// <summary>
-        /// ƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬Ï‚İ‚©Šm”F‚·‚é@i¦¶¬‚Í‚µ‚È‚¢j
+        /// ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆæ¸ˆã¿ã‹ç¢ºèªã™ã‚‹ã€€ï¼ˆâ€»ç”Ÿæˆã¯ã—ãªã„ï¼‰
         /// </summary>
         public static bool IsCreated(UpdateTiming timing) => Instance[(int)timing] != null;
 

@@ -1,19 +1,19 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 
-// [Ql]
-//  qiita: Unity‚Å“Æ©‚Ìİ’è‚ÌUI‚ğ’ñ‹Ÿ‚Å‚«‚éSettingsProvider‚ÌĞ‰î‚Æİ’èƒtƒ@ƒCƒ‹‚Ì•Û‘¶‚É‚Â‚¢‚Ä https://qiita.com/sune2/items/a88cdee6e9a86652137c
+// [å‚è€ƒ]
+//  qiita: Unityã§ç‹¬è‡ªã®è¨­å®šã®UIã‚’æä¾›ã§ãã‚‹SettingsProviderã®ç´¹ä»‹ã¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ä¿å­˜ã«ã¤ã„ã¦ https://qiita.com/sune2/items/a88cdee6e9a86652137c
 
 namespace nitou.EditorShared {
     using nitou.Settings;
 
     public class ProjectSettingsProvider : SettingsProvider {
 
-        // ‘æˆêŠK‘w‚ğProject‚É‚µ‚Ü‚·
+        // ç¬¬ä¸€éšå±¤ã‚’Projectã«ã—ã¾ã™
         private const string SettingPath = SettingsProviderKey.ProjectSettings + "Runtime";
 
         private Editor _editor;
@@ -32,7 +32,7 @@ namespace nitou.EditorShared {
 
             var instance = ProjectSettingsSO.Instance;
             if(instance == null) {
-                if (GUILayout.Button("¶¬‚·‚é")) {
+                if (GUILayout.Button("ç”Ÿæˆã™ã‚‹")) {
                     CreateSettings();
                     Editor.CreateCachedEditor(ProjectSettingsSO.Instance, null, ref _editor);
                 }
@@ -54,7 +54,7 @@ namespace nitou.EditorShared {
             var config = ScriptableObject.CreateInstance<ProjectSettingsSO>();
             var parent = "Assets/Resources";
             if (AssetDatabase.IsValidFolder(parent) == false) {
-                // ResourcesƒtƒHƒ‹ƒ_‚ª–³‚¢‚±‚Æ‚ğl—¶
+                // Resourcesãƒ•ã‚©ãƒ«ãƒ€ãŒç„¡ã„ã“ã¨ã‚’è€ƒæ…®
                 AssetDatabase.CreateFolder("Assets", "Resources");
             }
 

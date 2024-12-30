@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -7,21 +7,21 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
-// [Ql]
-//  LIGHT11: Reflection‚ğg‚Á‚Äƒƒ\ƒbƒh‚ğŒÄ‚ñ‚¾‚è•Ï”‚ğ‘‚«Š·‚¦‚½‚èƒLƒƒƒbƒVƒ…‚µ‚Ä‚‘¬‰»‚µ‚½‚è‚·‚é https://light11.hatenadiary.com/entry/2019/05/27/213206
+// [å‚è€ƒ]
+//  LIGHT11: Reflectionã‚’ä½¿ã£ã¦ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã‚“ã ã‚Šå¤‰æ•°ã‚’æ›¸ãæ›ãˆãŸã‚Šã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦é«˜é€ŸåŒ–ã—ãŸã‚Šã™ã‚‹ https://light11.hatenadiary.com/entry/2019/05/27/213206
 
 namespace UnityScreenNavigator.Runtime.Core.Page {
 
     /// <summary>
-    /// <see cref="PageContainer"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="PageContainer"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class PageContainerExtensions {
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Page‚Ì’Ç‰Á)
+        // Public Method (Pageã®è¿½åŠ )
 
         /// <summary>
-        /// •Ô‚è’l‚ÅPage‚ğ•Ô‚·Push()‚ÌŠg’£ƒƒ\ƒbƒh
+        /// è¿”ã‚Šå€¤ã§Pageã‚’è¿”ã™Push()ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static async UniTask<TPage> PushPage<TPage>(this PageContainer container,
             string resourceKey, bool playAnimation, bool stack = true,
@@ -31,7 +31,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
 
             if (container == null) throw new ArgumentNullException(nameof(container));
 
-            // Page“Ç‚İ‚İ
+            // Pageèª­ã¿è¾¼ã¿
             TPage page = null;
             await container.Push<TPage>(resourceKey, playAnimation, stack, pageId, loadAsync,
                 x => {
@@ -42,7 +42,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         }
 
         /// <summary>
-        /// •Ô‚è’l‚ÅPage‚ğ•Ô‚·Push()‚ÌŠg’£ƒƒ\ƒbƒh
+        /// è¿”ã‚Šå€¤ã§Pageã‚’è¿”ã™Push()ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static async UniTask<Page> PushPage(this PageContainer container,
             string resourceKey, bool playAnimation, bool stack = true,
@@ -51,7 +51,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
 
             if (container == null) throw new ArgumentNullException(nameof(container));
 
-            // Page“Ç‚İ‚İ
+            // Pageèª­ã¿è¾¼ã¿
             Page page = null;
             await container.Push<Page>(resourceKey, playAnimation, stack, pageId, loadAsync,
                 x => {
@@ -63,10 +63,10 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Page‚Ìæ“¾)
+        // Public Method (Pageã®å–å¾—)
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈModal‚ğæ“¾‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªModalã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Page GetActivePage(this PageContainer container) {
             if (container.Pages.Count == 0) return null;
@@ -76,7 +76,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         }
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈModal‚ğæ“¾‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªModalã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetActivePage(this PageContainer container, out Page page) {
             page = container.GetActivePage();
@@ -84,14 +84,14 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         }
 
         /// <summary>
-        /// ƒL[‚ğw’è‚µ‚ÄModal‚ğæ“¾‚·‚é
+        /// ã‚­ãƒ¼ã‚’æŒ‡å®šã—ã¦Modalã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetPage(this PageContainer container, string resourceKey, out Page page) {
             return container.Pages.TryGetValue(resourceKey, out page);
         }
 
         /// <summary>
-        /// ƒL[‚ğw’è‚µ‚ÄModal‚ğæ“¾‚·‚é
+        /// ã‚­ãƒ¼ã‚’æŒ‡å®šã—ã¦Modalã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetPage<TPage>(this PageContainer container, string resourceKey, out TPage page) 
             where TPage : Page{
@@ -118,7 +118,7 @@ namespace UnityScreenNavigator.Runtime.Core.Page {
         }
 
         /// <summary>
-        /// ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚ÅƒRƒ“ƒeƒiƒL[•Ï”‚ğ‘‚«Š·‚¦‚éŠg’£ƒƒ\ƒbƒh
+        /// ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã§ã‚³ãƒ³ãƒ†ãƒŠã‚­ãƒ¼å¤‰æ•°ã‚’æ›¸ãæ›ãˆã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetContainerKey(this PageContainer container, string key) {
             var fieldInfo = container.GetType()

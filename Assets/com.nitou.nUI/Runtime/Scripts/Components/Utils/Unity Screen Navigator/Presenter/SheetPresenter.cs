@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Threading.Tasks;
 
 namespace UnityScreenNavigator.Runtime.Core.Sheet {
 
     /// <summary>
-    /// PageƒvƒŒƒ[ƒ“ƒ^[‚ÌŠî’êƒNƒ‰ƒX
+    /// Pageãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼ã®åŸºåº•ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class SheetPresenter<TSheet> : Presenter<TSheet>, ISheetPresenter 
         where TSheet : Sheet {
@@ -12,7 +12,7 @@ namespace UnityScreenNavigator.Runtime.Core.Sheet {
         private TSheet View { get; }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         protected SheetPresenter(TSheet view) : base(view) {
             View = view;
@@ -127,7 +127,7 @@ namespace UnityScreenNavigator.Runtime.Core.Sheet {
         // Protected Method
 
         /// <summary>
-        /// ‰Šú‰»ˆ—
+        /// åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         protected override void Initialize(TSheet view) {
             // The lifecycle event of the view will be added with priority 0.
@@ -136,7 +136,7 @@ namespace UnityScreenNavigator.Runtime.Core.Sheet {
         }
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         protected override void Dispose(TSheet view) {
             view.RemoveLifecycleEvent(this);

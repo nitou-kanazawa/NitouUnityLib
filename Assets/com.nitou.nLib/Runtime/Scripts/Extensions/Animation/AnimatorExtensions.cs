@@ -1,35 +1,35 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Animator"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Animator"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static partial class AnimatorExtensions {
 
         /// <summary>
-        /// Œ»İÄ¶‚µ‚Ä‚¢‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ªI—¹‚µ‚Ä‚¢‚é‚©H
+        /// ç¾åœ¨å†ç”Ÿã—ã¦ã„ã‚‹ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒçµ‚äº†ã—ã¦ã„ã‚‹ã‹ï¼Ÿ
         /// </summary>
         public static bool IsCompleted(this Animator self) {
             return self.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f;
         }
 
         /// <summary>
-        /// Œ»İÄ¶‚µ‚Ä‚¢‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ªw’èƒXƒe[ƒg‚©‚ÂI—¹‚µ‚Ä‚¢‚é‚©H
+        /// ç¾åœ¨å†ç”Ÿã—ã¦ã„ã‚‹ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒæŒ‡å®šã‚¹ãƒ†ãƒ¼ãƒˆã‹ã¤çµ‚äº†ã—ã¦ã„ã‚‹ã‹ï¼Ÿ
         /// </summary>
         public static bool IsCompleted(this Animator self, int stateHash) {
             return self.GetCurrentAnimatorStateInfo(0).shortNameHash == stateHash && self.IsCompleted();
         }
 
         /// <summary>
-        /// Œ»İÄ¶‚µ‚Ä‚¢‚éƒAƒjƒ[ƒVƒ‡ƒ“‚Ìw’èŠÔ(Š„‡)‚ğ‰ß‚¬‚Ä‚¢‚é‚©H
+        /// ç¾åœ¨å†ç”Ÿã—ã¦ã„ã‚‹ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®æŒ‡å®šæ™‚é–“(å‰²åˆ)ã‚’éãã¦ã„ã‚‹ã‹ï¼Ÿ
         /// </summary>
         public static bool IsPassed(this Animator self, float normalizedTime) {
             return self.GetCurrentAnimatorStateInfo(0).normalizedTime > normalizedTime;
         }
 
         /// <summary>
-        /// ƒAƒjƒ[ƒVƒ‡ƒ“‚ğÅ‰‚©‚çÄ¶‚·‚é
+        /// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æœ€åˆã‹ã‚‰å†ç”Ÿã™ã‚‹
         /// </summary>
         public static void PlayBegin(this Animator self, int shortNameHash) {
             self.Play(shortNameHash, 0, 0.0f);

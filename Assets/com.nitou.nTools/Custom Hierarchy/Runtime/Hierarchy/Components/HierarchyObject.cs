@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.Tools.Hierarchy {
 
     /// <summary>
-    /// ƒqƒGƒ‰ƒ‹ƒL[Šg’£—p‚Ìƒ_ƒ~[ƒIƒuƒWƒFƒNƒgD
+    /// ãƒ’ã‚¨ãƒ©ãƒ«ã‚­ãƒ¼æ‹¡å¼µç”¨ã®ãƒ€ãƒŸãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("Nitou/Hierarchy Object")]
@@ -19,7 +19,7 @@ namespace nitou.Tools.Hierarchy {
         [SerializeField] Mode _hierarchyObjectMode = Mode.UseSettings;
 
         /// <summary>
-        /// ƒ‚[ƒh
+        /// ãƒ¢ãƒ¼ãƒ‰
         /// </summary>
         public Mode HierarchyObjectMode => _hierarchyObjectMode;
     }

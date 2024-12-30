@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,7 +7,7 @@ using UniRx;
 namespace nitou.UI.Components {
 
     /// <summary>
-    /// Šî–{‹@”\‚Ì‚İ‚Ì“Æ©ƒ{ƒ^ƒ“UIi¦ƒNƒŠƒbƒN‚ÆƒTƒuƒ~ƒbƒg‚Í“¯ˆê‚Æ‚µ‚Äˆµ‚¤j
+    /// åŸºæœ¬æ©Ÿèƒ½ã®ã¿ã®ç‹¬è‡ªãƒœã‚¿ãƒ³UIï¼ˆâ€»ã‚¯ãƒªãƒƒã‚¯ã¨ã‚µãƒ–ãƒŸãƒƒãƒˆã¯åŒä¸€ã¨ã—ã¦æ‰±ã†ï¼‰
     /// </summary>
     [AddComponentMenu(ComponentMenu.Prefix.UIComponents + "UI Button")]
     public class UIButton : UISelectable, 
@@ -25,17 +25,17 @@ namespace nitou.UI.Components {
         // Properity
 
         /// <summary>
-        /// Œˆ’è“ü—Í‚³‚ê‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// æ±ºå®šå…¥åŠ›ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnSubmited => _onSubmitSubject;
 
         /// <summary>
-        /// ƒLƒƒƒ“ƒZƒ‹“ü—Í‚³‚ê‚½‚ÌƒCƒxƒ“ƒg’Ê’m
+        /// ã‚­ãƒ£ãƒ³ã‚»ãƒ«å…¥åŠ›ã•ã‚ŒãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆé€šçŸ¥
         /// </summary>
         public IObservable<Unit> OnCanceled => _onCancelSubject;
 
         /// <summary>
-        /// ƒƒbƒNó‘Ô‚©‚Ç‚¤‚©
+        /// ãƒ­ãƒƒã‚¯çŠ¶æ…‹ã‹ã©ã†ã‹
         /// </summary>
         public bool IsLocked { get; set; } = false;
 
@@ -54,7 +54,7 @@ namespace nitou.UI.Components {
         // Interface Method
 
         /// <summary>
-        /// Œˆ’è“ü—Í‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// æ±ºå®šå…¥åŠ›ã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public virtual void OnSubmit(BaseEventData eventData) {
             Press();
@@ -64,7 +64,7 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// Œˆ’è“ü—Í‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// æ±ºå®šå…¥åŠ›ã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public virtual void OnCancel(BaseEventData eventData) {
 
@@ -72,10 +72,10 @@ namespace nitou.UI.Components {
         }
 
         /// <summary>
-        /// ƒNƒŠƒbƒN‚³‚ê‚½‚Æ‚«‚Ìˆ—
+        /// ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã¨ãã®å‡¦ç†
         /// </summary>
         public virtual void OnPointerClick(PointerEventData eventData) {
-            // ¶ƒNƒŠƒbƒN‚Ì‚İ
+            // å·¦ã‚¯ãƒªãƒƒã‚¯ã®ã¿
             if (eventData.button != PointerEventData.InputButton.Left) return;
 
             Press();

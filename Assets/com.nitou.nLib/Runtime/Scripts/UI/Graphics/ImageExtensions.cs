@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 // [REF]
-//  _: Image ƒNƒ‰ƒX‚ÌŠg’£ƒƒ\ƒbƒh https://kazupon.org/unity-image-extension/
-//  _: 2DRPGŠJ”­“ú #79 Image‚ÌFill•ûŒü‚ğƒXƒNƒŠƒvƒg‚©‚ç•ÏX‚·‚é https://kitty-pool.com/ss079/
+//  _: Image ã‚¯ãƒ©ã‚¹ã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://kazupon.org/unity-image-extension/
+//  _: 2DRPGé–‹ç™ºæ—¥èªŒ #79 Imageã®Fillæ–¹å‘ã‚’ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‹ã‚‰å¤‰æ›´ã™ã‚‹ https://kitty-pool.com/ss079/
 
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Image"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Image"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class ImageExtensions {
 
@@ -16,35 +16,35 @@ namespace nitou{
         // Fill 
 
         /// <summary>
-        /// Fill Origin‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Fill Originã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.OriginHorizontal origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Origin‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Fill Originã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.OriginVertical origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Origin‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Fill Originã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.Origin90 origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Fill Origin‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Fill Originã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetFillMethodOrigin(this Image self, Image.Origin360 origin) {
             self.fillOrigin = (int)origin;
         }
 
         /// <summary>
-        /// Horizontal Fill‚Éİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Horizontal Fillã«è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetHorizontalFillMode(this Image self, Image.OriginHorizontal origin) {
             self.type = Image.Type.Filled;
@@ -53,7 +53,7 @@ namespace nitou{
         }
 
         /// <summary>
-        /// Vertical Fill‚Éİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Vertical Fillã«è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetVerticalFillMode(this Image self, Image.OriginVertical origin) {
             self.type = Image.Type.Filled;
@@ -66,13 +66,13 @@ namespace nitou{
         // sprite
 
         /// <summary>
-        /// Image‚ÌSprite‚ÉAƒeƒNƒXƒ`ƒƒ‚ğİ’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// Imageã®Spriteã«ã€ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void SetTexture2D(this Image self, Texture2D tex2D) {
             if (tex2D != null) {
                 self.sprite = Sprite.Create(tex2D, new Rect(0, 0, tex2D.width, tex2D.height), Vector2.zero);
             } else {
-                Debug_.LogWarning("ƒeƒNƒXƒ`ƒƒ‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñBsprite‚Énull‚ğİ’è‚µ‚Ü‚·B");
+                Debug_.LogWarning("ãƒ†ã‚¯ã‚¹ãƒãƒ£ãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚spriteã«nullã‚’è¨­å®šã—ã¾ã™ã€‚");
                 self.sprite = null;
             }
         }

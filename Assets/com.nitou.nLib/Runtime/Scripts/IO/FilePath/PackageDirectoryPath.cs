@@ -1,36 +1,36 @@
-using System.IO;
+ï»¿using System.IO;
 using UnityEngine;
 
 namespace nitou {
 
     /// <summary>
-    /// ©ìƒpƒbƒP[ƒW‚ÌƒfƒBƒŒƒNƒgƒŠƒpƒXw’è—p‚ÌƒNƒ‰ƒX
+    /// è‡ªä½œãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ‘ã‚¹æŒ‡å®šç”¨ã®ã‚¯ãƒ©ã‚¹
     /// </summary>
     [System.Serializable]
     public sealed class PackageDirectoryPath : IUnityProjectPath{
 
         public enum Mode {
-            // ”z•zŒã
+            // é…å¸ƒå¾Œ
             Upm,
-            // ŠJ”­ƒvƒƒWƒFƒNƒg“à
+            // é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå†…
             Normal,
             // 
             NotExist,
         }
 
-        // ‘Š‘ÎƒpƒX
+        // ç›¸å¯¾ãƒ‘ã‚¹
         private readonly string _upmRelativePath;
         private readonly string _normalRelativePath;
 
         private Mode _mode;
 
         /// <summary>
-        /// Package”z•zŒã‚ÌƒpƒbƒP[ƒWƒpƒX
+        /// Packageé…å¸ƒå¾Œã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ‘ã‚¹
         /// </summary>
         public string UpmPath => $"Packages/{_upmRelativePath}";
 
         /// <summary>
-        /// ŠJ”­ƒvƒƒWƒFƒNƒg‚Å‚ÌƒAƒZƒbƒgƒpƒX
+        /// é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã®ã‚¢ã‚»ãƒƒãƒˆãƒ‘ã‚¹
         /// </summary>
         public string NormalPath => $"Assets/{_normalRelativePath}".ToAssetsPath();
 
@@ -39,24 +39,24 @@ namespace nitou {
         // Pubic Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public PackageDirectoryPath(string relativePath = "com.nitou.nLib") {
             _upmRelativePath = relativePath;
             _normalRelativePath = relativePath;
 
-            // ”»’è‚·‚é
+            // åˆ¤å®šã™ã‚‹
             _mode = CheckDirectoryLocation();
         }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public PackageDirectoryPath(string upmRelativePath = "com.nitou.nLib", string normalRelativePath = "Plugins/com.nitou.nLib") {
             _upmRelativePath = upmRelativePath;
             _normalRelativePath = normalRelativePath;
 
-            // ”»’è‚·‚é
+            // åˆ¤å®šã™ã‚‹
             _mode = CheckDirectoryLocation();
         }
 
@@ -65,7 +65,7 @@ namespace nitou {
         // Pubic Method
 
         /// <summary>
-        /// ProjectƒfƒBƒŒƒNƒgƒŠ‚ğ‹N“_‚Æ‚µ‚½ƒpƒX
+        /// Projectãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’èµ·ç‚¹ã¨ã—ãŸãƒ‘ã‚¹
         /// </summary>
         public string ToProjectPath() {
             return _mode switch {
@@ -76,7 +76,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// â‘ÎƒpƒX
+        /// çµ¶å¯¾ãƒ‘ã‚¹
         /// </summary>
         public string ToAbsolutePath() => Path.GetFullPath(ToProjectPath());
 
@@ -85,7 +85,7 @@ namespace nitou {
         // Private Method
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌˆÊ’u‚ğ”»’è‚·‚é
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½ç½®ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         private Mode CheckDirectoryLocation() {
 

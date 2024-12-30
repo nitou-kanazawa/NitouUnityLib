@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -37,7 +37,7 @@ namespace nitou.UI.Components {
                 // Fade Out
                 .Join(_highlightImage.DOFadeOut(_duration))
                 .Join(transform.DOScale(1, _duration))
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale().SetLink(gameObject);
         }
 
@@ -47,7 +47,7 @@ namespace nitou.UI.Components {
                 // Fade In
                 .Join(_highlightImage.DOFadeIn(_duration))
                 .Join(transform.DOScale(1.1f, _duration))
-                // UI‹¤’Ê
+                // UIå…±é€š
                 .IgnoreTimeScale().SetLink(gameObject);
         }
 

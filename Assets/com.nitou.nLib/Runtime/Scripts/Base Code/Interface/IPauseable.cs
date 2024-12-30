@@ -1,20 +1,20 @@
-
+ï»¿
 namespace nitou {
 
     public interface IPauseable{
 
         /// <summary>
-        /// ƒ|[ƒYó‘Ô‚©‚Ç‚¤‚©D
+        /// ãƒãƒ¼ã‚ºçŠ¶æ…‹ã‹ã©ã†ã‹ï¼
         /// </summary>
         public bool IsPaused { get; }
 
         /// <summary>
-        /// ƒ|[ƒYˆ—D
+        /// ãƒãƒ¼ã‚ºå‡¦ç†ï¼
         /// </summary>
         public void OnPause();
 
         /// <summary>
-        /// ƒ|[ƒY‰ğœˆ—D
+        /// ãƒãƒ¼ã‚ºè§£é™¤å‡¦ç†ï¼
         /// </summary>
         public void Unpause();
     }

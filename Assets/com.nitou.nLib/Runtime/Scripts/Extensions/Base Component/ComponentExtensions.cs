@@ -1,28 +1,28 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
-// [Ql]
-//  qiita: Unity‚Åg‚¦‚é•Ö—˜ŠÖ”(Šg’£ƒƒ\ƒbƒh)’B https://qiita.com/nmss208/items/9846525cf523fb961b48
+// [å‚è€ƒ]
+//  qiita: Unityã§ä½¿ãˆã‚‹ä¾¿åˆ©é–¢æ•°(æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰)é” https://qiita.com/nmss208/items/9846525cf523fb961b48
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Component"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="Component"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class ComponentExtensions {
 
         /// ----------------------------------------------------------------------------
-        // ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’Ç‰Á
+        // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è¿½åŠ 
 
         /// <summary>
-        /// AddComponent‚ÌŠg’£ƒƒ\ƒbƒhD
+        /// AddComponentã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static T AddComponent<T>(this Component self) where T : Component {
             return self.gameObject.AddComponent<T>();
         }
 
         /// <summary>
-        /// AddComponents‚ÌŠg’£ƒƒ\ƒbƒhD
+        /// AddComponentsã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddComponents<T1, T2>(this Component self)
             where T1 : Component where T2 : Component {
@@ -30,7 +30,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// AddComponents‚ÌŠg’£ƒƒ\ƒbƒhD
+        /// AddComponentsã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void AddComponents<T1, T2, T3>(this Component self)
             where T1 : Component where T2 : Component where T3 : Component {
@@ -38,7 +38,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// GameObject‚ª‘ÎÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Âê‡‚Í‚»‚ê‚ğæ“¾‚µC‚È‚¯‚ê‚Î’Ç‰Á‚µ‚Ä•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// GameObjectãŒå¯¾è±¡ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæŒã¤å ´åˆã¯ãã‚Œã‚’å–å¾—ã—ï¼Œãªã‘ã‚Œã°è¿½åŠ ã—ã¦è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static T GetOrAddComponent<T>(this Component self) where T : Component {
             return self.gameObject.GetOrAddComponent<T>();
@@ -46,24 +46,24 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì”jŠü
+        // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç ´æ£„
 
         /// <summary>
-        /// Destory‚ÌŠg’£ƒƒ\ƒbƒhD
+        /// Destoryã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void Destroy(this Component self) {
             Object.Destroy(self);
         }
 
         /// <summary>
-        /// DestroyImmediate‚ÌŠg’£ƒƒ\ƒbƒhD
+        /// DestroyImmediateã®æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static void DestroyImmediate(this Component self) {
             Object.DestroyImmediate(self);
         }
 
         /// <summary>
-        /// Component‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éGameObject‚ğ”jŠü‚·‚éD
+        /// ComponentãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹GameObjectã‚’ç ´æ£„ã™ã‚‹ï¼
         /// </summary>
         public static void DestroyGameObject(this Component self) {
             Object.Destroy(self.gameObject);
@@ -71,7 +71,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // İ’è
+        // è¨­å®š
 
         public static void SetActive(this Component self, bool active) {
             self.gameObject.SetActive(active);
@@ -80,10 +80,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // ”»’è
+        // åˆ¤å®š
 
         /// <summary>
-        /// ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª—LŒø‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒæœ‰åŠ¹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsEnabled(this Component self) {
             var property = self.GetType().GetProperty("enabled", typeof(bool));
@@ -91,7 +91,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// GameObject‚ª‘ÎÛ‚ÌƒŒƒCƒ„[‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©‚ğ’²‚×‚éŠg’£ƒƒ\ƒbƒh
+        /// GameObjectãŒå¯¾è±¡ã®ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹ã‚’èª¿ã¹ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static bool IsInLayerMask(this Component self, LayerMask layerMask) {
             return GameObjectExtensions.IsInLayerMask(self.gameObject, layerMask);
@@ -100,12 +100,12 @@ namespace nitou {
 
 
     /// <summary>
-    /// <see cref="Behaviour"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Behaviour"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class BehaviourExtensions {
 
         /// <summary>
-        /// enabled‚ÆgameObject.activeSelf‚ğˆêŠ‡‚Åİ’è‚·‚éŠg’£ƒƒ\ƒbƒh
+        /// enabledã¨gameObject.activeSelfã‚’ä¸€æ‹¬ã§è¨­å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public static void SetActiveAndEnabled(this Behaviour self, bool value) {
             self.enabled = value;

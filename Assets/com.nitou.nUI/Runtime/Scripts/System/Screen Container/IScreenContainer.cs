@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Modal;
@@ -30,22 +30,22 @@ namespace nitou.UI {
         #region Pop
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚È‰æ–Ê‚ğƒ|ƒbƒv‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªç”»é¢ã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public UniTask Pop(bool playAnimation);
 
         /// <summary>
-        /// w’è”‚Ì<see cref="Page"/>‚ğƒ|ƒbƒv‚·‚é
+        /// æŒ‡å®šæ•°ã®<see cref="Page"/>ã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public UniTask PopPage(bool playAnimation, int popCount = 1);
 
         /// <summary>
-        /// w’è”‚Ì<see cref="Modal"/>‚ğƒ|ƒbƒv‚·‚é
+        /// æŒ‡å®šæ•°ã®<see cref="Modal"/>ã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public UniTask PopModal(bool playAnimation, int popCount = 1);
 
         /// <summary>
-        /// ‘S‚Ä‚Ì‰æ–Ê‚ğƒ|ƒbƒv‚·‚é
+        /// å…¨ã¦ã®ç”»é¢ã‚’ãƒãƒƒãƒ—ã™ã‚‹
         /// </summary>
         public UniTask PopAll(bool playAnimation);
 

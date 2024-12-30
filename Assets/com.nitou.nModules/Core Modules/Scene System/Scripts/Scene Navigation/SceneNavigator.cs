@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,25 +7,25 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// [Ql]
-//  ƒRƒKƒlƒuƒƒO: ƒV[ƒ“‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚é‚©Šm”F‚·‚éŠÖ” https://baba-s.hatenablog.com/entry/2022/11/28/162515
-//  ƒRƒKƒlƒuƒƒO: Œ»İ“Ç‚İ‚Ü‚ê‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒV[ƒ“‚ğæ“¾‚·‚éŠÖ” https://baba-s.hatenablog.com/entry/2022/11/28/162103
-//  qiita: ƒV[ƒ“‚Ìd•¡“Ç‚İ‚İ‚ğLINQ‚Å–h‚® https://qiita.com/segur/items/b13045e6f3a9949e0503
+// [å‚è€ƒ]
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: ã‚·ãƒ¼ãƒ³ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹é–¢æ•° https://baba-s.hatenablog.com/entry/2022/11/28/162515
+//  ã‚³ã‚¬ãƒãƒ–ãƒ­ã‚°: ç¾åœ¨èª­ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ã‚·ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹é–¢æ•° https://baba-s.hatenablog.com/entry/2022/11/28/162103
+//  qiita: ã‚·ãƒ¼ãƒ³ã®é‡è¤‡èª­ã¿è¾¼ã¿ã‚’LINQã§é˜²ã https://qiita.com/segur/items/b13045e6f3a9949e0503
 
 namespace nitou.SceneSystem {
 
     /// <summary>
-    /// EntryPointŠÖ˜A‚Ìˆ—‚ğ’Ç‰Á‚µ‚½SceneManager‚Ìƒ‰ƒbƒvƒNƒ‰ƒX
+    /// EntryPointé–¢é€£ã®å‡¦ç†ã‚’è¿½åŠ ã—ãŸSceneManagerã®ãƒ©ãƒƒãƒ—ã‚¯ãƒ©ã‚¹
     /// </summary>
     public static class SceneNavigator {
 
         /// <summary>
-        /// ‰Šú‰»‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+        /// åˆæœŸåŒ–ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         public static bool IsInitialized { get; private set; }
 
         /// <summary>
-        /// ƒeƒXƒgÀsi¦ƒ‹[ƒgƒV[ƒ“ˆÈŠO‚©‚çÀs‚³‚ê‚Ä‚¢‚éj‚©‚Ç‚¤‚©
+        /// ãƒ†ã‚¹ãƒˆå®Ÿè¡Œï¼ˆâ€»ãƒ«ãƒ¼ãƒˆã‚·ãƒ¼ãƒ³ä»¥å¤–ã‹ã‚‰å®Ÿè¡Œã•ã‚Œã¦ã„ã‚‹ï¼‰ã‹ã©ã†ã‹
         /// </summary>
         public static bool IsTestRun { get; private set; }
 
@@ -33,11 +33,11 @@ namespace nitou.SceneSystem {
         /// ----------------------------------------------------------------------------
         #region Shared Data
 
-        // ƒV[ƒ“ŠÔ‹¤—Lƒf[ƒ^
+        // ã‚·ãƒ¼ãƒ³é–“å…±æœ‰ãƒ‡ãƒ¼ã‚¿
         private static readonly Dictionary<Type, SceneSharedData> _sharedData = new();
 
         /// <summary>
-        /// ‹¤—Lƒf[ƒ^‚ğ“o˜^‚·‚é
+        /// å…±æœ‰ãƒ‡ãƒ¼ã‚¿ã‚’ç™»éŒ²ã™ã‚‹
         /// </summary>
         public static void SetData<TData>(TData data)
             where TData : SceneSharedData {
@@ -45,34 +45,34 @@ namespace nitou.SceneSystem {
 
             var type = typeof(TData);
             if (_sharedData.ContainsKey(type)) {
-                Debug_.LogWarning("“o˜^‚³‚ê‚Ä‚¢‚éƒf[ƒ^‚ğã‘‚«‚µ‚Ü‚·D");
+                Debug_.LogWarning("ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’ä¸Šæ›¸ãã—ã¾ã™ï¼");
             }
             _sharedData[type] = data;
         }
 
         /// <summary>
-        /// ‹¤—Lƒf[ƒ^‚ğíœ‚·‚é
+        /// å…±æœ‰ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
         public static void CleaData<TData>() 
             where TData : SceneSharedData{
 
             var type = typeof(TData);
             if (!_sharedData.ContainsKey(type)) {
-                Debug_.LogWarning("“o˜^‚³‚ê‚Ä‚¢‚éƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñD");
+                Debug_.LogWarning("ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“ï¼");
                 return;
             }
             _sharedData.Remove(type);
         }
 
         /// <summary>
-        /// ‹¤—Lƒf[ƒ^‚ğæ“¾‚·‚é
+        /// å…±æœ‰ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetData<TData>(out TData data)
             where TData : SceneSharedData {
 
             var type = typeof(TData);
             if (!_sharedData.ContainsKey(type)) {
-                Debug_.LogWarning("w’è‚³‚ê‚½ƒf[ƒ^‚Í–¢“o˜^‚Å‚·D");
+                Debug_.LogWarning("æŒ‡å®šã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã¯æœªç™»éŒ²ã§ã™ï¼");
                 data = null;
                 return false;
             }
@@ -87,14 +87,14 @@ namespace nitou.SceneSystem {
         // Public Methord
 
         /// <summary>
-        /// ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg‚ğæ“¾‚·‚é
+        /// ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetEntryPoint(this Scene scene, out ISceneEntryPoint entryPoint) {
             return scene.TryGetComponentInScene(out entryPoint);
         }
 
         /// <summary>
-        /// ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg‚ğæ“¾‚·‚é
+        /// ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetEntryPoint<TEntryPoint>(this Scene scene, out TEntryPoint entryPoint)
             where TEntryPoint : ISceneEntryPoint {
@@ -103,26 +103,26 @@ namespace nitou.SceneSystem {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Methord (”Ä—p)
+        // Public Methord (æ±ç”¨)
 
         /// <summary>
-        /// ƒV[ƒ“‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚é‚©Šm”F‚·‚é
+        /// ã‚·ãƒ¼ãƒ³ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹
         /// </summary>
         public static bool IsLoaded(string sceneName) => 
             GetAllScenes().Any(x => x.name == sceneName && x.isLoaded);
 
         /// <summary>
-        /// ƒAƒNƒeƒBƒu‚ÈƒV[ƒ“‚ğæ“¾‚·‚é
+        /// ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static Scene GetActiveScene() {
             return SceneManager.GetActiveScene();
         }
 
         /// <summary>
-        /// Œ»İ“Ç‚İ‚Ü‚ê‚Ä‚¢‚é‘SƒV[ƒ“‚ğæ“¾‚·‚é
+        /// ç¾åœ¨èª­ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹å…¨ã‚·ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static IEnumerable<Scene> GetAllScenes() {
-            // ¦ SceneManager.GetAllScenes()‚Í‹ŒŒ`®‚Ì‚½‚ßg—p‚µ‚È‚¢D
+            // â€» SceneManager.GetAllScenes()ã¯æ—§å½¢å¼ã®ãŸã‚ä½¿ç”¨ã—ãªã„ï¼
 
             var sceneCount = SceneManager.sceneCount;
             for (var i = 0; i < sceneCount; i++) {
@@ -135,22 +135,22 @@ namespace nitou.SceneSystem {
         // Public Methord
 
         /// <summary>
-        /// ƒV[ƒ“‚ğ“Ç‚İ‚ŞD
+        /// ã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€ï¼
         /// </summary>
         public static async UniTask<Scene> LoadSceneAsync(string sceneName, bool setActive = false, bool disallowSameScene = true) {
 
-            // Šù‚É“Ç‚İ‚Ü‚ê‚Ä‚¢‚éê‡,
+            // æ—¢ã«èª­ã¿è¾¼ã¾ã‚Œã¦ã„ã‚‹å ´åˆ,
             if (disallowSameScene && IsLoaded(sceneName)) {
                 Debug_.LogWarning($"Scene [{sceneName}] is alredy loaded.");
                 return SceneManager.GetSceneByName(sceneName);
             }
 
-            // ƒV[ƒ“‚Ì“Ç‚İ‚İ
+            // ã‚·ãƒ¼ãƒ³ã®èª­ã¿è¾¼ã¿
             await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             var scene = SceneManager.GetSceneByName(sceneName);
 
 
-            // ƒAƒNƒeƒBƒu‚ÈƒV[ƒ“‚Éİ’è‚·‚é
+            // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒ³ã«è¨­å®šã™ã‚‹
             if (setActive) {
                 SceneManager.SetActiveScene(scene);
             }
@@ -158,18 +158,18 @@ namespace nitou.SceneSystem {
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ğæ“¾‚·‚éD‘¶İ‚µ‚È‚¢ê‡‚Í“Ç‚İ‚ñ‚Åæ“¾‚·‚é
+        /// ã‚·ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹ï¼å­˜åœ¨ã—ãªã„å ´åˆã¯èª­ã¿è¾¼ã‚“ã§å–å¾—ã™ã‚‹
         /// </summary>
         public static async UniTask<Scene> GetOrLoadSceneAsync(string sceneName, bool setActive = false) {
 
-            // ƒV[ƒ““Ç‚İ‚İ
+            // ã‚·ãƒ¼ãƒ³èª­ã¿è¾¼ã¿
             if (!IsLoaded(sceneName)) {
                 await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             }
 
             var scene = SceneManager.GetSceneByName(sceneName);
 
-            // ƒAƒNƒeƒBƒu‚ÈƒV[ƒ“‚Éİ’è‚·‚é
+            // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚·ãƒ¼ãƒ³ã«è¨­å®šã™ã‚‹
             if (setActive) {
                 SceneManager.SetActiveScene(scene);
             }
@@ -177,14 +177,14 @@ namespace nitou.SceneSystem {
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ğ‰ğ•ú‚·‚éD
+        /// ã‚·ãƒ¼ãƒ³ã‚’è§£æ”¾ã™ã‚‹ï¼
         /// </summary>
         public static UniTask UnLoadSceneAsync(string sceneName) {
             return SceneManager.UnloadSceneAsync(sceneName).ToUniTask();
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ğ‰ğ•ú‚·‚éD
+        /// ã‚·ãƒ¼ãƒ³ã‚’è§£æ”¾ã™ã‚‹ï¼
         /// </summary>
         public static UniTask UnLoadSceneAsync(Scene scene) {
             return SceneManager.UnloadSceneAsync(scene).ToUniTask();
@@ -199,17 +199,17 @@ namespace nitou.SceneSystem {
 
             //Debug_.Log("RuntimeInitialize");
 
-            // ŠJnƒV[ƒ“‚Ìˆ—
+            // é–‹å§‹ã‚·ãƒ¼ãƒ³ã®å‡¦ç†
             foreach (var scene in GetAllScenes()) {
 
-                // “Ç‚İ‚İƒCƒxƒ“ƒg
+                // èª­ã¿è¾¼ã¿ã‚¤ãƒ™ãƒ³ãƒˆ
                 if (scene.TryGetEntryPoint(out var entryPoint)) {
                     entryPoint.OnSceneLoadAsync();
                 }
             }
 
             {
-                // ƒAƒNƒeƒBƒu‰»ƒCƒxƒ“ƒg
+                // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã‚¤ãƒ™ãƒ³ãƒˆ
                 var activeScene = SceneManager.GetActiveScene();
                 if (activeScene.TryGetEntryPoint(out var entryPoint)) {
                     entryPoint.OnSceneActivateAsync();
@@ -218,35 +218,35 @@ namespace nitou.SceneSystem {
 
             // --- 
 
-            // ƒV[ƒ““Ç‚İ‚İ‚ÌƒCƒxƒ“ƒg“o˜^
+            // ã‚·ãƒ¼ãƒ³èª­ã¿è¾¼ã¿æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
             ObservableSceneEvent.SceneLoadedAsObservable()
                 .Subscribe(x => {
                     Debug_.Log($"Scene Loaded : [{x.Item1.name}] (LoadType: {x.Item2})", Colors.AliceBlue);
 
-                    // ƒCƒxƒ“ƒgˆ—
+                    // ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
                     if (x.Item1.TryGetEntryPoint(out var entry)) {
                         entry.OnSceneLoadAsync();
                     }
                 });
 
-            // ƒV[ƒ“‰ğ•ú‚ÌƒCƒxƒ“ƒg“o˜^
+            // ã‚·ãƒ¼ãƒ³è§£æ”¾æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
             ObservableSceneEvent.SceneUnloadedAsObservable()
                 .Subscribe(x => {
                     Debug_.Log($"Scene Unloaded : [{x.name}] ", Colors.AliceBlue);
 
-                    // ƒCƒxƒ“ƒgˆ—
+                    // ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
                     if (x.TryGetEntryPoint(out var entry)) {
                         entry.OnSceneUnloadAsync();
                     }
                 });
 
-            // ƒAƒNƒeƒBƒuƒV[ƒ“Ø‚è‘Ö‚¦‚ÌƒCƒxƒ“ƒg“o˜^
+            // ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ²
             ObservableSceneEvent.ActiveSceneChangedAsObservable()
                 .Subscribe(x => {
                     var previousScene = x.Item1;
                     var nextScene = x.Item2;
 
-                    // ƒCƒxƒ“ƒgˆ—
+                    // ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
                     ISceneEntryPoint entry;
                     if (previousScene.IsValid() && previousScene.TryGetEntryPoint(out entry)) {
                         entry.OnSceneDeactivateAsync();
@@ -258,7 +258,7 @@ namespace nitou.SceneSystem {
                     Debug_.Log($"Scene Changed : [{x.Item1.name}] => [{x.Item2.name}]", Colors.AliceBlue);
                 });
 
-            // ƒtƒ‰ƒOXV
+            // ãƒ•ãƒ©ã‚°æ›´æ–°
             IsInitialized = true;
         }
     }

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
@@ -10,7 +10,7 @@ namespace nitou.SceneSystem.Demo{
     using nitou.RichText;
 
     /// <summary>
-    /// ƒCƒ“ƒXƒyƒNƒ^‚Åİ’è‚µ‚½ƒV[ƒ“‚ğ“Ç‚İ‚ŞƒRƒ“ƒ|[ƒlƒ“ƒg
+    /// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ã§è¨­å®šã—ãŸã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </summary>
     [AddComponentMenu(ComponentMenu.Prefix.Scene + "Scene Loader")]
     public sealed class SceneLoadComponent : MonoBehaviour{
@@ -18,7 +18,7 @@ namespace nitou.SceneSystem.Demo{
         public SceneObject _nextScene;
 
         /// <summary>
-        /// İ’è‚µ‚½ƒV[ƒ“‚ğ“Ç‚İ‚Ş
+        /// è¨­å®šã—ãŸã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         [Button]
         public async void LoadScene() {
@@ -60,7 +60,7 @@ namespace nitou.SceneSystem.Demo.EditorScripts {
 
             if (!Application.isPlaying) return;
 
-            // LOADƒ{ƒ^ƒ“
+            // LOADãƒœã‚¿ãƒ³
             EditorGUILayout.Space();
             if (GUILayout.Button("Load Scene")) {
                 instance.LoadScene();

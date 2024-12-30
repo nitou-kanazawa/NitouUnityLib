@@ -1,41 +1,41 @@
-
+ï»¿
 using System;
 
 namespace nitou {
 
     /// <summary>
-    /// ”ÍˆÍ‚ğ•\‚·ƒCƒ“ƒ^[ƒtƒF[ƒXD
+    /// ç¯„å›²ã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ï¼
     /// </summary>
     public interface IRangeValue<TValue>
         where TValue : struct {
 
         /// <summary>
-        /// Å¬’lD
+        /// æœ€å°å€¤ï¼
         /// </summary>
         TValue Min { get; set; }
 
         /// <summary>
-        /// Å‘å’lD
+        /// æœ€å¤§å€¤ï¼
         /// </summary>
         TValue Max { get; set; }
 
         /// <summary>
-        /// ’†‰›’lD
+        /// ä¸­å¤®å€¤ï¼
         /// </summary>
         TValue Mid { get; }
 
         /// <summary>
-        /// ”ÍˆÍ‚Ì’·‚³D
+        /// ç¯„å›²ã®é•·ã•ï¼
         /// </summary>
         TValue Length { get; }
 
         /// <summary>
-        /// ”ÍˆÍ“à‚Ìƒ‰ƒ“ƒ_ƒ€‚È’lD
+        /// ç¯„å›²å†…ã®ãƒ©ãƒ³ãƒ€ãƒ ãªå€¤ï¼
         /// </summary>
         TValue Random { get; }
 
         /// <summary>
-        /// ’l‚ª”ÍˆÍ“à‚©’²‚×‚éD
+        /// å€¤ãŒç¯„å›²å†…ã‹èª¿ã¹ã‚‹ï¼
         /// </summary>
         bool Contains(TValue value);
     }
@@ -44,7 +44,7 @@ namespace nitou {
     public static class RangeVelueExtensions {
 
         /// <summary>
-        /// ”ÍˆÍ‚ğ 0 ‚©‚ç 1 ‚Ì”ÍˆÍ‚É³‹K‰»‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// ç¯„å›²ã‚’ 0 ã‹ã‚‰ 1 ã®ç¯„å›²ã«æ­£è¦åŒ–ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float GetNormalized<TValue>(this IRangeValue<TValue> range, TValue value)
             where TValue : struct, IConvertible {
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚³‚ê‚½’l‚ğV‚µ‚¢”ÍˆÍ‚ÉƒXƒP[ƒ‹‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šã•ã‚ŒãŸå€¤ã‚’æ–°ã—ã„ç¯„å›²ã«ã‚¹ã‚±ãƒ¼ãƒ«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static TValue ScaleToRange<TValue>(this IRangeValue<TValue> range, TValue value, IRangeValue<TValue> newRange)
             where TValue : struct, IConvertible {

@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 // [REF]
-//  PG“ú: Odin‚ÌColorƒtƒB[ƒ‹ƒhŠg’£‚ğ–³Œø‰»‚·‚é https://takap-tech.com/entry/2023/08/11/005353
+//  PGæ—¥èªŒ: Odinã®Colorãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰æ‹¡å¼µã‚’ç„¡åŠ¹åŒ–ã™ã‚‹ https://takap-tech.com/entry/2023/08/11/005353
 
 namespace nitou {
 
     /// <summary>
-    /// Odin‚ÌŠg’£•\¦‚ğ–³Œø‰»‚·‚é‘®«i¦ColorƒtƒB[ƒ‹ƒh‚Å’lƒRƒs[‚ª‚Å‚«‚È‚­‚È‚é‚Ì‚ğ–h‚®‚½‚ß‚Ég—p‚·‚éj
+    /// Odinã®æ‹¡å¼µè¡¨ç¤ºã‚’ç„¡åŠ¹åŒ–ã™ã‚‹å±æ€§ï¼ˆâ€»Colorãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã§å€¤ã‚³ãƒ”ãƒ¼ãŒã§ããªããªã‚‹ã®ã‚’é˜²ããŸã‚ã«ä½¿ç”¨ã™ã‚‹ï¼‰
     /// </summary>
     public sealed class OdinIgnoreAttribute : PropertyAttribute{}
 }

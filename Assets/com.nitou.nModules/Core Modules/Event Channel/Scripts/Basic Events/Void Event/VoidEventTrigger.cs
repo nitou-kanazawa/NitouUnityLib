@@ -1,6 +1,6 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-// [NOTE] ¦‚±‚ê‚ÍDemo‚Æ‚©‚É“ü‚ê‚éƒR[ƒh‚©‚à (2024.08.03)
+// [NOTE] â€»ã“ã‚Œã¯Demoã¨ã‹ã«å…¥ã‚Œã‚‹ã‚³ãƒ¼ãƒ‰ã‹ã‚‚ (2024.08.03)
 
 namespace nitou.EventChannel{
 
@@ -32,7 +32,7 @@ namespace nitou.EventChannel{
         // Public Method
 
         /// <summary>
-        /// ‘ÎÛ‚Ìƒ^ƒO‚ğİ’è‚·‚é
+        /// å¯¾è±¡ã®ã‚¿ã‚°ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public static void SetTagString(string tagName) {
             _playerTag = tagName;
@@ -45,7 +45,7 @@ namespace nitou.EventChannel{
 
         private void Reset() {
 
-            // ¦ƒRƒ‰ƒCƒ_[‚ª–³‚¯‚ê‚Î“K“–‚È‚à‚Ì‚ğƒZƒbƒg
+            // â€»ã‚³ãƒ©ã‚¤ãƒ€ãƒ¼ãŒç„¡ã‘ã‚Œã°é©å½“ãªã‚‚ã®ã‚’ã‚»ãƒƒãƒˆ
             if(!TryGetComponent<Collider>(out _)) {
                 var col = gameObject.AddComponent<SphereCollider>();
                 col.radius = 3f;

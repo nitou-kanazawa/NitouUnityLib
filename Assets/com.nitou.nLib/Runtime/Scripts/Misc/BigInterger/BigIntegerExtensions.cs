@@ -1,22 +1,22 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 
-// [Ql]
-//  PG“ú: •ú’uƒQ[ƒ€‚âƒNƒŠƒbƒJ[ƒQ[ƒ€‚Éo‚Ä‚­‚é’PˆÊ‚ğ•\Œ»‚·‚é https://takap-tech.com/entry/2023/03/25/235545
+// [å‚è€ƒ]
+//  PGæ—¥èªŒ: æ”¾ç½®ã‚²ãƒ¼ãƒ ã‚„ã‚¯ãƒªãƒƒã‚«ãƒ¼ã‚²ãƒ¼ãƒ ã«å‡ºã¦ãã‚‹å˜ä½ã‚’è¡¨ç¾ã™ã‚‹ https://takap-tech.com/entry/2023/03/25/235545
 
 namespace nitou {
 
     /// <summary>
-    /// ’PˆÊ‚ğŠÇ—‚·‚éƒNƒ‰ƒX
+    /// å˜ä½ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public class UnitMgr {
 
-        // Å‘å‚ÌŒ…”
+        // æœ€å¤§ã®æ¡æ•°
         private readonly int _maxDigit = 1000;
-        // ’PˆÊ‚ÌƒŠƒXƒg
+        // å˜ä½ã®ãƒªã‚¹ãƒˆ
         private static string[] _units;
 
 
@@ -24,17 +24,17 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public UnitMgr(int maxDigit) {
             _maxDigit = maxDigit;
         }
 
         /// <summary>
-        /// ’PˆÊ‚ğ‰Šú‰»‚·‚é
+        /// å˜ä½ã‚’åˆæœŸåŒ–ã™ã‚‹
         /// </summary>
         private void Init() {
-            if (_units == null) // ˆê‰ñ–Ú‚É‰Šú‰»
+            if (_units == null) // ä¸€å›ç›®ã«åˆæœŸåŒ–
             {
                 _units = CreateUnits(_maxDigit).ToArray();
             }
@@ -42,10 +42,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (’PˆÊ‚Ìæ“¾)
+        // Public Method (å˜ä½ã®å–å¾—)
 
         /// <summary>
-        /// w’è‚µ‚½ˆÊ’u‚Ì’PˆÊ‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸä½ç½®ã®å˜ä½ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public string GetUnit(int index) {
             Init();
@@ -56,7 +56,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’è‚µ‚½ˆÊ’u‚Ì’PˆÊ‚ğSpan‚Æ‚µ‚Äæ“¾‚·‚é
+        /// æŒ‡å®šã—ãŸä½ç½®ã®å˜ä½ã‚’Spanã¨ã—ã¦å–å¾—ã™ã‚‹
         /// </summary>
         public ReadOnlySpan<char> GetUnitSpan(int index) {
             Init();
@@ -69,10 +69,10 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (’PˆÊ‚Ìİ’è)
+        // Public Method (å˜ä½ã®è¨­å®š)
 
         /// <summary>
-        /// w’è‚µ‚½”‚Ì•ª‚¾‚¯’PˆÊ‚ğ¶¬‚·‚é
+        /// æŒ‡å®šã—ãŸæ•°ã®åˆ†ã ã‘å˜ä½ã‚’ç”Ÿæˆã™ã‚‹
         /// </summary>
         private IEnumerable<string> CreateUnits(int count) {
             var sb = new StringBuilder();
@@ -101,33 +101,33 @@ namespace nitou {
 
     public static partial class BigIntegerExtensions {
 
-        // ƒTƒ|[ƒg‚·‚éÅ‘å‚ÌŒ…”
-        private const int MaxDigit = 1024; // 10^512‚Ü‚Å
+        // ã‚µãƒãƒ¼ãƒˆã™ã‚‹æœ€å¤§ã®æ¡æ•°
+        private const int MaxDigit = 1024; // 10^512ã¾ã§
         private const char Dot = '.';
         private const string Error = "ERROR";
 
-        // ’PˆÊ‚ÌƒŠƒXƒg
+        // å˜ä½ã®ãƒªã‚¹ãƒˆ
         private static readonly UnitMgr conv = new (MaxDigit);
 
-        // 1234564789 ¨ 1.234b ‚Ì‚æ‚¤‚ÈŒ`®‚É•ÏŠ·‚·‚é
-        // ** Span‚ğ—p‚¢‚Ä‰Â”\‚ÈŒÀ‚èƒƒ‚ƒŠƒAƒƒP[ƒVƒ‡ƒ“‚ğ—}‚¦‚é‚æ‚¤‚ÉÀ‘•‚µ‚Ä‚¢‚é
+        // 1234564789 â†’ 1.234b ã®ã‚ˆã†ãªå½¢å¼ã«å¤‰æ›ã™ã‚‹
+        // ** Spanã‚’ç”¨ã„ã¦å¯èƒ½ãªé™ã‚Šãƒ¡ãƒ¢ãƒªã‚¢ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æŠ‘ãˆã‚‹ã‚ˆã†ã«å®Ÿè£…ã—ã¦ã„ã‚‹
         public static string ToReadableString(this BigInteger src) {
 
             Span<char> buffer = stackalloc char[MaxDigit];
             if (!src.TryFormat(buffer, out int length)) {
-                return Error; // ƒTƒ|[ƒg‚µ‚Ä‚éŒ…”‚ğ’´‚¦‚½
+                return Error; // ã‚µãƒãƒ¼ãƒˆã—ã¦ã‚‹æ¡æ•°ã‚’è¶…ãˆãŸ
             }
-            if (length < 7) // 7Œ…–¢–‚Í‚»‚Ì‚Ü‚Ü”š‚ğ•Ô‚·
+            if (length < 7) // 7æ¡æœªæº€ã¯ãã®ã¾ã¾æ•°å­—ã‚’è¿”ã™
             {
                 return buffer.Slice(0, length).ToString();
             }
 
-            // 7Œ…ˆÈã‚ÍŒ…”‚É‰‚¶‚Ä‰ÁH‚·‚é
+            // 7æ¡ä»¥ä¸Šã¯æ¡æ•°ã«å¿œã˜ã¦åŠ å·¥ã™ã‚‹
             int _len = length - 1;
             ReadOnlySpan<char> unitSpan = conv.GetUnitSpan(_len / 3);
             int d = _len % 3;
 
-            // Œ‹‰Ê‚ğ“ü‚ê‚é‚¢‚ê‚à‚Ì
+            // çµæœã‚’å…¥ã‚Œã‚‹ã„ã‚Œã‚‚ã®
             Span<char> result = stackalloc char[5 + d + unitSpan.Length];
 
             d++;

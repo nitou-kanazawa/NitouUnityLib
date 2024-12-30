@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
-// [Ql]
-//  qiita: ParticleSystem ‚ÌÄ¶ˆÊ’u‚ğŠÈ’P‚É•Ï‚¦‚ç‚ê‚éŠg’£ƒƒ\ƒbƒh https://qiita.com/Yamara/items/221868b0decc6364b56f
+// [å‚è€ƒ]
+//  qiita: ParticleSystem ã®å†ç”Ÿä½ç½®ã‚’ç°¡å˜ã«å¤‰ãˆã‚‰ã‚Œã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://qiita.com/Yamara/items/221868b0decc6364b56f
 
 namespace UnityEngine {
 

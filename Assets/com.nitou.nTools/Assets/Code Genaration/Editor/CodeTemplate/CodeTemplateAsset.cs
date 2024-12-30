@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.Tools.CodeGeneration{
 
     /// <summary>
-    /// ".cstmp"Œ`®‚ÌƒXƒNƒŠƒvƒgƒeƒ“ƒvƒŒ[ƒg
+    /// ".cstmp"å½¢å¼ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
     /// </summary>
     public class CodeTemplateAsset : ScriptableObject {
         public string data;

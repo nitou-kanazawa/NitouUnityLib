@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+Ôªø#if UNITY_EDITOR
 using System;
 using UnityEngine;
 using UnityEditor;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 
-// [éQçl]
+// [ÂèÇËÄÉ]
 //  github : nukadelic/UnityEditorIcons https://github.com/nukadelic/UnityEditorIcons
 
 namespace nitou.Tools {

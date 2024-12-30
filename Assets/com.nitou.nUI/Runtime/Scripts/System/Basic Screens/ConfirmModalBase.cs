@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+ï»¿using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 using UnityScreenNavigator.Runtime.Core.Modal;
@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 namespace nitou.UI.BasicScreens {
 
     /// <summary>
-    /// Šm”Fƒ‚[ƒ_ƒ‹‚ÌŠî’êƒNƒ‰ƒXD
+    /// ç¢ºèªãƒ¢ãƒ¼ãƒ€ãƒ«ã®åŸºåº•ã‚¯ãƒ©ã‚¹ï¼
     /// </summary>
     public abstract class ConfirmModalBase : Modal {
 
@@ -22,7 +22,7 @@ namespace nitou.UI.BasicScreens {
         // Public Method
 
         /// <summary>
-        /// •\¦ƒeƒLƒXƒg‚ğİ’è‚·‚é
+        /// è¡¨ç¤ºãƒ†ã‚­ã‚¹ãƒˆã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetText(string title, string message) {
             if (_titleText != null) {
@@ -39,7 +39,7 @@ namespace nitou.UI.BasicScreens {
         // Lifecycle Events
 
         /// <summary>
-        /// I—¹ˆ—
+        /// çµ‚äº†å‡¦ç†
         /// </summary>
         public override Task Cleanup() {
             return base.Cleanup();

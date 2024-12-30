@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -6,12 +6,12 @@ using UnityEditor;
 #endif
 
 // [REF]
-//  LIGHT11: AnimationCurve‚ğ³‹K‰»‚·‚éƒAƒgƒŠƒrƒ…[ƒg‚ğì‚é https://light11.hatenadiary.com/entry/2021/08/11/194500
+//  LIGHT11: AnimationCurveã‚’æ­£è¦åŒ–ã™ã‚‹ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆã‚’ä½œã‚‹ https://light11.hatenadiary.com/entry/2021/08/11/194500
 
 namespace nitou.Inspector {
 
     /// <summary>
-    /// <see cref="AnimationCurve"/>‚Ì”ÍˆÍ‚ğ0 ~ 1‚É§ŒÀ‚·‚é‘®«
+    /// <see cref="AnimationCurve"/>ã®ç¯„å›²ã‚’0 ~ 1ã«åˆ¶é™ã™ã‚‹å±æ€§
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class NormalizedAnimationCurveAttribute : PropertyAttribute {
@@ -39,7 +39,7 @@ namespace nitou.Inspector.EditorScripts {
             var attr = (NormalizedAnimationCurveAttribute)attribute;
 
             if (property.propertyType != SerializedPropertyType.AnimationCurve) {
-                // AnimationCurveˆÈŠO‚ÌƒtƒB[ƒ‹ƒh‚ÉƒAƒgƒŠƒrƒ…[ƒg‚ª•t‚¯‚ç‚ê‚Ä‚¢‚½ê‡‚ÌƒGƒ‰[•\¦
+                // AnimationCurveä»¥å¤–ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆãŒä»˜ã‘ã‚‰ã‚Œã¦ã„ãŸå ´åˆã®ã‚¨ãƒ©ãƒ¼è¡¨ç¤º
                 position = EditorGUI.PrefixLabel(position, label);
                 var preIndent = EditorGUI.indentLevel;
                 EditorGUI.indentLevel = 0;

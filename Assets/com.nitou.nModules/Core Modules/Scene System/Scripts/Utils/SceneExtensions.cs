@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="Scene"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhW
+    /// <see cref="Scene"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†
     /// </summary>
     public static class SceneExtensions {
 
@@ -13,7 +13,7 @@ namespace nitou {
         // Public Methord
 
         /// <summary>
-        /// w’èƒV[ƒ““à‚Ìƒ‹[ƒg‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã‚·ãƒ¼ãƒ³å†…ã®ãƒ«ãƒ¼ãƒˆã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetComponentInSceneRoot<T>(this Scene scene, out T result) {
 
@@ -21,20 +21,20 @@ namespace nitou {
                 throw new ArgumentException("Scene is invalid.", nameof(scene));
             }
 
-            // ƒV[ƒ““à‚Ìƒ‹[ƒgƒIƒuƒWƒFƒNƒg‚ğ‡‚Éƒ`ƒFƒbƒN‚·‚é
+            // ã‚·ãƒ¼ãƒ³å†…ã®ãƒ«ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é †ã«ãƒã‚§ãƒƒã‚¯ã™ã‚‹
             foreach (GameObject rootObj in scene.GetRootGameObjects()) {
                 if (rootObj.TryGetComponent(out result)) {
                     return true;
                 }
             }
 
-            // ¦Œ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡C
+            // â€»è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆï¼Œ
             result = default;
             return false;
         }
 
         /// <summary>
-        /// w’èƒV[ƒ““à‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã‚·ãƒ¼ãƒ³å†…ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static bool TryGetComponentInScene<T>(this Scene scene, out T result, bool includeInactive = true) {
 
@@ -42,7 +42,7 @@ namespace nitou {
                 throw new ArgumentException("Scene is invalid.", nameof(scene));
             }
 
-            // ƒV[ƒ““à‚Ìƒ‹[ƒgƒIƒuƒWƒFƒNƒg‚ğ‡‚Éƒ`ƒFƒbƒN‚·‚é
+            // ã‚·ãƒ¼ãƒ³å†…ã®ãƒ«ãƒ¼ãƒˆã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é †ã«ãƒã‚§ãƒƒã‚¯ã™ã‚‹
             foreach (GameObject rootObj in scene.GetRootGameObjects()) {
                 result = rootObj.GetComponentInChildren<T>(includeInactive);
                 if (result != null) {
@@ -50,13 +50,13 @@ namespace nitou {
                 }
             }
 
-            // ¦Œ©‚Â‚©‚ç‚È‚©‚Á‚½ê‡C
+            // â€»è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸå ´åˆï¼Œ
             result = default;
             return false;
         }
 
         /// <summary>
-        /// w’èƒV[ƒ““à‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã‚·ãƒ¼ãƒ³å†…ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static T GetComponentInScene<T>(this Scene scene, bool includeInactive = true) {
             return TryGetComponentInScene(scene, out T result, includeInactive)
@@ -65,7 +65,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// w’èƒV[ƒ““à‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚é
+        /// æŒ‡å®šã‚·ãƒ¼ãƒ³å†…ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static T GetComponentInSceneOrDefault<T>(this Scene scene, bool includeInactive = true) {
             TryGetComponentInScene(scene, out T result, includeInactive);

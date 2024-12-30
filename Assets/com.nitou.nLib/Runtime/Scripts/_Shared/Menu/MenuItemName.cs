@@ -1,17 +1,17 @@
-
-// [Ql]
-//  kan‚Ìƒƒ‚’  ƒƒjƒ…[‚ğ’Ç‰Á‚·‚é‚½‚ß‚Ì‘®«uMenuItemv‚ÍˆÓŠO‚Æ‘½‹@”\ https://kan-kikuchi.hatenablog.com/entry/MenuItem
-//  ‚Í‚È‚¿‚é: ƒGƒfƒBƒ^Šg’£‚Åƒƒjƒ…[ƒo[‚Éƒ`ƒFƒbƒN‚ğ•t‚¯‚é(Menu.SetChecked) https://www.hanachiru-blog.com/entry/2023/01/02/120000
+ï»¿
+// [å‚è€ƒ]
+//  kanã®ãƒ¡ãƒ¢å¸³ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’è¿½åŠ ã™ã‚‹ãŸã‚ã®å±æ€§ã€ŒMenuItemã€ã¯æ„å¤–ã¨å¤šæ©Ÿèƒ½ https://kan-kikuchi.hatenablog.com/entry/MenuItem
+//  ã¯ãªã¡ã‚‹: ã‚¨ãƒ‡ã‚£ã‚¿æ‹¡å¼µã§ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã«ãƒã‚§ãƒƒã‚¯ã‚’ä»˜ã‘ã‚‹(Menu.SetChecked) https://www.hanachiru-blog.com/entry/2023/01/02/120000
 
 namespace nitou {
 
     /// <summary>
-    /// "Menu Item"‚ÌƒvƒŒƒtƒBƒbƒNƒX’è‹`
+    /// "Menu Item"ã®ãƒ—ãƒ¬ãƒ•ã‚£ãƒƒã‚¯ã‚¹å®šç¾©
     /// </summary>
     public static class MenuItemName {
 
         /// ----------------------------------------------------------------------------
-        // Ú“ª«
+        // æ¥é ­è¾
         public static class Prefix {
 
             /// <summary>
@@ -40,7 +40,7 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        // Ú”ö«
+        // æ¥å°¾è¾
         public static class Suffix {
 
         }

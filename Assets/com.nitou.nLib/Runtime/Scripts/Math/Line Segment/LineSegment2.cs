@@ -1,14 +1,14 @@
-using System.Linq;
+ï»¿using System.Linq;
 using UnityEngine;
 
-// [Ql]
-//  ‚Ë‚±‚¶‚á‚çƒVƒeƒB: ü•ª“¯m‚ÌŒğ·”»’è https://nekojara.city/unity-line-segment-cross
-//  qiita: ‚QDü•ªŒvZClass https://qiita.com/RYUMAGE/items/a00cdc92e65116f23183
+// [å‚è€ƒ]
+//  ã­ã“ã˜ã‚ƒã‚‰ã‚·ãƒ†ã‚£: ç·šåˆ†åŒå£«ã®äº¤å·®åˆ¤å®š https://nekojara.city/unity-line-segment-cross
+//  qiita: ï¼’Dç·šåˆ†è¨ˆç®—Class https://qiita.com/RYUMAGE/items/a00cdc92e65116f23183
 
 namespace nitou {
 
     /// <summary>
-    /// ü•ª‚ğ•\‚·\‘¢‘Ì
+    /// ç·šåˆ†ã‚’è¡¨ã™æ§‹é€ ä½“
     /// </summary>
     [System.Serializable]
     public struct LineSegment2 {
@@ -21,26 +21,26 @@ namespace nitou {
         // Property
 
         /// <summary>
-        /// ’†“_
+        /// ä¸­ç‚¹
         /// </summary>
         public Vector2 Center => (start + end) * 0.5f;
 
         /// <summary>
-        /// •ûŒüƒxƒNƒgƒ‹
+        /// æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
         /// </summary>
         public Vector2 Vector => end - start;
 
         /// <summary>
-        /// –@üƒxƒNƒgƒ‹
+        /// æ³•ç·šãƒ™ã‚¯ãƒˆãƒ«
         /// </summary>
         public Vector2 Normal => Vector2.Perpendicular(Vector);
 
 
         /// ----------------------------------------------------------------------------
-        // Public Method (Šî–{ƒƒ\ƒbƒh)
+        // Public Method (åŸºæœ¬ãƒ¡ã‚½ãƒƒãƒ‰)
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public LineSegment2(Vector2 start, Vector2 end) {
             this.start = start;
@@ -48,28 +48,28 @@ namespace nitou {
         }
 
         /// <summary>
-        /// •¡»
+        /// è¤‡è£½
         /// </summary>
         public LineSegment2 Clone() {
             return new LineSegment2(start, end);
         }
 
         /// <summary>
-        /// •ûŒüƒxƒNƒgƒ‹
+        /// æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«
         /// </summary>
         public float Distance() {
             return Vector2.Distance(start, end);
         }
 
         /// <summary>
-        /// ƒpƒ‰ƒ[ƒ^i0~1j‚ğw’è‚µ‚Äü•ªã‚Ì“_‚ğæ“¾‚·‚é
+        /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ï¼ˆ0~1ï¼‰ã‚’æŒ‡å®šã—ã¦ç·šåˆ†ä¸Šã®ç‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector2 GetPoint(float t) {
             return Vector2.Lerp(start, end, t);
         }
 
         /// <summary>
-        /// •ªŠ„”‚ğw’è‚µ‚ÄAü•ªã‚Ì“_—ñ‚ğæ“¾‚·‚é
+        /// åˆ†å‰²æ•°ã‚’æŒ‡å®šã—ã¦ã€ç·šåˆ†ä¸Šã®ç‚¹åˆ—ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public Vector2[] GetPoints(int num) {
             if (num <= 0) throw new System.InvalidOperationException("The number of divisions must be a positive integer greater than zero.");
@@ -78,7 +78,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚Q‚Â‚Ìü•ª‚ª•Às‚©”»’è‚·‚é
+        /// ï¼’ã¤ã®ç·šåˆ†ãŒä¸¦è¡Œã‹åˆ¤å®šã™ã‚‹
         /// </summary>
         public bool IsParallel(LineSegment2 other) {
             float cross = Cross(this.Vector, other.Vector);
@@ -86,7 +86,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚Q‚Â‚Ìü•ª‚ªŒğ·‚µ‚Ä‚¢‚é‚©‚ğ”»’è‚·‚é
+        /// ï¼’ã¤ã®ç·šåˆ†ãŒäº¤å·®ã—ã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹
         /// </summary>
         public bool IsCrossing(LineSegment2 other) {
             Vector2 v1 = this.start - other.start;
@@ -98,17 +98,17 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ‚Q‚Â‚Ìü•ª‚ÌŒğ·“_‚ğŒvZ‚·‚é
+        /// ï¼’ã¤ã®ç·šåˆ†ã®äº¤å·®ç‚¹ã‚’è¨ˆç®—ã™ã‚‹
         /// </summary>
         public Vector2 CrossPoint(LineSegment2 other) {
             Vector2 v1 = other.start - this.start;
             float nume = Cross(v1, other.Vector);
             float deno = Cross(Vector, other.Vector);
 
-            // Œğ·‚µ‚Ä‚¢‚È‚¢ê‡C
+            // äº¤å·®ã—ã¦ã„ãªã„å ´åˆï¼Œ
             if (Mathf.Abs(deno) < Mathf.Epsilon) {
                 Debug_.LogWarning("Cross point is not exist.");
-                return this.start;  // ¦©•ª‚ÌŠJn“_‚ğ•Ô‚·
+                return this.start;  // â€»è‡ªåˆ†ã®é–‹å§‹ç‚¹ã‚’è¿”ã™
             }
 
             float t = nume / deno;
@@ -116,7 +116,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// Å‹ß–T“_‚ğŒvZ‚·‚é
+        /// æœ€è¿‘å‚ç‚¹ã‚’è¨ˆç®—ã™ã‚‹
         /// </summary>
         public Vector2 GetNearestPoint(Vector2 point) {
             Vector2 v1 = point - start;
@@ -133,7 +133,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// “_‚Æ‚ÌÅ’Z‹——£
+        /// ç‚¹ã¨ã®æœ€çŸ­è·é›¢
         /// </summary>
         public float DistanceFromPoint(Vector2 point) {
             return Vector2.Distance(GetNearestPoint(point), point);
@@ -144,7 +144,7 @@ namespace nitou {
         // Static Method
 
         /// <summary>
-        /// ŠOÏ
+        /// å¤–ç©
         /// </summary>
         public static float Cross(Vector2 vec1, Vector2 vec2) {
             return vec1.x * vec2.y - vec2.x * vec1.y;

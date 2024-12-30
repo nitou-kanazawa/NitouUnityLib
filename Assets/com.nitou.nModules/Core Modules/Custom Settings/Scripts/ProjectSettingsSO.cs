@@ -1,13 +1,13 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using Sirenix.OdinInspector;
 
-// [Ql]
-//  qiita: Unity‚Å“Æ©‚Ìİ’è‚ÌUI‚ğ’ñ‹Ÿ‚Å‚«‚éSettingsProvider‚ÌĞ‰î‚Æİ’èƒtƒ@ƒCƒ‹‚Ì•Û‘¶‚É‚Â‚¢‚Ä https://qiita.com/sune2/items/a88cdee6e9a86652137c
+// [å‚è€ƒ]
+//  qiita: Unityã§ç‹¬è‡ªã®è¨­å®šã®UIã‚’æä¾›ã§ãã‚‹SettingsProviderã®ç´¹ä»‹ã¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ä¿å­˜ã«ã¤ã„ã¦ https://qiita.com/sune2/items/a88cdee6e9a86652137c
 
 namespace nitou.Settings {
 
     /// <summary>
-    /// Runtime‚ÅQÆ‚·‚éƒvƒƒWƒFƒNƒgŒÅ—L‚Ìİ’èƒf[ƒ^
+    /// Runtimeã§å‚ç…§ã™ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆå›ºæœ‰ã®è¨­å®šãƒ‡ãƒ¼ã‚¿
     /// </summary>
     public class ProjectSettingsSO : ScriptableObject {
 
@@ -44,17 +44,17 @@ namespace nitou.Settings {
         /// ----------------------------------------------------------------------------
 
         /// <summary>
-        /// Šî€‰ğ‘œ“x
+        /// åŸºæº–è§£åƒåº¦
         /// </summary>
         public Vector2 ReferenceResolution => _referenceResolution;
 
         /// <summary>
-        /// ’ÊíƒLƒƒƒ“ƒoƒX‚Ì•`‰æ‡
+        /// é€šå¸¸ã‚­ãƒ£ãƒ³ãƒã‚¹ã®æç”»é †
         /// </summary>
         public int ScreenCanvasSortingOrder => _screenCanvasSortingOrder;
 
         /// <summary>
-        /// ƒI[ƒo[ƒŒƒCƒLƒƒƒ“ƒoƒX‚Ì•`‰æ‡
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚­ãƒ£ãƒ³ãƒã‚¹ã®æç”»é †
         /// </summary>
         public int OverlayCanvasSortingOrder => _overlayCanvasSortingOrder;
     }

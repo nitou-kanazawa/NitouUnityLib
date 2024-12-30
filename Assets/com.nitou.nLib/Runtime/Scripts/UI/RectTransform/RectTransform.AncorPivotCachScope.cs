@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou {
     public static partial class RectTransformExtensions {
 
         /// <summary>
-        /// <see cref="RectTransform"/>‚ÌƒAƒ“ƒJ[Aƒsƒ{ƒbƒgÀ•W‚ğ•Û‚µ‚Ä‚¨‚­ƒXƒR[ƒv
+        /// <see cref="RectTransform"/>ã®ã‚¢ãƒ³ã‚«ãƒ¼ã€ãƒ”ãƒœãƒƒãƒˆåº§æ¨™ã‚’ä¿æŒã—ã¦ãŠãã‚¹ã‚³ãƒ¼ãƒ—
         /// </summary>
         public class AnchorPivotCacheScope : System.IDisposable {
 

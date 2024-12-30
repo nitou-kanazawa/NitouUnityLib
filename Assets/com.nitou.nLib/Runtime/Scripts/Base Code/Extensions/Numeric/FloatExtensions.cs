@@ -1,28 +1,28 @@
-using System.Runtime.CompilerServices;
+ï»¿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // [REF]
-//  ƒzƒgƒgƒMƒX’ÊM: UnityEngine.Mathf‚ÆSystem.Math‚Ç‚Á‚¿‚ğg‚¤‚Ì‚ª—Ç‚¢H‚Æ‚¢‚¤˜b https://shibuya24.info/entry/unity-csharp-mathf
+//  ãƒ›ãƒˆãƒˆã‚®ã‚¹é€šä¿¡: UnityEngine.Mathfã¨System.Mathã©ã£ã¡ã‚’ä½¿ã†ã®ãŒè‰¯ã„ï¼Ÿã¨ã„ã†è©± https://shibuya24.info/entry/unity-csharp-mathf
 
 namespace nitou {
 
     /// <summary>
-    /// <see cref="float"/>Œ^‚ÌŠî–{“I‚ÈŠg’£ƒƒ\ƒbƒhWD
+    /// <see cref="float"/>å‹ã®åŸºæœ¬çš„ãªæ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰é›†ï¼
     /// </summary>
     public static partial class FloatExtensions {
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì”»’è
+        #region å€¤ã®åˆ¤å®š
 
         /// <summary>
-        /// ³‚Ì’l‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æ­£ã®å€¤ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsPositive(this float self) =>
             self > 0;
 
         /// <summary>
-        /// •‰‚Ì’l‚©‚Ç‚¤‚©‚ğ”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è² ã®å€¤ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsNegative(this float self) =>
@@ -32,7 +32,7 @@ namespace nitou {
             self > value;
 
         /// <summary>
-        /// ’l‚ª‚O‚©”»’è‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// å€¤ãŒï¼ã‹åˆ¤å®šã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static bool IsZero(this float self) =>
             Mathf.Approximately(self, 0f);
@@ -41,51 +41,51 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ’l‚Ì•â³
+        #region å€¤ã®è£œæ­£
 
         /// <summary>
-        /// ³‚Ì’l‚É‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æ­£ã®å€¤ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Positive(this float self) =>
             Mathf.Abs(self);
 
         /// <summary>
-        /// •‰‚Ì’l‚É‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// è² ã®å€¤ã«ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Negative(this float self) =>
             Mathf.Abs(self) * (-1);
 
         /// <summary>
-        /// w’è”ÍˆÍ“à‚Ì’l‚É§ŒÀ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šç¯„å›²å†…ã®å€¤ã«åˆ¶é™ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float Clamp(this float self, float min, float max) =>
             Mathf.Clamp(self, min, max);
 
         /// <summary>
-        /// w’è”ÍˆÍ“à‚Ì’l‚É§ŒÀ‚·‚éŠg’£ƒƒ\ƒbƒhD
+        /// æŒ‡å®šç¯„å›²å†…ã®å€¤ã«åˆ¶é™ã™ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float Clamp01(this float self) =>
             Mathf.Clamp01(self);
 
         /// <summary>
-        /// ’l‚ğØ‚èÌ‚Ä‚ÄIntŒ^‚Å•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// å€¤ã‚’åˆ‡ã‚Šæ¨ã¦ã¦Intå‹ã§è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static int FloorToInt(this float self) =>
             Mathf.FloorToInt(self);
 
         /// <summary>
-        /// ’l‚ğŠÛ‚ß‚ÄIntŒ^‚Å•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// å€¤ã‚’ä¸¸ã‚ã¦Intå‹ã§è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static int RoundToInt(this float self) =>
             Mathf.RoundToInt(self);
 
         // [NOTE]
-        //  _: ’l‚ğ“Á’è‚Ì”ÍˆÍ‚Éû‚ß‚éŠg’£ƒƒ\ƒbƒh https://12px.com/blog/2023/01/remap/
+        //  _: å€¤ã‚’ç‰¹å®šã®ç¯„å›²ã«åã‚ã‚‹æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ https://12px.com/blog/2023/01/remap/
 
         /// <summary>
-        /// ”¼•ª‚Ì’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// åŠåˆ†ã®å€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         public static float Remap(this float value,
             float fromMin, float fromMax,
@@ -99,16 +99,16 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region ŠÈˆÕŒvZ
+        #region ç°¡æ˜“è¨ˆç®—
 
         /// <summary>
-        /// ”¼•ª‚Ì’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// åŠåˆ†ã®å€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Half(this float self) => self * 0.5f;
 
         /// <summary>
-        /// ‚Q”{‚Ì’l‚ğ•Ô‚·Šg’£ƒƒ\ƒbƒhD
+        /// ï¼’å€ã®å€¤ã‚’è¿”ã™æ‹¡å¼µãƒ¡ã‚½ãƒƒãƒ‰ï¼
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Twice(this float self) => self * 2f;

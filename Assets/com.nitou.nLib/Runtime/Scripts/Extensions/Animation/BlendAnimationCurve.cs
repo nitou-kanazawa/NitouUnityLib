@@ -1,16 +1,16 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// [Ql]
-//  kan‚Ìƒƒ‚’ : •¡”‚ÌAnimationCurve‚Ì”gŒ`‚ğƒuƒŒƒ“ƒh(‡¬)‚µ‚Äg‚¤ BlendAnimationCurve https://kan-kikuchi.hatenablog.com/entry/BlendAnimationCurve
+// [å‚è€ƒ]
+//  kanã®ãƒ¡ãƒ¢å¸³: è¤‡æ•°ã®AnimationCurveã®æ³¢å½¢ã‚’ãƒ–ãƒ¬ãƒ³ãƒ‰(åˆæˆ)ã—ã¦ä½¿ã† BlendAnimationCurve https://kan-kikuchi.hatenablog.com/entry/BlendAnimationCurve
 
 namespace nitou {
 
     [System.Serializable]
     public class BlendAnimationCurve{
 
-        //ƒJ[ƒu‚Æ‚»‚Ìd‚İ‚ÌƒyƒA
+        //ã‚«ãƒ¼ãƒ–ã¨ãã®é‡ã¿ã®ãƒšã‚¢
         [System.Serializable]
         public struct CurveWeightPair {
             
@@ -48,18 +48,18 @@ namespace nitou {
         // Public Method
 
         /// <summary>
-        /// d‚İ‚ğw’è‚µ‚ÄƒJ[ƒu‚ğ’Ç‰Á
+        /// é‡ã¿ã‚’æŒ‡å®šã—ã¦ã‚«ãƒ¼ãƒ–ã‚’è¿½åŠ 
         /// </summary>
         public void Add(AnimationCurve curve, float weight = 1.0f) {
             _curveWeightPairs.Add(new CurveWeightPair(curve, weight));
         }
 
         /// <summary>
-        /// w’èŠÔ‚Ì’l‚ğæ“¾
+        /// æŒ‡å®šæ™‚é–“ã®å€¤ã‚’å–å¾—
         /// </summary>
         public float Evaluate(float time) {
             if (_curveWeightPairs.Count == 0) {
-                Debug.LogError($"CurveWeightPair‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+                Debug.LogError($"CurveWeightPairãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“");
                 return 0;
             }
 
@@ -74,14 +74,14 @@ namespace nitou {
             if (totalWeight > 0f) {
                 blendedValue /= totalWeight;
             } else {
-                Debug.LogWarning($"Weight‚Ì‡Œv‚ª0ˆÈ‰º‚Å‚· : {totalWeight}");
+                Debug.LogWarning($"Weightã®åˆè¨ˆãŒ0ä»¥ä¸‹ã§ã™ : {totalWeight}");
             }
 
             return blendedValue;
         }
 
         /// <summary>
-        /// Dotween‚ÌEase—p‚Ìæ“¾ƒƒ\ƒbƒh
+        /// Dotweenã®Easeç”¨ã®å–å¾—ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         public float EaseEvaluate(float time, float duration, float overshootOrAmplitude, float period) {
             if (duration <= 0) {

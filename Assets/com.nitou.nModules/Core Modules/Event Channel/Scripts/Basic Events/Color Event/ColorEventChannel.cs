@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace nitou.EventChannel {
     using nitou.EventChannel.Shared;
 
     /// <summary>
-    /// <see cref="Color"/>Œ^‚ÌƒCƒxƒ“ƒgƒ`ƒƒƒ“ƒlƒ‹
+    /// <see cref="Color"/>å‹ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ£ãƒ³ãƒãƒ«
     /// </summary>
     [CreateAssetMenu(
         fileName = "Event_Color",

@@ -1,8 +1,8 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UniRx;
 
-// [Ql]
+// [å‚è€ƒ]
 
 namespace nitou.SceneSystem{
 
