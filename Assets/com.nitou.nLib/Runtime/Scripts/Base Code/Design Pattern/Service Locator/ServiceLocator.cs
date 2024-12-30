@@ -13,10 +13,10 @@ namespace nitou.DesignPattern {
     public static class ServiceLocator {
 
         // For singleton instance
-        private readonly static Dictionary<Type, object> _instanceDict = new ();
+        private readonly static Dictionary<Type, object> _instanceDict = new();
 
         // For instance creation on demand
-        private readonly static Dictionary<Type, Type> _typeDict = newÅ@();
+        private readonly static Dictionary<Type, Type> _typeDict = new();
 
         /// <summary>
         /// Registers a singleton instance.
@@ -24,7 +24,9 @@ namespace nitou.DesignPattern {
         /// </summary>
         /// <typeparam name="T">type</typeparam>
         /// <param name="instance">instance</param>
-        public static void Register<T>(T instance) where T : class {
+        public static void Register<T>(T instance) 
+            where T : class {
+            
             if (instance is null)
                 throw new ArgumentNullException(nameof(instance));
 
@@ -37,9 +39,9 @@ namespace nitou.DesignPattern {
         /// </summary>
         /// <typeparam name="TContract">Abstract type</typeparam>
         /// <typeparam name="TConcrete">Concrete type</typeparam>
-        public static void Register<TContract, TConcrete>() 
+        public static void Register<TContract, TConcrete>()
             where TConcrete : TContract, new()
-            where TContract : class{
+            where TContract : class {
             _typeDict[typeof(TContract)] = typeof(TConcrete);
         }
 

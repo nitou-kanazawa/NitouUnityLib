@@ -24,7 +24,9 @@ namespace nitou.EditorScripts {
         /// </summary>
         static DefineSymbolsSetter() {
 
+            // ビルドターゲット
             var buildTarget = NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            if (buildTarget == NamedBuildTarget.Unknown) return;
 
             // パッケージがインストールされたときに実行される処理
 
