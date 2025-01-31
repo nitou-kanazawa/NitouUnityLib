@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="Dictionary{TKey, TValue}"/>を効率的に再利用するための静的クラス
+    /// <see cref="Dictionary{TKey, TValue}"/>を効率的に再利用するための静的クラス．
     /// </summary>
     public static class DictionaryPool<TKey, TValue> {
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  qiita: Unityで学ぶデザインパターン08: Composite パターン https://qiita.com/Cova8bitdot/items/1c57d856027a33e99eb0
 //  qiita: Compositeパターン https://qiita.com/WestRiver/items/11c48ec3929322e296a7
 

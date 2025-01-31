@@ -155,9 +155,7 @@ namespace nitou {
         public static readonly Color YellowGreen = new Color32(154, 205, 50, 255);
 
 
-
         /// ----------------------------------------------------------------------------
-
 
         public static Color FromRgb255(float r, float g, float b, float a) {
             return new Color(r / 255f, g / 255f, b / 255f, a / 255f);
@@ -172,7 +170,6 @@ namespace nitou {
             
             return $"#{r:X2}{g:X2}{b:X2}";
         }
-
 
         public static Color SelectFromManyColors(int hashCode) {
             // HashCodeをもとに動的に色を生成する（Hueの範囲を0〜1で調整）

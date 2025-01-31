@@ -5,7 +5,7 @@ using System.Linq;
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="Array"/>を効率的に再利用するための静的クラス
+    /// <see cref="Array"/>を効率的に再利用するための静的クラス．
     /// </summary>
     public static class ArrayPool<T> {
 

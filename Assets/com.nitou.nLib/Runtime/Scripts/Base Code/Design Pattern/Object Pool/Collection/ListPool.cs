@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace nitou.DesignPattern.Pooling {
 
     /// <summary>
-    /// <see cref="List{T}"/>を効率的に再利用するための静的クラス
+    /// <see cref="List{T}"/>を効率的に再利用するための静的クラス．
     /// </summary>
     public static class ListPool<T> {
 

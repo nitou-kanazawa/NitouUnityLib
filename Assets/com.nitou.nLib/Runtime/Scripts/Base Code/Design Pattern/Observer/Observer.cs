@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  qiita: 作りながら理解するUniRx https://qiita.com/mattak/items/106dfd0974653aa06fbc#5-observable
 
 namespace nitou.DesignPattern.Observer {

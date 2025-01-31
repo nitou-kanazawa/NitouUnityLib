@@ -5,6 +5,12 @@ using System.Collections.Generic;
 //  qiita: Unityでサービスロケーター(ServiceLocator)を活用する https://qiita.com/ozaki_shinya/items/9eb0f827caa6a4108888
 //  Hatena: ServiceLocatorとDependencyInjectionパターンとDIContainer https://www.nuits.jp/entry/servicelocator-vs-dependencyinjection
 
+// [NOTE]
+//  サービスロケータは以下の理由から基本的にアンチパターンである．
+//   - ServiceLocatorへの強い依存が生まれる
+//   - オブジェクトの依存関係が見えなくなる（※ConstructorInjectionを使わないため）
+//  DIコンテナを導入可能ならそちらを先に検討する．
+
 namespace nitou.DesignPattern {
 
     /// <summary>
@@ -12,11 +18,15 @@ namespace nitou.DesignPattern {
     /// </summary>
     public static class ServiceLocator {
 
-        // For singleton instance
+        // シングルトン用
         private readonly static Dictionary<Type, object> _instanceDict = new();
 
-        // For instance creation on demand
+        // 都度生成用
         private readonly static Dictionary<Type, Type> _typeDict = new();
+
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
 
         /// <summary>
         /// Registers a singleton instance.

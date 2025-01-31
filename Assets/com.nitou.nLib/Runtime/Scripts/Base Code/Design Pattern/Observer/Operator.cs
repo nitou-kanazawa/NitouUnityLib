@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace nitou.DesignPattern.Observer {
 
@@ -85,8 +84,6 @@ namespace nitou.DesignPattern.Observer {
     }
 
 
-
-
     public static class IObservableExtension {
 
         public static IObservable<TNext> Where<TNext>(this IObservable<TNext> observable,
@@ -121,6 +118,4 @@ namespace nitou.DesignPattern.Observer {
             });
         }
     }
-
-
 }
