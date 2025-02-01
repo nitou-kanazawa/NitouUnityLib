@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-// [参考]
+// [REF]
 //  Hatena: C#でGenericなSingleton https://waken.hatenablog.com/entry/2016/03/05/102928
 //  Zonn: シングルトンパターン（Singleton Pattern） https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/c52658
 //  Qiita: Unityで学ぶデザインパターン05: Singleton パターン【デザパタ】https://qiita.com/Cova8bitdot/items/29b7064c7472a6f34972
 
-namespace nitou.DesignPattern {
+namespace nitou.DesignPattern.Singltons {
 
     /// <summary>
     /// シンプルなシングルトン (※実装サンプル)
@@ -20,13 +20,13 @@ namespace nitou.DesignPattern {
 
 
     /// <summary>
-    /// ジェネリックなシングルトン
+    /// ジェネリックなシングルトン．
     /// </summary>
     public class Singleton<T> where T : class, new() {
 
         public static T Instance => _instance;
         private static readonly T _instance = new();
-        
+
         // 万一、外からコンストラクタを呼ばれたときに、ここで引っ掛ける
         protected Singleton() {
             Debug.Assert(null == _instance);

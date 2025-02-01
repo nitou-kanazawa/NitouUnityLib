@@ -4,9 +4,9 @@ using UnityEngine;
 namespace nitou{
 
     /// <summary>
-    /// <see cref="Mathf"/>に足りない機能を提供するユーティリティクラス
+    /// <see cref="Mathf"/>に足りない機能を提供する汎用メソッド集．
     /// </summary>
-    public static class MathUtil{
+    public static class MathUtils{
 
         /// ----------------------------------------------------------------------------
         #region 要素の取得

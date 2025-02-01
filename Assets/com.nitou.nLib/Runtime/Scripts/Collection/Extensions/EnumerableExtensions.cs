@@ -28,50 +28,6 @@ namespace nitou {
 
 
         /// ----------------------------------------------------------------------------
-        #region 要素の変換
-
-        /// <summary>
-        /// nullを除いたシーケンスに変換する拡張メソッド．
-        /// </summary>
-        public static IEnumerable<T> WithoutNull<T>(this IEnumerable<T> source) where T : class {
-            return source.Where(item => item != null);
-        }
-
-        /// <summary>
-        /// 各要素にインデックスを付与したシーケンスを取得する拡張メソッド．
-        /// </summary>
-        public static IEnumerable<(T item, int index)> Index<T>(this IEnumerable<T> source) {
-            return source.Select((item, index) => (item, index));
-        }
-        #endregion
-
-
-        /// ----------------------------------------------------------------------------
-        #region 要素の走査
-
-        /// <summary>
-        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
-        /// </summary>
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T, int> action) {
-            foreach ((var item, var index) in source.Index()) {
-                action(item, index);
-            }
-            return source;
-        }
-
-        /// <summary>
-        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
-        /// </summary>
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action) {
-            foreach (var item in source) {
-                action(item);
-            }
-            return source;
-        }
-        #endregion
-
-
-        /// ----------------------------------------------------------------------------
         #region 要素の取得
 
         /// <summary>
@@ -224,6 +180,51 @@ namespace nitou {
             }
         }
         #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 要素の変換
+
+        /// <summary>
+        /// nullを除いたシーケンスに変換する拡張メソッド．
+        /// </summary>
+        public static IEnumerable<T> WithoutNull<T>(this IEnumerable<T> source) where T : class {
+            return source.Where(item => item != null);
+        }
+
+        /// <summary>
+        /// 各要素にインデックスを付与したシーケンスを取得する拡張メソッド．
+        /// </summary>
+        public static IEnumerable<(T item, int index)> Index<T>(this IEnumerable<T> source) {
+            return source.Select((item, index) => (item, index));
+        }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 要素の走査
+
+        /// <summary>
+        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
+        /// </summary>
+        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T, int> action) {
+            foreach ((var item, var index) in source.Index()) {
+                action(item, index);
+            }
+            return source;
+        }
+
+        /// <summary>
+        /// IEnumerableの各要素に対して、指定された処理を実行する拡張メソッド．
+        /// </summary>
+        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action) {
+            foreach (var item in source) {
+                action(item);
+            }
+            return source;
+        }
+        #endregion
+
 
 
         /// ----------------------------------------------------------------------------

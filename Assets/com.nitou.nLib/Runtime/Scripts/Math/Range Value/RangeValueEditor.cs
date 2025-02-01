@@ -2,8 +2,8 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace nitou {
-    public abstract class RangeValueEditor : PropertyDrawer {
+namespace nitou.Inspector {
+    internal abstract class RangeValueEditor : PropertyDrawer {
 
         protected static readonly GUIContent _minLabel = new ("min");
         protected static readonly GUIContent _maxLabel = new ("max");

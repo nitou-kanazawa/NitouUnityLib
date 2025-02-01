@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-// [参考]
+// [REF]
 //  ゲームUIネット : DOTweenで作成したモーション17個を含むプロジェクトを公開 https://game-ui.net/?p=975
 //  コガネブログ: Color の代入を簡略化する Deconstruction https://baba-s.hatenablog.com/entry/2019/09/03/230300
 //  _: Imageの色それぞれ変更する拡張 https://hi-network.sakura.ne.jp/wp/2021/01/26/post-3660/
-
 
 namespace nitou {
 
@@ -36,33 +35,11 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Color WithRed(this Color color, float red) {
-            return new Color(red, color.g, color.b, color.a);
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Color WithGreen(this Color color, float green) {
-            return new Color(color.r, green, color.b, color.a);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Color WithBlue(this Color color, float blue) {
-            return new Color(color.r, color.g, blue, color.a);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Color WithAlpha(this Color color, float alpha) {
-            return new Color(color.r, color.g, color.b, alpha);
-        }
+        public static Color WithRed(this Color self, float red) => new (red, self.g, self.b, self.a);
+        public static Color WithGreen(this Color self, float green) => new (self.r, green, self.b, self.a);
+        public static Color WithBlue(this Color self, float blue) => new (self.r, self.g, blue, self.a);
+        public static Color WithAlpha(this Color self, float alpha) => new (self.r, self.g, self.b, alpha);
 
 
         /// ----------------------------------------------------------------------------
@@ -84,6 +61,8 @@ namespace nitou {
 
         /// ----------------------------------------------------------------------------
         #region Misc
+
+        // [TODO] どのクラスに含めるか？また，そもそも必要か検討するべき．
 
         /// <summary>
         /// α値を設定する拡張メソッド

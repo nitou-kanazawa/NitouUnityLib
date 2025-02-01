@@ -3,17 +3,17 @@
 using UnityEditor;
 #endif
 
-// [参考]
+// [REF]
 //  _: フィールドの値などをインスペクタで横に並べて表示する   http://fantom1x.blog130.fc2.com/blog-entry-419.html
 //  LIGHT11: Serializableなクラスにはデフォルトコンストラクタを忘れずつけようという話 https://light11.hatenadiary.com/entry/2022/12/26/191200
 
 namespace nitou {
 
     /// <summary>
-    /// 最大、最小の範囲に制限される値
+    /// 最大、最小の範囲に制限される値．
     /// </summary>
     [System.Serializable]
-    public class ClampedValue{
+    public sealed class ClampedValue{
 
         [SerializeField] float _min = 0;
         [SerializeField] float _max = 1;
@@ -28,12 +28,12 @@ namespace nitou {
         }
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         private ClampedValue() { }
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         public ClampedValue(float min, float max, float value = 0) {
             _min = min;
@@ -46,7 +46,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 文字列形式でオブジェクトの状態を返す
+        /// 文字列形式でオブジェクトの状態を返す．
         /// </summary>
         public override string ToString() {
             return $"(Min: {Min}, Max: {Max}, Value: {Value})";
@@ -57,10 +57,10 @@ namespace nitou {
 
 /// ----------------------------------------------------------------------------
 #if UNITY_EDITOR
-namespace nitou.EditorScripts {
+namespace nitou.Inspector {
 
     [CustomPropertyDrawer(typeof(ClampedValue))]
-    public class ClampedValueEditor : PropertyDrawer {
+    internal sealed class ClampedValueEditor : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 

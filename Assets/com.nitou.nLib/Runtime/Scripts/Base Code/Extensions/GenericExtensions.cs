@@ -45,9 +45,6 @@ namespace nitou {
             return (value.CompareTo(max) > 0) ? max : value;
         }
         #endregion
-
-
-
     }
 
 }

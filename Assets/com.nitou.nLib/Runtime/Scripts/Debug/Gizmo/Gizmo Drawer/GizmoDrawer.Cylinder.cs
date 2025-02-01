@@ -97,7 +97,7 @@ namespace nitou.DebugInternal {
                 var lowerPoints = ListPool<Vector3>.New();
 
                 // 座標計算
-                MathUtil.CirclePoints(
+                MathUtils.CirclePoints(
                     radius: upperDisc.radius,
                     resultPoints: upperPoints,
                     segments: upperDisc.segments,
@@ -105,7 +105,7 @@ namespace nitou.DebugInternal {
                     isLoop: false,
                     type: planeType
                 );
-                MathUtil.CirclePoints(
+                MathUtils.CirclePoints(
                     radius: lowerDisc.radius,
                     resultPoints: lowerPoints,
                     segments: lowerDisc.segments,
@@ -131,7 +131,7 @@ namespace nitou.DebugInternal {
                 var lowerPoints = ListPool<Vector3>.New();
 
                 var top = (lowerDisc.offset + height) * type.GetNormal();
-                MathUtil.CirclePoints(
+                MathUtils.CirclePoints(
                     radius: lowerDisc.radius,
                     resultPoints: lowerPoints,
                     segments: lowerDisc.segments,
@@ -156,7 +156,7 @@ namespace nitou.DebugInternal {
                 var points = ListPool<Vector3>.New();
 
                 // 座標計算
-                MathUtil.CirclePoints(
+                MathUtils.CirclePoints(
                     radius: disc.radius,
                     resultPoints: points,
                     segments: disc.segments,

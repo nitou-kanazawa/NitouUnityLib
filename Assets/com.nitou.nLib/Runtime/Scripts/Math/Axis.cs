@@ -2,6 +2,9 @@
 
 namespace nitou {
 
+    /// <summary>
+    /// 直行軸を指定するための列挙型．
+    /// </summary>
     public enum Axis {
         X,
         Y,

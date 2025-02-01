@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-// [参考]
+// [REF]
 //  ねこじゃらしティ: SmoothDampで滑らかな追従を実装する https://nekojara.city/unity-smooth-damp
 //  LIGHT11: Lerpを用いたスムージングの問題点とMathf.SmoothDampによる解決策 https://light11.hatenadiary.com/entry/2021/06/01/203624
 //  _ : SmoothDampを構造体化して使いやすくする https://tech.ftvoid.com/smooth-damp-struct

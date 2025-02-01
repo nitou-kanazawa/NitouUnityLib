@@ -128,7 +128,7 @@ namespace nitou.DebugInternal {
             public static void DrawCircle(PlaneType type, float radius, int segments = 20) {
                 var points = ListPool<Vector3>.New();
                 
-                MathUtil.CirclePoints(radius,points, segments, type: type);
+                MathUtils.CirclePoints(radius,points, segments, type: type);
                 DrawLines(points);
 
                 points.Free();

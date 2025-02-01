@@ -3,7 +3,7 @@
 namespace nitou {
 
     /// <summary>
-    /// LayerMaskの拡張メソッドクラス
+    /// <see cref="LayerMask"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static class LayerMaskExtensions {
 
@@ -85,6 +85,5 @@ namespace nitou {
         }
 
         #endregion
-
     }
 }

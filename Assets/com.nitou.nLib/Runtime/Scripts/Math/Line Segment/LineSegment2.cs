@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  ねこじゃらシティ: 線分同士の交差判定 https://nekojara.city/unity-line-segment-cross
 //  qiita: ２D線分計算Class https://qiita.com/RYUMAGE/items/a00cdc92e65116f23183
 
 namespace nitou {
 
     /// <summary>
-    /// 線分を表す構造体
+    /// 線分を表す構造体．
     /// </summary>
     [System.Serializable]
     public struct LineSegment2 {
@@ -21,17 +21,17 @@ namespace nitou {
         // Property
 
         /// <summary>
-        /// 中点
+        /// 中点．
         /// </summary>
         public Vector2 Center => (start + end) * 0.5f;
 
         /// <summary>
-        /// 方向ベクトル
+        /// 方向ベクトル．
         /// </summary>
         public Vector2 Vector => end - start;
 
         /// <summary>
-        /// 法線ベクトル
+        /// 法線ベクトル．
         /// </summary>
         public Vector2 Normal => Vector2.Perpendicular(Vector);
 
@@ -40,7 +40,7 @@ namespace nitou {
         // Public Method (基本メソッド)
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         public LineSegment2(Vector2 start, Vector2 end) {
             this.start = start;
@@ -48,28 +48,28 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 複製
+        /// 複製．
         /// </summary>
         public LineSegment2 Clone() {
             return new LineSegment2(start, end);
         }
 
         /// <summary>
-        /// 方向ベクトル
+        /// 方向ベクトル．
         /// </summary>
         public float Distance() {
             return Vector2.Distance(start, end);
         }
 
         /// <summary>
-        /// パラメータ（0~1）を指定して線分上の点を取得する
+        /// パラメータ（0~1）を指定して線分上の点を取得する．
         /// </summary>
         public Vector2 GetPoint(float t) {
             return Vector2.Lerp(start, end, t);
         }
 
         /// <summary>
-        /// 分割数を指定して、線分上の点列を取得する
+        /// 分割数を指定して、線分上の点列を取得する．
         /// </summary>
         public Vector2[] GetPoints(int num) {
             if (num <= 0) throw new System.InvalidOperationException("The number of divisions must be a positive integer greater than zero.");
@@ -78,7 +78,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ２つの線分が並行か判定する
+        /// ２つの線分が並行か判定する．
         /// </summary>
         public bool IsParallel(LineSegment2 other) {
             float cross = Cross(this.Vector, other.Vector);
@@ -86,7 +86,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ２つの線分が交差しているかを判定する
+        /// ２つの線分が交差しているかを判定する．
         /// </summary>
         public bool IsCrossing(LineSegment2 other) {
             Vector2 v1 = this.start - other.start;
@@ -98,7 +98,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ２つの線分の交差点を計算する
+        /// ２つの線分の交差点を計算する．
         /// </summary>
         public Vector2 CrossPoint(LineSegment2 other) {
             Vector2 v1 = other.start - this.start;
@@ -116,7 +116,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 最近傍点を計算する
+        /// 最近傍点を計算する．
         /// </summary>
         public Vector2 GetNearestPoint(Vector2 point) {
             Vector2 v1 = point - start;
@@ -133,7 +133,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 点との最短距離
+        /// 点との最短距離．
         /// </summary>
         public float DistanceFromPoint(Vector2 point) {
             return Vector2.Distance(GetNearestPoint(point), point);
@@ -144,7 +144,7 @@ namespace nitou {
         // Static Method
 
         /// <summary>
-        /// 外積
+        /// 外積．
         /// </summary>
         public static float Cross(Vector2 vec1, Vector2 vec2) {
             return vec1.x * vec2.y - vec2.x * vec1.y;

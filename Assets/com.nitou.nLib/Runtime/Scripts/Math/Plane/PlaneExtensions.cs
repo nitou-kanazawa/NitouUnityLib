@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-// [参考]
+// [REF]
 //  Document: Plane https://docs.unity3d.com/ja/2023.2/ScriptReference/Plane.html
 //  ねこじゃらシティ: 平面の計算を楽できるPlane構造体の使い方 https://nekojara.city/unity-plane-struct
 
 namespace nitou {
 
     /// <summary>
-    /// 平面
+    /// 平面．
     /// </summary>
     public enum PlaneType {
         XY,
@@ -16,7 +16,7 @@ namespace nitou {
     }
 
     /// <summary>
-    /// <see cref="Plane"/>型の基本的な拡張メソッド集
+    /// <see cref="Plane"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static class PlaneExtensions {
 
@@ -28,7 +28,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// オーバーラップしているか判定する拡張メソッド
+        /// オーバーラップしているか判定する拡張メソッド．
         /// </summary>
         public static bool IsOverlapping(this Plane self, Vector3 position, float radius) {
             if (radius <= 0f) throw new System.InvalidOperationException("radius must be greater than 0.");
@@ -38,7 +38,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ギズモを表示する
+        /// ギズモを表示する．
         /// </summary>
         public static void DrawGizmo(this Plane self, Color color) {
             Gizmos_.DrawSphere(self.GetPosition(), 0.1f, color);
@@ -51,7 +51,7 @@ namespace nitou {
     public static class PlaneUtil {
 
         /// <summary>
-        /// 平面に対応した法線ベクトルを取得する
+        /// 平面に対応した法線ベクトルを取得する．
         /// </summary>
         public static Vector3 GetNormal(this PlaneType type) {
             return type switch {

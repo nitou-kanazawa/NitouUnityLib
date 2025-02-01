@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-// [参考]
+// [REF]
 //  コガネブログ: GetComponentsInChildrenで自分自身を含まないようにする拡張メソッド https://baba-s.hatenablog.com/entry/2014/06/05/220224
 //  qiita: ちょっとだけ便利になるかもしれない拡張メソッド集 https://qiita.com/tanikura/items/ed5d56ebbfcad19c488d
 //  kanのメモ帳: 拡張メソッドとは、全ての子オブジェクトにレイヤーとマテリアル設定を行ってみる https://kan-kikuchi.hatenablog.com/entry/GameObjectExtension

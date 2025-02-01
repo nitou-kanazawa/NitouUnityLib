@@ -11,11 +11,11 @@ namespace nitou {
     [System.Serializable]
     public struct NormalizedRange {
 
-        [SerializeField, Range(0f, 1f)]
-        private float _minValue;
+        [Range(0f, 1f)]
+        [SerializeField] float _minValue;
 
-        [SerializeField, Range(0f, 1f)]
-        private float _maxValue;
+        [Range(0f, 1f)]
+        [SerializeField] float _maxValue;
 
         /// <summary>
         /// 最小値（0～1の範囲）。
@@ -50,11 +50,12 @@ namespace nitou {
     }
 }
 
+
 #if UNITY_EDITOR
-namespace nitou.EditorScripts {
+namespace nitou.Inspector {
 
     [CustomPropertyDrawer(typeof(NormalizedRange))]
-    public class NormalizedRangePropertyDrawer : PropertyDrawer {
+    internal sealed class NormalizedRangePropertyDrawer : PropertyDrawer {
 
         /// <summary>
         /// プロパティのGUIを描画します。

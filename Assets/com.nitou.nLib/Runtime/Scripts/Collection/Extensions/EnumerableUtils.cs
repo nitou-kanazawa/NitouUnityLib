@@ -142,5 +142,23 @@ namespace nitou {
             else
                 return Enumerable.Range(start, end - start + 1);
         }
+
+
+        // First
+
+        /// <summary>
+        /// 任意のデフォルト値を指定するFirstOrDefault()．
+        /// </summary>
+        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source, TSource defaultValue) {
+            return source.DefaultIfEmpty(defaultValue).First();
+        }
+
+        /// <summary>
+        /// 任意のデフォルト値を指定するFirstOrDefault()．
+        /// </summary>
+        public static TSource FirstOrDefault<TSource>(this IEnumerable<TSource> source, 
+            Func<TSource, bool> predicate, TSource defaultValue) {
+            return source.Where(predicate).FirstOrDefault(defaultValue);
+        }
     }
 }

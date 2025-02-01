@@ -4,7 +4,7 @@ using UnityEngine;
 namespace nitou {
 
     /// <summary>
-    /// 線分を表す構造体
+    /// 線分を表す構造体．
     /// </summary>
     [System.Serializable]
     public struct LineSegment3 {
@@ -17,12 +17,12 @@ namespace nitou {
         // Property
 
         /// <summary>
-        /// 中点
+        /// 中点．
         /// </summary>
         public Vector3 Center => (start + end) * 0.5f;
 
         /// <summary>
-        /// 方向ベクトル
+        /// 方向ベクトル．
         /// </summary>
         public Vector3 Vector => end - start;
 
@@ -31,7 +31,7 @@ namespace nitou {
         // Public Method (基本メソッド)
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ．
         /// </summary>
         public LineSegment3(Vector3 start, Vector3 end) {
             this.start = start;
@@ -39,28 +39,28 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 複製
+        /// 複製．
         /// </summary>
         public LineSegment3 Clone() {
             return new LineSegment3(start, end);
         }
 
         /// <summary>
-        /// 方向ベクトル
+        /// 方向ベクトル．
         /// </summary>
         public float Distance() {
             return Vector3.Distance(start, end);
         }
 
         /// <summary>
-        /// パラメータ（0~1）を指定して線分上の点を取得する
+        /// パラメータ（0~1）を指定して線分上の点を取得する．
         /// </summary>
         public Vector3 GetPoint(float t) {
             return Vector3.Lerp(start, end, t);
         }
 
         /// <summary>
-        /// 分割数を指定して、線分上の点列を取得する
+        /// 分割数を指定して、線分上の点列を取得する．
         /// </summary>
         public Vector3[] GetPoints(int num) {
             if (num <= 0) throw new System.InvalidOperationException("The number of divisions must be a positive integer greater than zero.");
@@ -69,7 +69,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// ２つの線分が並行か判定する
+        /// ２つの線分が並行か判定する．
         /// </summary>
         public bool IsParallel(LineSegment3 other, float tolerance = 0.01f) {
             var cross = Vector3.Cross(this.Vector.normalized, other.Vector.normalized);
@@ -92,7 +92,7 @@ namespace nitou {
         }
 
         /// <summary>
-        /// 最近傍点を計算する
+        /// 最近傍点を計算する．
         /// </summary>
         public Vector3 GetNearestPoint(Vector3 point) {
             var lineVector = Vector;
@@ -152,7 +152,7 @@ namespace nitou {
 
 
     /// <summary>
-    /// <see cref="LineSegment3"/> に関連した拡張メソッド集
+    /// <see cref="LineSegment3"/> に関連した拡張メソッド集．
     /// </summary>
     public static class LineSegment3Extensions {
 

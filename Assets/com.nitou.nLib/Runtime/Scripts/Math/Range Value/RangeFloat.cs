@@ -119,12 +119,14 @@ namespace nitou {
             return range.Contains(value);
         }
     }
-
+}
 
 
 #if UNITY_EDITOR
+namespace nitou.Inspector { 
+    
     [CustomPropertyDrawer(typeof(RangeFloat))]
-    public class RangeFloatEditor : RangeValueEditor {
+    internal class RangeFloatEditor : RangeValueEditor {
 
         protected override void ValidateValue(SerializedProperty minProperty, SerializedProperty maxProperty) {
             // 小さい数値を基準にして、大きい数値が小さい数値より小さくならないようにしてみよう。

@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
 
 namespace nitou {
 
+    /// <summary>
+    /// 上下左右の余白を表す構造体．
+    /// </summary>
     public struct Padding {
 
         public float left;

@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace nitou {
 
-    public static class CameraUtil {
+    /// <summary>
+    /// <see cref="Camera"/>型を対象とした汎用メソッド集．
+    /// </summary>
+    public static class CameraUtils {
 
         /// <summary>
         /// 登録されている全ての<see cref="Camera">カメラ</see>を非アクティブ状態に設定する

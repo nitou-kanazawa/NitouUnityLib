@@ -6,7 +6,7 @@ using UnityEditor;
 namespace nitou{
 
     /// <summary>
-    /// 範囲を<see cref="int"/>型で表す構造体
+    /// <see cref="int"/>型で範囲を表す構造体．
     /// </summary>
     public class RangeInt : IRangeValue<int>{
 
@@ -53,19 +53,21 @@ namespace nitou{
         /// <summary>
         /// 値が範囲内か調べる
         /// </summary>
-        public bool Contains(int value) {
-            return GenericExtensions.IsInRange(value, _min, _max);
-        }
+        public bool Contains(int value) => GenericExtensions.IsInRange(value, _min, _max);
 
-        public float Clamp(int value) {
-            return Mathf.Clamp(value, _min, _max);
-        }
-
+        /// <summary>
+        /// 値を範囲内に制限する
+        /// </summary>
+        public int Clamp(int value) => Mathf.Clamp(value, _min, _max);
     }
+}
+
 
 #if UNITY_EDITOR
+namespace nitou.Inspector {
+    
     [CustomPropertyDrawer(typeof(RangeInt))]
-    public class RangeIntEditor : RangeValueEditor {
+    internal class RangeIntEditor : RangeValueEditor {
 
         protected override void ValidateValue(SerializedProperty minProperty, SerializedProperty maxProperty) {
             // 小さい数値を基準にして、大きい数値が小さい数値より小さくならないようにしてみよう。
@@ -75,6 +77,5 @@ namespace nitou{
         }
 
     }
-#endif
-
 }
+#endif

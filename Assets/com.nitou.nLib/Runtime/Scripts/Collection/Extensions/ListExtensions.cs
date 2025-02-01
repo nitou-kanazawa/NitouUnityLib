@@ -9,9 +9,12 @@ using System.Linq;
 namespace nitou {
 
     /// <summary>
-    /// <see cref="List{T}"/>型の基本的な拡張メソッド集
+    /// <see cref="List{T}"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static partial class ListExtensions {
+
+        /// ----------------------------------------------------------------------------
+        #region 要素の取得
 
         /// <summary>
         /// 最後の要素を取り出す拡張メソッド．要素が0なら<see cref="InvalidOperationException">例外</see>を投げる．
@@ -27,6 +30,11 @@ namespace nitou {
 
             return t;
         }
+        #endregion
+
+
+        /// ----------------------------------------------------------------------------
+        #region 要素の削除
 
         /// <summary>
         /// 該当する要素を全て削除する拡張メソッド．
@@ -38,10 +46,11 @@ namespace nitou {
                 }
             }
         }
+        #endregion
 
 
         /// ----------------------------------------------------------------------------
-        #region 要素の分解
+        #region その他
 
         /// <summary>
         /// デコンストラクタ．

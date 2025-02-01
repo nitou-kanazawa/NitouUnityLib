@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace nitou {
 
@@ -38,6 +37,11 @@ namespace nitou {
         /// 値が範囲内か調べる．
         /// </summary>
         bool Contains(TValue value);
+
+        /// <summary>
+        /// 値を範囲内に制限する．
+        /// </summary>
+        TValue Clamp(TValue value);
     }
 
 

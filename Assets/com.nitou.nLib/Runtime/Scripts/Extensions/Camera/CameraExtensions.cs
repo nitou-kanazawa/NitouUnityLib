@@ -2,13 +2,13 @@
 using System.Linq;
 using UnityEngine;
 
-// [参考] 
+// [REF] 
 //  Unity Forums: Handles.Label with constant size (not scale based on distance to camera) 
 
 namespace nitou {
 
     /// <summary>
-    /// Cameraの拡張メソッドクラス
+    /// <see cref="Camera"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static class CameraExtensions {
 

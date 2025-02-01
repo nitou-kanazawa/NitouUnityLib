@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace nitou {
 
     /// <summary>
-    /// 配列に対する汎用機能を提供するライブラリ
+    /// 配列に対する汎用機能を提供するライブラリ．
     /// </summary>
     public static partial class MultiDimensionArrayUtils {
 
@@ -301,8 +301,4 @@ namespace nitou {
         }
 
     }
-
-
-
-
 }

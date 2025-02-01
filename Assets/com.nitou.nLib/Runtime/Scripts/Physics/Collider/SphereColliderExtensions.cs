@@ -23,7 +23,7 @@ namespace nitou {
         /// </summary>
         public static float GetScaledRadius(this SphereCollider sphere) {
             // (※Sphereコライダーは常に球形を維持して，半径に各軸の最大スケールが適用される)
-            return sphere.radius * MathUtil.Max(sphere.transform.lossyScale);
+            return sphere.radius * MathUtils.Max(sphere.transform.lossyScale);
         }
 
 

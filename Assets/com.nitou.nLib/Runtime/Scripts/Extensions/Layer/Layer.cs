@@ -1,37 +1,38 @@
 ﻿using UnityEngine;
+using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-// [参考]
+// [REF]
 //  ねこじゃらシティ: レイヤーをインスペクターから選択可能にする構造体 https://nekojara.city/unity-layer-inspector
 
 namespace nitou {
 
     /// <summary>
-    /// レイヤー設定用の構造体
+    /// レイヤー設定用の構造体．
     /// </summary>
     [System.Serializable]
-    public struct Layer {
+    public struct Layer : IEquatable<Layer> {
 
         [SerializeField] private int _value;
 
         /// <summary>
-        /// レイヤー値
+        /// レイヤー値．
         /// </summary>
         public int Value {
             get => _value;
             set {
-                // レイヤーの範囲チェック
-                if (value < 0 || 31 < value) {
-                    throw new System.ArgumentOutOfRangeException(nameof(value), "レイヤーは0～31の範囲で指定してください。");
+                if (!IsInRange(value)) {
+                    throw new ArgumentOutOfRangeException(nameof(value), "レイヤーは0～31の範囲で指定してください。");
                 }
                 _value = value;
             }
         }
 
         /// <summary>
-        /// レイヤー名
+        /// レイヤー名．
         /// </summary>
         public string Name {
             get => LayerMask.LayerToName(_value);
@@ -46,33 +47,54 @@ namespace nitou {
             }
         }
 
-        /// <summary>
-        /// int型への変換 
-        /// </summary>
-        public static implicit operator int(Layer layer) {
-            return layer.Value;
-        }
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
 
         /// <summary>
-        /// Layer型への変換 
+        /// 同値比較．
         /// </summary>
-        public static explicit operator Layer(int value) {
-            return new Layer { Value = value };
-        }
+        public bool Equals(Layer other) => _value == other._value;
 
         /// <summary>
-        /// string型への変換
+        /// 同値比較．
+        /// </summary>
+        public override bool Equals(object obj) => obj is Layer other && Equals(other);
+
+        /// <summary>
+        /// ハッシュコードの計算
+        /// </summary>
+        public override int GetHashCode() => _value.GetHashCode();
+
+        /// <summary>
+        /// string型への変換．
         /// </summary>
         public override string ToString() {
             return $"{Name}({_value})";
         }
+
+
+        /// ----------------------------------------------------------------------------
+        #region Static
+        public static bool IsInRange(int value) {
+            return 0 <= value && value <= 31;
+        }
+
+        public static bool operator ==(Layer left, Layer right) => left.Equals(right);
+        public static bool operator !=(Layer left, Layer right) => !left.Equals(right);
+
+        public static implicit operator int(Layer layer) => layer.Value;
+        public static explicit operator Layer(int value) => new Layer { Value = value };
+        #endregion
     }
+}
 
 
-    /// --------------------------------------------------------------------
 #if UNITY_EDITOR
+namespace nitou.Inspector.EditorScripts {
+    
     [CustomPropertyDrawer(typeof(Layer))]
-    public class LayerPropertyDrawer : PropertyDrawer {
+    internal class LayerPropertyDrawer : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             EditorGUI.BeginProperty(position, label, property);
@@ -91,6 +113,5 @@ namespace nitou {
             EditorGUI.EndProperty();
         }
     }
-#endif
-
 }
+#endif

@@ -51,10 +51,10 @@ namespace nitou {
 
 /// ----------------------------------------------------------------------------
 #if UNITY_EDITOR
-namespace nitou.EditorScripts {
+namespace nitou.Inspector {
 
     [CustomPropertyDrawer(typeof(NormalizedValue))]
-    public class NormalizedFloatPropertyDrawer : PropertyDrawer {
+    internal sealed class NormalizedFloatPropertyDrawer : PropertyDrawer {
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
 

@@ -80,7 +80,7 @@ namespace nitou.SceneSystem {
 
                     // カメラの切り替え
                     if (_sceneCamera != null) {
-                        CameraUtil.DeactivateAllCamera();
+                        CameraUtils.DeactivateAllCamera();
                         _sceneCamera.gameObject.SetActive(true);
                         _sceneCamera.enabled = true;
                     }

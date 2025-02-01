@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-// [参考]
+// [REF]
 //  ねこじゃらシティ: Line Rendererで破線を描画する https://nekojara.city/unity-dashed-line
 
 namespace UnityEngine {
 
     /// <summary>
-    /// <see cref="LineRenderer"/>の基本的な拡張メソッド集
+    /// <see cref="LineRenderer"/>型の基本的な拡張メソッド集．
     /// </summary>
     public static class LineRendererExtensions {
 

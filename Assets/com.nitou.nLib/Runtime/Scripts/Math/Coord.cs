@@ -3,7 +3,7 @@
 namespace nitou {
 
     /// <summary>
-    /// Transformの"position"と"rotation"のみを扱うデータ構造体
+    /// Transformの"position"と"rotation"のみを扱うデータ構造体．
     /// </summary>
     [System.Serializable]
     public struct Coord {
